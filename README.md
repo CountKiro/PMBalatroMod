@@ -14,3 +14,9 @@ A Balatro Mod that adds custom made textures with Project Moon related character
 5. Go to Options -> Texture and enable the Spectral textures
 
 6. Enjoy the mod!
+
+## Special Thanks
+
+Special thanks to Novell, [Dawni](https://x.com/hidawnihere), Sans, Simon and Oath for testing out the mod and giving suggestions!
+
+Also thanks to [DB](https://x.com/Despair_Bears) for showcasing my work on Twitter and in Detroit and everyone in the RegretfulDiscord and MentalBlock servers for the support!
