@@ -132,7 +132,7 @@ return {
         },
         Blind={
             bl_arm={
-                name="The Arm",
+                name="Zwei Association",
                 text={
                     "Decrease level of",
                     "played poker hand",
@@ -192,14 +192,14 @@ return {
                 },
             },
             bl_fish={
-                name="The Fish",
+                name="Streetlight Office",
                 text={
                     "Cards drawn face down",
                     "after each hand played",
                 },
             },
             bl_flint={
-                name="The Thumb",
+                name="Musicians of Bremen",
                 text={
                     "Base Chips and",
                     "Mult are halved",
@@ -234,40 +234,40 @@ return {
                 },
             },
             bl_manacle={
-                name="The Manacle",
+                name="The Rats",
                 text={
                     "-1 Hand Size",
                 },
             },
             bl_mark={
-                name="Musicians of Bremen",
+                name="The Thumb",
                 text={
                     "All face cards are",
                     "drawn face down",
                 },
             },
             bl_mouth={
-                name="The Mouth",
+                name="Hook Office",
                 text={
                     "Play only 1 hand",
                     "type this round",
                 },
             },
             bl_needle={
-                name="The Needle",
+                name="The Reverberation",
                 text={
                     "Play only 1 hand",
                 },
             },
             bl_ox={
-                name="The Ox",
+                name="Liu Association",
                 text={
                     "Playing a #1#",
                     "sets money to $0",
                 },
             },
             bl_pillar={
-                name="The Pillar",
+                name="Cane Office",
                 text={
                     "Cards played previously",
                     "this Ante are debuffed",
@@ -299,7 +299,7 @@ return {
                 },
             },
             bl_tooth={
-                name="Fullstop Office",
+                name="Full-stop Office",
                 text={
                     "Lose $1 per",
                     "card played",
@@ -326,7 +326,7 @@ return {
                 },
             },
             bl_window={
-                name="The Window",
+                name="Dawn Office",
                 text={
                     "All Diamond cards",
                     "are debuffed",
