@@ -23,6 +23,7 @@ A Balatro Mod that adds custom made textures with Project Moon related character
 - The music is still a work in progress, so some tracks might get replaced in the future and timings and volume will get adjusted
 - The Mika (Square Joker) and Walter (Photograph) textures are bigger than their vanilla counterparts, so they look offset and they cover up the BUY button on the shop. You can still buy them, even though you can't see the button
 - Some older Joker textures are not on part with newer ones, so they'll be adjusted in the future
+- Translations for other languages are not working. To fix this, you'll have to open your Balatro.exe (Steam\steamapps\common\Balatro) with 7zip, navigate to the localization folder and copy the language file for the language you want. Then go to the ProjectMoonTexturePack mod folder, go to localization and paste the language file there.
 
 ## Special Thanks
 
