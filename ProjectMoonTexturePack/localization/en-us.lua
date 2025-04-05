@@ -34,7 +34,7 @@ return {
                 },
             },
             b_challenge={
-                name="Challenge Deck",
+                name="Enkephalin Deck",
                 text={
                     "",
                 },
@@ -158,35 +158,35 @@ return {
                 },
             },
             bl_final_acorn={
-                name="Amber Acorn",
+                name="The Pinky",
                 text={
                     "Flips and shuffles",
                     "all Joker cards",
                 },
             },
             bl_final_bell={
-                name="Cerulean Bell",
+                name="The Index",
                 text={
                     "Forces 1 card to",
                     "always be selected",
                 },
             },
             bl_final_heart={
-                name="Crimson Heart",
+                name="The Thumb",
                 text={
                     "One random Joker",
                     "disabled every hand",
                 },
             },
             bl_final_leaf={
-                name="Verdant Leaf",
+                name="The Ring",
                 text={
                     "All cards debuffed",
                     "until 1 Joker sold",
                 },
             },
             bl_final_vessel={
-                name="Violet Vessel",
+                name="The Middle",
                 text={
                     "Very large blind",
                 },
@@ -240,7 +240,7 @@ return {
                 },
             },
             bl_mark={
-                name="The Thumb",
+                name="Pierre's Bistro",
                 text={
                     "All face cards are",
                     "drawn face down",
@@ -287,7 +287,7 @@ return {
                 },
             },
             bl_serpent={
-                name="The Index",
+                name="Brotherhood of Iron",
                 text={
                     "After Play or Discard,",
                     "always draw 3 cards",
@@ -321,7 +321,7 @@ return {
             bl_wheel={
                 name="The 8 o'clock Circus",
                 text={
-                    " in 7 cards get",
+                    "1 in 7 cards get",
                     "drawn face down",
                 },
             },
@@ -1081,7 +1081,7 @@ return {
                 },
             },
             j_idol={
-                name="Bada",
+                name="Sinclair",
                 text={
                     "Each played {C:attention}#2#",
                     "of {V:1}#3#{} gives",
@@ -1622,7 +1622,7 @@ return {
                 text={
                     "{X:red,C:white} X1 {} Mult for each",
                     "empty {C:attention}Joker{} slot",
-                    "{s:0.8}Joker Stencil included",
+                    "{s:0.8}Roland included",
                     "{C:inactive}(Currently {X:red,C:white} X#1# {C:inactive})",
                 },
             },
@@ -1656,7 +1656,7 @@ return {
                 },
             },
             j_superposition={
-                name="Sinclair",
+                name="Bada",
                 text={
                     "Create a {C:tarot}Tarot{} card if",
                     "poker hand contains an",
@@ -2333,7 +2333,7 @@ return {
                 },
             },
             c_mercury={
-                name="PACKÓN",
+                name="PACKÓЛ",
                 text={
                     "{S:0.8}({S:0.8,V:1}lvl.#1#{S:0.8}){} Level up",
                     "{C:attention}#2#",
@@ -2398,7 +2398,7 @@ return {
         },
         Spectral={
             c_ankh={
-                name="The Mirror",
+                name="Mirror",
                 text={
                     "Create a copy of a",
                     "random {C:attention}Joker{}, destroy",
@@ -2406,7 +2406,7 @@ return {
                 },
             },
             c_aura={
-                name="Aura",
+                name="Distort",
                 text={
                     "Add {C:dark_edition}Foil{}, {C:dark_edition}Holographic{},",
                     "or {C:dark_edition}Polychrome{} effect to",
@@ -2422,7 +2422,7 @@ return {
                 },
             },
             c_cryptid={
-                name="The Dream",
+                name="Dream",
                 text={
                     "Create {C:attention}#1#{} copies of",
                     "{C:attention}1{} selected card",
@@ -2430,7 +2430,7 @@ return {
                 },
             },
             c_deja_vu={
-                name="Deja Vu",
+                name="Carnage",
                 text={
                     "Add a {C:red}Red Seal{}",
                     "to {C:attention}1{} selected",
@@ -2438,7 +2438,7 @@ return {
                 },
             },
             c_ectoplasm={
-                name="Freedom",
+                name="Unchanging",
                 text={
                     "Add {C:dark_edition}Negative{} to",
                     "a random {C:attention}Joker,",
@@ -2446,7 +2446,7 @@ return {
                 },
             },
             c_familiar={
-                name="The Eternal",
+                name="Eternal",
                 text={
                     "Destroy {C:attention}1{} random",
                     "card in your hand, add",
@@ -2455,7 +2455,7 @@ return {
                 },
             },
             c_grim={
-                name="Betrayal",
+                name="Care",
                 text={
                     "Destroy {C:attention}1{} random",
                     "card in your hand,",
@@ -2464,7 +2464,7 @@ return {
                 },
             },
             c_hex={
-                name="The Reception",
+                name="Reception",
                 text={
                     "Add {C:dark_edition}Polychrome{} to a",
                     "random {C:attention}Joker{}, destroy",
@@ -2480,7 +2480,7 @@ return {
                 },
             },
             c_incantation={
-                name="The Ruin",
+                name="Ruin",
                 text={
                     "Destroy {C:attention}1{} random",
                     "card in your hand, add {C:attention}#1#",
@@ -2489,7 +2489,7 @@ return {
                 },
             },
             c_medium={
-                name="The Star",
+                name="Star",
                 text={
                     "Add a {C:purple}Purple Seal{}",
                     "to {C:attention}1{} selected",
@@ -2497,7 +2497,7 @@ return {
                 },
             },
             c_ouija={
-                name="Ouija",
+                name="Betrayal",
                 text={
                     "Converts all cards",
                     "in hand to a single",
@@ -2506,7 +2506,7 @@ return {
                 },
             },
             c_sigil={
-                name="New Beginnings",
+                name="Beginnings",
                 text={
                     "Converts all cards",
                     "in hand to a single",
@@ -2514,7 +2514,7 @@ return {
                 },
             },
             c_soul={
-                name="The Golden Bough",
+                name="Golden Bough",
                 text={
                     "Creates a",
                     "{C:legendary,E:1}Legendary{} Joker",
@@ -2522,7 +2522,7 @@ return {
                 },
             },
             c_talisman={
-                name="The Hunt",
+                name="Hunt",
                 text={
                     "Add a {C:attention}Gold Seal{}",
                     "to {C:attention}1{} selected",
@@ -2530,7 +2530,7 @@ return {
                 },
             },
             c_trance={
-                name="Trance",
+                name="Distort",
                 text={
                     "Add a {C:blue}Blue Seal{}",
                     "to {C:attention}1{} selected",
@@ -2538,7 +2538,7 @@ return {
                 },
             },
             c_wraith={
-                name="The Library",
+                name="Library",
                 text={
                     "Creates a random",
                     "{C:red}Rare{C:attention} Joker{},",
@@ -2972,7 +2972,7 @@ return {
         },
         Voucher={
             v_antimatter={
-                name="Antimatter",
+                name="Old Coffin",
                 text={
                     "{C:dark_edition}+1{} Joker Slot",
                 },
@@ -2983,26 +2983,26 @@ return {
                 },
             },
             v_blank={
-                name="Blank",
+                name="Empty Portrait",
                 text={
                     "{C:inactive}Does nothing?",
                 },
             },
             v_clearance_sale={
-                name="Clearance Sale",
+                name="Hot 'n Juicy Drumstick",
                 text={
                     "All cards and packs in",
                     "shop are {C:attention}#1#%{} off",
                 },
             },
             v_crystal_ball={
-                name="Crystal Ball",
+                name="Classy Parasol",
                 text={
                     "{C:attention}+1{} consumable slot",
                 },
             },
             v_directors_cut={
-                name="Director's Cut",
+                name="Tear-stained Spoon",
                 text={
                     "Reroll Boss Blind",
                     "{C:attention}1{} time per Ante,",
@@ -3010,7 +3010,7 @@ return {
                 },
             },
             v_glow_up={
-                name="Glow Up",
+                name="Indigo-hued Cigar",
                 text={
                     "{C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, and",
                     "{C:dark_edition}Polychrome{} cards",
@@ -3024,7 +3024,7 @@ return {
                 },
             },
             v_grabber={
-                name="Grabber",
+                name="Hair Coupon",
                 text={
                     "Permanently",
                     "gain {C:blue}+#1#{} hand",
@@ -3032,7 +3032,7 @@ return {
                 },
             },
             v_hieroglyph={
-                name="Hieroglyph",
+                name="Standard-duty Battery",
                 text={
                     "{C:attention}-#1#{} Ante,",
                     "{C:blue}-#1#{} hand",
@@ -3040,7 +3040,7 @@ return {
                 },
             },
             v_hone={
-                name="Hone",
+                name="Ornated Golden Pistol",
                 text={
                     "{C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, and",
                     "{C:dark_edition}Polychrome{} cards",
@@ -3048,7 +3048,7 @@ return {
                 },
             },
             v_illusion={
-                name="Illusion",
+                name="Daisho",
                 text={
                     "{C:attention}Playing cards{} in shop",
                     "may have an {C:enhanced}Enhancement{},",
@@ -3062,7 +3062,7 @@ return {
                 },
             },
             v_liquidation={
-                name="Liquidation",
+                name="Warp Train Premium Ticket",
                 text={
                     "All cards and packs in",
                     "shop are {C:attention}#1#%{} off",
@@ -3074,7 +3074,7 @@ return {
                 },
             },
             v_magic_trick={
-                name="Magic Trick",
+                name="Bloody Bandolier",
                 text={
                     "{C:attention}Playing cards{} can",
                     "be purchased",
@@ -3082,7 +3082,7 @@ return {
                 },
             },
             v_money_tree={
-                name="Money Tree",
+                name="Frozen Cries",
                 text={
                     "Raise the cap on",
                     "interest earned in",
@@ -3096,7 +3096,7 @@ return {
                 },
             },
             v_nacho_tong={
-                name="Nacho Tong",
+                name="Harpoon Prostetic Leg",
                 text={
                     "Permanently",
                     "gain {C:blue}+#1#{} hand",
@@ -3109,7 +3109,7 @@ return {
                 },
             },
             v_observatory={
-                name="Observatory",
+                name="Spicebush Branch",
                 text={
                     "{C:planet}Planet{} cards in your",
                     "{C:attention}consumable{} area give",
@@ -3124,7 +3124,7 @@ return {
                 },
             },
             v_omen_globe={
-                name="Omen Globe",
+                name="Festival Mask",
                 text={
                     "{C:spectral}Spectral{} cards may",
                     "appear in any of",
@@ -3138,14 +3138,14 @@ return {
                 },
             },
             v_overstock_norm={
-                name="Overstock",
+                name="Bundle of Rope",
                 text={
                     "{C:attention}+1{} card slot",
                     "available in shop",
                 },
             },
             v_overstock_plus={
-                name="Overstock Plus",
+                name="Piece of a Coffin",
                 text={
                     "{C:attention}+1{} card slot",
                     "available in shop",
@@ -3157,13 +3157,13 @@ return {
                 },
             },
             v_paint_brush={
-                name="Paint Brush",
+                name="Tier 3 Sub",
                 text={
                     "{C:attention}+#1#{} hand size",
                 },
             },
             v_palette={
-                name="Palette",
+                name="Autograph",
                 text={
                     "{C:attention}+#1#{} hand size",
                 },
@@ -3173,7 +3173,7 @@ return {
                 },
             },
             v_petroglyph={
-                name="Petroglyph",
+                name="Censored Memory",
                 text={
                     "{C:attention}-#1#{} Ante,",
                     "{C:red}-#1#{} discard",
@@ -3185,7 +3185,7 @@ return {
                 },
             },
             v_planet_merchant={
-                name="Planet Merchant",
+                name="Embers",
                 text={
                     "{C:planet}Planet{} cards appear",
                     "{C:attention}#1#X{} more frequently",
@@ -3193,7 +3193,7 @@ return {
                 },
             },
             v_planet_tycoon={
-                name="Planet Tycoon",
+                name="Twigs",
                 text={
                     "{C:planet}Planet{} cards appear",
                     "{C:attention}#1#X{} more frequently",
@@ -3207,7 +3207,7 @@ return {
                 },
             },
             v_recyclomancy={
-                name="Recyclomancy",
+                name="Mark of Cain",
                 text={
                     "Permanently",
                     "gain {C:red}+#1#{} discard",
@@ -3220,7 +3220,7 @@ return {
                 },
             },
             v_reroll_glut={
-                name="Reroll Glut",
+                name="Rusted Clock Hands",
                 text={
                     "Rerolls cost",
                     "{C:money}$#1#{} less",
@@ -3232,14 +3232,14 @@ return {
                 },
             },
             v_reroll_surplus={
-                name="Reroll Surplus",
+                name="Prepaid Time Receipt",
                 text={
                     "Rerolls cost",
                     "{C:money}$#1#{} less",
                 },
             },
             v_retcon={
-                name="Retcon",
+                name="Churchwarden Pipe",
                 text={
                     "Reroll Boss Blind",
                     "{C:attention}unlimited{} times,",
@@ -3251,7 +3251,7 @@ return {
                 },
             },
             v_seed_money={
-                name="Seed Money",
+                name="Pair of Maracas",
                 text={
                     "Raise the cap on",
                     "interest earned in",
@@ -3259,7 +3259,7 @@ return {
                 },
             },
             v_tarot_merchant={
-                name="Tarot Merchant",
+                name="Gas Mask",
                 text={
                     "{C:tarot}Tarot{} cards appear",
                     "{C:attention}#1#X{} more frequently",
@@ -3267,7 +3267,7 @@ return {
                 },
             },
             v_tarot_tycoon={
-                name="Tarot Tycoon",
+                name="Genetic Augmentation Serum",
                 text={
                     "{C:tarot}Tarot{} cards appear",
                     "{C:attention}#1#X{} more frequently",
@@ -3281,7 +3281,7 @@ return {
                 },
             },
             v_telescope={
-                name="Telescope",
+                name="Blood-soaked Wrench",
                 text={
                     "{C:attention}Celestial Packs{} always",
                     "contain the {C:planet}Planet{}",
@@ -3290,7 +3290,7 @@ return {
                 },
             },
             v_wasteful={
-                name="Wasteful",
+                name="Nagel und Hammer Seal",
                 text={
                     "Permanently",
                     "gain {C:red}+#1#{} discard",
@@ -3610,8 +3610,8 @@ return {
             k_or="or",
             k_other="Other",
             k_page="Page",
-            k_planet="Planet",
-            k_planet_q="Planet?",
+            k_planet="Sinner",
+            k_planet_q="Sinner",
             k_playing_as="Playing as",
             k_plus_joker="+1 Joker",
             k_plus_planet="+1 Planet",
@@ -3900,31 +3900,28 @@ return {
                 "this final challenge!",
             },
             lq_1={
-                "Maybe Go Fish",
-                "is more our",
-                "speed...",
+                "Ms. Mermaid is gonna",
+                "be so disappointed...",
             },
             lq_10={
                 "What a flop!",
             },
             lq_2={
-                "We folded like",
-                "a cheap suit!",
+                "M-my goodness...",
             },
             lq_3={
-                "Time for us",
-                "to shuffle off",
-                "and try again!",
+                "Well, at least",
+                "you made them laugh,",
+                "in a way!",
             },
             lq_4={
-                "You know what",
-                "they say, the",
-                "house always wins!",
+                "That was not fun",
+                "at all...",
             },
             lq_5={
                 "Looks like we",
                 "found out who",
-                "the real Joker is!",
+                "the real clown is!",
             },
             lq_6={
                 "Oh no, were you",
@@ -3935,9 +3932,8 @@ return {
                 "joke's on us!",
             },
             lq_8={
-                "If I had hands",
-                "I would have",
-                "covered my eyes!",
+                "I said endless laughter,",
+                "not endless slaughter!",
             },
             lq_9={
                 "I'm literally",
@@ -3945,24 +3941,26 @@ return {
                 "your excuse?",
             },
             wq_1={
-                "You Aced it!",
+                "Ohoho! What a",
+				"splendid spectacle",
             },
             wq_2={
-                "You dealt with",
-                "that pretty well!",
+                "Eee! Looks like",
+                "you are having",
+				"too much fun!"
             },
             wq_3={
-                "Looks like you",
-                "weren't bluffing!",
+                "The spotlight",
+                "is yours!",
             },
             wq_4={
-                "Too bad these",
-                "chips are all",
-                "virtual...",
+                "A round of aplause",
+                "for this clown!",
             },
             wq_5={
-                "Looks like I've",
-                "taught you well!",
+                "Now, now... you",
+                "have to keep going,",
+				"right?!"
             },
             wq_6={
                 "You made some",
