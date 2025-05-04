@@ -5,9 +5,9 @@ A Balatro Mod that adds custom made textures with Project Moon related character
 
 1. Download and install, [Steammodded](https://github.com/Steamodded/smods), [Lovely](https://github.com/ethangreen-dev/lovely-injector) and [Malverk](https://github.com/Eremel/Malverk)
 
-2. Download the desired ProjectMoonTexturePack.zip file from Releases on the right menu (default black or white cards version), extract it and then place it in your Mods folder. You'll know it's correct if you open the ProjectMoonTexturePack folder and there's an assets, localization and .lua file inside
+2. Download the desired ProjectMoonTexturePack.zip file from Releases on the right menu (default has black backgrounds for playing cards, WhiteVersion has white backgrounds), extract it and then place it in your Mods folder. You'll know it's correct if you open the ProjectMoonTexturePack folder and there's an assets, localization and .lua file inside
 
-3. [Optional] Repeate step 2 for the ProjectMoonMusicAddon.zip if you desire to include the music
+3. [Optional] Repeat step 2 for the ProjectMoonMusicAddon.zip if you desire to include the music
    
 5. [Optional] If you want to add the custom Balatro logo, you'll have to use 7zip to open up the Balatro.exe file located in the installation folder (Steam\steamapps\common\Balatro), navigate to resources -> textures -> 1x and replace the Balatro logo there. I provided the custom Balatro.png in my mod folder, inside the assets folder
 
