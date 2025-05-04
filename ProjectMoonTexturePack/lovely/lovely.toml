@@ -29,7 +29,9 @@ payload = '''RENTAL = HEX('b18f43'),
 		DARK_RED = HEX("96200c"),
 		WHITE_LIGHT = HEX("bfb8aa"),
 		BRIGHT_LIGHT = HEX("edd9b2"),
-		LIGHT_GRAY = HEX("878178"),'''
+		LIGHT_GRAY = HEX("878178"),
+		GOLDEN_ACCENT= HEX("bd923e"),
+		PURPLE_ACCENT = HEX("401759"),'''
 match_indent = true
 
 ######################
@@ -97,31 +99,31 @@ payload = '''self.P_BLINDS = {
         bl_big =             {name = 'Big Blind',    defeated = false, order = 2, dollars = 4, mult = 1.5,vars = {}, debuff_text = '', debuff = {}, pos = {x=0, y=1}},
         bl_ox =              {name = 'The Ox',       defeated = false, order = 4, dollars = 5, mult = 2,  vars = {localize('ph_most_played')}, debuff = {}, pos = {x=0, y=2}, boss = {min = 6, max = 10}, boss_colour = HEX('ba1e13')},
         bl_hook =            {name = 'The Hook',     defeated = false, order = 3, dollars = 5, mult = 2,  vars = {}, debuff = {}, pos = {x=0, y=7}, boss = {min = 1, max = 10}, boss_colour = HEX('9e9073')},
-        bl_mouth =           {name = 'The Mouth',    defeated = false, order = 17, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=18}, boss = {min = 2, max = 10}, boss_colour = HEX('ae718e')},
-        bl_fish =            {name = 'The Fish',     defeated = false, order = 10, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=5}, boss = {min = 2, max = 10}, boss_colour = HEX('3e85bd')},
+        bl_mouth =           {name = 'The Mouth',    defeated = false, order = 17, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=18}, boss = {min = 2, max = 10}, boss_colour = HEX('6e3119')},
+        bl_fish =            {name = 'The Fish',     defeated = false, order = 10, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=5}, boss = {min = 2, max = 10}, boss_colour = HEX('2f4954')},
         bl_club =            {name = 'The Club',     defeated = false, order = 9, dollars = 5, mult = 2,  vars = {}, debuff = {suit = 'Clubs'}, pos = {x=0, y=4}, boss = {min = 1, max = 10}, boss_colour = HEX('63603f')},
-        bl_manacle =         {name = 'The Manacle',  defeated = false, order = 15, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=8}, boss = {min = 1, max = 10}, boss_colour = HEX('575757')},
-        bl_tooth =           {name = 'The Tooth',    defeated = false, order = 23, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=22}, boss = {min = 3, max = 10}, boss_colour = HEX('b52d2d')},
+        bl_manacle =         {name = 'The Manacle',  defeated = false, order = 15, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=8}, boss = {min = 1, max = 10}, boss_colour = HEX('4f2012')},
+        bl_tooth =           {name = 'The Tooth',    defeated = false, order = 23, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=22}, boss = {min = 3, max = 10}, boss_colour = HEX('b58c4a')},
         bl_wall =            {name = 'The Wall',     defeated = false, order = 6, dollars = 5, mult = 4,  vars = {}, debuff = {}, pos = {x=0, y=9}, boss = {min = 2, max = 10}, boss_colour = HEX('1c1b1c')},
         bl_house =           {name = 'The House',    defeated = false, order = 5, dollars = 5, mult = 2,  vars = {}, debuff = {}, pos = {x=0, y=3}, boss ={min = 2, max = 10}, boss_colour = HEX('9649a6')},
-        bl_mark =            {name = 'The Mark',     defeated = false, order = 25, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=23}, boss = {min = 2, max = 10}, boss_colour = HEX('6a3847')},
+        bl_mark =            {name = 'The Mark',     defeated = false, order = 25, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=23}, boss = {min = 2, max = 10}, boss_colour = HEX('c9d1d1')},
 
         bl_final_bell =      {name = 'Cerulean Bell',defeated = false, order = 30, dollars = 8, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=26}, boss = {showdown = true, min = 10, max = 10}, boss_colour = HEX('ad7f21')},
         bl_wheel =           {name = 'The Wheel',    defeated = false, order = 7, dollars = 5, mult = 2,  vars = {}, debuff = {}, pos = {x=0, y=10}, boss = {min = 2, max = 10}, boss_colour = HEX('7d1e39')},
         bl_arm =             {name = 'The Arm',      defeated = false, order = 8, dollars = 5, mult = 2,  vars = {}, debuff = {}, pos = {x=0, y=11}, boss = {min = 2, max = 10}, boss_colour = HEX('24264a')},
         bl_psychic =         {name = 'The Psychic',  defeated = false, order = 11, dollars = 5, mult = 2, vars = {}, debuff = {h_size_ge = 5}, pos = {x=0, y=12}, boss = {min = 1, max = 10}, boss_colour = HEX('e3e3e3')},
-        bl_goad =            {name = 'The Goad',     defeated = false, order = 12, dollars = 5, mult = 2, vars = {}, debuff = {suit = 'Spades'}, pos = {x=0, y=13}, boss = {min = 1, max = 10}, boss_colour = HEX('b95c96')},
-        bl_water =           {name = 'The Water',    defeated = false, order = 13, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=14}, boss = {min = 2, max = 10}, boss_colour = HEX('c6e0eb')},
-        bl_eye =             {name = 'The Eye',      defeated = false, order = 16, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=17}, boss = {min = 3, max = 10}, boss_colour = HEX('4b71e4')},
-        bl_plant =           {name = 'The Plant',    defeated = false, order = 18, dollars = 5, mult = 2, vars = {}, debuff = {is_face = 'face'}, pos = {x=0, y=19}, boss = {min = 4, max = 10}, boss_colour = HEX('709284')},
-        bl_needle =          {name = 'The Needle',   defeated = false, order = 21, dollars = 5, mult = 1, vars = {}, debuff = {}, pos = {x=0, y=20}, boss = {min = 2, max = 10}, boss_colour = HEX('5c6e31')},
-        bl_head =            {name = 'The Head',     defeated = false, order = 22, dollars = 5, mult = 2, vars = {}, debuff = {suit = 'Hearts'}, pos = {x=0, y=21}, boss = {min = 1, max = 10}, boss_colour = HEX('ac9db4')},
+        bl_goad =            {name = 'The Goad',     defeated = false, order = 12, dollars = 5, mult = 2, vars = {}, debuff = {suit = 'Spades'}, pos = {x=0, y=13}, boss = {min = 1, max = 10}, boss_colour = HEX('27282b')},
+        bl_water =           {name = 'The Water',    defeated = false, order = 13, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=14}, boss = {min = 2, max = 10}, boss_colour = HEX('8a0f1b')},
+        bl_eye =             {name = 'The Eye',      defeated = false, order = 16, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=17}, boss = {min = 3, max = 10}, boss_colour = HEX('3f403f')},
+        bl_plant =           {name = 'The Plant',    defeated = false, order = 18, dollars = 5, mult = 2, vars = {}, debuff = {is_face = 'face'}, pos = {x=0, y=19}, boss = {min = 4, max = 10}, boss_colour = HEX('361b15')},
+        bl_needle =          {name = 'The Needle',   defeated = false, order = 21, dollars = 5, mult = 1, vars = {}, debuff = {}, pos = {x=0, y=20}, boss = {min = 2, max = 10}, boss_colour = HEX('075ab3')},
+        bl_head =            {name = 'The Head',     defeated = false, order = 22, dollars = 5, mult = 2, vars = {}, debuff = {suit = 'Hearts'}, pos = {x=0, y=21}, boss = {min = 1, max = 10}, boss_colour = HEX('541109')},
         bl_final_leaf =      {name = 'Verdant Leaf', defeated = false, order = 27, dollars = 8, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=28}, boss = {showdown = true, min = 10, max = 10}, boss_colour = HEX('ad7f21')},
         bl_final_vessel =    {name = 'Violet Vessel',defeated = false, order = 28, dollars = 8, mult = 6, vars = {}, debuff = {}, pos = {x=0, y=29}, boss = {showdown = true, min = 10, max = 10}, boss_colour = HEX('ad7f21')},
-        bl_window =          {name = 'The Window',   defeated = false, order = 14, dollars = 5, mult = 2, vars = {}, debuff = {suit = 'Diamonds'}, pos = {x=0, y=6}, boss = {min = 1, max = 10}, boss_colour = HEX('a9a295')},
-        bl_serpent =         {name = 'The Serpent',  defeated = false, order = 19, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=15}, boss = {min = 5, max = 10}, boss_colour = HEX('439a4f')},
-        bl_pillar =          {name = 'The Pillar',   defeated = false, order = 20, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=16}, boss = {min = 1, max = 10}, boss_colour = HEX('7e6752')},
-        bl_flint =           {name = 'The Flint',    defeated = false, order = 24, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=24}, boss = {min = 2, max = 10}, boss_colour = HEX('e56a2f')},
+        bl_window =          {name = 'The Window',   defeated = false, order = 14, dollars = 5, mult = 2, vars = {}, debuff = {suit = 'Diamonds'}, pos = {x=0, y=6}, boss = {min = 1, max = 10}, boss_colour = HEX('5c5543')},
+        bl_serpent =         {name = 'The Serpent',  defeated = false, order = 19, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=15}, boss = {min = 5, max = 10}, boss_colour = HEX('543c23')},
+        bl_pillar =          {name = 'The Pillar',   defeated = false, order = 20, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=16}, boss = {min = 1, max = 10}, boss_colour = HEX('b38210')},
+        bl_flint =           {name = 'The Flint',    defeated = false, order = 24, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=24}, boss = {min = 2, max = 10}, boss_colour = HEX('9c2193')},
         bl_final_acorn =     {name = 'Amber Acorn',  defeated = false, order = 26, dollars = 8, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=27}, boss = {showdown = true, min = 10, max = 10}, boss_colour = HEX('ad7f21')},
         bl_final_heart =     {name = 'Crimson Heart',defeated = false, order = 29, dollars = 8, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=25}, boss = {showdown = true, min = 10, max = 10}, boss_colour = HEX('ad7f21')},
         
@@ -975,7 +977,7 @@ payload = '''local t = {
           }}
         }} or nil,
         not G.F_ENGLISH_ONLY and {n=G.UIT.R, config = {align = "cm", padding = 0.2, r = 0.1, emboss = 0.1, colour = G.C.MEDIUM_GRAY}, nodes={
-          {n=G.UIT.R, config={align = "cm", padding = 0.15, minw = 1, r = 0.1, hover = true, colour = G.C.MEDIUM_GRAY, button = 'language_selection', shadow = true}, nodes={
+          {n=G.UIT.R, config={align = "cm", padding = 0.15, minw = 1, r = 0.1, hover = true, colour = G.C.WHITE_LIGHT, button = 'language_selection', shadow = true}, nodes={
             {n=G.UIT.O, config={object = language}},
             {n=G.UIT.T, config={text = G.LANG.label, scale = 0.4, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
           }}
@@ -1019,7 +1021,7 @@ payload = '''return {n=G.UIT.ROOT, config = {align = "cm", colour = G.C.CLEAR}, 
       }},
       {n=G.UIT.R, config={align = "cm"}, nodes={
         {n=G.UIT.C, config={align = "cm", padding = 0.15, minw = 2, minh = 0.8, maxw = 2, r = 0.1, hover = true, colour = mix_colours(G.C.WHITE_LIGHT, G.C.WHITE_LIGHT, 0.2), button = 'profile_select', shadow = true}, nodes={
-          {n=G.UIT.T, config={ref_table = G.PROFILES[G.SETTINGS.profile], ref_value = 'name', scale = 0.4, colour = G.C.DARK_GRAY, shadow = true}}
+          {n=G.UIT.T, config={ref_table = G.PROFILES[G.SETTINGS.profile], ref_value = 'name', scale = 0.4, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
         }},
       }}
     }},
@@ -1034,6 +1036,7 @@ payload = '''return {n=G.UIT.ROOT, config = {align = "cm", colour = G.C.CLEAR}, 
 end'''
 match_indent = true
 
+######################
 #Run setup screen - Continue
 
 
@@ -1472,7 +1475,7 @@ pattern = '''function create_option_cycle(args)
 position = "at"
 payload = '''function create_option_cycle(args)
   args = args or {}
-  args.colour = args.colour or G.C.RUST'''
+  args.colour = args.colour or G.C.LIGHT_TURQUOISE'''
 match_indent = true
 
 ###############################################
@@ -1856,6 +1859,112 @@ payload = '''G.FUNCS.flame_handler = function(e)
 match_indent = true
 
 ######################
+#Fixing Square Joker
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''elseif self.config.center.name == "Square Joker" then
+        H = W 
+        self.T.h = H*scale
+        self.T.w = W*scale'''
+position = "at"
+payload = '''--elseif self.config.center.name == "Square Joker" then
+		--H = W
+        --self.T.h = H*0.5
+        --self.T.w = W*0.5'''
+match_indent = true
+
+##
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if center.name == "Square Joker" and (center.discovered or self.bypass_discovery_center) then 
+        H = W
+        self.T.h = H
+    end'''
+position = "at"
+payload = '''--if center.name == "Square Joker" and (center.discovered or self.bypass_discovery_center) then 
+        --H = W
+        --self.T.h = H
+    --end'''
+match_indent = true
+
+##
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if _center.name == 'Square Joker' and (_center.discovered or self.bypass_discovery_center) then 
+                self.children.center.scale.y = self.children.center.scale.x
+            end'''
+position = "at"
+payload = '''--if _center.name == 'Square Joker' and (_center.discovered or self.bypass_discovery_center) then 
+                self.children.center.scale.y = self.children.center.scale.x
+            --end'''
+match_indent = true
+
+######################
+#Fixing Photgraph
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''elseif self.config.center.name == "Photograph" then 
+        self.T.h = H*scale/1.2*scale
+        self.T.w = W*scale'''
+position = "at"
+payload = '''--elseif self.config.center.name == "Photograph" then 
+        --self.T.h = H*scale
+        --self.T.w = W*scale'''
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if center.name == "Photograph" and (center.discovered or self.bypass_discovery_center) then 
+        H = H/1.2
+        self.T.h = H
+    end'''
+position = "at"
+payload = '''--if center.name == "Photograph" and (center.discovered or self.bypass_discovery_center) then 
+        --H = H/1.2
+        --self.T.h = H
+    --end'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if _center.name == 'Photograph' and (_center.discovered or self.bypass_discovery_center) then 
+                self.children.center.scale.y = self.children.center.scale.y/1.2
+            end'''
+position = "at"
+payload = '''--if _center.name == 'Photograph' and (_center.discovered or self.bypass_discovery_center) then 
+                --self.children.center.scale.y = self.children.center.scale.y
+            --end'''
+match_indent = true
+
+######################
+#Dissolve colour
+
+[[patches]]
+[patches.pattern]
+target = "engine/sprite.lua"
+pattern = '''G.SHADERS[_shader or 'dissolve']:send("burn_colour_1",_draw_major.dissolve_colours and _draw_major.dissolve_colours[1] or G.C.CLEAR)
+        G.SHADERS[_shader or 'dissolve']:send("burn_colour_2",_draw_major.dissolve_colours and _draw_major.dissolve_colours[2] or G.C.CLEAR)'''
+position = "at"
+payload = '''G.SHADERS[_shader or 'dissolve']:send("burn_colour_1",G.C.BRIGHT_LIGHT or G.C.CLEAR)
+        G.SHADERS[_shader or 'dissolve']:send("burn_colour_2",G.C.WHITE_LIGHT or G.C.CLEAR)'''
+match_indent = true
+
+
+
+
+
+######################
 
 ## SMODS PATCHING ##
 ####################
@@ -1882,6 +1991,25 @@ target = '''=[SMODS _ "src/ui.lua"]'''
 pattern = '''profile_menu.nodes[1].config = {align = "cm", padding = 0.11, r = 0.1, emboss = 0.1, colour = G.C.L_BLACK}'''
 position = "at"
 payload = '''profile_menu.nodes[1].config = {align = "cm", padding = 0.11, r = 0.1, emboss = 0.1, colour = G.C.MEDIUM_GRAY}'''
+match_indent = true
+
+######################
+#Change the debuff shader with custom one
+
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/card_draw.lua"]'''
+pattern = '''if self.debuff then
+            self.children.center:draw_shader('debuff', nil, self.ARGS.send_to_shader)
+            if self.children.front and (self.ability.delayed or (self.ability.effect ~= 'Stone Card' and not self.config.center.replace_base_card)) then
+                self.children.front:draw_shader('debuff', nil, self.ARGS.send_to_shader)
+            end'''
+position = 'at'
+payload = '''if self.debuff then
+            self.children.center:draw_shader('pmmod_debuffGold', nil, self.ARGS.send_to_shader)
+            if self.children.front and (self.ability.delayed or (self.ability.effect ~= 'Stone Card' and not self.config.center.replace_base_card)) then
+                self.children.front:draw_shader('pmmod_debuffGold', nil, self.ARGS.send_to_shader)
+            end'''
 match_indent = true
 
 ######################
