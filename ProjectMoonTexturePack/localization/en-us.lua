@@ -13,24 +13,24 @@ return {
                 name="L Corp Deck",
                 text={
                     "After defeating each",
-                    "{C:attention}Boss Blind{}, gain a",
+                    "{C:attention}Reception{}, gain a",
                     "{C:attention,T:tag_double}#1#",
                 },
             },
             b_black={
                 name="General Deck",
                 text={
-                    "{C:attention}+#1#{} Joker slot",
+                    "{C:attention}+#1#{} Key Page slot",
                     "",
                     "{C:blue}-#2#{} hand",
-                    "every round",
+                    "every scene",
                 },
             },
             b_blue={
                 name="Social Sciences Deck",
                 text={
                     "{C:blue}+#1#{} hand",
-                    "every round",
+                    "every scene",
                 },
             },
             b_challenge={
@@ -66,7 +66,7 @@ return {
             b_green={
                 name="Art Deck",
                 text={
-                    "At end of each Round:",
+                    "At end of each Scene:",
                     "{C:money}$#1#{s:0.85} per remaining {C:blue}Hand",
                     "{C:money}$#2#{s:0.85} per remaining {C:red}Discard",
                     "Earn no {C:attention}Interest",
@@ -94,7 +94,7 @@ return {
                 name="T Corp Deck",
                 text={
                     "{C:attention}+#1#{} hand size,",
-                    "{C:red}#2#{} Joker slot",
+                    "{C:red}#2#{} Key Page slot",
                 },
             },
             b_plasma={
@@ -103,14 +103,14 @@ return {
                     "Balance {C:blue}Chips{} and",
                     "{C:red}Mult{} when calculating",
                     "score for played hand",
-                    "{C:red}X#1#{} base Blind size",
+                    "{C:red}X#1#{} base Encounter size",
                 },
             },
             b_red={
                 name="Language Deck",
                 text={
                     "{C:red}+#1#{} discard",
-                    "every round",
+                    "every scene",
                 },
             },
             b_yellow={
@@ -139,7 +139,7 @@ return {
                 },
             },
             bl_big={
-                name="Big Blind",
+                name="Risky Encounter",
                 text={
                 },
             },
@@ -154,14 +154,14 @@ return {
                 name="Kurokumo Clan",
                 text={
                     "No repeat hand",
-                    "types this round",
+                    "types this scene",
                 },
             },
             bl_final_acorn={
                 name="The Pinky",
                 text={
                     "Flips and shuffles",
-                    "all Joker cards",
+                    "all Key Page cards",
                 },
             },
             bl_final_bell={
@@ -174,7 +174,7 @@ return {
             bl_final_heart={
                 name="The Thumb",
                 text={
-                    "One random Joker",
+                    "One random Key Page",
                     "disabled every hand",
                 },
             },
@@ -182,7 +182,7 @@ return {
                 name="The Ring",
                 text={
                     "All cards debuffed",
-                    "until 1 Joker sold",
+                    "until 1 Key Page sold",
                 },
             },
             bl_final_vessel={
@@ -250,7 +250,7 @@ return {
                 name="Hook Office",
                 text={
                     "Play only 1 hand",
-                    "type this round",
+                    "type this scene",
                 },
             },
             bl_needle={
@@ -270,7 +270,7 @@ return {
                 name="Cane Office",
                 text={
                     "Cards played previously",
-                    "this Ante are debuffed",
+                    "this Act are debuffed",
                 },
             },
             bl_plant={
@@ -294,7 +294,7 @@ return {
                 },
             },
             bl_small={
-                name="Small Blind",
+                name="Normal Encounter",
                 text={
                 },
             },
@@ -355,7 +355,7 @@ return {
             e_negative={
                 name="Negative",
                 text={
-                    "{C:dark_edition}+#1#{} Joker slot",
+                    "{C:dark_edition}+#1#{} Key Page slot",
                 },
             },
             e_negative_consumable={
@@ -390,7 +390,7 @@ return {
                 text={
                     "{C:money}$#1#{} if this",
                     "card is held in hand",
-                    "at end of round",
+                    "at end of scene",
                 },
             },
             m_lucky={
@@ -445,7 +445,7 @@ return {
                 name="Nikolai",
                 text={
                     "{C:mult}+#1#{} Mult for",
-                    "each {C:attention}Joker{} card",
+                    "each {C:attention}Key Page{} card",
                     "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)",
                 },
             },
@@ -453,7 +453,7 @@ return {
                 name="Bamboo-hatted Kim",
                 text={
                     "{X:red,C:white} X#1# {} Mult on {C:attention}final",
-                    "{C:attention}hand{} of round",
+                    "{C:attention}hand{} of scene",
                 },
                 unlock={
                     "Play {C:attention,E:1}#1#{} hands",
@@ -466,7 +466,7 @@ return {
                     "Each played card with",
                     "{V:1}#2#{} suit gives",
                     "{X:mult,C:white} X#1# {} Mult when scored,",
-                    "{s:0.8}suit changes at end of round",
+                    "{s:0.8}suit changes at end of scene",
                 },
             },
             j_arrowhead={
@@ -485,13 +485,13 @@ return {
             j_astronomer={
                 name="Binah",
                 text={
-                    "All {C:planet}Planet{} cards and",
+                    "All {C:planet}Sinner{} cards and",
                     "{C:planet}Celestial Packs{} in",
                     "the shop are {C:attention}free",
                 },
                 unlock={
                     "Discover every",
-                    "{E:1,C:planet}Planet{} card",
+                    "{E:1,C:planet}Sinner{} card",
                 },
             },
             j_banner={
@@ -513,12 +513,12 @@ return {
             j_baseball={
                 name="Lulu",
                 text={
-                    "{C:green}Uncommon{} Jokers",
+                    "{C:green}Hardcover{} Key Pages",
                     "each give {X:mult,C:white} X#1# {} Mult",
                 },
             },
             j_blackboard={
-                name="Yun",
+                name="Miris",
                 text={
                     "{X:red,C:white} X#1# {} Mult if all",
                     "cards held in hand",
@@ -548,10 +548,10 @@ return {
                 },
             },
             j_blueprint={
-                name="Moirai",
+                name="Zena",
                 text={
                     "Copies ability of",
-                    "{C:attention}Joker{} to the right",
+                    "{C:attention}Key Page{} to the right",
                 },
                 unlock={
                     "Win a run",
@@ -566,14 +566,14 @@ return {
                 },
                 unlock={
                     "Have at least {E:1,C:attention}#1#",
-                    "{C:dark_edition}Polychrome{} Jokers",
+                    "{C:dark_edition}Polychrome{} Key Pages",
                 },
             },
             j_brainstorm={
                 name="Baral",
                 text={
                     "Copies the ability",
-                    "of leftmost {C:attention}Joker",
+                    "of leftmost {C:attention}Key Page",
                 },
                 unlock={
                     "Discard a",
@@ -589,7 +589,7 @@ return {
                 },
             },
             j_burglar={
-                name="MuMu",
+                name="Mars",
                 text={
                     "When {C:attention}Blind{} is selected,",
                     "gain {C:blue}+#1#{} Hands and",
@@ -601,7 +601,7 @@ return {
                 text={
                     "Upgrade the level of",
                     "the first {C:attention}discarded",
-                    "poker hand each round",
+                    "poker hand each scene",
                 },
                 unlock={
                     "Sell a total",
@@ -610,7 +610,7 @@ return {
                 },
             },
             j_business={
-                name="Martina",
+                name="Naoki",
                 text={
                     "Played {C:attention}face{} cards have",
                     "a {C:green}#1# in #2#{} chance to",
@@ -620,7 +620,7 @@ return {
             j_caino={
                 name="The Red Gaze",
                 text={
-                    "This Joker gains {X:mult,C:white} X#1# {} Mult",
+                    "This Key Page gains {X:mult,C:white} X#1# {} Mult",
                     "when a {C:attention}face{} card",
                     "is destroyed",
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
@@ -630,11 +630,11 @@ return {
                 },
             },
             j_campfire={
-                name="Eri",
+                name="Sen",
                 text={
-                    "This Joker gains {X:mult,C:white}X#1#{} Mult",
+                    "This Key Page gains {X:mult,C:white}X#1#{} Mult",
                     "for each card {C:attention}sold{}, resets",
-                    "when {C:attention}Boss Blind{} is defeated",
+                    "when {C:attention}Reception{} is defeated",
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
                 },
             },
@@ -643,7 +643,7 @@ return {
                 text={
                     "{X:mult,C:white} X#1# {} Mult if played",
                     "{C:attention}poker hand{} has already",
-                    "been played this round",
+                    "been played this scene",
                 },
             },
             j_cartomancer={
@@ -661,9 +661,9 @@ return {
             j_castle={
                 name="Chesed",
                 text={
-                    "This Joker gains {C:chips}+#1#{} Chips",
+                    "This Key Page gains {C:chips}+#1#{} Chips",
                     "per discarded {V:1}#2#{} card,",
-                    "suit changes every round",
+                    "suit changes every scene",
                     "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)",
                 },
             },
@@ -673,14 +673,14 @@ return {
                     "{X:mult,C:white} X#1# {} Mult",
                     "{C:green}#2# in #3#{} chance this",
                     "card is destroyed",
-                    "at end of round",
+                    "at end of scene",
                 },
             },
             j_ceremonial={
                 name="Tanya",
                 text={
                     "When {C:attention}Blind{} is selected,",
-                    "destroy Joker to the right",
+                    "destroy Key Page to the right",
                     "and permanently add {C:attention}double",
                     "its sell value to this {C:red}Mult",
                     "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
@@ -689,7 +689,7 @@ return {
             j_certificate={
                 name="Allen",
                 text={
-                    "When round begins,",
+                    "When scene begins,",
                     "add a random {C:attention}playing",
                     "{C:attention}card{} with a random",
                     "{C:attention}seal{} to your hand",
@@ -701,7 +701,7 @@ return {
                 },
             },
             j_chaos={
-                name="Chun",
+                name="Eri",
                 text={
                     "{C:attention}#1#{} free {C:green}Reroll",
                     "per shop",
@@ -711,7 +711,7 @@ return {
                 name="The Purple Tear",
                 text={
                     "Disables effect of",
-                    "every {C:attention}Boss Blind",
+                    "every {C:attention}Reception",
                 },
                 unlock={
                     "{E:1,s:1.3}?????",
@@ -726,20 +726,20 @@ return {
                 },
             },
             j_cloud_9={
-                name="Lenny",
+                name="Bada",
                 text={
                     "Earn {C:money}$#1#{} for each",
                     "{C:attention}9{} in your {C:attention}full deck",
-                    "at end of round",
+                    "at end of scene",
                     "{C:inactive}(Currently {C:money}$#2#{}{C:inactive})",
                 },
             },
             j_constellation={
                 name="Yi Sang",
                 text={
-                    "This Joker gains",
+                    "This Key Page gains",
                     "{X:mult,C:white} X#1# {} Mult every time",
-                    "a {C:planet}Planet{} card is used",
+                    "a {C:planet}Sinner{} card is used",
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
                 },
             },
@@ -760,7 +760,7 @@ return {
                 },
             },
             j_credit_card={
-                name="Isadora",
+                name="Lenny",
                 text={
                     "Go up to",
                     "{C:red}-$#1#{} in debt",
@@ -771,7 +771,7 @@ return {
                 text={
                     "Earn {C:money}$#1#{} per {C:attention}discard{} if",
                     "no discards are used",
-                    "by end of the round",
+                    "by end of the scene",
                 },
             },
             j_devious={
@@ -793,7 +793,7 @@ return {
             j_dna={
                 name="Myo",
                 text={
-                    "If {C:attention}first hand{} of round",
+                    "If {C:attention}first hand{} of scene",
                     "has only {C:attention}1{} card, add a",
                     "permanent copy to deck",
                     "and draw it to {C:attention}hand",
@@ -841,7 +841,7 @@ return {
                 },
             },
             j_dusk={
-                name="Naoki",
+                name="Yuna",
                 text={
                     "Retrigger all played",
                     "cards in {C:attention}final",
@@ -849,7 +849,7 @@ return {
                 },
             },
             j_egg={
-                name="Sen",
+                name="Mi",
                 text={
                     "Gains {C:money}$#1#{} of",
                     "{C:attention}sell value{} at",
@@ -875,7 +875,7 @@ return {
                 },
             },
             j_faceless={
-                name="Ayin",
+                name="Mika",
                 text={
                     "Earn {C:money}$#1#{} if {C:attention}#2#{} or",
                     "more {C:attention}face cards{}",
@@ -905,9 +905,9 @@ return {
                 },
             },
             j_flash={
-                name="Miris",
+                name="Yun",
                 text={
-                    "This Joker gains {C:mult}+#1#{} Mult",
+                    "This Key Page gains {C:mult}+#1#{} Mult",
                     "per {C:attention}reroll{} in the shop",
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
                 },
@@ -945,15 +945,15 @@ return {
                 name="Liwei",
                 text={
                     "Add {C:money}$#1#{} of {C:attention}sell value",
-                    "to every {C:attention}Joker{} and",
+                    "to every {C:attention}Key Page{} and",
                     "{C:attention}Consumable{} card at",
-                    "end of round",
+                    "end of scene",
                 },
             },
             j_glass={
                 name="Distorted Yan",
                 text={
-                    "This Joker gains {X:mult,C:white} X#1# {} Mult",
+                    "This Key Page gains {X:mult,C:white} X#1# {} Mult",
                     "for every {C:attention}Glass Card",
                     "that is destroyed",
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
@@ -973,10 +973,10 @@ return {
                 },
             },
             j_golden={
-                name="Mars",
+                name="Martina",
                 text={
                     "Earn {C:money}$#1#{} at",
-                    "end of round",
+                    "end of scene",
                 },
             },
             j_greedy_joker={
@@ -1001,11 +1001,11 @@ return {
                     "{C:mult}+#1#{} Mult",
                     "{C:green}#2# in #3#{} chance this",
                     "card is destroyed",
-                    "at end of round",
+                    "at end of scene",
                 },
             },
             j_hack={
-                name="Alpha",
+                name="Isadora",
                 text={
                     "Retrigger",
                     "each played",
@@ -1037,7 +1037,7 @@ return {
                     "{C:attention}#1#{} additional times",
                 },
                 unlock={
-                    "Beat a Boss Blind",
+                    "Beat a Reception",
                     "with a {E:1,C:attention}#1#",
                 },
             },
@@ -1052,9 +1052,9 @@ return {
             j_hit_the_road={
                 name="Heathcliff",
                 text={
-                    "This Joker gains {X:mult,C:white} X#1# {} Mult",
+                    "This Key Page gains {X:mult,C:white} X#1# {} Mult",
                     "for every {C:attention}Jack{}",
-                    "discarded this round",
+                    "discarded this scene",
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
                 },
                 unlock={
@@ -1066,7 +1066,7 @@ return {
             j_hologram={
                 name="Luda",
                 text={
-                    "This Joker gains {X:mult,C:white} X#1# {} Mult",
+                    "This Key Page gains {X:mult,C:white} X#1# {} Mult",
                     "every time a {C:attention}playing card{}",
                     "is added to your deck",
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
@@ -1086,7 +1086,7 @@ return {
                     "Each played {C:attention}#2#",
                     "of {V:1}#3#{} gives",
                     "{X:mult,C:white} X#1# {} Mult when scored",
-                    "{s:0.8}Card changes every round",
+                    "{s:0.8}Card changes every scene",
                 },
                 unlock={
                     "In one hand,",
@@ -1095,17 +1095,17 @@ return {
                 },
             },
             j_invisible={
-                name="Zena",
+                name="Moirai",
                 text={
-                    "After {C:attention}#1#{} rounds,",
+                    "After {C:attention}#1#{} scenes,",
                     "sell this card to",
-                    "{C:attention}Duplicate{} a random Joker",
+                    "{C:attention}Duplicate{} a random Key Page",
                     "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)",
                 },
                 unlock={
                     "Win a run without",
                     "ever having more",
-                    "than {E:1,C:attention}4 Jokers{}",
+                    "than {E:1,C:attention}4 Key Pages{}",
                 },
             },
             j_joker={
@@ -1141,13 +1141,13 @@ return {
                 text={
                     "Sell this card to",
                     "disable the current",
-                    "{C:attention}Boss Blind{}",
+                    "{C:attention}Reception{}",
                 },
             },
             j_lucky_cat={
                 name="Dong-hwan, the Grade 1 Fixer",
                 text={
-                    "This Joker gains {X:mult,C:white} X#1# {} Mult",
+                    "This Key Page gains {X:mult,C:white} X#1# {} Mult",
                     "every time a {C:attention}Lucky{} card",
                     "{C:green}successfully{} triggers",
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
@@ -1172,9 +1172,9 @@ return {
             j_madness={
                 name="Greta",
                 text={
-                    "When {C:attention}Small Blind{} or {C:attention}Big Blind{}",
+                    "When {C:attention}Normal Encounter{} or {C:attention}Risky Encounter{}",
                     "is selected, gain {X:mult,C:white} X#1# {} Mult",
-                    "and {C:attention}destroy{} a random Joker",
+                    "and {C:attention}destroy{} a random Key Page",
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
                 },
             },
@@ -1183,7 +1183,7 @@ return {
                 text={
                     "Earn {C:money}$#1#{} for each",
                     "discarded {C:attention}#2#{}, rank",
-                    "changes every round",
+                    "changes every scene",
                 },
             },
             j_marble={
@@ -1191,7 +1191,7 @@ return {
                 text={
                     "Adds one {C:attention}Stone{} card",
                     "to deck when",
-                    "{C:attention}Blind{} is selected",
+                    "{C:attention}Encounter{} is selected",
                 },
             },
             j_matador={
@@ -1199,10 +1199,10 @@ return {
                 text={
                     "Earn {C:money}$#1#{} if played",
                     "hand triggers the",
-                    "{C:attention}Boss Blind{} ability",
+                    "{C:attention}Reception{} ability",
                 },
                 unlock={
-                    "Defeat a Boss Blind",
+                    "Defeat a Reception",
                     "in {E:1,C:attention}1 hand{} without",
                     "using any discards",
                 },
@@ -1211,12 +1211,12 @@ return {
                 name="Rain",
                 text={
                     "{C:red}+#1#{} discards",
-                    "each round,",
+                    "each scene,",
                     "{C:red}#2#{} hand size",
                 },
                 unlock={
                     "Win a run in {E:1,C:attention}#1#",
-                    "or fewer rounds",
+                    "or fewer scenes",
                 },
             },
             j_midas_mask={
@@ -1266,7 +1266,7 @@ return {
             j_obelisk={
                 name="Lesti",
                 text={
-                    "This Joker gains {X:mult,C:white} X#1# {} Mult",
+                    "This Key Page gains {X:mult,C:white} X#1# {} Mult",
                     "per {C:attention}consecutive{} hand played",
                     "without playing your",
                     "most played {C:attention}poker hand",
@@ -1354,7 +1354,7 @@ return {
                 text={
                     "{C:mult}+#1#{} Mult",
                     "{C:mult}-#2#{} Mult per",
-                    "round played",
+                    "scene played",
                 },
             },
             j_raised_fist={
@@ -1376,7 +1376,7 @@ return {
             j_red_card={
                 name="Mei",
                 text={
-                    "This Joker gains",
+                    "This Key Page gains",
                     "{C:red}+#1#{} Mult when any",
                     "{C:attention}Booster Pack{} is skipped",
                     "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)",
@@ -1394,7 +1394,7 @@ return {
             j_ride_the_bus={
                 name="Manager Dante",
                 text={
-                    "This Joker gains {C:mult}+#1#{} Mult",
+                    "This Key Page gains {C:mult}+#1#{} Mult",
                     "per {C:attention}consecutive{} hand",
                     "played without a",
                     "scoring {C:attention}face{} card",
@@ -1402,17 +1402,17 @@ return {
                 },
             },
             j_riff_raff={
-                name="Meow",
+                name="Angela",
                 text={
-                    "When {C:attention}Blind{} is selected,",
-                    "create {C:attention}#1# {C:blue}Common{C:attention} Jokers",
+                    "When {C:attention}Encounter{} is selected,",
+                    "create {C:attention}#1# {C:blue}Paperback{C:attention} Key Pages",
                     "{C:inactive}(Must have room)",
                 },
             },
             j_ring_master={
                 name="Gregor",
                 text={
-                    "{C:attention}Joker{}, {C:tarot}Tarot{}, {C:planet}Planet{},",
+                    "{C:attention}Key Page{}, {C:tarot}Tarot{}, {C:planet}Sinner{},",
                     "and {C:spectral}Spectral{} cards may",
                     "appear multiple times",
                 },
@@ -1422,11 +1422,11 @@ return {
                 },
             },
             j_rocket={
-                name="Mang-chi",
+                name="Nemo",
                 text={
-                    "Earn {C:money}$#1#{} at end of round",
+                    "Earn {C:money}$#1#{} at end of scene",
                     "Payout increases by {C:money}$#2#{}",
-                    "when {C:attention}Boss Blind{} is defeated",
+                    "when {C:attention}Reception{} is defeated",
                 },
             },
             j_rough_gem={
@@ -1455,7 +1455,7 @@ return {
                 name="Netzach",
                 text={
                     "Earn {C:money}$#1#{} at end of",
-                    "round per unique {C:planet}Planet",
+                    "scene per unique {C:planet}Sinner",
                     "card used this run",
                     "{C:inactive}(Currently {C:money}$#2#{C:inactive})",
                 },
@@ -1473,7 +1473,7 @@ return {
                 },
             },
             j_scholar={
-                name="Angela",
+                name="Mo",
                 text={
                     "Played {C:attention}Aces{}",
                     "give {C:chips}+#2#{} Chips",
@@ -1505,7 +1505,7 @@ return {
                 },
             },
             j_selzer={
-                name="Yuna",
+                name="Ayin",
                 text={
                     "Retrigger all",
                     "cards played for",
@@ -1522,11 +1522,11 @@ return {
                 unlock={
                     "Play every {E:1,C:attention}Heart",
                     "in your deck in",
-                    "a single round",
+                    "a single scene",
                 },
             },
             j_shortcut={
-                name="Jin",
+                name="Alpha",
                 text={
                     "Allows {C:attention}Straights{} to be",
                     "made with gaps of {C:attention}1 rank",
@@ -1536,7 +1536,7 @@ return {
             j_sixth_sense={
                 name="Valentin",
                 text={
-                    "If {C:attention}first hand{} of round is",
+                    "If {C:attention}first hand{} of scene is",
                     "a single {C:attention}6{}, destroy it and",
                     "create a {C:spectral}Spectral{} card",
                     "{C:inactive}(Must have room)",
@@ -1565,7 +1565,7 @@ return {
                 },
             },
             j_smiley={
-                name="Mi",
+                name="Taein",
                 text={
                     "Played {C:attention}face{} cards",
                     "give {C:mult}+#1#{} Mult",
@@ -1600,16 +1600,16 @@ return {
                 },
             },
             j_square={
-                name="Mika",
+                name="Jin",
                 text={
-                    "This Joker gains {C:chips}+#2#{} Chips",
+                    "This Key Page gains {C:chips}+#2#{} Chips",
                     "if played hand has",
                     "exactly {C:attention}4{} cards",
                     "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
                 },
             },
             j_steel_joker={
-                name="Mo",
+                name="MuMu",
                 text={
                     "Gives {X:mult,C:white} X#1# {} Mult",
                     "for each {C:attention}Steel Card",
@@ -1621,13 +1621,13 @@ return {
                 name="Roland",
                 text={
                     "{X:red,C:white} X1 {} Mult for each",
-                    "empty {C:attention}Joker{} slot",
+                    "empty {C:attention}Key Page{} slot",
                     "{s:0.8}Roland included",
                     "{C:inactive}(Currently {X:red,C:white} X#1# {C:inactive})",
                 },
             },
             j_stone={
-                name="Julia",
+                name="Meow",
                 text={
                     "Gives {C:chips}+#1#{} Chips for",
                     "each {C:attention}Stone Card",
@@ -1656,7 +1656,7 @@ return {
                 },
             },
             j_superposition={
-                name="Bada",
+                name="Chun",
                 text={
                     "Create a {C:tarot}Tarot{} card if",
                     "poker hand contains an",
@@ -1669,12 +1669,12 @@ return {
                 text={
                     "Adds the sell value",
                     "of all other owned",
-                    "{C:attention}Jokers{} to Mult",
+                    "{C:attention}Key Pages{} to Mult",
                     "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
                 },
                 unlock={
                     "Sell a total of",
-                    "{C:attention,E:1}#1#{} Joker cards",
+                    "{C:attention,E:1}#1#{} Key Page cards",
                     "{C:inactive}(#2#)",
                 },
             },
@@ -1682,7 +1682,7 @@ return {
                 name="Irina",
                 text={
                     "{X:mult,C:white} X#1# {} Mult for each",
-                    "{C:attention}Blind{} skipped this run",
+                    "{C:attention}Encounter{} skipped this run",
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
                 },
                 unlock={
@@ -1691,7 +1691,7 @@ return {
                 },
             },
             j_ticket={
-                name="Taein",
+                name="Mang-chi",
                 text={
                     "Played {C:attention}Gold{} cards",
                     "earn {C:money}$#1#{} when scored",
@@ -1707,7 +1707,7 @@ return {
                 text={
                     "Earn an extra {C:money}$#1#{} of",
                     "{C:attention}interest{} for every {C:money}$5{} you",
-                    "have at end of round",
+                    "have at end of scene",
                 },
             },
             j_todo_list={
@@ -1716,13 +1716,13 @@ return {
                     "Earn {C:money}$#1#{} if {C:attention}poker hand{}",
                     "is a {C:attention}#2#{},",
                     "poker hand changes",
-                    "at end of round",
+                    "at end of scene",
                 },
             },
             j_trading={
                 name="Tenma",
                 text={
-                    "If {C:attention}first discard{} of round",
+                    "If {C:attention}first discard{} of scene",
                     "has only {C:attention}1{} card, destroy",
                     "it and earn {C:money}$#1#",
                 },
@@ -1768,18 +1768,18 @@ return {
                 name="Gloria",
                 text={
                     "{C:attention}+#1#{} hand size,",
-                    "{C:blue}-#2#{} hand each round",
+                    "{C:blue}-#2#{} hand each scene",
                 },
                 unlock={
                     "Win {C:attention,E:1}#1#{} consecutive",
-                    "rounds by playing",
+                    "scenes by playing",
                     "only 1 hand",
                 },
             },
             j_trousers={
                 name="Emma & Noah",
                 text={
-                    "This Joker gains {C:mult}+#1#{} Mult",
+                    "This Key Page gains {C:mult}+#1#{} Mult",
                     "if played hand contains",
                     "a {C:attention}#2#",
                     "{C:inactive}(Currently {C:red}+#3#{C:inactive} Mult)",
@@ -1790,7 +1790,7 @@ return {
                 text={
                     "{C:attention}+#1#{} hand size,",
                     "reduces by",
-                    "{C:red}#2#{} every round",
+                    "{C:red}#2#{} every scene",
                 },
             },
             j_vagabond={
@@ -1804,14 +1804,14 @@ return {
             j_vampire={
                 name="Elena",
                 text={
-                    "This Joker gains {X:mult,C:white} X#1# {} Mult",
+                    "This Key Page gains {X:mult,C:white} X#1# {} Mult",
                     "per scoring {C:attention}Enhanced card{} played,",
                     "removes card {C:attention}Enhancement",
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
                 },
             },
             j_walkie_talkie={
-                name="Nemo",
+                name="Julia",
                 text={
                     "Each played {C:attention}10{} or {C:attention}4",
                     "gives {C:chips}+#1#{} Chips and",
@@ -1821,14 +1821,14 @@ return {
             j_wee={
                 name="Wee Oswald",
                 text={
-                    "This Joker gains",
+                    "This Key Page gains",
                     "{C:chips}+#2#{} Chips when each",
                     "played {C:attention}2{} is scored",
                     "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
                 },
                 unlock={
                     "Win a run in {E:1,C:attention}#1#",
-                    "or fewer rounds",
+                    "or fewer scenes",
                 },
             },
             j_wily={
@@ -1850,7 +1850,7 @@ return {
             j_yorick={
                 name="The Blue Reverberation",
                 text={
-                    "This Joker gains",
+                    "This Key Page gains",
                     "{X:mult,C:white} X#1# {} Mult every {C:attention}#2#{C:inactive} [#3#]{}",
                     "cards discarded",
                     "{C:inactive}(Currently {X:mult,C:white} X#4# {C:inactive} Mult)",
@@ -1870,27 +1870,27 @@ return {
         },
         Other={
             black_sticker={
-                name="Black Sticker",
+                name="Urban Plague Sticker",
                 text={
-                    "Used this Joker",
-                    "to win on {C:attention}Black",
+                    "Used this Key Page",
+                    "to win on {C:attention}Urban Plague",
                     "{C:attention}Stake{} difficulty",
                 },
             },
             blue_seal={
                 name="Blue Seal",
                 text={
-                    "Creates the {C:planet}Planet{} card",
+                    "Creates the {C:planet}Sinner{} card",
                     "for final played {C:attention}poker hand{}",
-                    "of round if {C:attention}held{} in hand",
+                    "of scene if {C:attention}held{} in hand",
                     "{C:inactive}(Must have room)",
                 },
             },
             blue_sticker={
-                name="Blue Sticker",
+                name="Urban Nightmare Sticker",
                 text={
-                    "Used this Joker",
-                    "to win on {C:attention}Blue",
+                    "Used this Key Page",
+                    "to win on {C:attention}Urban Nightmare",
                     "{C:attention}Stake{} difficulty",
                 },
             },
@@ -1984,25 +1984,25 @@ return {
                 },
             },
             gold_sticker={
-                name="Gold Sticker",
+                name="The City Sticker",
                 text={
-                    "Used this Joker",
-                    "to win on {C:attention}Gold",
+                    "Used this Key Page",
+                    "to win on {C:attention}The City",
                     "{C:attention}Stake{} difficulty",
                 },
             },
             green_sticker={
-                name="Green Sticker",
+                name="Urban Legend Sticker",
                 text={
-                    "Used this Joker",
-                    "to win on {C:attention}Green",
+                    "Used this Key Page",
+                    "to win on {C:attention}Urban Legend",
                     "{C:attention}Stake{} difficulty",
                 },
             },
             joker_locked_legendary={
                 name="Locked",
                 text={
-                    "Find this Joker",
+                    "Find this Key Page",
                     "from the {C:spectral}Soul{} card",
                 },
             },
@@ -2012,10 +2012,10 @@ return {
                 },
             },
             orange_sticker={
-                name="Orange Sticker",
+                name="Impuritas Civitatis Sticker",
                 text={
-                    "Used this Joker",
-                    "to win on {C:attention}Orange",
+                    "Used this Key Page",
+                    "to win on {C:attention}Impuritas Civitatis",
                     "{C:attention}Stake{} difficulty",
                 },
             },
@@ -2047,28 +2047,28 @@ return {
                 name="Jumbo Buffoon Pack",
                 text={
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{C:joker} Joker{} cards",
+                    "{C:attention}#2#{C:joker} Key Page{} cards",
                 },
             },
             p_buffoon_mega={
                 name="Mega Buffoon Pack",
                 text={
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{C:joker} Joker{} cards",
+                    "{C:attention}#2#{C:joker} Key Page{} cards",
                 },
             },
             p_buffoon_normal={
                 name="Buffoon Pack",
                 text={
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{C:joker} Joker{} cards",
+                    "{C:attention}#2#{C:joker} Key Page{} cards",
                 },
             },
             p_celestial_jumbo={
                 name="Jumbo Celestial Pack",
                 text={
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{C:planet} Planet{} cards to",
+                    "{C:attention}#2#{C:planet} Sinner{} cards to",
                     "be used immediately",
                 },
             },
@@ -2076,7 +2076,7 @@ return {
                 name="Mega Celestial Pack",
                 text={
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{C:planet} Planet{} cards to",
+                    "{C:attention}#2#{C:planet} Sinner{} cards to",
                     "be used immediately",
                 },
             },
@@ -2084,7 +2084,7 @@ return {
                 name="Celestial Pack",
                 text={
                     "Choose {C:attention}#1#{} of up to",
-                    "{C:attention}#2#{C:planet} Planet{} cards to",
+                    "{C:attention}#2#{C:planet} Sinner{} cards to",
                     "be used immediately",
                 },
             },
@@ -2140,14 +2140,14 @@ return {
                 name="Perishable",
                 text={
                     "Debuffed after",
-                    "{C:attention}#1#{} rounds",
+                    "{C:attention}#1#{} scenes",
                     "{C:inactive}({C:attention}#2#{C:inactive} remaining)",
                 },
             },
             pinned_left={
                 name="Pinned",
                 text={
-                    "This Joker stays",
+                    "This Key Page stays",
                     "pinned to the",
                     "leftmost position",
                 },
@@ -2166,10 +2166,10 @@ return {
                 },
             },
             purple_sticker={
-                name="Purple Sticker",
+                name="Star of the City Sticker",
                 text={
-                    "Used this Joker",
-                    "to win on {C:attention}Purple",
+                    "Used this Key Page",
+                    "to win on {C:attention}Star of the City",
                     "{C:attention}Stake{} difficulty",
                 },
             },
@@ -2181,10 +2181,10 @@ return {
                 },
             },
             red_sticker={
-                name="Red Sticker",
+                name="Urban Myth Sticker",
                 text={
-                    "Used this Joker",
-                    "to win on {C:attention}Red",
+                    "Used this Key Page",
+                    "to win on {C:attention}Urban Myth",
                     "{C:attention}Stake{} difficulty",
                 },
             },
@@ -2198,7 +2198,7 @@ return {
                 name="Rental",
                 text={
                     "Lose {C:money}$#1#{} at",
-                    "end of round",
+                    "end of scene",
                 },
             },
             undiscovered_booster={
@@ -2271,10 +2271,10 @@ return {
                 },
             },
             white_sticker={
-                name="White Sticker",
+                name="Canard Sticker",
                 text={
-                    "Used this Joker",
-                    "to win on {C:attention}White",
+                    "Used this Key Page",
+                    "to win on {C:attention}Canard",
                     "{C:attention}Stake{} difficulty",
                 },
             },
@@ -2401,8 +2401,8 @@ return {
                 name="Mirror",
                 text={
                     "Create a copy of a",
-                    "random {C:attention}Joker{}, destroy",
-                    "all other Jokers",
+                    "random {C:attention}Key Page{}, destroy",
+                    "all other Key Pages",
                 },
             },
             c_aura={
@@ -2441,7 +2441,7 @@ return {
                 name="Unchanging",
                 text={
                     "Add {C:dark_edition}Negative{} to",
-                    "a random {C:attention}Joker,",
+                    "a random {C:attention}Key Page,",
                     "{C:red}-#1#{} hand size",
                 },
             },
@@ -2467,8 +2467,8 @@ return {
                 name="Reception",
                 text={
                     "Add {C:dark_edition}Polychrome{} to a",
-                    "random {C:attention}Joker{}, destroy",
-                    "all other Jokers",
+                    "random {C:attention}Key Page{}, destroy",
+                    "all other Key Pages",
                 },
             },
             c_immolate={
@@ -2517,7 +2517,7 @@ return {
                 name="Golden Bough",
                 text={
                     "Creates a",
-                    "{C:legendary,E:1}Legendary{} Joker",
+                    "{C:legendary,E:1}Objet d'art{} Key Page",
                     "{C:inactive}(Must have room)",
                 },
             },
@@ -2530,7 +2530,7 @@ return {
                 },
             },
             c_trance={
-                name="Distort",
+                name="Welcome",
                 text={
                     "Add a {C:blue}Blue Seal{}",
                     "to {C:attention}1{} selected",
@@ -2541,37 +2541,37 @@ return {
                 name="Library",
                 text={
                     "Creates a random",
-                    "{C:red}Rare{C:attention} Joker{},",
+                    "{C:red}Limited{C:attention} Key Page{},",
                     "sets money to {C:money}$0",
                 },
             },
         },
         Stake={
             stake_black={
-                name="Black Stake",
+                name="Urban Plague Stake",
                 text={
-                    "Shop can have {C:attention}Eternal{} Jokers",
+                    "Shop can have {C:attention}Eternal{} Key Pages",
                     "{C:inactive,s:0.8}(Can't be sold or destroyed)",
                     "{s:0.8}Applies all previous Stakes",
                 },
             },
             stake_blue={
-                name="Blue Stake",
+                name="Urban Nightmare Stake",
                 text={
                     "{C:red}-1{} Discard",
                     "{s:0.8}Applies all previous Stakes",
                 },
             },
             stake_gold={
-                name="Gold Stake",
+                name="The City Stake",
                 text={
-                    "Shop can have {C:attention}Rental{} Jokers",
-                    "{C:inactive,s:0.8}(Costs {C:money,s:0.8}$3{C:inactive,s:0.8} per round)",
+                    "Shop can have {C:attention}Rental{} Key Pages",
+                    "{C:inactive,s:0.8}(Costs {C:money,s:0.8}$3{C:inactive,s:0.8} per scene)",
                     "{s:0.8}Applies all previous Stakes",
                 },
             },
             stake_green={
-                name="Green Stake",
+                name="Urban Legend Stake",
                 text={
                     "Required score scales",
                     "faster for each {C:attention}Ante",
@@ -2579,15 +2579,15 @@ return {
                 },
             },
             stake_orange={
-                name="Orange Stake",
+                name="Impuritas Civitatis Stake",
                 text={
-                    "Shop can have {C:attention}Perishable{} Jokers",
-                    "{C:inactive,s:0.8}(Debuffed after 5 Rounds)",
+                    "Shop can have {C:attention}Perishable{} Key Pages",
+                    "{C:inactive,s:0.8}(Debuffed after 5 Scenes)",
                     "{s:0.8}Applies all previous Stakes",
                 },
             },
             stake_purple={
-                name="Purple Stake",
+                name="Star of the City Stake",
                 text={
                     "Required score scales",
                     "faster for each {C:attention}Ante",
@@ -2595,15 +2595,15 @@ return {
                 },
             },
             stake_red={
-                name="Red Stake",
+                name="Urban Myth Stake",
                 text={
-                    "{C:attention}Small Blind{} gives",
+                    "{C:attention}Normal Encounter{} gives",
                     "no reward money",
                     "{s:0.8}Applies all previous Stakes",
                 },
             },
             stake_white={
-                name="White Stake",
+                name="Canard Stake",
                 text={
                     "Base Difficulty",
                 },
@@ -2614,7 +2614,7 @@ return {
                 name="Boss Tag",
                 text={
                     "Rerolls the",
-                    "{C:attention}Boss Blind",
+                    "{C:attention}Reception",
                 },
             },
             tag_buffoon={
@@ -2672,7 +2672,7 @@ return {
                 name="Foil Tag",
                 text={
                     "Next base edition shop",
-                    "Joker is free and",
+                    "Key Page is free and",
                     "becomes {C:dark_edition}Foil",
                 },
             },
@@ -2696,7 +2696,7 @@ return {
                 name="Holographic Tag",
                 text={
                     "Next base edition shop",
-                    "Joker is free and",
+                    "Key Page is free and",
                     "becomes {C:dark_edition}Holographic",
                 },
             },
@@ -2704,7 +2704,7 @@ return {
                 name="Investment Tag",
                 text={
                     "After defeating",
-                    "the Boss Blind,",
+                    "the Reception,",
                     "gain {C:money}$#1#",
                 },
             },
@@ -2712,7 +2712,7 @@ return {
                 name="Juggle Tag",
                 text={
                     "{C:attention}+#1#{} hand size",
-                    "next round",
+                    "next scene",
                 },
             },
             tag_meteor={
@@ -2726,7 +2726,7 @@ return {
                 name="Negative Tag",
                 text={
                     "Next base edition shop",
-                    "Joker is free and",
+                    "Key Page is free and",
                     "becomes {C:dark_edition}Negative",
                 },
             },
@@ -2741,22 +2741,22 @@ return {
                 name="Polychrome Tag",
                 text={
                     "Next base edition shop",
-                    "Joker is free and",
+                    "Key Page is free and",
                     "becomes {C:dark_edition}Polychrome",
                 },
             },
             tag_rare={
-                name="Rare Tag",
+                name="Limited Tag",
                 text={
                     "Shop has a free",
-                    "{C:red}Rare Joker",
+                    "{C:red}Limited Key Page",
                 },
             },
             tag_skip={
                 name="Speed Tag",
                 text={
                     "Gives {C:money}$#1#{} per skipped",
-                    "Blind this run",
+                    "Encounter this run",
                     "{C:inactive}(Will give {C:money}$#2#{C:inactive})",
                 },
             },
@@ -2771,15 +2771,15 @@ return {
                 name="Top-up Tag",
                 text={
                     "Create up to {C:attention}#1#",
-                    "{C:blue}Common{} Jokers",
+                    "{C:blue}Paperback{} Key Pages",
                     "{C:inactive}(Must have room)",
                 },
             },
             tag_uncommon={
-                name="Uncommon Tag",
+                name="Hardcover Tag",
                 text={
                     "Shop has a free",
-                    "{C:green}Uncommon Joker",
+                    "{C:green}Hardcover Key Page",
                 },
             },
             tag_voucher={
@@ -2836,7 +2836,7 @@ return {
                 name="The Fool",
                 text={
                     "Creates the last",
-                    "{C:tarot}Tarot{} or {C:planet}Planet{} card",
+                    "{C:tarot}Tarot{} or {C:planet}Sinner{} card",
                     "used during this run",
                     "{s:0.8,C:tarot}The Fool{s:0.8} excluded",
                 },
@@ -2867,7 +2867,7 @@ return {
                 name="The High Priestess",
                 text={
                     "Creates up to {C:attention}#1#",
-                    "random {C:planet}Planet{} cards",
+                    "random {C:planet}Sinner{} cards",
                     "{C:inactive}(Must have room)",
                 },
             },
@@ -2875,7 +2875,7 @@ return {
                 name="Judgement",
                 text={
                     "Creates a random",
-                    "{C:attention}Joker{} card",
+                    "{C:attention}Key Page{} card",
                     "{C:inactive}(Must have room)",
                 },
             },
@@ -2940,7 +2940,7 @@ return {
                 text={
                     "Gives the total sell",
                     "value of all current",
-                    "Jokers {C:inactive}(Max of {C:money}$#1#{C:inactive})",
+                    "Key Pages {C:inactive}(Max of {C:money}$#1#{C:inactive})",
                     "{C:inactive}(Currently {C:money}$#2#{C:inactive})",
                 },
             },
@@ -2958,7 +2958,7 @@ return {
                     "{C:green}#1# in #2#{} chance to add",
                     "{C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
                     "{C:dark_edition}Polychrome{} edition",
-                    "to a random {C:attention}Joker",
+                    "to a random {C:attention}Key Page",
                 },
             },
             c_world={
@@ -2974,7 +2974,7 @@ return {
             v_antimatter={
                 name="Old Coffin",
                 text={
-                    "{C:dark_edition}+1{} Joker Slot",
+                    "{C:dark_edition}+1{} Key Page Slot",
                 },
                 unlock={
                     "Redeem {C:voucher}Blank{}",
@@ -3004,7 +3004,7 @@ return {
             v_directors_cut={
                 name="Tear-stained Spoon",
                 text={
-                    "Reroll Boss Blind",
+                    "Reroll Reception",
                     "{C:attention}1{} time per Ante,",
                     "{C:money}$#1#{} per roll",
                 },
@@ -3018,7 +3018,7 @@ return {
                 },
                 unlock={
                     "Have at least {C:attention}#1#",
-                    "{C:attention}Joker{} cards with",
+                    "{C:attention}Key Page{} cards with",
                     "{C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, or",
                     "{C:dark_edition}Polychrome{} edition",
                 },
@@ -3028,7 +3028,7 @@ return {
                 text={
                     "Permanently",
                     "gain {C:blue}+#1#{} hand",
-                    "per round",
+                    "per scene",
                 },
             },
             v_hieroglyph={
@@ -3036,7 +3036,7 @@ return {
                 text={
                     "{C:attention}-#1#{} Ante,",
                     "{C:blue}-#1#{} hand",
-                    "each round",
+                    "each scene",
                 },
             },
             v_hone={
@@ -3086,11 +3086,11 @@ return {
                 text={
                     "Raise the cap on",
                     "interest earned in",
-                    "each round to {C:money}$#1#{}",
+                    "each scene to {C:money}$#1#{}",
                 },
                 unlock={
                     "Max out the interest",
-                    "per round earnings for",
+                    "per scene earnings for",
                     "{C:attention}#1#{} consecutive rounds",
                     "{C:inactive}(#2#)",
                 },
@@ -3100,7 +3100,7 @@ return {
                 text={
                     "Permanently",
                     "gain {C:blue}+#1#{} hand",
-                    "per round",
+                    "per scene",
                 },
                 unlock={
                     "Play a total",
@@ -3111,14 +3111,14 @@ return {
             v_observatory={
                 name="Spicebush Branch",
                 text={
-                    "{C:planet}Planet{} cards in your",
+                    "{C:planet}Sinner{} cards in your",
                     "{C:attention}consumable{} area give",
                     "{X:red,C:white} X#1# {} Mult for their",
                     "specified {C:attention}poker hand",
                 },
                 unlock={
                     "Use a total of {C:attention}#1#",
-                    "{C:planet}Planet{} cards from any",
+                    "{C:planet}Sinner{} cards from any",
                     "{C:planet}Celestial Pack",
                     "{C:inactive}(#2#)",
                 },
@@ -3177,7 +3177,7 @@ return {
                 text={
                     "{C:attention}-#1#{} Ante,",
                     "{C:red}-#1#{} discard",
-                    "each round",
+                    "each scene",
                 },
                 unlock={
                     "Reach Ante",
@@ -3187,7 +3187,7 @@ return {
             v_planet_merchant={
                 name="Embers",
                 text={
-                    "{C:planet}Planet{} cards appear",
+                    "{C:planet}Sinner{} cards appear",
                     "{C:attention}#1#X{} more frequently",
                     "in the shop",
                 },
@@ -3195,13 +3195,13 @@ return {
             v_planet_tycoon={
                 name="Twigs",
                 text={
-                    "{C:planet}Planet{} cards appear",
+                    "{C:planet}Sinner{} cards appear",
                     "{C:attention}#1#X{} more frequently",
                     "in the shop",
                 },
                 unlock={
                     "Buy a total of",
-                    "{C:attention}#1#{C:planet} Planet{} cards",
+                    "{C:attention}#1#{C:planet} Sinner{} cards",
                     "from the shop",
                     "{C:inactive}(#2#)",
                 },
@@ -3211,7 +3211,7 @@ return {
                 text={
                     "Permanently",
                     "gain {C:red}+#1#{} discard",
-                    "each round",
+                    "each scene",
                 },
                 unlock={
                     "Discard a total",
@@ -3241,13 +3241,13 @@ return {
             v_retcon={
                 name="Churchwarden Pipe",
                 text={
-                    "Reroll Boss Blind",
+                    "Reroll Reception",
                     "{C:attention}unlimited{} times,",
                     "{C:money}$#1#{} per roll",
                 },
                 unlock={
                     "Discover",
-                    "{C:attention}#1#{} Blinds",
+                    "{C:attention}#1#{} Encounters",
                 },
             },
             v_seed_money={
@@ -3255,7 +3255,7 @@ return {
                 text={
                     "Raise the cap on",
                     "interest earned in",
-                    "each round to {C:money}$#1#{}",
+                    "each scene to {C:money}$#1#{}",
                 },
             },
             v_tarot_merchant={
@@ -3284,7 +3284,7 @@ return {
                 name="Blood-soaked Wrench",
                 text={
                     "{C:attention}Celestial Packs{} always",
-                    "contain the {C:planet}Planet{}",
+                    "contain the {C:planet}Sinner{}",
                     "card for your most",
                     "played {C:attention}poker hand",
                 },
@@ -3294,7 +3294,7 @@ return {
                 text={
                     "Permanently",
                     "gain {C:red}+#1#{} discard",
-                    "each round",
+                    "each scene",
                 },
             },
         },
@@ -3306,22 +3306,22 @@ return {
             _10k="Score 10,000 Chips in a single hand",
             ante_up="Reach Ante 4",
             ante_upper="Reach Ante 8",
-            astronomy="Discover every Planet card",
+            astronomy="Discover every Sinner card",
             big_hands="Have 80 or more cards in your deck",
             card_discarder="Discard at least 2500 Cards",
             card_player="Play at least 2500 Cards",
             cartomancy="Discover every Tarot card",
             clairvoyance="Discover every Spectral card",
             completionist="Discover 100% of your collection",
-            completionist_plus="Win with every deck on Gold Stake difficulty",
-            completionist_plus_plus="Earn a Gold Sticker on every Joker",
+            completionist_plus="Win with every deck on The City Stake difficulty",
+            completionist_plus_plus="Earn a The City Sticker on every Key Page",
             extreme_couponer="Discover every Voucher",
             flushed="Play a Flush with 5 Wild Cards",
             heads_up="Win a Run",
-            high_stakes="Win a run on at least Gold Stake difficulty",
-            legendary="Discover a Legendary Joker",
-            low_stakes="Win a run on at least Red Stake difficulty",
-            mid_stakes="Win a run on at least Black Stake difficulty",
+            high_stakes="Win a run on at least The City Stake difficulty",
+            legendary="Discover a Objet d'art Key Page",
+            low_stakes="Win a run on at least Urban Myth Stake difficulty",
+            mid_stakes="Win a run on at least Urban Plague Stake difficulty",
             nest_egg="Have $400 or more during a single run",
             retrograde="Get any poker hand to level 10",
             roi="Buy 5 Vouchers by Ante 4",
@@ -3352,7 +3352,7 @@ return {
             flushed="Flushed",
             heads_up="Heads Up",
             high_stakes="High Stakes",
-            legendary="Legendary",
+            legendary="Objet d'art",
             low_stakes="Low Stakes",
             mid_stakes="Mid Stakes",
             nest_egg="Nest Egg",
@@ -3384,7 +3384,7 @@ return {
             c_fragile_1="Fragile",
             c_golden_needle_1="Golden Needle",
             c_inflation_1="Inflation",
-            c_jokerless_1="Jokerless",
+            c_jokerless_1="Key Pageless",
             c_knife_1="On a Knife's Edge",
             c_luxury_1="Luxury Tax",
             c_mad_world_1="Mad World",
@@ -3431,7 +3431,7 @@ return {
             b_FAQ="FAQ",
             b_and_use="& USE",
             b_back="Back",
-            b_blinds="Blinds",
+            b_blinds="Encounters",
             b_booster_packs="Booster Packs",
             b_buy="BUY",
             b_cash_out="Cash Out",
@@ -3456,7 +3456,7 @@ return {
             b_high_contrast_cards="High Contrast Cards",
             b_how_to_play="How to play",
             b_imagery="Imagery",
-            b_jokers="Jokers",
+            b_jokers="Key Pages",
             b_load_profile="Load Profile",
             b_main_menu="Main Menu",
             b_music="Music",
@@ -3464,11 +3464,11 @@ return {
             b_new_run="New Run",
             b_next="Next",
             b_next_round_1="Next",
-            b_next_round_2="Round",
+            b_next_round_2="Scene",
             b_open="OPEN",
             b_options="Options",
             b_options_cap="OPTIONS",
-            b_planet_cards="Planet Cards",
+            b_planet_cards="Sinner Cards",
             b_play_cap="PLAY",
             b_play_hand="Play Hand",
             b_playbalatro="Visit playbalatro.com",
@@ -3510,7 +3510,7 @@ return {
             b_set_windowmode="Window Mode",
             b_settings="Settings",
             b_skip="Skip",
-            b_skip_blind="Skip Blind",
+            b_skip_blind="Skip Encounter",
             b_skip_reward="Skip Reward",
             b_sort_hand="Sort Hand",
             b_sounds="Sounds",
@@ -3518,8 +3518,8 @@ return {
             b_stake="Stake",
             b_start_new_run="New Run",
             b_stat_consumables="Consumables",
-            b_stat_jokers="Jokers",
-            b_stat_planets="Planets",
+            b_stat_jokers="Key Pages",
+            b_stat_planets="Sinner",
             b_stat_spectrals="Spectrals",
             b_stat_tarots="Tarots",
             b_stat_vouchers="Vouchers",
@@ -3538,8 +3538,8 @@ return {
             k_again_ex="Again!",
             k_all_hands="All Hands",
             k_also_applied="Also applied",
-            k_ante="Ante",
-            k_ante_cap="ANTE",
+            k_ante="Act",
+            k_ante_cap="ACT",
             k_arcana_pack="Arcana Pack",
             k_balanced="Balanced",
             k_banned_cards="Banned Cards",
@@ -3556,7 +3556,7 @@ return {
             k_challenges="Challenges",
             k_choose="Choose",
             k_collection="Collection",
-            k_common="Common",
+            k_common="Paperback",
             k_compatible="compatible",
             k_copied_ex="Copied!",
             k_custom_rules="Custom Rules",
@@ -3569,7 +3569,7 @@ return {
             k_disabled_ex="Disabled!",
             k_drank_ex="Drank!",
             k_duplicated_ex="Duplicated!",
-            k_dwarf_planet="Dwarf Planet",
+            k_dwarf_planet="Sinner",
             k_eaten_ex="Eaten!",
             k_edition="Edition",
             k_effective="Effective",
@@ -3586,10 +3586,10 @@ return {
             k_hud_discards="Discards",
             k_hud_hands="Hands",
             k_incompatible="incompatible",
-            k_joker="Joker",
-            k_joker_stickers="Joker Stickers",
-            k_jokers_cap="JOKERS",
-            k_legendary="Legendary",
+            k_joker="Key Page",
+            k_joker_stickers="Key Page Stickers",
+            k_jokers_cap="KEY PAGES",
+            k_legendary="Objet d'art",
             k_level_prefix="lvl.",
             k_level_up_ex="Level Up!",
             k_locked="Locked",
@@ -3598,12 +3598,12 @@ return {
             k_melted_ex="Melted!",
             k_money="Money",
             k_mult="Mult",
-            k_no_other_jokers="No other Jokers!",
+            k_no_other_jokers="No other Key Pages!",
             k_no_reward="No Reward",
             k_no_room_ex="No Room!",
             k_no_space_ex="No Space!",
             k_none="None",
-            k_nope_ex="Nope!",
+            k_nope_ex="Bloody 'ell!",
             k_not_allowed_ex="Not Allowed!",
             k_not_discovered="Not Discovered",
             k_numbered_cards="Numbered Cards",
@@ -3613,8 +3613,8 @@ return {
             k_planet="Sinner",
             k_planet_q="Sinner",
             k_playing_as="Playing as",
-            k_plus_joker="+1 Joker",
-            k_plus_planet="+1 Planet",
+            k_plus_joker="+1 Key Page",
+            k_plus_planet="+1 Sinner",
             k_plus_spectral="+1 Spectral",
             k_plus_stone="+1 Stone",
             k_plus_tarot="+1 Tarot",
@@ -3622,12 +3622,12 @@ return {
             k_profile="Profile",
             k_progress="Progress",
             k_rank="Rank",
-            k_rare="Rare",
+            k_rare="Limited",
             k_redeemed_ex="Redeemed!",
             k_reroll="Reroll",
             k_reset="Reset",
             k_reward="Reward",
-            k_round="Round",
+            k_round="Scene",
             k_safe_ex="Safe!",
             k_saved_ex="Saved!",
             k_seed="Seed",
@@ -3643,7 +3643,7 @@ return {
             k_tarot="Tarot",
             k_trophies_disabled="Trophies Disabled",
             k_trophy="Trophy",
-            k_uncommon="Uncommon",
+            k_uncommon="Hardcover",
             k_undisovered="Undiscovered",
             k_unknown="?????",
             k_unlocked_ex="Unlocked!",
@@ -3755,28 +3755,28 @@ return {
             ph_blind_score_at_least="Score at least",
             ph_boss_disabled="Boss Disabled!",
             ph_choose_blind_1="Choose your",
-            ph_choose_blind_2="next Blind",
+            ph_choose_blind_2="next Encounter",
             ph_click_confirm="Select again to confirm",
-            ph_deck_preview_effective="Effective total due to Jokers, Blinds, and card enhancements",
+            ph_deck_preview_effective="Effective total due to Key Pages, Encounters, and card enhancements",
             ph_deck_preview_stones="Stones",
-            ph_defeat_the_boss="Defeat the Boss Blind",
+            ph_defeat_the_boss="Defeat the Reception",
             ph_defeat_this_blind_1="Defeat this blind",
             ph_defeat_this_blind_2="to discover it",
             ph_demo_thanks_1="Thanks for playing the",
             ph_demo_thanks_2="BALATRO DEMO",
             ph_display_stickers="Display Stake Stickers during Run",
             ph_game_over="GAME OVER",
-            ph_improve_run="Improve your run!",
+            ph_improve_run="Brought to you by Ham Ham Pang Pang!",
             ph_most_played="(most played hand)",
-            ph_mr_bones="Saved by Mr. Bones",
-            ph_no_boss_active="no boss active",
+            ph_mr_bones="Saved by Valerie",
+            ph_no_boss_active="no reception active",
             ph_no_vouchers="No vouchers redeemed this run",
             ph_score_at_least="Score at least",
             ph_score_cards_discarded="Cards Discarded",
             ph_score_cards_played="Cards Played",
             ph_score_cards_purchased="Cards Purchased",
-            ph_score_furthest_ante="Ante",
-            ph_score_furthest_round="Round",
+            ph_score_furthest_ante="Act",
+            ph_score_furthest_round="Scene",
             ph_score_hand="Best Hand",
             ph_score_new_collection="New Discoveries",
             ph_score_poker_hand="Most Played Hand",
@@ -3787,19 +3787,19 @@ return {
             ph_stat_joker="Total completed rounds with this card",
             ph_stat_voucher="Number of times this Voucher has been redeemed",
             ph_unscored_hand="Hand will not score",
-            ph_up_ante_1="Up the Ante",
-            ph_up_ante_2="Raise all Blinds",
-            ph_up_ante_3="Refresh Blinds",
+            ph_up_ante_1="Next Scene",
+            ph_up_ante_2="Raise all Encounters",
+            ph_up_ante_3="Refresh Encounters",
             ph_vouchers_redeemed="Vouchers redeemed this run",
-            ph_you_win="YOU WIN!",
+            ph_you_win="VICTORY",
             ph_you_win_demo="YOU WIN THE DEMO!",
         },
         high_scores={
             boss_streak="Most Bosses in a Row",
             collection="Collection",
             current_streak="",
-            furthest_ante="Highest Ante",
-            furthest_round="Highest Round",
+            furthest_ante="Highest Act",
+            furthest_round="Highest Scene",
             hand="Best Hand",
             most_money="Most Money",
             poker_hand="Most Played Hand",
@@ -3807,25 +3807,25 @@ return {
         },
         labels={
             blue_seal="Blue Seal",
-            common="Common",
+            common="Paperback",
             eternal="Eternal",
             foil="Foil",
             gold_seal="Gold Seal",
             holographic="Holographic",
-            legendary="Legendary",
+            legendary="Objet d'art",
             locked="Locked",
             negative="Negative",
             perishable="Perishable",
             pinned_left="Pinned",
-            planet="Planet",
-            pluto_planet="Dwarf Planet",
+            planet="Sinner",
+            pluto_planet="Sinner",
             polychrome="Polychrome",
             purple_seal="Purple Seal",
-            rare="Rare",
+            rare="Limited",
             red_seal="Red Seal",
             rental="Rental",
             tarot="Tarot",
-            uncommon="Uncommon",
+            uncommon="Hardcover",
             voucher="Voucher",
         },
         poker_hand_descriptions={
@@ -4001,7 +4001,7 @@ return {
         },
         tutorial={
             bb_1={
-                "Selecting the {C:attention}Big Blind",
+                "Selecting the {C:attention}Risky Encounter",
                 "will earn some cash",
             },
             bb_2={
@@ -4011,17 +4011,17 @@ return {
             },
             bb_3={
                 "But keep an eye on",
-                "the {C:attention}Boss Blind{}. It",
+                "the {C:attention}Reception{}. It",
                 "has an ability you'll",
                 "need to plan around.",
             },
             bb_4={
                 "if you beat it, then the",
-                "{C:attention}Ante{} goes up and all",
-                "{C:attention}Blinds{} become harder",
+                "{C:attention}Act{} goes up and all",
+                "{C:attention}Encounters{} become harder",
             },
             bb_5={
-                "Beat {C:attention}Ante{} #1# to win.",
+                "Beat {C:attention}Act{} #1# to win.",
                 "Now choose your path!",
             },
             fh_1={
@@ -4068,12 +4068,12 @@ return {
             fh_7={
                 "Careful! You only have a",
                 "limited number of {C:blue}Hands",
-                "and {C:red}Discards{} per round",
+                "and {C:red}Discards{} per scene",
             },
             fh_8={
                 "Earn {C:attention}300 Chips{} before",
                 "you run out of {C:blue}Hands",
-                "to win this round.",
+                "to win this scene.",
                 "Good luck!",
             },
             s_1={
@@ -4085,7 +4085,7 @@ return {
             s_10={
                 "{C:attention}Vouchers{} are restocked",
                 "after you defeat the",
-                "{C:attention}Boss Blind{}.",
+                "{C:attention}Encounter{}.",
             },
             s_11={
                 "And check out both of",
@@ -4095,7 +4095,7 @@ return {
             },
             s_12={
                 "Let's move on to",
-                "the {C:attention}next round{}.",
+                "the {C:attention}next scene{}.",
             },
             s_2={
                 "Try buying this",
@@ -4109,8 +4109,8 @@ return {
             },
             s_3={
                 "This is one of the {C:attention}#1#",
-                "{C:attention}Jokers{} you can add to",
-                "your run. Every {C:attention}Joker",
+                "{C:attention}Key Pages{} you can add to",
+                "your run. Every {C:attention}Key Page",
                 "does something different",
             },
             s_4={
@@ -4119,7 +4119,7 @@ return {
             },
             s_5={
                 "Be picky, you can only",
-                "carry {C:attention}5 Joker{} cards",
+                "carry {C:attention}5 Key Pages{} ",
                 "at a time",
             },
             s_6={
@@ -4145,27 +4145,27 @@ return {
             },
             sb_1={
                 "Hello there! My name is",
-                "{C:attention}Jimbo{}, I'm here to help",
+                "{C:attention}Oswald{}, I'm here to help",
                 "you learn how to play!",
             },
             sb_2={
                 "Your goal is to earn",
                 "{C:blue}Chips{} to defeat",
-                "the enemy {C:attention}Blind",
+                "the enemy {C:attention}Encounter",
             },
             sb_3={
-                "This here is a {C:blue}Small Blind{},",
+                "This here is a {C:blue}Normal Encounter{},",
                 "you only need to score",
                 "{C:attention}300 Chips{} to beat it.",
             },
             sb_4={
-                "Select the {C:blue}Small Blind",
-                "to start the round!",
+                "Select the {C:blue}Normal Encounter",
+                "to start the scene!",
             },
             sh_1={
                 "When you get more cards,",
                 "remember you can rearrange",
-                "them. {C:attention}Jokers{} trigger in",
+                "them. {C:attention}Key Pages{} trigger in",
                 "order from left to right",
             },
             sh_2={
@@ -4219,7 +4219,7 @@ return {
             },
             ml_negative_desc={
                 "Negative",
-                "+#1# Joker Slot",
+                "+#1# Key Page Slot",
             },
             ml_polychrome_desc={
                 "Polychrome",
@@ -4231,7 +4231,7 @@ return {
         },
         v_text={
             ch_c_all_eternal={
-                "All Jokers are {C:eternal}Eternal{}",
+                "All Key Pages are {C:eternal}Eternal{}",
             },
             ch_c_chips_dollar_cap={
                 "{C:blue}Chips{} cannot exceed the current {C:money}$",
@@ -4258,25 +4258,25 @@ return {
                 "Extra {C:blue}Hands{} no longer earn money",
             },
             ch_c_no_interest={
-                "Earn no {C:attention}Interest{} at end of round",
+                "Earn no {C:attention}Interest{} at end of scene",
             },
             ch_c_no_reward={
-                "All {C:attention}Blinds{} give no reward money",
+                "All {C:attention}Encounters{} give no reward money",
             },
             ch_c_no_reward_specific={
-                "{C:attention}#1# Blinds{} give no reward money",
+                "{C:attention}#1# Encounters{} give no reward money",
             },
             ch_c_no_shop_jokers={
-                "Jokers no longer appear in the {C:attention}shop",
+                "Key Pages no longer appear in the {C:attention}shop",
             },
             ch_c_none={
                 "{C:inactive}None",
             },
             ch_c_set_eternal_ante={
-                "When ante {C:attention}#1#{} boss is defeated, all Jokers become {C:attention}eternal",
+                "When Act {C:attention}#1#{} boss is defeated, all Key Pages become {C:attention}eternal",
             },
             ch_c_set_joker_slots_ante={
-                "When ante {C:attention}#1#{} boss is defeated, set Joker slots to {C:attention}0",
+                "When Act {C:attention}#1#{} boss is defeated, set Key Page slots to {C:attention}0",
             },
             ch_c_set_seed={
                 "1 attempt with set Seed: {C:inactive}{Hidden}",
@@ -4285,7 +4285,7 @@ return {
                 "{C:attention}#1#{} Consumable Slots",
             },
             ch_m_discards={
-                "{C:red}#1#{} discards per round",
+                "{C:red}#1#{} discards per scene",
             },
             ch_m_dollars={
                 "Start with {C:money}$#1#",
@@ -4294,10 +4294,10 @@ return {
                 "{C:attention}#1#{} hand size",
             },
             ch_m_hands={
-                "{C:blue}#1#{} hands per round",
+                "{C:blue}#1#{} hands per scene",
             },
             ch_m_joker_slots={
-                "{C:attention}#1#{} Joker Slots",
+                "{C:attention}#1#{} Key Page Slots",
             },
             ch_m_none={
                 "{C:inactive}None",
