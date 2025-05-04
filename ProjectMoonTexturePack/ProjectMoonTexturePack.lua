@@ -27,6 +27,7 @@ for _, hook in ipairs(hook_list) do
 end
 
 
+
 SMODS.Atlas{key = "cards_1", path = "8BitDeck.png", px = 71, py = 95, prefix_config = { key = false } }
 SMODS.Atlas{key = "cards_2", path = "8BitDeck.png", px = 71, py = 95, prefix_config = { key = false } }
 SMODS.Atlas{key = "blind_chips", path = "BlindChips.png", px = 34, py = 34, prefix_config = { key = false }, atlas_table = 'ANIMATION_ATLAS', frames = 21}
@@ -42,8 +43,20 @@ SMODS.Atlas{key = "chips", path = "chips.png", px = 29, py = 29, prefix_config =
 SMODS.Atlas{key = "stickers", path = "stickers.png", px = 71, py = 95, prefix_config = { key = false } }
 SMODS.Atlas{key = "shop_sign", path = "ShopSignAnimation.png", px = 113, py = 57, prefix_config = { key = false }, atlas_table = 'ANIMATION_ATLAS', frames = 4 }
 
+SMODS.Joker:take_ownership('j_square', 
+  {
+  display_size = { w = 71, h = 95 },
+  pixel_size = { w = 71, h = 130 },
+  }, true)
+  
+  
+SMODS.Joker:take_ownership('j_photograph', 
+  {
+  display_size = { w = 71, h = 95 },
+  pixel_size = { w = 71, h = 115 },
+  }, true)
 
-
+SMODS.Shader{key = 'debuffGold', path = 'debuffGold.fs'}
 
 AltTexture{
     key = 'spectral',
