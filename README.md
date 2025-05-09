@@ -19,6 +19,7 @@ A Balatro Mod that adds custom made textures with Project Moon related character
 ## Known issues
 
 - Certain UI elements are still using the old colour schemes
+- The Erkling voucher still has the negative effect over it, preventing the sprite from being properly seen
 
 ## Special Thanks
 
