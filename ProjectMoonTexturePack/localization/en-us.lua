@@ -195,7 +195,7 @@ return {
                 name="Streetlight Office",
                 text={
                     "Cards drawn face down",
-                    "after each hand played",
+                    "after each hand",
                 },
             },
             bl_flint={
@@ -223,7 +223,7 @@ return {
                 name="Molar Office",
                 text={
                     "Discards 2 random",
-                    "cards per hand played",
+                    "cards per hand",
                 },
             },
             bl_house={
@@ -990,7 +990,7 @@ return {
             j_green_joker={
                 name="Rose",
                 text={
-                    "{C:mult}+#1#{} Mult per hand played",
+                    "{C:mult}+#1#{} Mult per hand",
                     "{C:mult}-#2#{} Mult per discard",
                     "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)",
                 },
@@ -1077,7 +1077,7 @@ return {
                 text={
                     "{C:chips}+#1#{} Chips",
                     "{C:chips}-#2#{} Chips for",
-                    "every hand played",
+                    "every hand",
                 },
             },
             j_idol={
@@ -1267,7 +1267,7 @@ return {
                 name="Lesti",
                 text={
                     "This Key Page gains {X:mult,C:white} X#1# {} Mult",
-                    "per {C:attention}consecutive{} hand played",
+                    "per {C:attention}consecutive{} hand",
                     "without playing your",
                     "most played {C:attention}poker hand",
                     "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
