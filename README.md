@@ -18,7 +18,7 @@ A Balatro Mod that adds custom made textures with Project Moon related character
 
 1. Download and install, [Steammodded 1.0.0 beta (0614a)](https://github.com/Steamodded/smods), [Lovely v0.7.1](https://github.com/ethangreen-dev/lovely-injector) and [Malverk 1.1.3](https://github.com/Eremel/Malverk)
 
-2. Download the desired ProjectMoonTexturePack.zip file from Releases on the right menu (default has black backgrounds for playing cards, WhiteVersion has white backgrounds), extract it and then place it in your Mods folder. You'll know it's correct if you open the ProjectMoonTexturePack folder and there's an assets, localization and .lua file inside
+2. Download the desired ProjectMoonTexturePack.zip file from [Releases](https://github.com/CountKiro/PMBalatroMod/releases/tag/v.1.1) on the right menu (default has black backgrounds for playing cards, WhiteVersion has white backgrounds), extract it and then place it in your Mods folder. You'll know it's correct if you open the ProjectMoonTexturePack folder and there's an assets, localization and .lua file inside
 
 3. [Optional] Repeat step 2 for the ProjectMoonMusicAddon.zip if you desire to include the music and ProjectMoonContentMod.zip if you desire the new content
    
