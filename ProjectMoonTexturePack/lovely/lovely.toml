@@ -2012,6 +2012,33 @@ payload = '''if self.debuff then
             end'''
 match_indent = true
 
+
+######################
+#Remove negative effect from the Antimatter (Empty Coffin) voucher
+
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/card_draw.lua"]'''
+pattern = '''if (self.edition and self.edition.negative and not self.delay_edition) or (self.ability.name == 'Antimatter' and (self.config.center.discovered or self.bypass_discovery_center)) then
+            self.children.center:draw_shader('negative', nil, self.ARGS.send_to_shader)'''
+position = "at"
+payload = '''if (self.edition and self.edition.negative and not self.delay_edition) or (self.ability.name == 'Antimatter' and (self.config.center.discovered or self.bypass_discovery_center)) then
+            self.children.center:draw_shader('holo', nil, self.ARGS.send_to_shader)'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/card_draw.lua"]'''
+pattern = '''if (self.edition and self.edition.negative) or (self.ability.name == 'Antimatter' and (self.config.center.discovered or self.bypass_discovery_center)) then
+            self.children.center:draw_shader('negative_shine', nil, self.ARGS.send_to_shader)'''
+position = "at"
+payload = '''if (self.edition and self.edition.negative) or (self.ability.name == 'Antimatter' and (self.config.center.discovered or self.bypass_discovery_center)) then
+            self.children.center:draw_shader('negative_shine', nil, self.ARGS.send_to_shader)
+			elseif (self.edition and self.edition.negative) or (self.ability.name == 'Blank' and (self.config.center.discovered or self.bypass_discovery_center)) then
+            self.children.center:draw_shader('negative_shine', nil, self.ARGS.send_to_shader)'''
+match_indent = true
+
+
 ######################
 #Example
 
