@@ -102,16 +102,15 @@ SMODS.Joker {
 	pos = { x = 5, y = 15 },
 	no_collection = true,
 	cost = 8,
-	eternal_compat = false,
+	eternal_compat = true,
 	loc_vars = function (self, info_queue, card)
-    local random_mult = tostring(math.floor(self.config.extra.current_timer))
-    local local_mult = tostring(math.floor(self.config.extra.total_timer))
-    main_end = {
-        {n=G.UIT.T, config={text = 'Elapsed time: ',colour = G.C.MULT, scale = 0.32}},
-        {n=G.UIT.O, config={object = DynaText({string = random_mult, colours = {G.C.RED}, pop_in_rate = 9999999, silent = true, random_element = true, pop_delay = 0.5, scale = 0.32, min_cycle_time = 0})}},
-		{n=G.UIT.O, config={object = DynaText({string = " seconds", colours = {G.C.RED}, pop_in_rate = 9999999, silent = true, random_element = true, pop_delay = 0.5, scale = 0.32, min_cycle_time = 0})}},card.area == G.jokers and {n=G.UIT.T, config={text = '...?', colour = G.C.IjiGray, scale = 0.32}} or nil,
-    }
-    return {main_end = main_end, vars = { self.config.extra.current_timer, self.config.extra.total_timer }}
+    local random_mult = tostring(math.floor(self.config.extra.current_timer)) or 1
+		main_end = {
+			{n=G.UIT.T, config={text = 'Elapsed time: ',colour = G.C.MULT, scale = 0.32}},
+			{n=G.UIT.O, config={object = DynaText({string = random_mult, colours = {G.C.RED}, pop_in_rate = 9999999, silent = true, pop_delay = 0.2011, scale = 0.32, min_cycle_time = 0})}},
+			{n=G.UIT.T, config={text = ' seconds',colour = G.C.MULT, scale = 0.32}} or nil,
+		}
+    	return {main_end = main_end, vars = { self.config.extra.current_timer, self.config.extra.total_timer }}
 	end,
 	update = function (self, card, dt)
 			if G.GAME.blind and G.GAME.blind.in_blind then
@@ -205,7 +204,7 @@ SMODS.Joker {
 	key = 'shylook',
 	name = "Today's Shy Look",
 	loc_txt = {
-		name = "Today's Shy Look",
+		name = "Todays Shy Look",
 		text = {
 			"Changes expressions regularly.",
 			"Gives between {X:mult,C:white}X0{} and {X:mult,C:white}X2{} Mult depending on",
@@ -218,13 +217,9 @@ SMODS.Joker {
 	pos = { x = 2, y = 15 },
 	no_collection = true,
 	cost = 8,
-	pools = 
-	{
- 		["Heretics"] = true,
- 	},
-	eternal_compat = false,
+	eternal_compat = true,
 	loc_vars = function (self, info_queue, card)
-    return {main_end = main_end, vars = { self.config.extra.randomValue, self.config.extra.timer }}
+    	return {vars = { self.config.extra.randomValue, self.config.extra.timer }}
 	end,
 	update = function (self, card, dt)
 			if G.GAME.blind and G.GAME.blind.in_blind then
@@ -321,12 +316,13 @@ SMODS.Back {
         return { vars = { self.config.hands } } --Chesed - 1 more hands
     end,
 	calculate = function(self, back, context)
-    
+
         if context.context == 'eval' and G.GAME.last_blind and G.GAME.last_blind.boss then
 
 			--Gebura - 1 more discard
             if G.GAME.round_resets.ante == 2 then
 				G.GAME.round_resets.discards = G.GAME.round_resets.discards + 1
+				G.GAME.modifiers.scaling = (G.GAME.modifiers.scaling or 1) + 2
 			end
 
 			--Hokma - increased spectral chance
@@ -378,9 +374,6 @@ SMODS.Back {
 				G.jokers.config.card_limit = G.jokers.config.card_limit + 1
 			end
         end
-    end,
-	modifiers = function()
-        G.GAME.modifiers.scaling = (G.GAME.modifiers.scaling or 1) + 2
     end,
 }
 
@@ -892,7 +885,12 @@ SMODS.Joker {
 			"Halves all {C:attention}listed",
             "{C:green,E:1,S:1.1}probabilities",
             "{C:inactive}(ex: {C:green}1 in 3{C:inactive} -> {C:green}1 in 6{C:inactive})",
-		}
+		},
+		unlock = {
+    		'Score over 100000 chips',
+    		'in one hand',
+		},
+		
 	},
     unlocked = false,
     blueprint_compat = false,
