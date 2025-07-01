@@ -18,7 +18,7 @@ A Balatro Mod that adds custom made textures with Project Moon related character
 
 1. Download and install, [Steammodded 1.0.0 beta (0614a)](https://github.com/Steamodded/smods), [Lovely v0.7.1](https://github.com/ethangreen-dev/lovely-injector) and [Malverk 1.1.3](https://github.com/Eremel/Malverk)
 
-2. Download the desired ProjectMoonTexturePack.zip file from [Releases](https://github.com/CountKiro/PMBalatroMod/releases/tag/v.1.1) on the right menu (default has black backgrounds for playing cards, WhiteVersion has white backgrounds), extract it and then place it in your Mods folder. You'll know it's correct if you open the ProjectMoonTexturePack folder and there's an assets, localization and .lua file inside
+2. Download the desired ProjectMoonTexturePack.zip file from [Releases](https://github.com/CountKiro/PMBalatroMod/releases/tag/v.1.1) on the right menu, extract it and then place it in your Mods folder. You'll know it's correct if you open the ProjectMoonTexturePack folder and there's an assets, localization and .lua file inside
 
 3. [Optional] Repeat step 2 for the ProjectMoonMusicAddon.zip if you desire to include the music and ProjectMoonContentMod.zip if you desire the new content
    
@@ -26,7 +26,11 @@ A Balatro Mod that adds custom made textures with Project Moon related character
 
 5. Go to Options -> Texture click on the custom Eternal sprite and hit Enable. It'll move up top, meaning the custom Spectral textures are enabled
 
-6. Enjoy the mod!
+6. Go to Options -> Customize Deck and for each suit, scroll to the end of the options and enable "PM (Black)"
+
+7. [OPTIONAL] Go to Options -> Texture and enable "White Card". Then go to Options -> Customize Deck and for each suit, scroll to the end of the options and enable "PM (White)"
+
+8. Enjoy the mod!
 
 
 ## What is in the latest update?
@@ -72,6 +76,7 @@ Some of them complement each other, such Isadora and Julia working well together
 ## Known issues
 
 - Certain UI elements are still using the old colour schemes
+- Oswald (base Joker) doesn't have a badge due to Malverk incompatibility
 
 ## Special Thanks
 
