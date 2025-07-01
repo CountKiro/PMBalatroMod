@@ -26,8 +26,8 @@ for _, hook in ipairs(hook_list) do
     end
 end
 
-SMODS.Atlas{key = "cards_1", path = "8BitDeck.png", px = 71, py = 95, prefix_config = { key = false } }
-SMODS.Atlas{key = "cards_2", path = "8BitDeck.png", px = 71, py = 95, prefix_config = { key = false } }
+--SMODS.Atlas{key = "cards_1", path = "8BitDeck.png", px = 71, py = 95, prefix_config = { key = false } }
+--SMODS.Atlas{key = "cards_2", path = "8BitDeck.png", px = 71, py = 95, prefix_config = { key = false } }
 SMODS.Atlas{key = "blind_chips", path = "BlindChips.png", px = 34, py = 34, prefix_config = { key = false }, atlas_table = 'ANIMATION_ATLAS', frames = 21}
 SMODS.Atlas{key = "Booster", path = "boosters.png", px = 71, py = 95, prefix_config = { key = false } }
 SMODS.Atlas{key = "centers", path = "Enhancers.png", px = 71, py = 95, prefix_config = { key = false } }
@@ -42,18 +42,324 @@ SMODS.Atlas{key = "tags", path = "tags.png", px = 34, py = 34, prefix_config = {
 SMODS.Atlas{key = "stickers", path = "stickers.png", px = 71, py = 95, prefix_config = { key = false } }
 SMODS.Atlas{key = "shop_sign", path = "ShopSignAnimation.png", px = 113, py = 57, prefix_config = { key = false }, atlas_table = 'ANIMATION_ATLAS', frames = 4 }
 
+local atlas_hc = SMODS.Atlas{key = "PMSkinBlack", path = "8BitDeck.png", px = 71, py = 95,}
+local icon_hc = SMODS.Atlas{key = "PMSkinIconBlack", path = "8BitDeck.png", px = 18, py = 18,}
+
+local atlas_hc_white = SMODS.Atlas{key = "PMSkinWhite", path = "8BitDeck_White.png", px = 71, py = 95,}
+local icon_hc_white = SMODS.Atlas{key = "PMSkinIconWhite", path = "8BitDeck_White.png", px = 18, py = 18,}
+
+--Black deck skins
+
+SMODS.DeckSkin{
+    key = "pmCardsDarkHearts",
+    suit = "Hearts",
+    loc_txt =  'PM (Black)',
+    palettes = {
+		{
+			key = 'lc',
+			ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', "King", "Ace",},
+			display_ranks = {"King", "Queen", "Jack"},
+			atlas = atlas_hc.key,
+			pos_style = 'deck',
+      suit_icon = {
+				atlas = atlas_hc.key,
+			},
+		},
+		{
+			key = 'hc',
+			ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', "King", "Ace",},
+			display_ranks = {"King", "Queen", "Jack"},
+			atlas = atlas_hc.key,
+			pos_style = 'deck',
+			colour = HEX("9734f0"),
+      suit_icon = {
+				atlas = atlas_hc.key,
+			},
+		},
+	},
+    
+}
+
+SMODS.DeckSkin{
+    key = "pmCardsDarkSpades",
+    suit = "Spades",
+    loc_txt =  'PM (Black)',
+    palettes = {
+		{
+			key = 'lc',
+			ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', "King", "Ace",},
+			display_ranks = {"King", "Queen", "Jack"},
+			atlas = atlas_hc.key,
+			pos_style = 'deck',
+      suit_icon = {
+				atlas = atlas_hc.key,
+			},
+		},
+		{
+			key = 'hc',
+			ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', "King", "Ace",},
+			display_ranks = {"King", "Queen", "Jack"},
+			atlas = atlas_hc.key,
+			pos_style = 'deck',
+			colour = HEX("9734f0"),
+      suit_icon = {
+				atlas = atlas_hc.key,
+			},
+		},
+	},
+    
+}
+
+SMODS.DeckSkin{
+    key = "pmCardsDarkClubs",
+    suit = "Clubs",
+    loc_txt =  'PM (Black)',
+    palettes = {
+		{
+			key = 'lc',
+			ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', "King", "Ace",},
+			display_ranks = {"King", "Queen", "Jack"},
+			atlas = atlas_hc.key,
+			pos_style = 'deck',
+      suit_icon = {
+				atlas = atlas_hc.key,
+			},
+		},
+		{
+			key = 'hc',
+			ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', "King", "Ace",},
+			display_ranks = {"King", "Queen", "Jack"},
+			atlas = atlas_hc.key,
+			pos_style = 'deck',
+			colour = HEX("9734f0"),
+      suit_icon = {
+				atlas = atlas_hc.key,
+			},
+		},
+	},
+    
+}
+
+SMODS.DeckSkin{
+    key = "pmCardsDarkDiamonds",
+    suit = "Diamonds",
+    loc_txt =  'PM (Black)',
+    palettes = {
+		{
+			key = 'lc',
+			ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', "King", "Ace",},
+			display_ranks = {"King", "Queen", "Jack"},
+			atlas = atlas_hc.key,
+			pos_style = 'deck',
+      suit_icon = {
+				atlas = atlas_hc.key,
+			},
+		},
+		{
+			key = 'hc',
+			ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', "King", "Ace",},
+			display_ranks = {"King", "Queen", "Jack"},
+			atlas = atlas_hc.key,
+			pos_style = 'deck',
+			colour = HEX("9734f0"),
+      suit_icon = {
+				atlas = atlas_hc.key,
+			},
+		},
+	},
+    
+}
+
+-- White deck skins
+
+
+
+SMODS.DeckSkin{
+    key = "pmCardsWhiteHearts",
+    suit = "Hearts",
+    loc_txt =  'PM (White)',
+    palettes = {
+		{
+			key = 'lc',
+			ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', "King", "Ace",},
+			display_ranks = {"King", "Queen", "Jack"},
+			atlas = atlas_hc_white.key,
+			pos_style = 'deck',
+      suit_icon = {
+				atlas = atlas_hc_white.key,
+			},
+		},
+		{
+			key = 'hc',
+			ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', "King", "Ace",},
+			display_ranks = {"King", "Queen", "Jack"},
+			atlas = atlas_hc_white.key,
+			pos_style = 'deck',
+			colour = HEX("9734f0"),
+      suit_icon = {
+				atlas = atlas_hc_white.key,
+			},
+		},
+	},
+    
+}
+
+SMODS.DeckSkin{
+    key = "pmCardsWhiteSpades",
+    suit = "Spades",
+    loc_txt =  'PM (White)',
+    palettes = {
+		{
+			key = 'lc',
+			ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', "King", "Ace",},
+			display_ranks = {"King", "Queen", "Jack"},
+			atlas = atlas_hc_white.key,
+			pos_style = 'deck',
+      suit_icon = {
+				atlas = atlas_hc_white.key,
+			},
+		},
+		{
+			key = 'hc',
+			ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', "King", "Ace",},
+			display_ranks = {"King", "Queen", "Jack"},
+			atlas = atlas_hc_white.key,
+			pos_style = 'deck',
+			colour = HEX("9734f0"),
+      suit_icon = {
+				atlas = atlas_hc_white.key,
+			},
+		},
+	},
+    
+}
+
+SMODS.DeckSkin{
+    key = "pmCardsWhiteClubs",
+    suit = "Clubs",
+    loc_txt =  'PM (White)',
+    palettes = {
+		{
+			key = 'lc',
+			ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', "King", "Ace",},
+			display_ranks = {"King", "Queen", "Jack"},
+			atlas = atlas_hc_white.key,
+			pos_style = 'deck',
+      suit_icon = {
+				atlas = atlas_hc_white.key,
+			},
+		},
+		{
+			key = 'hc',
+			ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', "King", "Ace",},
+			display_ranks = {"King", "Queen", "Jack"},
+			atlas = atlas_hc_white.key,
+			pos_style = 'deck',
+			colour = HEX("9734f0"),
+      suit_icon = {
+				atlas = atlas_hc_white.key,
+			},
+		},
+	},
+    
+}
+
+SMODS.DeckSkin{
+    key = "pmCardsWhiteDiamonds",
+    suit = "Diamonds",
+    loc_txt =  'PM (White)',
+    palettes = {
+		{
+			key = 'lc',
+			ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', "King", "Ace",},
+			display_ranks = {"King", "Queen", "Jack"},
+			atlas = atlas_hc_white.key,
+			pos_style = 'deck',
+      suit_icon = {
+				atlas = atlas_hc_white.key,
+			},
+		},
+		{
+			key = 'hc',
+			ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', "King", "Ace",},
+			display_ranks = {"King", "Queen", "Jack"},
+			atlas = atlas_hc_white.key,
+			pos_style = 'deck',
+			colour = HEX("9734f0"),
+      suit_icon = {
+				atlas = atlas_hc_white.key,
+			},
+		},
+	},
+    
+}
+
+AltTexture{
+    key = "spectral",
+    set = "Spectral",
+    path = "Tarots.png",
+    soul = "Enhancers.png",
+    loc_txt = {
+        name = 'Spectral fixes'
+    },
+    original_sheet = true
+}
+
+AltTexture({
+    key = 'whiteBaseCard',
+    keys = {'c_base'},
+    set = 'Enhanced',
+    path = 'WhiteEnhancers.png',
+    loc_txt = {
+        name = 'White background enhancements'
+    },
+     original_sheet = true
+})
+
+AltTexture({
+    key = 'whiteBaseCardEnhanced',
+    set = 'Enhanced',
+    path = 'WhiteEnhancers.png',
+    loc_txt = {
+        name = 'White card base'
+    }
+})
+
+
+TexturePack{
+    key = "pmSpectralTexturemod",
+    loc_txt = {
+        name = 'Spectral fixes',
+        text = {'Fixes spectral cards','Required for Soul Card (Golden Bough)'},
+    },
+    textures = {
+        "pmmod_spectral"
+    }
+}
+
+TexturePack{
+    key = "pmWhiteCards",
+    loc_txt = {
+        name = 'White backgrounds',
+        text = {'White background for cards.','Make sure to select the appropriate Deck Skin','via Options -> Customize Deck','(REQUIRES RESTART)'},
+    },
+    textures = {
+        "pmmod_whiteBaseCard",
+        "pmmod_whiteBaseCardEnhanced"
+    }
+}
 
 ----------------------
 -- JOKER OVERWRITES --
 ----------------------
-
+--[[
 SMODS.Joker:take_ownership('j_joker', 
   {
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The 8 o’Clock Circus', HEX('851734'), HEX('e8e6e3'), 1.2 )
+                 badges[#badges+1] = create_badge("The 8 o’Clock Circus", HEX('851734'), HEX('e8e6e3'), 1.2 )
          end
   }, true)
-
+--]]
 SMODS.Joker:take_ownership('j_greedy_joker', 
   {
   set_badges = function(self, card, badges)
@@ -761,7 +1067,7 @@ SMODS.Joker:take_ownership('j_walkie_talkie',
 SMODS.Joker:take_ownership('j_selzer', 
   {
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Dawn Office', HEX('4a443d'), HEX('e0d482'), 1.2 )
+                 badges[#badges+1] = create_badge('Lobotomy Corporation', HEX('b82c2c'), HEX('f2e396'), 1.2 )
          end
   }, true)
 
@@ -1103,17 +1409,3 @@ SMODS.Joker:take_ownership('j_perkeo',
 
 SMODS.Shader{key = 'debuffGold', path = 'debuffGold.fs'}
 
-AltTexture{
-    key = 'spectral',
-    set = 'Spectral',
-    path = 'Tarots.png',
-    soul = 'Enhancers.png',
-    original_sheet = true
-}
-
-TexturePack{
-    key = 'pmtexturemod',
-    textures = {
-        'pmmod_spectral'
-    }
-}
