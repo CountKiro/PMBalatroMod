@@ -19,6 +19,9 @@ SMODS.Atlas {key = "ModdedProjectMoon",	path = "newProjectMoonJokers.png",	px = 
 SMODS.Atlas {key = "ModdedProjectMoonSpectrals",	path = "newProjectMoonSpectrals.png",	px = 71, py = 95}
 SMODS.Atlas {key = "ModdedProjectMoonEditions",	path = "newProjectMoonEditions.png",	px = 71, py = 95}
 
+to_big = to_big or function(x)
+    return x
+end
 
 SMODS.ObjectType({
 	key = "Heretics",
@@ -912,7 +915,7 @@ SMODS.Joker {
         return { vars = { number_format(10000) } }
     end,
     check_for_unlock = function(self, args)
-        return args.type == 'chip_score' and args.chips >= 100000
+        return args.type == 'chip_score' and to_big(args.chips) >= to_big(100000)
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("???????", G.C.RED, HEX('40150e'), 1.2 )
