@@ -1,0 +1,17 @@
+{
+    "id": "ProjectMoonContentMod",
+    "name": "Project Moon Content Mod",
+    "display_name": "Project Moon",
+    "author": ["Kiro"],
+    "description": "Adds in new Jokers, Decks and Consumables based on Project Moon media",
+    "prefix": "pmcmod",
+    "main_file": "ProjectMoonContentMod.lua",
+    "priority": 0,
+    "badge_colour": "750905",
+    "badge_text_colour": "e6dfe3",
+    "version": "0.2.0",
+    "dependencies": [
+        "Steamodded (>=1.0.0~BETA-0614a)",
+        "Lovely (>=0.7.1)"
+    ]
+}
