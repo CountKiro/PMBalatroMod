@@ -1,0 +1,109 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+############
+## OTHERS ##
+############
+
+######################
+#Fixing Square Joker
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''elseif self.config.center.name == "Square Joker" then
+        H = W 
+        self.T.h = H*scale
+        self.T.w = W*scale'''
+position = "at"
+payload = '''--elseif self.config.center.name == "Square Joker" then
+		--H = W
+        --self.T.h = H*0.5
+        --self.T.w = W*0.5'''
+match_indent = true
+
+##
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if center.name == "Square Joker" and (center.discovered or self.bypass_discovery_center) then 
+        H = W
+        self.T.h = H
+    end'''
+position = "at"
+payload = '''--if center.name == "Square Joker" and (center.discovered or self.bypass_discovery_center) then 
+        --H = W
+        --self.T.h = H
+    --end'''
+match_indent = true
+
+##
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if _center.name == 'Square Joker' and (_center.discovered or self.bypass_discovery_center) then 
+                self.children.center.scale.y = self.children.center.scale.x
+            end'''
+position = "at"
+payload = '''--if _center.name == 'Square Joker' and (_center.discovered or self.bypass_discovery_center) then 
+                self.children.center.scale.y = self.children.center.scale.x
+            --end'''
+match_indent = true
+
+######################
+#Fixing Photgraph
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''elseif self.config.center.name == "Photograph" then 
+        self.T.h = H*scale/1.2*scale
+        self.T.w = W*scale'''
+position = "at"
+payload = '''--elseif self.config.center.name == "Photograph" then 
+        --self.T.h = H*scale
+        --self.T.w = W*scale'''
+match_indent = true
+
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if center.name == "Photograph" and (center.discovered or self.bypass_discovery_center) then 
+        H = H/1.2
+        self.T.h = H
+    end'''
+position = "at"
+payload = '''--if center.name == "Photograph" and (center.discovered or self.bypass_discovery_center) then 
+        --H = H/1.2
+        --self.T.h = H
+    --end'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if _center.name == 'Photograph' and (_center.discovered or self.bypass_discovery_center) then 
+                self.children.center.scale.y = self.children.center.scale.y/1.2
+            end'''
+position = "at"
+payload = '''--if _center.name == 'Photograph' and (_center.discovered or self.bypass_discovery_center) then 
+                --self.children.center.scale.y = self.children.center.scale.y
+            --end'''
+match_indent = true
+
+
+#####################
+#Placeholder
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''impossiblepatterntohappenkiro'''
+position = "at"
+payload = '''impossiblepatterntohappenkiro'''
+match_indent = true

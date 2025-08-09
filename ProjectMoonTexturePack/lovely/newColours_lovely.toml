@@ -1,0 +1,1116 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+
+#################
+## NEW COLOURS ##
+#################
+
+######################
+#Patching in new colours into globals.lua
+
+[[patches]]
+[patches.pattern]
+target = "globals.lua"
+pattern = '''RENTAL = HEX('b18f43'),'''
+position = "at"
+payload = '''RENTAL = HEX('b18f43'),
+        MAIN_SWIRL = HEX('292726'),
+		SEC_SWIRL = HEX('333333'),
+		RUST = HEX("804a2f"),
+		DARK_RUST = HEX("573f31"),
+		DARK_GRAY = HEX("292726"),
+		MEDIUM_GRAY = HEX("404040"),
+		TURQUOISE = HEX("2c6e48"),
+		LIGHT_TURQUOISE = HEX("40c277"),
+		DARKEST_RED = HEX("52150b"),
+		DARK_RED = HEX("96200c"),
+		WHITE_LIGHT = HEX("bfb8aa"),
+		BRIGHT_LIGHT = HEX("edd9b2"),
+		LIGHT_GRAY = HEX("878178"),
+		GOLDEN_ACCENT= HEX("bd923e"),
+		PURPLE_ACCENT = HEX("401759"),'''
+match_indent = true
+
+######################
+#Rarity joker colours
+
+[[patches]]
+[patches.pattern]
+target = "globals.lua"
+pattern = '''RARITY = {
+            HEX('009dff'),--HEX("708b91"),
+            HEX("4BC292"),
+            HEX('fe5f55'),
+            HEX("b26cbb")'''
+position = "at"
+payload = '''RARITY = {
+            HEX('4c9c2d'),--HEX("708b91"),
+            HEX("3573c4"),
+            HEX('6d2496'),
+            HEX("e8cd1c")'''
+match_indent = true
+
+######################
+#Blind colours
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''self.P_BLINDS = {
+        bl_small =           {name = 'Small Blind',  defeated = false, order = 1, dollars = 3, mult = 1,  vars = {}, debuff_text = '', debuff = {}, pos = {x=0, y=0}},
+        bl_big =             {name = 'Big Blind',    defeated = false, order = 2, dollars = 4, mult = 1.5,vars = {}, debuff_text = '', debuff = {}, pos = {x=0, y=1}},
+        bl_ox =              {name = 'The Ox',       defeated = false, order = 4, dollars = 5, mult = 2,  vars = {localize('ph_most_played')}, debuff = {}, pos = {x=0, y=2}, boss = {min = 6, max = 10}, boss_colour = HEX('b95b08')},
+        bl_hook =            {name = 'The Hook',     defeated = false, order = 3, dollars = 5, mult = 2,  vars = {}, debuff = {}, pos = {x=0, y=7}, boss = {min = 1, max = 10}, boss_colour = HEX('a84024')},
+        bl_mouth =           {name = 'The Mouth',    defeated = false, order = 17, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=18}, boss = {min = 2, max = 10}, boss_colour = HEX('ae718e')},
+        bl_fish =            {name = 'The Fish',     defeated = false, order = 10, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=5}, boss = {min = 2, max = 10}, boss_colour = HEX('3e85bd')},
+        bl_club =            {name = 'The Club',     defeated = false, order = 9, dollars = 5, mult = 2,  vars = {}, debuff = {suit = 'Clubs'}, pos = {x=0, y=4}, boss = {min = 1, max = 10}, boss_colour = HEX('b9cb92')},
+        bl_manacle =         {name = 'The Manacle',  defeated = false, order = 15, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=8}, boss = {min = 1, max = 10}, boss_colour = HEX('575757')},
+        bl_tooth =           {name = 'The Tooth',    defeated = false, order = 23, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=22}, boss = {min = 3, max = 10}, boss_colour = HEX('b52d2d')},
+        bl_wall =            {name = 'The Wall',     defeated = false, order = 6, dollars = 5, mult = 4,  vars = {}, debuff = {}, pos = {x=0, y=9}, boss = {min = 2, max = 10}, boss_colour = HEX('8a59a5')},
+        bl_house =           {name = 'The House',    defeated = false, order = 5, dollars = 5, mult = 2,  vars = {}, debuff = {}, pos = {x=0, y=3}, boss ={min = 2, max = 10}, boss_colour = HEX('5186a8')},
+        bl_mark =            {name = 'The Mark',     defeated = false, order = 25, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=23}, boss = {min = 2, max = 10}, boss_colour = HEX('6a3847')},
+
+        bl_final_bell =      {name = 'Cerulean Bell',defeated = false, order = 30, dollars = 8, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=26}, boss = {showdown = true, min = 10, max = 10}, boss_colour = HEX('009cfd')},
+        bl_wheel =           {name = 'The Wheel',    defeated = false, order = 7, dollars = 5, mult = 2,  vars = {}, debuff = {}, pos = {x=0, y=10}, boss = {min = 2, max = 10}, boss_colour = HEX('50bf7c')},
+        bl_arm =             {name = 'The Arm',      defeated = false, order = 8, dollars = 5, mult = 2,  vars = {}, debuff = {}, pos = {x=0, y=11}, boss = {min = 2, max = 10}, boss_colour = HEX('6865f3')},
+        bl_psychic =         {name = 'The Psychic',  defeated = false, order = 11, dollars = 5, mult = 2, vars = {}, debuff = {h_size_ge = 5}, pos = {x=0, y=12}, boss = {min = 1, max = 10}, boss_colour = HEX('efc03c')},
+        bl_goad =            {name = 'The Goad',     defeated = false, order = 12, dollars = 5, mult = 2, vars = {}, debuff = {suit = 'Spades'}, pos = {x=0, y=13}, boss = {min = 1, max = 10}, boss_colour = HEX('b95c96')},
+        bl_water =           {name = 'The Water',    defeated = false, order = 13, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=14}, boss = {min = 2, max = 10}, boss_colour = HEX('c6e0eb')},
+        bl_eye =             {name = 'The Eye',      defeated = false, order = 16, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=17}, boss = {min = 3, max = 10}, boss_colour = HEX('4b71e4')},
+        bl_plant =           {name = 'The Plant',    defeated = false, order = 18, dollars = 5, mult = 2, vars = {}, debuff = {is_face = 'face'}, pos = {x=0, y=19}, boss = {min = 4, max = 10}, boss_colour = HEX('709284')},
+        bl_needle =          {name = 'The Needle',   defeated = false, order = 21, dollars = 5, mult = 1, vars = {}, debuff = {}, pos = {x=0, y=20}, boss = {min = 2, max = 10}, boss_colour = HEX('5c6e31')},
+        bl_head =            {name = 'The Head',     defeated = false, order = 22, dollars = 5, mult = 2, vars = {}, debuff = {suit = 'Hearts'}, pos = {x=0, y=21}, boss = {min = 1, max = 10}, boss_colour = HEX('ac9db4')},
+        bl_final_leaf =      {name = 'Verdant Leaf', defeated = false, order = 27, dollars = 8, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=28}, boss = {showdown = true, min = 10, max = 10}, boss_colour = HEX('56a786')},
+        bl_final_vessel =    {name = 'Violet Vessel',defeated = false, order = 28, dollars = 8, mult = 6, vars = {}, debuff = {}, pos = {x=0, y=29}, boss = {showdown = true, min = 10, max = 10}, boss_colour = HEX('8a71e1')},
+        bl_window =          {name = 'The Window',   defeated = false, order = 14, dollars = 5, mult = 2, vars = {}, debuff = {suit = 'Diamonds'}, pos = {x=0, y=6}, boss = {min = 1, max = 10}, boss_colour = HEX('a9a295')},
+        bl_serpent =         {name = 'The Serpent',  defeated = false, order = 19, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=15}, boss = {min = 5, max = 10}, boss_colour = HEX('439a4f')},
+        bl_pillar =          {name = 'The Pillar',   defeated = false, order = 20, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=16}, boss = {min = 1, max = 10}, boss_colour = HEX('7e6752')},
+        bl_flint =           {name = 'The Flint',    defeated = false, order = 24, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=24}, boss = {min = 2, max = 10}, boss_colour = HEX('e56a2f')},
+        bl_final_acorn =     {name = 'Amber Acorn',  defeated = false, order = 26, dollars = 8, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=27}, boss = {showdown = true, min = 10, max = 10}, boss_colour = HEX('fda200')},
+        bl_final_heart =     {name = 'Crimson Heart',defeated = false, order = 29, dollars = 8, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=25}, boss = {showdown = true, min = 10, max = 10}, boss_colour = HEX('ac3232')},
+        
+    }'''
+position = "at"
+payload = '''self.P_BLINDS = {
+        bl_small =           {name = 'Small Blind',  defeated = false, order = 1, dollars = 3, mult = 1,  vars = {}, debuff_text = '', debuff = {}, pos = {x=0, y=0}},
+        bl_big =             {name = 'Big Blind',    defeated = false, order = 2, dollars = 4, mult = 1.5,vars = {}, debuff_text = '', debuff = {}, pos = {x=0, y=1}},
+        bl_ox =              {name = 'The Ox',       defeated = false, order = 4, dollars = 5, mult = 2,  vars = {localize('ph_most_played')}, debuff = {}, pos = {x=0, y=2}, boss = {min = 6, max = 10}, boss_colour = HEX('ba1e13')},
+        bl_hook =            {name = 'The Hook',     defeated = false, order = 3, dollars = 5, mult = 2,  vars = {}, debuff = {}, pos = {x=0, y=7}, boss = {min = 1, max = 10}, boss_colour = HEX('9e9073')},
+        bl_mouth =           {name = 'The Mouth',    defeated = false, order = 17, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=18}, boss = {min = 2, max = 10}, boss_colour = HEX('6e3119')},
+        bl_fish =            {name = 'The Fish',     defeated = false, order = 10, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=5}, boss = {min = 2, max = 10}, boss_colour = HEX('2f4954')},
+        bl_club =            {name = 'The Club',     defeated = false, order = 9, dollars = 5, mult = 2,  vars = {}, debuff = {suit = 'Clubs'}, pos = {x=0, y=4}, boss = {min = 1, max = 10}, boss_colour = HEX('63603f')},
+        bl_manacle =         {name = 'The Manacle',  defeated = false, order = 15, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=8}, boss = {min = 1, max = 10}, boss_colour = HEX('4f2012')},
+        bl_tooth =           {name = 'The Tooth',    defeated = false, order = 23, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=22}, boss = {min = 3, max = 10}, boss_colour = HEX('b58c4a')},
+        bl_wall =            {name = 'The Wall',     defeated = false, order = 6, dollars = 5, mult = 4,  vars = {}, debuff = {}, pos = {x=0, y=9}, boss = {min = 2, max = 10}, boss_colour = HEX('1c1b1c')},
+        bl_house =           {name = 'The House',    defeated = false, order = 5, dollars = 5, mult = 2,  vars = {}, debuff = {}, pos = {x=0, y=3}, boss ={min = 2, max = 10}, boss_colour = HEX('9649a6')},
+        bl_mark =            {name = 'The Mark',     defeated = false, order = 25, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=23}, boss = {min = 2, max = 10}, boss_colour = HEX('c9d1d1')},
+
+        bl_final_bell =      {name = 'Cerulean Bell',defeated = false, order = 30, dollars = 8, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=26}, boss = {showdown = true, min = 10, max = 10}, boss_colour = HEX('ad7f21')},
+        bl_wheel =           {name = 'The Wheel',    defeated = false, order = 7, dollars = 5, mult = 2,  vars = {}, debuff = {}, pos = {x=0, y=10}, boss = {min = 2, max = 10}, boss_colour = HEX('7d1e39')},
+        bl_arm =             {name = 'The Arm',      defeated = false, order = 8, dollars = 5, mult = 2,  vars = {}, debuff = {}, pos = {x=0, y=11}, boss = {min = 2, max = 10}, boss_colour = HEX('24264a')},
+        bl_psychic =         {name = 'The Psychic',  defeated = false, order = 11, dollars = 5, mult = 2, vars = {}, debuff = {h_size_ge = 5}, pos = {x=0, y=12}, boss = {min = 1, max = 10}, boss_colour = HEX('e3e3e3')},
+        bl_goad =            {name = 'The Goad',     defeated = false, order = 12, dollars = 5, mult = 2, vars = {}, debuff = {suit = 'Spades'}, pos = {x=0, y=13}, boss = {min = 1, max = 10}, boss_colour = HEX('27282b')},
+        bl_water =           {name = 'The Water',    defeated = false, order = 13, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=14}, boss = {min = 2, max = 10}, boss_colour = HEX('8a0f1b')},
+        bl_eye =             {name = 'The Eye',      defeated = false, order = 16, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=17}, boss = {min = 3, max = 10}, boss_colour = HEX('3f403f')},
+        bl_plant =           {name = 'The Plant',    defeated = false, order = 18, dollars = 5, mult = 2, vars = {}, debuff = {is_face = 'face'}, pos = {x=0, y=19}, boss = {min = 4, max = 10}, boss_colour = HEX('361b15')},
+        bl_needle =          {name = 'The Needle',   defeated = false, order = 21, dollars = 5, mult = 1, vars = {}, debuff = {}, pos = {x=0, y=20}, boss = {min = 2, max = 10}, boss_colour = HEX('075ab3')},
+        bl_head =            {name = 'The Head',     defeated = false, order = 22, dollars = 5, mult = 2, vars = {}, debuff = {suit = 'Hearts'}, pos = {x=0, y=21}, boss = {min = 1, max = 10}, boss_colour = HEX('541109')},
+        bl_final_leaf =      {name = 'Verdant Leaf', defeated = false, order = 27, dollars = 8, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=28}, boss = {showdown = true, min = 10, max = 10}, boss_colour = HEX('ad7f21')},
+        bl_final_vessel =    {name = 'Violet Vessel',defeated = false, order = 28, dollars = 8, mult = 6, vars = {}, debuff = {}, pos = {x=0, y=29}, boss = {showdown = true, min = 10, max = 10}, boss_colour = HEX('ad7f21')},
+        bl_window =          {name = 'The Window',   defeated = false, order = 14, dollars = 5, mult = 2, vars = {}, debuff = {suit = 'Diamonds'}, pos = {x=0, y=6}, boss = {min = 1, max = 10}, boss_colour = HEX('5c5543')},
+        bl_serpent =         {name = 'The Serpent',  defeated = false, order = 19, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=15}, boss = {min = 5, max = 10}, boss_colour = HEX('543c23')},
+        bl_pillar =          {name = 'The Pillar',   defeated = false, order = 20, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=16}, boss = {min = 1, max = 10}, boss_colour = HEX('b38210')},
+        bl_flint =           {name = 'The Flint',    defeated = false, order = 24, dollars = 5, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=24}, boss = {min = 2, max = 10}, boss_colour = HEX('9c2193')},
+        bl_final_acorn =     {name = 'Amber Acorn',  defeated = false, order = 26, dollars = 8, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=27}, boss = {showdown = true, min = 10, max = 10}, boss_colour = HEX('ad7f21')},
+        bl_final_heart =     {name = 'Crimson Heart',defeated = false, order = 29, dollars = 8, mult = 2, vars = {}, debuff = {}, pos = {x=0, y=25}, boss = {showdown = true, min = 10, max = 10}, boss_colour = HEX('ad7f21')},
+        
+    }'''
+match_indent = true
+
+
+######################
+#Changing planet sign colour
+
+[[patches]]
+[patches.pattern]
+target = "globals.lua"
+pattern = "Planet = HEX('13afce'),"
+position = "at"
+payload = "Planet = HEX('13afce'),"
+match_indent = true
+
+######################
+#Changing planet text colours
+
+[[patches]]
+[patches.pattern]
+target = "globals.lua"
+pattern = '''Planet = HEX("424e54"),'''
+position = "at"
+payload = '''Planet = HEX("424e54"),'''
+match_indent = true
+
+######################
+#Patching in new colours into globals.lua
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R, config={align = "cm", colour = lighten(G.C.BLACK, 0.1), r = 0.1, minw = 1, minh = 0.55, emboss = 0.05, padding = 0.03}, nodes={'''
+position = "at"
+payload = '''{n=G.UIT.R, config={align = "cm", colour = lighten(HEX("4d1108"), 0.1), r = 0.1, minw = 1, minh = 0.55, emboss = 0.05, padding = 0.03}, nodes={'''
+match_indent = true
+
+######################
+
+######################
+#Main menu buttons
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''local t = {
+    n=G.UIT.ROOT, config = {align = "cm",colour = G.C.CLEAR}, nodes={ 
+      {n=G.UIT.C, config={align = "bm"}, nodes={      
+        {n=G.UIT.R, config={align = "cm", padding = 0.2, r = 0.1, emboss = 0.1, colour = G.C.L_BLACK, mid = true}, nodes={
+          UIBox_button{id = 'main_menu_play', button = not G.SETTINGS.tutorial_complete and "start_run" or "setup_run", colour = G.C.BLUE, minw = 3.65, minh = 1.55, label = {localize('b_play_cap')}, scale = text_scale*2, col = true},
+          {n=G.UIT.C, config={align = "cm"}, nodes={
+            UIBox_button{button = 'options', colour = G.C.ORANGE, minw = 2.65, minh = 1.35, label = {localize('b_options_cap')}, scale = text_scale * 1.2, col = true},
+            G.F_QUIT_BUTTON and {n=G.UIT.C, config={align = "cm", minw = 0.2}, nodes={}} or nil,
+            G.F_QUIT_BUTTON and UIBox_button{button = quit_func, colour = G.C.RED, minw = 2.65, minh = 1.35, label = {localize('b_quit_cap')}, scale = text_scale * 1.2, col = true} or nil,
+          }},
+          UIBox_button{id = 'collection_button', button = "your_collection", colour = G.C.PALE_GREEN, minw = 3.65, minh = 1.55, label = {localize('b_collection_cap')}, scale = text_scale*1.5, col = true},
+        }},
+      }},
+      {n=G.UIT.C, config={align = "br", minw = 3.2, padding = 0.1}, nodes={
+        G.F_DISCORD and {n=G.UIT.R, config = {align = "cm", padding = 0.2}, nodes={
+          {n=G.UIT.C, config={align = "cm", padding = 0.1, r = 0.1, hover = true, colour = mix_colours(G.C.BLUE, G.C.GREY, 0.4), button = 'go_to_discord', shadow = true}, nodes={
+            {n=G.UIT.O, config={object = discord}},
+          }},
+          {n=G.UIT.C, config={align = "cm", padding = 0.1, r = 0.1, hover = true, colour = G.C.BLACK, button = 'go_to_twitter', shadow = true}, nodes={
+            {n=G.UIT.O, config={object = twitter}},
+          }}
+        }} or nil,
+        not G.F_ENGLISH_ONLY and {n=G.UIT.R, config = {align = "cm", padding = 0.2, r = 0.1, emboss = 0.1, colour = G.C.L_BLACK}, nodes={
+          {n=G.UIT.R, config={align = "cm", padding = 0.15, minw = 1, r = 0.1, hover = true, colour = mix_colours(G.C.WHITE, G.C.GREY, 0.2), button = 'language_selection', shadow = true}, nodes={
+            {n=G.UIT.O, config={object = language}},
+            {n=G.UIT.T, config={text = G.LANG.label, scale = 0.4, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
+          }}
+        }} or nil,
+      }},
+    }}
+  return t'''
+position = "at"
+payload = '''local t = {
+    n=G.UIT.ROOT, config = {align = "cm",colour = G.C.CLEAR}, nodes={ 
+      {n=G.UIT.C, config={align = "bm"}, nodes={      
+        {n=G.UIT.R, config={align = "cm", padding = 0.2, r = 0.4, emboss = 2.0, colour = G.C.MEDIUM_GRAY, mid = true, outline_colour = G.C.MEDIUM_GRAY}, nodes={
+          UIBox_button{id = 'main_menu_play', button = not G.SETTINGS.tutorial_complete and "start_run" or "setup_run", colour = G.C.LIGHT_TURQUOISE, minw = 3.65, minh = 1.55, label = {localize('b_play_cap')}, scale = text_scale*2, col = true},
+          {n=G.UIT.C, config={align = "cm", colour = G.C.MEDIUM_GRAY}, nodes={
+            UIBox_button{button = 'options', colour = G.C.WHITE_LIGHT, minw = 2.65, minh = 1.35, label = {localize('b_options_cap')}, scale = text_scale * 1.2, col = true},
+            G.F_QUIT_BUTTON and {n=G.UIT.C, config={align = "cm", minw = 0.2}, nodes={}} or nil,
+            G.F_QUIT_BUTTON and UIBox_button{button = quit_func, colour = G.C.DARKEST_RED, minw = 2.65, minh = 1.35, label = {localize('b_quit_cap')}, scale = text_scale * 1.2, col = true} or nil,
+          }},
+          UIBox_button{id = 'collection_button', button = "your_collection", colour = G.C.WHITE_LIGHT, minw = 3.65, minh = 1.55, label = {localize('b_collection_cap')}, scale = text_scale*1.5, col = true},
+        }},
+      }},
+      {n=G.UIT.C, config={align = "br", minw = 3.2, padding = 0.1}, nodes={
+        G.F_DISCORD and {n=G.UIT.R, config = {align = "cm", padding = 0.2}, nodes={
+          {n=G.UIT.C, config={align = "cm", padding = 0.1, r = 0.1, hover = true, colour = mix_colours(G.C.BLUE, G.C.GREY, 0.4), button = 'go_to_discord', shadow = true}, nodes={
+            {n=G.UIT.O, config={object = discord}},
+          }},
+          {n=G.UIT.C, config={align = "cm", padding = 0.1, r = 0.1, hover = true, colour = G.C.BLACK, button = 'go_to_twitter', shadow = true}, nodes={
+            {n=G.UIT.O, config={object = twitter}},
+          }}
+        }} or nil,
+        not G.F_ENGLISH_ONLY and {n=G.UIT.R, config = {align = "cm", padding = 0.2, r = 0.1, emboss = 0.1, colour = G.C.MEDIUM_GRAY}, nodes={
+          {n=G.UIT.R, config={align = "cm", padding = 0.15, minw = 1, r = 0.1, hover = true, colour = G.C.WHITE_LIGHT, button = 'language_selection', shadow = true}, nodes={
+            {n=G.UIT.O, config={object = language}},
+            {n=G.UIT.T, config={text = G.LANG.label, scale = 0.4, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
+          }}
+        }} or nil,
+      }},
+    }}
+  return t'''
+match_indent = true
+
+######################
+#Profile button
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''return {n=G.UIT.ROOT, config = {align = "cm", colour = G.C.CLEAR}, nodes={
+    {n=G.UIT.R, config={align = "cm", padding = 0.2, r = 0.1, emboss = 0.1, colour = G.C.L_BLACK}, nodes={
+      {n=G.UIT.R, config={align = "cm"}, nodes={
+        {n=G.UIT.T, config={text = localize('k_profile'), scale = 0.4, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
+      }},
+      {n=G.UIT.R, config={align = "cm"}, nodes={
+        {n=G.UIT.C, config={align = "cm", padding = 0.15, minw = 2, minh = 0.8, maxw = 2, r = 0.1, hover = true, colour = mix_colours(G.C.WHITE, G.C.GREY, 0.2), button = 'profile_select', shadow = true}, nodes={
+          {n=G.UIT.T, config={ref_table = G.PROFILES[G.SETTINGS.profile], ref_value = 'name', scale = 0.4, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
+        }},
+      }}
+    }},
+    G.F_DISP_USERNAME and {n=G.UIT.R, config={align = "cm"}, nodes={
+      {n=G.UIT.R, config={align = "cm"}, nodes={
+        {n=G.UIT.T, config={text = localize('k_playing_as'), scale = 0.3, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
+      }},
+      {n=G.UIT.R, config={align = "cm", minh = 0.12}, nodes={}},
+      {n=G.UIT.R, config={align = "cm", maxw = 2}, nodes=letters}
+    }} or nil,
+  }}
+end'''
+position = "at"
+payload = '''return {n=G.UIT.ROOT, config = {align = "cm", colour = G.C.CLEAR}, nodes={
+    {n=G.UIT.R, config={align = "cm", padding = 0.2, r = 0.1, emboss = 0.1, colour = G.C.MEDIUM_GRAY}, nodes={
+      {n=G.UIT.R, config={align = "cm"}, nodes={
+        {n=G.UIT.T, config={text = localize('k_profile'), scale = 0.4, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
+      }},
+      {n=G.UIT.R, config={align = "cm"}, nodes={
+        {n=G.UIT.C, config={align = "cm", padding = 0.15, minw = 2, minh = 0.8, maxw = 2, r = 0.1, hover = true, colour = mix_colours(G.C.WHITE_LIGHT, G.C.WHITE_LIGHT, 0.2), button = 'profile_select', shadow = true}, nodes={
+          {n=G.UIT.T, config={ref_table = G.PROFILES[G.SETTINGS.profile], ref_value = 'name', scale = 0.4, colour = G.C.UI.TEXT_LIGHT, shadow = true}}
+        }},
+      }}
+    }},
+    G.F_DISP_USERNAME and {n=G.UIT.R, config={align = "cm"}, nodes={
+      {n=G.UIT.R, config={align = "cm"}, nodes={
+        {n=G.UIT.T, config={text = localize('k_playing_as'), scale = 0.3, colour = G.C.UI.RUST, shadow = true}}
+      }},
+      {n=G.UIT.R, config={align = "cm", minh = 0.12}, nodes={}},
+      {n=G.UIT.R, config={align = "cm", maxw = 2}, nodes=letters}
+    }} or nil,
+  }}
+end'''
+match_indent = true
+
+######################
+#Run setup screen - Continue
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''type == 'Continue' and {n=G.UIT.R, config={align = "tm", minh = 3.8, padding = 0.15}, nodes={
+                    {n=G.UIT.R, config={align = "cm", minh = 3.3, minw = 6.8}, nodes={
+                      {n=G.UIT.C, config={align = "cm", colour = G.C.BLACK, padding = 0.15, r = 0.1, emboss = 0.05}, nodes={'''
+position = "at"
+payload = '''type == 'Continue' and {n=G.UIT.R, config={align = "tm", minh = 3.8, padding = 0.15}, nodes={
+                    {n=G.UIT.R, config={align = "cm", minh = 3.3, minw = 6.8}, nodes={
+                      {n=G.UIT.C, config={align = "cm", colour = G.C.DARK_GRAY, padding = 0.15, r = 0.1, emboss = 0.05}, nodes={'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''}},{n=G.UIT.C, config={align = "cm", minw = 4, maxw = 4, minh = 1.7, r = 0.1, colour = G.C.L_BLACK, padding = 0.1}, nodes={
+                            {n=G.UIT.R, config={align = "cm", r = 0.1, minw = 4, maxw = 4, minh = 0.6}, nodes={
+                              {n=G.UIT.O, config={id = nil, func = 'RUN_SETUP_check_back_name', object = Moveable()}},'''
+position = "at"
+payload = '''}},{n=G.UIT.C, config={align = "cm", minw = 4, maxw = 4, minh = 1.7, r = 0.1, colour = G.C.MEDIUM_GRAY, padding = 0.1}, nodes={
+                            {n=G.UIT.R, config={align = "cm", r = 0.1, minw = 4, maxw = 4, minh = 0.6}, nodes={
+                              {n=G.UIT.O, config={id = nil, func = 'RUN_SETUP_check_back_name', object = Moveable()}},'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R, config={align = "cm", minh = 3.8}, nodes={
+                        create_option_cycle({options =  ordered_names, opt_callback = 'change_viewed_back', current_option = viewed_deck, colour = G.C.RED, w = 3.5, mid = 
+                        {n=G.UIT.R, config={align = "cm", minh = 3.3, minw = 5}, nodes={'''
+position = "at"
+payload = '''{n=G.UIT.R, config={align = "cm", minh = 3.8}, nodes={
+                        create_option_cycle({options =  ordered_names, opt_callback = 'change_viewed_back', current_option = viewed_deck, colour = G.C.WHITE_LIGHT, w = 3.5, mid = 
+                        {n=G.UIT.R, config={align = "cm", minh = 3.3, minw = 5}, nodes={'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.C, config={align = "cm", colour = G.C.BLACK, padding = 0.15, r = 0.1, emboss = 0.05}, nodes={
+                              {n=G.UIT.C, config={align = "cm"}, nodes={'''
+position = "at"
+payload = '''{n=G.UIT.C, config={align = "cm", colour = G.C.DARK_GRAY, padding = 0.15, r = 0.1, emboss = 0.05}, nodes={
+                              {n=G.UIT.C, config={align = "cm"}, nodes={'''
+match_indent = true
+
+
+#Example
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''}},{n=G.UIT.C, config={align = "cm", minh = 1.7, r = 0.1, colour = G.C.L_BLACK, padding = 0.1}, nodes={'''
+position = "at"
+payload = '''}},{n=G.UIT.C, config={align = "cm", minh = 1.7, r = 0.1, colour = G.C.MEDIUM_GRAY, padding = 0.1}, nodes={'''
+match_indent = true
+
+
+#Example
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''other_col = {n=G.UIT.R, config={align = "cm", padding = 0.05, r = 0.1, colour = G.C.L_BLACK}, nodes=stake_desc_rows}'''
+position = "at"
+payload = '''other_col = {n=G.UIT.R, config={align = "cm", padding = 0.05, r = 0.1, colour = G.C.MEDIUM_GRAY}, nodes=stake_desc_rows}'''
+match_indent = true
+
+
+#Generic UI - Part 1
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''function create_UIBox_generic_options(args)
+  args = args or {}
+  local back_func = args.back_func or "exit_overlay_menu"
+  local contents = args.contents or ({n=G.UIT.T, config={text = "EMPTY",colour = G.C.UI.RED, scale = 0.4}})
+  if args.infotip then 
+    G.E_MANAGER:add_event(Event({
+      blocking = false,
+      blockable = false,
+      timer = 'REAL',
+      func = function()
+          if G.OVERLAY_MENU then
+            local _infotip_object = G.OVERLAY_MENU:get_UIE_by_ID('overlay_menu_infotip')
+            if _infotip_object then 
+              _infotip_object.config.object:remove() 
+              _infotip_object.config.object = UIBox{
+                definition = overlay_infotip(args.infotip),
+                config = {offset = {x=0,y=0}, align = 'bm', parent = _infotip_object}
+              }
+            end
+          end
+          return true
+        end
+    }))
+  end'''
+position = "at"
+payload = '''function create_UIBox_generic_options(args)
+  args = args or {}
+  local back_func = args.back_func or "exit_overlay_menu"
+  local contents = args.contents or ({n=G.UIT.T, config={text = "EMPTY",colour = HEX("05fc26"), scale = 0.4}})
+  if args.infotip then 
+    G.E_MANAGER:add_event(Event({
+      blocking = false,
+      blockable = false,
+      timer = 'REAL',
+      func = function()
+          if G.OVERLAY_MENU then
+            local _infotip_object = G.OVERLAY_MENU:get_UIE_by_ID('overlay_menu_infotip')
+            if _infotip_object then 
+              _infotip_object.config.object:remove() 
+              _infotip_object.config.object = UIBox{
+                definition = overlay_infotip(args.infotip),
+                config = {offset = {x=0,y=0}, align = 'bm', parent = _infotip_object}
+              }
+            end
+          end
+          return true
+        end
+    }))
+  end'''
+match_indent = true
+
+#Generic UI - Part 2
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''return {n=G.UIT.ROOT, config = {align = "cm", minw = G.ROOM.T.w*5, minh = G.ROOM.T.h*5,padding = 0.1, r = 0.1, colour = args.bg_colour or {G.C.GREY[1], G.C.GREY[2], G.C.GREY[3],0.7}}, nodes={
+    {n=G.UIT.R, config={align = "cm", minh = 1,r = 0.3, padding = 0.07, minw = 1, colour = args.outline_colour or G.C.JOKER_GREY, emboss = 0.1}, nodes={
+      {n=G.UIT.C, config={align = "cm", minh = 1,r = 0.2, padding = 0.2, minw = 1, colour = args.colour or G.C.L_BLACK}, nodes={
+        {n=G.UIT.R, config={align = "cm",padding = args.padding or 0.2, minw = args.minw or 7}, nodes=
+          contents
+        },
+        not args.no_back and {n=G.UIT.R, config={id = args.back_id or 'overlay_menu_back_button', align = "cm", minw = 2.5, button_delay = args.back_delay, padding =0.1, r = 0.1, hover = true, colour = args.back_colour or G.C.ORANGE, button = back_func, shadow = true, focus_args = {nav = 'wide', button = 'b', snap_to = args.snap_back}}, nodes={
+          {n=G.UIT.R, config={align = "cm", padding = 0, no_fill = true}, nodes={
+            {n=G.UIT.T, config={id = args.back_id or nil, text = args.back_label or localize('b_back'), scale = 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true, func = not args.no_pip and 'set_button_pip' or nil, focus_args =  not args.no_pip and {button = args.back_button or 'b'} or nil}}
+          }}
+        }} or nil
+      }},
+    }},
+    {n=G.UIT.R, config={align = "cm"}, nodes={
+      {n=G.UIT.O, config={id = 'overlay_menu_infotip', object = Moveable()}},
+    }},
+  }}
+end'''
+position = "at"
+payload = '''return {n=G.UIT.ROOT, config = {align = "cm", minw = G.ROOM.T.w*5, minh = G.ROOM.T.h*5,padding = 0.1, r = 0.1, colour = args.bg_colour or {G.C.GREY[1], G.C.GREY[2], G.C.GREY[3],0.7}}, nodes={
+    {n=G.UIT.R, config={align = "cm", minh = 1,r = 0.3, padding = 0.07, minw = 1, colour = args.outline_colour or G.C.JOKER_GREY, emboss = 0.1}, nodes={
+      {n=G.UIT.C, config={align = "cm", minh = 1,r = 0.2, padding = 0.2, minw = 1, colour = args.colour or G.C.MEDIUM_GRAY}, nodes={
+        {n=G.UIT.R, config={align = "cm",padding = args.padding or 0.2, minw = args.minw or 7}, nodes=
+          contents
+        },
+        not args.no_back and {n=G.UIT.R, config={id = args.back_id or 'overlay_menu_back_button', align = "cm", minw = 2.5, button_delay = args.back_delay, padding =0.1, r = 0.1, hover = true, colour = args.back_colour or G.C.DARK_RED, button = back_func, shadow = true, focus_args = {nav = 'wide', button = 'b', snap_to = args.snap_back}}, nodes={
+          {n=G.UIT.R, config={align = "cm", padding = 0, no_fill = true}, nodes={
+            {n=G.UIT.T, config={id = args.back_id or nil, text = args.back_label or localize('b_back'), scale = 0.5, colour = G.C.UI.TEXT_LIGHT, shadow = true, func = not args.no_pip and 'set_button_pip' or nil, focus_args =  not args.no_pip and {button = args.back_button or 'b'} or nil}}
+          }}
+        }} or nil
+      }},
+    }},
+    {n=G.UIT.R, config={align = "cm"}, nodes={
+      {n=G.UIT.O, config={id = 'overlay_menu_infotip', object = Moveable()}},
+    }},
+  }}
+end'''
+match_indent = true
+
+
+#Example
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R, config={align = "cm", padding = 0.1, minh = 0.7, minw = 9, r = 0.1, hover = true, colour = G.C.BLUE, button = "start_challenge_run", shadow = true, id = _id}, nodes={'''
+position = "at"
+payload = '''{n=G.UIT.R, config={align = "cm", padding = 0.1, minh = 0.7, minw = 9, r = 0.1, hover = true, colour = G.C.TURQUOISE, button = "start_challenge_run", shadow = true, id = _id}, nodes={'''
+match_indent = true
+
+#Example
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''function G.UIDEF.profile_option(_profile)
+  set_discover_tallies()
+  G.focused_profile = _profile
+  local profile_data = get_compressed(G.focused_profile..'/'..'profile.jkr')
+    if profile_data ~= nil then
+      profile_data = STR_UNPACK(profile_data)
+      profile_data.name = profile_data.name or ("P".._profile)
+    end
+  G.PROFILES[_profile].name = profile_data and profile_data.name or ''
+
+  local lwidth, rwidth, scale = 1, 1, 1
+  G.CHECK_PROFILE_DATA = nil
+  local t = {n=G.UIT.ROOT, config={align = 'cm', colour = G.C.CLEAR}, nodes={
+    {n=G.UIT.R, config={align = 'cm',padding = 0.1, minh = 0.8}, nodes={
+        ((_profile == G.SETTINGS.profile) or not profile_data) and {n=G.UIT.R, config={align = "cm"}, nodes={
+        create_text_input({
+          w = 4, max_length = 16, prompt_text = localize('k_enter_name'),
+          ref_table = G.PROFILES[_profile], ref_value = 'name',extended_corpus = true, keyboard_offset = 1,
+          callback = function() 
+            G:save_settings()
+            G.FILE_HANDLER.force = true
+          end
+        }),
+      }} or {n=G.UIT.R, config={align = 'cm',padding = 0.1, minw = 4, r = 0.1, colour = G.C.BLACK, minh = 0.6}, nodes={
+        {n=G.UIT.T, config={text = G.PROFILES[_profile].name, scale = 0.45, colour = G.C.WHITE}},
+      }},
+    }},
+    {n=G.UIT.R, config={align = "cm", padding = 0.1}, nodes={
+      {n=G.UIT.C, config={align = "cm", minw = 6}, nodes={
+        (G.PROFILES[_profile].progress and G.PROFILES[_profile].progress.discovered) and create_progress_box(G.PROFILES[_profile].progress, 0.5) or
+        {n=G.UIT.C, config={align = "cm", minh = 4, minw = 5.2, colour = G.C.BLACK, r = 0.1}, nodes={
+          {n=G.UIT.T, config={text = localize('k_empty_caps'), scale = 0.5, colour = G.C.UI.TRANSPARENT_LIGHT}}
+        }},
+      }},
+      {n=G.UIT.C, config={align = "cm", minh = 4}, nodes={
+        {n=G.UIT.R, config={align = "cm", minh = 1}, nodes={
+          profile_data and {n=G.UIT.R, config={align = "cm"}, nodes={
+            {n=G.UIT.C, config={align = "cm", minw = lwidth}, nodes={{n=G.UIT.T, config={text = localize('k_wins'),colour = G.C.UI.TEXT_LIGHT, scale = scale*0.7}}}},
+            {n=G.UIT.C, config={align = "cm"}, nodes={{n=G.UIT.T, config={text = ': ',colour = G.C.UI.TEXT_LIGHT, scale = scale*0.7}}}},
+            {n=G.UIT.C, config={align = "cl", minw = rwidth}, nodes={{n=G.UIT.T, config={text = tostring(profile_data.career_stats.c_wins),colour = G.C.RED, shadow = true, scale = 1*scale}}}}
+          }} or nil,
+        }},
+        {n=G.UIT.R, config={align = "cm", padding = 0.2}, nodes={
+          {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
+            {n=G.UIT.R, config={align = "cm", minw = 4, maxw = 4, minh = 0.8, padding = 0.2, r = 0.1, hover = true, colour = G.C.BLUE,func = 'can_load_profile', button = "load_profile", shadow = true, focus_args = {nav = 'wide'}}, nodes={
+              {n=G.UIT.T, config={text = _profile == G.SETTINGS.profile and localize('b_current_profile') or profile_data and localize('b_load_profile') or localize('b_create_profile'), ref_value = 'load_button_text', scale = 0.5, colour = G.C.UI.TEXT_LIGHT}}
+            }}
+          }},
+          {n=G.UIT.R, config={align = "cm", padding = 0, minh = 0.7}, nodes={
+            {n=G.UIT.R, config={align = "cm", minw = 3, maxw = 4, minh = 0.6, padding = 0.2, r = 0.1, hover = true, colour = G.C.RED,func = 'can_delete_profile', button = "delete_profile", shadow = true, focus_args = {nav = 'wide'}}, nodes={
+              {n=G.UIT.T, config={text = _profile == G.SETTINGS.profile and localize('b_reset_profile') or localize('b_delete_profile'), scale = 0.3, colour = G.C.UI.TEXT_LIGHT}}
+            }}
+          }},
+          (_profile == G.SETTINGS.profile and not G.PROFILES[G.SETTINGS.profile].all_unlocked) and {n=G.UIT.R, config={align = "cm", padding = 0, minh = 0.7}, nodes={
+            {n=G.UIT.R, config={align = "cm", minw = 3, maxw = 4, minh = 0.6, padding = 0.2, r = 0.1, hover = true, colour = G.C.ORANGE,func = 'can_unlock_all', button = "unlock_all", shadow = true, focus_args = {nav = 'wide'}}, nodes={
+              {n=G.UIT.T, config={text = localize('b_unlock_all'), scale = 0.3, colour = G.C.UI.TEXT_LIGHT}}
+            }}
+          }} or {n=G.UIT.R, config={align = "cm", minw = 3, maxw = 4, minh = 0.7}, nodes={
+            G.PROFILES[_profile].all_unlocked and ((not G.F_NO_ACHIEVEMENTS) and {n=G.UIT.T, config={text = localize(G.F_TROPHIES and 'k_trophies_disabled' or 'k_achievements_disabled'), scale = 0.3, colour = G.C.UI.TEXT_LIGHT}} or 
+              nil) or nil
+          }},
+        }},
+    }},
+    }},
+    {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
+      {n=G.UIT.T, config={id = 'warning_text', text = localize('ph_click_confirm'), scale = 0.4, colour = G.C.CLEAR}}
+    }}
+  }} 
+  return t
+end'''
+position = "at"
+payload = '''function G.UIDEF.profile_option(_profile)
+  set_discover_tallies()
+  G.focused_profile = _profile
+  local profile_data = get_compressed(G.focused_profile..'/'..'profile.jkr')
+    if profile_data ~= nil then
+      profile_data = STR_UNPACK(profile_data)
+      profile_data.name = profile_data.name or ("P".._profile)
+    end
+  G.PROFILES[_profile].name = profile_data and profile_data.name or ''
+
+  local lwidth, rwidth, scale = 1, 1, 1
+  G.CHECK_PROFILE_DATA = nil
+  local t = {n=G.UIT.ROOT, config={align = 'cm', colour = G.C.CLEAR}, nodes={
+    {n=G.UIT.R, config={align = 'cm',padding = 0.1, minh = 0.8}, nodes={
+        ((_profile == G.SETTINGS.profile) or not profile_data) and {n=G.UIT.R, config={align = "cm"}, nodes={
+        create_text_input({
+          w = 4, max_length = 16, prompt_text = localize('k_enter_name'),
+          ref_table = G.PROFILES[_profile], ref_value = 'name',extended_corpus = true, keyboard_offset = 1,
+          callback = function() 
+            G:save_settings()
+            G.FILE_HANDLER.force = true
+          end
+        }),
+      }} or {n=G.UIT.R, config={align = 'cm',padding = 0.1, minw = 4, r = 0.1, colour = G.C.RUST, minh = 0.6}, nodes={
+        {n=G.UIT.T, config={text = G.PROFILES[_profile].name, scale = 0.45, colour = G.C.WHITE}},
+      }},
+    }},
+    {n=G.UIT.R, config={align = "cm", padding = 0.1}, nodes={
+      {n=G.UIT.C, config={align = "cm", minw = 6}, nodes={
+        (G.PROFILES[_profile].progress and G.PROFILES[_profile].progress.discovered) and create_progress_box(G.PROFILES[_profile].progress, 0.5) or
+        {n=G.UIT.C, config={align = "cm", minh = 4, minw = 5.2, colour = G.C.DARK_GRAY, r = 0.1}, nodes={
+          {n=G.UIT.T, config={text = localize('k_empty_caps'), scale = 0.5, colour = G.C.UI.TRANSPARENT_LIGHT}}
+        }},
+      }},
+      {n=G.UIT.C, config={align = "cm", minh = 4}, nodes={
+        {n=G.UIT.R, config={align = "cm", minh = 1}, nodes={
+          profile_data and {n=G.UIT.R, config={align = "cm"}, nodes={
+            {n=G.UIT.C, config={align = "cm", minw = lwidth}, nodes={{n=G.UIT.T, config={text = localize('k_wins'),colour = G.C.UI.TEXT_LIGHT, scale = scale*0.7}}}},
+            {n=G.UIT.C, config={align = "cm"}, nodes={{n=G.UIT.T, config={text = ': ',colour = G.C.UI.TEXT_LIGHT, scale = scale*0.7}}}},
+            {n=G.UIT.C, config={align = "cl", minw = rwidth}, nodes={{n=G.UIT.T, config={text = tostring(profile_data.career_stats.c_wins),colour = G.C.GOLD, shadow = true, scale = 1*scale}}}}
+          }} or nil,
+        }},
+        {n=G.UIT.R, config={align = "cm", padding = 0.2}, nodes={
+          {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
+            {n=G.UIT.R, config={align = "cm", minw = 4, maxw = 4, minh = 0.8, padding = 0.2, r = 0.1, hover = true, colour = G.C.TURQUOISE,func = 'can_load_profile', button = "load_profile", shadow = true, focus_args = {nav = 'wide'}}, nodes={
+              {n=G.UIT.T, config={text = _profile == G.SETTINGS.profile and localize('b_current_profile') or profile_data and localize('b_load_profile') or localize('b_create_profile'), ref_value = 'load_button_text', scale = 0.5, colour = G.C.UI.TEXT_LIGHT}}
+            }}
+          }},
+          {n=G.UIT.R, config={align = "cm", padding = 0, minh = 0.7}, nodes={
+            {n=G.UIT.R, config={align = "cm", minw = 3, maxw = 4, minh = 0.6, padding = 0.2, r = 0.1, hover = true, colour = G.C.DARK_RED,func = 'can_delete_profile', button = "delete_profile", shadow = true, focus_args = {nav = 'wide'}}, nodes={
+              {n=G.UIT.T, config={text = _profile == G.SETTINGS.profile and localize('b_reset_profile') or localize('b_delete_profile'), scale = 0.3, colour = G.C.UI.TEXT_LIGHT}}
+            }}
+          }},
+          (_profile == G.SETTINGS.profile and not G.PROFILES[G.SETTINGS.profile].all_unlocked) and {n=G.UIT.R, config={align = "cm", padding = 0, minh = 0.7}, nodes={
+            {n=G.UIT.R, config={align = "cm", minw = 3, maxw = 4, minh = 0.6, padding = 0.2, r = 0.1, hover = true, colour = G.C.ORANGE,func = 'can_unlock_all', button = "unlock_all", shadow = true, focus_args = {nav = 'wide'}}, nodes={
+              {n=G.UIT.T, config={text = localize('b_unlock_all'), scale = 0.3, colour = G.C.UI.TEXT_LIGHT}}
+            }}
+          }} or {n=G.UIT.R, config={align = "cm", minw = 3, maxw = 4, minh = 0.7}, nodes={
+            G.PROFILES[_profile].all_unlocked and ((not G.F_NO_ACHIEVEMENTS) and {n=G.UIT.T, config={text = localize(G.F_TROPHIES and 'k_trophies_disabled' or 'k_achievements_disabled'), scale = 0.3, colour = G.C.UI.TEXT_LIGHT}} or 
+              nil) or nil
+          }},
+        }},
+    }},
+    }},
+    {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
+      {n=G.UIT.T, config={id = 'warning_text', text = localize('ph_click_confirm'), scale = 0.4, colour = G.C.CLEAR}}
+    }}
+  }} 
+  return t
+end'''
+match_indent = true
+
+#Example
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''opt_callback = 'change_stake', current_option = G.viewed_stake, colour = G.C.RED, w = 6, mid = middle'''
+position = "at"
+payload = '''opt_callback = 'change_stake', current_option = G.viewed_stake, colour = G.C.WHITE_LIGHT, w = 6, mid = middle'''
+match_indent = true
+
+#Example
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''return {n=G.UIT.C, config={align = "cm", padding = 0.05, r = 0.1, colour = G.C.L_BLACK}, nodes={
+    {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
+      {n=G.UIT.T, config={text = localize{type = 'name_text', key = _stake_center.key, set = _stake_center.set}, scale = 0.35, colour = G.C.WHITE}}
+    }},'''
+position = "at"
+payload = '''return {n=G.UIT.C, config={align = "cm", padding = 0.05, r = 0.1, colour = G.C.DARK_GRAY}, nodes={
+    {n=G.UIT.R, config={align = "cm", padding = 0}, nodes={
+      {n=G.UIT.T, config={text = localize{type = 'name_text', key = _stake_center.key, set = _stake_center.set}, scale = 0.35, colour = G.C.WHITE}}
+    }},'''
+match_indent = true
+
+
+
+
+#Example
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''return  {n=G.UIT.ROOT, config={align = "cm", colour = G.C.BLACK, r = 0.1}, nodes={
+    {n=G.UIT.C, config={align = "cm", padding = 0}, nodes={
+      {n=G.UIT.T, config={text = localize('k_stake'), scale = 0.4, colour = G.C.L_BLACK, vert = true}}
+    }},'''
+position = "at"
+payload = '''return  {n=G.UIT.ROOT, config={align = "cm", colour = G.C.DARK_GRAY, r = 0.1}, nodes={
+    {n=G.UIT.C, config={align = "cm", padding = 0}, nodes={
+      {n=G.UIT.T, config={text = localize('k_stake'), scale = 0.4, colour = G.C.MEDIUM_GRAY, vert = true}}
+    }},'''
+match_indent = true
+
+#Spectrals page scroll
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''create_option_cycle({options = spectral_options, w = 4.5, cycle_shoulders = true, opt_callback = 'your_collection_spectral_page', focus_args = {snap_to = true, nav = 'wide'},current_option = 1, colour = G.C.RED, no_pips = true})'''
+position = "at"
+payload = '''create_option_cycle({options = spectral_options, w = 4.5, cycle_shoulders = true, opt_callback = 'your_collection_spectral_page', focus_args = {snap_to = true, nav = 'wide'},current_option = 1, colour = G.C.TURQUOISE, no_pips = true})'''
+match_indent = true
+
+
+#Jokers page scroll
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''create_option_cycle({options = joker_options, w = 4.5, cycle_shoulders = true, opt_callback = 'your_collection_joker_page', current_option = 1, colour = G.C.RED, no_pips = true, focus_args = {snap_to = true, nav = 'wide'}})'''
+position = "at"
+payload = '''create_option_cycle({options = joker_options, w = 4.5, cycle_shoulders = true, opt_callback = 'your_collection_joker_page', current_option = 1, colour = G.C.TURQUOISE, no_pips = true, focus_args = {snap_to = true, nav = 'wide'}})'''
+match_indent = true
+
+#Spectrals page scroll
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''create_option_cycle({options = tarot_options, w = 4.5, cycle_shoulders = true, opt_callback = 'your_collection_tarot_page', focus_args = {snap_to = true, nav = 'wide'},current_option = 1, colour = G.C.RED, no_pips = true})'''
+position = "at"
+payload = '''create_option_cycle({options = tarot_options, w = 4.5, cycle_shoulders = true, opt_callback = 'your_collection_tarot_page', focus_args = {snap_to = true, nav = 'wide'},current_option = 1, colour = G.C.TURQUOISE, no_pips = true})'''
+match_indent = true
+
+#Boosters page scroll
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''create_option_cycle({options = booster_options, w = 4.5, cycle_shoulders = true, opt_callback = 'your_collection_booster_page', focus_args = {snap_to = true, nav = 'wide'},current_option = 1, colour = G.C.RED, no_pips = true})'''
+position = "at"
+payload = '''create_option_cycle({options = booster_options, w = 4.5, cycle_shoulders = true, opt_callback = 'your_collection_booster_page', focus_args = {snap_to = true, nav = 'wide'},current_option = 1, colour = G.C.RUST, no_pips = true})'''
+match_indent = true
+
+#Vouchers page scroll
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''create_option_cycle({options = voucher_options, w = 4.5, cycle_shoulders = true, opt_callback = 'your_collection_voucher_page', focus_args = {snap_to = true, nav = 'wide'}, current_option = 1, colour = G.C.RED, no_pips = true})'''
+position = "at"
+payload = '''create_option_cycle({options = voucher_options, w = 4.5, cycle_shoulders = true, opt_callback = 'your_collection_voucher_page', focus_args = {snap_to = true, nav = 'wide'}, current_option = 1, colour = G.C.RUST, no_pips = true})'''
+match_indent = true
+
+#Example
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''function create_option_cycle(args)
+  args = args or {}
+  args.colour = args.colour or G.C.RED'''
+position = "at"
+payload = '''function create_option_cycle(args)
+  args = args or {}
+  args.colour = args.colour or G.C.LIGHT_TURQUOISE'''
+match_indent = true
+
+###############################################
+
+
+
+#Option menu - sliders
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''function create_slider(args)
+  args = args or {}
+  args.colour = args.colour or G.C.RED'''
+position = "at"
+payload = '''function create_slider(args)
+  args = args or {}
+  args.colour = args.colour or G.C.LIGHT_TURQUOISE'''
+match_indent = true
+
+###############################################
+
+## COLLECTIONS ##
+#################
+
+
+
+#Example
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R, config={align = "cm", r = 0.1, colour = G.C.BLACK, emboss = 0.05}, nodes=deck_tables}, '''
+position = "at"
+payload = '''{n=G.UIT.R, config={align = "cm", r = 0.1, colour = G.C.RUST, emboss = 0.05}, nodes=deck_tables}, '''
+match_indent = true
+
+#Example
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R, config={align = "cm", minw = 2.5, padding = 0.1, r = 0.1, colour = G.C.BLACK, emboss = 0.05}, nodes=deck_tables},'''
+position = "at"
+payload = '''{n=G.UIT.R, config={align = "cm", minw = 2.5, padding = 0.1, r = 0.1, colour = G.C.RUST, emboss = 0.05}, nodes=deck_tables},'''
+match_indent = true
+
+
+#Blind select border color - Small blind
+
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = '''(blind == 'bl_small' and mix_colours(G.C.BLUE, G.C.BLACK, 0.6) or'''
+position = "at"
+payload = '''(blind == 'bl_small' and mix_colours(HEX("ad6823"), HEX("ad6823"), 0.6) or'''
+match_indent = true
+
+#Blind select border color - Big blind blind
+
+[[patches]]
+[patches.pattern]
+target = "functions/misc_functions.lua"
+pattern = '''blind == 'bl_big' and mix_colours(G.C.ORANGE, G.C.BLACK, 0.6)) or G.C.BLACK'''
+position = "at"
+payload = '''blind == 'bl_big' and mix_colours(HEX("aab3b5"),HEX("aab3b5"), 0.6)) or G.C.BLACK'''
+match_indent = true
+
+#Generic buttons
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''args.colour = args.colour or G.C.RED'''
+position = "at"
+payload = '''args.colour = args.colour or G.C.WHITE_LIGHT'''
+match_indent = true
+
+
+
+
+
+#Collection UI - Consumables
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R, config={align = "cm", padding = 0.1, r=0.2, colour = G.C.BLACK}, nodes={
+        {n=G.UIT.C, config={align = "cm", maxh=2.9}, nodes={
+          {n=G.UIT.T, config={text = localize('k_cap_consumables'), scale = 0.45, colour = G.C.L_BLACK, vert = true, maxh=2.2}},'''
+position = "at"
+payload = '''{n=G.UIT.R, config={align = "cm", padding = 0.1, r=0.2, colour = G.C.DARK_GRAY}, nodes={
+        {n=G.UIT.C, config={align = "cm", maxh=2.9}, nodes={
+          {n=G.UIT.T, config={text = localize('k_cap_consumables'), scale = 0.45, colour = G.C.LIGHT_GRAY, vert = true, maxh=2.2}},'''
+match_indent = true
+
+
+######################
+
+## VICTORY SCREEN ##
+####################
+
+######################
+
+#Victory text
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.O, config={object = DynaText({string = {localize('ph_you_win')}, colours = {G.C.EDITION},shadow = true, float = true, spacing = 10, rotate = true, scale = 1.5, pop_in = 0.4, maxw = 6.5})}},'''
+position = "at"
+payload = '''{n=G.UIT.O, config={object = DynaText({string = {localize('ph_you_win')}, colours = {G.C.GOLD},shadow = true, float = true, spacing = 10, rotate = true, scale = 1.5, pop_in = 0.4, maxw = 6.5})}},'''
+match_indent = true
+
+#Victory screen background
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''local t = create_UIBox_generic_options({ padding = 0, bg_colour = eased_green , colour = G.C.BLACK, outline_colour = G.C.EDITION, no_back = true, no_esc = true, contents = {'''
+position = "at"
+payload = '''local t = create_UIBox_generic_options({ padding = 0, bg_colour = eased_green , colour = G.C.DARK_GRAY, outline_colour = G.C.BRIGHT_LIGHT, no_back = true, no_esc = true, contents = {'''
+match_indent = true
+
+#Example
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.O, config={object = DynaText({string = {localize('ph_game_over')}, colours = {G.C.RED},shadow = true, float = true, scale = 1.5, pop_in = 0.4, maxw = 6.5})}},'''
+position = "at"
+payload = '''{n=G.UIT.O, config={object = DynaText({string = {localize('ph_game_over')}, colours = {G.C.DARK_RED},shadow = true, float = true, scale = 1.5, pop_in = 0.4, maxw = 6.5})}},'''
+match_indent = true
+
+#Game over screen - new run button
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R, config={id = 'from_game_over', align = "cm", minw = 5, padding = 0.1, r = 0.1, hover = true, colour = G.C.RED, button = "notify_then_setup_run", shadow = true, focus_args = {nav = 'wide', snap_to = true}}, nodes={'''
+position = "at"
+payload = '''{n=G.UIT.R, config={id = 'from_game_over', align = "cm", minw = 5, padding = 0.1, r = 0.1, hover = true, colour = G.C.LIGHT_TURQUOISE, button = "notify_then_setup_run", shadow = true, focus_args = {nav = 'wide', snap_to = true}}, nodes={'''
+match_indent = true
+
+#Game over screen - go to menu button
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R, config={align = "cm", minw = 5, padding = 0.1, r = 0.1, hover = true, colour = G.C.RED, button = "go_to_menu", shadow = true, focus_args = {nav = 'wide'}}, nodes={'''
+position = "at"
+payload = '''{n=G.UIT.R, config={align = "cm", minw = 5, padding = 0.1, r = 0.1, hover = true, colour = G.C.DARK_RED, button = "go_to_menu", shadow = true, focus_args = {nav = 'wide'}}, nodes={'''
+match_indent = true
+
+#Game over screen - background
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R, config={align = "cm", padding = 0.05, colour = G.C.BLACK, emboss = 0.05, r = 0.1}, nodes={'''
+position = "at"
+payload = '''{n=G.UIT.R, config={align = "cm", padding = 0.05, colour = G.C.DARK_GRAY, emboss = 0.05, r = 0.1}, nodes={'''
+match_indent = true
+
+#Example
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R, config={align = "cm"}, nodes={
+            {n=G.UIT.C, config={align = "cm", padding = 0.08}, nodes={
+              create_UIBox_round_scores_row('cards_played', G.C.BLUE),
+              create_UIBox_round_scores_row('cards_discarded', G.C.RED),
+              create_UIBox_round_scores_row('cards_purchased', G.C.MONEY),
+              create_UIBox_round_scores_row('times_rerolled', G.C.GREEN),
+              create_UIBox_round_scores_row('new_collection', G.C.WHITE),
+              create_UIBox_round_scores_row('seed', G.C.WHITE),
+              UIBox_button({button = 'copy_seed', label = {localize('b_copy')}, colour = G.C.BLUE, scale = 0.3, minw = 2.3, minh = 0.4, focus_args = {nav = 'wide'}}),
+            }},
+            {n=G.UIT.C, config={align = "tr", padding = 0.08}, nodes={
+              create_UIBox_round_scores_row('furthest_ante', G.C.FILTER),
+              create_UIBox_round_scores_row('furthest_round', G.C.FILTER),
+              create_UIBox_round_scores_row('defeated_by'),
+            }}'''
+position = "at"
+payload = '''{n=G.UIT.R, config={align = "cm"}, nodes={
+            {n=G.UIT.C, config={align = "cm", padding = 0.08}, nodes={
+              create_UIBox_round_scores_row('cards_played', G.C.LIGHT_TURQUOISE),
+              create_UIBox_round_scores_row('cards_discarded', G.C.DARK_RED),
+              create_UIBox_round_scores_row('cards_purchased', G.C.BRIGHT_LIGHT),
+              create_UIBox_round_scores_row('times_rerolled', G.C.RUST),
+              create_UIBox_round_scores_row('new_collection', G.C.BRIGHT_LIGHT),
+              create_UIBox_round_scores_row('seed', G.C.WHITE),
+              UIBox_button({button = 'copy_seed', label = {localize('b_copy')}, colour = G.C.WHITE_LIGHT, scale = 0.3, minw = 2.3, minh = 0.4, focus_args = {nav = 'wide'}}),
+            }},
+            {n=G.UIT.C, config={align = "tr", padding = 0.08}, nodes={
+              create_UIBox_round_scores_row('furthest_ante', G.C.BRIGHT_LIGHT),
+              create_UIBox_round_scores_row('furthest_round', G.C.BRIGHT_LIGHT),
+              create_UIBox_round_scores_row('defeated_by'),
+            }}'''
+match_indent = true
+
+
+#Win screen - text colours
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''create_UIBox_round_scores_row('cards_played', G.C.BLUE),
+        create_UIBox_round_scores_row('cards_discarded', G.C.RED),
+        create_UIBox_round_scores_row('cards_purchased', G.C.MONEY),
+        create_UIBox_round_scores_row('times_rerolled', G.C.GREEN),
+        create_UIBox_round_scores_row('new_collection', G.C.WHITE),
+        create_UIBox_round_scores_row('seed', G.C.WHITE),
+        UIBox_button({button = 'copy_seed', label = {localize('b_copy')}, colour = G.C.BLUE, scale = 0.3, minw = 2.3, minh = 0.4,}),
+      }},
+      {n=G.UIT.C, config={align = "tr", padding = 0.08}, nodes={
+        create_UIBox_round_scores_row('furthest_ante', G.C.FILTER),
+        create_UIBox_round_scores_row('furthest_round', G.C.FILTER),'''
+position = "at"
+payload = '''create_UIBox_round_scores_row('cards_played', G.C.LIGHT_TURQUOISE),
+        create_UIBox_round_scores_row('cards_discarded', G.C.DARK_RED),
+        create_UIBox_round_scores_row('cards_purchased', G.C.BRIGHT_LIGHT),
+        create_UIBox_round_scores_row('times_rerolled', G.C.RUST),
+        create_UIBox_round_scores_row('new_collection', G.C.BRIGHT_LIGHT),
+        create_UIBox_round_scores_row('seed', G.C.WHITE),
+        UIBox_button({button = 'copy_seed', label = {localize('b_copy')}, colour = G.C.WHITE_LIGHT, scale = 0.3, minw = 2.3, minh = 0.4,}),
+      }},
+      {n=G.UIT.C, config={align = "tr", padding = 0.08}, nodes={
+        create_UIBox_round_scores_row('furthest_ante', G.C.BRIGHT_LIGHT),
+        create_UIBox_round_scores_row('furthest_round', G.C.BRIGHT_LIGHT),'''
+match_indent = true
+
+#Win screen - Endless mode button
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''UIBox_button({button = 'exit_overlay_menu', label = {localize('b_endless')}, minw = 6.5, maxw = 5, minh = 1.2, scale = 0.7, shadow = true, colour = G.C.BLUE, focus_args = {nav = 'wide', button = 'x',set_button_pip = true}}),'''
+position = "at"
+payload = '''UIBox_button({button = 'exit_overlay_menu', label = {localize('b_endless')}, minw = 6.5, maxw = 5, minh = 1.2, scale = 0.7, shadow = true, colour = G.C.LIGHT_TURQUOISE, focus_args = {nav = 'wide', button = 'x',set_button_pip = true}}),'''
+match_indent = true
+
+#Win/Lose screen - Node background
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''return {n=G.UIT.R, config={align = "cm", padding = 0.05, r = 0.1, colour = darken(G.C.JOKER_GREY, 0.1), emboss = 0.05, func = check_high_score and 'high_score_alert' or nil, id = score}, nodes={'''
+position = "at"
+payload = '''return {n=G.UIT.R, config={align = "cm", padding = 0.05, r = 0.1, colour = G.C.MEDIUM_GRAY, emboss = 0.05, func = check_high_score and 'high_score_alert' or nil, id = score}, nodes={'''
+match_indent = true
+
+#Win/Lose screen - 
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.C, config={align = "cm", minh = h, r = 0.1, minw = score=='defeated_by' and label_w or score_w, colour = (score == 'seed' and G.GAME.seeded) and G.C.RED or G.C.BLACK, emboss = 0.05}, nodes={'''
+position = "at"
+payload = '''{n=G.UIT.C, config={align = "cm", minh = h, r = 0.1, minw = score=='defeated_by' and label_w or score_w, colour = (score == 'seed' and G.GAME.seeded) and G.C.DARK_RED or G.C.DARK_GRAY, emboss = 0.05}, nodes={'''
+match_indent = true
+
+#Win/lose screen - Particles behind Oswald
+
+[[patches]]
+[patches.pattern]
+target = "card_character.lua"
+pattern = '''colours = {G.C.RED, G.C.BLUE, G.C.ORANGE},'''
+position = "at"
+payload = '''colours = {G.C.WHITE_LIGHT, G.C.BRIGHT_LIGHT, G.C.BRIGHT_LIGHT},'''
+match_indent = true
+
+#Example
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''not show_win_cta and UIBox_button({id = 'from_game_won', button = 'notify_then_setup_run', label = {localize('b_start_new_run')}, minw = 2.5, maxw = 2.5, minh = 1, focus_args = {nav = 'wide', snap_to = true}}) or nil,
+        not show_win_cta and {n=G.UIT.R, config={align = "cm", minh = 0.2, minw = 0.1}, nodes={}} or nil,
+        not show_win_cta and UIBox_button({button = 'go_to_menu', label = {localize('b_main_menu')}, minw = 2.5, maxw = 2.5, minh = 1, focus_args = {nav = 'wide'}}) or nil,'''
+position = "at"
+payload = '''not show_win_cta and UIBox_button({id = 'from_game_won', button = 'notify_then_setup_run', label = {localize('b_start_new_run')}, minw = 2.5, maxw = 2.5, minh = 1, focus_args = {nav = 'wide', snap_to = true}}) or nil,
+        not show_win_cta and {n=G.UIT.R, config={align = "cm", minh = 0.2, minw = 0.1}, nodes={}} or nil,
+        not show_win_cta and UIBox_button({button = 'go_to_menu', label = {localize('b_main_menu')}, minw = 2.5, maxw = 2.5, minh = 1, focus_args = {nav = 'wide'}, colour = G.C.DARK_RED}) or nil,'''
+match_indent = true
+
+#Example
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''local eased_green = copy_table(G.C.GREEN)'''
+position = "at"
+payload = '''local eased_green = copy_table(G.C.DARK_GRAY)'''
+match_indent = true
+
+#Example
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''local card_type_background = 
+          (AUT.card_type == 'Locked' and G.C.BLACK) or 
+          ((AUT.card_type == 'Undiscovered') and darken(G.C.JOKER_GREY, 0.3)) or 
+          (AUT.card_type == 'Enhanced' or AUT.card_type == 'Default') and darken(G.C.BLACK, 0.1) or
+          (debuffed and darken(G.C.BLACK, 0.1)) or 
+          (card_type_colour and darken(G.C.BLACK, 0.1)) or
+          G.C.SET[AUT.card_type] or
+          {0, 1, 1, 1}'''
+position = "at"
+payload = '''local card_type_background = 
+          (AUT.card_type == 'Locked' and G.C.DARK_GRAY) or 
+          ((AUT.card_type == 'Undiscovered') and darken(G.C.JOKER_GREY, 0.3)) or 
+          (AUT.card_type == 'Enhanced' or AUT.card_type == 'Default') and darken(G.C.DARK_GRAY, 0.1) or
+          (debuffed and darken(G.C.DARK_GRAY, 0.1)) or 
+          (card_type_colour and darken(G.C.DARK_GRAY, 0.1)) or
+          G.C.SET[AUT.card_type] or
+          {0, 1, 1, 1}'''
+match_indent = true
+
+######################
+
+######################
+#Flames colour
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''G.FUNCS.flame_handler = function(e)
+  G.C.UI_CHIPLICK = G.C.UI_CHIPLICK or {1, 1, 1, 1}
+  G.C.UI_MULTLICK = G.C.UI_MULTLICK or {1, 1, 1, 1}
+  for i=1, 3 do
+    G.C.UI_CHIPLICK[i] = math.min(math.max(((G.C.UI_CHIPS[i]*0.5+G.C.YELLOW[i]*0.5) + 0.1)^2, 0.1), 1)
+    G.C.UI_MULTLICK[i] = math.min(math.max(((G.C.UI_MULT[i]*0.5+G.C.YELLOW[i]*0.5) + 0.1)^2, 0.1), 1)
+  end
+
+  G.ARGS.flame_handler = G.ARGS.flame_handler or {
+    chips = {
+      id = 'flame_chips', 
+      arg_tab = 'chip_flames',
+      colour = G.C.UI_CHIPS,
+      accent = G.C.UI_CHIPLICK
+    },
+    mult = {
+      id = 'flame_mult', 
+      arg_tab = 'mult_flames',
+      colour = G.C.UI_MULT,
+      accent = G.C.UI_MULTLICK
+    }
+  }'''
+position = "at"
+payload = '''G.FUNCS.flame_handler = function(e)
+  G.C.UI_CHIPLICK = G.C.UI_CHIPLICK or {1, 1, 1, 1}
+  G.C.UI_MULTLICK = G.C.UI_MULTLICK or {1, 1, 1, 1}
+  for i=1, 3 do
+    G.C.UI_CHIPLICK[i] = math.min(math.max(((G.C.LIGHT_TURQUOISE[i]*0.5+G.C.YELLOW[i]*0.5) + 0.1)^2, 0.1), 1)
+    G.C.UI_MULTLICK[i] = math.min(math.max(((G.C.DARKEST_RED[i]*0.5+G.C.YELLOW[i]*0.5) + 0.1)^2, 0.1), 1)
+  end
+
+  G.ARGS.flame_handler = G.ARGS.flame_handler or {
+    chips = {
+      id = 'flame_chips', 
+      arg_tab = 'chip_flames',
+      colour = G.C.TURQUOISE,
+      accent = G.C.UI_CHIPLICK
+    },
+    mult = {
+      id = 'flame_mult', 
+      arg_tab = 'mult_flames',
+      colour = G.C.DARKEST_RED,
+      accent = G.C.UI_MULTLICK
+    }
+  }'''
+match_indent = true
+
+######################
+#Dissolve colour
+
+[[patches]]
+[patches.pattern]
+target = "engine/sprite.lua"
+pattern = '''G.SHADERS[_shader or 'dissolve']:send("burn_colour_1",_draw_major.dissolve_colours and _draw_major.dissolve_colours[1] or G.C.CLEAR)
+        G.SHADERS[_shader or 'dissolve']:send("burn_colour_2",_draw_major.dissolve_colours and _draw_major.dissolve_colours[2] or G.C.CLEAR)'''
+position = "at"
+payload = '''G.SHADERS[_shader or 'dissolve']:send("burn_colour_1",G.C.BRIGHT_LIGHT or G.C.CLEAR)
+        G.SHADERS[_shader or 'dissolve']:send("burn_colour_2",G.C.WHITE_LIGHT or G.C.CLEAR)'''
+match_indent = true

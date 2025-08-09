@@ -1,0 +1,541 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+
+##########
+## SHOP ##
+##########
+
+######################
+#Shop sign
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''G.SHOP_SIGN = UIBox{
+      definition = 
+        {n=G.UIT.ROOT, config = {colour = G.C.DYN_UI.MAIN, emboss = 0.05, align = 'cm', r = 0.1, padding = 0.1}, nodes={
+          {n=G.UIT.R, config={align = "cm", padding = 0.1, minw = 4.72, minh = 3.1, colour = G.C.DYN_UI.DARK, r = 0.1}, nodes={
+            {n=G.UIT.R, config={align = "cm"}, nodes={
+              {n=G.UIT.O, config={object = shop_sign}}
+            }},
+            {n=G.UIT.R, config={align = "cm"}, nodes={
+              {n=G.UIT.O, config={object = DynaText({string = {localize('ph_improve_run')}, colours = {lighten(G.C.GOLD, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})}}
+            }},
+          }},
+        }},'''
+position = "at"
+payload = '''G.SHOP_SIGN = UIBox{
+      definition = 
+        {n=G.UIT.ROOT, config = {colour = G.C.RUST, emboss = 0.05, align = 'cm', r = 0.1, padding = 0.1}, nodes={
+          {n=G.UIT.R, config={align = "cm", padding = 0.1, minw = 4.72, minh = 3.1, colour = HEX("1a1614"), r = 0.1}, nodes={
+            {n=G.UIT.R, config={align = "cm"}, nodes={
+              {n=G.UIT.O, config={object = shop_sign}}
+            }},
+            {n=G.UIT.R, config={align = "cm"}, nodes={
+              {n=G.UIT.O, config={object = DynaText({string = {localize('ph_improve_run')}, colours = {lighten(G.C.GOLD, 0.3)},shadow = true, rotate = true, float = true, bump = true, scale = 0.5, spacing = 1, pop_in = 1.5, maxw = 4.3})}}
+            }},
+          }},
+        }},'''
+match_indent = true
+
+######################
+#Shop background - Voucher
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, colour = G.C.L_BLACK, emboss = 0.05}, nodes={
+                        {n=G.UIT.C, config={align = "cm", padding = 0.2, r=0.2, colour = G.C.BLACK, maxh = G.shop_vouchers.T.h+0.4}, nodes={'''
+position = "at"
+payload = '''{n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, colour = G.C.MEDIUM_GRAY, emboss = 0.05}, nodes={
+                        {n=G.UIT.C, config={align = "cm", padding = 0.2, r=0.2, colour = G.C.LIGHT_GRAY, maxh = G.shop_vouchers.T.h+0.4}, nodes={'''
+match_indent = true
+
+######################
+#Shop Background - Jokers
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.C, config={align = "cm", padding = 0.2, r=0.2, colour = G.C.L_BLACK, emboss = 0.05, minw = 8.2}, nodes={'''
+position = "at"
+payload = '''{n=G.UIT.C, config={align = "cm", padding = 0.2, r=0.2, colour = G.C.MEDIUM_GRAY, emboss = 0.05, minw = 8.2}, nodes={'''
+match_indent = true
+
+######################
+#Shop Background - Tarots
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, colour = G.C.L_BLACK, emboss = 0.05}, nodes={'''
+position = "at"
+payload = '''{n=G.UIT.C, config={align = "cm", padding = 0.15, r=0.2, colour = G.C.MEDIUM_GRAY, emboss = 0.05}, nodes={'''
+match_indent = true
+
+######################
+#Shop Background - All
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.C, config={align = "cm", padding = 0.1, emboss = 0.05, r = 0.1, colour = G.C.DYN_UI.BOSS_MAIN}, nodes={'''
+position = "at"
+payload = '''{n=G.UIT.C, config={align = "cm", padding = 0.1, emboss = 0.05, r = 0.1, colour = G.C.DARK_GRAY}, nodes={'''
+match_indent = true
+
+######################
+#Next button
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R,config={id = 'next_round_button', align = "cm", minw = 2.8, minh = 1.5, r=0.15,colour = G.C.RED, one_press = true, button = 'toggle_shop', hover = true,shadow = true}, nodes = {'''
+position = "at"
+payload = '''{n=G.UIT.R,config={id = 'next_round_button', align = "cm", minw = 2.8, minh = 1.5, r=0.15,colour = G.C.LIGHT_TURQUOISE, one_press = true, button = 'toggle_shop', hover = true,shadow = true}, nodes = {'''
+match_indent = true
+
+######################
+#Reroll button
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R, config={align = "cm", minw = 2.8, minh = 1.6, r=0.15,colour = G.C.GREEN, button = 'reroll_shop', func = 'can_reroll', hover = true,shadow = true}, nodes = {'''
+position = "at"
+payload = '''{n=G.UIT.R, config={align = "cm", minw = 2.8, minh = 1.6, r=0.15,colour = G.C.TURQUOISE, button = 'reroll_shop', func = 'can_reroll', hover = true,shadow = true}, nodes = {'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''e.config.colour = G.C.GREEN
+        e.config.button = 'reroll_shop''''
+position = "at"
+payload = '''e.config.colour = G.C.RUST
+        e.config.button = 'reroll_shop''''
+match_indent = true
+
+######################
+#Skip booster button
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''UIBox_dyn_container({
+          {n=G.UIT.C, config={align = "cm", padding = 0.05, minw = 4}, nodes={
+            {n=G.UIT.R,config={align = "bm", padding = 0.05}, nodes={
+              {n=G.UIT.O, config={object = DynaText({string = localize('k_arcana_pack'), colours = {G.C.WHITE},shadow = true, rotate = true, bump = true, spacing =2, scale = 0.7, maxw = 4, pop_in = 0.5})}}
+            }},
+            {n=G.UIT.R,config={align = "bm", padding = 0.05}, nodes={
+              {n=G.UIT.O, config={object = DynaText({string = {localize('k_choose')..' '}, colours = {G.C.WHITE},shadow = true, rotate = true, bump = true, spacing =2, scale = 0.5, pop_in = 0.7})}},
+              {n=G.UIT.O, config={object = DynaText({string = {{ref_table = G.GAME, ref_value = 'pack_choices'}}, colours = {G.C.WHITE},shadow = true, rotate = true, bump = true, spacing =2, scale = 0.5, pop_in = 0.7})}}
+            }},
+          }}
+        }),'''
+position = "at"
+payload = '''UIBox_dyn_container({
+          {n=G.UIT.C, config={align = "cm", padding = 0.05, minw = 4}, nodes={
+            {n=G.UIT.R,config={align = "bm", padding = 0.05}, nodes={
+              {n=G.UIT.O, config={object = DynaText({string = localize('k_arcana_pack'), colours = {HEX("fc05ba")},shadow = true, rotate = true, bump = true, spacing =2, scale = 0.7, maxw = 4, pop_in = 0.5})}}
+            }},
+            {n=G.UIT.R,config={align = "bm", padding = 0.05}, nodes={
+              {n=G.UIT.O, config={object = DynaText({string = {localize('k_choose')..' '}, colours = {HEX("05fc26")},shadow = true, rotate = true, bump = true, spacing =2, scale = 0.5, pop_in = 0.7})}},
+              {n=G.UIT.O, config={object = DynaText({string = {{ref_table = G.GAME, ref_value = 'pack_choices'}}, colours = {HEX("05fc26")},shadow = true, rotate = true, bump = true, spacing =2, scale = 0.5, pop_in = 0.7})}}
+            }},
+          }}
+        }, nil, get_blind_main_colour('Small'), mix_colours(G.C.DARK_GRAY, G.C.DARK_GRAY, 0.8)),'''
+match_indent = true
+
+######################
+#Skip tarot booster
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R,config={align = "tm",padding = 0.2, minh = 1.2, minw = 1.8, r=0.15,colour = G.C.GREY, one_press = true, button = 'skip_booster', hover = true,shadow = true, func = 'can_skip_booster'}, nodes = {'''
+position = "at"
+payload = '''{n=G.UIT.R,config={align = "tm",padding = 0.2, minh = 1.2, minw = 1.8, r=0.15,colour = G.C.DARKEST_RED, one_press = true, button = 'skip_booster', hover = true,shadow = true, func = 'can_skip_booster'}, nodes = {'''
+match_indent = true
+
+######################
+
+## BLIND ##
+###########
+
+######################
+#During game - Play button
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''local play_button = {n=G.UIT.C, config={id = 'play_button', align = "tm", minw = 2.5, padding = 0.3, r = 0.1, hover = true, colour = G.C.BLUE, button = "play_cards_from_highlighted", one_press = true, shadow = true, func = 'can_play'}, nodes={'''
+position = "at"
+payload = '''local play_button = {n=G.UIT.C, config={id = 'play_button', align = "tm", minw = 2.5, padding = 0.3, r = 0.1, hover = true, colour = G.C.RED, button = "play_cards_from_highlighted", one_press = true, shadow = true, func = 'can_play'}, nodes={'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''if #G.hand.highlighted <= 0 or G.GAME.blind.block_play or #G.hand.highlighted > 5 then 
+        e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+        e.config.button = nil
+    else
+        e.config.colour = G.C.BLUE
+        e.config.button = 'play_cards_from_highlighted'
+    end
+  end'''
+position = "at"
+payload = '''if #G.hand.highlighted <= 0 or G.GAME.blind.block_play or #G.hand.highlighted > 5 then 
+        e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+        e.config.button = nil
+    else
+        e.config.colour = G.C.LIGHT_TURQUOISE
+        e.config.button = 'play_cards_from_highlighted'
+    end
+  end'''
+match_indent = true
+
+######################
+#During game - Discard button
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''local discard_button = {n=G.UIT.C, config={id = 'discard_button',align = "tm", padding = 0.3, r = 0.1, minw = 2.5, minh = button_height, hover = true, colour = G.C.RED, button = "discard_cards_from_highlighted", one_press = true, shadow = true, func = 'can_discard'}, nodes={'''
+position = "at"
+payload = '''local discard_button = {n=G.UIT.C, config={id = 'discard_button',align = "tm", padding = 0.3, r = 0.1, minw = 2.5, minh = button_height, hover = true, colour = G.C.WHITE_LIGHT, button = "discard_cards_from_highlighted", one_press = true, shadow = true, func = 'can_discard'}, nodes={'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = "functions/button_callbacks.lua"
+pattern = '''if G.GAME.current_round.discards_left <= 0 or #G.hand.highlighted <= 0 then 
+        e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+        e.config.button = nil
+    else
+        e.config.colour = G.C.RED'''
+position = "at"
+payload = '''if G.GAME.current_round.discards_left <= 0 or #G.hand.highlighted <= 0 then 
+        e.config.colour = G.C.UI.BACKGROUND_INACTIVE
+        e.config.button = nil
+    else
+        e.config.colour = G.C.DARK_RED'''
+match_indent = true
+
+######################
+#BOSS BLIND DEBUFF
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''{n=G.UIT.O, config={object = DynaText({scale = 0.7, string = localize('ph_unscored_hand'), maxw = 9, colours = {G.C.WHITE},float = true, shadow = true, silent = true, pop_in = 0, pop_in_rate = 6})}},'''
+position = "at"
+payload = '''{n=G.UIT.O, config={object = DynaText({scale = 2.0, string = localize('ph_unscored_hand'), maxw = 9, colours = {G.C.DARK_RED},float = true, shadow = true, silent = true, pop_in = 0, pop_in_rate = 6})}},'''
+match_indent = true
+
+######################
+#DEBUFF
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''{n=G.UIT.O, config={object = DynaText({scale = 0.6, string = G.GAME.blind:get_loc_debuff_text(), maxw = 9, colours = {G.C.WHITE},float = true, shadow = true, silent = true, pop_in = 0, pop_in_rate = 6})}},'''
+position = "at"
+payload = '''{n=G.UIT.O, config={object = DynaText({scale = 0.6, string = G.GAME.blind:get_loc_debuff_text(), maxw = 9, colours = {G.C.DARK_RED},float = true, shadow = true, silent = true, pop_in = 0, pop_in_rate = 6})}},'''
+match_indent = true
+
+
+######################
+
+## LEFT UI ##
+#############
+
+######################
+#Left UI - visible blind
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''return {n=G.UIT.ROOT, config={align = "cm", minw = 4.5, r = 0.1, colour = G.C.BLACK, emboss = 0.05, padding = 0.05, func = 'HUD_blind_visible', id = 'HUD_blind'}, nodes={'''
+position = "at"
+payload = '''return {n=G.UIT.ROOT, config={align = "cm", minw = 4.5, r = 0.1, colour = HEX("1a1614"), emboss = 0.05, padding = 0.05, func = 'HUD_blind_visible', id = 'HUD_blind'}, nodes={'''
+match_indent = true
+
+######################
+#Blind - Sort buttons border
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.C, config={align = "cm", padding = 0.1, r = 0.1, colour =G.C.UI.TRANSPARENT_DARK, outline = 1.5, outline_colour = mix_colours(G.C.WHITE,G.C.JOKER_GREY, 0.7), line_emboss = 1}, nodes={'''
+position = "at"
+payload = '''{n=G.UIT.C, config={align = "cm", padding = 0.1, r = 0.1, colour =HEX("1a1614"), outline = 1.5, outline_colour = mix_colours(G.C.RUST,G.C.RUST, 0.7), line_emboss = 1}, nodes={'''
+match_indent = true
+
+######################
+#Blind - Sort buttons
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.C, config={align = "cm", minh = 0.7, minw = 0.9, padding = 0.1, r = 0.1, hover = true, colour =G.C.ORANGE, button = "sort_hand_value", shadow = true}, nodes={
+                  {n=G.UIT.T, config={text = localize('k_rank'), scale = text_scale*0.7, colour = G.C.UI.TEXT_LIGHT}}
+                }},
+                {n=G.UIT.C, config={align = "cm", minh = 0.7, minw = 0.9, padding = 0.1, r = 0.1, hover = true, colour =G.C.ORANGE, button = "sort_hand_suit", shadow = true}, nodes={
+                  {n=G.UIT.T, config={text = localize('k_suit'), scale = text_scale*0.7, colour = G.C.UI.TEXT_LIGHT}}
+                }}'''
+position = "at"
+payload = '''{n=G.UIT.C, config={align = "cm", minh = 0.7, minw = 0.9, padding = 0.1, r = 0.1, hover = true, colour =G.C.TURQUOISE, button = "sort_hand_value", shadow = true}, nodes={
+                  {n=G.UIT.T, config={text = localize('k_rank'), scale = text_scale*0.7, colour = G.C.UI.TEXT_LIGHT}}
+                }},
+                {n=G.UIT.C, config={align = "cm", minh = 0.7, minw = 0.9, padding = 0.1, r = 0.1, hover = true, colour =G.C.DARKEST_RED, button = "sort_hand_suit", shadow = true}, nodes={
+                  {n=G.UIT.T, config={text = localize('k_suit'), scale = text_scale*0.7, colour = G.C.UI.TEXT_LIGHT}}
+                }}'''
+match_indent = true
+
+######################
+#Left UI border
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''return {n=G.UIT.ROOT, config = {align = "cm", padding = 0.03, colour = G.C.UI.TRANSPARENT_DARK}, nodes={'''
+position = "at"
+payload = '''return {n=G.UIT.ROOT, config = {align = "cm", padding = 0.03, colour = HEX("331208")}, nodes={'''
+match_indent = true
+
+######################
+#Left UI - Background
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R, config={align = "cm", colour = G.C.DYN_UI.BOSS_DARK, r=0.1, minh = 30, padding = 0.08}, nodes={'''
+position = "at"
+payload = '''{n=G.UIT.R, config={align = "cm", colour = G.C.DARK_GRAY, r=0.1, minh = 30, padding = 0.08}, nodes={'''
+match_indent = true
+
+######################
+#Left UI - Options button
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R, config={align = "cm", minh = 1.75, minw = 1.5,padding = 0.05, r = 0.1, hover = true, colour = G.C.ORANGE, button = "options", shadow = true}, nodes={'''
+position = "at"
+payload = '''{n=G.UIT.R, config={align = "cm", minh = 1.75, minw = 1.5,padding = 0.05, r = 0.1, hover = true, colour = G.C.LIGHT_GRAY, button = "options", shadow = true}, nodes={'''
+match_indent = true
+
+######################
+#Left UI - Run info button
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R, config={id = 'run_info_button', align = "cm", minh = 1.75, minw = 1.5,padding = 0.05, r = 0.1, hover = true, colour = G.C.RED, button = "run_info", shadow = true}, nodes={'''
+position = "at"
+payload = '''{n=G.UIT.R, config={id = 'run_info_button', align = "cm", minh = 1.75, minw = 1.5,padding = 0.05, r = 0.1, hover = true, colour = G.C.LIGHT_GRAY, button = "run_info", shadow = true}, nodes={'''
+match_indent = true
+
+######################
+#Background and border blind type blind select screen
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R, config={align = "cm", colour = mix_colours(G.C.BLACK, G.C.L_BLACK, 0.5), r = 0.1, outline = 1, outline_colour = G.C.L_BLACK}, nodes={  '''
+position = "at"
+payload = '''{n=G.UIT.R, config={align = "cm", colour = mix_colours(HEX("1a1614"), HEX("1a1614"), 0.5), r = 0.1, outline = 1, outline_colour = G.C.RUST}, nodes={  '''
+match_indent = true
+
+######################
+#Score at least box in the blind select screen
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.R, config={align = "cm",r = 0.1, padding = 0.05, minw = 3.1, colour = G.C.BLACK, emboss = 0.05}, nodes={'''
+position = "at"
+payload = '''{n=G.UIT.R, config={align = "cm",r = 0.1, padding = 0.05, minw = 3.1, colour = G.C.RUST, emboss = 0.05}, nodes={'''
+match_indent = true
+
+######################
+#Run info skip rewards button
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''}} or {n=G.UIT.C, config={align = "cm", padding = 0.1, emboss = 0.05, colour = mix_colours(G.C.BLUE, G.C.BLACK, 0.4), r = 0.1, maxw = 2}, nodes={'''
+position = "at"
+payload = '''}} or {n=G.UIT.C, config={align = "cm", padding = 0.1, emboss = 0.05, colour = mix_colours(G.C.DARK_RED, G.C.DARK_RED, 0.4), r = 0.1, maxw = 2}, nodes={'''
+match_indent = true
+
+######################
+#Blind select background colour (active)
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''G.blind_select_opts.small = G.GAME.round_resets.blind_states['Small'] ~= 'Hide' and UIBox{definition = {n=G.UIT.ROOT, config={align = "cm", colour = G.C.CLEAR}, nodes={UIBox_dyn_container({create_UIBox_blind_choice('Small')},false,get_blind_main_colour('Small'))}}, config = {align="bmi", offset = {x=0,y=0}}} or nil
+  G.blind_select_opts.big = G.GAME.round_resets.blind_states['Big'] ~= 'Hide' and UIBox{definition = {n=G.UIT.ROOT, config={align = "cm", colour = G.C.CLEAR}, nodes={UIBox_dyn_container({create_UIBox_blind_choice('Big')},false,get_blind_main_colour('Big'))}}, config = {align="bmi", offset = {x=0,y=0}}} or nil
+  G.blind_select_opts.boss = G.GAME.round_resets.blind_states['Boss'] ~= 'Hide' and UIBox{definition = {n=G.UIT.ROOT, config={align = "cm", colour = G.C.CLEAR}, nodes={UIBox_dyn_container({create_UIBox_blind_choice('Boss')},false,get_blind_main_colour('Boss'), mix_colours(G.C.BLACK, get_blind_main_colour('Boss'), 0.8))}}, config = {align="bmi", offset = {x=0,y=0}}} or nil'''
+position = "at"
+payload = '''G.blind_select_opts.small = G.GAME.round_resets.blind_states['Small'] ~= 'Hide' and UIBox{definition = {n=G.UIT.ROOT, config={align = "cm", colour = G.C.CLEAR}, nodes={UIBox_dyn_container({create_UIBox_blind_choice('Small')},false,get_blind_main_colour('Small'), mix_colours(G.C.DARK_GRAY, G.C.DARK_GRAY, 0.8))}}, config = {align="bmi", offset = {x=0,y=0}}} or nil
+  G.blind_select_opts.big = G.GAME.round_resets.blind_states['Big'] ~= 'Hide' and UIBox{definition = {n=G.UIT.ROOT, config={align = "cm", colour = G.C.CLEAR}, nodes={UIBox_dyn_container({create_UIBox_blind_choice('Big')},false,get_blind_main_colour('Big'), mix_colours(G.C.DARK_GRAY, G.C.DARK_GRAY, 0.8))}}, config = {align="bmi", offset = {x=0,y=0}}} or nil
+  G.blind_select_opts.boss = G.GAME.round_resets.blind_states['Boss'] ~= 'Hide' and UIBox{definition = {n=G.UIT.ROOT, config={align = "cm", colour = G.C.CLEAR}, nodes={UIBox_dyn_container({create_UIBox_blind_choice('Boss')},false,get_blind_main_colour('Boss'), mix_colours(G.C.DARK_GRAY, get_blind_main_colour('Boss'), 0.8))}}, config = {align="bmi", offset = {x=0,y=0}}} or nil'''
+match_indent = true
+
+######################
+#Left UI - chips and mult
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''contents.hand =
+        {n=G.UIT.R, config={align = "cm", id = 'hand_text_area', colour = darken(G.C.BLACK, 0.1), r = 0.1, emboss = 0.05, padding = 0.03}, nodes={
+            {n=G.UIT.C, config={align = "cm"}, nodes={
+              {n=G.UIT.R, config={align = "cm", minh = 1.1}, nodes={
+                {n=G.UIT.O, config={id = 'hand_name', func = 'hand_text_UI_set',object = DynaText({string = {{ref_table = G.GAME.current_round.current_hand, ref_value = "handname_text"}}, colours = {G.C.UI.TEXT_LIGHT}, shadow = true, float = true, scale = scale*1.4})}},
+                {n=G.UIT.O, config={id = 'hand_chip_total', func = 'hand_chip_total_UI_set',object = DynaText({string = {{ref_table = G.GAME.current_round.current_hand, ref_value = "chip_total_text"}}, colours = {G.C.UI.TEXT_LIGHT}, shadow = true, float = true, scale = scale*1.4})}},
+                {n=G.UIT.T, config={ref_table = G.GAME.current_round.current_hand, ref_value='hand_level', scale = scale, colour = G.C.UI.TEXT_LIGHT, id = 'hand_level', shadow = true}}
+              }},
+              {n=G.UIT.R, config={align = "cm", minh = 1, padding = 0.1}, nodes={
+                {n=G.UIT.C, config={align = "cr", minw = 2, minh =1, r = 0.1,colour = G.C.UI_CHIPS, id = 'hand_chip_area', emboss = 0.05}, nodes={
+                    {n=G.UIT.O, config={func = 'flame_handler',no_role = true, id = 'flame_chips', object = Moveable(0,0,0,0), w = 0, h = 0}},
+                    {n=G.UIT.O, config={id = 'hand_chips', func = 'hand_chip_UI_set',object = DynaText({string = {{ref_table = G.GAME.current_round.current_hand, ref_value = "chip_text"}}, colours = {G.C.UI.TEXT_LIGHT}, font = G.LANGUAGES['en-us'].font, shadow = true, float = true, scale = scale*2.3})}},
+                    {n=G.UIT.B, config={w=0.1,h=0.1}},
+                }},
+                {n=G.UIT.C, config={align = "cm"}, nodes={
+                  {n=G.UIT.T, config={text = "X", lang = G.LANGUAGES['en-us'], scale = scale*2, colour = G.C.UI_MULT, shadow = true}},
+                }},
+                {n=G.UIT.C, config={align = "cl", minw = 2, minh=1, r = 0.1,colour = G.C.UI_MULT, id = 'hand_mult_area', emboss = 0.05}, nodes={
+                  {n=G.UIT.O, config={func = 'flame_handler',no_role = true, id = 'flame_mult', object = Moveable(0,0,0,0), w = 0, h = 0}},
+                  {n=G.UIT.B, config={w=0.1,h=0.1}},
+                  {n=G.UIT.O, config={id = 'hand_mult', func = 'hand_mult_UI_set',object = DynaText({string = {{ref_table = G.GAME.current_round.current_hand, ref_value = "mult_text"}}, colours = {G.C.UI.TEXT_LIGHT}, font = G.LANGUAGES['en-us'].font, shadow = true, float = true, scale = scale*2.3})}},
+                }}
+              }}
+            }}
+          }}'''
+position = "at"
+payload = '''contents.hand =
+        {n=G.UIT.R, config={align = "cm", id = 'hand_text_area', colour = darken(G.C.MEDIUM_GRAY, 0.1), r = 0.1, emboss = 0.05, padding = 0.03}, nodes={
+            {n=G.UIT.C, config={align = "cm"}, nodes={
+              {n=G.UIT.R, config={align = "cm", minh = 1.1}, nodes={
+                {n=G.UIT.O, config={id = 'hand_name', func = 'hand_text_UI_set',object = DynaText({string = {{ref_table = G.GAME.current_round.current_hand, ref_value = "handname_text"}}, colours = {G.C.UI.TEXT_LIGHT}, shadow = true, float = true, scale = scale*1.4})}},
+                {n=G.UIT.O, config={id = 'hand_chip_total', func = 'hand_chip_total_UI_set',object = DynaText({string = {{ref_table = G.GAME.current_round.current_hand, ref_value = "chip_total_text"}}, colours = {G.C.UI.TEXT_LIGHT}, shadow = true, float = true, scale = scale*1.4})}},
+                {n=G.UIT.T, config={ref_table = G.GAME.current_round.current_hand, ref_value='hand_level', scale = scale, colour = G.C.UI.TEXT_LIGHT, id = 'hand_level', shadow = true}}
+              }},
+              {n=G.UIT.R, config={align = "cm", minh = 1, padding = 0.1}, nodes={
+                {n=G.UIT.C, config={align = "cr", minw = 2, minh =1, r = 0.1,colour = G.C.TURQUOISE, id = 'hand_chip_area', emboss = 0.05}, nodes={
+                    {n=G.UIT.O, config={func = 'flame_handler',no_role = true, id = 'flame_chips', object = Moveable(0,0,0,0), w = 0, h = 0}},
+                    {n=G.UIT.O, config={id = 'hand_chips', func = 'hand_chip_UI_set',object = DynaText({string = {{ref_table = G.GAME.current_round.current_hand, ref_value = "chip_text"}}, colours = {G.C.UI.TEXT_LIGHT}, font = G.LANGUAGES['en-us'].font, shadow = true, float = true, scale = scale*2.3})}},
+                    {n=G.UIT.B, config={w=0.1,h=0.1}},
+                }},
+                {n=G.UIT.C, config={align = "cm"}, nodes={
+                  {n=G.UIT.T, config={text = "X", lang = G.LANGUAGES['en-us'], scale = scale*2, colour = G.C.DARKEST_RED, shadow = true}},
+                }},
+                {n=G.UIT.C, config={align = "cl", minw = 2, minh=1, r = 0.1,colour = G.C.DARKEST_RED, id = 'hand_mult_area', emboss = 0.05}, nodes={
+                  {n=G.UIT.O, config={func = 'flame_handler',no_role = true, id = 'flame_mult', object = Moveable(0,0,0,0), w = 0, h = 0}},
+                  {n=G.UIT.B, config={w=0.1,h=0.1}},
+                  {n=G.UIT.O, config={id = 'hand_mult', func = 'hand_mult_UI_set',object = DynaText({string = {{ref_table = G.GAME.current_round.current_hand, ref_value = "mult_text"}}, colours = {G.C.UI.TEXT_LIGHT}, font = G.LANGUAGES['en-us'].font, shadow = true, float = true, scale = scale*2.3})}},
+                }}
+              }}
+            }}
+          }}'''
+match_indent = true
+
+######################
+#Left UI - Hands color
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.O, config={object = DynaText({string = {{ref_table = G.GAME.current_round, ref_value = 'hands_left'}}, font = G.LANGUAGES['en-us'].font, colours = {G.C.BLUE},shadow = true, rotate = true, scale = 2*scale}),id = 'hand_UI_count'}},'''
+position = "at"
+payload = '''{n=G.UIT.O, config={object = DynaText({string = {{ref_table = G.GAME.current_round, ref_value = 'hands_left'}}, font = G.LANGUAGES['en-us'].font, colours = {G.C.BRIGHT_LIGHT},shadow = true, rotate = true, scale = 2*scale}),id = 'hand_UI_count'}},'''
+match_indent = true
+
+######################
+#Left UI - Discard color
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''{n=G.UIT.O, config={object = DynaText({string = {{ref_table = G.GAME.current_round, ref_value = 'discards_left'}}, font = G.LANGUAGES['en-us'].font, colours = {G.C.RED},shadow = true, rotate = true, scale = 2*scale}),id = 'discard_UI_count'}},'''
+position = "at"
+payload = '''{n=G.UIT.O, config={object = DynaText({string = {{ref_table = G.GAME.current_round, ref_value = 'discards_left'}}, font = G.LANGUAGES['en-us'].font, colours = {G.C.DARK_RED},shadow = true, rotate = true, scale = 2*scale}),id = 'discard_UI_count'}},'''
+match_indent = true
+
+######################
+#Left UI - Slot Border
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''local temp_col = G.C.DYN_UI.BOSS_MAIN'''
+position = "at"
+payload = '''local temp_col = G.C.MEDIUM_GRAY'''
+match_indent = true
+
+######################
+#Left UI - Slot Background
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''local temp_col2 = G.C.DYN_UI.BOSS_DARK'''
+position = "at"
+payload = '''local temp_col2 = G.C.DARK_GRAY'''
+match_indent = true
+
+######################
+#Blind select background colour (inactive)
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''not run_info and {n=G.UIT.C, config={align = "cm", colour = G.C.UI.BACKGROUND_INACTIVE, minh = 0.6, minw = 2, maxw = 2, padding = 0.07, r = 0.1, shadow = true, hover = true, one_press = true, button = 'skip_blind', func = 'hover_tag_proxy', ref_table = _tag}, nodes={'''
+position = "at"
+payload = '''not run_info and {n=G.UIT.C, config={align = "cm", colour = HEX("05fc26"), minh = 0.6, minw = 2, maxw = 2, padding = 0.07, r = 0.1, shadow = true, hover = true, one_press = true, button = 'skip_blind', func = 'hover_tag_proxy', ref_table = _tag}, nodes={'''
+match_indent = true
+
+######################
+
+## ROUND EVALUATION ##
+######################
+
+######################
+#Background evaluation
+
+[[patches]]
+[patches.pattern]
+target = "functions/UI_definitions.lua"
+pattern = '''UIBox_dyn_container(
+      {
+        {n=G.UIT.R, config={align = "tm", minw = width, minh = 3, padding = 0.1, r = 0.1, colour = G.C.BLACK, emboss = 0.05}, nodes={
+          {n=G.UIT.R, config={align = "cm", minw = width, minh = 1.4}, nodes={}},
+          {n=G.UIT.R, config={align = "cm", minw = width, id = 'base_round_eval'}, nodes={}},
+          {n=G.UIT.R, config={align = "cm", minw = width, id = 'bonus_round_eval'}, nodes={}}
+        }},
+        {n=G.UIT.R, config={align = "cm", minh = 0.05}, nodes={}},
+        {n=G.UIT.R, config={align = "cm", minw = width, id = 'eval_bottom'}, nodes={}}
+      },false)
+    }}'''
+position = "at"
+payload = '''UIBox_dyn_container(
+      {
+        {n=G.UIT.R, config={align = "tm", minw = width, minh = 3, padding = 0.1, r = 0.1, colour = G.C.MEDIUM_GRAY, emboss = 0.05}, nodes={
+          {n=G.UIT.R, config={align = "cm", minw = width, minh = 1.4}, nodes={}},
+          {n=G.UIT.R, config={align = "cm", minw = width, id = 'base_round_eval'}, nodes={}},
+          {n=G.UIT.R, config={align = "cm", minw = width, id = 'bonus_round_eval'}, nodes={}}
+        }},
+        {n=G.UIT.R, config={align = "cm", minh = 0.05}, nodes={}},
+        {n=G.UIT.R, config={align = "cm", minw = width, id = 'eval_bottom'}, nodes={}}
+      },false,G.C.DARK_GRAY, G.C.DARK_GRAY)
+    }}'''
+match_indent = true
+

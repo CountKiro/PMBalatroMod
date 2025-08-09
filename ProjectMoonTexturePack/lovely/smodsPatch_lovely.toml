@@ -1,0 +1,77 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+######################
+## SMODS PATCHING ##
+####################
+
+
+
+######################
+#Main menu - Change the background of the buttons
+
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/ui.lua"]'''
+pattern = '''menu.nodes[1].nodes[1].config = {align = "cm", padding = 0.15, r = 0.1, emboss = 0.1, colour = G.C.L_BLACK, mid = true}'''
+position = "at"
+payload = '''menu.nodes[1].nodes[1].config = {align = "cm", padding = 0.15, r = 0.1, emboss = 0.1, colour = G.C.MEDIUM_GRAY, mid = true}'''
+match_indent = true
+
+######################
+#Main menu - Change the background of the profile
+
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/ui.lua"]'''
+pattern = '''profile_menu.nodes[1].config = {align = "cm", padding = 0.11, r = 0.1, emboss = 0.1, colour = G.C.L_BLACK}'''
+position = "at"
+payload = '''profile_menu.nodes[1].config = {align = "cm", padding = 0.11, r = 0.1, emboss = 0.1, colour = G.C.MEDIUM_GRAY}'''
+match_indent = true
+
+######################
+#Change the debuff shader with custom one
+
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/card_draw.lua"]'''
+pattern = '''if self.debuff then
+            self.children.center:draw_shader('debuff', nil, self.ARGS.send_to_shader)
+            if self.children.front and (self.ability.delayed or (self.ability.effect ~= 'Stone Card' and not self.config.center.replace_base_card)) then
+                self.children.front:draw_shader('debuff', nil, self.ARGS.send_to_shader)
+            end'''
+position = 'at'
+payload = '''if self.debuff then
+            self.children.center:draw_shader('pmmod_debuffGold', nil, self.ARGS.send_to_shader)
+            if self.children.front and (self.ability.delayed or (self.ability.effect ~= 'Stone Card' and not self.config.center.replace_base_card)) then
+                self.children.front:draw_shader('pmmod_debuffGold', nil, self.ARGS.send_to_shader)
+            end'''
+match_indent = true
+
+
+######################
+#Remove negative effect from the Antimatter (Empty Coffin) voucher
+
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/card_draw.lua"]'''
+pattern = '''if (self.edition and self.edition.negative and not self.delay_edition) or (self.ability.name == 'Antimatter' and (self.config.center.discovered or self.bypass_discovery_center)) then
+            self.children.center:draw_shader('negative', nil, self.ARGS.send_to_shader)'''
+position = "at"
+payload = '''if (self.edition and self.edition.negative and not self.delay_edition) or (self.ability.name == 'Antimatter' and (self.config.center.discovered or self.bypass_discovery_center)) then
+            self.children.center:draw_shader('holo', nil, self.ARGS.send_to_shader)'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '''=[SMODS _ "src/card_draw.lua"]'''
+pattern = '''if (self.edition and self.edition.negative) or (self.ability.name == 'Antimatter' and (self.config.center.discovered or self.bypass_discovery_center)) then
+            self.children.center:draw_shader('negative_shine', nil, self.ARGS.send_to_shader)'''
+position = "at"
+payload = '''if (self.edition and self.edition.negative) or (self.ability.name == 'Antimatter' and (self.config.center.discovered or self.bypass_discovery_center)) then
+            self.children.center:draw_shader('negative_shine', nil, self.ARGS.send_to_shader)
+			elseif (self.edition and self.edition.negative) or (self.ability.name == 'Blank' and (self.config.center.discovered or self.bypass_discovery_center)) then
+            self.children.center:draw_shader('negative_shine', nil, self.ARGS.send_to_shader)'''
+match_indent = true

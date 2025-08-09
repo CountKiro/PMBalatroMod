@@ -1,0 +1,217 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+
+###########
+## INTRO ##
+###########
+
+######################
+#Start up default colours
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''G.SANDBOX = {
+        vort_time = 7,
+        vort_speed = 0,
+        col_op = {'RED','BLUE','GREEN','BLACK','L_BLACK','WHITE','EDITION','DARK_EDITION','ORANGE','PURPLE'},
+        col1 = G.C.RED,col2 = G.C.BLUE,
+        mid_flash = 0,
+        joker_text = '',
+        edition = 'base',
+        tilt = 1,
+        card_size = 1,
+        base_size = {w = G.CARD_W, h = G.CARD_H},
+        gamespeed = 0
+    }'''
+position = "at"
+payload = '''G.SANDBOX = {
+        vort_time = 7,
+        vort_speed = 0,
+        col_op = {'RED','BLUE','GREEN','BLACK','L_BLACK','WHITE','EDITION','DARK_EDITION','ORANGE','PURPLE'},
+        col1 = HEX("05fc26"),col2 = HEX("fc05ba"),
+        mid_flash = 0,
+        joker_text = '',
+        edition = 'base',
+        tilt = 1,
+        card_size = 1,
+        base_size = {w = G.CARD_W, h = G.CARD_H},
+        gamespeed = 0
+    }'''
+match_indent = true
+
+######################
+#Intro background colour
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''self.GAME.selected_back = Back(G.P_CENTERS.b_red)
+
+    ease_background_colour{new_colour = G.C.BLACK, contrast = 1}'''
+position = "at"
+payload = '''self.GAME.selected_back = Back(G.P_CENTERS.b_red)
+
+    ease_background_colour{new_colour = G.C.BRIGHT_LIGHT, contrast = 1}'''
+match_indent = true
+
+######################
+#Intro vortex
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''G.SPLASH_BACK:define_draw_steps({{
+                shader = 'splash',
+                send = {
+                    {name = 'time', ref_table = G.TIMERS, ref_value = 'REAL'},
+                    {name = 'vort_speed', val = 1},
+                    {name = 'colour_1', ref_table = G.C, ref_value = 'BLUE'},
+                    {name = 'colour_2', ref_table = G.C, ref_value = 'WHITE'},
+                    {name = 'mid_flash', val = 0},
+                    {name = 'vort_offset', val = (2*90.15315131*os.time())%100000},
+                }}})'''
+position = "at"
+payload = '''G.SPLASH_BACK:define_draw_steps({{
+                shader = 'splash',
+                send = {
+                    {name = 'time', ref_table = G.TIMERS, ref_value = 'REAL'},
+                    {name = 'vort_speed', val = 1},
+                    {name = 'colour_1', ref_table = G.C, ref_value = 'BRIGHT_LIGHT'},
+                    {name = 'colour_2', ref_table = G.C, ref_value = 'WHITE_LIGHT'},
+                    {name = 'mid_flash', val = 0},
+                    {name = 'vort_offset', val = (2*90.15315131*os.time())%100000},
+                }}})'''
+match_indent = true
+
+######################
+#Intro card
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''SC = Card(G.ROOM.T.w/2 - SC_scale*G.CARD_W/2, 10. + G.ROOM.T.h/2 - SC_scale*G.CARD_H/2, SC_scale*G.CARD_W, SC_scale*G.CARD_H, G.P_CARDS.empty, G.P_CENTERS['j_joker'])'''
+position = "at"
+payload = '''SC = Card(G.ROOM.T.w/2 - SC_scale*G.CARD_W/2, 10. + G.ROOM.T.h/2 - SC_scale*G.CARD_H/2, SC_scale*G.CARD_W, SC_scale*G.CARD_H, G.P_CARDS.empty, pseudorandom_element(G.P_CENTER_POOLS.Joker))'''
+match_indent = true
+
+######################
+#Intro cards in the vortex
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''local card = Card(  card_pos.x + G.ROOM.T.w/2 - G.CARD_W*card_size/2,
+                                    card_pos.y + G.ROOM.T.h/2 - G.CARD_H*card_size/2,
+                                    card_size*G.CARD_W, card_size*G.CARD_H, pseudorandom_element(G.P_CARDS), G.P_CENTERS.c_base)
+                if math.random() > 0.8 then card.sprite_facing = 'back'; card.facing = 'back' end'''
+position = "at"
+payload = '''local card = Card(  card_pos.x + G.ROOM.T.w/2 - G.CARD_W*card_size/2,
+                                    card_pos.y + G.ROOM.T.h/2 - G.CARD_H*card_size/2,
+                                    card_size*G.CARD_W, card_size*G.CARD_H, G.P_CARDS.empty, pseudorandom_element(G.P_CENTER_POOLS.Joker))
+                if math.random() > 0.8 then card.sprite_facing = 'back'; card.facing = 'back' end'''
+match_indent = true
+
+###############################################
+
+## MAIN MENU ##
+###############
+
+######################
+#Main Menu background colour
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''G.FUNCS.change_shadows{to_key = G.SETTINGS.GRAPHICS.shadows == 'On' and 1 or 2}
+
+    ease_background_colour{new_colour = G.C.BLACK, contrast = 1}'''
+position = "at"
+payload = '''G.FUNCS.change_shadows{to_key = G.SETTINGS.GRAPHICS.shadows == 'On' and 1 or 2}
+
+    ease_background_colour{new_colour = G.C.WHITE_LIGHT, contrast = 1}'''
+match_indent = true
+
+######################
+#Main Menu background swirl
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''G.SPLASH_BACK:define_draw_steps({{
+        shader = 'splash',
+        send = {
+            {name = 'time', ref_table = G.TIMERS, ref_value = 'REAL_SHADER'},
+            {name = 'vort_speed', val = 0.4},
+            {name = 'colour_1', ref_table = G.C, ref_value = 'RED'},
+            {name = 'colour_2', ref_table = G.C, ref_value = 'BLUE'},
+            {name = 'mid_flash', ref_table = splash_args, ref_value = 'mid_flash'},
+            {name = 'vort_offset', val = 0},
+        }}})'''
+position = "at"
+payload = '''G.SPLASH_BACK:define_draw_steps({{
+        shader = 'splash',
+        send = {
+            {name = 'time', ref_table = G.TIMERS, ref_value = 'REAL_SHADER'},
+            {name = 'vort_speed', val = 0.4},
+            {name = 'colour_1', ref_table = G.C, ref_value = 'BRIGHT_LIGHT'},
+            {name = 'colour_2', ref_table = G.C, ref_value = 'WHITE_LIGHT'},
+            {name = 'mid_flash', ref_table = splash_args, ref_value = 'mid_flash'},
+            {name = 'vort_offset', val = 0},
+        }}})'''
+match_indent = true
+
+######################
+#Move card position down
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''if G.STAGE == G.STAGES.MAIN_MENU then
+        if G.STATE == G.STATES.DEMO_CTA then
+            G.title_top.T.x = G.TILE_W/2 - G.title_top.T.w/2
+            G.title_top.T.y = G.TILE_H/2 - G.title_top.T.h/2 - 2
+        else
+            G.title_top.T.x = G.TILE_W/2 - G.title_top.T.w/2
+            G.title_top.T.y = G.TILE_H/2 - G.title_top.T.h/2 -(G.debug_splash_size_toggle and 2 or 1.2)--|||||||||||||||||
+        end
+
+        G.title_top:hard_set_VT()
+    end'''
+position = "at"
+payload = '''if G.STAGE == G.STAGES.MAIN_MENU then
+        if G.STATE == G.STATES.DEMO_CTA then
+            G.title_top.T.x = G.TILE_W/2 - G.title_top.T.w/2
+            G.title_top.T.y = G.TILE_H/2 - G.title_top.T.h/2 - 2
+        else
+            G.title_top.T.x = G.TILE_W/2 - G.title_top.T.w/2
+            G.title_top.T.y = 6
+        end
+
+        G.title_top:hard_set_VT()
+    end'''
+match_indent = true
+
+######################
+#Offset main logo
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''G.SPLASH_LOGO:set_alignment({
+        major = G.title_top,
+        type = 'cm',
+        bond = 'Strong',
+        offset = {x=0,y=0}
+    })'''
+position = "at"
+payload = '''G.SPLASH_LOGO:set_alignment({
+        major = G.title_top,
+        type = 'cm',
+        bond = 'Strong',
+        offset = {x=0,y=-3}
+    })'''
+match_indent = true
