@@ -2,7 +2,7 @@ return {
     descriptions={
         Back={
             b_abandoned={
-                name="Baralho Abandonado",
+                name="Baralho W Corp",
                 text={
                     "Comece a tentativa",
                     "sem {C:attention}Cartas de Realeza",
@@ -10,37 +10,37 @@ return {
                 },
             },
             b_anaglyph={
-                name="Baralho Anáglifo",
+                name="Baralho L Corp",
                 text={
                     "Após derrotar cada",
-                    "{C:attention}Blind de Chefe{}, ganhe",
+                    "{C:attention}Recepção{}, ganhe",
                     "{C:attention,T:tag_double}#1#",
                 },
             },
             b_black={
-                name="Baralho Preto",
+                name="Baralho Geral",
                 text={
-                    "{C:attention}+#1#{} Espaço de Curinga",
+                    "{C:attention}+#1#{} Espaço de Página Chave",
                     "",
                     "{C:blue}-#2#{} mão",
-                    "em cada rodada",
+                    "em cada Cena",
                 },
             },
             b_blue={
-                name="Baralho Azul",
+                name="Baralho das Ciências Sociais",
                 text={
                     "{C:blue}+#1#{} mão",
-                    "em cada rodada",
+                    "em cada Cena",
                 },
             },
             b_challenge={
-                name="Baralho Desafiante",
+                name="Baralho de Encefalina",
                 text={
                     "",
                 },
             },
             b_checkered={
-                name="Baralho Xadrez",
+                name="Baralho das Ciências Tecnológicas",
                 text={
                     "Comece a tentativa com",
                     "{C:attention}26{C:spades} Espadas{} e",
@@ -48,7 +48,7 @@ return {
                 },
             },
             b_erratic={
-                name="Baralho Errático",
+                name="Baralho N Corp",
                 text={
                     "Todas as {C:attention}Classes{} e",
                     "{C:attention}Naipes{} no baralho",
@@ -56,24 +56,24 @@ return {
                 },
             },
             b_ghost={
-                name="Baralho Fantasma",
+                name="Baralho da Religião",
                 text={
                     "Cartas {C:spectral}Espectrais{} podem",
                     "aparecer na loja,",
-                    "comece com uma carta de {C:spectral,T:c_hex}Feitiço{}",
+                    "comece com uma carta de {C:spectral,T:c_hex}Recepção{}",
                 },
             },
             b_green={
-                name="Baralho Verde",
+                name="Baralho da Arte",
                 text={
-                    "No fim de cada Rodada:",
+                    "No fim de cada Cena:",
                     "{C:money}$#1#{s:0.85} por {C:blue}Mão restante",
                     "{C:money}$#2#{s:0.85} por {C:red}Descarte restante",
                     "Sem {C:attention}Juros",
                 },
             },
             b_magic={
-                name="Baralho Mágico",
+                name="Baralho da História",
                 text={
                     "Comece a tentativa com o",
                     "cupom de {C:tarot,T:v_crystal_ball}#1#{}",
@@ -82,7 +82,7 @@ return {
                 },
             },
             b_nebula={
-                name="Baralho de Nebulosa",
+                name="Baralho de Filosofia",
                 text={
                     "Comece a tentativa com o",
                     "cupom de {C:planet,T:v_telescope}#1#{}",
@@ -91,242 +91,242 @@ return {
                 },
             },
             b_painted={
-                name="Baralho Pintado",
+                name="Baralho T Corp",
                 text={
                     "{C:attention}+#1#{} tamanho de mão",
-                    "{C:red}#2#{} espaço de Curinga",
+                    "{C:red}#2#{} espaço de Página Chave",
                 },
             },
             b_plasma={
-                name="Baralho de Plasma",
+                name="Baralho K Corp",
                 text={
                     "Equilibre {C:blue}Fichas{} e",
                     "{C:red}Multi{} ao calcular a",
-                    "pontuação para a mão preferida",
-                    "{C:red}X#1#{} de tamanho base do Blind",
+                    "pontuação para a mão jogada",
+                    "{C:red}X#1#{} de tamanho base do Encontro",
                 },
             },
             b_red={
-                name="Baralho Vermelho",
+                name="Baralho de Linguagem",
                 text={
                     "{C:red}+#1#{} descarte",
-                    "em cada rodada",
+                    "em cada Cena",
                 },
             },
             b_yellow={
-                name="Baralho Amarelo",
+                name="Baralho de Ciências Naturais",
                 text={
                     "Inicia com",
                     "mais {C:money}$#1#",
                 },
             },
             b_zodiac={
-                name="Baralho do Zodíaco",
+                name="Baralho de Literatura",
                 text={
                     "Comece a tentativa com",
                     "{C:tarot,T:v_tarot_merchant}#1#{},",
-                    "{C:planeta,T:v_planet_merchant}#2#{},",
+                    "{C:planet,T:v_planet_merchant}#2#{},",
                     "e {C:attention,T:v_overstock_norm}#3#",
                 },
             },
         },
         Blind={
             bl_arm={
-                name="O Braço",
+                name="Associação Zwei",
                 text={
                     "Reduz o nível da",
                     "mão de pôquer jogada",
                 },
             },
             bl_big={
-                name="Big Blind",
+                name="Encontro Arriscado",
                 text={
                 },
             },
             bl_club={
-                name="Paulada",
+                name="Vira-Latas",
                 text={
                     "Todas as cartas de Paus",
                     "recebem desvantagem",
                 },
             },
             bl_eye={
-                name="O Olho",
+                name="Clã Kurokumo",
                 text={
                     "Nenhum tipo de",
-                    "mão repetida nesta rodada",
+                    "mão repetida nesta Cena",
                 },
             },
             bl_final_acorn={
-                name="Semente Dourada",
+                name="O Mindinho",
                 text={
                     "Vira e embaralha",
-                    "todas as cartas Curinga",
+                    "todas as Páginas Chaves",
                 },
             },
             bl_final_bell={
-                name="Sino Cerúleo",
+                name="O Indicador",
                 text={
                     "Obriga 1 carta a",
                     "sempre ser selecionada",
                 },
             },
             bl_final_heart={
-                name="Coração Rubro",
+                name="O Polegar",
                 text={
-                    "Um Curinga aleatório",
+                    "Uma Página Chave aleatória",
                     "desativado em cada mão",
                 },
             },
             bl_final_leaf={
-                name="Folha Verdejante",
+                name="O Anelar",
                 text={
                     "Todas as cartas têm desvantagem",
-                    "até 1 Curinga ser vendido",
+                    "até 1 Página Chave ser vendida",
                 },
             },
             bl_final_vessel={
-                name="Recipiente Roxo",
+                name="O Médio",
                 text={
-                    "Blind muito grande",
+                    "Pontuação mais alta",
                 },
             },
             bl_fish={
-                name="O Peixe",
+                name="Agência Streetlight",
                 text={
                     "Cartas vêm viradas para baixo",
                     "após cada mão jogada",
                 },
             },
             bl_flint={
-                name="A Pederneira",
+                name="Os Músicos de Bremen",
                 text={
                     "Fichas Básicas e",
                     "Multi são reduzidas pela metade",
                 },
             },
             bl_goad={
-                name="Aguilhão",
+                name="Agência Wedge",
                 text={
                     "Todas as cartas de Espadas",
                     "recebem desvantagem",
                 },
             },
             bl_head={
-                name="A Cabeça",
+                name="O Carnaval",
                 text={
                     "Todas as cartas de Copas",
                     "recebem desvantagem",
                 },
             },
             bl_hook={
-                name="O Gancho",
+                name="Agência Molar",
                 text={
                     "Descarta 2 cartas",
                     "aleatórias por mão jogada",
                 },
             },
             bl_house={
-                name="A Casa",
+                name="Agência Gaze",
                 text={
                     "A primeira mão é",
                     "comprada virada para baixo",
                 },
             },
             bl_manacle={
-                name="As Algemas",
+                name="Os Ratos",
                 text={
                     "-1 de tamanho de mão",
                 },
             },
             bl_mark={
-                name="A Marca",
+                name="Bistro da Pierre",
                 text={
                     "Todas as cartas de Realeza são",
                     "compradas viradas para baixo",
                 },
             },
             bl_mouth={
-                name="A Boca",
+                name="Agência Hook",
                 text={
                     "Jogue só 1 tipo",
-                    "de mão nesta rodada",
+                    "de mão nesta Cena",
                 },
             },
             bl_needle={
-                name="A Agulha",
+                name="A Reverberação",
                 text={
                     "Jogue somente 1 mão",
                 },
             },
             bl_ox={
-                name="O Touro",
+                name="Associação Liu",
                 text={
                     "Jogar #1#",
                     "define o dinheiro para $0",
                 },
             },
             bl_pillar={
-                name="O Pilar",
+                name="Agência Cane",
                 text={
                     "Cartas jogadas antes",
                     "desta Aposta recebem desvantagem",
                 },
             },
             bl_plant={
-                name="A Planta",
+                name="Rostos Sorridentes",
                 text={
                     "Todas as cartas de Realeza",
                     "recebem desvantagem",
                 },
             },
             bl_psychic={
-                name="O Psíquico",
+                name="Associação Hana",
                 text={
                     "Deve jogar 5 cartas",
                 },
             },
             bl_serpent={
-                name="A Serpente",
+                name="A Irmandade de Ferro",
                 text={
                     "Após Jogar ou Descartar,",
                     "sempre compre 3 cartas",
                 },
             },
             bl_small={
-                name="Small Blind",
+                name="Encontro Normal",
                 text={
                 },
             },
             bl_tooth={
-                name="O Dente",
+                name="Agência Full-stop",
                 text={
                     "Perde $1 por",
                     "carta jogada",
                 },
             },
             bl_wall={
-                name="O Muro",
+                name="Associação Shi",
                 text={
                     "Blind ainda maior",
                 },
             },
             bl_water={
-                name="A Água",
+                name="Os Faxineiros",
                 text={
                     "Inicia com",
                     "0 descartes",
                 },
             },
             bl_wheel={
-                name="A Roda",
+                name="O Circo das 8 Horas",
                 text={
                     " em 7 cartas são",
                     "compradas viradas para baixo",
                 },
             },
             bl_window={
-                name="A Janela",
+                name="Agência Dawn",
                 text={
                     "Todas as cartas de Ouros",
                     "recebem desvantagem",
@@ -390,7 +390,7 @@ return {
                 text={
                     "{C:money}$#1#{} se esta",
                     "carta estiver na mão",
-                    "no fim da rodada",
+                    "no fim da Cena",
                 },
             },
             m_lucky={
@@ -433,7 +433,7 @@ return {
         },
         Joker={
             j_8_ball={
-                name="Bola 8",
+                name="Arnold",
                 text={
                     "Chance de {C:green}#1# em #2#{} para cada",
                     "{C:attention}8{} jogado para criar",
@@ -442,7 +442,7 @@ return {
                 },
             },
             j_abstract={
-                name="Curinga Abstrato",
+                name="Nikolai",
                 text={
                     "{C:mult}+#1#{} Multi por",
                     "cada carta {C:attention}Curinga{}",
@@ -450,10 +450,10 @@ return {
                 },
             },
             j_acrobat={
-                name="Acrobata",
+                name="Kim 'Chapéu-de-bambu'",
                 text={
                     "{X:red,C:white} X#1# {} Multi na {C:attention}mão",
-                    "{C:attention}final{} da rodada",
+                    "{C:attention}final{} da Cena",
                 },
                 unlock={
                     "Jogue {C:attention,E:1}#1#{} mãos",
@@ -461,16 +461,16 @@ return {
                 },
             },
             j_ancient={
-                name="Curinga Antigo",
+                name="Bayard",
                 text={
                     "Cada carta jogada com",
                     "naipe {V:1}#2#{} dá",
                     "{X:mult,C:white} X#1# {} Multi ao pontuar,",
-                    "{s:0.8}naipe muda no fim da rodada",
+                    "{s:0.8}naipe muda no fim da Cena",
                 },
             },
             j_arrowhead={
-                name="Ponta de Flecha",
+                name="Bremen",
                 text={
                     "Cartas jogadas com",
                     "naipe de {C:spades}Espadas{} dão",
@@ -483,19 +483,19 @@ return {
                 },
             },
             j_astronomer={
-                name="Astrônomo",
+                name="Binah",
                 text={
-                    "Todas as cartas de {C:planet}Planeta{} e",
-                    "{C:planet}Pacotes Celestiais{} em",
+                    "Todas as cartas de {C:planet}Pecador{} e",
+                    "{C:planet}Pacotes Celestiais{}",
                     "na loja ficam {C:attention}grátis",
                 },
                 unlock={
                     "Descubra cada",
-                    "carta de {E:1,C:planet}Planeta{}",
+                    "carta de {E:1,C:planet}Pecador{}",
                 },
             },
             j_banner={
-                name="Estandarte",
+                name="Bono",
                 text={
                     "{C:chips}+#1#{} Fichas",
                     "por cada",
@@ -503,7 +503,7 @@ return {
                 },
             },
             j_baron={
-                name="Barão",
+                name="Meursault",
                 text={
                     "Cada {C:attention}Rei{}",
                     "na mão",
@@ -511,14 +511,14 @@ return {
                 },
             },
             j_baseball={
-                name="Carta de Beisebol",
+                name="Lulu",
                 text={
-                    "Curingas {C:green}Incomuns{}",
+                    "Páginas Chave de {C:green}Capa Dura{}",
                     "cada um dá {X:mult,C:white} X#1# {} Multi",
                 },
             },
             j_blackboard={
-                name="Quadro Negro",
+                name="Miris",
                 text={
                     "{X:red,C:white} X#1# {} Multi se todas as",
                     "cartas mantidas na mão",
@@ -526,7 +526,7 @@ return {
                 },
             },
             j_bloodstone={
-                name="Pedra de Sangue",
+                name="A Noite Sangrenta",
                 text={
                     "Chance de {C:green}#1# em #2#{} para",
                     "cartas jogadas com",
@@ -540,7 +540,7 @@ return {
                 },
             },
             j_blue_joker={
-                name="Curinga Azul",
+                name="Alloc",
                 text={
                     "{C:chips}+#1#{} Fichas por cada",
                     "carta restante no {C:attention}baralho",
@@ -548,17 +548,17 @@ return {
                 },
             },
             j_blueprint={
-                name="Projeto",
+                name="Zena",
                 text={
-                    "Copia a habilidade do",
-                    "{C:attention}Curinga{} da direita",
+                    "Copia a habilidade da",
+                    "{C:attention}Página Chave{} à direita",
                 },
                 unlock={
                     "Vença uma tentativa",
                 },
             },
             j_bootstraps={
-                name="Bonificação",
+                name="Rodion",
                 text={
                     "{C:mult}+#1#{} Multi para cada",
                     "{C:money}$#2#{} que você tem",
@@ -566,14 +566,14 @@ return {
                 },
                 unlock={
                     "Tenha pelo menos {E:1,C:attention}#1#",
-                    "Curingas {C:dark_edition}Policromáticos{}",
+                    "Página Chave {C:dark_edition}Policromáticos{}",
                 },
             },
             j_brainstorm={
-                name="Boa Ideia",
+                name="Baral",
                 text={
                     "Copia a habilidade",
-                    "do {C:attention}Curinga que está mais à esquerda",
+                    "da {C:attention}Página Chave que está mais à esquerda",
                 },
                 unlock={
                     "Descarte um",
@@ -581,7 +581,7 @@ return {
                 },
             },
             j_bull={
-                name="Touro",
+                name="Maxim",
                 text={
                     "{C:chips}+#1#{} Fichas para",
                     "cada {C:money}$1{} que você tem",
@@ -589,19 +589,19 @@ return {
                 },
             },
             j_burglar={
-                name="Ladrão",
+                name="Mars",
                 text={
-                    "Quando o {C:attention}Blind{} é selecionado,",
+                    "Quando o {C:attention}Encontro{} é selecionado,",
                     "ganha {C:blue}+#1#{} Mãos e",
                     "{C:attention}perde todos os descartes",
                 },
             },
             j_burnt={
-                name="Curinga Queimado",
+                name="Philip",
                 text={
                     "Aprimore o nível da",
                     "primeira mão {C:attention}descartada",
-                    "em cada rodada",
+                    "em cada Cena",
                 },
                 unlock={
                     "Venda um total",
@@ -610,7 +610,7 @@ return {
                 },
             },
             j_business={
-                name="Cartão de Visita",
+                name="Naoki",
                 text={
                     "Cartas de {C:attention}realeza{} jogadas têm",
                     "a chance de {C:green}#1# em #2#{} de",
@@ -618,9 +618,9 @@ return {
                 },
             },
             j_caino={
-                name="Caino",
+                name="O Olhar Rubro",
                 text={
-                    "Este Curinga ganha {X:mult,C:white} X#1# {} Multi",
+                    "Esta Página Chave ganha {X:mult,C:white} X#1# {} Multi",
                     "quando uma carta de {C:attention}realeza{}",
                     "é destruída",
                     "{C:inactive}(No momento, {X:mult,C:white} X#2# {C:inactive} Multi)",
@@ -630,27 +630,27 @@ return {
                 },
             },
             j_campfire={
-                name="Fogueira",
+                name="Sen",
                 text={
-                    "Este Curinga ganha {X:mult,C:white}X#1#{} Multi",
+                    "Esta Página Chave ganha {X:mult,C:white}X#1#{} Multi",
                     "por cada carta {C:attention}vendida{}, redefine",
-                    "quando o {C:attention}Blind de Chefe{} é derrotado",
+                    "quando a {C:attention}Recepção{} é derrotado",
                     "{C:inactive}(No momento {X:mult,C:white} X#2# {C:inactive} Multi)",
                 },
             },
             j_card_sharp={
-                name="Carta Afiada",
+                name="Dante",
                 text={
                     "{X:mult,C:white} X#1# {} Multi se a",
                     "{C:attention}mão de pôquer{} já tiver sido",
-                    "jogada nesta rodada",
+                    "jogada nesta Cena",
                 },
             },
             j_cartomancer={
-                name="Cartomante",
+                name="Hokma",
                 text={
                     "Cria uma carta de {C:tarot}Tarô{}",
-                    "quando o {C:attention}Blind{} é selecionado",
+                    "quando o {C:attention}Encontro{} é selecionado",
                     "{C:inactive}(Deve ter espaço)",
                 },
                 unlock={
@@ -659,37 +659,37 @@ return {
                 },
             },
             j_castle={
-                name="Castelo",
+                name="Chesed",
                 text={
-                    "Este Curinga ganha {C:chips}+#1#{} Fichas",
+                    "Esta Página Chave ganha {C:chips}+#1#{} Fichas",
                     "por cada carta {V:1}#2#{} descartada,",
-                    "naipe muda em cada rodada",
+                    "naipe muda em cada Cena",
                     "{C:inactive}(No momento {C:chips}+#3#{C:inactive} Fichas)",
                 },
             },
             j_cavendish={
-                name="Cavendish",
+                name="Yan",
                 text={
                     "{X:mult,C:white} X#1# {} Multi",
                     "{C:green}#2# de #3#{} chance desta",
                     "carta ser destruída",
-                    "no fim da rodada",
+                    "no fim da Cena",
                 },
             },
             j_ceremonial={
-                name="Adaga Cerimonial",
+                name="Tanya",
                 text={
-                    "Quando o {C:attention}Blind{} é selecionado,",
-                    "destrói o Curinga da direita",
+                    "Quando o {C:attention}Encontro{} é selecionado,",
+                    "destrói a Página Chave à direita",
                     "e adiciona, permanentemente, o {C:attention}dobro",
                     "do valor de venda a esta {C:red}Multi",
                     "{C:inactive}(No momento {C:mult}+#1#{C:inactive} Multi)",
                 },
             },
             j_certificate={
-                name="Certificado",
+                name="Allen",
                 text={
-                    "Quando a rodada começa,",
+                    "Quando a Cena começa,",
                     "adiciona uma {C:attention}carta de jogo",
                     "{C:attention}aleatória{} com um",
                     "{C:attention}selo{} para a sua mão",
@@ -701,24 +701,24 @@ return {
                 },
             },
             j_chaos={
-                name="Caos, o Palhaço",
+                name="Eri",
                 text={
                     "{C:attention}#1#{} {C:green}atualização(ões) grátis",
                     "na loja",
                 },
             },
             j_chicot={
-                name="Chicot",
+                name="A Lágrima Roxa",
                 text={
                     "Desativa o efeito de",
-                    "cada {C:attention}Blind de Chefe",
+                    "cada {C:attention}Recepção",
                 },
                 unlock={
                     "{E:1,s:1.3}?????",
                 },
             },
             j_clever={
-                name="Curinga Astuto",
+                name="Noah",
                 text={
                     "{C:chips}+#1#{} Fichas se a mão",
                     "jogada contém",
@@ -726,25 +726,25 @@ return {
                 },
             },
             j_cloud_9={
-                name="9dades",
+                name="Bada",
                 text={
                     "Ganhe {C:money}$#1#{} por cada",
                     "{C:attention}9{} no seu {C:attention}baralho completo",
-                    "no fim da rodada",
+                    "no fim da Cena",
                     "{C:inactive}(No momento {C:money}$#2#{}{C:inactive})",
                 },
             },
             j_constellation={
-                name="Constelação",
+                name="Yi Sang",
                 text={
                     "Este Curinga ganha",
                     "{X:mult,C:white} X#1# {} Multi sempre",
-                    "que uma carta de {C:planet}Planeta{} é usada",
+                    "que uma carta de {C:planet}Pecador{} é usada",
                     "{C:inactive}(No momento, {X:mult,C:white} X#2# {C:inactive} Multi)",
                 },
             },
             j_crafty={
-                name="Curinga Engenhoso",
+                name="Mirinae",
                 text={
                     "{C:chips}+#1#{} Fichas se a mão",
                     "jogada contém",
@@ -752,7 +752,7 @@ return {
                 },
             },
             j_crazy={
-                name="Curinga Maluco",
+                name="Yang",
                 text={
                     "{C:red}+#1#{} Multi se a mão",
                     "jogada contém",
@@ -760,22 +760,22 @@ return {
                 },
             },
             j_credit_card={
-                name="Cartão de Crédito",
+                name="Lenny",
                 text={
                     "Tenha até",
                     "{C:red}-$#1#{} em dívida",
                 },
             },
             j_delayed_grat={
-                name="Gratificação Atrasada",
+                name="Jikan",
                 text={
                     "Ganhe {C:money}$#1#{} por {C:attention}descarte{} se",
                     "nenhum descarte for usado",
-                    "até o fim da rodada",
+                    "até o fim da Cena",
                 },
             },
             j_devious={
-                name="Curinga Desonesto",
+                name="Gin",
                 text={
                     "{C:chips}+#1#{} Fichas se a mão",
                     "jogada contém",
@@ -783,7 +783,7 @@ return {
                 },
             },
             j_diet_cola={
-                name="Cola Diet",
+                name="Hong Lu",
                 text={
                     "Venda esta carta para",
                     "criar um(a)",
@@ -791,16 +791,16 @@ return {
                 },
             },
             j_dna={
-                name="DNA",
+                name="Myo",
                 text={
-                    "Se a {C:attention}primeira mão{} da rodada",
+                    "Se a {C:attention}primeira mão{} da Cena",
                     "tiver somente {C:attention}1{} carta, adiciona uma",
                     "cópia permanente ao baralho",
                     "e a coloca na {C:attention}mão",
                 },
             },
             j_drivers_license={
-                name="Carteira de Habilitação",
+                name="Charon",
                 text={
                     "{X:mult,C:white} X#1# {} Multi se você",
                     "tiver pelo menos {C:attention}16",
@@ -813,7 +813,7 @@ return {
                 },
             },
             j_droll={
-                name="Curinga Engraçado",
+                name="Harold",
                 text={
                     "{C:red}+#1#{} Multi se a mão",
                     "jogada contém",
@@ -821,14 +821,14 @@ return {
                 },
             },
             j_drunkard={
-                name="Bêbado",
+                name="Olga",
                 text={
                     "{C:red}+#1#{} descarte",
-                    "a cada rodada",
+                    "a cada Cena",
                 },
             },
             j_duo={
-                name="A Dupla",
+                name="EGO Xiao",
                 text={
                     "{X:mult,C:white} X#1# {} Multi se a mão",
                     "jogada contém",
@@ -841,23 +841,23 @@ return {
                 },
             },
             j_dusk={
-                name="Anoitecer",
+                name="Yuna",
                 text={
                     "Reativa as cartas",
                     "pontuadoras na {C:attention}mão",
-                    "{C:attention}final{} da rodada",
+                    "{C:attention}final{} da Cena",
                 },
             },
             j_egg={
-                name="Ovo",
+                name="Mi",
                 text={
                     "Ganha {C:money}$#1#{} do",
                     "{C:attention}valor de venda{} ao",
-                    "fim da rodada",
+                    "fim da Cena",
                 },
             },
             j_erosion={
-                name="Erosão",
+                name="San",
                 text={
                     "{C:red}+#1#{} Multi por cada",
                     "carta abaixo de {C:attention}#3#{}",
@@ -866,7 +866,7 @@ return {
                 },
             },
             j_even_steven={
-                name="Osmar Vados",
+                name="Merry",
                 text={
                     "Cartas jogadas com",
                     "classe {C:attention}par{} dão",
@@ -875,7 +875,7 @@ return {
                 },
             },
             j_faceless={
-                name="Curinga Plebeu",
+                name="Mika",
                 text={
                     "Ganhe {C:money}$#1#{} se {C:attention}#2#{} ou",
                     "mais {C:attention}cartas de Realeza{}",
@@ -884,7 +884,7 @@ return {
                 },
             },
             j_family={
-                name="A Família",
+                name="Vergilius",
                 text={
                     "{X:mult,C:white} X#1# {} Multi se a mão",
                     "jogada contém",
@@ -897,7 +897,7 @@ return {
                 },
             },
             j_fibonacci={
-                name="Fibonacci",
+                name="Consta",
                 text={
                     "Cada {C:attention}Ás{},",
                     "{C:attention}2{}, {C:attention}3{}, {C:attention}5{} ou {C:attention}8{} jogados dão",
@@ -905,7 +905,7 @@ return {
                 },
             },
             j_flash={
-                name="Carta Relâmpago",
+                name="Yun",
                 text={
                     "Este Curinga ganha {C:mult}+#1#{} Multi",
                     "por {C:attention}atualização{} na loja",
@@ -913,7 +913,7 @@ return {
                 },
             },
             j_flower_pot={
-                name="Vaso de Flores",
+                name="Ryoshu",
                 text={
                     "{X:mult,C:white} X#1# {} Multi se a mão",
                     "de pôquer contém",
@@ -926,7 +926,7 @@ return {
                 },
             },
             j_fortune_teller={
-                name="Vidente",
+                name="Wang",
                 text={
                     "{C:red}+#1#{} Multi por",
                     "carta de {C:purple}Tarô{} usada",
@@ -934,7 +934,7 @@ return {
                 },
             },
             j_four_fingers={
-                name="Quatro Dedos",
+                name="Gamma",
                 text={
                     "Todos os {C:attention}Flushes{} e",
                     "{C:attention}Sequências{} podem",
@@ -942,16 +942,16 @@ return {
                 },
             },
             j_gift={
-                name="Cartão Presente",
+                name="Liwei",
                 text={
                     "Adiciona {C:money}$#1#{} do {C:attention}valor de venda",
                     "a cada {C:attention}Curinga{} e",
                     "a cada carta {C:attention}Consumível{} em",
-                    "fim da rodada",
+                    "fim da Cena",
                 },
             },
             j_glass={
-                name="Curinga de Vidro",
+                name="Yan (Distorcido)",
                 text={
                     "Este Curinga ganha {X:mult,C:white} X#1# {} Multi",
                     "para cada {C:attention}Carta de Vidro",
@@ -965,7 +965,7 @@ return {
                 },
             },
             j_gluttenous_joker={
-                name="Curinga Guloso",
+                name="Boris",
                 text={
                     "Cartas jogadas com",
                     "naipe de {C:clubs}#2#{} dão",
@@ -973,14 +973,14 @@ return {
                 },
             },
             j_golden={
-                name="Curinga Dourado",
+                name="Martina",
                 text={
                     "Ganhe {C:money}$#1#{} no",
-                    "fim da rodada",
+                    "fim da Cena",
                 },
             },
             j_greedy_joker={
-                name="Curinga Ganancioso",
+                name="Kalo",
                 text={
                     "Cartas jogadas com",
                     "naipe de {C:diamonds}#2#{} dão",
@@ -988,7 +988,7 @@ return {
                 },
             },
             j_green_joker={
-                name="Curinga Verde",
+                name="Rose",
                 text={
                     "{C:mult}+#1#{} Multi por mão jogada",
                     "{C:mult}-#2#{} Multi por descarte",
@@ -996,16 +996,16 @@ return {
                 },
             },
             j_gros_michel={
-                name="Banana-prata",
+                name="Yujin",
                 text={
                     "{C:mult}+#1#{} Multi",
                     "{C:green}#2# de #3#{} chance desta",
                     "carta ser destruída",
-                    "no fim da rodada",
+                    "no fim da Cena",
                 },
             },
             j_hack={
-                name="Impostor",
+                name="Isadora",
                 text={
                     "Reativa",
                     "cada",
@@ -1013,7 +1013,7 @@ return {
                 },
             },
             j_half={
-                name="Meio Curinga",
+                name="Angel-",
                 text={
                     "{C:red}+#1#{} Multi se a mão",
                     "jogada contém",
@@ -1021,7 +1021,7 @@ return {
                 },
             },
             j_hallucination={
-                name="Alucinação",
+                name="Benjamin",
                 text={
                     "{C:green}#1# em #2#{} chances de criar",
                     "uma carta de {C:tarot}Tarô{} quando qualquer",
@@ -1030,7 +1030,7 @@ return {
                 },
             },
             j_hanging_chad={
-                name="Comprovante",
+                name="Outis",
                 text={
                     "Reativa a {C:attention}primeira{} carta",
                     "jogada usada em pontuação",
@@ -1042,7 +1042,7 @@ return {
                 },
             },
             j_hiker={
-                name="Caminhante",
+                name="Zulu",
                 text={
                     "Todas as {C:attention}cartas{} jogadas",
                     "ganham, permanentemente,",
@@ -1050,11 +1050,11 @@ return {
                 },
             },
             j_hit_the_road={
-                name="Cai Fora",
+                name="Heathcliff",
                 text={
                     "Este Curinga ganha {X:mult,C:white} X#1# {} Multi",
                     "para cada {C:attention}Valete{}",
-                    "descartado nesta rodada",
+                    "descartado nesta Cena",
                     "{C:inactive}(No momento, {X:mult,C:white} X#2# {C:inactive} Multi)",
                 },
                 unlock={
@@ -1064,7 +1064,7 @@ return {
                 },
             },
             j_hologram={
-                name="Holograma",
+                name="Luda",
                 text={
                     "Este Curinga ganha {X:mult,C:white} X#1# {} Multi",
                     "sempre que uma {C:attention}carta de jogo{}",
@@ -1073,7 +1073,7 @@ return {
                 },
             },
             j_ice_cream={
-                name="Sorvete",
+                name="Lyla",
                 text={
                     "{C:chips}+#1#{} Fichas",
                     "{C:chips}-#2#{} Fichas por",
@@ -1081,12 +1081,12 @@ return {
                 },
             },
             j_idol={
-                name="O Ídolo",
+                name="Sinclair",
                 text={
                     "Cada {C:attention}#2#",
                     "de {V:1}#3#{} jogado dá",
                     "{X:mult,C:white} X#1# {} Multi ao pontuar",
-                    "{s:0.8}Carta muda em cada rodada",
+                    "{s:0.8}Carta muda em cada Cena",
                 },
                 unlock={
                     "Em uma mão,",
@@ -1095,9 +1095,9 @@ return {
                 },
             },
             j_invisible={
-                name="Curinga Invisível",
+                name="Moirai",
                 text={
-                    "Após {C:attention}#1#{} rodadas,",
+                    "Após {C:attention}#1#{} Cenas,",
                     "venda esta carta para",
                     "{C:attention}Duplicar{} um Curinga aleatório",
                     "{C:inactive}(No momento {C:attention}#2#{C:inactive}/#1#)",
@@ -1109,13 +1109,13 @@ return {
                 },
             },
             j_joker={
-                name="Curinga",
+                name="Oswald",
                 text={
                     "{C:red,s:1.1}+#1#{} Multi",
                 },
             },
             j_jolly={
-                name="Curinga Alegre",
+                name="Xiao",
                 text={
                     "{C:red}+#1#{} Multi se a mão",
                     "jogada contém",
@@ -1123,13 +1123,13 @@ return {
                 },
             },
             j_juggler={
-                name="Malabarista",
+                name="Hubert",
                 text={
                     "{C:attention}+#1#{} tamanho de mão",
                 },
             },
             j_loyalty_card={
-                name="Carta de Lealdade",
+                name="Pierre",
                 text={
                     "{X:red,C:white} X#1# {} Multi a cada",
                     "{C:attention}#2#{} mãos jogadas",
@@ -1137,7 +1137,7 @@ return {
                 },
             },
             j_luchador={
-                name="Luchador",
+                name="Finn",
                 text={
                     "Venda esta carta para",
                     "desativar o",
@@ -1145,7 +1145,7 @@ return {
                 },
             },
             j_lucky_cat={
-                name="Gato Sortudo",
+                name="Dong-hwan, o Sicário de 1o Grau",
                 text={
                     "Este Curinga ganha {X:mult,C:white} X#1# {} Multi",
                     "sempre que uma carta da {C:attention}Sorte{}",
@@ -1154,7 +1154,7 @@ return {
                 },
             },
             j_lusty_joker={
-                name="Curinga Vigoroso",
+                name="Katriel",
                 text={
                     "Cartas jogadas com",
                     "naipe de {C:hearts}#2#{} dão",
@@ -1162,7 +1162,7 @@ return {
                 },
             },
             j_mad={
-                name="Curinga Irritado",
+                name="Emma",
                 text={
                     "{C:red}+#1#{} Multi se a mão",
                     "jogada contém",
@@ -1170,7 +1170,7 @@ return {
                 },
             },
             j_madness={
-                name="Insanidade",
+                name="Greta",
                 text={
                     "Quando {C:attention}Small Blind{} ou {C:attention}Big Blind{}",
                     "é selecionado, ganhe {X:mult,C:white} X#1# {} Multi",
@@ -1179,15 +1179,15 @@ return {
                 },
             },
             j_mail={
-                name="Desconto de Correio",
+                name="Cecil",
                 text={
                     "Ganhe {C:money}$#1#{} por cada",
                     "{C:attention}#2#{} descartado, a classe",
-                    "muda em cada rodada",
+                    "muda em cada Cena",
                 },
             },
             j_marble={
-                name="Curinga de Mármore",
+                name="Oink",
                 text={
                     "Adiciona uma carta de {C:attention}Pedra{}",
                     "ao seu baralho quando",
@@ -1195,7 +1195,7 @@ return {
                 },
             },
             j_matador={
-                name="Matador",
+                name="Carmen",
                 text={
                     "Ganhe {C:money}$#1#{} se a",
                     "mão jogada ativa a",
@@ -1208,19 +1208,19 @@ return {
                 },
             },
             j_merry_andy={
-                name="Jogada de Descartes",
+                name="Rain",
                 text={
                     "{C:red}+#1#{} descartes",
-                    "a cada rodada,",
+                    "a cada Cena,",
                     "{C:red}#2#{} de tamanho de mão",
                 },
                 unlock={
                     "Vença uma tentativa em {E:1,C:attention}#1#",
-                    "ou menos rodadas",
+                    "ou menos Cenas",
                 },
             },
             j_midas_mask={
-                name="Máscara de Midas",
+                name="Ishmael",
                 text={
                     "Todas as cartas de {C:attention}realeza{}",
                     "se tornam cartas de {C:attention}Ouro{}",
@@ -1228,7 +1228,7 @@ return {
                 },
             },
             j_mime={
-                name="Mímico",
+                name="Eileen",
                 text={
                     "Reativa todas as",
                     "habilidades das cartas {C:attention}na sua",
@@ -1236,13 +1236,13 @@ return {
                 },
             },
             j_misprint={
-                name="Erro de Impressão",
+                name="Tomerry",
                 text={
                     "",
                 },
             },
             j_mr_bones={
-                name="Sr. Osso",
+                name="Valerie",
                 text={
                     "Evita a Morte",
                     "se as fichas pontuadas",
@@ -1256,7 +1256,7 @@ return {
                 },
             },
             j_mystic_summit={
-                name="Pico Místico",
+                name="Dalloc",
                 text={
                     "{C:mult}+#1#{} Multi quando",
                     "{C:attention}#2#{} descartes",
@@ -1264,7 +1264,7 @@ return {
                 },
             },
             j_obelisk={
-                name="Obelisco",
+                name="Lesti",
                 text={
                     "Este Curinga ganha {X:mult,C:white} X#1# {} Multi",
                     "por mão jogada {C:attention}consecutiva{}",
@@ -1274,7 +1274,7 @@ return {
                 },
             },
             j_odd_todd={
-                name="Ímpar Imperfeito",
+                name="Tommy",
                 text={
                     "Cartas jogadas com",
                     "classe {C:attention}ímpar{} dão",
@@ -1283,7 +1283,7 @@ return {
                 },
             },
             j_onyx_agate={
-                name="Ágata Ônix",
+                name="O Marionetista",
                 text={
                     "Cartas jogadas com",
                     "naipe de {C:clubs}Paus{} dão",
@@ -1296,7 +1296,7 @@ return {
                 },
             },
             j_oops={
-                name="Opa! Tudo 6",
+                name="Faust",
                 text={
                     "Dobra {C:attention}todas as",
                     "{C:green,E:1,S:1.1}probabilidades",
@@ -1309,7 +1309,7 @@ return {
                 },
             },
             j_order={
-                name="A Ordem",
+                name="Sayo",
                 text={
                     "{X:mult,C:white} X#1# {} Multi se a mão",
                     "jogada contém",
@@ -1322,7 +1322,7 @@ return {
                 },
             },
             j_pareidolia={
-                name="Pareidolia",
+                name="Hod",
                 text={
                     "Todas as cartas são",
                     "consideradas",
@@ -1330,7 +1330,7 @@ return {
                 },
             },
             j_perkeo={
-                name="Perkeo",
+                name="O Silêncio Negro",
                 text={
                     "Cria uma cópia {C:dark_edition}Negativa{} de",
                     "{C:attention}1{} carta {C:attention}consumível{} aleatória",
@@ -1342,7 +1342,7 @@ return {
                 },
             },
             j_photograph={
-                name="Fotografia",
+                name="Walter",
                 text={
                     "Primeira carta de {C:attention}realeza",
                     "jogada dá {X:mult,C:white} X#1# {} Multi",
@@ -1350,15 +1350,15 @@ return {
                 },
             },
             j_popcorn={
-                name="Pipoca",
+                name="Anton",
                 text={
                     "{C:mult}+#1#{} Multi",
                     "{C:mult}-#2#{} Multi por",
-                    "rodada jogada",
+                    "Cena jogada",
                 },
             },
             j_raised_fist={
-                name="Punho Erguido",
+                name="Gyeong-mi",
                 text={
                     "Adiciona o {C:attention}dobro{} da classe",
                     "da carta de classe {C:attention}mais baixa{}",
@@ -1366,7 +1366,7 @@ return {
                 },
             },
             j_ramen={
-                name="Lámen",
+                name="Jack",
                 text={
                     "{X:mult,C:white} X#1# {} Multi,",
                     "perde {X:mult,C:white} X#2# {} Multi",
@@ -1374,7 +1374,7 @@ return {
                 },
             },
             j_red_card={
-                name="Carta Vermelha",
+                name="Mei",
                 text={
                     "Este Curinga ganha",
                     "{C:red}+#1#{} Multi quando qualquer",
@@ -1383,7 +1383,7 @@ return {
                 },
             },
             j_reserved_parking={
-                name="Estacionamento Reservado",
+                name="Tamaki",
                 text={
                     "Cada carta de {C:attention}realeza{}",
                     "na sua mão tem",
@@ -1392,7 +1392,7 @@ return {
                 },
             },
             j_ride_the_bus={
-                name="Passear de Ônibus",
+                name="Dante (Gerente)",
                 text={
                     "Este Curinga ganha {C:mult}+#1#{} Multi",
                     "por mão jogada {C:attention}consecutiva{}",
@@ -1402,17 +1402,17 @@ return {
                 },
             },
             j_riff_raff={
-                name="Ralé",
+                name="Angela",
                 text={
                     "Quando o {C:attention}Blind{} é selecionado,",
-                    "cria {C:attention}#1# {C:blue}{C:attention}Curinga Comum",
+                    "cria {C:attention}#1# {C:blue}{C:attention}Curinga Brochura",
                     "{C:inactive}(Deve ter espaço)",
                 },
             },
             j_ring_master={
-                name="Mestre do Ringue",
+                name="Gregor",
                 text={
-                    "Cartas de {C:attention}Curinga{}, {C:tarot}Tarô{}, {C:planet}Planeta{}",
+                    "Cartas de {C:attention}Curinga{}, {C:tarot}Tarô{}, {C:planet}Pecador{}",
                     "e {C:spectral}Espectral{} podem",
                     "aparecer várias vezes",
                 },
@@ -1422,15 +1422,15 @@ return {
                 },
             },
             j_rocket={
-                name="Foguete",
+                name="Nemo",
                 text={
-                    "Ganhe {C:money}$#1#{} no fim da rodada",
+                    "Ganhe {C:money}$#1#{} no fim da Cena",
                     "O pagamento aumenta em {C:money}$#2#{}",
                     "quando o {C:attention}Blind de Chefe{} é derrotado",
                 },
             },
             j_rough_gem={
-                name="Joia Bruta",
+                name="As Crianças Chorantes",
                 text={
                     "Cartas jogadas com",
                     "naipe de {C:diamonds}Ouros{} ganham",
@@ -1443,7 +1443,7 @@ return {
                 },
             },
             j_runner={
-                name="Atleta",
+                name="Dino",
                 text={
                     "Ganha {C:chips}+#2#{} Fichas",
                     "se a mão jogada",
@@ -1452,10 +1452,10 @@ return {
                 },
             },
             j_satellite={
-                name="Satélite",
+                name="Netzach",
                 text={
                     "Ganhe {C:money}$#1#{} no fim da",
-                    "rodada por {C:planet}Planeta único",
+                    "Cena por {C:planet}Pecador único",
                     "usada nesta tentativa",
                     "{C:inactive}(No momento {C:money}$#2#{C:inactive})",
                 },
@@ -1465,7 +1465,7 @@ return {
                 },
             },
             j_scary_face={
-                name="Realeza Assustadora",
+                name="McCullin",
                 text={
                     "Cartas de {C:attention}realeza{} jogadas",
                     "dão {C:chips}+#1#{} Fichas",
@@ -1473,7 +1473,7 @@ return {
                 },
             },
             j_scholar={
-                name="Estudioso",
+                name="Mo",
                 text={
                     "{C:attention}Ases{} jogados",
                     "dão {C:chips}+#2#{} Fichas",
@@ -1482,7 +1482,7 @@ return {
                 },
             },
             j_seance={
-                name="Sessão Mediúnica",
+                name="Jae-heon",
                 text={
                     "Se a {C:attention}mão de pôquer{} for",
                     "{C:attention}#1#{}, cria um(a)",
@@ -1491,7 +1491,7 @@ return {
                 },
             },
             j_seeing_double={
-                name="Visão Duplicada",
+                name="Don Quixote",
                 text={
                     "{X:mult,C:white} X#1# {} Multi se jogar",
                     "uma mão com carta pontuadora de",
@@ -1505,7 +1505,7 @@ return {
                 },
             },
             j_selzer={
-                name="Seltzer",
+                name="Ayin",
                 text={
                     "Reativa todas as",
                     "cartas jogadas para as",
@@ -1513,7 +1513,7 @@ return {
                 },
             },
             j_shoot_the_moon={
-                name="Alcance os Céus",
+                name="Tiphereth",
                 text={
                     "Cada {C:attention}Dama{}",
                     "na mão",
@@ -1522,11 +1522,11 @@ return {
                 unlock={
                     "Jogue cada carta de {E:1,C:attention}Copas",
                     "do seu baralho em",
-                    "uma única rodada",
+                    "uma única Cena",
                 },
             },
             j_shortcut={
-                name="Atalho",
+                name="Alpha",
                 text={
                     "Permite fazer {C:attention}Sequências{}",
                     "com lacunas de {C:attention}1 classe",
@@ -1534,16 +1534,16 @@ return {
                 },
             },
             j_sixth_sense={
-                name="Sexto Sentido",
+                name="Valentin",
                 text={
-                    "Se a {C:attention}primeira mão{} da rodada for",
+                    "Se a {C:attention}primeira mão{} da Cena for",
                     "um único {C:attention}6{}, destrói a mesma e",
                     "cria uma carta {C:spectral}Espectral{}",
                     "{C:inactive}(Deve ter espaço)",
                 },
             },
             j_sly={
-                name="Curinga Malandro",
+                name="Lowell",
                 text={
                     "{C:chips}+#1#{} Fichas se a mão",
                     "jogada contém",
@@ -1551,7 +1551,7 @@ return {
                 },
             },
             j_smeared={
-                name="Curinga Borrado",
+                name="Yesod",
                 text={
                     "{C:hearts}Copas{} e {C:diamonds}Ouros",
                     "contam como o mesmo naipe,",
@@ -1565,7 +1565,7 @@ return {
                 },
             },
             j_smiley={
-                name="Carinha Sorridente",
+                name="Taein",
                 text={
                     "Cartas de {C:attention}realeza{} jogadas",
                     "dão {C:mult}+#1#{} Multi",
@@ -1573,7 +1573,7 @@ return {
                 },
             },
             j_sock_and_buskin={
-                name="A Meia e o Coturno",
+                name="Malkuth",
                 text={
                     "Reativa todas as",
                     "cartas de {C:attention}realeza{} jogadas",
@@ -1585,7 +1585,7 @@ return {
                 },
             },
             j_space={
-                name="Curinga Espacial",
+                name="Astolfo",
                 text={
                     "Chance de {C:green}#1# em #2#{} para",
                     "aprimorar o nível da",
@@ -1593,14 +1593,14 @@ return {
                 },
             },
             j_splash={
-                name="Splash",
+                name="Beta",
                 text={
                     "Cada {C:attention}carta jogada",
                     "conta na pontuação",
                 },
             },
             j_square={
-                name="Curinga Quadrado",
+                name="Jin",
                 text={
                     "Este Curinga ganha {C:chips}+#2#{} Fichas",
                     "se a mão jogada tem",
@@ -1609,7 +1609,7 @@ return {
                 },
             },
             j_steel_joker={
-                name="Curinga de Aço",
+                name="MuMu",
                 text={
                     "Dá {X:mult,C:white} X#1# {} Multi",
                     "para cada {C:attention}Carta de Aço",
@@ -1618,7 +1618,7 @@ return {
                 },
             },
             j_stencil={
-                name="Curinga Estampado",
+                name="Roland",
                 text={
                     "{X:red,C:white} X1 {} Multi por cada",
                     "espaço de {C:attention}Curinga{} vazio",
@@ -1627,7 +1627,7 @@ return {
                 },
             },
             j_stone={
-                name="Curinga de Pedra",
+                name="Meow",
                 text={
                     "Dá {C:chips}+#1#{} Fichas para",
                     "cada {C:attention}Carta de Pedra",
@@ -1636,7 +1636,7 @@ return {
                 },
             },
             j_stuntman={
-                name="Dublê",
+                name="Gebura",
                 text={
                     "{C:chips}+#1#{} Fichas,",
                     "{C:attention}-#2#{} de tamanho de mão",
@@ -1648,7 +1648,7 @@ return {
                 },
             },
             j_supernova={
-                name="Supernova",
+                name="Salvador",
                 text={
                     "Adiciona o número de vezes",
                     "que a {C:attention}mão de pôquer{} foi",
@@ -1656,7 +1656,7 @@ return {
                 },
             },
             j_superposition={
-                name="Sobreposição",
+                name="Chun",
                 text={
                     "Cria uma carta de {C:tarot}Tarô{} se",
                     "a mão de pôquer tiver um",
@@ -1665,7 +1665,7 @@ return {
                 },
             },
             j_swashbuckler={
-                name="Aventureiro",
+                name="Rudolph",
                 text={
                     "Adiciona o valor de venda",
                     "de todos os outros ",
@@ -1679,10 +1679,10 @@ return {
                 },
             },
             j_throwback={
-                name="Retorno",
+                name="Irina",
                 text={
                     "{X:mult,C:white} X#1# {} Multi por cada",
-                    "{C:attention}Blind{} ignorado nesta rodada",
+                    "{C:attention}Blind{} ignorado nesta Cena",
                     "{C:inactive}(No momento {X:mult,C:white} X#2# {C:inactive} Multi)",
                 },
                 unlock={
@@ -1691,7 +1691,7 @@ return {
                 },
             },
             j_ticket={
-                name="Bilhete Dourado",
+                name="Mang-chi",
                 text={
                     "Cartas {C:attention}Douradas{} jogadas",
                     "ganham {C:money}$#1#{} quando pontuadas",
@@ -1703,32 +1703,32 @@ return {
                 },
             },
             j_to_the_moon={
-                name="Para a Lua",
+                name="Stephan",
                 text={
                     "Ganhe {C:money}$#1#{} adicional de",
                     "{C:attention}juros{} por cada {C:money}$5{} que",
-                    "tiver no fim da rodada",
+                    "tiver no fim da Cena",
                 },
             },
             j_todo_list={
-                name="Lista de Tarefas",
+                name="Pluto",
                 text={
                     "Ganhe {C:money}$#1#{} se a {C:attention}mão de pôquer{}",
                     "for uma {C:attention}#2#{},",
                     "a mão de pôquer muda",
-                    "no fim da rodada",
+                    "no fim da Cena",
                 },
             },
             j_trading={
-                name="Carta de Troca",
+                name="Tenma",
                 text={
-                    "Se o {C:attention}primeiro descarte{} da rodada",
+                    "Se o {C:attention}primeiro descarte{} da Cena",
                     "tiver somente {C:attention}1{} carta, destrói",
                     "a mesma e ganha {C:money}$#1#",
                 },
             },
             j_tribe={
-                name="A Tribo",
+                name="Olivier",
                 text={
                     "{X:mult,C:white} X#1# {} Multi se a mão",
                     "jogada contém",
@@ -1741,7 +1741,7 @@ return {
                 },
             },
             j_triboulet={
-                name="Triboulet",
+                name="A Névoa Vermelha",
                 text={
                     "{C:attention}Reis{} e",
                     "{C:attention}Rainhas{} jogados dão",
@@ -1752,7 +1752,7 @@ return {
                 },
             },
             j_trio={
-                name="O Trio",
+                name="Oscar",
                 text={
                     "{X:mult,C:white} X#1# {} Multi se a mão",
                     "jogada contém",
@@ -1765,19 +1765,19 @@ return {
                 },
             },
             j_troubadour={
-                name="Trovador",
+                name="Gloria",
                 text={
                     "{C:attention}+#1#{} de tamanho de mão,",
-                    "{C:blue}-#2#{} mão a cada rodada",
+                    "{C:blue}-#2#{} mão a cada Cena",
                 },
                 unlock={
-                    "Vença {C:attention,E:1}#1#{} rodadas",
+                    "Vença {C:attention,E:1}#1#{} Cenas",
                     "consecutivas jogando",
                     "somente 1 mão",
                 },
             },
             j_trousers={
-                name="Calças Sobressalentes",
+                name="Emmah & Noah",
                 text={
                     "Este Curinga ganha {C:mult}+#1#{} Multi",
                     "se a mão jogada contém",
@@ -1786,15 +1786,15 @@ return {
                 },
             },
             j_turtle_bean={
-                name="Feijão Preto",
+                name="Esther",
                 text={
                     "{C:attention}+#1#{} tamanho de mão,",
                     "reduz por",
-                    "{C:red}#2#{} a cada rodada",
+                    "{C:red}#2#{} a cada Cena",
                 },
             },
             j_vagabond={
-                name="Vagabundo",
+                name="Pete",
                 text={
                     "Cria uma carta de {C:purple}Tarô{}",
                     "se a mão é jogada",
@@ -1802,7 +1802,7 @@ return {
                 },
             },
             j_vampire={
-                name="Vampiro",
+                name="Elena",
                 text={
                     "Este Curinga ganha {X:mult,C:white} X#1# {} Multi",
                     "por {C:attention}carta Aprimorada{} de pontuação jogada,",
@@ -1811,7 +1811,7 @@ return {
                 },
             },
             j_walkie_talkie={
-                name="Walkie Talkie",
+                name="Julia",
                 text={
                     "Cada vez que joga {C:attention}10{} ou {C:attention}4",
                     "dá {C:chips}+#1#{} Fichas e",
@@ -1819,7 +1819,7 @@ return {
                 },
             },
             j_wee={
-                name="Curinguinha",
+                name="Oswaldinho",
                 text={
                     "Este Curinga ganha",
                     "{C:chips}+#2#{} Fichas quando cada",
@@ -1828,11 +1828,11 @@ return {
                 },
                 unlock={
                     "Vença uma tentativa em {E:1,C:attention}#1#",
-                    "ou menos rodadas",
+                    "ou menos Cenas",
                 },
             },
             j_wily={
-                name="Curinga Sagaz",
+                name="Pameli",
                 text={
                     "{C:chips}+#1#{} Fichas se a mão",
                     "jogada contém",
@@ -1840,7 +1840,7 @@ return {
                 },
             },
             j_wrathful_joker={
-                name="Curinga Furioso",
+                name="Denis",
                 text={
                     "Cartas jogadas com",
                     "naipe de {C:spades}#2#{} dão",
@@ -1848,7 +1848,7 @@ return {
                 },
             },
             j_yorick={
-                name="Yorick",
+                name="A Reverberação Azul",
                 text={
                     "Este Curinga ganha",
                     "{X:mult,C:white} X#1# {} Multi a cada {C:attention}#2#{C:inactive} [#3#]{}",
@@ -1860,7 +1860,7 @@ return {
                 },
             },
             j_zany={
-                name="Curinga Bobo",
+                name="Pamela",
                 text={
                     "{C:red}+#1#{} Multi se a mão",
                     "jogada contém",
@@ -1870,7 +1870,7 @@ return {
         },
         Other={
             black_sticker={
-                name="Adesivo Preto",
+                name="Adesivo da Praga Urbana",
                 text={
                     "Usou este Curinga",
                     "para vencer na dificuldade",
@@ -1880,14 +1880,14 @@ return {
             blue_seal={
                 name="Selo Azul",
                 text={
-                    "Cria a carta de {C:planet}Planeta{}",
+                    "Cria a carta de {C:planet}Pecador{}",
                     "por {C:attention}mão de pôquer{} final jogada",
-                    "da rodada se {C:attention}contida{} na mão",
+                    "da Cena se {C:attention}contida{} na mão",
                     "{C:inactive}(Deve ter espaço)",
                 },
             },
             blue_sticker={
-                name="Adesivo Azul",
+                name="Adesivo do Pesadelo Urbano",
                 text={
                     "Usou este Curinga",
                     "para vencer na dificuldade",
@@ -1984,7 +1984,7 @@ return {
                 },
             },
             gold_sticker={
-                name="Adesivo Dourado",
+                name="Adesivo da Cidade",
                 text={
                     "Usou este Curinga",
                     "para vencer na dificuldade",
@@ -1992,7 +1992,7 @@ return {
                 },
             },
             green_sticker={
-                name="Adesivo Verde",
+                name="Adesivo da Lenda Urbana",
                 text={
                     "Usou este Curinga",
                     "para vencer na dificuldade",
@@ -2012,7 +2012,7 @@ return {
                 },
             },
             orange_sticker={
-                name="Adesivo Laranja",
+                name="Adesivo da Impurita Civitatis",
                 text={
                     "Usou este Curinga",
                     "para vencer na dificuldade",
@@ -2068,7 +2068,7 @@ return {
                 name="Pacote Celestial Jumbo",
                 text={
                     "Escolha {C:attention}#1#{} de até",
-                    "{C:attention}#2#{C:planet} cartas de Planeta{} para",
+                    "{C:attention}#2#{C:planet} cartas de Pecador{} para",
                     "serem usadas imediatamente",
                 },
             },
@@ -2076,7 +2076,7 @@ return {
                 name="Pacote Celestial Mega",
                 text={
                     "Escolha {C:attention}#1#{} de até",
-                    "{C:attention}#2#{C:planet} cartas de Planeta{} para",
+                    "{C:attention}#2#{C:planet} cartas de Pecador{} para",
                     "serem usadas imediatamente",
                 },
             },
@@ -2084,7 +2084,7 @@ return {
                 name="Pacote Celestial",
                 text={
                     "Escolha {C:attention}#1#{} de até",
-                    "{C:attention}#2#{C:planet} cartas de Planeta{} para",
+                    "{C:attention}#2#{C:planet} cartas de Pecador{} para",
                     "serem usadas imediatamente",
                 },
             },
@@ -2140,7 +2140,7 @@ return {
                 name="Perecível",
                 text={
                     "Com desvantagem após",
-                    "{C:attention}#1#{} rodadas",
+                    "{C:attention}#1#{} Cenas",
                     "{C:inactive}(resta(m) {C:attention}#2#{C:inactive})",
                 },
             },
@@ -2166,7 +2166,7 @@ return {
                 },
             },
             purple_sticker={
-                name="Adesivo Roxo",
+                name="Adesivo da Estrela da Cidade",
                 text={
                     "Usou este Curinga",
                     "para vencer na dificuldade",
@@ -2181,7 +2181,7 @@ return {
                 },
             },
             red_sticker={
-                name="Adesivo Vermelho",
+                name="Adesivo do Mito Urbano",
                 text={
                     "Usou este Curinga",
                     "para vencer na dificuldade",
@@ -2198,7 +2198,7 @@ return {
                 name="Aluguel",
                 text={
                     "Perca {C:money}$#1#{} no",
-                    "fim da rodada",
+                    "fim da Cena",
                 },
             },
             undiscovered_booster={
@@ -2271,7 +2271,7 @@ return {
                 },
             },
             white_sticker={
-                name="Adesivo Branco",
+                name="Adesivo do Boato",
                 text={
                     "Usou este Curinga",
                     "para vencer na dificuldade",
@@ -2288,7 +2288,7 @@ return {
         },
         Planet={
             c_ceres={
-                name="Ceres",
+                name="OUTIS",
                 text={
                     "{S:0.8}({S:0.8,V:1}nv.#1#{S:0.8}){} Subir de nível",
                     "{C:attention}#2#",
@@ -2297,7 +2297,7 @@ return {
                 },
             },
             c_earth={
-                name="Terra",
+                name="SUEÑO IMPOSIBLE",
                 text={
                     "{S:0.8}({S:0.8,V:1}nv.#1#{S:0.8}){} Subir de nível",
                     "{C:attention}#2#",
@@ -2306,7 +2306,7 @@ return {
                 },
             },
             c_eris={
-                name="Eris",
+                name="WALPURGISNATCHT",
                 text={
                     "{S:0.8}({S:0.8,V:1}nv.#1#{S:0.8}){} Subir de nível",
                     "{C:attention}#2#",
@@ -2315,7 +2315,7 @@ return {
                 },
             },
             c_jupiter={
-                name="Júpiter",
+                name="REVENGE",
                 text={
                     "{S:0.8}({S:0.8,V:1}nv.#1#{S:0.8}){} Subir de nível",
                     "{C:attention}#2#",
@@ -2324,7 +2324,7 @@ return {
                 },
             },
             c_mars={
-                name="Marte",
+                name="LAND OF ILLUSION",
                 text={
                     "{S:0.8}({S:0.8,V:1}nv.#1#{S:0.8}){} Subir de nível",
                     "{C:attention}#2#",
@@ -2333,7 +2333,7 @@ return {
                 },
             },
             c_mercury={
-                name="Mercúrio",
+                name="PACKÓN",
                 text={
                     "{S:0.8}({S:0.8,V:1}nv.#1#{S:0.8}){} Subir de nível",
                     "{C:attention}#2#",
@@ -2342,7 +2342,7 @@ return {
                 },
             },
             c_neptune={
-                name="Neptuno",
+                name="TO BE CONSUMED BY THE MADNESS OF PANDEMONIUM",
                 text={
                     "{S:0.8}({S:0.8,V:1}nv.#1#{S:0.8}){} Subir de nível",
                     "{C:attention}#2#",
@@ -2351,7 +2351,7 @@ return {
                 },
             },
             c_planet_x={
-                name="Planeta X",
+                name="SOLEIL",
                 text={
                     "{S:0.8}({S:0.8,V:1}nv.#1#{S:0.8}){} Subir de nível",
                     "{C:attention}#2#",
@@ -2360,7 +2360,7 @@ return {
                 },
             },
             c_pluto={
-                name="Plutão",
+                name="UNGEZIEFER",
                 text={
                     "{S:0.8}({S:0.8,V:1}nv.#1#{S:0.8}){} Subir de nível",
                     "{C:attention}#2#",
@@ -2369,7 +2369,7 @@ return {
                 },
             },
             c_saturn={
-                name="Saturno",
+                name="HEARSE",
                 text={
                     "{S:0.8}({S:0.8,V:1}nv.#1#{S:0.8}){} Subir de nível",
                     "{C:attention}#2#",
@@ -2378,7 +2378,7 @@ return {
                 },
             },
             c_uranus={
-                name="Urano",
+                name="VOGEL",
                 text={
                     "{S:0.8}({S:0.8,V:1}nv.#1#{S:0.8}){} Subir de nível",
                     "{C:attention}#2#",
@@ -2387,7 +2387,7 @@ return {
                 },
             },
             c_venus={
-                name="Vênus",
+                name="HA YUNG",
                 text={
                     "{S:0.8}({S:0.8,V:1}nv.#1#{S:0.8}){} Subir de nível",
                     "{C:attention}#2#",
@@ -2398,7 +2398,7 @@ return {
         },
         Spectral={
             c_ankh={
-                name="Ankh",
+                name="Espelho",
                 text={
                     "Cria uma cópia de um",
                     "{C:attention}Curinga{} aleatório, destrói",
@@ -2406,7 +2406,7 @@ return {
                 },
             },
             c_aura={
-                name="Aura",
+                name="Distorcer",
                 text={
                     "Adiciona o efeito {C:dark_edition}Laminado{}, {C:dark_edition}Holográfico{}",
                     "ou {C:dark_edition}Policromático{} a",
@@ -2414,7 +2414,7 @@ return {
                 },
             },
             c_black_hole={
-                name="Buraco Negro",
+                name="Companhia Limbus",
                 text={
                     "Melhora cada",
                     "{C:legendary,E:1}mão de pôquer",
@@ -2422,7 +2422,7 @@ return {
                 },
             },
             c_cryptid={
-                name="Criptídeo",
+                name="Sonho",
                 text={
                     "Cria {C:attention}#1#{} cópias de",
                     "{C:attention}1{} carta selecionada",
@@ -2430,7 +2430,7 @@ return {
                 },
             },
             c_deja_vu={
-                name="Déjà vu",
+                name="Carnificína",
                 text={
                     "Adiciona um {C:red}Selo Vermelho{}",
                     "a {C:attention}1{} carta selecionada",
@@ -2438,7 +2438,7 @@ return {
                 },
             },
             c_ectoplasm={
-                name="Ectoplasma",
+                name="Unchanging",
                 text={
                     "Adiciona {C:dark_edition}Negativo{} a",
                     "um {C:attention}Curinga aleatório,",
@@ -2446,7 +2446,7 @@ return {
                 },
             },
             c_familiar={
-                name="Familiar",
+                name="Eterno",
                 text={
                     "Destrói {C:attention}1{} carta",
                     "na sua mão, adiciona",
@@ -2455,7 +2455,7 @@ return {
                 },
             },
             c_grim={
-                name="Sombrio",
+                name="Cuidado",
                 text={
                     "Destrói {C:attention}1{} carta",
                     "aleatória na sua mão,",
@@ -2464,7 +2464,7 @@ return {
                 },
             },
             c_hex={
-                name="Feitiço",
+                name="Recepção",
                 text={
                     "Adiciona {C:dark_edition}Policromático{} a um",
                     "{C:attention}Curinga{} aleatório, destrói",
@@ -2472,7 +2472,7 @@ return {
                 },
             },
             c_immolate={
-                name="Imolação",
+                name="Roteiro",
                 text={
                     "Destrói {C:attention}#1#{} cartas",
                     "aleatórias na mão,",
@@ -2480,7 +2480,7 @@ return {
                 },
             },
             c_incantation={
-                name="Encantamento",
+                name="Ruína",
                 text={
                     "Destrói {C:attention}1{} carta",
                     "na sua mão, adiciona {C:attention}#1#",
@@ -2489,7 +2489,7 @@ return {
                 },
             },
             c_medium={
-                name="Médium",
+                name="Estrela",
                 text={
                     "Adiciona um {C:purple}Selo Roxo{}",
                     "a {C:attention}1{} carta selecionada",
@@ -2497,7 +2497,7 @@ return {
                 },
             },
             c_ouija={
-                name="Ouija",
+                name="Traição",
                 text={
                     "Converte todas as cartas",
                     "da mão em uma única",
@@ -2506,7 +2506,7 @@ return {
                 },
             },
             c_sigil={
-                name="Símbolo",
+                name="Novos Começos",
                 text={
                     "Converte todas as cartas",
                     "da mão em um único",
@@ -2514,7 +2514,7 @@ return {
                 },
             },
             c_soul={
-                name="A Alma",
+                name="O Ramo Dourado",
                 text={
                     "Cria um",
                     "Curinga {C:legendary,E:1}Lendário{}",
@@ -2522,7 +2522,7 @@ return {
                 },
             },
             c_talisman={
-                name="Talismã",
+                name="Caçada",
                 text={
                     "Adiciona um {C:attention}Selo Dourado{}",
                     "a {C:attention}1{} carta",
@@ -2530,7 +2530,7 @@ return {
                 },
             },
             c_trance={
-                name="Transe",
+                name="Acolher",
                 text={
                     "Adiciona um {C:blue}Selo Azul{}",
                     "a {C:attention}1{} carta selecionada",
@@ -2538,7 +2538,7 @@ return {
                 },
             },
             c_wraith={
-                name="Espectro",
+                name="Biblioteca",
                 text={
                     "Cria um",
                     "{C:attention}Curinga{} {C:red}Raro,",
@@ -2548,7 +2548,7 @@ return {
         },
         Stake={
             stake_black={
-                name="Aposta Preta",
+                name="Aposta Praga Urbana",
                 text={
                     "A loja pode ter Curingas {C:attention}Eternos{}",
                     "{C:inactive,s:0.8}{Não é possível vender ou destruir}",
@@ -2556,22 +2556,22 @@ return {
                 },
             },
             stake_blue={
-                name="Aposta Azul",
+                name="Aposta Pesadelo Urbano",
                 text={
                     "{C:red}-1{} Descarte",
                     "{s:0.8}Aplica todas as Apostas anteriores",
                 },
             },
             stake_gold={
-                name="Aposta Dourada",
+                name="Aposta A Cidade",
                 text={
                     "A loja pode ter Curingas de {C:attention}Aluguel{}",
-                    "{C:inactive,s:0.8}(Custa {C:money,s:0.8}$3{C:inactive,s:0.8} por rodada)",
+                    "{C:inactive,s:0.8}(Custa {C:money,s:0.8}$3{C:inactive,s:0.8} por Cena)",
                     "{s:0.8}Aplica-se a todas as Apostas anteriores",
                 },
             },
             stake_green={
-                name="Aposta Verde",
+                name="Aposta Lenda Urbana",
                 text={
                     "A pontuação necessária escala",
                     "cada vez mais rapidamente com cada {C:attention}Aposta",
@@ -2579,15 +2579,15 @@ return {
                 },
             },
             stake_orange={
-                name="Aposta Laranja",
+                name="Aposta Impuritas Civitatis",
                 text={
                     "A loja pode ter Curingas {C:attention}Perecíveis{}",
-                    "{C:inactive,s:0.8}(Com desvantagem após 5 Rodadas)",
+                    "{C:inactive,s:0.8}(Com desvantagem após 5 Cenas)",
                     "{s:0.8}Aplica-se a todas as Apostas anteriores",
                 },
             },
             stake_purple={
-                name="Aposta Roxa",
+                name="Aposta Estrela da Cidade",
                 text={
                     "A pontuação necessária escala",
                     "cada vez mais rapidamente com cada {C:attention}Aposta",
@@ -2595,7 +2595,7 @@ return {
                 },
             },
             stake_red={
-                name="Aposta Vermelha",
+                name="Aposta Mito Urbano",
                 text={
                     "{C:attention}Small Blind{} não dá",
                     "recompensas em dinheiro",
@@ -2603,7 +2603,7 @@ return {
                 },
             },
             stake_white={
-                name="Aposta Branca",
+                name="Aposta Boato",
                 text={
                     "Dificuldade Base",
                 },
@@ -2680,7 +2680,7 @@ return {
                 name="Marca de Lixo",
                 text={
                     "Dá {C:money}$#1#{} por",
-                    "{C:red}descarte{} não usado nesta rodada",
+                    "{C:red}descarte{} não usado nesta Cena",
                     "{C:inactive}(Dará {C:money}$#2#{C:inactive})",
                 },
             },
@@ -2712,7 +2712,7 @@ return {
                 name="Marca de Malabarismo",
                 text={
                     "{C:attention}+#1#{} tamanho de mão",
-                    "próxima rodada",
+                    "próxima Cena",
                 },
             },
             tag_meteor={
@@ -2779,7 +2779,7 @@ return {
                 name="Marca Incomum",
                 text={
                     "A loja tem um",
-                    "{C:green}Curinga Incomum grátis",
+                    "{C:green}Curinga Capa Dura grátis",
                 },
             },
             tag_voucher={
@@ -2836,7 +2836,7 @@ return {
                 name="O Tolo",
                 text={
                     "Cria a última",
-                    "carta de {C:tarot}Tarô{} ou {C:planet}Planeta{}",
+                    "carta de {C:tarot}Tarô{} ou {C:planet}Pecador{}",
                     "usada durante esta tentativa",
                     "{s:0.8,C:tarot}O Tolo{s:0.8} excluído",
                 },
@@ -2867,7 +2867,7 @@ return {
                 name="A Sacerdotisa",
                 text={
                     "Cria até {C:attention}#1#",
-                    "cartas de {C:planet}Planeta{} aleatórias",
+                    "cartas de {C:planet}Pecador{} aleatórias",
                     "{C:inactive}(Deve ter espaço)",
                 },
             },
@@ -2972,7 +2972,7 @@ return {
         },
         Voucher={
             v_antimatter={
-                name="Antimatéria",
+                name="Velho Caixão",
                 text={
                     "{C:dark_edition}+1{} Espaço de Curinga",
                 },
@@ -2983,26 +2983,26 @@ return {
                 },
             },
             v_blank={
-                name="Em Branco",
+                name="Retrato Vazio",
                 text={
                     "{C:inactive}Não faz nada?",
                 },
             },
             v_clearance_sale={
-                name="Promoção",
+                name="Coxas de Frango Fresquinhas",
                 text={
                     "Todas as cartas e pacotes na",
                     "loja têm {C:attention}#1#%{} de desconto",
                 },
             },
             v_crystal_ball={
-                name="Bola de Cristal",
+                name="Sombrinha",
                 text={
                     "{C:attention}+1{} espaço de consumível",
                 },
             },
             v_directors_cut={
-                name="Edição do Diretor",
+                name="Colher coberta de lágrimas",
                 text={
                     "Atualiza Blind de Chefe",
                     "{C:attention}1{} vez por Aposta,",
@@ -3010,7 +3010,7 @@ return {
                 },
             },
             v_glow_up={
-                name="Brilhando",
+                name="Cigarro Anil",
                 text={
                     "Cartas {C:dark_edition}Laminadas{}, {C:dark_edition}Holográficas{} e",
                     "{C:dark_edition}Policromáticas{}",
@@ -3024,23 +3024,23 @@ return {
                 },
             },
             v_grabber={
-                name="Agarrador",
+                name="Cupom de Cabelo",
                 text={
                     "Ganha",
                     "permanentemente {C:blue}+#1#{} mão",
-                    "por rodada",
+                    "por Cena",
                 },
             },
             v_hieroglyph={
-                name="Hieróglifo",
+                name="Bateria Normal",
                 text={
                     "{C:attention}-#1#{} de Aposta,",
                     "{C:blue}-#1#{} mão",
-                    "a cada rodada",
+                    "a cada Cena",
                 },
             },
             v_hone={
-                name="Apuramento",
+                name="Pistola Dourada Ornamentada",
                 text={
                     "Cartas {C:dark_edition}Laminadas{}, {C:dark_edition}Holográficas{} e",
                     "{C:dark_edition}Policromáticas{}",
@@ -3048,7 +3048,7 @@ return {
                 },
             },
             v_illusion={
-                name="Ilusão",
+                name="Daisho",
                 text={
                     "{C:attention}Cartas de jogo{} na loja",
                     "pode ter um {C:enhanced}Aprimoramento{},",
@@ -3062,7 +3062,7 @@ return {
                 },
             },
             v_liquidation={
-                name="Super Promoção",
+                name="Bilhete Premium para o Trem Warp",
                 text={
                     "Todas as cartas e pacotes na",
                     "loja têm {C:attention}#1#%{} de desconto",
@@ -3074,7 +3074,7 @@ return {
                 },
             },
             v_magic_trick={
-                name="Truque de Mágica",
+                name="Bandoleira Ensanguentada",
                 text={
                     "{C:attention}Cartas de jogo{} podem",
                     "ser compradas",
@@ -3082,25 +3082,25 @@ return {
                 },
             },
             v_money_tree={
-                name="Árvore de Dinheiro",
+                name="Gritos Congelados",
                 text={
                     "Eleva o limite de",
                     "juros ganhos em",
-                    "cada rodada para {C:money}$#1#{}",
+                    "cada Cena para {C:money}$#1#{}",
                 },
                 unlock={
                     "Maximiza os juros",
-                    "por lucros de rodada por",
-                    "{C:attention}#1#{} rodadas consecutivas",
+                    "por lucros de Cena por",
+                    "{C:attention}#1#{} Cenas consecutivas",
                     "{C:inactive}(#2#)",
                 },
             },
             v_nacho_tong={
-                name="Mão Boba",
+                name="Prótese de Arpão",
                 text={
                     "Ganha",
                     "permanentemente {C:blue}+#1#{} mão",
-                    "por rodada",
+                    "por Cena",
                 },
                 unlock={
                     "Jogue um total",
@@ -3109,22 +3109,22 @@ return {
                 },
             },
             v_observatory={
-                name="Observatório",
+                name="Galho de Spicebush",
                 text={
-                    "Cartas de {C:planet}Planeta{} na sua",
+                    "Cartas de {C:planet}Pecador{} na sua",
                     "área de {C:attention}consumíveis{} dão",
                     "{X:red,C:white} X#1# {} Multi pela",
                     "{C:attention}mão de pôquer especificada",
                 },
                 unlock={
                     "Use um total de {C:attention}#1#",
-                    "cartas de {C:planet}Planeta{} de qualquer",
+                    "cartas de {C:planet}Pecador{} de qualquer",
                     "{C:planet}Pacote Celestial",
                     "{C:inactive}(#2#)",
                 },
             },
             v_omen_globe={
-                name="Globo Auspicioso",
+                name="Máscara Festiva",
                 text={
                     "Cartas {C:spectral}Espectrais{} podem",
                     "aparecer em qualquer um",
@@ -3138,14 +3138,14 @@ return {
                 },
             },
             v_overstock_norm={
-                name="Estoque",
+                name="Feixe de Corda",
                 text={
                     "{C:attention}+1{} espaço de carta",
                     "disponível na loja",
                 },
             },
             v_overstock_plus={
-                name="Excesso de Estoque",
+                name="Pedaço de Caixão",
                 text={
                     "{C:attention}+1{} espaço de carta",
                     "disponível na loja",
@@ -3157,13 +3157,13 @@ return {
                 },
             },
             v_paint_brush={
-                name="Pincel",
+                name="Inscrição Tier 3",
                 text={
                     "{C:attention}+#1#{} tamanho de mão",
                 },
             },
             v_palette={
-                name="Paleta",
+                name="Autografo",
                 text={
                     "{C:attention}+#1#{} tamanho de mão",
                 },
@@ -3173,11 +3173,11 @@ return {
                 },
             },
             v_petroglyph={
-                name="Petróglifo",
+                name="Memória Censurada",
                 text={
                     "{C:attention}-#1#{} de Aposta,",
                     "{C:red}-#1#{} descarte",
-                    "a cada rodada",
+                    "a cada Cena",
                 },
                 unlock={
                     "Alcance",
@@ -3185,33 +3185,33 @@ return {
                 },
             },
             v_planet_merchant={
-                name="Comerciante de Planetas",
+                name="Brasas",
                 text={
-                    "Cartas de {C:planet}Planeta{} aparecem",
+                    "Cartas de {C:planet}Pecador{} aparecem",
                     "{C:attention}#1#X{} mais frequentemente",
                     "na loja",
                 },
             },
             v_planet_tycoon={
-                name="Magnata dos Planetas",
+                name="Gravetos",
                 text={
-                    "Cartas de {C:planet}Planeta{} aparecem",
+                    "Cartas de {C:planet}Pecador{} aparecem",
                     "{C:attention}#1#X{} mais frequentemente",
                     "na loja",
                 },
                 unlock={
                     "Compre um total de",
-                    "{C:attention}#1#{C:planet} cartas de Planeta{}",
+                    "{C:attention}#1#{C:planet} cartas de Pecador{}",
                     "na loja",
                     "{C:inactive}(#2#)",
                 },
             },
             v_recyclomancy={
-                name="Reciclomancia",
+                name="Marca de Caim",
                 text={
                     "Ganha",
                     "permanentemente {C:red}+#1#{} descarte",
-                    "a cada rodada",
+                    "a cada Cena",
                 },
                 unlock={
                     "Descarte um total",
@@ -3220,7 +3220,7 @@ return {
                 },
             },
             v_reroll_glut={
-                name="Excesso de Atualizações",
+                name="Ponteiros de relógio enferrujados",
                 text={
                     "Custo de Atualizações",
                     "{C:money}$#1#{} a menos",
@@ -3232,14 +3232,14 @@ return {
                 },
             },
             v_reroll_surplus={
-                name="Atualizações",
+                name="Cartão Pré-pago",
                 text={
                     "Custo de Atualizações",
                     "{C:money}$#1#{} a menos",
                 },
             },
             v_retcon={
-                name="Refazer",
+                name="Cachimbo Churchwarden",
                 text={
                     "Atualiza Blind de Chefe",
                     "{C:attention}ilimitadas{} vezes,",
@@ -3251,15 +3251,15 @@ return {
                 },
             },
             v_seed_money={
-                name="Dinheiro Inicial",
+                name="Par de Maracas",
                 text={
                     "Eleva o limite de",
                     "juros ganhos em",
-                    "cada rodada para {C:money}$#1#{}",
+                    "cada Cena para {C:money}$#1#{}",
                 },
             },
             v_tarot_merchant={
-                name="Comerciante de Tarô",
+                name="Máscara de Gás",
                 text={
                     "Cartas de {C:tarot}Tarô{} aparecem",
                     "{C:attention}#1#X{} mais frequentemente",
@@ -3267,7 +3267,7 @@ return {
                 },
             },
             v_tarot_tycoon={
-                name="Magnata do Tarô",
+                name="Soro de Melhoria Genérica",
                 text={
                     "Cartas de {C:tarot}Tarô{} aparecem",
                     "{C:attention}#1#X{} mais frequentemente",
@@ -3281,20 +3281,20 @@ return {
                 },
             },
             v_telescope={
-                name="Telescópio",
+                name="Chave Inglesa ensopada de sangue",
                 text={
                     "{C:attention}Pacotes Celestiais{} sempre",
-                    "têm a carta de {C:planet}Planeta{}",
+                    "têm a carta de {C:planet}Pecador{}",
                     "para a",
                     "{C:attention}mão de pôquer mais jogada",
                 },
             },
             v_wasteful={
-                name="Desperdício",
+                name="Selo Nagel und Hammer",
                 text={
                     "Ganha",
                     "permanentemente {C:red}+#1#{} descarte",
-                    "a cada rodada",
+                    "a cada Cena",
                 },
             },
         },
@@ -3306,7 +3306,7 @@ return {
             _10k="Pontue 10.000 Fichas com uma só mão",
             ante_up="Alcance Aposta 4",
             ante_upper="Alcance Aposta 8",
-            astronomy="Descubra todas as cartas de Planeta",
+            astronomy="Descubra todas as cartas de Pecador",
             big_hands="Tenha 80 cartas ou mais no seu baralho",
             card_discarder="Descarte no mínimo 2500 cartas",
             card_player="Jogue no mínimo 2500 cartas",
@@ -3329,7 +3329,7 @@ return {
             rule_bender="Complete qualquer tentativa de desafio",
             rule_breaker="Complete todas as tentativas de desafio",
             shattered="Quebre 2 Cartas de Vidro em uma mão",
-            speedrunner="Vença uma tentativa em 12 ou menos rodadas",
+            speedrunner="Vença uma tentativa em 12 ou menos Cenas",
             tiny_hands="Reduza o seu baralho para 20 cartas ou menos.",
             you_get_what_you_get="Vença uma tentativa sem atualizar a loja",
         },
@@ -3472,11 +3472,11 @@ return {
             b_new_run="Nova Tentativa",
             b_next="Próxima",
             b_next_round_1="Próxima",
-            b_next_round_2="Rodada",
+            b_next_round_2="Cena",
             b_open="ABRIR",
             b_options="Opções",
             b_options_cap="OPÇÕES",
-            b_planet_cards="Cartas de Planeta",
+            b_planet_cards="Cartas de Pecador",
             b_play_cap="JOGAR",
             b_play_hand="Jogar mão",
             b_playbalatro="Visite playbalatro.com",
@@ -3526,8 +3526,8 @@ return {
             b_stake="Aposta",
             b_start_new_run="Nova Tentativa",
             b_stat_consumables="Consumíveis",
-            b_stat_jokers="Curingas",
-            b_stat_planets="Planetas",
+            b_stat_jokers="Páginas Chave",
+            b_stat_planets="Pecadores",
             b_stat_spectrals="Espectrais",
             b_stat_tarots="Tarôs",
             b_stat_vouchers="Cupons",
@@ -3546,8 +3546,8 @@ return {
             k_again_ex="De novo!",
             k_all_hands="Todas as Mãos",
             k_also_applied="Também aplicado",
-            k_ante="Aposta",
-            k_ante_cap="APOSTA",
+            k_ante="Ato",
+            k_ante_cap="ATO",
             k_arcana_pack="Pacote Arcano",
             k_balanced="Equilibrado",
             k_banned_cards="Cartas Banidas",
@@ -3564,7 +3564,7 @@ return {
             k_challenges="Desafios",
             k_choose="Escolha",
             k_collection="Coleção",
-            k_common="Comum",
+            k_common="Brochura",
             k_compatible="compatível",
             k_copied_ex="Copiou!",
             k_custom_rules="Regras Personalizadas",
@@ -3577,7 +3577,7 @@ return {
             k_disabled_ex="Desativou!",
             k_drank_ex="Bebeu!",
             k_duplicated_ex="Duplicado!",
-            k_dwarf_planet="Planeta Anão",
+            k_dwarf_planet="Pecador",
             k_eaten_ex="Comido!",
             k_edition="Edição",
             k_effective="Funcional:",
@@ -3594,10 +3594,10 @@ return {
             k_hud_discards="Descartes",
             k_hud_hands="Mãos",
             k_incompatible="incompatível",
-            k_joker="Curinga",
-            k_joker_stickers="Adesivos de Curingas",
-            k_jokers_cap="CURINGAS",
-            k_legendary="Lendário",
+            k_joker="Página Chave",
+            k_joker_stickers="Adesivos de Páginas Chave",
+            k_jokers_cap="PÁGINAS CHAVE",
+            k_legendary="Objet d'art",
             k_level_prefix="nv.",
             k_level_up_ex="Subiu de nível!",
             k_locked="Bloqueada",
@@ -3606,7 +3606,7 @@ return {
             k_melted_ex="Derreteu!",
             k_money="Dinheiro",
             k_mult="Multi",
-            k_no_other_jokers="Sem outros Curingas!",
+            k_no_other_jokers="Sem outras Páginas Chave!",
             k_no_reward="Sem Recompensa",
             k_no_room_ex="Sem Espaço!",
             k_no_space_ex="Sem Espaço!",
@@ -3618,11 +3618,11 @@ return {
             k_or="ou",
             k_other="Outro(a)",
             k_page="Página",
-            k_planet="Planeta",
-            k_planet_q="Planeta?",
+            k_planet="Pecador",
+            k_planet_q="Pecador",
             k_playing_as="Jogando como",
-            k_plus_joker="+1 Curinga",
-            k_plus_planet="+1 Planeta",
+            k_plus_joker="+1 Página Chave",
+            k_plus_planet="+1 Pecador",
             k_plus_spectral="+1 Espectral",
             k_plus_stone="+1 Pedras",
             k_plus_tarot="+1 Tarô",
@@ -3635,7 +3635,7 @@ return {
             k_reroll="Atualizar",
             k_reset="Redefinir",
             k_reward="Recompensa",
-            k_round="da Rodada",
+            k_round="da Cena",
             k_safe_ex="Seguro!",
             k_saved_ex="Salvou!",
             k_seed="Código",
@@ -3651,7 +3651,7 @@ return {
             k_tarot="Tarô",
             k_trophies_disabled="Troféus Desativados",
             k_trophy="Troféu",
-            k_uncommon="Incomum",
+            k_uncommon="Capa Dura",
             k_undisovered="Não Descoberto",
             k_unknown="?????",
             k_unlocked_ex="Desbloqueado!",
@@ -3763,12 +3763,12 @@ return {
             ph_blind_score_at_least="Pontue pelo menos",
             ph_boss_disabled="Chefe Desativado!",
             ph_choose_blind_1="Escolha seu",
-            ph_choose_blind_2="próximo Blind",
+            ph_choose_blind_2="próximo Encontro",
             ph_click_confirm="Pressione novamente para confirmar",
             ph_deck_preview_effective="Funcional graças ao total de Curingas, Blinds e aprimoramentos de carta",
             ph_deck_preview_stones="Pedras",
-            ph_defeat_the_boss="Derrote o Blind de Chefe",
-            ph_defeat_this_blind_1="Derrote este Blind",
+            ph_defeat_the_boss="Derrote a Recepção",
+            ph_defeat_this_blind_1="Derrote este Encontro",
             ph_defeat_this_blind_2="para descobrir",
             ph_demo_thanks_1="Obrigado por jogar a",
             ph_demo_thanks_2="DEMO DE BALATRO",
@@ -3776,15 +3776,15 @@ return {
             ph_game_over="FIM DE JOGO",
             ph_improve_run="Melhore a sua tentativa!",
             ph_most_played="{mão mais jogada}",
-            ph_mr_bones="Salvo pelo Sr. Osso",
+            ph_mr_bones="Salvo por Valerie",
             ph_no_boss_active="sem chefe ativo",
             ph_no_vouchers="Nenhum cupom resgatado nesta tentativa",
             ph_score_at_least="Pontue pelo menos",
             ph_score_cards_discarded="Cartas Descartadas",
             ph_score_cards_played="Mãos Jogadas",
             ph_score_cards_purchased="Cartas Compradas",
-            ph_score_furthest_ante="Aposta",
-            ph_score_furthest_round="Rodada",
+            ph_score_furthest_ante="Ato",
+            ph_score_furthest_round="Cena",
             ph_score_hand="Melhor Mão",
             ph_score_new_collection="Novas Descobertas",
             ph_score_poker_hand="Mão Mais Jogada",
@@ -3792,22 +3792,22 @@ return {
             ph_select_challenge="Escolha um Desafio",
             ph_sneak_peek="Espiadinha",
             ph_stat_consumable="Número de vezes que esta carta foi usada",
-            ph_stat_joker="Total de rodadas concluídas com esta carta",
+            ph_stat_joker="Total de Cenas concluídas com esta carta",
             ph_stat_voucher="Número de vezes que este Cupom foi resgatado",
             ph_unscored_hand="A mão não pontuará",
-            ph_up_ante_1="Aumentar a Aposta",
-            ph_up_ante_2="Aumentar todos os Blinds",
-            ph_up_ante_3="Atualizar Blinds",
+            ph_up_ante_1="Aumentar o Ato",
+            ph_up_ante_2="Aumentar todos os Encontros",
+            ph_up_ante_3="Atualizar Encontros",
             ph_vouchers_redeemed="Cupons resgatados nesta tentativa",
             ph_you_win="VOCÊ VENCEU!",
             ph_you_win_demo="VOCÊ VENCEU NA DEMO!",
         },
         high_scores={
-            boss_streak="Maior Número de Chefes Consecutivos",
+            boss_streak="Maior Número de Recepções Consecutivas",
             collection="Coleção",
             current_streak="",
-            furthest_ante="Aposta Mais Alta",
-            furthest_round="Rodada Mais Alta",
+            furthest_ante="Ato Mais Alta",
+            furthest_round="Cena Mais Alta",
             hand="Melhor Mão",
             most_money="Maior Quantidade de Dinheiro",
             poker_hand="Mão Mais Jogada",
@@ -3815,7 +3815,7 @@ return {
         },
         labels={
             blue_seal="Selo Azul",
-            common="Comum",
+            common="Brochura",
             eternal="Eterna",
             foil="Laminado",
             gold_seal="Selo Dourado",
@@ -3825,15 +3825,15 @@ return {
             negative="Negativo",
             perishable="Perecível",
             pinned_left="Encurralada",
-            planet="Planeta",
-            pluto_planet="Planeta Anão",
+            planet="Pecador",
+            pluto_planet="Pecador",
             polychrome="Policromático",
             purple_seal="Selo Roxo",
             rare="Raro",
             red_seal="Selo Vermelho",
             rental="Aluguel",
             tarot="Tarô",
-            uncommon="Incomum",
+            uncommon="Capa Dura",
             voucher="Cupom",
         },
         poker_hand_descriptions={
@@ -4078,12 +4078,12 @@ return {
             fh_7={
                 "Cuidado! Você tem somente um",
                 "um número limitado de {C:blue}Mãos",
-                "e {C:red}Descartes{} por rodada",
+                "e {C:red}Descartes{} por Cena",
             },
             fh_8={
                 "Ganhe {C:attention}300 Fichas{} antes",
                 "de ficar sem {C:blue}Mãos",
-                "para vencer esta rodada.",
+                "para vencer esta Cena.",
                 "Boa sorte!",
             },
             s_1={
@@ -4105,7 +4105,7 @@ return {
             },
             s_12={
                 "Vamos avançar para",
-                "a {C:attention}próxima rodada{}.",
+                "a {C:attention}próxima Cena{}.",
             },
             s_2={
                 "Experimente comprar",
@@ -4170,7 +4170,7 @@ return {
             },
             sb_4={
                 "Selecione o {C:blue}Small Blind",
-                "para iniciar a rodada!",
+                "para iniciar a Cena!",
             },
             sh_1={
                 "Quando ganhar mais cartas,",
@@ -4268,7 +4268,7 @@ return {
                 "{C:blue}Mãos{} Adicionais não ganham mais dinheiro",
             },
             ch_c_no_interest={
-                "Sem {C:attention}Juros{} ao fim da rodada",
+                "Sem {C:attention}Juros{} ao fim da Cena",
             },
             ch_c_no_reward={
                 "Nenhum {C:attention}Blind{} dá recompensas em dinheiro",
@@ -4295,7 +4295,7 @@ return {
                 "{C:attention}#1#{} Espaços de Consumíveis",
             },
             ch_m_discards={
-                "{C:red}#1#{} descartes por rodada",
+                "{C:red}#1#{} descartes por Cena",
             },
             ch_m_dollars={
                 "Começa com {C:money}$#1#",
@@ -4304,7 +4304,7 @@ return {
                 "{C:attention}#1#{} tamanho de mão",
             },
             ch_m_hands={
-                "{C:blue}#1#{} mãos por rodada",
+                "{C:blue}#1#{} mãos por Cena",
             },
             ch_m_joker_slots={
                 "{C:attention}#1#{} Espaços de Curinga",
