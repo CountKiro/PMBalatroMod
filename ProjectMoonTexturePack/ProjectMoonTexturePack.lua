@@ -41,6 +41,8 @@ SMODS.Atlas{key = "chips", path = "chips.png", px = 29, py = 29, prefix_config =
 SMODS.Atlas{key = "tags", path = "tags.png", px = 34, py = 34, prefix_config = { key = false } }
 SMODS.Atlas{key = "stickers", path = "stickers.png", px = 71, py = 95, prefix_config = { key = false } }
 SMODS.Atlas{key = "shop_sign", path = "ShopSignAnimation.png", px = 113, py = 57, prefix_config = { key = false }, atlas_table = 'ANIMATION_ATLAS', frames = 4 }
+SMODS.Atlas {key = "modicon",	path = "icon.png",	px = 32, py = 32}
+SMODS.Atlas {key = "balatro",	path = "balatro.png",	px = 333, py = 216, prefix_config = { key = false }}
 
 local atlas_hc = SMODS.Atlas{key = "PMSkinBlack", path = "8BitDeck.png", px = 71, py = 95,}
 local icon_hc = SMODS.Atlas{key = "PMSkinIconBlack", path = "8BitDeck.png", px = 18, py = 18,}
@@ -61,9 +63,9 @@ SMODS.DeckSkin{
 			display_ranks = {"King", "Queen", "Jack"},
 			atlas = atlas_hc.key,
 			pos_style = 'deck',
-      suit_icon = {
-				atlas = atlas_hc.key,
-			},
+--      suit_icon = {
+--				atlas = atlas_hc.key,
+--			},
 		},
 		{
 			key = 'hc',
@@ -72,9 +74,9 @@ SMODS.DeckSkin{
 			atlas = atlas_hc.key,
 			pos_style = 'deck',
 			colour = HEX("9734f0"),
-      suit_icon = {
-				atlas = atlas_hc.key,
-			},
+--      suit_icon = {
+--				atlas = atlas_hc.key,
+--			},
 		},
 	},
     
@@ -91,9 +93,9 @@ SMODS.DeckSkin{
 			display_ranks = {"King", "Queen", "Jack"},
 			atlas = atlas_hc.key,
 			pos_style = 'deck',
-      suit_icon = {
-				atlas = atlas_hc.key,
-			},
+--      suit_icon = {
+--				atlas = atlas_hc.key,
+--			},
 		},
 		{
 			key = 'hc',
@@ -102,9 +104,9 @@ SMODS.DeckSkin{
 			atlas = atlas_hc.key,
 			pos_style = 'deck',
 			colour = HEX("9734f0"),
-      suit_icon = {
-				atlas = atlas_hc.key,
-			},
+--      suit_icon = {
+--				atlas = atlas_hc.key,
+--			},
 		},
 	},
     
@@ -121,9 +123,9 @@ SMODS.DeckSkin{
 			display_ranks = {"King", "Queen", "Jack"},
 			atlas = atlas_hc.key,
 			pos_style = 'deck',
-      suit_icon = {
-				atlas = atlas_hc.key,
-			},
+--      suit_icon = {
+--				atlas = atlas_hc.key,
+--			},
 		},
 		{
 			key = 'hc',
@@ -132,9 +134,9 @@ SMODS.DeckSkin{
 			atlas = atlas_hc.key,
 			pos_style = 'deck',
 			colour = HEX("9734f0"),
-      suit_icon = {
-				atlas = atlas_hc.key,
-			},
+--      suit_icon = {
+--				atlas = atlas_hc.key,
+--			},
 		},
 	},
     
@@ -151,9 +153,9 @@ SMODS.DeckSkin{
 			display_ranks = {"King", "Queen", "Jack"},
 			atlas = atlas_hc.key,
 			pos_style = 'deck',
-      suit_icon = {
-				atlas = atlas_hc.key,
-			},
+--      suit_icon = {
+--				atlas = atlas_hc.key,
+--			},
 		},
 		{
 			key = 'hc',
@@ -162,9 +164,9 @@ SMODS.DeckSkin{
 			atlas = atlas_hc.key,
 			pos_style = 'deck',
 			colour = HEX("9734f0"),
-      suit_icon = {
-				atlas = atlas_hc.key,
-			},
+--      suit_icon = {
+--				atlas = atlas_hc.key,
+--			},
 		},
 	},
     
@@ -196,9 +198,9 @@ SMODS.DeckSkin{
 			atlas = atlas_hc_white.key,
 			pos_style = 'deck',
 			colour = HEX("9734f0"),
-      suit_icon = {
-				atlas = atlas_hc_white.key,
-			},
+--      suit_icon = {
+--				atlas = atlas_hc_white.key,
+--			},
 		},
 	},
     
@@ -215,9 +217,9 @@ SMODS.DeckSkin{
 			display_ranks = {"King", "Queen", "Jack"},
 			atlas = atlas_hc_white.key,
 			pos_style = 'deck',
-      suit_icon = {
-				atlas = atlas_hc_white.key,
-			},
+--      suit_icon = {
+--				atlas = atlas_hc_white.key,
+--			},
 		},
 		{
 			key = 'hc',
@@ -226,9 +228,9 @@ SMODS.DeckSkin{
 			atlas = atlas_hc_white.key,
 			pos_style = 'deck',
 			colour = HEX("9734f0"),
-      suit_icon = {
-				atlas = atlas_hc_white.key,
-			},
+--      suit_icon = {
+--				atlas = atlas_hc_white.key,
+--			},
 		},
 	},
     
@@ -245,9 +247,9 @@ SMODS.DeckSkin{
 			display_ranks = {"King", "Queen", "Jack"},
 			atlas = atlas_hc_white.key,
 			pos_style = 'deck',
-      suit_icon = {
-				atlas = atlas_hc_white.key,
-			},
+--      suit_icon = {
+--				atlas = atlas_hc_white.key,
+--			},
 		},
 		{
 			key = 'hc',
@@ -256,9 +258,9 @@ SMODS.DeckSkin{
 			atlas = atlas_hc_white.key,
 			pos_style = 'deck',
 			colour = HEX("9734f0"),
-      suit_icon = {
-				atlas = atlas_hc_white.key,
-			},
+--      suit_icon = {
+--				atlas = atlas_hc_white.key,
+--			},
 		},
 	},
     
@@ -286,9 +288,9 @@ SMODS.DeckSkin{
 			atlas = atlas_hc_white.key,
 			pos_style = 'deck',
 			colour = HEX("9734f0"),
-      suit_icon = {
-				atlas = atlas_hc_white.key,
-			},
+--      suit_icon = {
+--				atlas = atlas_hc_white.key,
+--			},
 		},
 	},
     
