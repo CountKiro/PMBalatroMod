@@ -16,7 +16,7 @@ A Balatro Mod that adds custom made textures with Project Moon related character
 
 ## Installing the mod
 
-1. Download and install, [Steammodded 1.0.0 beta (0711a)](https://github.com/Steamodded/smods/releases/tag/1.0.0-beta-0711a), [Lovely v0.7.1](https://github.com/ethangreen-dev/lovely-injector) and [Malverk 1.1.3](https://github.com/Eremel/Malverk)
+1. Download and install, [Steammodded 1.0.0 beta (1016c)](https://github.com/Steamodded/smods/releases/tag/1.0.0-beta-1016c), [Lovely v0.7.1](https://github.com/ethangreen-dev/lovely-injector) and [Malverk 1.1.3](https://github.com/Eremel/Malverk)
 
 2. Download the ProjectMoonTexturePack.zip file from [Releases](https://github.com/CountKiro/PMBalatroMod/releases/tag/v.1.2) on the right menu, extract it and then place it in your Mods folder. You'll know it's correct if you open the ProjectMoonTexturePack folder and there's an assets, localization and .lua file inside
 
@@ -34,23 +34,24 @@ A Balatro Mod that adds custom made textures with Project Moon related character
 ## What is in the latest update?
 
 ### Texture pack
-- Improvements on jokers textures (such as R Corp gang)
-- Main menu logo should be applied automatically
-- Improvements on playing card skins
-- Option to change deck skin versions
+- Improvements on some Joker textures
+- Improvements to Joker backgrounds and frames
+- Updated the Negative Shader effect to instead have a Sepia tone
 - Minor bugfixes
 
 ### [NEW!] Content mod
-- Added 36 new jokers
-- Added 4 new decks
-- Added 2 new spectral cards
-- Partner API support
-- Card Sleeve support
-- Talisman compatibility
+- Added 43 new Jokers (now up to 98 total)
+- Added 1 new Deck (now up to 8 total)
+- Added 1 new Spectral Card (now up to 4 total)
+- Added 1 new Enhancement (now up to 2 total)
+- Added 1 new Partner (now up to 4 total)
+- Reworked Meltdown mechanics
+- Improvements to Partner textures
+- Changed some sprites to reflect changes to the Mark of Cain (some will still use the Supernatural one)
+- Changed some Joker effects
 
 ### Music mod
 - New music was added for the Content mod
-- New option for normal speed music
 
 ## FAQ
 
@@ -79,7 +80,7 @@ Some of them complement each other, such Isadora and Julia working well together
 
 ## Special Thanks
 
-Music, sound effects and character designs are owned by Project Moon!
+Music, sound effects and character designs are owned by Project Moon! Special thanks to [Lunartique07](https://www.youtube.com/@Lunartique07) for allowing me to use their instrumental version of Children of the City and for their extensive work on archiving the Limbus Soundtrack and Assets, please show them your support!
 
 Special thanks to Novell, [Dawni](https://x.com/hidawnihere), Sans, Simon and Oath for testing out the mod and giving suggestions!
 
