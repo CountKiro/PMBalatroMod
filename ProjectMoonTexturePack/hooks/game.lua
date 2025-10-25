@@ -21,6 +21,12 @@ function ease_background_colour_blind(state, blind_override)
 		ease_background_colour{new_colour = HEX("e3e3e3"), special_colour = HEX("858585"), contrast = 3}
 	end
 
+	--Index
+	if G.GAME.selected_back.name == 'The Index Deck' then
+	print("Red")
+		ease_background_colour{new_colour = HEX("196b94"), special_colour = HEX("10161a"), contrast = 3}
+	end
+
 	--Serpent
 
 	if (G.GAME.selected_back.name == 'Serpent Deck' and G.GAME.round_resets.ante == 1) then
