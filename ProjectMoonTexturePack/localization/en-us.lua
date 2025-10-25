@@ -965,11 +965,12 @@ return {
                 },
             },
             j_gluttenous_joker={
-                name="Boris",
+                name="Aspect of Boris",
                 text={
                     "Played cards with",
                     "{C:clubs}#2#{} suit give",
                     "{C:mult}+#1#{} Mult when scored",
+                    "{C:inactive} Unable to fulfill its full potential.",
                 },
             },
             j_golden={
@@ -980,11 +981,12 @@ return {
                 },
             },
             j_greedy_joker={
-                name="Kalo",
+                name="Aspect of Kalo",
                 text={
                     "Played cards with",
                     "{C:diamonds}#2#{} suit give",
                     "{C:mult}+#1#{} Mult when scored",
+                    "{C:inactive} Unable to fulfill its full potential.",
                 },
             },
             j_green_joker={
@@ -1021,7 +1023,7 @@ return {
                 },
             },
             j_hallucination={
-                name="Benjamin",
+                name="Yae",
                 text={
                     "{C:green}#1# in #2#{} chance to create",
                     "a {C:tarot}Tarot{} card when any",
@@ -1109,7 +1111,7 @@ return {
                 },
             },
             j_joker={
-                name="Oswald",
+                name="Aspect of Oswald",
                 text={
                     "{C:red,s:1.1}+#1#{} Mult",
                 },
@@ -1154,11 +1156,12 @@ return {
                 },
             },
             j_lusty_joker={
-                name="Katriel",
+                name="Aspect of Katriel",
                 text={
                     "Played cards with",
                     "{C:hearts}#2#{} suit give",
                     "{C:mult}+#1#{} Mult when scored",
+                    "{C:inactive} Unable to fulfill its full potential.",
                 },
             },
             j_mad={
@@ -1402,7 +1405,7 @@ return {
                 },
             },
             j_riff_raff={
-                name="Angela",
+                name="Aspect of Angela",
                 text={
                     "When {C:attention}Encounter{} is selected,",
                     "create {C:attention}#1# {C:blue}Paperback{C:attention} Key Pages",
@@ -1840,11 +1843,12 @@ return {
                 },
             },
             j_wrathful_joker={
-                name="Denis",
+                name="Aspect of Denis",
                 text={
                     "Played cards with",
                     "{C:spades}#2#{} suit give",
                     "{C:mult}+#1#{} Mult when scored",
+                    "{C:inactive} Unable to fulfill its full potential.",
                 },
             },
             j_yorick={
