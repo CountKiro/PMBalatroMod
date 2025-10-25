@@ -950,7 +950,7 @@ SMODS.Joker:take_ownership('j_to_the_moon',
 SMODS.Joker:take_ownership('j_hallucination', 
   {
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Lobotomy Corporation', HEX('b82c2c'), HEX('f2e396'), 1.2 )
+                 badges[#badges+1] = create_badge('Leaftlet Workshop', HEX('240e0a'), HEX('613229'), 1.2 )
          end
   }, true)
 
@@ -1410,4 +1410,11 @@ SMODS.Joker:take_ownership('j_perkeo',
   }, true)
 
 SMODS.Shader{key = 'debuffGold', path = 'debuffGold.fs'}
+SMODS.Shader{key = 'sepia', path = 'negative.fs'}
 
+
+
+
+G.SHADERS['negative'] = love.graphics.newShader(NFS.read(SMODS.current_mod.path..'assets/shaders/negative.fs'))
+
+--watch shader Mods/ProjectMoonTexturePack/assets/shaders/negative.fs
