@@ -95,6 +95,32 @@ SMODS.Back {
     end
 }
 
+-- Index Deck
+SMODS.Back {
+    key = "indexDeck",
+	name = "The Index Deck",
+    config = { joker_slot = 2},
+    unlocked = false,
+    atlas = 'ModdedProjectMoonEditions',
+    pos = { x = 6, y = 1 },
+    loc_vars = function(self, info_queue, back)
+        return { vars = { self.config.hands, self.config.discards, self.config.joker_slot } }
+    end,
+	apply = function(self, back)
+		G.E_MANAGER:add_event(Event({
+			func = function()
+				if G.jokers then
+					SMODS.add_card({ key = "j_pmcmod_voiceOfTheCity", stickers = { "eternal" } })
+					return true
+				end
+			end,
+		}))
+	end,
+	check_for_unlock = function(self, args)
+        return args.type == 'win_deck' and get_deck_win_stake('b_yellow') > 4
+    end
+}
+
 
 -- Silent Deck
 SMODS.Back {
