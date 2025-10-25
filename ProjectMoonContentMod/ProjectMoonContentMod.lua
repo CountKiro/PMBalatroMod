@@ -1,5 +1,8 @@
 sendDebugMessage("Launching Project Moon Content Mod!", "ProjectMoonContentMod")
 
+ProjectMoonMod = {}
+
+
 SMODS.current_mod.optional_features = function()
     return {
         retrigger_joker = true
@@ -23,6 +26,8 @@ SMODS.load_file("objects/spectrals.lua")()
 ---------------------
 
 SMODS.Atlas {key = "ModdedProjectMoon",	path = "newProjectMoonJokers.png",	px = 71, py = 95}
+SMODS.Atlas {key = "ModdedProjectMoon2",	path = "newProjectMoonJokers2.png",	px = 71, py = 95}
+SMODS.Atlas {key = "ModdedProjectMoonTrue",	path = "newProjectMoonTrueJokers.png",	px = 71, py = 95}
 SMODS.Atlas {key = "ModdedProjectMoonSpectrals",	path = "newProjectMoonSpectrals.png",	px = 71, py = 95}
 SMODS.Atlas {key = "ModdedProjectMoonEditions",	path = "newProjectMoonEditions.png",	px = 71, py = 95}
 SMODS.Atlas {key = "modicon",	path = "icon.png",	px = 32, py = 32}
@@ -39,11 +44,11 @@ end
 
 -- Config Options --
 
-SMODS.current_mod.config_tab = function()
-    return {n=G.UIT.ROOT, config = {align = "cm", padding = 0.05, colour = G.C.CLEAR}, nodes={
-        create_toggle({label = localize("k_unlock_all"), ref_table = Partner_API.config, ref_value = "temporary_unlock_all"}),
-    }}
-end
+--SMODS.current_mod.config_tab = function()
+--    return {n=G.UIT.ROOT, config = {align = "cm", padding = 0.05, colour = G.C.CLEAR}, nodes={
+--        create_toggle({label = localize("k_unlock_all"), ref_table = Partner_API.config, ref_value = "temporary_unlock_all"}),
+--    }}
+--end
 
 
 -------------------
@@ -69,6 +74,8 @@ SMODS.Sound{
 ------------------
 
 --Sinners
+
+
 -- K Corp
 SMODS.ObjectType({
 	key = "Sinners",
@@ -101,6 +108,19 @@ SMODS.ObjectType({
 		self:inject_card(G.P_CENTERS.j_baron)
 		self:inject_card(G.P_CENTERS.j_hanging_chad)
 		self:inject_card(G.P_CENTERS.j_oops)
+	end,
+})
+
+-- Thumb
+SMODS.ObjectType({
+	key = "Thumb",
+	default = "j_greedy_joker",
+	cards = {
+		["j_greedy_joker"] = true, 	--Aspect of Kalo
+ 	},
+	inject = function(self)
+		SMODS.ObjectType.inject(self)
+		self:inject_card(G.P_CENTERS.j_greedy_joker)
 	end,
 })
 
@@ -231,6 +251,49 @@ SMODS.ObjectType({
 	end,
 })
 
+SMODS.JimboQuip({
+    key = 'stencil',
+    extra = {
+        center = 'j_stencil',
+    },
+    filter = function(self, type)
+        if next(SMODS.find_card('j_stencil')) then
+            if type == 'win' then
+                self.extra.text_key = self.key..'_win'
+                return true, { weight = 100 }
+            elseif type == 'loss' then
+                self.extra.text_key = self.key..'_loss'
+                return true, { weight = 100 }
+            end
+        end
+    end
+})
 
+-- DUMMY CARD AREA
 
+local game_start_run_ref = Game.start_run
+function Game:start_run(args)
+    self.pmcmod_dummy_joker_area = CardArea(
+        0,
+        0,
+        self.CARD_W * 1.9,
+        self.CARD_H * 0.95,
+        {
+            card_limit = 999,
+            type = 'joker',
+            highlight_limit = 1,
+        }
+    )
+	self.pmcmod_dummy_joker_area.states.visible = false
+    ProjectMoonMod.dummyJoker = G.pmcmod_dummy_joker_area
 
+    game_start_run_ref(self, args)
+end
+
+local card_set_cost_voucher = Card.set_cost
+function Card:set_cost()
+    card_set_cost_voucher(self)
+    if next(SMODS.find_card("j_pmcmod_santata")) then
+        if (self.ability.set == 'Voucher') then self.cost = 0 end
+    end
+end
