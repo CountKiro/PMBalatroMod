@@ -110,7 +110,7 @@ SMODS.Back {
 		G.E_MANAGER:add_event(Event({
 			func = function()
 				if G.jokers then
-					SMODS.add_card({ key = "j_pmcmod_voiceOfTheCity", stickers = { "eternal" } })
+					SMODS.add_card({ key = "j_pmcmod_voiceOfTheCity", stickers = { "eternal" }, force_stickers = true })
 					return true
 				end
 			end,
@@ -137,7 +137,7 @@ SMODS.Back {
 		G.E_MANAGER:add_event(Event({
 			func = function()
 				if G.jokers then
-					SMODS.add_card({ key = "j_pmcmod_silence", stickers = { "eternal" } })
+					SMODS.add_card({ key = "j_pmcmod_silence", stickers = { "eternal" }, force_stickers = true })
 					return true
 				end
 			end,
@@ -163,7 +163,7 @@ SMODS.Back {
 		G.E_MANAGER:add_event(Event({
 			func = function()
 				if G.jokers then
-					SMODS.add_card({ key = "j_pmcmod_shylook", stickers = { "eternal" } })
+					SMODS.add_card({ key = "j_pmcmod_shylook", stickers = { "eternal" }, force_stickers = true })
 					return true
 				end
 			end,
@@ -189,7 +189,7 @@ SMODS.Back {
 		G.E_MANAGER:add_event(Event({
 			func = function()
 				if G.jokers then
-					SMODS.add_card({ key = "j_pmcmod_queenOfHatred", stickers = { "eternal" } })
+					SMODS.add_card({ key = "j_pmcmod_queenOfHatred", stickers = { "eternal" }, force_stickers = true })
 					return true
 				end
 			end,
