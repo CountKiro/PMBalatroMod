@@ -17,7 +17,6 @@ sendDebugMessage("Launching Project Moon Texture Pack!", "ProjectMoonTexturePack
 local hook_list = {
 	"game",
 }
-
 for _, hook in ipairs(hook_list) do
     local init, error = NFS.load(SMODS.current_mod.path .. "hooks/" .. hook ..".lua")
     if error then sendErrorMessage("PMTextureMod :: Failed to load "..hook.." with error "..error) else
@@ -25,6 +24,9 @@ for _, hook in ipairs(hook_list) do
         sendDebugMessage("PMTextureMod :: Loaded hook: " .. hook)
     end
 end
+
+local possibleMainMenus = {"balatro.png", "balatro2.png", "balatro3.png", "balatro4.png"}
+
 
 --SMODS.Atlas{key = "cards_1", path = "8BitDeck.png", px = 71, py = 95, prefix_config = { key = false } }
 --SMODS.Atlas{key = "cards_2", path = "8BitDeck.png", px = 71, py = 95, prefix_config = { key = false } }
@@ -42,13 +44,13 @@ SMODS.Atlas{key = "tags", path = "tags.png", px = 34, py = 34, prefix_config = {
 SMODS.Atlas{key = "stickers", path = "stickers.png", px = 71, py = 95, prefix_config = { key = false } }
 SMODS.Atlas{key = "shop_sign", path = "ShopSignAnimation.png", px = 113, py = 57, prefix_config = { key = false }, atlas_table = 'ANIMATION_ATLAS', frames = 4 }
 SMODS.Atlas {key = "modicon",	path = "icon.png",	px = 32, py = 32}
-SMODS.Atlas {key = "balatro",	path = "balatro.png",	px = 333, py = 216, prefix_config = { key = false }}
+SMODS.Atlas {key = "balatro",	path = pseudorandom_element(possibleMainMenus),	px = 333, py = 216, prefix_config = { key = false }}
 
 local atlas_hc = SMODS.Atlas{key = "PMSkinBlack", path = "8BitDeck.png", px = 71, py = 95,}
 local icon_hc = SMODS.Atlas{key = "PMSkinIconBlack", path = "8BitDeck.png", px = 18, py = 18,}
 
 local atlas_hc_white = SMODS.Atlas{key = "PMSkinWhite", path = "8BitDeck_White.png", px = 71, py = 95,}
-local icon_hc_white = SMODS.Atlas{key = "PMSkinIconWhite", path = "8BitDeck_White.png", px = 18, py = 18,}
+local icon_hc_white = SMODS.Atlas{key = "PMSkinIconWhite", path = "8BitDeck_White.png", px =  18, py = 18,}
 
 --Black deck skins
 
@@ -463,7 +465,7 @@ SMODS.Joker:take_ownership('j_crafty',
 SMODS.Joker:take_ownership('j_half', 
   {
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge("Charle's Office", HEX('3d3d3d'), HEX('b5b5b5'), 1.2 )
+                 badges[#badges+1] = create_badge("Charles' Office", HEX('3d3d3d'), HEX('b5b5b5'), 1.2 )
          end
   }, true)
 
@@ -666,7 +668,7 @@ SMODS.Joker:take_ownership('j_ride_the_bus',
 SMODS.Joker:take_ownership('j_space', 
   {
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('??????', HEX('828282'), HEX('ebebeb'), 1.2 )
+                 badges[#badges+1] = create_badge("Charles' Office", HEX('3d3d3d'), HEX('b5b5b5'), 1.2 )
          end
   }, true)
 
