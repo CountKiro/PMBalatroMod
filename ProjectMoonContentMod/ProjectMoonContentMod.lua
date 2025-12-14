@@ -9,6 +9,8 @@ SMODS.current_mod.optional_features = function()
     }
 end
 
+
+
 -------------------
 -- Loading files --
 -------------------
@@ -20,10 +22,13 @@ SMODS.load_file("objects/enhancements.lua")()
 SMODS.load_file("objects/jokers.lua")()
 SMODS.load_file("objects/seals.lua")()
 SMODS.load_file("objects/spectrals.lua")()
+SMODS.load_file("objects/editions.lua")()
 
 ---------------------
 -- Preparing atlas --
 ---------------------
+---
+
 
 SMODS.Atlas {key = "ModdedProjectMoon",	path = "newProjectMoonJokers.png",	px = 71, py = 95}
 SMODS.Atlas {key = "ModdedProjectMoon2",	path = "newProjectMoonJokers2.png",	px = 71, py = 95}
@@ -46,7 +51,7 @@ end
 
 --SMODS.current_mod.config_tab = function()
 --    return {n=G.UIT.ROOT, config = {align = "cm", padding = 0.05, colour = G.C.CLEAR}, nodes={
---        create_toggle({label = localize("k_unlock_all"), ref_table = Partner_API.config, ref_value = "temporary_unlock_all"}),
+--        create_toggle({label = localize("k_unlock_all"), ref_table = ProjectMoonMod.config, ref_value = "temporary_unlock_all"}),
 --    }}
 --end
 
@@ -207,7 +212,7 @@ SMODS.ObjectType({
 
 -- Bloodfiend
 SMODS.ObjectType({
-	key = "Bloodfiend",
+	key = "Bloodfiends",
 	default = "j_seeing_double",
 	cards = {
 		["j_seeing_double"] = true, --Don Quixote
@@ -240,6 +245,8 @@ SMODS.ObjectType({
 	end,
 })
 
+
+
 -- K Corp
 SMODS.ObjectType({
 	key = "KCorp",
@@ -251,13 +258,245 @@ SMODS.ObjectType({
 	end,
 })
 
+-- Puppets
+SMODS.ObjectType({
+	key = "Puppets",
+	default = "pmcmod_j_joker",
+	cards = {
+ 	},
+	inject = function(self)
+		SMODS.ObjectType.inject(self)
+	end,
+})
+
+--Aspects
+SMODS.ObjectType({
+	key = "Aspects",
+	default = "j_joker",
+	cards = {
+		["j_joker"] = true,
+		["j_riff_raff"] = true,
+		["j_greedy_joker"] = true,
+		["j_lusty_joker"] = true,
+		["j_wrathful_joker"] = true,
+		["j_gluttenous_joker"] = true,
+		["j_turtle_bean"] = true,
+		["j_troubadour"] = true,
+		["j_juggler"] = true,
+		["j_half"] = true,
+		["j_onyx_agate"] = true,
+		["j_abstract"] = true,
+		["j_swashbuckler"] = true,
+		["j_bull"] = true,
+		["j_constellation"] = true,
+		["j_midas_mask"] = true,
+		["j_hit_the_road"] = true,
+ 	},
+	inject = function(self)
+		SMODS.ObjectType.inject(self)
+	end,
+})
+
+--Aspects
+SMODS.ObjectType({
+	key = "TrueVersion",
+	default = "j_pmcmod_oswald",
+	cards = {
+		["j_pmcmod_oswald"] = true,
+		["j_pmcmod_angelaLoR"] = true,
+		["j_pmcmod_kalo"] = true,
+		["j_pmcmod_katriel"] = true,
+		["j_pmcmod_denis"] = true,
+		["j_pmcmod_boris"] = true,
+		["j_pmcmod_esther"] = true,
+		["j_pmcmod_gloria"] = true,
+		["j_pmcmod_rubert"] = true,
+		["j_pmcmod_angelica"] = true,
+		["j_pmcmod_puppeteer"] = true,
+		["j_pmcmod_nikolai"] = true,
+		["j_pmcmod_rudolph"] = true,
+		["j_pmcmod_maxim"] = true,
+		["j_pmcmod_yisang"] = true,
+		["j_pmcmod_ishmael"] = true,
+		["j_pmcmod_heathcliff"] = true,
+ 	},
+	inject = function(self)
+		SMODS.ObjectType.inject(self)
+
+	end,
+})
+
+-- QUIPS --
+
 SMODS.JimboQuip({
-    key = 'stencil',
+    key = 'roland',
     extra = {
         center = 'j_stencil',
     },
     filter = function(self, type)
         if next(SMODS.find_card('j_stencil')) then
+            if type == 'win' then
+                self.extra.text_key = self.key..'_win'
+                return true, { weight = 100 }
+            elseif type == 'loss' then
+                self.extra.text_key = self.key..'_loss'
+                return true, { weight = 100 }
+            end
+        end
+    end
+})
+
+SMODS.JimboQuip({
+    key = 'malkuth',
+    extra = {
+        center = 'j_sock_and_buskin',
+    },
+    filter = function(self, type)
+        if next(SMODS.find_card('j_sock_and_buskin')) then
+            if type == 'win' then
+                self.extra.text_key = self.key..'_win'
+                return true, { weight = 100 }
+            elseif type == 'loss' then
+                self.extra.text_key = self.key..'_loss'
+                return true, { weight = 100 }
+            end
+        end
+    end
+})
+
+SMODS.JimboQuip({
+    key = 'yesod',
+    extra = {
+        center = 'j_smeared',
+    },
+    filter = function(self, type)
+        if next(SMODS.find_card('j_smeared')) then
+            if type == 'win' then
+                self.extra.text_key = self.key..'_win'
+                return true, { weight = 100 }
+            elseif type == 'loss' then
+                self.extra.text_key = self.key..'_loss'
+                return true, { weight = 100 }
+            end
+        end
+    end
+})
+
+SMODS.JimboQuip({
+    key = 'hod',
+    extra = {
+        center = 'j_pareidolia',
+    },
+    filter = function(self, type)
+        if next(SMODS.find_card('j_pareidolia')) then
+            if type == 'win' then
+                self.extra.text_key = self.key..'_win'
+                return true, { weight = 100 }
+            elseif type == 'loss' then
+                self.extra.text_key = self.key..'_loss'
+                return true, { weight = 100 }
+            end
+        end
+    end
+})
+
+SMODS.JimboQuip({
+    key = 'netzach',
+    extra = {
+        center = 'j_satellite',
+    },
+    filter = function(self, type)
+        if next(SMODS.find_card('j_satellite')) then
+            if type == 'win' then
+                self.extra.text_key = self.key..'_win'
+                return true, { weight = 100 }
+            elseif type == 'loss' then
+                self.extra.text_key = self.key..'_loss'
+                return true, { weight = 100 }
+            end
+        end
+    end
+})
+
+SMODS.JimboQuip({
+    key = 'tiph',
+    extra = {
+        center = 'j_shoot_the_moon',
+    },
+    filter = function(self, type)
+        if next(SMODS.find_card('j_shoot_the_moon')) then
+            if type == 'win' then
+                self.extra.text_key = self.key..'_win'
+                return true, { weight = 100 }
+            elseif type == 'loss' then
+                self.extra.text_key = self.key..'_loss'
+                return true, { weight = 100 }
+            end
+        end
+    end
+})
+
+SMODS.JimboQuip({
+    key = 'gebura',
+    extra = {
+        center = 'j_stuntman',
+    },
+    filter = function(self, type)
+        if next(SMODS.find_card('j_stuntman')) then
+            if type == 'win' then
+                self.extra.text_key = self.key..'_win'
+                return true, { weight = 100 }
+            elseif type == 'loss' then
+                self.extra.text_key = self.key..'_loss'
+                return true, { weight = 100 }
+            end
+        end
+    end
+})
+
+SMODS.JimboQuip({
+    key = 'chesed',
+    extra = {
+        center = 'j_castle',
+    },
+    filter = function(self, type)
+        if next(SMODS.find_card('j_castle')) then
+            if type == 'win' then
+                self.extra.text_key = self.key..'_win'
+                return true, { weight = 100 }
+            elseif type == 'loss' then
+                self.extra.text_key = self.key..'_loss'
+                return true, { weight = 100 }
+            end
+        end
+    end
+})
+
+SMODS.JimboQuip({
+    key = 'hokma',
+    extra = {
+        center = 'j_cartomancer',
+    },
+    filter = function(self, type)
+        if next(SMODS.find_card('j_cartomancer')) then
+            if type == 'win' then
+                self.extra.text_key = self.key..'_win'
+                return true, { weight = 100 }
+            elseif type == 'loss' then
+                self.extra.text_key = self.key..'_loss'
+                return true, { weight = 100 }
+            end
+        end
+    end
+})
+
+SMODS.JimboQuip({
+    key = 'binah',
+    extra = {
+        center = 'j_astronomer',
+    },
+    filter = function(self, type)
+        if next(SMODS.find_card('j_astronomer')) then
             if type == 'win' then
                 self.extra.text_key = self.key..'_win'
                 return true, { weight = 100 }
@@ -297,3 +536,36 @@ function Card:set_cost()
         if (self.ability.set == 'Voucher') then self.cost = 0 end
     end
 end
+
+SMODS.DrawStep {
+    key = "censoring",
+    order = 11,
+    func = function(card, layer)
+        if (layer == 'card' or layer == 'both') and card.sprite_facing == 'front' then
+            local censoredPresent = false
+            local pinnocchioPresent = false
+
+            if G.GAME and G.GAME.blind then
+                if G.jokers then
+                    for i=1, #G.jokers.cards do
+                        if G.jokers.cards[i].config.center.key == "j_pmcmod_censored" then
+                            censoredPresent = true
+                            break
+                        end
+
+                        if G.jokers.cards[i].config.center.key == "j_pmcmod_pinnocchio" then
+                            pinnocchioPresent = true
+                            break
+                        end
+                    end
+                end
+                if censoredPresent == true and card.ability.set == 'Joker' and not (card.children.center.sprite_pos.x == 0 and card.children.center.sprite_pos.y == 0 and card.children.center.atlas == G.ASSET_ATLAS["pmcmod_ModdedProjectMoon2"]) then
+                --card.children.center = Sprite(card.T.x, card.T.y, card.T.w, card.T.h, G.ASSET_ATLAS["pmcmod_ModdedProjectMoon2"], {x = 0, y = 0})
+                        card.children.center.atlas = G.ASSET_ATLAS["pmcmod_ModdedProjectMoon2"]
+                        card.children.center.sprite_pos.x = 9
+                        card.children.center.sprite_pos.y = 14
+                end
+            end
+        end
+    end
+}
