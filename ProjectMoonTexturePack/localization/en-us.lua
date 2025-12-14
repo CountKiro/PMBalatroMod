@@ -442,11 +442,12 @@ return {
                 },
             },
             j_abstract={
-                name="Nikolai",
+                name="Aspect of Nikolai",
                 text={
                     "{C:mult}+#1#{} Mult for",
                     "each {C:attention}Key Page{} card",
                     "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)",
+                    "{C:inactive} Unable to fulfill its full potential.",
                 },
             },
             j_acrobat={
@@ -581,11 +582,12 @@ return {
                 },
             },
             j_bull={
-                name="Maxim",
+                name="Aspect of Maxim",
                 text={
                     "{C:chips}+#1#{} Chips for",
                     "each {C:money}$1{} you have",
                     "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
+                    "{C:inactive} Unable to fulfill its full potential.",
                 },
             },
             j_burglar={
@@ -1015,11 +1017,12 @@ return {
                 },
             },
             j_half={
-                name="Angel-",
+                name="Aspect of Angelica",
                 text={
                     "{C:red}+#1#{} Mult if played",
                     "hand contains",
                     "{C:attention}#2#{} or fewer cards",
+                    "{C:inactive} Unable to fulfill its full potential.",
                 },
             },
             j_hallucination={
@@ -1114,6 +1117,7 @@ return {
                 name="Aspect of Oswald",
                 text={
                     "{C:red,s:1.1}+#1#{} Mult",
+                    "{C:inactive} Unable to fulfill its full potential.",
                 },
             },
             j_jolly={
@@ -1125,9 +1129,10 @@ return {
                 },
             },
             j_juggler={
-                name="Hubert",
+                name="Aspect of Hubert",
                 text={
                     "{C:attention}+#1#{} hand size",
+                    "{C:inactive} Unable to fulfill its full potential.",
                 },
             },
             j_loyalty_card={
@@ -1286,11 +1291,12 @@ return {
                 },
             },
             j_onyx_agate={
-                name="The Puppeteer",
+                name="Aspect of The Puppeteer",
                 text={
                     "Played cards with",
                     "{C:clubs}Club{} suit give",
                     "{C:mult}+#1#{} Mult when scored",
+                    "{C:inactive} Unable to fulfill its full potential.",
                 },
                 unlock={
                     "Have at least {E:1,C:attention}#1#",
@@ -1410,6 +1416,7 @@ return {
                     "When {C:attention}Encounter{} is selected,",
                     "create {C:attention}#1# {C:blue}Paperback{C:attention} Key Pages",
                     "{C:inactive}(Must have room)",
+                    "{C:inactive} Unable to fulfill its full potential.",
                 },
             },
             j_ring_master={
@@ -1668,12 +1675,13 @@ return {
                 },
             },
             j_swashbuckler={
-                name="Rudolph",
+                name="Aspect of Rudolph",
                 text={
                     "Adds the sell value",
                     "of all other owned",
                     "{C:attention}Key Pages{} to Mult",
                     "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
+                    "{C:inactive} Unable to fulfill its full potential.",
                 },
                 unlock={
                     "Sell a total of",
@@ -1768,10 +1776,11 @@ return {
                 },
             },
             j_troubadour={
-                name="Gloria",
+                name="Aspect of Gloria",
                 text={
                     "{C:attention}+#1#{} hand size,",
                     "{C:blue}-#2#{} hand each scene",
+                    "{C:inactive} Unable to fulfill its full potential.",
                 },
                 unlock={
                     "Win {C:attention,E:1}#1#{} consecutive",
@@ -1789,11 +1798,12 @@ return {
                 },
             },
             j_turtle_bean={
-                name="Esther",
+                name="Aspect of Esther",
                 text={
                     "{C:attention}+#1#{} hand size,",
                     "reduces by",
                     "{C:red}#2#{} every scene",
+                    "{C:inactive} Unable to fulfill its full potential.",
                 },
             },
             j_vagabond={
@@ -2272,6 +2282,12 @@ return {
                     "voucher in an",
                     "unseeded run to",
                     "learn what it does",
+                },
+            },
+            censored_joker={
+                name="{X:mult, C:white}[CENSORED]",
+                text={
+                    "{X:mult, C:white}[CENSORED]",
                 },
             },
             white_sticker={
@@ -3128,7 +3144,7 @@ return {
                 },
             },
             v_omen_globe={
-                name="Festival Mask",
+                name="La Manchaland All-day Pass",
                 text={
                     "{C:spectral}Spectral{} cards may",
                     "appear in any of",
