@@ -1,0 +1,88 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = 0
+
+
+###########
+## INTRO ##
+###########
+
+######################
+#Add dummy CardArea to Joker calculation
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/utils.lua"]'
+pattern = "-- TARGET: add your own CardAreas for joker evaluation"
+position = 'before'
+match_indent = true
+payload = '''
+if ProjectMoonMod and ProjectMoonMod.dummyJoker then table.insert(t, ProjectMoonMod.dummyJoker) end
+'''
+
+
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''local main_start, main_end = nil,nil
+    local no_badge = nil'''
+position = 'after'
+match_indent = true
+payload = '''
+
+local censoredPresent = false --kiro
+    local pinnocchioPresent = false
+
+    if G.GAME.blind then
+        for i=1, #G.jokers.cards do
+            if G.jokers.cards[i].config.center.key == "j_pmcmod_censored" then
+                censoredPresent = true
+                break
+            end
+
+            if G.jokers.cards[i].config.center.key == "j_pmcmod_pinnocchio" then
+                pinnocchioPresent = true
+                break
+            end
+        end
+    end
+'''
+
+[[patches]]
+[patches.pattern]
+target = "card.lua"
+pattern = '''if self.area and self.area == G.shop_demo then loc_vars = {}; no_badge = true end'''
+position = 'after'
+match_indent = true
+payload = '''
+elseif G.GAME and G.GAME.blind and censoredPresent == true and self.ability.set == 'Joker' then
+	card_type= 'Censored'
+'''
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''elseif card_type == 'Undiscovered' then 
+            full_UI_table.name = localize{type = 'name', set = 'Other', key = 'undiscovered_'..(string.lower(_c.set)), name_nodes = {}}'''
+position = 'after'
+match_indent = true
+payload = '''
+elseif card_type == 'Censored' and _c.set == 'Joker' then 
+            full_UI_table.name = localize{type = 'name', set = 'Other', key = 'censored_'..(string.lower(_c.set)), name_nodes = {}}
+'''
+
+
+[[patches]]
+[patches.pattern]
+target = "functions/common_events.lua"
+pattern = '''elseif hide_desc then
+        localize{type = 'other', key = 'undiscovered_'..(string.lower(_c.set)), set = _c.set, nodes = desc_nodes}'''
+position = 'before'
+match_indent = true
+payload = '''
+elseif card_type == 'Censored' and _c.set == 'Joker' then
+        localize{type = 'other', key = 'censored_'..(string.lower(_c.set)), set = _c.set, nodes = desc_nodes}
+'''
