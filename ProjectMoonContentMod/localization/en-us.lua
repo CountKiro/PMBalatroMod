@@ -96,15 +96,79 @@ return {
                     'in at least {C:attention}Urban Nightmare Stake{}',
                 },
             },
+            b_pmcmod_giftDeck = {
+                name = 'Gift Deck',
+                text = {
+                    "Starts with an Eternal",
+                    "{C:attention,T:j_pmcmod_laetitia}Here’s a Gift~{} page.",
+                    "{C:blue}+2 hands{}",
+                },
+                unlock = {
+                    'Win a run with {C:attention}General Deck{}',
+                    'in at least {C:attention}Urban Nightmare Stake{}',
+                },
+            },
+            b_pmcmod_galaxyDeck = {
+                name = 'Galaxy Deck',
+                text = {
+                    "Starts with an Eternal",
+                    "{C:attention,T:j_pmcmod_childrenOfTheGalaxy}Pebble{} page.",
+                    "No money from extra hands,",
+                    "discards or interest.",
+                    "Shop prices increased"
+                },
+                unlock = {
+                    'Win a run with {C:attention}General Deck{}',
+                    'in at least {C:attention}Urban Nightmare Stake{}',
+                },
+            },
+            b_pmcmod_censoredDeck = {
+                name = 'Censored Deck',
+                text = {
+                    "Start with an eternal",
+                    "{C:attention,T:j_pmcmod_censored}Censored{} page.",
+                    "{C:blue}+4 hands{}",
+                },
+                unlock = {
+                    'Win a run with {C:attention}Literature Deck{}',
+                    'in at least {C:attention}Urban Nightmare Stake{}',
+                },
+            },
         },
         Blind={},
-        Edition={},
+        Edition={
+            e_pmcmod_charge = {
+                name = "Charge",
+                text = {
+                    "Retriggers Joker once",
+                    "Count reaches {C:blue}4",
+                    "Count: {C:blue}#1#{}"
+                },
+            },
+        },
         Enhanced={
+            m_pmcmod_bleed = {
+                name = "Bleed Card",
+                text = {
+                    "Gains {C:red}1{} Mult permanently for",
+                    "every {C:red}Bleed{} card scored in the",
+                    "played hand.",
+                    "Remaining count: #1#"
+                },
+            },
             m_pmcmod_burn = {
                 name = "Burn Card",
                 text = {
                     "Gives {C:chips}0.001%{} of the total Encounter",
                     "score as extra chips",
+                },
+            },
+            m_pmcmod_sinking = {
+                name = "Sinking Card",
+                text = {
+                    "Reduces the target score",
+                    "by {C:chips}5%{} when this",
+                    "card is scored"
                 },
             },
             m_pmcmod_pallid = {
@@ -200,6 +264,120 @@ return {
                     'in at least {C:attention}The City Stake{}',
                 },
             },
+            j_pmcmod_esther = {
+                name = 'Esther',
+                text = {
+                    "If scored card is a {C:attention}Singleton{},",
+                    "give it {X:red,C:white}X3{} Mult",
+                },
+                unlock = {
+                    'Win a run with {C:attention}Aspect of Esther Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
+            },
+            j_pmcmod_gloria = {
+                name = 'Gloria',
+                text = {
+                    "If scored card is a {C:attention}Singleton{},",
+                    "give it {C:gold}$5{} Mult",
+                },
+                unlock = {
+                    'Win a run with {C:attention}Aspect of Gloria Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
+            },
+            j_pmcmod_hubert = {
+                name = 'Hubert',
+                text = {
+                    "If scored card is a {C:attention}Singleton{},",
+                    "retrigger it once",
+                },
+                unlock = {
+                    'Win a run with {C:attention}Aspect of Hubert Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
+            },
+            j_pmcmod_nikolai = {
+                name = 'Nikolai',
+                text = {
+                    "Catalogues every bought Keypage.",
+                    "Gain {C:mult}#2#{} Mult for every Keypage catalogued",
+                    "{C:inactive}Currently {C:chips}#1#{} Mult"
+                },
+                unlock = {
+                    'Win a run with {C:attention}Aspect of Nikolai Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
+            },
+            j_pmcmod_maxim = {
+                name = 'Maxim',
+                text = {
+                    {"Gain {C:blue}5{} Charge every time",
+                    "a Face Card scores, up to {C:blue}100{} Charge.",},
+                    {"If Charge is >= 90, gain {C:gold}$#2#{} at",
+                    "the end of the Scene"},
+                    {"If a Number card is played, use",
+                    "Charge equivalent to the card's rank",
+                    "to retrigger it once.",
+                    "{C:inactive}Currently {C:blue}#1#{} Charges"}
+
+                },
+                unlock = {
+                    'Win a run with {C:attention}Aspect of Maxim Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
+            },
+            j_pmcmod_rudolph = {
+                name = 'Rudolph',
+                text = {
+                    "{C:dark_edition}Charge{} cards now",
+                    "gain {C:attention}double charges{} per trigger",
+                },
+                unlock = {
+                    'Win a run with {C:attention}Aspect of Rudolph Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
+            },
+            j_pmcmod_angelica = {
+                name = 'Angelica',
+                text = {
+                    "{C:mult}#1#{} Mult",
+                },
+                unlock = {
+                    'Win a run with {C:attention}Aspect of Angel- Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
+            },
+            j_pmcmod_puppeteer = {
+                name = 'The Puppeteer',
+                text = {
+                    {"At the start of the Encounter,",
+                    "transforms a random Keypage into",
+                    "a {C:red}Puppet{}, based on the rarity.",},
+                    {"Puppets destroy themselves after triggering 5 times",
+                    "When a Puppet gets destroyed by any means,",
+                    "gain {C:mult}half of their mult value{}"}
+                },
+                unlock = {
+                    'Win a run with {C:attention}Aspect of Angel- Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
+            },
+            j_pmcmod_yisang = {
+                name = 'The First Sinner, Yi Sang',
+                text = {
+                    {"Gains {X:mult,C:white}X#2#{} for each {C:attention}unique{}",
+                    "{C:planet}Sinner{} card used."},
+                    {"Gains an additional {X:mult,C:white}X#3#{} for each",
+                    "{C:planet}Sinner{} card used.",
+                    "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)"},
+
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Ishmael Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
+            },
             j_pmcmod_ishmael = {
                 name = 'The Eighth Sinner, Ishmael',
                 text = {
@@ -215,6 +393,34 @@ return {
                 },
                 unlock = {
                     'Win a run with the {C:attention}Ishmael Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
+            },
+            j_pmcmod_heathcliff = {
+                name = 'The Seventh Sinner, Heathcliff',
+                text = {
+                    {"At the start of every Scene, destroy a random",
+                    "{C:dark_edition}Negative{} Key Page."},
+                    {"Gains {C:dark_edition}+1{} Key Page Slot",
+                    "for every 2 {C:dark_edition}Negative{} Key Page destroyed"},
+                    {"{C:inactive}(Currently {C:dark_edition}+#2#{C:inactive} Key Page slots)",}
+
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Heathcliff Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
+            },
+            j_pmcmod_donQuixote = {
+                name = 'The Third Sinner, Don Quixote',
+                text = {
+                    "Drains {C:mult}Perma Mult{} from every score card.",
+                    "Gains {C:attention}triple{} the drained value as {C:chips}Chips",
+                    "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)"
+
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Don Quixote Keypage{}',
                     'in at least {C:attention}The City Stake{}',
                 },
             },
@@ -1038,7 +1244,7 @@ return {
                 name = 'Santata',
                 text = {
                     "Vouchers are {C:attention}free",
-                },  
+                },
                 unlock = {
                     'Unlocks at a very special date',
                 },
@@ -1056,6 +1262,278 @@ return {
                 text = {
                     "{c:green}#2# in #3#{} chance to create",
                     "a {C:attention}Coupon Tag{} after every Reception"
+                }
+            },
+            j_pmcmod_dadQuixote = {
+                name = 'Don Quixote',
+                text = {
+                    "Gains {C:red}Mult{} based on the",
+                    "total Perma Mult in all cards in the deck",
+                    "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)"
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Don Quixote Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
+            },
+            j_pmcmod_sancho = {
+                name = 'Sancho',
+                text = {
+                    "Retriggers {C:hearts}Hearts{} cards",
+                    "at a {C:green}#2# in #3#{}chance.",
+                    "If the card has {C:red}Bleed{},",
+                    "always retriggers."
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Don Quixote Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
+            },
+            j_pmcmod_dulcinea = {
+                name = 'Dulcinea',
+                text = {
+                    "Gain {C:mult}#2#{} Mult for every",
+                    "{C:hearts}Hearts{} or {C:red}Bleed card scored",
+                    "If any other card is played, lose the same amount.",
+                    "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)",
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Sancho Keypage{}',
+                },
+            },
+            j_pmcmod_barber = {
+                name = 'Barber',
+                text = {
+                    "Gain {C:chips}#2#{} Chips for every",
+                    "{C:hearts}Hearts{} or {C:red}Bleed card scored",
+                    "If any other card is played, lose the same amount.",
+                    "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Dulcinea Keypage{}',
+                },
+            },
+            j_pmcmod_priest = {
+                name = 'Priest',
+                text = {
+                    "{C:hearts}Heart{} or {C:red}Bleed{} cards left in hand",
+                    "give {X:mult,C:white}X#1#{}"
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Barber Keypage{}',
+                },
+            },
+            j_pmcmod_bari = {
+                name = 'Bari',
+                text = {
+                    "Played {C:attention}Steel{} cards",
+                    "give {X:mult,C:white}X#1#{}"
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Director Angela Keypage{}',
+                },
+            },
+            j_pmcmod_cesara = {
+                name = 'Cesara',
+                text = {
+                    "If a {C:attention}Flush{} is played while",
+                    "this card is in the {C:attention}first position{},",
+                    "increase the {C:attention}Rank{} of all scored cards"
+                }
+            },
+            j_pmcmod_alessio = {
+                name = 'Alessio',
+                text = {
+                    "If a {C:attention}Flush{} is played while",
+                    "this card is in the {C:attention}first position{},",
+                    "change the {C:attention}Suit{} of all scored cards"
+                }
+            },
+            j_pmcmod_jiaXichun = {
+                name = 'Jia Xichun',
+                text = {
+                    "Gives a random {C:attention}Tag{}",
+                    "at the end of the Reception"
+                }
+            },
+            j_pmcmod_wei = {
+                name = 'Wei',
+                text = {
+                    "",
+                }
+            },
+            j_pmcmod_hugo = {
+                name = 'Hugo',
+                text = {
+                    "Every {C:attention}Keypage{} sold",
+                    "gives an extra {C:gold}$#1#{}"
+                }
+            },
+            j_pmcmod_camille = {
+                name = 'Camille',
+                text = {
+                    "At the start of every blind,",
+                    "take away {C:attention}5%{} of the current",
+                    "money and add it to {C:mult}Mult{}",
+                    "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)",
+                },
+                unlock = {
+                    'Obtain more than {C:gold}$600{} in a run',
+                },
+            },
+            j_pmcmod_paula = {
+                name = 'Paula',
+                text = {
+                    "Decrease the Encounter scaling",
+                }
+            },
+            j_pmcmod_romero = {
+                name = 'Romero',
+                text = {
+                    "When {C:attention}Normal Encounter{} or {C:attention}Risky Encounter{}",
+                    "is selected, if a Bloodfiend Keypage is present,",
+                    "destroy it and gain {C:mult}#2#{} Mult",
+                    "(can only happen once per blind)",
+                    "{C:inactive}(Currently {C:mult}#2#{C:inactive} Mult)",
+                }
+            },
+            j_pmcmod_hanul = {
+                name = 'Han-ul',
+                text = {
+                    "When a {C:attention}#1#{} is played,",
+                    "gain {C:gold}money{} based on the {C:attention}average value{}",
+                    "of the Ranks played."
+                },
+                unlock = {
+                    'Win a round without playing a single {C:attention}Flush{}',
+                }
+            },
+            j_pmcmod_caiman = {
+                name = 'Caiman',
+                text = {
+                    "Has a {C:green}#1# in #2#{} chance to give back any",
+                    "{C:planet}Sinner{} card used"
+                }
+            },
+            j_pmcmod_aengDu = {
+                name = 'Aeng-Du',
+                text = {
+                    "Gives {X:red,C:white}X#1#{} Mult",
+                    "on any hand that is not the first or last"
+                }
+            },
+            j_pmcmod_jun = {
+                name = 'Jun',
+                text = {
+                    "{X:red,C:white} X#1# {} Mult on the {C:attention}first",
+                    "{C:attention}hand{} of scene",
+                }
+            },
+            j_pmcmod_herbert = {
+                name = 'Herbert',
+                text = {
+                    "When any item is bought directly from",
+                    "the Store {C:red}(booster packs don't count),",
+                    "has a {C:green}#1# in #2#{} chance to get the money spent back"
+                },
+                unlock = {
+                    'Obtain more than {C:gold}$200{} in a run',
+                },
+            },
+            j_pmcmod_mai = {
+                name = 'Mai',
+                text = {
+                    "Disables a random Keypage at the",
+                    "start of the Scene. Gives between",
+                    "{X:red,C:white}X2{} and {X:red,C:white}X3{} Mult",
+                    "based on the rarity of the disabled card."
+
+                },
+                unlock = {
+                    'Obtain more than {C:gold}$200{} in a run',
+                },
+            },
+            j_pmcmod_bumble = {
+                name = 'Bumble',
+                text = {
+                    "Increase interest cap by {C:gold}$60{}.",
+                    "Lose {C:gold}$1{} for every card played."
+                },
+                unlock = {
+                    'Obtain more than {C:gold}$200{} in a run',
+                },
+            },
+            j_pmcmod_timeRipper = {
+                name = 'Time Ripper',
+                text = {
+                    {"Gains a stack for every Keypage sold,",
+                    "up to 3 stacks",},
+                    {"Sell this Keypage to return Acts",
+                    "based on the amount of stacks"}
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Herbert Keypage{}',
+                },
+            },
+            j_pmcmod_casetti = {
+                name = 'Casetti',
+                text = {
+                    {"Scored {C:hearts}Hearts{} cards give {C:mult}#1#{} Mult for every Bleed card in deck",},
+                    {"Has a {C:green}#3# in #4#{} chance to add Bleed to any scored {C:heart}Heart{} card",
+                    "{C:inactive}(Currently {C:mult}#2#{C:inactive} Mult)",}
+                },
+                unlock = {
+                    'Have 5 or more {C:red}Bleed Cards{} in your deck',
+                },
+            },
+            j_pmcmod_sasha = {
+                name = 'Sasha',
+                text = {
+                    "Has a {C:green}#1# in #2#{} chance to add {`C:dark_edition}Charge{}",
+                    "to any scored {C:red}Bleed{} Card"
+                },
+                unlock = {
+                    'Have 3 or more {C:red}Bleed Cards{} in your deck',
+                },
+                
+            },
+            j_pmcmod_hohenheim = {
+                name = 'Hohenheim',
+                text = {
+                    {"After obtaining this Keypage",
+                    "compile the names of every destroyed Keypage",},
+                    {"At the end of the Encounter,",
+                    "revive a random Keypage",
+                    "with Perishable and Negative"}
+                }
+            },
+            j_pmcmod_alyssa = {
+                name = 'Alyssa',
+                text = {
+                    "Gains {C:mult}#1#{} Mult for",
+                    "every {C:mult}Mult{} Card in deck",
+                    "{C:inactive}(Currently {C:mult}#2#{C:inactive} Mult)",
+                }
+            },
+            j_pmcmod_marton = {
+                name = 'Marton',
+                text = {
+                    "Gains {C:chips}#1#{} Chips for",
+                    "every {C:chips}Bonus{} Card in deck",
+                    "{C:inactive}(Currently {C:chips}#2#{C:inactive} Chips)",
+                }
+            },
+            j_pmcmod_johann = {
+                name = 'Johann',
+                text = {
+                    "If a card is about to be destroyed,",
+                    "sacrifice itself instead."
+                }
+            },
+            j_pmcmod_vermillionCross = {
+                name = 'Vermillion Cross',
+                text = {
+                    "Reduce Encounter score by half",
                 }
             },
             j_pmcmod_sephirahHod = {
@@ -1266,6 +1744,27 @@ return {
                     "{C:inactive}(Scenes transformed:{C:attention} #7# {C:inactive})"},
                 },
             },
+            j_pmcmod_laetitia = {
+                name = "Here’s a Gift~",
+                text = {
+                    "Has a {C:green}#2# in #3#{} to give",
+                    "{C:attention}Gift{} to any card in Deck.",
+                },
+            },
+            j_pmcmod_childrenOfTheGalaxy = {
+                name = "Pebble",
+                text = {
+                    "Has a {C:green}#1# in #2#{} to give",
+                    "{C:attention}Pebble{} to any card in Deck.",
+                },
+            },
+            j_pmcmod_censored = {
+                name = "{X:black,C:mult}[CENSORED]",
+                text = {
+                    "Censors sprites, names",
+                    "and descriptions from Keypages.",
+                },
+            },
             j_pmcmod_chickenA = {
                 name = "Bongy (Normal)",
                 text = {
@@ -1307,6 +1806,35 @@ return {
                 text = {
                     "Ricardo death count: {C:red}#1#",
                     "Can spawn: {C:red}#2#",
+                },
+            },
+            j_pmcmod_puppetA = {
+                name = "Puppet",
+                text = {
+                    "GIGIGIGIIIGIIGGGGIGII",
+                    "GIIGIGIGI{C:red}#1#{}MultGIIGGI",
+                },
+            },
+            j_pmcmod_puppetB = {
+                name = "Nimble Puppet",
+                text = {
+                    "GIGIGIGIIIGIIGGGGIGII",
+                    "GIIGIGIGI{C:red}#1#{}MultGIIGGI",
+                },
+            },
+            j_pmcmod_puppetC = {
+                name = "Weighty Puppet",
+                text = {
+                    "GIGIGIGIIIGIIGGGGIGII",
+                    "GIIGIGIGI{C:red}#1#{}MultGIIGGI",
+                },
+            },
+            j_pmcmod_puppetAngelica = {
+                name = "Familiar Puppet",
+                text = {
+                    "GIGIGIGIRIIGIIGOGGGIGILAI",
+                    "GNGIGIIIGIGIGIGIIIDDGIGIGI...",
+                    "GIIGIGIGI{C:red}#1#{}MultGIIGGI",
                 },
             },
             j_pmcmod_voiceOfTheCity = {
@@ -1385,12 +1913,48 @@ return {
                     "Use {C:attention}3 Consumables",
                 },
             },
+            j_pmcmod_prescript11 = {
+                name = 'Prescript',
+                text = {
+                    {"Play the first 5 digits of e"},
+                    {"Prescript fullfilled: {c:green}#1#{}"}
+                },
+            },
         },
         Other={
+            effect_singleton={
+                name="Singleton",
+                text={
+                    "Cards that are unique in the deck",
+                    "(only one of its rank)",
+                },
+            },
             pmcmod_markofcain_seal = {
                 name = "Mark of Cain",
                 text = {
                     "{X:mult,C:white}X1.2{} Mult",
+                },
+            },
+            pmcmod_gift_seal = {
+                name = "Gift",
+                text = {
+                    "{C:mult}10 Mult{}",
+                    "Loses {C:gold}$10{} for each",
+                    "remaining Gift after a Reception",
+                    "Goes away after being used"
+                },
+            },
+            pmcmod_pebble_seal = {
+                name = "Pebble",
+                text = {
+                    "{C:gold}$5{}",
+                    "Goes away after being used"
+                },
+            },
+            censored_joker={
+                name="{X:mult, C:white}[CENSORED]",
+                text={
+                    "{X:mult, C:white}[CENSORED]",
                 },
             },
         },
@@ -1465,6 +2029,25 @@ return {
                     "Enhances 1 card to {C:attention}Pallid{}",
                 }
             },
+            c_pmcmod_waltz= {
+                name = "Waltz",
+                text = {
+                    "Enhances 1 card to {C:red}Burn{}",
+                }
+            },
+            c_pmcmod_banquet= {
+                name = "Banquet",
+                text = {
+                    "Enhances 1 card to {C:dark_red}Bleed{}",
+                }
+            },
+            c_pmcmod_manifest= {
+                name = "Hunt",
+                text = {
+                    "Changes an Aspect card into",
+                    "their complete version."
+                }
+            },
         },
         Stake={},
         Tag={},
@@ -1518,7 +2101,7 @@ return {
                     "{C:attention, T:j_pmcmod_silence}Time Flowing{} page.",
                     "{C:blue}+2 hands{}",
                     "{C:red}+2 discards{}",
-                    "{C:inactive}+1 Keypage slot{}",           
+                    "{C:inactive}+1 Keypage slot{}",
                 },
                 unlock = {
                     'Win a run with {C:attention}Silence Deck{}',
@@ -1575,13 +2158,75 @@ return {
         poker_hand_descriptions={},
         poker_hands={},
         quips={
-            pmcmod_stencil_win={
+            pmcmod_roland_win={
                 "Whew... That was real close",
                 "It woulda been a shame if we failed",
             },
-            pmcmod_stencil_loss={
+            pmcmod_roland_loss={
                 "It’d be too sucky to lose",
                 "without doing much at all...",
+            },
+            pmcmod_malkuth_win={
+                "We won, we really won!",
+                "That means I could be of",
+                "help to everyone, right?"
+            },
+            pmcmod_malkuth_loss={
+                "Maybe I was overwhelmed",
+                "with enthusiasm...?"
+            },
+            pmcmod_hod_win={
+                "Thanks for staying with me",
+                "till the end. Good work!"
+            },
+            pmcmod_hod_loss={
+                "I tried so hard, and yet...",
+                "Why does it always have to",
+                "end like this..."
+            },
+            pmcmod_yesod_win={
+                "Good work, everyone.",
+                "Adjust your attire before",
+                "returning to your quarters."
+            },
+            pmcmod_yesod_loss={
+                "You should have made more accurate judgements",
+            },
+            pmcmod_netzach_win={
+                "...I can call it a day now, yeah?",
+            },
+            pmcmod_netzach_loss={
+                "Maybe you could have tried not",
+                "letting your guard down."
+            },
+            pmcmod_chesed_win={
+                "How about a fragrant cup of",
+                "coffee for everyone~?"
+            },
+            pmcmod_chesed_loss={
+                "Aww, that's too bad.",
+            },
+            pmcmod_gebura_win={
+                "We got this over with smoothly.",
+                "Good work, everyone."
+            },
+            pmcmod_gebura_loss={
+                "It's upsetting... But I'll",
+                "have to accept it."
+            },
+            pmcmod_hokma_win={
+                "Overconfidence is the greatest",
+                "enemy. We must humbly keep our post."
+            },
+            pmcmod_hokma_loss={
+                "To accept such outcomes, one must",
+                "learn to give up certain pursuits..."
+            },
+            pmcmod_binah_win={
+                "You have done well.",
+            },
+            pmcmod_binah_loss={
+                "...",
             },
             pnr_pmcmod_dante_1={
                 "Ah... shuckaroonies!",
