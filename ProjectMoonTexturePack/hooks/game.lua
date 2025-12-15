@@ -99,6 +99,21 @@ function ease_background_colour_blind(state, blind_override)
 		ease_background_colour{new_colour = HEX("f58f36"), special_colour = HEX("f54983"), contrast = 1}
 	end
 
+	if G.GAME.selected_back.name == 'Galaxy Deck' then
+	print("Love")
+		ease_background_colour{new_colour = HEX("3f1173"), special_colour = HEX("1e0942"), contrast = 1}
+	end
+
+	if G.GAME.selected_back.name == 'Gift Deck' then
+	print("Love")
+		ease_background_colour{new_colour = HEX("8a0b39"), special_colour = HEX("47101e"), contrast = 1}
+	end
+
+	if G.GAME.selected_back.name == 'Censored Deck' then
+	print("Love")
+		ease_background_colour{new_colour = HEX("8f0725"), special_colour = HEX("1f0404"), contrast = 1}
+	end
+
 	--if G and G.GAME and G.GAME.blind and G.GAME.blind.name == "bl_manacle" then
 	if G.GAME.selected_back.name == 'Red Deck' then
 	print("Red")
