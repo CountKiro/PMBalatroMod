@@ -37,7 +37,7 @@ SMODS.Atlas {key = "ModdedProjectMoonSpectrals",	path = "newProjectMoonSpectrals
 SMODS.Atlas {key = "ModdedProjectMoonEditions",	path = "newProjectMoonEditions.png",	px = 71, py = 95}
 SMODS.Atlas {key = "modicon",	path = "icon.png",	px = 32, py = 32}
 
-
+SMODS.Shader{key = 'charge', path = 'charge.fs'}
 ----------------------------
 -- Talisman Compatibility --
 ----------------------------
