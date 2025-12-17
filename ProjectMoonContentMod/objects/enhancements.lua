@@ -79,7 +79,7 @@ SMODS.Enhancement {
     update = function(self, card, dt)
         if G.GAME.blind and G.GAME.blind.in_blind then
             card.ability.bonus = G.GAME.blind.chips * 0.001
-            if card.ability.bonus >= 9999 then
+            if to_big(card.ability.bonus) >= to_big(9999) then
                 card.ability.bonus = 9999
             end
         end

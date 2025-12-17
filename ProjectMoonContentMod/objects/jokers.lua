@@ -614,7 +614,7 @@ SMODS.Joker {
         end
 	end,
 	calc_dollar_bonus = function(self, card)
-        return card.config.extra.chargeCount >= 90 and card.ability.extra.dollars
+        return card.ability.extra.chargeCount >= 90 and card.ability.extra.dollars
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("R Corp", HEX('2e2b2b'), HEX('c4560c'), 1.2 )
@@ -4899,7 +4899,7 @@ SMODS.Joker {
 	loc_vars = function(self, info_queue, card)
 			if G.GAME.pool_flags.clearAllCathy then
 				tempKey = self.key..'_alt'
-				card.children.center:set_sprite_pos({x = 5 , y = 11})
+				card.children.center:set_sprite_pos({x = 5 , y = 10})
 			else 
 				tempKey = self.key
 				card.children.center:set_sprite_pos({x = 6 , y = 4})
@@ -6072,8 +6072,7 @@ SMODS.Joker {
         return {vars = {  } }
 	end,
 	calculate = function(self, card, context)
-		if context.individual and next(context.poker_hands["Flush"]) then
-
+		if context.individual and context.poker_hands and next(context.poker_hands["Flush"]) then
 			for i = 1, #G.jokers.cards do
                 if G.jokers.cards[i] == card then
                     my_pos = i
@@ -6754,7 +6753,7 @@ SMODS.Joker {
 	pos = { x = 0, y = 6 },
     pools =
 	{
-
+		["Bloodfiends"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
 		local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'casettiChance')
@@ -6815,7 +6814,8 @@ SMODS.Joker {
 	pos = { x = 7, y = 10 },
     pools =
 	{
-
+		["Bloodfiends"] = true,
+		["Heretics"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
 		local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'sashaChance')

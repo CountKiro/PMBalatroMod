@@ -1,11 +1,6 @@
 SMODS.Edition {
     key = 'charge',
-    shader = 'voucher',
-    prefix_config = {
-        -- This allows using the vanilla shader
-        -- Not needed when using your own
-        shader = false
-    },
+    shader = 'pmcmod_charge',
     config = { count = 0 },
     in_shop = true,
     weight = 3,
