@@ -78,6 +78,27 @@ CardSleeves.Sleeve {
 }
 
 CardSleeves.Sleeve {
+        key = "indexDeck",
+        atlas = "projectMoonSleeves",
+        pos = { x = 0, y = 2 },
+		unlocked = false,
+        config = {
+        },
+        apply = function(self, sleeve)
+            G.E_MANAGER:add_event(Event({
+			func = function()
+				if G.jokers then
+					SMODS.add_card({ key = "j_pmcmod_voiceOfTheCity", stickers = { "eternal" }, force_stickers = true })
+					return true
+				end
+			end,
+		}))
+        end,
+	unlock_condition = { deck = "b_pmcmod_indexDeck", stake = "stake_white" },
+}
+
+
+CardSleeves.Sleeve {
         key = "silenceDeck",
         atlas = "projectMoonSleeves",
         pos = { x = 3, y = 0 },
@@ -88,7 +109,7 @@ CardSleeves.Sleeve {
             G.E_MANAGER:add_event(Event({
 			func = function()
 				if G.jokers then
-					SMODS.add_card({ key = "j_pmcmod_silence", stickers = { "eternal" } })
+					SMODS.add_card({ key = "j_pmcmod_silence", stickers = { "eternal" }, force_stickers = true  })
 					return true
 				end
 			end,
@@ -108,7 +129,7 @@ CardSleeves.Sleeve {
             G.E_MANAGER:add_event(Event({
 			func = function()
 				if G.jokers then
-					SMODS.add_card({ key = "j_pmcmod_shylook", stickers = { "eternal" } })
+					SMODS.add_card({ key = "j_pmcmod_shylook", stickers = { "eternal" }, force_stickers = true  })
 					return true
 				end
 			end,
@@ -128,13 +149,73 @@ CardSleeves.Sleeve {
             G.E_MANAGER:add_event(Event({
 			func = function()
 				if G.jokers then
-					SMODS.add_card({ key = "j_pmcmod_queenOfHatred", stickers = { "eternal" } })
+					SMODS.add_card({ key = "j_pmcmod_queenOfHatred", stickers = { "eternal" }, force_stickers = true  })
 					return true
 				end
 			end,
 		}))
         end,
 		unlock_condition = { deck = "b_pmcmod_hatredDeck", stake = "stake_white" },
+}
+
+CardSleeves.Sleeve {
+        key = "galaxyDeck",
+        atlas = "projectMoonSleeves",
+        pos = { x = 3, y = 1 },
+		unlocked = false,
+        config = {
+        },
+        apply = function(self, sleeve)
+            G.E_MANAGER:add_event(Event({
+			func = function()
+				if G.jokers then
+					SMODS.add_card({ key = "j_pmcmod_childrenOfTheGalaxy", stickers = { "eternal" }, force_stickers = true  })
+					return true
+				end
+			end,
+		}))
+        end,
+		unlock_condition = { deck = "b_pmcmod_galaxyDeck", stake = "stake_white" },
+}
+
+CardSleeves.Sleeve {
+        key = "giftDeck",
+        atlas = "projectMoonSleeves",
+        pos = { x = 2, y = 1 },
+		unlocked = false,
+        config = {
+        },
+        apply = function(self, sleeve)
+            G.E_MANAGER:add_event(Event({
+			func = function()
+				if G.jokers then
+					SMODS.add_card({ key = "j_pmcmod_laetitia", stickers = { "eternal" }, force_stickers = true  })
+					return true
+				end
+			end,
+		}))
+        end,
+		unlock_condition = { deck = "b_pmcmod_giftDeck", stake = "stake_white" },
+}
+
+CardSleeves.Sleeve {
+        key = "censoredDeck",
+        atlas = "projectMoonSleeves",
+        pos = { x = 4, y = 1 },
+		unlocked = false,
+        config = {
+        },
+        apply = function(self, sleeve)
+            G.E_MANAGER:add_event(Event({
+			func = function()
+				if G.jokers then
+					SMODS.add_card({ key = "j_pmcmod_censored", stickers = { "eternal" }, force_stickers = true  })
+					return true
+				end
+			end,
+		}))
+        end,
+		unlock_condition = { deck = "b_pmcmod_censoredDeck", stake = "stake_white" },
 }
 
 CardSleeves.Sleeve {
