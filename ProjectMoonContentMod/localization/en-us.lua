@@ -47,6 +47,10 @@ return {
                     "Starts with an eternal",
 			        "{C:attention,T:j_pmcmod_voiceOfTheCity}Voice of the City{} page.",
                 },
+                unlock = {
+                    'Win a run with {C:attention}Natural Sciences Deck{}',
+                    'in at least {C:attention}Urban Nightmare Stake{}',
+                },
             },
             b_pmcmod_silenceDeck = {
                 name = 'Silent Deck',
@@ -1243,7 +1247,7 @@ return {
             j_pmcmod_santata = {
                 name = 'Santata',
                 text = {
-                    "Vouchers are {C:attention}free",
+                    "EGO Gifts are {C:attention}free",
                 },
                 unlock = {
                     'Unlocks at a very special date',
@@ -2042,9 +2046,9 @@ return {
                 }
             },
             c_pmcmod_manifest= {
-                name = "Hunt",
+                name = "Manifest",
                 text = {
-                    "Changes an Aspect card into",
+                    "Upgrades an {C:attention}Aspect Keypage{} into",
                     "their complete version."
                 }
             },
@@ -2094,6 +2098,17 @@ return {
                     'in at least {C:attention}Canard Stake{}',
                 },
             },
+            sleeve_pmcmod_indexDeck = {
+                name = "Index Sleeve",
+                text = {
+                    "Starts with an eternal",
+			        "{C:attention,T:j_pmcmod_voiceOfTheCity}Voice of the City{} page.",
+                },
+                unlock = {
+                    'Win a run with {C:attention}Index Deck{}',
+                    'in at least {C:attention}Canard Stake{}',
+                },
+            },
             sleeve_pmcmod_silenceDeck = {
                 name = "Silence Sleeve",
                 text = {
@@ -2130,6 +2145,39 @@ return {
                     'in at least {C:attention}Canard Stake{}',
                 },
             },
+            sleeve_pmcmod_galaxyDeck = {
+                name = "Galaxy Sleeve",
+                text = {
+                    "Starts with an eternal",
+			        "{C:attention,T:j_pmcmod_childrenOfTheGalaxy}Pebble{} page.",
+                },
+                unlock = {
+                    'Win a run with {C:attention}Galaxy Deck{}',
+                    'in at least {C:attention}Canard Stake{}',
+                },
+            },
+            sleeve_pmcmod_giftDeck = {
+                name = "Gift Sleeve",
+                text = {
+                    "Starts with an eternal",
+			        "{C:attention,T:j_pmcmod_laetitia}Here’s a Gift~{} page.",
+                },
+                unlock = {
+                    'Win a run with {C:attention}Gift Deck{}',
+                    'in at least {C:attention}Canard Stake{}',
+                },
+            },
+            sleeve_pmcmod_censoredDeck = {
+                name = "Censored Sleeve",
+                text = {
+                    "Starts with an eternal",
+			        "{C:attention,T:j_pmcmod_censored}CENSORED{} page.",
+                },
+                unlock = {
+                    'Win a run with {C:attention}Censored Deck{}',
+                    'in at least {C:attention}Canard Stake{}',
+                },
+            },
             sleeve_pmcmod_serpentDeck = {
                 name = "Serpent Sleeve",
                 text = {
@@ -2154,6 +2202,7 @@ return {
         high_scores={},
         labels={
             pmcmod_markofcain_seal = "Mark of Cain",
+            pmcmod_charge="Charge",
         },
         poker_hand_descriptions={},
         poker_hands={},
