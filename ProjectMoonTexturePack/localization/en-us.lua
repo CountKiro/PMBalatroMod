@@ -76,7 +76,7 @@ return {
                 name="History Deck",
                 text={
                     "Start run with the",
-                    "{C:tarot,T:v_crystal_ball}#1#{} voucher",
+                    "{C:tarot,T:v_crystal_ball}#1#{} EGO Gift",
                     "and {C:attention}2{} copies",
                     "of {C:tarot,T:c_fool}#2#",
                 },
@@ -85,7 +85,7 @@ return {
                 name="Philosophy Deck",
                 text={
                     "Start run with the",
-                    "{C:planet,T:v_telescope}#1#{} voucher",
+                    "{C:planet,T:v_telescope}#1#{} EGO Gift",
                     "",
                     "{C:red}#2#{} consumable slot",
                 },
@@ -2279,7 +2279,7 @@ return {
                 name="Not Discovered",
                 text={
                     "Redeem this",
-                    "voucher in an",
+                    "EGO Gift in an",
                     "unseeded run to",
                     "learn what it does",
                 },
@@ -2803,9 +2803,9 @@ return {
                 },
             },
             tag_voucher={
-                name="Voucher Tag",
+                name="EGO Gift Tag",
                 text={
-                    "Adds one {C:voucher}Voucher",
+                    "Adds one {C:voucher}EGO Gift",
                     "to the next shop",
                 },
             },
@@ -2992,18 +2992,18 @@ return {
         },
         Voucher={
             v_antimatter={
-                name="Old Coffin",
+                name="Headless Portrait",
                 text={
                     "{C:dark_edition}+1{} Key Page Slot",
                 },
                 unlock={
-                    "Redeem {C:voucher}Blank{}",
+                    "Redeem {C:voucher}Unmailed Letter{}",
                     "{C:attention}#1#{} total times",
                     "{C:inactive}(#2#)",
                 },
             },
             v_blank={
-                name="Empty Portrait",
+                name="Unmailed Letter",
                 text={
                     "{C:inactive}Does nothing?",
                 },
@@ -3016,7 +3016,7 @@ return {
                 },
             },
             v_crystal_ball={
-                name="Classy Parasol",
+                name="Mask of the Parade",
                 text={
                     "{C:attention}+1{} consumable slot",
                 },
@@ -3052,7 +3052,7 @@ return {
                 },
             },
             v_hieroglyph={
-                name="Standard-duty Battery",
+                name="Operation Authorization Card",
                 text={
                     "{C:attention}-#1#{} Ante,",
                     "{C:blue}-#1#{} hand",
@@ -3060,7 +3060,7 @@ return {
                 },
             },
             v_hone={
-                name="Ornated Golden Pistol",
+                name="Ruptured Blood Sac",
                 text={
                     "{C:dark_edition}Foil{}, {C:dark_edition}Holographic{}, and",
                     "{C:dark_edition}Polychrome{} cards",
@@ -3068,7 +3068,7 @@ return {
                 },
             },
             v_illusion={
-                name="Daisho",
+                name="Spicebush Branch",
                 text={
                     "{C:attention}Playing cards{} in shop",
                     "may have an {C:enhanced}Enhancement{},",
@@ -3082,19 +3082,19 @@ return {
                 },
             },
             v_liquidation={
-                name="Warp Train Premium Ticket",
+                name="Economy Class Discount Voucher",
                 text={
                     "All cards and packs in",
                     "shop are {C:attention}#1#%{} off",
                 },
                 unlock={
                     "Redeem at least",
-                    "{C:attention}#1#{C:voucher} Voucher{} cards",
+                    "{C:attention}#1#{C:voucher} EGO Gifts{} cards",
                     "in one run",
                 },
             },
             v_magic_trick={
-                name="Bloody Bandolier",
+                name="Lunar Memory",
                 text={
                     "{C:attention}Playing cards{} can",
                     "be purchased",
@@ -3102,7 +3102,7 @@ return {
                 },
             },
             v_money_tree={
-                name="Frozen Cries",
+                name="Chalice of Trickle-down",
                 text={
                     "Raise the cap on",
                     "interest earned in",
@@ -3116,7 +3116,7 @@ return {
                 },
             },
             v_nacho_tong={
-                name="Harpoon Prostetic Leg",
+                name="Cetacean Heart",
                 text={
                     "Permanently",
                     "gain {C:blue}+#1#{} hand",
@@ -3129,7 +3129,7 @@ return {
                 },
             },
             v_observatory={
-                name="Spicebush Branch",
+                name="Small Ampule",
                 text={
                     "{C:planet}Sinner{} cards in your",
                     "{C:attention}consumable{} area give",
@@ -3158,14 +3158,14 @@ return {
                 },
             },
             v_overstock_norm={
-                name="Bundle of Rope",
+                name="Blue Zippo Lighter",
                 text={
                     "{C:attention}+1{} card slot",
                     "available in shop",
                 },
             },
             v_overstock_plus={
-                name="Piece of a Coffin",
+                name="Unbreakable Knot",
                 text={
                     "{C:attention}+1{} card slot",
                     "available in shop",
@@ -3177,13 +3177,13 @@ return {
                 },
             },
             v_paint_brush={
-                name="Tier 3 Sub",
+                name="Employee Card",
                 text={
                     "{C:attention}+#1#{} hand size",
                 },
             },
             v_palette={
-                name="Autograph",
+                name="Talisman Bundle",
                 text={
                     "{C:attention}+#1#{} hand size",
                 },
@@ -3193,7 +3193,7 @@ return {
                 },
             },
             v_petroglyph={
-                name="Censored Memory",
+                name="Glimpse of Flames",
                 text={
                     "{C:attention}-#1#{} Ante,",
                     "{C:red}-#1#{} discard",
@@ -3227,7 +3227,7 @@ return {
                 },
             },
             v_recyclomancy={
-                name="Mark of Cain",
+                name="Sorrowful Exhale",
                 text={
                     "Permanently",
                     "gain {C:red}+#1#{} discard",
@@ -3252,14 +3252,14 @@ return {
                 },
             },
             v_reroll_surplus={
-                name="Prepaid Time Receipt",
+                name="Ragged Bamboo Hat",
                 text={
                     "Rerolls cost",
                     "{C:money}$#1#{} less",
                 },
             },
             v_retcon={
-                name="Churchwarden Pipe",
+                name="Darkflame Smoking Pipe",
                 text={
                     "Reroll Reception",
                     "{C:attention}unlimited{} times,",
@@ -3271,7 +3271,7 @@ return {
                 },
             },
             v_seed_money={
-                name="Pair of Maracas",
+                name="Clear Mirror, Calm Water",
                 text={
                     "Raise the cap on",
                     "interest earned in",
@@ -3287,7 +3287,7 @@ return {
                 },
             },
             v_tarot_tycoon={
-                name="Genetic Augmentation Serum",
+                name="Faith",
                 text={
                     "{C:tarot}Tarot{} cards appear",
                     "{C:attention}#1#X{} more frequently",
@@ -3301,7 +3301,7 @@ return {
                 },
             },
             v_telescope={
-                name="Blood-soaked Wrench",
+                name="Oil-gunked Spanner",
                 text={
                     "{C:attention}Celestial Packs{} always",
                     "contain the {C:planet}Sinner{}",
@@ -3335,7 +3335,7 @@ return {
             completionist="Discover 100% of your collection",
             completionist_plus="Win with every deck on The City Stake difficulty",
             completionist_plus_plus="Earn a The City Sticker on every Key Page",
-            extreme_couponer="Discover every Voucher",
+            extreme_couponer="Discover every EGO Gift",
             flushed="Play a Flush with 5 Wild Cards",
             heads_up="Win a Run",
             high_stakes="Win a run on at least The City Stake difficulty",
@@ -3344,7 +3344,7 @@ return {
             mid_stakes="Win a run on at least Urban Plague Stake difficulty",
             nest_egg="Have $400 or more during a single run",
             retrograde="Get any poker hand to level 10",
-            roi="Buy 5 Vouchers by Ante 4",
+            roi="Buy 5 EGO Gifts by Ante 4",
             royale="Play a Royal Flush",
             rule_bender="Complete any challenge run",
             rule_breaker="Complete every challenge run",
@@ -3542,13 +3542,13 @@ return {
             b_stat_planets="Sinner",
             b_stat_spectrals="Spectrals",
             b_stat_tarots="Tarots",
-            b_stat_vouchers="Vouchers",
+            b_stat_vouchers="EGO Gifts",
             b_stats="Stats",
             b_tags="Tags",
             b_tarot_cards="Tarot Cards",
             b_unlock_all="Unlock All",
             b_use="USE",
-            b_vouchers="Vouchers",
+            b_vouchers="EGO Gifts",
             b_wishlist="Wishlist on Steam",
             k_aces="Aces",
             k_achievement="Achievement",
@@ -3670,8 +3670,8 @@ return {
             k_upgrade_ex="Upgrade!",
             k_val_up="Value Up!",
             k_view="View",
-            k_voucher="Voucher",
-            k_vouchers_cap="VOUCHERS",
+            k_voucher="EGO Gift",
+            k_vouchers_cap="EGO GIFTS",
             k_wins="Wins",
             k_x_base="X Base",
             ml_bloom_opt={
@@ -3790,7 +3790,7 @@ return {
             ph_most_played="(most played hand)",
             ph_mr_bones="Saved by Valerie",
             ph_no_boss_active="no reception active",
-            ph_no_vouchers="No vouchers redeemed this run",
+            ph_no_vouchers="No EGO Gifts redeemed this run",
             ph_score_at_least="Score at least",
             ph_score_cards_discarded="Cards Discarded",
             ph_score_cards_played="Cards Played",
@@ -3805,12 +3805,12 @@ return {
             ph_sneak_peek="Sneak Peek",
             ph_stat_consumable="Number of times this card has been used",
             ph_stat_joker="Total completed rounds with this card",
-            ph_stat_voucher="Number of times this Voucher has been redeemed",
+            ph_stat_voucher="Number of times this EGO Gift has been redeemed",
             ph_unscored_hand="Hand will not score",
             ph_up_ante_1="Next Scene",
             ph_up_ante_2="Raise all Encounters",
             ph_up_ante_3="Refresh Encounters",
-            ph_vouchers_redeemed="Vouchers redeemed this run",
+            ph_vouchers_redeemed="EGO Gifts redeemed this run",
             ph_you_win="VICTORY",
             ph_you_win_demo="YOU WIN THE DEMO!",
         },
@@ -3846,7 +3846,7 @@ return {
             rental="Rental",
             tarot="Tarot",
             uncommon="Hardcover",
-            voucher="Voucher",
+            voucher="EGO Gift",
         },
         poker_hand_descriptions={
             ["Five of a Kind"]={
@@ -4103,7 +4103,7 @@ return {
                 "cards from the {C:attention}Shop",
             },
             s_10={
-                "{C:attention}Vouchers{} are restocked",
+                "{C:attention}EGO Gifts{} are restocked",
                 "after you defeat the",
                 "{C:attention}Encounter{}.",
             },
@@ -4159,8 +4159,8 @@ return {
             },
             s_9={
                 "If you save up enough,",
-                "you can buy a {C:attention}Voucher{}.",
-                "{C:attention}Vouchers{} passively",
+                "you can buy a {C:attention}EGO Gift{}.",
+                "{C:attention}EGO Gifts{} passively",
                 "upgrade your run!",
             },
             sb_1={
@@ -4217,7 +4217,7 @@ return {
             a_sold_tally="#1#/#2# Sold",
             a_xmult="X#1# Mult",
             a_xmult_minus="-X#1# Mult",
-            ante_x_voucher="ANTE #1# VOUCHER",
+            ante_x_voucher="ANTE #1# EGO GIFT",
             challenges_completed="Completed #1#/#2# Challenges",
             completed="#1#/#2# Completed",
             deck_preview_wheel_plural="Numbers may be lower due to the #1# cards drawn face down",
