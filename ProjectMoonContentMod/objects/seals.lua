@@ -47,9 +47,9 @@ SMODS.Seal {
     badge_colour = ((HEX("ba1e3a"))),
     calculate = function(self, card, context)
         if context.post_joker or (context.main_scoring and context.cardarea == G.play) then
-            card:set_seal()
             return {
-                mult = card.ability.seal.mult
+                mult = card.ability.seal.extra.mult,
+                card:set_seal()
             }
         end
     end
