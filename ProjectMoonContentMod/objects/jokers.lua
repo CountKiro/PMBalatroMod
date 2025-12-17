@@ -602,16 +602,18 @@ SMODS.Joker {
 				if card.ability.extra.chargeCount >= 100 then
 					card.ability.extra.chargeCount = 100
 				end
-			else
 
-				if card.ability.extra.chargeCount >= (context.other_card.base.nominal * 2) then
-					card.ability.extra.chargeCount = context.other_card.base.nominal - (context.other_card.base.nominal * 2)
+			end
+        end
+
+		if context.repetition and context.cardarea == G.play then
+			if card.ability.extra.chargeCount >= (context.other_card.base.nominal * 2) and not context.other_card:is_face() then
+					card.ability.extra.chargeCount = card.ability.extra.chargeCount - (context.other_card.base.nominal * 2)
 					return {
 						repetitions = card.ability.extra.repetitions
 					}
-				end
 			end
-        end
+		end
 	end,
 	calc_dollar_bonus = function(self, card)
         return card.ability.extra.chargeCount >= 90 and card.ability.extra.dollars
