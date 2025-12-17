@@ -2036,13 +2036,19 @@ return {
             c_pmcmod_waltz= {
                 name = "Waltz",
                 text = {
-                    "Enhances 1 card to {C:red}Burn{}",
+                    "Enhances 2 card to {C:red}Burn{}",
                 }
             },
             c_pmcmod_banquet= {
                 name = "Banquet",
                 text = {
-                    "Enhances 1 card to {C:dark_red}Bleed{}",
+                    "Enhances 2 card to {C:dark_red}Bleed{}",
+                }
+            },
+            c_pmcmod_binds= {
+                name = "Binds",
+                text = {
+                    "Enhances 2 card to {C:blue}Sinking{}",
                 }
             },
             c_pmcmod_manifest= {
