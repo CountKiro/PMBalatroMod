@@ -559,11 +559,14 @@ SMODS.DrawStep {
                         end
                     end
                 end
-                if censoredPresent == true and card.ability.set == 'Joker' and not (card.children.center.sprite_pos.x == 0 and card.children.center.sprite_pos.y == 0 and card.children.center.atlas == G.ASSET_ATLAS["pmcmod_ModdedProjectMoon2"]) then
+                if censoredPresent == true and card.ability.set == 'Joker' and not (card.children.center.sprite_pos.x == 2 and card.children.center.sprite_pos.y == 1 and card.children.center.atlas == G.ASSET_ATLAS["pmcmod_ModdedProjectMoonEditions"]) then
                 --card.children.center = Sprite(card.T.x, card.T.y, card.T.w, card.T.h, G.ASSET_ATLAS["pmcmod_ModdedProjectMoon2"], {x = 0, y = 0})
-                        card.children.center.atlas = G.ASSET_ATLAS["pmcmod_ModdedProjectMoon2"]
-                        card.children.center.sprite_pos.x = 9
-                        card.children.center.sprite_pos.y = 14
+                        card.children.center.atlas = G.ASSET_ATLAS["pmcmod_ModdedProjectMoonEditions"]
+                        card.children.center:set_sprite_pos({x = 2, y = 1})
+						if card.children.floating_sprite then
+							card.children.floating_sprite.atlas = G.ASSET_ATLAS["pmcmod_ModdedProjectMoonEditions"]
+							card.children.floating_sprite:set_sprite_pos({x = 2, y = 1})
+						end
                 end
             end
         end
