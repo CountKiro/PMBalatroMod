@@ -537,7 +537,7 @@ SMODS.Joker {
 
             if #card.ability.extra.savedJokers >=1 then
                 for i=1, #card.ability.extra.savedJokers do
-                   if card.ability.extra.savedJokers[i].config.center.key == context.card.config.center.key then
+                   if card.ability.extra.savedJokers[i] == context.card.config.center.key then
                         cardAlreadySaved = true
                     break
                    else
