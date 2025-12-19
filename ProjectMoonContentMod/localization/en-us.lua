@@ -605,7 +605,7 @@ return {
                     "If {C:attention}Enoch{} is not present at the start",
                     "of an Encounter, spawn him in."},
                     {"Every time {C:attention}Enoch{} is destroyed,",
-                    "increment the Ace Mult by {C:mult}#3#{}."},
+                    "increase the Ace Mult by {C:mult}#3#{}."},
                     {"If {C:attention}Enoch{} dies more than 3 times, {C:red}suffer a meltdown{}."},
                     {"If this Keypage survives through 4 Acts,",
                     "{C:attention}gain another chance.",
