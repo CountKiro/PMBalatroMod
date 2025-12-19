@@ -1874,14 +1874,16 @@ SMODS.Joker {
 		if context.individual and context.cardarea == G.play then
 			card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
 			return {
-					message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.xmult_mod } },
+					message_card=card,
+					message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult_mod } },
 					colour = G.C.RED
 			}
         end
-		if context.discard and not context.blueprint and not context.other_card.debuff and card.ability.extra.xmult < 3 then
+		if context.discard and not context.blueprint and not context.other_card.debuff then
             card.ability.extra.xmult = card.ability.extra.xmult - card.ability.extra.xmult_mod
             return {
-                message = localize('k_upgrade_ex'),
+				message_card=card,
+                message = localize { type = 'variable', key = 'a_xmult_minus', vars = { card.ability.extra.xmult_mod } },
                 colour = G.C.MULT
             }
         end
@@ -1934,8 +1936,7 @@ SMODS.Joker {
 	end
 		if context.joker_main then
 			return {
-				message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } },
-				xmult = card.ability.xmult
+				xmult = card.ability.extra.xmult
 			}
 		end
     end,
