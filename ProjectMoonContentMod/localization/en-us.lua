@@ -306,7 +306,7 @@ return {
                 text = {
                     "Catalogues every bought Keypage.",
                     "Gain {C:mult}#2#{} Mult for every Keypage catalogued",
-                    "{C:inactive}Currently {C:chips}#1#{} Mult"
+                    "{C:inactive}Currently {C:mult}#1#{} Mult"
                 },
                 unlock = {
                     'Win a run with {C:attention}Aspect of Nikolai Keypage{}',
