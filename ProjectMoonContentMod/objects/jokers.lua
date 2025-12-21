@@ -191,7 +191,7 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 		
-		if context.individual and context.cardarea == G.play then
+		if context.individual and context.cardarea == G.play and not context.blueprint_card then
 			local singletonCounter = 0 -- make this into a function
 			local singletonSuit = context.other_card.base.suit
 			local singletonRank = context.other_card:get_id()
@@ -250,7 +250,7 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 		
-		if context.individual and context.cardarea == G.play then
+		if context.individual and context.cardarea == G.play and not context.blueprint_card then
 			local singletonCounter = 0 -- make this into a function
 			local singletonSuit = context.other_card.base.suit
 			local singletonRank = context.other_card:get_id()
@@ -309,7 +309,7 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 		
-		if context.repetition and context.cardarea == G.play then
+		if context.repetition and context.cardarea == G.play and not context.blueprint_card then
 			local singletonCounter = 0 -- make this into a function
 			local singletonSuit = context.other_card.base.suit
 			local singletonRank = context.other_card:get_id()
@@ -417,7 +417,7 @@ SMODS.Joker {
             end
 
 			if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_puppetA" then
-				card.ability.extra.mult = ccard.ability.extra.mult + 7.5
+				card.ability.extra.mult = card.ability.extra.mult + 7.5
 				return {
 					message = localize('k_upgrade_ex'),
 					colour = G.C.MULT,
@@ -426,7 +426,7 @@ SMODS.Joker {
 			end
 
 			if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_puppetB" then
-				card.ability.extra.mult = ccard.ability.extra.mult + 15
+				card.ability.extra.mult = card.ability.extra.mult + 15
 				return {
 					message = localize('k_upgrade_ex'),
 					colour = G.C.MULT,
@@ -435,7 +435,7 @@ SMODS.Joker {
 			end
 
 			if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_puppetC" then
-				card.ability.extra.mult = ccard.ability.extra.mult + 25
+				card.ability.extra.mult = card.ability.extra.mult + 25
 				return {
 					message = localize('k_upgrade_ex'),
 					colour = G.C.MULT,
