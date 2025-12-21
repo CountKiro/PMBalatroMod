@@ -1775,7 +1775,7 @@ return {
                     {"Crispy on the outside, juicy on the inside."},
                     {"Destroys itself at the end of the Encounter",
                     "once {C:attention}3 Scenes are completed{}"},
-                    {"{C:inactive}(Currently{C:attention} #1# {C:inactive}rounds completed)"},
+                    {"{C:inactive}(Currently{C:attention} #1# {C:inactive}Scenes completed)"},
                 },
             },
             j_pmcmod_chickenB = {
@@ -1793,7 +1793,7 @@ return {
                     {"Covered in a delicious red tomato (?) sauce."},
                     {"Destroys itself at the end of the Encounter",
                     "once {C:red}20 cards are discarded{}"},
-                    {"{C:inactive}(Currently{C:mult} #1# {C:inactive}discards used)"},
+                    {"{C:inactive}(Currently{C:mult} #1# {C:inactive}Discards used)"},
                 },
             },
             j_pmcmod_chickenD = {
@@ -1801,8 +1801,8 @@ return {
                 text = {
                     {"Are you telling me a chicken fried this rice?"},
                     {"Destroys itself at the end of the Encounter",
-                    "once {C:gold}3 boosters are opened{}"},
-                    {"{C:inactive}(Currently{C:gold} #1# {C:inactive}boosters opened)"},
+                    "once {C:gold}3 Boosters are opened{}"},
+                    {"{C:inactive}(Currently{C:gold} #1# {C:inactive}Boosters opened)"},
                 },
             },
             j_pmcmod_dummyRicardo = {
