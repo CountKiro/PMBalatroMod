@@ -171,142 +171,43 @@ SMODS.Consumable {
 -- Waltz
 SMODS.Consumable {
     key = 'waltz',
+    name = "Waltz",
     set = 'Spectral',
     pos = { x = 5, y = 5 },
     atlas = 'ModdedProjectMoonSpectrals',
-    config = { extra = { enhancement = 'm_pmcmod_burn' }, max_highlighted = 2 },
+    config = { max_highlighted = 2, mod_conv = 'm_pmcmod_burn' },
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.extra.enhancement]
-        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.extra.enhancement } } }
-    end,
-    use = function(self, card, area, copier)
-        local conv_card = G.hand.highlighted[1]
-        G.E_MANAGER:add_event(Event({
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.3, 0.5)
-                return true
-            end
-        }))
-
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.1,
-            func = function()
-                conv_card:set_ability(card.ability.extra.enhancement)
-                return true
-            end
-        }))
-
-        delay(0.5)
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.2,
-            func = function()
-                G.hand:unhighlight_all()
-                return true
-            end
-        }))
-    end,
-    draw = function(self, card, layer)
-        if (layer == 'card' or layer == 'both') and card.sprite_facing == 'front' then
-            card.children.center:draw_shader('booster', nil, card.ARGS.send_to_shader)
-        end
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end
 }
 
 -- Bleed
 SMODS.Consumable {
     key = 'banquet',
+    name = "Banquet",
     set = 'Spectral',
     pos = { x = 4, y = 5 },
     atlas = 'ModdedProjectMoonSpectrals',
-    config = { extra = { enhancement = 'm_pmcmod_bleed' }, max_highlighted = 2 },
+    config = { max_highlighted = 2, mod_conv = 'm_pmcmod_bleed' },
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.extra.enhancement]
-        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.extra.enhancement } } }
-    end,
-    use = function(self, card, area, copier)
-        local conv_card = G.hand.highlighted[1]
-        G.E_MANAGER:add_event(Event({
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.3, 0.5)
-                return true
-            end
-        }))
-
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.1,
-            func = function()
-                conv_card:set_ability(card.ability.extra.enhancement)
-                return true
-            end
-        }))
-
-        delay(0.5)
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.2,
-            func = function()
-                G.hand:unhighlight_all()
-                return true
-            end
-        }))
-    end,
-    draw = function(self, card, layer)
-        if (layer == 'card' or layer == 'both') and card.sprite_facing == 'front' then
-            card.children.center:draw_shader('booster', nil, card.ARGS.send_to_shader)
-        end
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end
 }
 
 -- Binds
 SMODS.Consumable {
     key = 'binds',
+    name = "Binds",
     set = 'Spectral',
     atlas = 'ModdedProjectMoonSpectrals',
     pos = { x = 3, y = 5 },
-    config = { extra = { enhancement = 'm_pmcmod_sinking' }, max_highlighted = 2 },
+    config = { max_highlighted = 2, mod_conv = 'm_pmcmod_sinking' },
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.extra.enhancement]
-        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.extra.enhancement } } }
+        info_queue[#info_queue + 1] = G.P_CENTERS[card.ability.mod_conv]
+        return { vars = { card.ability.max_highlighted, localize { type = 'name_text', set = 'Enhanced', key = card.ability.mod_conv } } }
     end,
-    use = function(self, card, area, copier)
-        local conv_card = G.hand.highlighted[1]
-        G.E_MANAGER:add_event(Event({
-            func = function()
-                play_sound('tarot1')
-                card:juice_up(0.3, 0.5)
-                return true
-            end
-        }))
-
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.1,
-            func = function()
-                conv_card:set_ability(card.ability.extra.enhancement)
-                return true
-            end
-        }))
-
-        delay(0.5)
-        G.E_MANAGER:add_event(Event({
-            trigger = 'after',
-            delay = 0.2,
-            func = function()
-                G.hand:unhighlight_all()
-                return true
-            end
-        }))
-    end,
-    draw = function(self, card, layer)
-        if (layer == 'card' or layer == 'both') and card.sprite_facing == 'front' then
-            card.children.center:draw_shader('booster', nil, card.ARGS.send_to_shader)
-        end
-    end
 }
 
 --Manifest

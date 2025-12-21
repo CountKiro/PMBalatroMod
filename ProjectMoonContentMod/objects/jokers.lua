@@ -176,6 +176,7 @@ SMODS.Joker {
     blueprint_compat = false,
     eternal_compat = true,
 	perishable_compat = true,
+	unlocked = false,
 	rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoonTrue',
@@ -234,6 +235,7 @@ SMODS.Joker {
     blueprint_compat = false,
     eternal_compat = true,
 	perishable_compat = true,
+	unlocked = false,
 	rarity = 2,
     cost = 6,
 	atlas = 'ModdedProjectMoonTrue',
@@ -292,6 +294,7 @@ SMODS.Joker {
     blueprint_compat = false,
     eternal_compat = true,
 	perishable_compat = true,
+	unlocked = false,
 	rarity = 2,
     cost = 6,
 	atlas = 'ModdedProjectMoonTrue',
@@ -518,6 +521,7 @@ SMODS.Joker {
 	name = "Nikolai",
 	config = { extra = { mult = 0, mult_mod = 5, savedJokers = {} } },
 	rarity = 3,
+	unlocked = false,
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 3, y = 3 },
 	cost = 8,
@@ -581,6 +585,7 @@ SMODS.Joker {
 	name = "Maxim",
 	config = { extra = { chargeCount = 0, dollars = 10, repetitions = 1 } },
 	rarity = 2,
+	unlocked = false,
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 7, y = 14 },
 	cost = 6,
@@ -639,6 +644,7 @@ SMODS.Joker {
 	name = "Rudolph",
 	config = { extra = {  } },
 	rarity = 3,
+	unlocked = false,
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 9, y = 5 },
 	cost = 8,
@@ -1033,6 +1039,7 @@ SMODS.Joker {
 	pos = { x = 3, y = 0 },
 	cost = 8,
 	eternal_compat = true,
+	unlocked = false,
 	loc_vars = function (self, info_queue, card)
 
 		local planets_used = 0
@@ -1207,6 +1214,7 @@ SMODS.Joker {
 	pos = { x = 5, y = 0 },
 	cost = 8,
 	eternal_compat = true,
+	unlocked = false,
 	loc_vars = function (self, info_queue, card)
 
 		local planets_used = 0
@@ -3753,7 +3761,7 @@ SMODS.Joker {
 		card.ability.extra.xmult_mod, card.ability.extra.dollars_mod, card.ability.extra.totalChickensSpawned } }
 	end,
 	calculate = function(self, card, context)
-		if context.setting_blind then
+		if context.setting_blind and not context.blueprint then
 		local chickenPresent = false
 		local possibleSpawns = {'j_pmcmod_chickenA', 'j_pmcmod_chickenB', 'j_pmcmod_chickenC', 'j_pmcmod_chickenD'}
 		for i = 1, #G.jokers.cards do
@@ -3793,7 +3801,7 @@ SMODS.Joker {
 			end
 		end
 
-		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_chickenA" then
+		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_chickenA" and not context.blueprint then
 			card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
 			return {
 				message = 'Upgraded!',
@@ -3801,7 +3809,7 @@ SMODS.Joker {
 				card = card
 			}
 		end
-		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_chickenB" then
+		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_chickenB" and not context.blueprint then
 			card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
 			return {
 				message = 'Upgraded!',
@@ -3809,7 +3817,7 @@ SMODS.Joker {
 				card = card
 			}
 		end
-		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_chickenC" then
+		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_chickenC" and not context.blueprint then
 			card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod
 			return {
 				message = 'Upgraded!',
@@ -3817,7 +3825,7 @@ SMODS.Joker {
 				card = card
 			}
 		end
-		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_chickenD" then
+		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_chickenD" and not context.blueprint then
 			card.ability.extra.dollars = card.ability.extra.dollars + card.ability.extra.dollars_mod
 			return {
 				message = 'Upgraded!',
@@ -6583,7 +6591,7 @@ SMODS.Joker {
 	unlocked = false,
 	config = { extra = { xmult } },
 	eternal_compat = true,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
@@ -6600,7 +6608,7 @@ SMODS.Joker {
 	calculate = function(self, card, context)
 		local selectedJoker
 		local possibleDebuffs = {}
-		if context.setting_blind then
+		if context.setting_blind and #G.jokers.cards > 1 then
 			for i = 1, #G.jokers.cards do
 				if G.jokers.cards[i] ~= card then
 					possibleDebuffs[i] = G.jokers.cards[i]
