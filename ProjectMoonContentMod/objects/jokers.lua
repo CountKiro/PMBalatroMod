@@ -391,7 +391,8 @@ SMODS.Joker {
 	key = 'puppeteer',
 	name = "Puppeteer",
 	config = { extra = { mult = 0 } },
-    blueprint_compat = false,
+    unlocked = false,
+    blueprint_compat = true,
     eternal_compat = true,
 	perishable_compat = true,
 	rarity = 3,
@@ -522,6 +523,9 @@ SMODS.Joker {
 	config = { extra = { mult = 0, mult_mod = 5, savedJokers = {} } },
 	rarity = 3,
 	unlocked = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+	perishable_compat = true,
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 3, y = 3 },
 	cost = 8,
@@ -529,7 +533,6 @@ SMODS.Joker {
 	{
         ["R Corp"] = true,
  	},
-	eternal_compat = true,
 	loc_vars = function (self, info_queue, card)
     	return {vars = { card.ability.extra.mult, card.ability.extra.mult_mod }}
 	end,
@@ -586,6 +589,9 @@ SMODS.Joker {
 	config = { extra = { chargeCount = 0, dollars = 10, repetitions = 1 } },
 	rarity = 2,
 	unlocked = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+	perishable_compat = true,
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 7, y = 14 },
 	cost = 6,
@@ -593,7 +599,6 @@ SMODS.Joker {
 	{
         ["R Corp"] = true,
  	},
-	eternal_compat = true,
 	loc_vars = function (self, info_queue, card)
     	return {vars = { card.ability.extra.chargeCount, card.ability.extra.dollars }}
 	end,
@@ -645,6 +650,9 @@ SMODS.Joker {
 	config = { extra = {  } },
 	rarity = 3,
 	unlocked = false,
+    blueprint_compat = false,
+    eternal_compat = true,
+	perishable_compat = true,
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 9, y = 5 },
 	cost = 8,
@@ -652,7 +660,6 @@ SMODS.Joker {
 	{
         ["R Corp"] = true,
  	},
-	eternal_compat = true,
 	loc_vars = function (self, info_queue, card)
     	return {vars = {  }}
 	end,
@@ -908,12 +915,14 @@ SMODS.Joker {
 	key = 'angelaLoR',
 	name = "Angela",
 	unlocked = false,
+    blueprint_compat = false,
+    eternal_compat = true,
+	perishable_compat = true,
 	config = { extra = { creates = 5, chips = 0, chips_mod = 15} },
 	rarity = 3,
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 1, y = 12 },
 	cost = 8,
-	eternal_compat = true,
 	loc_vars = function (self, info_queue, card)
     	return {vars = { card.ability.extra.creates, card.ability.extra.chips, card.ability.extra.chips_mod}}
 	end,
@@ -1003,6 +1012,7 @@ SMODS.Joker {
 	key = 'angelica',
 	name = "Angelica",
 	config = { extra = { mult = 100 } },
+	unlocked = false,
     blueprint_compat = false,
     eternal_compat = false,
 	perishable_compat = true,
@@ -1033,13 +1043,15 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'yisang',
 	name = "Yi Sang",
+	unlocked = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+	perishable_compat = true,
 	config = { extra = { xmult = 1, xmult_mod = 0.3, xmult_bonus = 0.1 } },
 	rarity = 3,
 	atlas = 'ModdedProjectMoon2',
 	pos = { x = 3, y = 0 },
 	cost = 8,
-	eternal_compat = true,
-	unlocked = false,
 	loc_vars = function (self, info_queue, card)
 
 		local planets_used = 0
@@ -1093,12 +1105,14 @@ SMODS.Joker {
 	key = 'ishmael',
 	name = "Ishmael",
 	unlocked = false,
+    blueprint_compat = true,
+    eternal_compat = true,
+	perishable_compat = true,
 	config = { extra = { mult = 0, mult_mod = 10, xmult = 1, xmult_mod = 5, baseChance = 1, maxChance = 3} },
 	rarity = 3,
 	atlas = 'ModdedProjectMoon2',
 	pos = { x = 4, y = 0 },
 	cost = 8,
-	eternal_compat = true,
 	loc_vars = function (self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_pmcmod_pallid
 		local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'ishamelChance')
@@ -1213,8 +1227,10 @@ SMODS.Joker {
 	atlas = 'ModdedProjectMoon2',
 	pos = { x = 5, y = 0 },
 	cost = 8,
-	eternal_compat = true,
 	unlocked = false,
+    blueprint_compat = false,
+    eternal_compat = true,
+	perishable_compat = true,
 	loc_vars = function (self, info_queue, card)
 
 		local planets_used = 0
@@ -1537,8 +1553,8 @@ SMODS.Joker {
     key = "elijah",
 	name = "Elijah",
 	config = {extra = {mult = 0, roundCount = 0}},
-	unlocked = false,
-    blueprint_compat = true,
+	unlocked = true,
+    blueprint_compat = false,
     eternal_compat = false,
 	perishable_compat = false,
     rarity = 3,
@@ -8414,12 +8430,15 @@ SMODS.Joker {
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 0, y = 14 },
 	no_collection = true,
+	unlocked = true,
+	blueprint_compat = false,
+    eternal_compat = false,
+	perishable_compat = false,
 	cost = 0,
 	pools =
 	{
         ["HellsKitchen"] = true,
  	},
-	eternal_compat = true,
 	loc_vars = function (self, info_queue, card)
     	return {vars = { card.ability.extra.roundsCompleted }}
 	end,
@@ -8462,12 +8481,15 @@ SMODS.Joker {
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 1, y = 14 },
 	no_collection = true,
+	unlocked = true,
+	blueprint_compat = false,
+    eternal_compat = false,
+	perishable_compat = false,
 	cost = 0,
 	pools =
 	{
         ["HellsKitchen"] = true,
  	},
-	eternal_compat = true,
 	loc_vars = function (self, info_queue, card)
     	return {vars = { card.ability.extra.handsUsed }}
 	end,
@@ -8509,12 +8531,15 @@ SMODS.Joker {
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 2, y = 14 },
 	no_collection = true,
+	unlocked = true,
+	blueprint_compat = false,
+    eternal_compat = false,
+	perishable_compat = false,
 	cost = 0,
 	pools =
 	{
         ["HellsKitchen"] = true,
  	},
-	eternal_compat = true,
 	loc_vars = function (self, info_queue, card)
     	return {vars = { card.ability.extra.discardsUsed }}
 	end,
@@ -8557,12 +8582,15 @@ SMODS.Joker {
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 3, y = 14 },
 	no_collection = true,
+	unlocked = true,
+	blueprint_compat = false,
+    eternal_compat = false,
+	perishable_compat = false,
 	cost = 0,
 	pools =
 	{
         ["HellsKitchen"] = true,
  	},
-	eternal_compat = true,
 	loc_vars = function (self, info_queue, card)
     	return {vars = { card.ability.extra.boostersOpened }}
 	end,
@@ -8602,7 +8630,7 @@ SMODS.Joker {
 	name = "Puppet",
 	config = { extra = { mult = 15 } },
     blueprint_compat = true,
-    eternal_compat = true,
+    eternal_compat = false,
 	perishable_compat = true,
     --	no_collection = true,
 	rarity = 1,
@@ -8639,7 +8667,7 @@ SMODS.Joker {
 	name = "Nimble Puppet",
 	config = { extra = { mult = 30 } },
     blueprint_compat = true,
-    eternal_compat = true,
+    eternal_compat = false,
 	perishable_compat = true,
     --	no_collection = true,
 	rarity = 2,
@@ -8676,7 +8704,7 @@ SMODS.Joker {
 	name = "Weighty Puppet",
 	config = { extra = { mult = 50 } },
     blueprint_compat = true,
-    eternal_compat = true,
+    eternal_compat = false,
 	perishable_compat = true,
 --	no_collection = true,
 	rarity = 3,
@@ -8714,7 +8742,7 @@ SMODS.Joker {
 	name = "Puppet Angelica",
 	config = { extra = { mult = 60 } },
     blueprint_compat = true,
-    eternal_compat = true,
+    eternal_compat = false,
 	perishable_compat = true,
 --	no_collection = true,
 	rarity = 3,
