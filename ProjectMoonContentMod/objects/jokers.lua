@@ -2268,7 +2268,7 @@ SMODS.Joker {
     end,
 
     calculate = function(self, card, context)
-		if context.setting_blind then
+		if context.setting_blind and not context.blueprint  then
 		local enochPresent = false
 		local robotEnochPresent = false
 
@@ -2295,7 +2295,7 @@ SMODS.Joker {
 			
 		end
 		--if context.joker_type_destroyed then
-		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_enoch" then
+		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_enoch" and not context.blueprint  then
 			print("Testing destruction")
 			card.ability.extra.enochDeathCounter = card.ability.extra.enochDeathCounter + 1
 			card.ability.extra.aceMult = card.ability.extra.aceMult + card.ability.extra.aceMult_mod
@@ -2305,7 +2305,7 @@ SMODS.Joker {
 				message_card = card
 			}
 		end
-		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_robotEnoch" then
+		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_robotEnoch" and not context.blueprint  then
 			print("Testing destruction")
 			card.ability.extra.enochDeathCounter = card.ability.extra.enochDeathCounter + 1
 			card.ability.extra.aceMult = card.ability.extra.aceMult + card.ability.extra.aceMult_mod
@@ -2322,7 +2322,7 @@ SMODS.Joker {
             }
         end
 
-		if context.after and context.main_eval and card.ability.extra.enochDeathCounter >= 3 then
+		if context.after and context.main_eval and card.ability.extra.enochDeathCounter >= 3 and not context.blueprint  then
 			local percent = 1.15
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
