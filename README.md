@@ -31,27 +31,24 @@ A Balatro Mod that adds custom made textures with Project Moon related character
 7. Enjoy the mod!
 
 
+
 ## What is in the latest update?
 
 ### Texture pack
+- Added 3 new variations for the main menu logo
+- New texture for Vouchers (EGO Gifts)
 - Improvements on some Joker textures
-- Improvements to Joker backgrounds and frames
-- Updated the Negative Shader effect to instead have a Sepia tone
 - Minor bugfixes
 
 ### [NEW!] Content mod
-- Added 43 new Jokers (now up to 98 total)
-- Added 1 new Deck (now up to 8 total)
-- Added 1 new Spectral Card (now up to 4 total)
-- Added 1 new Enhancement (now up to 2 total)
-- Added 1 new Partner (now up to 4 total)
-- Reworked Meltdown mechanics
-- Improvements to Partner textures
-- Changed some sprites to reflect changes to the Mark of Cain (some will still use the Supernatural one)
-- Changed some Joker effects
+- Added 46 new Jokers (now up to 144 total)
+- Added 3 new Deck (now up to 11 total)
+- Added 3 new Spectral Card (now up to 7 total)
+- Added 2 new Enhancement (now up to 4 total)
+- Added 4 new Card Sleeve (now up to 8 total)
+- Added 2 new Seals (now up to 3 total)
+- Added 1 new Edition
 
-### Music mod
-- New music was added for the Content mod
 
 ## FAQ
 
@@ -71,7 +68,7 @@ an item related to them or their canto and a simplified sprite of a relevant per
 Some of them complement each other, such Isadora and Julia working well together due to triggering on 4s. Some are kinda fillers, though.
 - **Planet** (aka Sinners): going by Canto order (check run info)
 - **Spectrals**: recreation of CGs from the games. Kromer creates red seals, Carmen distorts (changes) cards, etc
-- **Vouchers**: Limbus characters, as well as representation for other non game media. They were chosen due to joker limitations ot allowing them to be included. With the new custom jokers, these sprites will be replaced with something else when Canto 8 custom jokers are included
+- **Vouchers**: EGO Gifts
 
 ## Known issues
 
