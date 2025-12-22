@@ -725,7 +725,7 @@ return {
                     "{C:mult}+#1#{} Mult",
                     "{C:green}#2# in #3#{} chance this Keypage {C:red}destroys{}",
                     "another Keypage at the end of",
-                    "the round and leaves",
+                    "the Scene and leaves",
                 },
             },
             j_pmcmod_aya = {
@@ -733,7 +733,7 @@ return {
                 text = {
                     "{C:chips}+#1#{} Chips",
                     "{C:green}#2# in #3#{} chance this Keypage {C:red}destroys",
-                    "{C:red}itself{} at the end of the round",
+                    "{C:red}itself{} at the end of the Scene",
                     "and leaves a {C:tarot}Gas Mask{}",
                 },
             },
@@ -741,10 +741,10 @@ return {
                 name = 'Yuri',
                 text = {
                     {"{C:green}#1# in #2#{} chance this Keypage destroys",
-                    "itself at the end of the round."},
-                    {"If this Keypage survives {C:red}#3#{} rounds,",
+                    "itself at the end of the Scene."},
+                    {"If this Keypage survives {C:red}#3#{} Scenes,",
                     "sell it to get a {C:money, T:c_soul}Golden Bough{}",
-                    "Current rounds survived: {C:red}#4#{}"},
+                    "Current Scenes survived: {C:red}#4#{}"},
                 },
             },
             j_pmcmod_demian = {
@@ -785,7 +785,7 @@ return {
                     "is a{C:attention} #3#{}."},
                     {"Value resets if the hand",
                     "played doesn't contain it.",
-                    "(Poker hand changes after every round)",
+                    "(Poker hand changes after every Scene)",
                     "{C:inactive}(Currently{C:mult} #1# {C:inactive}Mult)"}
                 },
             },
@@ -796,7 +796,7 @@ return {
                     "contains a{C:attention} #3# {}card."},
                     {"Value resets if the hand",
                     "played doesn't contain it.",
-                    "(Suit changes after every round) ",
+                    "(Suit changes after every Scene) ",
                     "{C:inactive}(Currently{C:chips} #1# {C:inactive}Chips)"},
                 },
             },
@@ -1104,7 +1104,7 @@ return {
                     "position resets and this Keypage gets a {C:blue}bonus{}:",
                     "2   -> {C:mult}+15{} Mult for each scoring card",
                     "3   -> {C:chips}+30{} Chips for each scoring card",
-                    "4   -> {C:gold}+2${} at the end of the round",
+                    "4   -> {C:gold}+2${} at the end of the Scene",
                     ">=5 -> {X:mult,C:white}+X1{} Mult"},
                     {"If set on position 1, {C:attention}all effects apply.",
                     "{C:red}The debuff goes up for every Act cleared",
@@ -1395,8 +1395,8 @@ return {
                 name = 'Romero',
                 text = {
                     "When {C:attention}Normal Encounter{} or {C:attention}Risky Encounter{}",
-                    "is selected, if a Bloodfiend Keypage is present,",
-                    "destroy it and gain {C:mult}#2#{} Mult",
+                    "is selected, if a {C:green}Paperback{} or {C:blue}Uncommon{} Bloodfiend Keypage",
+                    "is present, destroy it and gain {C:mult}#2#{} Mult",
                     "(can only happen once per blind)",
                     "{C:inactive}(Currently {C:mult}#2#{C:inactive} Mult)",
                 }
@@ -1409,7 +1409,7 @@ return {
                     "of the Ranks played."
                 },
                 unlock = {
-                    'Win a round without playing a single {C:attention}Flush{}',
+                    'Win a game without playing a single {C:attention}Flush{}',
                 }
             },
             j_pmcmod_caiman = {
@@ -1855,14 +1855,14 @@ return {
                 name = 'Prescript',
                 text = {
                     {"{C:red}Discard{} 5 Face cards in a single hand"},
-                    {"Prescript fullfilled: {c:green}#1#{}}"}
+                    {"Prescript fullfilled: {c:green}#1#{}"}
                 },
             },
             j_pmcmod_prescript2 = {
                 name = 'Prescript',
                 text = {
                     {"Sell the {C:red}#2#{} Keypage"},
-                    {"Prescript fullfilled: {c:green}#1#{}}"}
+                    {"Prescript fullfilled: {c:green}#1#{}"}
                 },
             },
             j_pmcmod_prescript3 = {
@@ -1902,7 +1902,7 @@ return {
             j_pmcmod_prescript8 = {
                 name = 'Prescript',
                 text = {
-                    "Win a round with your {C:blue}last Hand",
+                    "Win a Scene with your {C:blue}last Hand",
                 },
             },
             j_pmcmod_prescript9 = {
