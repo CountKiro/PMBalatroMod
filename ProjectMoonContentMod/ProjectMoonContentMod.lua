@@ -216,6 +216,7 @@ SMODS.ObjectType({
 	default = "j_seeing_double",
 	cards = {
 		["j_seeing_double"] = true, --Don Quixote
+		["j_bloodstone"] = true, --Blood-red Night
  	},
 	inject = function(self)
 		SMODS.ObjectType.inject(self)
