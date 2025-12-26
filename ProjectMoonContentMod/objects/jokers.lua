@@ -410,96 +410,103 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 
-			if context.setting_blind and not context.blueprint then
-			local my_pos = nil
-            for i = 1, #G.jokers.cards do
-                if G.jokers.cards[i] == card then
-                    my_pos = i
-                    break
-                end
-            end
+		if context.joker_main then
+			return {
+				mult = card.ability.extra.mult
+			}
+		end
 
-			if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_puppetA" then
-				card.ability.extra.mult = card.ability.extra.mult + 7.5
-				return {
-					message = localize('k_upgrade_ex'),
-					colour = G.C.MULT,
-					message_card = card
-				}
-			end
+		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_puppetA" then
+			print("Testing destruction")
+			print(context.card.config.center.key)
+			card.ability.extra.mult = card.ability.extra.mult + 7.5
+			return {
+				message = localize('k_upgrade_ex'),
+				colour = G.C.MULT,
+				message_card = card
+			}
+		end
 
-			if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_puppetB" then
-				card.ability.extra.mult = card.ability.extra.mult + 15
-				return {
-					message = localize('k_upgrade_ex'),
-					colour = G.C.MULT,
-					message_card = card
-				}
-			end
+		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_puppetB" then
+			card.ability.extra.mult = card.ability.extra.mult + 15
+			return {
+				message = localize('k_upgrade_ex'),
+				colour = G.C.MULT,
+				message_card = card
+			}
+		end
 
-			if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_puppetC" then
-				card.ability.extra.mult = card.ability.extra.mult + 25
-				return {
-					message = localize('k_upgrade_ex'),
-					colour = G.C.MULT,
-					message_card = card
-				}
-			end
-			
-			if context.setting_blind and my_pos and G.jokers.cards[my_pos + 1] and not G.jokers.cards[my_pos + 1].ability.eternal and G.jokers.cards[my_pos + 1].config.center.rarity <= 3 then
+		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_puppetC" then
+			card.ability.extra.mult = card.ability.extra.mult + 25
+			return {
+				message = localize('k_upgrade_ex'),
+				colour = G.C.MULT,
+				message_card = card
+			}
+		end
 
-				local sliced_card = G.jokers.cards[my_pos + 1]
-				local rarity = G.jokers.cards[my_pos + 1].config.center.rarity
-                sliced_card.getting_sliced = true
-				G.GAME.joker_buffer = G.GAME.joker_buffer - 1
-				local percent = 1.
-                
-				G.E_MANAGER:add_event(Event({
-					trigger = 'after',
-					delay = 0.15,
-					func = function()
-						card:flip()
-						play_sound('card1', percent)
-						card:juice_up(0.3, 0.3)
-						return true
-					end,
-				}))
+		if context.setting_blind and not context.blueprint then
 
-			
-				if G.jokers.cards[my_pos + 1].config.center.key == "j_pmcmod_angelica" then
-					G.E_MANAGER:add_event(Event({
-						delay = 0.5,
-						func = function()
-							card:set_ability(G.P_CENTERS["j_pmcmod_puppetAngelica"])
-							return true
-						end
-					}))
-				elseif rarity == 1 then
-					G.E_MANAGER:add_event(Event({
-						delay = 0.5,
-						func = function()
-							card:set_ability(G.P_CENTERS["j_pmcmod_puppetA"])
-							return true
-						end
-					}))
-				elseif rarity == 1 then
-					G.E_MANAGER:add_event(Event({
-						delay = 0.5,
-						func = function()
-							card:set_ability(G.P_CENTERS["j_pmcmod_puppetB"])
-							return true
-						end
-					}))
-				elseif rarity == 1 then
-					G.E_MANAGER:add_event(Event({
-						delay = 0.5,
-						func = function()
-							card:set_ability(G.P_CENTERS["j_pmcmod_puppetC"])
-							return true
-						end
-					}))
+			if context.setting_blind then
+
+				local acceptableJokers = {}
+				for i = 1, #G.jokers.cards do
+					if G.jokers.cards[i] ~= card and not G.jokers.cards[i].getting_sliced and not
+					(G.jokers.cards[i].config.center.key == "j_pmcmod_puppetA") and not
+					(G.jokers.cards[i].config.center.key == "j_pmcmod_puppetB") and not
+					(G.jokers.cards[i].config.center.key == "j_pmcmod_puppetC") and not
+					(G.jokers.cards[i].config.center.key == "j_pmcmod_puppetAngelica")
+					then acceptableJokers[#acceptableJokers+1] = G.jokers.cards[i] end
 				end
 
+				local joker_to_transform = #acceptableJokers > 0 and pseudorandom_element(acceptableJokers, pseudoseed('puppeteer')) or nil
+
+				if #acceptableJokers > 0 then
+					G.E_MANAGER:add_event(Event({
+						trigger = 'after',
+						delay = 0.15,
+						func = function()
+							joker_to_transform:flip()
+							play_sound('card1', percent)
+							joker_to_transform:juice_up(0.3, 0.3)
+							return true
+						end,
+					}))
+
+					if joker_to_transform.config.center.key == "j_pmcmod_angelica" or joker_to_transform.config.center.key == "j_half" then
+					G.E_MANAGER:add_event(Event({
+						delay = 0.5,
+						func = function()
+							joker_to_transform:set_ability(G.P_CENTERS["j_pmcmod_puppetAngelica"])
+							return true
+						end
+					}))
+					elseif joker_to_transform.config.center.rarity == 1 then
+						G.E_MANAGER:add_event(Event({
+							delay = 0.5,
+							func = function()
+								joker_to_transform:set_ability(G.P_CENTERS["j_pmcmod_puppetA"])
+								return true
+							end
+						}))
+					elseif joker_to_transform.config.center.rarity == 2 then
+						G.E_MANAGER:add_event(Event({
+							delay = 0.5,
+							func = function()
+								joker_to_transform:set_ability(G.P_CENTERS["j_pmcmod_puppetB"])
+								return true
+							end
+						}))
+					elseif joker_to_transform.config.center.rarity == 3 then
+						G.E_MANAGER:add_event(Event({
+							delay = 0.5,
+							func = function()
+								joker_to_transform:set_ability(G.P_CENTERS["j_pmcmod_puppetC"])
+								return true
+							end
+						}))
+					end
+				end
 			end
 		end
     end,
@@ -4939,12 +4946,12 @@ SMODS.Joker {
 
 		local heathcliffPresent = false
 
-			for i=1, #G.jokers.cards do
-				if G.jokers.cards[i].config.center.key == "j_hit_the_road" then
-					heathcliffPresent = true
-					break
-				end
+		for i=1, #G.jokers.cards do
+			if G.jokers.cards[i].config.center.key == "j_hit_the_road" or G.jokers.cards[i].config.center.key == "j_pmcmod_heathcliff" then
+				heathcliffPresent = true
+				break
 			end
+		end
 
 		if context.selling_self and heathcliffPresent then
             G.E_MANAGER:add_event(Event({
@@ -6468,7 +6475,7 @@ SMODS.Joker {
     	return {vars = { new_numerator, new_denominator}}
 	end,
 	calculate = function(self, card, context)
-		if context.using_consumeable and not context.blueprint then
+		if context.using_consumeable and context.consumeable.ability.set == "Planet" and not context.blueprint then
 			if SMODS.pseudorandom_probability(card, 'caiman', card.ability.extra.baseChance, card.ability.extra.maxChance, 'caiman') then
 				G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
             	G.E_MANAGER:add_event(Event({
@@ -8630,7 +8637,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'puppetA',
 	name = "Puppet",
-	config = { extra = { mult = 15 } },
+	config = { extra = { mult = 15, counter = 0 } },
     blueprint_compat = true,
     eternal_compat = false,
 	perishable_compat = true,
@@ -8644,7 +8651,7 @@ SMODS.Joker {
         ["Puppet"] = true,
  	},
 	loc_vars = function (self, info_queue, card)
-    	return {vars = { self.config.extra.mult }}
+    	return {vars = { card.ability.extra.mult, card.ability.extra.counter }}
 	end,
 	calculate = function(self, card, context)
 		
@@ -8653,7 +8660,32 @@ SMODS.Joker {
 				mult = card.ability.extra.mult
 			}
 		end
-		
+
+		if context.after and not context.blueprint then
+			card.ability.extra.counter = card.ability.extra.counter + 1
+                return {
+                    message = card.ability.extra.counter .. '',
+                    colour = G.C.FILTER
+                }
+		end
+
+		if context.end_of_round and not context.blueprint then
+            if card.ability.extra.counter >= 5 then
+                card.getting_sliced = true
+				G.GAME.joker_buffer = G.GAME.joker_buffer - 1
+				G.E_MANAGER:add_event(Event({
+					trigger = 'after',
+					delay = 0.3,
+					blockable = false,
+					func = function()
+							G.GAME.joker_buffer = 0
+						card:start_dissolve({ HEX("57ecab") }, nil, 1.6)
+						play_sound('slice1', 0.96 + math.random() * 0.08)
+						return true
+					end
+				}))
+        	end
+		end
 	end,
 	in_pool = function(self, args)
         return G.GAME.pool_flags.fake_robot_flag
@@ -8667,7 +8699,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'puppetB',
 	name = "Nimble Puppet",
-	config = { extra = { mult = 30 } },
+	config = { extra = { mult = 30, counter = 0 } },
     blueprint_compat = true,
     eternal_compat = false,
 	perishable_compat = true,
@@ -8681,7 +8713,7 @@ SMODS.Joker {
         ["Puppet"] = true,
  	},
 	loc_vars = function (self, info_queue, card)
-    	return {vars = { self.config.extra.mult }}
+    	return {vars = { card.ability.extra.mult, card.ability.extra.counter }}
 	end,
 	calculate = function(self, card, context)
 		
@@ -8690,7 +8722,32 @@ SMODS.Joker {
 				mult = card.ability.extra.mult
 			}
 		end
-		
+
+		if context.after and not context.blueprint then
+			card.ability.extra.counter = card.ability.extra.counter + 1
+                return {
+                    message = card.ability.extra.counter .. '',
+                    colour = G.C.FILTER
+                }
+		end
+
+		if context.end_of_round and not context.blueprint then
+            if card.ability.extra.counter >= 5 then
+                card.getting_sliced = true
+				G.GAME.joker_buffer = G.GAME.joker_buffer - 1
+				G.E_MANAGER:add_event(Event({
+					trigger = 'after',
+					delay = 0.3,
+					blockable = false,
+					func = function()
+							G.GAME.joker_buffer = 0
+						card:start_dissolve({ HEX("57ecab") }, nil, 1.6)
+						play_sound('slice1', 0.96 + math.random() * 0.08)
+						return true
+					end
+				}))
+        	end
+		end
 	end,
 	in_pool = function(self, args)
         return G.GAME.pool_flags.fake_robot_flag
@@ -8704,7 +8761,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'puppetC',
 	name = "Weighty Puppet",
-	config = { extra = { mult = 50 } },
+	config = { extra = { mult = 50, counter = 0 } },
     blueprint_compat = true,
     eternal_compat = false,
 	perishable_compat = true,
@@ -8719,7 +8776,7 @@ SMODS.Joker {
         ["Puppet"] = true,
  	},
 	loc_vars = function (self, info_queue, card)
-    	return {vars = { self.config.extra.mult }}
+    	return {vars = { card.ability.extra.mult, card.ability.extra.counter }}
 	end,
 	calculate = function(self, card, context)
 		
@@ -8728,7 +8785,32 @@ SMODS.Joker {
 				mult = card.ability.extra.mult
 			}
 		end
-		
+
+		if context.after and not context.blueprint then
+			card.ability.extra.counter = card.ability.extra.counter + 1
+                return {
+                    message = card.ability.extra.counter .. '',
+                    colour = G.C.FILTER
+                }
+		end
+
+		if context.end_of_round and not context.blueprint then
+            if card.ability.extra.counter >= 5 then
+                card.getting_sliced = true
+				G.GAME.joker_buffer = G.GAME.joker_buffer - 1
+				G.E_MANAGER:add_event(Event({
+					trigger = 'after',
+					delay = 0.3,
+					blockable = false,
+					func = function()
+							G.GAME.joker_buffer = 0
+						card:start_dissolve({ HEX("57ecab") }, nil, 1.6)
+						play_sound('slice1', 0.96 + math.random() * 0.08)
+						return true
+					end
+				}))
+        	end
+		end
 	end,
 	in_pool = function(self, args)
         return G.GAME.pool_flags.fake_robot_flag
@@ -8742,7 +8824,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'puppetAngelica',
 	name = "Puppet Angelica",
-	config = { extra = { mult = 60 } },
+	config = { extra = { mult = 60, counter = 0 } },
     blueprint_compat = true,
     eternal_compat = false,
 	perishable_compat = true,
@@ -8765,7 +8847,6 @@ SMODS.Joker {
 				mult = card.ability.extra.mult
 			}
 		end
-		
 	end,
 	in_pool = function(self, args)
         return G.GAME.pool_flags.fake_robot_flag
