@@ -360,7 +360,8 @@ return {
                     "a {C:red}Puppet{}, based on the rarity.",},
                     {"Puppets destroy themselves after triggering 5 times",
                     "When a Puppet gets destroyed by any means,",
-                    "gain {C:mult}half of their mult value{}"}
+                    "gain {C:mult}half of their mult value{}",
+                    "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)"}
                 },
                 unlock = {
                     'Win a run with {C:attention}Aspect of Angel- Keypage{}',
@@ -1817,6 +1818,7 @@ return {
                 text = {
                     "GIGIGIGIIIGIIGGGGIGII",
                     "GIIGIGIGI{C:red}#1#{}MultGIIGGI",
+                    "{C:inactive}(Counter: {C:attention}#2#{C:inactive})"
                 },
             },
             j_pmcmod_puppetB = {
@@ -1824,6 +1826,8 @@ return {
                 text = {
                     "GIGIGIGIIIGIIGGGGIGII",
                     "GIIGIGIGI{C:red}#1#{}MultGIIGGI",
+                    "{C:inactive}(Counter: {C:attention}#2#{C:inactive})"
+                    
                 },
             },
             j_pmcmod_puppetC = {
@@ -1831,6 +1835,7 @@ return {
                 text = {
                     "GIGIGIGIIIGIIGGGGIGII",
                     "GIIGIGIGI{C:red}#1#{}MultGIIGGI",
+                    "{C:inactive}(Counter: {C:attention}#2#{C:inactive})"
                 },
             },
             j_pmcmod_puppetAngelica = {
@@ -2208,6 +2213,8 @@ return {
         high_scores={},
         labels={
             pmcmod_markofcain_seal = "Mark of Cain",
+            pmcmod_gift_seal = "Gift",
+            pmcmod_pebble_seal = "Pebble",
             pmcmod_charge="Charge",
         },
         poker_hand_descriptions={},
