@@ -417,8 +417,8 @@ SMODS.Joker {
 		end
 
 		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_puppetA" then
-			print("Testing destruction")
-			print(context.card.config.center.key)
+--			print("Testing destruction")
+--			print(context.card.config.center.key)
 			card.ability.extra.mult = card.ability.extra.mult + 7.5
 			return {
 				message = localize('k_upgrade_ex'),
@@ -963,27 +963,27 @@ SMODS.Joker {
             }
         end
 		if G.shop and not card.getting_sliced then
-			print("Testing angela entering shop perished")
+--			print("Testing angela entering shop perished")
 			local destructable_jokers  = {}
 			for i=1, #G.jokers.cards do
-				print("Testing angela entered for loop 1")
+--				print("Testing angela entered for loop 1")
 				if G.jokers.cards[i] ~= card and not G.jokers.cards[i].ability.eternal and not G.jokers.cards[i].getting_sliced then
-					print("Testing angela condition 1 for loop 1")
+--					print("Testing angela condition 1 for loop 1")
 					if G.jokers.cards[i].ability.perish_tally then
-						print("Testing angela condition 2 for loop 1")
+--						print("Testing angela condition 2 for loop 1")
 						if G.jokers.cards[i].ability.perish_tally == 0 then
 							destructable_jokers[#destructable_jokers+1] = G.jokers.cards[i]
-							print("Testing angela counting perished")
+--							print("Testing angela counting perished")
 						end
 					end
 				end
 			end
 			for i=1, #destructable_jokers do
-				print("Testing angela condition 2")
+--				print("Testing angela condition 2")
 				if destructable_jokers[i] and not (context.blueprint_card or self).getting_sliced then
 					card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
                     destructable_jokers[i].getting_sliced = true
-					print("Testing angela destroying perished")
+--					print("Testing angela destroying perished")
                     G.E_MANAGER:add_event(Event({func = function()
                         card:juice_up(0.8, 0.8)
                         destructable_jokers[i]:start_dissolve({G.C.RED}, nil, 1.6)
@@ -2321,7 +2321,7 @@ SMODS.Joker {
 		end
 		--if context.joker_type_destroyed then
 		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_enoch" and not context.blueprint  then
-			print("Testing destruction")
+--			print("Testing destruction")
 			card.ability.extra.enochDeathCounter = card.ability.extra.enochDeathCounter + 1
 			card.ability.extra.aceMult = card.ability.extra.aceMult + card.ability.extra.aceMult_mod
 			return {
@@ -2331,7 +2331,7 @@ SMODS.Joker {
 			}
 		end
 		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_robotEnoch" and not context.blueprint  then
-			print("Testing destruction")
+--			print("Testing destruction")
 			card.ability.extra.enochDeathCounter = card.ability.extra.enochDeathCounter + 1
 			card.ability.extra.aceMult = card.ability.extra.aceMult + card.ability.extra.aceMult_mod
 			return {
@@ -2543,7 +2543,7 @@ SMODS.Joker {
 		local destructable_jokers = {}
 		local aimingAtJoker = false
 		if context.setting_blind and not card.getting_sliced and (pseudorandom('gubo') < G.GAME.probabilities.normal / card.ability.extra.odds) then
-			print("enteredAimingPhase")
+--			print("enteredAimingPhase")
 				for i = 1, #G.jokers.cards do
 					for j = 1, #G.P_CENTER_POOLS.Sinners do
 						if G.jokers.cards[i] ~= card and not G.jokers.cards[i].ability.eternal and not G.jokers.cards[i].getting_sliced and 
@@ -2614,7 +2614,7 @@ SMODS.Joker {
 			
 
 			if keypageStillDetected and not vergiliusDetected and card.ability.extra.aimingAtJoker == true and not (context.blueprint_card or self).getting_sliced then
-				print("enteredShootingPhase")
+--				print("enteredShootingPhase")
 				if card.ability.extra.joker_to_destroy.config.center.rarity == 1 then
 					for j = 1, #G.P_CENTER_POOLS.Sinners do
 						if G.P_CENTER_POOLS.Sinners[j].key == card.ability.extra.joker_to_destroy.config.center.key then
@@ -6918,7 +6918,7 @@ SMODS.Joker {
 					G.GAME.joker_buffer = G.GAME.joker_buffer + 1
             		G.E_MANAGER:add_event(Event({
 						func = function()
-							print(joker_to_revive)
+--							print(joker_to_revive)
 								SMODS.add_card {
 									set = 'Joker',
 									key_append = "hohenheim",
@@ -8080,7 +8080,7 @@ SMODS.Joker {
 			
 		end
 		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_robotEnoch" then
-			print("Testing destruction")
+--			print("Testing destruction")
 			card.ability.extra.enochDeathCounter = card.ability.extra.enochDeathCounter + 1
 			card.ability.extra.aceMult = card.ability.extra.aceMult + card.ability.extra.aceMult_mod
 			return {
@@ -8224,7 +8224,7 @@ SMODS.Joker {
                 func = function()
                     G.STATE = G.STATES.GAME_OVER
                     G.STATE_COMPLETE = false
-                    print("[DEBUG] game over triggered")
+--                    print("[DEBUG] game over triggered")
                     return true
                 end
             }))
@@ -8879,7 +8879,7 @@ SMODS.Joker {
 	calculate = function(self, card, context)
 
 		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_ricardo" then
-			print("Testing Ricardo increment")
+--			print("Testing Ricardo increment")
 			card.ability.extra.ricardoDefeatCounter = card.ability.extra.ricardoDefeatCounter + 1
 			card.ability.extra.canSpawnRicardo = true
 		end
@@ -9720,39 +9720,39 @@ SMODS.Joker {
 		local fifthNumberOK = false
 
 		if context.joker_main then
-			print("Prescript condition ok")
+--			print("Prescript condition ok")
 			if #G.play.cards == 5 then
-				print("Prescript 5 cards ok")
+--				print("Prescript 5 cards ok")
 				for i = 1, #G.play.cards do
 					if G.play.cards[i].base.nominal == 2 then
-						print("First number ok")
+--						print("First number ok")
 						firstNumberOK = true
 					end
 
 					if G.play.cards[i].base.nominal == 7 then
-						print("First number ok")
+--						print("First number ok")
 						secondNumberOK = true
 					end
 
 					if G.play.cards[i].base.nominal == 11 then
-						print("First number ok")
+--						print("First number ok")
 						thirdNumberOK = true
 					end
 
 					if G.play.cards[i].base.nominal == 8 then
-						print("First number ok")
+--						print("First number ok")
 						fourthNumberOK = true
 					end
 
 					if G.play.cards[i].base.nominal == 2 then
-						print("First number ok")
+--						print("First number ok")
 						fifthNumberOK = true
 					end
 
 				end
 
 				if firstNumberOK == true and secondNumberOK == true and thirdNumberOK == true and fourthNumberOK == true and fifthNumberOK == true then
-					print("All numbers ok")
+--					print("All numbers ok")
 					card.ability.extra.prescriptFullfilled = true
 				end
 
