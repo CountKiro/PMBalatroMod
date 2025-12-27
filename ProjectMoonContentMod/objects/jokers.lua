@@ -2647,14 +2647,12 @@ SMODS.Joker {
 					play_sound('pmcmod_gubo_shoot', 0.9, 0.9)
 					card.ability.extra.joker_to_destroy:start_dissolve({G.C.RED}, nil, 1.6)
 				return true end }))
-				card_eval_status_text((context.blueprint_card or card), 'extra', nil, nil, nil, {message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.xmult}}})
 			end
 
 		end
 		if context.joker_main then
 			return {
-				mult_mod = card.ability.extra.mult,
-				message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } }
+				mult = card.ability.extra.mult
 			}
 		end
 	end,
@@ -3270,7 +3268,7 @@ SMODS.Joker {
 	perishable_compat = true,
     pools =
 	{
-        ["Bloodfiend"] = true,
+        ["Bloodfiends"] = true,
         ["DemiansGroup"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
@@ -3601,7 +3599,7 @@ SMODS.Joker {
 			}
 		end
 		
-		if context.setting_blind and not card.getting_sliced then
+		if context.setting_blind and not G.GAME.last_blind and not G.GAME.last_blind.boss and not card.getting_sliced then
                 local destructable_jokers = {}
                 for i = 1, #G.jokers.cards do
 					for j = 1, #G.P_CENTER_POOLS.Heretics do
@@ -5300,7 +5298,7 @@ SMODS.Joker {
 
 		if context.joker_main then
 			return {
-				mult = card.ability.mult + (8*joker_count)
+				mult = card.ability.extra.mult + (8*joker_count)
 			}
 		end
     end,
@@ -6321,7 +6319,7 @@ SMODS.Joker {
 	key = 'paula',
 	name = "Paula",
 	unlocked = true,
-	config = { extra = { } },
+	config = { extra = { currentScale = 0} },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -6341,10 +6339,15 @@ SMODS.Joker {
 		
     end,
 	add_to_deck = function(self, card, from_debuff)
-            G.GAME.modifiers.scaling = (G.GAME.modifiers.scaling or 1) - 1
+		if G.GAME.modifiers.scaling and G.GAME.modifiers.scaling >= 2 then
+			card.ability.extra.currentScale = G.GAME.modifiers.scaling
+			G.GAME.modifiers.scaling = (G.GAME.modifiers.scaling or 1) - 1
+		end
     end,
     remove_from_deck = function(self, card, from_debuff)
-            G.GAME.modifiers.scaling = (G.GAME.modifiers.scaling or 1) + 1
+		if G.GAME.modifiers.scaling and G.GAME.modifiers.scaling >= 1 then
+            G.GAME.modifiers.scaling = card.ability.extra.currentScale
+		end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge('Zwei Association', HEX('23306e'), HEX('ab851d'), 1.2 )
@@ -6375,7 +6378,7 @@ SMODS.Joker {
 	calculate = function(self, card, context)
 		
 		
-		if context.setting_blind and not card.getting_sliced then
+		if context.setting_blind and not G.GAME.last_blind.boss and not card.getting_sliced then
                 local destructable_jokers = {}
                 for i = 1, #G.jokers.cards do
 					for j = 1, #G.P_CENTER_POOLS.Bloodfiends do
@@ -6890,7 +6893,7 @@ SMODS.Joker {
 	key = 'hohenheim',
 	name = "Hohenheim",
 	unlocked = true,
-	config = { cardsDestroyed = {}, extra = { baseChance = 1, maxChance = 1 } },
+	config = { cardsDestroyed = {}, extra = {  } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -6903,17 +6906,20 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-        local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'hohenheimChance')
-    	return {vars = { new_numerator, new_denominator}}
+    	return {vars = { }}
 	end,
 	calculate = function(self, card, context)
 		
-		if context.joker_type_destroyed and not context.blueprint_card and not context.card.config.center.key == "j_pmcmod_johann" then
-			card.ability.cardsDestroyed[#card.ability.cardsDestroyed + 1] = context.card.config.center.key
+		if context.joker_type_destroyed then
+			if context.card.config.center.key == "j_pmcmod_johann" then
+--				print("COMPILING FAILURE")
+			else
+--				print("COMPILED SUCCESSFULLY")
+				card.ability.cardsDestroyed[#card.ability.cardsDestroyed + 1] = context.card.config.center.key
+			end
 		end
 
 		if #card.ability.cardsDestroyed > 0 and context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and G.GAME.last_blind and G.GAME.last_blind.boss then
-			if SMODS.pseudorandom_probability(card, 'hohenheim', card.ability.extra.baseChance, card.ability.extra.maxChance, 'hohenheim') then
 					local joker_to_revive = pseudorandom_element(card.ability.cardsDestroyed, pseudoseed('hohenheim'))
 					G.GAME.joker_buffer = G.GAME.joker_buffer + 1
             		G.E_MANAGER:add_event(Event({
@@ -6931,7 +6937,6 @@ SMODS.Joker {
 							return true
 						end
 					}))
-			end
 		end
 
     end,
