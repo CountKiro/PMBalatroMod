@@ -652,10 +652,8 @@ return {
                     {"At the {C:attention}start of the Encounter{},",
                     "has a {C:green}#4# in #5#{} chance do aim at",
                     "a random {C:attention}Keypage{}."},
-                    " ",
                     {"Gubo will shoot at the selected",
                     "Keypage at the end of the Encounter."},
-                    " ",
                     {"If the Keypage is {C:green}Paperback{} or",
 			        "{C:blue}Hardcover{}, gain either {C:mult}#2#{} or",
                     "{C:mult}#3#{} Mult depending on the rarity.",
@@ -1399,7 +1397,7 @@ return {
                     "is selected, if a {C:green}Paperback{} or {C:blue}Uncommon{} Bloodfiend Keypage",
                     "is present, destroy it and gain {C:mult}#2#{} Mult",
                     "(can only happen once per blind)",
-                    "{C:inactive}(Currently {C:mult}#2#{C:inactive} Mult)",
+                    "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)",
                 }
             },
             j_pmcmod_hanul = {
@@ -2275,6 +2273,13 @@ return {
             pmcmod_gebura_loss={
                 "It's upsetting... But I'll",
                 "have to accept it."
+            },
+            pmcmod_tiph_win={
+                "It was obvious we’d win.", 
+                "Thought we couldn’t handle this much?"
+            },
+            pmcmod_tiph_loss={
+                "...Sorry. I wasn’t too helpful there."
             },
             pmcmod_hokma_win={
                 "Overconfidence is the greatest",
