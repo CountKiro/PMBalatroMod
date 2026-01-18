@@ -108,7 +108,7 @@ return {
                     "{C:blue}+2 hands{}",
                 },
                 unlock = {
-                    'Win a run with {C:attention}General Deck{}',
+                    'Win a run with {C:attention}Literature Deck{}',
                     'in at least {C:attention}Urban Nightmare Stake{}',
                 },
             },
@@ -122,7 +122,7 @@ return {
                     "Shop prices increased"
                 },
                 unlock = {
-                    'Win a run with {C:attention}General Deck{}',
+                    'Win a run with {C:attention}Art Deck{}',
                     'in at least {C:attention}Urban Nightmare Stake{}',
                 },
             },
@@ -134,7 +134,7 @@ return {
                     "{C:blue}+4 hands{}",
                 },
                 unlock = {
-                    'Win a run with {C:attention}Literature Deck{}',
+                    'Win a run with {C:attention}Language Deck{}',
                     'in at least {C:attention}Urban Nightmare Stake{}',
                 },
             },
