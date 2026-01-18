@@ -6,7 +6,7 @@
     "description": "Replace all textures with Project Moon themed alternatives",
     "prefix": "pmmod",
     "main_file": "ProjectMoonTexturePack.lua",
-    "priority": 0,
+    "priority": -15,
     "badge_colour": "750905",
     "badge_text_colour": "e6dfe3",
     "version": "1.4.1",
