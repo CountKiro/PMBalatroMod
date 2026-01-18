@@ -44,7 +44,9 @@ SMODS.Atlas{key = "tags", path = "tags.png", px = 34, py = 34, prefix_config = {
 SMODS.Atlas{key = "stickers", path = "stickers.png", px = 71, py = 95, prefix_config = { key = false } }
 SMODS.Atlas{key = "shop_sign", path = "ShopSignAnimation.png", px = 113, py = 57, prefix_config = { key = false }, atlas_table = 'ANIMATION_ATLAS', frames = 4 }
 SMODS.Atlas {key = "modicon",	path = "icon.png",	px = 32, py = 32}
-SMODS.Atlas {key = "balatro",	path = pseudorandom_element(possibleMainMenus),	px = 333, py = 216, prefix_config = { key = false }}
+if not next(SMODS.find_mod('KirosGameLogoMod')) then
+	SMODS.Atlas {key = "balatro",	path = pseudorandom_element(possibleMainMenus),	px = 333, py = 216, prefix_config = { key = false }}
+end
 
 local atlas_hc = SMODS.Atlas{key = "PMSkinBlack", path = "8BitDeck.png", px = 71, py = 95,}
 local icon_hc = SMODS.Atlas{key = "PMSkinIconBlack", path = "8BitDeck.png", px = 18, py = 18,}
