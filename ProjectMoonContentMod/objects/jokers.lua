@@ -909,7 +909,7 @@ SMODS.Joker {
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
-            if v.key == "j_gluttonous_joker" then
+            if v.key == "j_gluttenous_joker" then
                 if get_joker_win_sticker(v, true) >= 8 then
                     return true
                 end
@@ -1258,7 +1258,7 @@ SMODS.Joker {
 			local negative_jokers = {}
              for i = 1, #G.jokers.cards do
 				if G.jokers.cards[i].edition then
-                	if G.jokers.cards[i].ability.set == 'Joker' and G.jokers.cards[i].edition.key == "e_negative" then
+                	if G.jokers.cards[i].ability.set == 'Joker' and G.jokers.cards[i].edition.key == "e_negative" and G.jokers.cards[i] ~= card then
 					 	negative_jokers[#negative_jokers+1] = G.jokers.cards[i]
 					end
 				end
