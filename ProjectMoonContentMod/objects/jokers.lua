@@ -4788,132 +4788,6 @@ SMODS.Joker {
     end
 }
 
--- Indigo Elder
-SMODS.Joker {
-	key = 'indigoElder',
-	name = "Indigo Elder",
-	config = { extra = { mult = 0, chips = 0, dollars = 0, xmult = 0, lockedPosition = 0, debuffMult = 2, debuffChips = 5, debuffDollars = 1, debuffXmult = 0.9} },
-	eternal_compat = true,
-	blueprint_compat = true,
-	perishable_compat = true,
-	rarity = 4,
-	cost = 8,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 3, y = 8 },
-	soul_pos = { x = 3, y = 9 },
-    pools =
-	{
-
- 	},
-	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.mult, card.ability.extra.chips, card.ability.extra.dollars, card.ability.extra.xmult, card.ability.extra.lockedPosition, card.ability.extra.debuffMult,
-		card.ability.extra.debuffChips, card.ability.extra.debuffDollars, card.ability.extra.debuffXmult } }
-	end,
-	calculate = function(self, card, context)
-
-		if context.setting_blind and card.ability.extra.lockedPosition == 0 then
-			for i = 1, #G.jokers.cards do
-                if G.jokers.cards[i] == card then
-                    my_pos = i
-                    break
-                end
-            end
-			card.ability.extra.lockedPosition = my_pos
-		end
-
-		if context.individual and context.cardarea == G.play then
-
-			if card.ability.extra.lockedPosition == 2 then
-				return
-				{
-					mult = - card.ability.extra.debuffMult,
-					chips = card.ability.extra.chips,
-					xmult = card.ability.extra.xmult
-					
-				}
-			elseif card.ability.extra.lockedPosition == 3 then
-				return
-				{
-					mult = card.ability.extra.mult,
-					chips = - card.ability.extra.debuffChips,
-					xmult = card.ability.extra.xmult					
-				}
-
-			elseif card.ability.extra.lockedPosition == 4 then
-				G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + card.ability.extra.dollars
-				return
-				{
-					mult = card.ability.extra.mult,
-					chips = card.ability.extra.chips,
-					xmult = card.ability.extra.xmult,
-					dollars = -card.ability.extra.debuffDollars,
-                	func = function()
-						G.E_MANAGER:add_event(Event({
-							func = function()
-								G.GAME.dollar_buffer = 0
-								return true
-							end
-						}))
-					end
-					
-				}
-			elseif card.ability.extra.lockedPosition == 5 then
-				return
-				{
-					mult = card.ability.extra.mult,
-					chips = card.ability.extra.chips,
-					xmult = card.ability.extra.xmultDebuff
-					
-				}
-			else
-				return
-				{
-					mult = card.ability.extra.mult,
-					chips = card.ability.extra.chips,
-					xmult = card.ability.extra.xmult
-					
-				}
-			end
-
-		end
-
-
-		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and G.GAME.last_blind and G.GAME.last_blind.boss then
-			card.ability.extra.debuffMult = card.ability.extra.debuffMult + 2
-			card.ability.extra.debuffChips = card.ability.extra.debuffChips + 5
-			card.ability.extra.debuffXmult = card.ability.extra.debuffXmult - 0.1
-			card.ability.extra.debuffDollars = card.ability.extra.debuffDollars + 1
-
-			if card.ability.extra.lockedPosition == 1 then
-				card.ability.extra.mult = card.ability.extra.mult + 15
-				card.ability.extra.chips = card.ability.extra.chips + 30
-				card.ability.extra.dollars = card.ability.extra.dollars + 2
-				card.ability.extra.xmult = card.ability.extra.xmult + 1
-
-			elseif card.ability.extra.lockedPosition == 2 then
-				card.ability.extra.mult = card.ability.extra.mult + 15
-
-			elseif card.ability.extra.lockedPosition == 3 then
-				card.ability.extra.chips = card.ability.extra.chips + 30
-
-			elseif card.ability.extra.lockedPosition == 4 then
-				card.ability.extra.dollars = card.ability.extra.dollars + 2
-
-			else
-				card.ability.extra.xmult = card.ability.extra.xmult + 1
-			end	
-
-			card.ability.extra.lockedPosition = 0
-			return {message = localize('k_reset')}
-		end
-    end,
-	calc_dollar_bonus = function(self, card)
-        return card.ability.extra.dollars
-    end,
-	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Color Fixer", HEX('243542'), HEX('35c5e6'), 1.2 )
- 	end
-}
 
 -- Catherine
 SMODS.Joker {
@@ -7095,6 +6969,2163 @@ SMODS.Joker {
  	end,
 }
 
+
+-- SWEEPERS --
+--------------
+
+-- Qing Tao
+SMODS.Joker {
+	key = 'qingTao',
+	name = "Qing Tao",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 1,
+	cost = 4,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Shan San
+SMODS.Joker {
+	key = 'shanSan',
+	name = "Shan San",
+	unlocked = true,
+	config = { extra = { type = "Three of a Kind", dollars = 3, baseChance = 1, maxChance = 3 } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 1,
+	cost = 4,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =8, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'shanSan')
+        return {vars = { localize(card.ability.extra.type, 'poker_hands'), card.ability.extra.dollars, new_numerator, new_denominator } } 
+	end,
+	calculate = function(self, card, context)
+		if context.individual and context.cardarea == G.play and next(context.poker_hands[card.ability.extra.type]) then
+			if SMODS.pseudorandom_probability(card, 'shanSan', card.ability.extra.baseChance, card.ability.extra.maxChance, 'shanSan') then
+				return {
+					dollars = card.ability.extra.dollars
+				}
+			end
+        end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+-- LEVIATHAN --
+---------------
+
+--Jumsoon
+SMODS.Joker {
+	key = 'jumsoon',
+	name = "Jumsoon",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 3,
+	cost = 8,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =8, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		if context.setting_blind and not context.blueprint then
+
+			local my_pos = nil
+
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card then
+					my_pos = i
+					break
+				end
+			end
+
+			for i = 1, (my_pos - 1) do
+
+				G.E_MANAGER:add_event(Event({
+						trigger = 'after',
+						delay = 0.15,
+						func = function()
+							G.jokers.cards[i]:flip()
+							play_sound('card1', percent)
+							G.jokers.cards[i]:juice_up(0.3, 0.3)
+							return true
+						end,
+					}))
+					
+
+				local rarity = G.jokers.cards[i].config.center.rarity
+				
+				if rarity <= 3 then
+						G.E_MANAGER:add_event(Event({
+						delay = 0.5,
+						func = function()
+							G.jokers.cards[i]:set_ability(pseudorandom_element(G.P_JOKER_RARITY_POOLS[rarity], 'seed').key)
+							return true
+						end
+					}))
+				end
+			
+			end
+		end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Garnet
+SMODS.Joker {
+	key = 'garnet',
+	name = "Garnet",
+	unlocked = true,
+	config = { availableJokers = {}, selectedJoker = "None", extra = {} },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 3,
+	cost = 8,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+		local keyToLocalize = nil
+		if #ProjectMoonMod.garnetJoker.cards >= 1 then
+			keyToLocalize = ProjectMoonMod.garnetJoker.cards[1].config.center.key
+		else
+			keyToLocalize = "j_pmcmod_garnet"
+		end
+        return {vars = { localize{type="name_text", set="Joker", key = (keyToLocalize)} } }
+	end,
+	calculate = function(self, card, context)
+		if context.setting_blind then
+			card.ability.availableJokers = {}
+			card.ability.selectedJoker = "None"
+			for i = 1, #G.P_CENTER_POOLS["Joker"] do
+				if G.P_CENTER_POOLS["Joker"][i] ~= card and G.P_CENTER_POOLS["Joker"][i].blueprint_compat and G.P_CENTER_POOLS["Joker"][i].unlocked then
+					card.ability.availableJokers[#card.ability.availableJokers+1] = G.P_CENTER_POOLS["Joker"][i]
+				end
+			end
+			card.ability.selectedJoker = #card.ability.availableJokers > 0 and pseudorandom_element(card.ability.availableJokers, pseudoseed('garnet')) or nil
+			if #ProjectMoonMod.garnetJoker.cards >=1 then
+				G.E_MANAGER:add_event(Event({func = function()
+							card:juice_up(0.8, 0.8)
+							ProjectMoonMod.garnetJoker.cards[1]:start_dissolve({G.C.RED}, nil, 1.6)
+						return true end }))
+			end
+			local jokerKey = card.ability.selectedJoker.key
+			SMODS.add_card({ key = jokerKey, area = ProjectMoonMod.garnetJoker })
+			
+			
+		end
+
+		local ret = SMODS.blueprint_effect(card, ProjectMoonMod.garnetJoker.cards[1], context)
+		if ret then
+			ret.colour = G.C.BLUE
+		end
+		return ret
+        
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+-- WONDERLAB --
+---------------
+
+--Catt
+SMODS.Joker {
+	key = 'catt',
+	name = "Catt",
+	unlocked = false,
+	config = { exhausted = false, counter = 2 },
+	eternal_compat = true,
+	blueprint_compat = false,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+
+		if context.end_of_round and G.GAME.last_blind and G.GAME.last_blind.boss and card.ability.exhausted == true then
+			card.ability.counter = card.ability.counter - 1
+
+			if card.ability.counter == 0 then
+				card.ability.exhausted = false
+			end
+		end
+
+		if context.end_of_round and context.game_over and context.main_eval and card.ability.exhausted == false then
+			local destructable_jokers = {}
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] ~= card and not G.jokers.cards[i].ability.eternal then
+					destructable_jokers[#destructable_jokers+1] = G.jokers.cards[i]
+				end
+			end
+			local joker_to_destroy = #destructable_jokers > 0 and pseudorandom_element(destructable_jokers, pseudoseed('catt')) or nil
+			if joker_to_destroy then
+				card.ability.exhausted = true
+				card.ability.counter = 2
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        G.hand_text_area.blind_chips:juice_up()
+                        G.hand_text_area.game_chips:juice_up()
+                        play_sound('tarot1')
+                        joker_to_destroy:start_dissolve()
+                        return true
+                    end
+                }))
+                return {
+                    message = localize('k_saved_ex'),
+                    saved = 'ph_mr_bones', --kiro -- check this later
+                    colour = G.C.RED
+                }
+			end
+        end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+
+-- CANTO VIII --
+----------------
+
+--Jia Mu
+SMODS.Joker {
+	key = 'jiaMu',
+	name = "Jia Mu",
+	unlocked = true,
+	config = { extra = { baseChance = 1, maxChance = 2, moneyLoss = 3} },
+	eternal_compat = true,
+	blueprint_compat = false,
+	perishable_compat = true,
+	rarity = 3,
+	cost = 10,
+    atlas = 'ModdedProjectMoon',
+	pos = { x = 8, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'jiaMu')
+        return {vars = { new_numerator, new_denominator, card.ability.extra.moneyLoss } } 
+	end,
+	calculate = function(self, card, context)
+
+		
+
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] ~= card then
+					SMODS.debuff_card(G.jokers.cards[i], "reset", "jiaMu")
+				end
+			end
+		end
+
+		if context.setting_blind then
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] ~= card then
+					if SMODS.pseudorandom_probability(card, 'jiaMu', card.ability.extra.baseChance, card.ability.extra.maxChance, 'jiaMu') then
+						SMODS.debuff_card(G.jokers.cards[i], true, "jiaMu")
+					end
+				end
+			end
+		end
+		for i = 1, #G.jokers.cards do
+			if context.retrigger_joker_check and context.other_card == G.jokers.cards[i] and G.GAME.dollars >= 3 then
+				return {
+					repetitions = math.random(0, 2),
+					dollars = -card.ability.extra.moneyLoss
+				} 
+			end
+		end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Jia Qiu
+SMODS.Joker {
+	key = 'jiaQiu',
+	name = "Jia Qiu",
+	unlocked = true,
+	config = { extra = { xmult = 2, baseChance = 1, maxChance = 4 } },
+	eternal_compat = true,
+	blueprint_compat = false,
+	perishable_compat = false,
+	rarity = 3,
+	cost = 8,
+    atlas = 'ModdedProjectMoon',
+	pos = { x = 8, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'jiaQiu')
+        return {vars = { card.ability.extra.xmult, card.ability.extra.xmult * 4, new_numerator, new_denominator } } 
+	end,
+	calculate = function(self, card, context)
+
+
+		if context.joker_main then
+			local chosenMult = nil
+			if SMODS.pseudorandom_probability(card, 'jiaQiu', card.ability.extra.baseChance, card.ability.extra.maxChance, 'jiaQiu') then
+				chosenMult = card.ability.extra.xmult * 4
+			else
+				chosenMult = card.ability.extra.xmult
+			end
+			return {
+				xmult = chosenMult
+			}
+		end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("Kong Family", HEX("8a001e"), HEX('242424'), 1.2 )
+ 	end,
+}
+
+--Lin Daiyu
+SMODS.Joker {
+	key = 'linDaiyu',
+	name = "Lin Daiyu",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = false,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 7,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Xue Baochai
+SMODS.Joker {
+	key = 'xueBaochai',
+	name = "Xue Baochai",
+	unlocked = true,
+	config = { extra = { percentageToReduce = 0.9 } },
+	eternal_compat = true,
+	blueprint_compat = false,
+	perishable_compat = true,
+	rarity = 1,
+	cost = 4,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =8, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = { card.ability.extra.percentageToReduce } }
+	end,
+	calculate = function(self, card, context)
+		if context.setting_blind then
+			G.E_MANAGER:add_event(Event({func = function()
+				G.GAME.blind.chips = math.floor(G.GAME.blind.chips*card.ability.extra.percentageToReduce)
+				G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+				G.FUNCS.blind_chip_UI_scale(G.hand_text_area.blind_chips)
+				G.HUD_blind:recalculate() 
+				G.hand_text_area.blind_chips:juice_up()
+			return true end }))
+		end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Xianren A
+SMODS.Joker {
+	key = 'xianrenA',
+	name = "Xianren A",
+	unlocked = false,
+	config = { extra = { dollars = 10 } },
+	eternal_compat = true,
+	blueprint_compat = false,
+	perishable_compat = false,
+	rarity = 3,
+	cost = 8,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = { card.ability.extra.dollars } }
+	end,
+	calculate = function(self, card, context)
+		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
+			local xianrenList = {"j_pmcmod_xiarenB", "j_pmcmod_xiarenC", "j_pmcmod_xiarenD", "j_pmcmod_xiarenE", "j_pmcmod_xiarenF"}
+			local selectedXianren = pseudorandom_element(xianrenList, pseudoseed('xianren'))
+			local percent = 1.15
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					card:flip()
+					play_sound('card1', percent)
+					card:juice_up(0.3, 0.3)
+					return true
+				end,
+			}))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+				func = function()
+					card:set_ability(G.P_CENTERS[selectedXianren])
+					return true
+				end
+			}))
+		end
+    end,
+	calc_dollar_bonus = function(self, card)
+        return card.ability.extra.dollars
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Xianren B
+SMODS.Joker {
+	key = 'xianrenB',
+	name = "Xianren B",
+	unlocked = false,
+	config = { extra = { mult = 30, chips = 50  } },
+	eternal_compat = true,
+	blueprint_compat = false,
+	perishable_compat = false,
+	rarity = 3,
+	cost = 8,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = { card.ability.extra.mult. card.ability.extra.chips } }
+	end,
+	calculate = function(self, card, context)
+		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
+			local xianrenList = {"j_pmcmod_xiarenA", "j_pmcmod_xiarenC", "j_pmcmod_xiarenD", "j_pmcmod_xiarenE", "j_pmcmod_xiarenF"}
+			local selectedXianren = pseudorandom_element(xianrenList, pseudoseed('xianren'))
+			local percent = 1.15
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					card:flip()
+					play_sound('card1', percent)
+					card:juice_up(0.3, 0.3)
+					return true
+				end,
+			}))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+				func = function()
+					card:set_ability(G.P_CENTERS[selectedXianren])
+					return true
+				end
+			}))
+		end
+		if context.individual and context.cardarea == G.play and #context.full_hand >= 3 then
+			if context.scoring_hand[1] or context.scoring_hand[#context.full_hand] then
+				return{
+					mult = card.ability.extra.mult,
+					chips = card.ability.extra.chips
+				}
+			end
+		end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Xianren C
+SMODS.Joker {
+	key = 'xianrenC',
+	name = "Xianren C",
+	unlocked = false,
+	config = { extra = {  } },
+	eternal_compat = true,
+	blueprint_compat = false,
+	perishable_compat = false,
+	rarity = 3,
+	cost = 8,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
+			local xianrenList = {"j_pmcmod_xiarenA", "j_pmcmod_xiarenB", "j_pmcmod_xiarenD", "j_pmcmod_xiarenE", "j_pmcmod_xiarenF"}
+			local selectedXianren = pseudorandom_element(xianrenList, pseudoseed('xianren'))
+			local percent = 1.15
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					card:flip()
+					play_sound('card1', percent)
+					card:juice_up(0.3, 0.3)
+					return true
+				end,
+			}))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+				func = function()
+					card:set_ability(G.P_CENTERS[selectedXianren])
+					return true
+				end
+			}))
+		end
+        if context.individual and context.cardarea == G.play then
+			return {
+				xmult = card.ability.extra.xmult,
+			}
+        end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Xianren D
+SMODS.Joker {
+	key = 'xianrenD',
+	name = "Xianren D",
+	unlocked = false,
+	config = { extra = {  } },
+	eternal_compat = true,
+	blueprint_compat = false,
+	perishable_compat = false,
+	rarity = 3,
+	cost = 8,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
+			local xianrenList = {"j_pmcmod_xiarenA", "j_pmcmod_xiarenB", "j_pmcmod_xiarenC", "j_pmcmod_xiarenE", "j_pmcmod_xiarenF"}
+			local selectedXianren = pseudorandom_element(xianrenList, pseudoseed('xianren'))
+			local percent = 1.15
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					card:flip()
+					play_sound('card1', percent)
+					card:juice_up(0.3, 0.3)
+					return true
+				end,
+			}))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+				func = function()
+					card:set_ability(G.P_CENTERS[selectedXianren])
+					return true
+				end
+			}))
+		end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Xianren E
+SMODS.Joker {
+	key = 'xianrenE',
+	name = "Xianren E",
+	unlocked = false,
+	config = { extra = {  } },
+	eternal_compat = true,
+	blueprint_compat = false,
+	perishable_compat = false,
+	rarity = 3,
+	cost = 8,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
+			local xianrenList = {"j_pmcmod_xiarenA", "j_pmcmod_xiarenB", "j_pmcmod_xiarenC", "j_pmcmod_xiarenD", "j_pmcmod_xiarenF"}
+			local selectedXianren = pseudorandom_element(xianrenList, pseudoseed('xianren'))
+			local percent = 1.15
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					card:flip()
+					play_sound('card1', percent)
+					card:juice_up(0.3, 0.3)
+					return true
+				end,
+			}))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+				func = function()
+					card:set_ability(G.P_CENTERS[selectedXianren])
+					return true
+				end
+			}))
+		end
+
+		if context.before and context.main_eval and context.cardarea == G.play and G.GAME.current_round.hands_played == 0 then
+			if G.GAME.hands[context.scoring_name] then
+				return {
+					level_up = 1
+				}
+			end
+    	end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Xianren F
+SMODS.Joker {
+	key = 'xianrenF',
+	name = "Xianren F",
+	unlocked = false,
+	config = { extra = { sell_value = 3 } },
+	eternal_compat = true,
+	blueprint_compat = false,
+	perishable_compat = false,
+	rarity = 3,
+	cost = 8,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
+			local xianrenList = {"j_pmcmod_xiarenA", "j_pmcmod_xiarenB", "j_pmcmod_xiarenC", "j_pmcmod_xiarenD", "j_pmcmod_xiarenE"}
+			local selectedXianren = pseudorandom_element(xianrenList, pseudoseed('xianren'))
+			local percent = 1.15
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					card:flip()
+					play_sound('card1', percent)
+					card:juice_up(0.3, 0.3)
+					return true
+				end,
+			}))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+				func = function()
+					card:set_ability(G.P_CENTERS[selectedXianren])
+					return true
+				end
+			}))
+		end
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+            for _, area in ipairs({ G.jokers }) do
+                for _, other_card in ipairs(area.cards) do
+                    if other_card.set_cost then
+                        other_card.ability.extra_value = (other_card.ability.extra_value or 0) +
+                            card.ability.extra.sell_value
+                        other_card:set_cost()
+                    end
+                end
+            end
+            return {
+                message = localize('k_val_up'),
+                colour = G.C.MONEY
+            }
+        end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Lady Wang
+SMODS.Joker {
+	key = 'ladyWang',
+	name = "ladyWang",
+	unlocked = true,
+	config = { extra = { mult = 6 } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 1,
+	cost = 4,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =8, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = { 6 + 3 * (G.GAME.round_resets.ante or 1) } }
+	end,
+	calculate = function(self, card, context)
+		if context.individual and context.cardarea == G.play and context.other_card:get_id() == 6 then
+            return {
+                mult = card.ability.extra.mult + (3 * (G.GAME.round_resets.ante or 0))
+            }
+        end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Jia Zheng
+SMODS.Joker {
+	key = 'jiaZheng',
+	name = "Jia Zheng",
+	unlocked = true,
+	config = { extra = { chips = (16 + 5 * (G.GAME.round_resets.ante or 1)) } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 1,
+	cost = 4,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =8, y = 14 },
+    pools =
+	{
+        
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = { 10 + 5 * (G.GAME.round_resets.ante or 1) } }
+	end,
+	calculate = function(self, card, context)
+		if context.individual and context.cardarea == G.play and context.other_card:get_id() == 6 then
+            return {
+                chips = card.ability.extra.chips + (5 * (G.GAME.round_resets.ante or 0))
+            }
+        end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Jia Yuanchun
+SMODS.Joker {
+	key = 'jiaYuanchun',
+	name = "Jia Yuanchun",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = false,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x = 0, y = 0 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	calc_dollar_bonus = function(self, card)
+        if G.GAME.dollars > 100  and #G.GAME.tags >= 2 and G.GAME.last_blind and G.GAME.last_blind.boss then
+            return ((#G.GAME.tags - 1) *  8)
+        end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Jia Huan (Child)
+SMODS.Joker {
+	key = 'jiaHuanChild',
+	name = "Jia Huan (Child)",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = false,
+	perishable_compat = true,
+	rarity = 1,
+	cost = 2,
+    atlas = 'ModdedProjectMoon',
+	pos = { x = 8, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		if context.selling_self and not context.blueprint then
+            G.GAME.joker_buffer = G.GAME.joker_buffer + 1
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                        SMODS.add_card {
+                            set = 'Joker',
+                            key_append = 'jiaHuan',
+                            rarity = 'Uncommon',
+                        }
+                        G.GAME.joker_buffer = 0
+                    return true
+                end
+            }))
+        end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Xue Pan
+SMODS.Joker {
+	key = 'xuePan',
+	name = "Xue Pan",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		local coinFlip = math.random(1,2)
+		if context.setting_blind and not context.blueprint then
+			if coinFlip == 1 then
+				local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
+
+				local eligible_card = pseudorandom_element(editionless_jokers, 'xuePan')
+				local edition = SMODS.poll_edition { key = "xuePan", guaranteed = true, no_negative = false, options = { 'e_polychrome', 'e_holo', 'e_foil', 'e_negative', 'e_pmcmod_charge' } }
+				eligible_card:set_edition(edition, true)
+				check_for_unlock({ type = 'have_edition' })
+			else
+				local destructable_jokers = {}
+                for i = 1, #G.jokers.cards do
+					if G.jokers.cards[i] ~= card and not G.jokers.cards[i].ability.eternal and not G.jokers.cards[i].getting_sliced and not G.jokers.cards[i].edition then
+						 destructable_jokers[#destructable_jokers+1] = G.jokers.cards[i]
+					end
+                end
+                local joker_to_destroy = #destructable_jokers > 0 and pseudorandom_element(destructable_jokers, pseudoseed('xuePan')) or nil
+
+                if joker_to_destroy and not (context.blueprint_card or self).getting_sliced then
+                    joker_to_destroy.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+                        card:juice_up(0.8, 0.8)
+                        joker_to_destroy:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
+                end
+			end
+		end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Wang Zhao
+SMODS.Joker {
+	key = 'wangZhao',
+	name = "Wang Zhao",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = false,
+	blueprint_compat = false,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		if context.end_of_round and context.game_over == false and context.main_eval and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then
+			card.ability.extra_value = card.ability.extra_value + 1
+			card:set_cost()
+            return {
+                message = localize('k_val_up'),
+                colour = G.C.MONEY
+            }
+        end
+
+		if context.final_scoring_step and hand_chips * mult >= G.GAME.blind.chips and not context.blueprint then
+			card.ability.extra_value = card.ability.extra_value + 2
+			card:set_cost()
+            return {
+                message = localize('k_val_up'),
+                colour = G.C.MONEY
+            }
+		end
+
+		if context.end_of_round and context.game_over == false and context.main_eval and not G.GAME.last_blind.boss and not context.blueprint then
+
+			local my_pos = nil
+
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card then
+					my_pos = i
+					break
+				end
+			end
+
+			if G.jokers.cards[my_pos - 1] then
+				if G.jokers.cards[my_pos - 1].set_cost then
+					G.jokers.cards[my_pos - 1].ability.extra_value  = G.jokers.cards[my_pos - 1].ability.extra_value  + 4
+					card.ability.extra_value = card.ability.extra_value - 2
+					card:set_cost()
+					G.jokers.cards[my_pos - 1]:set_cost()
+				end
+			end
+
+			if G.jokers.cards[my_pos + 1] then
+				if G.jokers.cards[my_pos - 1].set_cost then
+					G.jokers.cards[my_pos + 1].ability.extra_value  = G.jokers.cards[my_pos + 1].ability.extra_value  + 4
+					card.ability.extra_value = card.ability.extra_value - 2
+					card:set_cost()
+					G.jokers.cards[my_pos + 1]:set_cost()
+				end
+			end
+            return {
+                message = "Value loss",
+                colour = G.C.MONEY
+            }
+        end
+
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and card.ability.extra_value <= 0 then
+            G.E_MANAGER:add_event(Event({
+					func = function()
+						play_sound('slice1', 0.96+math.random()*0.08)
+						card.T.r = -0.2
+						card:juice_up(0.3, 0.4)
+						card.states.drag.is = true
+						card.children.center.pinch.x = true
+
+						G.E_MANAGER:add_event(Event({
+							trigger = 'after',
+							delay = 0.3,
+							blockable = false,
+							func = function()
+								G.jokers:remove_card(card)
+								card:remove()
+								card = nil
+								return true;
+							end
+						}))
+						return true
+					end
+				}))
+            G.GAME.pool_flags.wangZhao_extinct = true
+            return {
+                message = 'Died'
+            }
+        end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("Wang Family", HEX("525252"), HEX('c2c2c2'), 1.2 )
+ 	end,
+}
+
+--Wang Dawei
+SMODS.Joker {
+	key = 'wangDawei',
+	name = "Wang Dawei",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 1,
+	cost = 4,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("Wang Family", HEX("525252"), HEX('c2c2c2'), 1.2 )
+ 	end,
+}
+
+--Wang Qingshan
+SMODS.Joker {
+	key = 'wangQingshan',
+	name = "Wang Qingshan",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 1,
+	cost = 4,
+    atlas = 'ModdedProjectMoon',
+	pos = { x = 0, y = 0 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		if context.main_scoring and context.cardarea == G.play and #context.full_hand == 1 and context.full_hand[1]:get_id() == 8 and G.GAME.current_round.hands_played == 0 then
+
+			local tagCount = #G.GAME.tags
+
+                if #G.GAME.tags >= 1 then
+
+					-- Deletes all current tags (need to figure out how to do this)
+					for i=1, #G.GAME.tags do
+
+					end
+
+					-- Create new tags
+					for i=1, tagCount do
+						local tag_pool = get_current_pool('Tag')
+						local selected_tag = pseudorandom_element(tag_pool, 'pmcmod_seed')
+						local it = 1
+
+						while selected_tag == 'UNAVAILABLE' do
+							it = it + 1
+							selected_tag = pseudorandom_element(tag_pool, 'pmcmod_seed'..it)
+						end
+						
+							G.E_MANAGER:add_event(Event({
+							func = (function()
+								add_tag(Tag(selected_tag, false, 'Small'))
+								play_sound('generic1', 0.9 + math.random() * 0.1, 0.8)
+								play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
+								return true
+							end)
+						}))
+            			return nil, true -- This is for Joker retrigger purposes
+					end
+                end
+                return {
+                    remove = true
+                }
+            end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Wang Ren
+SMODS.Joker {
+	key = 'wangRen',
+	name = "Wang Ren",
+	unlocked = true,
+	config = { extra = { dollars = 7 } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 1,
+	cost = 4,
+    atlas = 'ModdedProjectMoon',
+	pos = { x = 8, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = { card.ability.extra.dollars } }
+	end,
+	calculate = function(self, card, context)
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and G.GAME.dollars <= 100 then
+            G.E_MANAGER:add_event(Event({
+					func = function()
+						play_sound('slice1', 0.96+math.random()*0.08)
+						card.T.r = -0.2
+						card:juice_up(0.3, 0.4)
+						card.states.drag.is = true
+						card.children.center.pinch.x = true
+
+						G.E_MANAGER:add_event(Event({
+							trigger = 'after',
+							delay = 0.3,
+							blockable = false,
+							func = function()
+								G.jokers:remove_card(card)
+								card:remove()
+								card = nil
+								return true;
+							end
+						}))
+						return true
+					end
+				}))
+            G.GAME.pool_flags.wangRen_extinct = true
+            return {
+                message = 'Died'
+            }
+        end
+    end,
+    calc_dollar_bonus = function(self, card)
+        if G.GAME.dollars > 100 then
+            return card.ability.extra.dollars
+        end
+    end,
+	in_pool = function(self, args)
+		if G.GAME.dollars >= 104 then
+            return true
+		else
+			return false
+        end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("Wang Family", HEX("525252"), HEX('c2c2c2'), 1.2 )
+ 	end,
+}
+
+--Shi Yihua
+SMODS.Joker {
+	key = 'shiYihua',
+	name = "Shi Yihua",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 1,
+	cost = 4,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Shi Huazhen
+SMODS.Joker {
+	key = 'shiHuazhen',
+	name = "Shi Huazhen",
+	unlocked = true,
+	config = { extra = {mult_mod = 1 } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 1,
+	cost = 4,
+    atlas = 'ModdedProjectMoon',
+	pos = { x = 8, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = { card.ability.extra.mult_mod } }
+	end,
+	calculate = function(self, card, context)
+		local my_pos = nil
+		if context.joker_main then
+			for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+                    my_pos = i
+                    break
+                end
+				print(my_pos)
+            end
+			return {
+				print(string.len(localize{type="name_text", set="Joker", key = G.jokers.cards[my_pos-1].config.center.key} or "")),
+				mult = card.ability.extra.mult_mod * (string.len((localize{type="name_text", set="Joker", key = G.jokers.cards[my_pos-1].config.center.key} or "") or 0))
+			}
+		end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("Shi Family", HEX("8a753f"), HEX('2e4a37'), 1.2 )
+ 	end,
+}
+
+--Shi Sijing
+SMODS.Joker {
+	key = 'shiSijing',
+	name = "Shi Sijing",
+	unlocked = true,
+	config = { extra = { chips_mod = 10, chips = 0 } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 1,
+	cost = 4,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		if context.joker_type_destroyed and not context.blueprint  then
+			card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
+			return {
+				message = localize('k_upgrade_ex'),
+				colour = G.C.CHIPS,
+				message_card = card
+			}
+		end
+
+		if context.joker_main then
+			return {
+				chips = card.ability.extra.chips
+			}
+		end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("Shi Family", HEX("8a753f"), HEX('2e4a37'), 1.2 )
+ 	end,
+}
+
+--Kong Sihui
+SMODS.Joker {
+	key = 'kongSihui',
+	name = "Kong Sihui",
+	unlocked = true,
+	config = { extra = { dollars = 2, baseChanceTrigger = 1, maxChanceTrigger = 5, baseChanceDeath = 1, maxChanceDeath = 20 } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 1,
+	cost = 4,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        local new_numeratorTrigger, new_denominatorTrigger = SMODS.get_probability_vars(card, card.ability.extra.baseChanceTrigger, card.ability.extra.maxChanceTrigger, 'kong')
+		local new_numeratorDeath, new_denominatorDeath = SMODS.get_probability_vars(card, card.ability.extra.baseChanceDeath, card.ability.extra.maxChanceDeath, 'kong')
+        return {vars = { card.ability.extra.dollars, new_numeratorTrigger, new_denominatorTrigger, new_numeratorDeath, new_denominatorDeath } } 
+	end,
+	calculate = function(self, card, context)
+		if context.individual and context.cardarea == G.play then
+			if SMODS.pseudorandom_probability(card, 'kong', card.ability.extra.baseChanceTrigger, card.ability.extra.maxChanceTrigger, 'kong') then
+				return {
+					dollars = card.ability.extra.dollars
+				}
+			end
+
+			if SMODS.pseudorandom_probability(card, 'kong', card.ability.extra.baseChanceDeath, card.ability.extra.maxChanceDeath, 'kong') then
+			
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						play_sound('tarot1')
+						card.T.r = -0.2
+						card:juice_up(0.3, 0.4)
+						card.states.drag.is = true
+						card.children.center.pinch.x = true
+
+						G.E_MANAGER:add_event(Event({
+							trigger = 'after',
+							delay = 0.3,
+							blockable = false,
+							func = function()
+								G.jokers:remove_card(card)
+								card:remove()
+								card = nil
+								return true;
+							end
+						}))
+						return true
+					end
+				}))
+				G.GAME.pool_flags.sihui_extinct = true
+			end
+        end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Kong Youjin
+SMODS.Joker {
+	key = 'kongYoujin',
+	name = "Kong Youjin",
+	unlocked = true,
+	config = { extra = { repetitions = 1, baseChanceTrigger = 1, maxChanceTrigger = 5, baseChanceDeath = 1, maxChanceDeath = 20 } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 1,
+	cost = 4,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        local new_numeratorTrigger, new_denominatorTrigger = SMODS.get_probability_vars(card, card.ability.extra.baseChanceTrigger, card.ability.extra.maxChanceTrigger, 'kong')
+		local new_numeratorDeath, new_denominatorDeath = SMODS.get_probability_vars(card, card.ability.extra.baseChanceDeath, card.ability.extra.maxChanceDeath, 'kong')
+        return {vars = { card.ability.extra.repetitions, new_numeratorTrigger, new_denominatorTrigger, new_numeratorDeath, new_denominatorDeath } } 
+	end,
+	calculate = function(self, card, context)
+		if context.repetition and context.cardarea == G.play then
+			if SMODS.pseudorandom_probability(card, 'kong', card.ability.extra.baseChanceTrigger, card.ability.extra.maxChanceTrigger, 'kong') then
+				return {
+					repetitions = card.ability.extra.repetitions
+				}
+			end
+
+			if SMODS.pseudorandom_probability(card, 'kong', card.ability.extra.baseChanceDeath, card.ability.extra.maxChanceDeath, 'kong') then
+			
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						play_sound('tarot1')
+						card.T.r = -0.2
+						card:juice_up(0.3, 0.4)
+						card.states.drag.is = true
+						card.children.center.pinch.x = true
+
+						G.E_MANAGER:add_event(Event({
+							trigger = 'after',
+							delay = 0.3,
+							blockable = false,
+							func = function()
+								G.jokers:remove_card(card)
+								card:remove()
+								card = nil
+								return true;
+							end
+						}))
+						return true
+					end
+				}))
+				G.GAME.pool_flags.youjin_extinct = true
+			end
+        end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Xiren
+SMODS.Joker {
+	key = 'xiren',
+	name = "Xiren",
+	unlocked = true,
+	config = { extra = { lastPlayedHand = "", mult_mod = 3 } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 1,
+	cost = 4,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+
+		if context.before and not context.blueprint then
+			local _hand, _tally = nil, 0
+			for _, handname in ipairs(G.handlist) do
+				if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played > _tally then
+					_hand = handname
+					_tally = G.GAME.hands[handname].played
+				end
+			end
+			card.ability.extra.mostPlayedHand = _hand
+		end
+		
+		if context.joker_main then
+			return {
+				mult = (G.GAME.hands[card.ability.extra.mostPlayedHand].played - G.GAME.hands[context.scoring_name].played) * card.ability.extra.mult_mod
+			}
+		end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Wei
+SMODS.Joker {
+	key = 'wei',
+	name = "Wei",
+	unlocked = true,
+	config = { extra = { mostPlayedHand = "", cardsInHand = 0, dollars = 2 } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = { card.ability.extra.dollars, card.ability.extra.mostPlayedHand } }
+	end,
+	calculate = function(self, card, context)
+
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and G.GAME.last_blind and G.GAME.last_blind.boss then
+			local _hand, _tally = nil, 0
+			for _, handname in ipairs(G.handlist) do
+				if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played > _tally then
+					_hand = handname
+					_tally = G.GAME.hands[handname].played
+				end
+			end
+			card.ability.extra.mostPlayedHand = _hand
+			card.ability.extra.cardsInHand = #G.hand.cards
+		end
+    end,
+	calc_dollar_bonus = function(self, card)
+        if card.ability.extra.mostPlayedHand ~= "High Card" then
+            return (card.ability.extra.cardsInHand * card.ability.extra.dollars)
+        end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Zigong
+SMODS.Joker {
+	key = 'zigong',
+	name = "Zigong",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 1,
+	cost = 4,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Zilu
+SMODS.Joker {
+	key = 'zilu',
+	name = "Zilu",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Night Drifter
+SMODS.Joker {
+	key = 'nightDrifter',
+	name = "Night Drifter",
+	unlocked = true,
+	config = { extra = { minXMult = 0.8, maxXMult = 2, minXMult_mod = 0.1, maxXMult_mod = 1, currentConsumableCount = 0 } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = { (card.ability.extra.minXMult - (card.ability.extra.minXMult_mod * card.ability.extra.currentConsumableCount)), (card.ability.extra.maxXMult + (card.ability.extra.maxXMult_mod * card.ability.extra.currentConsumableCount)), card.ability.extra.currentConsumableCount  } }
+	end,
+	calculate = function(self, card, context)
+		if context.using_consumeable and not context.blueprint and card.ability.extra.currentConsumableCount <= 3 then
+			card.ability.extra.currentConsumableCount = card.ability.extra.currentConsumableCount + 1
+		end
+
+        if context.joker_main then
+            local selectedXMult = 1
+            local coinToss = math.random(1,2)
+
+            if coinToss == 1 then
+                selectedXMult = card.ability.extra.maxXMult + (card.ability.extra.maxXMult_mod * card.ability.extra.currentConsumableCount)
+            else
+                selectedXMult = card.ability.extra.minXMult - (card.ability.extra.minXMult_mod * card.ability.extra.currentConsumableCount)
+            end
+
+			return {
+				xmult = selectedXMult
+			}
+		end
+
+        if context.end_of_round and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
+            card.ability.extra.currentConsumableCount = math.floor(card.ability.extra.currentConsumableCount / 2)
+        end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Lei Heng
+SMODS.Joker {
+	key = 'leiHeng',
+	name = "Lei Heng",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 3,
+	cost = 8,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Valencina
+SMODS.Joker {
+	key = 'valencina',
+	name = "Valencina",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 3,
+	cost = 8,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Rien
+SMODS.Joker {
+	key = 'rien',
+	name = "Rien",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 3,
+	cost = 8,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Matthias
+SMODS.Joker {
+	key = 'matthias',
+	name = "Matthias",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 3,
+	cost = 8,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Callisto
+SMODS.Joker {
+	key = 'callisto',
+	name = "Callisto",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 3,
+	cost = 8,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Shiomi Yoru
+SMODS.Joker {
+	key = 'shiomiYoru',
+	name = "Shiomi Yoru",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 3,
+	cost = 8,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Lucio
+SMODS.Joker {
+	key = 'lucio',
+	name = "Lucio",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Sora
+SMODS.Joker {
+	key = 'sora',
+	name = "Sora",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Kira
+SMODS.Joker {
+	key = 'kira',
+	name = "Kira",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Albina
+SMODS.Joker {
+	key = 'albina',
+	name = "Albina",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Ren
+SMODS.Joker {
+	key = 'ren',
+	name = "Ren",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Ravi
+SMODS.Joker {
+	key = 'ravi',
+	name = "Ravi",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 1,
+	cost = 3,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Werner
+SMODS.Joker {
+	key = 'werner',
+	name = "Werner",
+	unlocked = true,
+	config = { extra = {chips = 0, chips_mod = 15 } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = { card.ability.extra.chips, card.ability.extra.chips_mod } }
+	end,
+	calculate = function(self, card, context)
+		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_ricardo" and not context.blueprint  then
+			card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
+			return {
+				message = localize('k_upgrade_ex'),
+				colour = G.C.CHIPS,
+				message_card = card
+			}
+		end
+
+		if context.joker_main then
+			return {
+				chips = card.ability.extra.chips
+			}
+		end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+
+--Jamila
+SMODS.Joker {
+	key = 'jamila',
+	name = "Jamila",
+	unlocked = true,
+	config = { multBase = 10 },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = { card.ability.multBase, card.ability.multBase * (#G.vouchers.cards or 0) } }
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main then
+			return {
+				mult = card.ability.multBase * #G.vouchers.cards
+			}
+		end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--A Certain Sinclair
+SMODS.Joker {
+	key = 'aCertainSinclair',
+	name = "A Certain Sinclair",
+	unlocked = true,
+	config = { extra = { counter = 0, currentPosition = 1 } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 3,
+	cost = 10,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		local cardTriggeredIsToTheLeft = false
+		if context.before then
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card then
+					card.ability.extra.currentPosition = i
+					print("my_pos is ".. card.ability.extra.currentPosition)
+					break
+				end
+			end
+		end
+
+		if context.post_trigger and G.jokers.cards[card.ability.extra.currentPosition-1].config.center.key == context.other_card.config.center.key then
+
+			if card.ability.extra.currentPosition > 1 then
+					cardTriggeredIsToTheLeft = true
+					print("card to the left detected")
+			end
+
+			if cardTriggeredIsToTheLeft == true then
+				card.ability.extra.counter = card.ability.extra.counter + 1
+				print(card.ability.extra.counter)
+			end
+		end
+
+
+		if context.retrigger_joker_check and context.other_card == G.jokers.cards[card.ability.extra.currentPosition + 1] and #G.jokers.cards > card.ability.extra.currentPosition then
+			print("Testing trigger")
+		return {
+				repetitions = card.ability.extra.counter
+			}
+		end
+
+		if context.after then
+			card.ability.extra.counter = 0
+			print("test reset")
+		end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Araya
+SMODS.Joker {
+	key = 'araya',
+	name = "Araya",
+	unlocked = true,
+	config = { extra = { } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x =9, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = {  } }
+	end,
+	calculate = function(self, card, context)
+		
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+-- COLOR FIXERS --
+------------------
+
 -- Vermillion Cross
 SMODS.Joker {
 	key = 'vermillionCross',
@@ -7134,6 +9165,132 @@ SMODS.Joker {
  	end,
 }
 
+-- Indigo Elder
+SMODS.Joker {
+	key = 'indigoElder',
+	name = "Indigo Elder",
+	config = { extra = { mult = 0, chips = 0, dollars = 0, xmult = 0, lockedPosition = 0, debuffMult = 2, debuffChips = 5, debuffDollars = 1, debuffXmult = 0.9} },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 4,
+	cost = 8,
+    atlas = 'ModdedProjectMoon',
+	pos = { x = 3, y = 8 },
+	soul_pos = { x = 3, y = 9 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.mult, card.ability.extra.chips, card.ability.extra.dollars, card.ability.extra.xmult, card.ability.extra.lockedPosition, card.ability.extra.debuffMult,
+		card.ability.extra.debuffChips, card.ability.extra.debuffDollars, card.ability.extra.debuffXmult } }
+	end,
+	calculate = function(self, card, context)
+
+		if context.setting_blind and card.ability.extra.lockedPosition == 0 then
+			for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+                    my_pos = i
+                    break
+                end
+            end
+			card.ability.extra.lockedPosition = my_pos
+		end
+
+		if context.individual and context.cardarea == G.play then
+
+			if card.ability.extra.lockedPosition == 2 then
+				return
+				{
+					mult = - card.ability.extra.debuffMult,
+					chips = card.ability.extra.chips,
+					xmult = card.ability.extra.xmult
+					
+				}
+			elseif card.ability.extra.lockedPosition == 3 then
+				return
+				{
+					mult = card.ability.extra.mult,
+					chips = - card.ability.extra.debuffChips,
+					xmult = card.ability.extra.xmult					
+				}
+
+			elseif card.ability.extra.lockedPosition == 4 then
+				G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + card.ability.extra.dollars
+				return
+				{
+					mult = card.ability.extra.mult,
+					chips = card.ability.extra.chips,
+					xmult = card.ability.extra.xmult,
+					dollars = -card.ability.extra.debuffDollars,
+                	func = function()
+						G.E_MANAGER:add_event(Event({
+							func = function()
+								G.GAME.dollar_buffer = 0
+								return true
+							end
+						}))
+					end
+					
+				}
+			elseif card.ability.extra.lockedPosition == 5 then
+				return
+				{
+					mult = card.ability.extra.mult,
+					chips = card.ability.extra.chips,
+					xmult = card.ability.extra.xmultDebuff
+					
+				}
+			else
+				return
+				{
+					mult = card.ability.extra.mult,
+					chips = card.ability.extra.chips,
+					xmult = card.ability.extra.xmult
+					
+				}
+			end
+
+		end
+
+
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and G.GAME.last_blind and G.GAME.last_blind.boss then
+			card.ability.extra.debuffMult = card.ability.extra.debuffMult + 2
+			card.ability.extra.debuffChips = card.ability.extra.debuffChips + 5
+			card.ability.extra.debuffXmult = card.ability.extra.debuffXmult - 0.1
+			card.ability.extra.debuffDollars = card.ability.extra.debuffDollars + 1
+
+			if card.ability.extra.lockedPosition == 1 then
+				card.ability.extra.mult = card.ability.extra.mult + 15
+				card.ability.extra.chips = card.ability.extra.chips + 30
+				card.ability.extra.dollars = card.ability.extra.dollars + 2
+				card.ability.extra.xmult = card.ability.extra.xmult + 1
+
+			elseif card.ability.extra.lockedPosition == 2 then
+				card.ability.extra.mult = card.ability.extra.mult + 15
+
+			elseif card.ability.extra.lockedPosition == 3 then
+				card.ability.extra.chips = card.ability.extra.chips + 30
+
+			elseif card.ability.extra.lockedPosition == 4 then
+				card.ability.extra.dollars = card.ability.extra.dollars + 2
+
+			else
+				card.ability.extra.xmult = card.ability.extra.xmult + 1
+			end	
+
+			card.ability.extra.lockedPosition = 0
+			return {message = localize('k_reset')}
+		end
+    end,
+	calc_dollar_bonus = function(self, card)
+        return card.ability.extra.dollars
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("Color Fixer", HEX('243542'), HEX('35c5e6'), 1.2 )
+ 	end
+}
 
 
 ------------------
@@ -8865,7 +11022,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'dummyRicardo',
 	name = "Dummy Ricardo",
-	config = { extra = { ricardoDefeatCounter = 0, canSpawnRicardo = false} },
+	config = { extra = { ricardoDefeatCounter = 0, canSpawnRicardo = false, baseChance = 1, maxChance = 3} },
 	no_collection = true,    --In testing
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -8879,7 +11036,8 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.ricardoDefeatCounter, card.ability.extra.canSpawnRicardo } }
+		local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'wernerChance')
+		return { vars = { card.ability.extra.ricardoDefeatCounter, card.ability.extra.canSpawnRicardo, new_numerator, new_denominator } }
 	end,
 	calculate = function(self, card, context)
 
@@ -8891,6 +11049,9 @@ SMODS.Joker {
 
 		if context.ending_shop and not context.blueprint and G.jokers and card.ability.extra.canSpawnRicardo == true then
 			SMODS.add_card({ key = "j_pmcmod_ricardo" })
+			if SMODS.pseudorandom_probability(card, 'seed', card.ability.extra.baseChance, card.ability.extra.maxChance, 'wernerChance') then
+				SMODS.add_card({ key = "j_pmcmod_werner" })
+			end
 			card.ability.extra.canSpawnRicardo = false
 		end
     end,

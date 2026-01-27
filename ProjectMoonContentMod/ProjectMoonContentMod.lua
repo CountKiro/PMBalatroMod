@@ -5,7 +5,8 @@ ProjectMoonMod = {}
 
 SMODS.current_mod.optional_features = function()
     return {
-        retrigger_joker = true
+        retrigger_joker = true,
+		post_trigger = true
     }
 end
 
@@ -527,6 +528,25 @@ function Game:start_run(args)
     )
 	self.pmcmod_dummy_joker_area.states.visible = false
     ProjectMoonMod.dummyJoker = G.pmcmod_dummy_joker_area
+
+    game_start_run_ref(self, args)
+end
+
+local game_start_run_ref = Game.start_run
+function Game:start_run(args)
+    self.pmcmod_garnet_joker_area = CardArea(
+        0,
+        0,
+        self.CARD_W * 1.9,
+        self.CARD_H * 0.95,
+        {
+            card_limit = 999,
+            type = 'joker',
+            highlight_limit = 1,
+        }
+    )
+	self.pmcmod_garnet_joker_area.states.visible = false
+    ProjectMoonMod.garnetJoker = G.pmcmod_garnet_joker_area
 
     game_start_run_ref(self, args)
 end

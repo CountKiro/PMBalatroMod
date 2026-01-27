@@ -167,6 +167,32 @@ return {
                     "score as extra chips",
                 },
             },
+            m_pmcmod_poise = {
+                name = "Poise Card",
+                text = {
+                    "Has a {C:green}#3# in #4#{} chance to give {X:red,C:white}X#1#{} Mult",
+                    "Chance increase every time the card is scored.",
+                    "Chance resets every time the effect triggers."
+
+                },
+            },
+            m_pmcmod_rupture = {
+                name = "Rupture Card",
+                text = {
+                    "Give stacks of Rupture {C:attention}every time the card scores{}.",
+                    "Non face cards give double stacks.",
+                    "Give double the amount of stacks as {C:chips}Chips{}.",
+                    "{C:inactive}(Current stacks: {C:attention}#1#{})"
+
+                },
+            },
+            m_pmcmod_tremor = {
+                name = "Tremor Card",
+                text = {
+                    "Enhance the effects of select Enhancements",
+                    "when scored together."
+                },
+            },
             m_pmcmod_sinking = {
                 name = "Sinking Card",
                 text = {
@@ -1359,12 +1385,6 @@ return {
                     "at the end of the Reception"
                 }
             },
-            j_pmcmod_wei = {
-                name = 'Wei',
-                text = {
-                    "",
-                }
-            },
             j_pmcmod_hugo = {
                 name = 'Hugo',
                 text = {
@@ -1531,6 +1551,423 @@ return {
                 text = {
                     "If a card is about to be destroyed,",
                     "sacrifice itself instead."
+                }
+            },
+            j_pmcmod_qingTao = {
+                name = 'Qing Tao',
+                text = {
+                    "Face cards always count in scoring",
+                }
+            },
+            j_pmcmod_shanSan = {
+                name = 'Shan San',
+                text = {
+                    "If played is a {C:attention}Three of a Kind{},",
+                    "give {C:gold}##{} at a {}## in ##{} chance"
+                }
+            },
+            j_pmcmod_jumsoon = {
+                name = 'Jumsoon',
+                text = {
+                    "If the first hand of the hound is a {C:attention}Flush{},",
+                    "randomize all Keypages to others in the same rarity."
+                }
+            },
+            j_pmcmod_garnet = {
+                name = 'Garnet',
+                text = {
+                    "Copies any random unlocked Keypage.",
+                    "Keypage changes every Scene.",
+                    "{C:inactive}(Currently copying: {C:red}#1#)",
+                }
+            },
+            j_pmcmod_catt = {
+                name = 'Catt',
+                text = {
+                    "In {C:attention}Normal or Risky Encounters{}, if",
+                    "the Encounter is about to fail, destroy a random",
+                    "Keypage and win the Encounter.",
+                    "Can only happen once by Act"
+                }
+            },
+            j_pmcmod_jiaMu = {
+                name = 'Jia Mu',
+                text = {
+                    "Disables a random amount of Keypages",
+                    "Retrigger {C:attention}every other Keypage{} 0 to 2 times,",
+                    "costing {C:gold}$#3#{} per retrigger"
+                }
+            },
+            j_pmcmod_jiaQiu = {
+                name = 'Jia Qiu',
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult",
+                    "Has a {C:green}#3# in #4#{} chance",
+                    "to give {X:mult,C:white}X#2#{} Mult instead.",
+                    "{C:inactive}This page has a hidden interaction.",
+                }
+            },
+            j_pmcmod_linDaiyu = {
+                name = 'Lin Daiyu',
+                text = {
+                    "If the first hand played {C:attention}starts with a 5{},",
+                    "consume all stacks of Rupture from the scored cards",
+                    "to score {X:mult,C:white}X0.1{} per 5 stacks consumed."
+                }
+            },
+            j_pmcmod_xueBaochai = {
+                name = 'Xue Baochai',
+                text = {
+                    "Reduce Encounter score by {C:attention}10%{}.",
+                }
+            },
+            j_pmcmod_xianrenA = {
+                name = 'Elder on a Branch',
+                text = {
+                    "If a card is about to be destroyed,",
+                    "sacrifice itself instead."
+                }
+            },
+            j_pmcmod_xianrenB = {
+                name = 'Elder on a Wheelchair',
+                text = {
+                    "If a card is about to be destroyed,",
+                    "sacrifice itself instead."
+                }
+            },
+            j_pmcmod_xianrenC = {
+                name = 'Elder in a Machine',
+                text = {
+                    "If a card is about to be destroyed,",
+                    "sacrifice itself instead."
+                }
+            },
+            j_pmcmod_xianrenD = {
+                name = 'Elder in Monk Robes',
+                text = {
+                    "If a card is about to be destroyed,",
+                    "sacrifice itself instead."
+                }
+            },
+            j_pmcmod_xianrenE = {
+                name = 'Elder in a Jar',
+                text = {
+                    "If a card is about to be destroyed,",
+                    "sacrifice itself instead."
+                }
+            },
+            j_pmcmod_xianrenF = {
+                name = 'Elder in Trimmed Robes',
+                text = {
+                    "If a card is about to be destroyed,",
+                    "sacrifice itself instead."
+                }
+            },
+            j_pmcmod_ladyWang = {
+                name = 'Lady Wang',
+                text = {
+                    "Scored 6s give {C:mult}#1#{} Mult",
+                    "Mult increases by {C:mult}3{} for every Act",
+                }
+            },
+            j_pmcmod_jiaZheng = {
+                name = 'Jia Zheng',
+                text = {
+                    "Scored 6s give {C:chips}#1#{} Chips",
+                    "Chips increases by {C:chips}5{} for every Act",
+                }
+            },
+            j_pmcmod_jiaHuanChild = {
+                name = 'Young Jia Huan',
+                text = {
+                    "Sell to get a {C:blue}Hardcover{} Keypage",
+                }
+            },
+            j_pmcmod_xuePan = {
+                name = 'Xue Pan',
+                text = {
+                    "At the start of the Encounter,",
+                    "either {C:red}destroy{} a Keypage or",
+                    "give it a random {C:dark_edition}Edition{}.",
+                    "Keypages with {C:dark_edition}Editions{} can't be destroyed."
+                }
+            },
+            j_pmcmod_wangZhao = {
+                name = 'Wang Zhao',
+                text = {
+                    "Gain {C:gold}$1{} sell value every time a Reception is cleared",
+                    "and gain {C:gold}$1{} sell value when any Encounter is cleared with one hand.",
+                    "At the start of any non Reception Encounter, increase the value of",
+                    "the adjascent Keypages by {C:gold}$4{}.",
+                    "Lose {C:red}$2{} for each Keypage affected.",
+                    "{C:red}Destroys itself if own sell value dips below $0."
+                }
+            },
+            j_pmcmod_wangDawei = {
+                name = 'Wang Dawei',
+                text = {
+                    "After a card has been {C:attention}scored 3 times{}",
+                    "adds 15 Perma Mult and 30 Perma Chips to it.",
+                    "This effect only happens once per card"
+                }
+            },
+            j_pmcmod_wangQingshan = {
+                name = 'Wang Qingshan',
+                text = {
+                    "If first hand of the Scene is a {C:attention}single 4{}",
+                    "replace any Tags current queued up with random ones."
+                }
+            },
+            j_pmcmod_wangRen = {
+                name = 'Wang Ren',
+                text = {
+                    "Gives {C:gold}$#1#{} at the end of the Scene.",
+                    "If current money dips below {C:gold}$100{},",
+                    "destroy itself at the start of the next Scene."
+                }
+            },
+            j_pmcmod_shiYihua = {
+                name = 'Shi Yiuha',
+                text = {
+                    "When a {C:attention}Full House{} is played,",
+                    "turns cards into {C:hearts}Heart{} Cards at a {C:green}1 in 3{} chance."
+                }
+            },
+            j_pmcmod_shiHuazhen = {
+                name = 'Shi Huazhen',
+                text = {
+                    "Gives {C:mult}#1#{} Mult for every character",
+                    "in the name of the Keypage to the right."
+                }
+            },
+            j_pmcmod_shiSijing = {
+                name = 'Shi Sijing',
+                text = {
+                    "Gain {C:chips}#1#{} Chips when a Keypage is destroyed",
+                    "{C:inactive}(Currently {C:chips}#2#{C:inactive} Chips)"
+                }
+            },
+            j_pmcmod_kongSihui = {
+                name = 'Kong Sihui',
+                text = {
+                    "{C:green}1 in 5{} chance to gain {C:gold}$5{} on any played card.",
+                    "{C:green}1 in 20{} chance to destroy itself."
+                }
+            },
+            j_pmcmod_kongYoujin = {
+                name = 'Kong Youjin',
+                text = {
+                    "{C:green}1 in 5{} chance to gain {C:attention}retrigger{} any played card.",
+                    "{C:green}1 in 20{} chance to destroy itself."
+                }
+            },
+            j_pmcmod_xiren = {
+                name = 'Xiren',
+                text = {
+                    "{C:green}1 in 5{} chance to gain {C:gold}$5{} on any played card.",
+                    "{C:green}1 in 20{} chance to destroy itself."
+                }
+            },
+            j_pmcmod_wei = {
+                name = 'Wei',
+                text = {
+                    "Gives $1 for every remaining card left in hand",
+                    "at the end of the Scene."
+                }
+            },
+            j_pmcmod_zigong = {
+                name = 'Zigong',
+                text = {
+                    "{C:green}1 in 5{} chance to gain {C:gold}$5{} on any played card.",
+                    "{C:green}1 in 20{} chance to destroy itself."
+                }
+            },
+            j_pmcmod_zilu = {
+                name = 'Zilu',
+                text = {
+                    "{C:green}Rupture{} stacks at double the rate",
+                }
+            },
+            j_pmcmod_nightDrifter = {
+                name = 'Night Drifter',
+                text = {
+                    "Gives between X0.8 and X2 Mult.",
+                    "Each consumable used decreases the min value by X0.1",
+                    "and increases the max value by X1",
+                    "Lose all stacks by the end of the Reception"
+                }
+            },
+            j_pmcmod_leiHeng = {
+                name = 'Lei Heng',
+                text = {
+                    "Roll a random value between 0 and 4.",
+                    "If it lands on a 0, destroy the card to the left.",
+                    "If it lands on any other number, retrigger the Keypage",
+                    "to the left by the amount it landed on."
+                }
+            },
+            j_pmcmod_valencina = {
+                name = 'Valencina',
+                text = {
+                    "When handis played, if it has more than 1 card,",
+                    "turn the last card into a Tremor card.",
+                    "If Lucio is present and to the right, also",
+                    "changes the first card into Tremor.",
+                    "Lucio dies after this effect triggers 5 times."
+                }
+            },
+            j_pmcmod_rien = {
+                name = 'Rien',
+                text = {
+                    "Spawns in a random prescript at the start of the Act.",
+                    "Gain {C:mult}#1#{} for every Prescript fullfilled.",
+                    "Destroy itself if the Prescript fails.",
+                    "If Sora is present and to the right, gains double",
+                    "this value. Sora dies after this effect triggers 3 times.",
+                }
+            },
+            j_pmcmod_matthias = {
+                name = 'Matthias',
+                text = {
+                    "-1 Hand",
+                    "First hand scored turns all cards into Burn cards,",
+                    "costing $2 per Card. Cost increase by $2 for every Burn",
+                    "Card in the Deck.",
+                    "If Kira is present and to the right, reduces cost to $0",
+                    "Kira dies after generating 5 Burn Cards"
+                }
+            },
+            j_pmcmod_callisto = {
+                name = 'Callisto',
+                text = {
+                    "Drains Mult and Bonus enhancements from cards,",
+                    "gaining 80% of their value.",
+                    "If Albina is present, double this value.",
+                    "Albina dies after 5 Cards are drained."
+                }
+            },
+            j_pmcmod_shiomiYoru = {
+                name = 'Shiomi Yoru',
+                text = {
+                    "Poise cards gain double stacks at {C:green}1 in 2{} chance.",
+                }
+            },
+            j_pmcmod_lucio = {
+                name = 'Lucio',
+                text = {
+                    "Increase bonus value of Tremor cards by 20%.",
+                    "If Valencina is present and to the right, bonus",
+                    "becomes 50%. Lucio dies after triggering 5 Tremor cards.",
+                }
+            },
+            j_pmcmod_sora = {
+                name = 'Sora',
+                text = {
+                    "At the start of the Scene, Sora steals an Edition",
+                    "from a random Keypage, gaining 20 Chips in the process.",
+                    "Sora can't steal the same Edition twice in a row.",
+                    "After 3 Scenes without stealing an Edition, Sora",
+                    "reveals herself, doubling her current Chips count.",
+                    "If Rein is present and to the right, double the scoring Chips.",
+                    "Sora dies after triggering 4 times."
+                }
+            },
+            j_pmcmod_kira = {
+                name = 'Kira',
+                text = {
+                    "Burn Card gives $2",
+                    "If Matthias is present and to the right,",
+                    "Burn Cards will now give $6",
+                    "Kira dies after triggering 5 Burn Cards"
+                }
+            },
+            j_pmcmod_albina = {
+                name = 'Albina',
+                text = {
+                    "If Hand played is a Pair of Spades,",
+                    "change the first card into a Bonus Card",
+                    "and the second card into a Mult Card",
+                    "at a 1 in 2 chance",
+                    "If Callisto is present and to the right,",
+                    "chance becomes guaranteed.",
+                    "Albina dies after triggering this effect 5 times."
+                }
+            },
+            j_pmcmod_ren = {
+                name = 'Ren',
+                text = {
+                    "Has a 1 in 2 chance to give Poise do scored cards.",
+                    "If Shiomi Yoru is present and to the right,",
+                    "chance becomes guaranteed.",
+                    "Ren dies after triggering this effect 5 times.",
+                }
+            },
+            j_pmcmod_ravi = {
+                name = 'Ravi',
+                text = {
+                    "If this card is about to be destroyed, play dead",
+                    "and debuff itself instead. Gain 10 Chips when this happens.",
+                    "There's a 1 in 9 chance this fails."
+                }
+            },
+            j_pmcmod_werner = {
+                name = 'Werner',
+                text = {
+                    "Gains {C:chips}#2#{} Chips every time Ricardo is destroyed.",
+                    "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
+                }
+            },
+            j_pmcmod_jamila = {
+                name = 'Jamila',
+                text = {
+                    "Gain {C:mult}#1# Mult for every Voucher claimed.",
+                    "{C:inactive}(Currently {C:mult}#2#{C:inactive} Mult)",
+                }
+            },
+            j_pmcmod_aCertainSinclair = {
+                name = 'A Certain Sinclair',
+                text = {
+                    "Counts how many times the {C:attention}Keypage to the left{} triggers.",
+                    "Retrigger the {C:attention}Keypage to the right{} by that amount."
+                }
+            },
+            j_pmcmod_arayaKid = {
+                name = 'Araya (Child)',
+                text = {
+                    "30 Chips.",
+                    "Changes into a different version",
+                    "depending on the action done more frequently",
+                    "last Act: cards scored, cards discarded or money used"
+                }
+            },
+            j_pmcmod_arayaTeen = {
+                name = 'Araya (Teen)',
+                text = {
+                    "Cards scored gain 6 Perma Chips",
+                    "Changes into a different version",
+                    "depending on the action done more frequently",
+                    "last Act: cards scored, cards discarded or money used",
+                    "If it's cards scored, go back to Child version instead."
+                }
+            },
+            j_pmcmod_arayaYA = {
+                name = 'Araya (Young Adult)',
+                text = {
+                    "Cards scored gain 3 Perma Mult.",
+                    "Changes into a different version",
+                    "depending on the action done more frequently",
+                    "last Act: cards scored, cards discarded or money used",
+                    "If it's cards discarded, go back to Child version instead."
+                }
+            },
+            j_pmcmod_arayaAdult = {
+                name = 'Araya (Adult)',
+                text = {
+                    "Cards scored gain $1 Perma money",
+                    "Changes into a different version",
+                    "depending on the action done more frequently",
+                    "last Act: cards scored, cards discarded or money used",
+                    "If it's money used, go back to Child version instead."
                 }
             },
             j_pmcmod_vermillionCross = {
