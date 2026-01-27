@@ -7772,7 +7772,7 @@ SMODS.Joker {
 	key = 'jiaZheng',
 	name = "Jia Zheng",
 	unlocked = true,
-	config = { extra = { chips = (16 + 5 * (G.GAME.round_resets.ante or 1)) } },
+	config = { extra = { chips = 16 } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
