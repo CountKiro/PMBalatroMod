@@ -373,7 +373,7 @@ return {
         },
         Enhanced={
             m_bonus={
-                name="Bonus Card",
+                name="Endurance Card",
                 text={
                 },
             },
@@ -403,7 +403,7 @@ return {
                 },
             },
             m_mult={
-                name="Mult Card",
+                name="Strength Card",
                 text={
                     "{C:mult}+#1#{} Mult",
                 },
