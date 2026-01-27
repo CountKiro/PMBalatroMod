@@ -1,3 +1,4 @@
+-- Bleed
 SMODS.Enhancement {
     key = "bleed",
     atlas = "ModdedProjectMoonEditions",
@@ -11,6 +12,7 @@ SMODS.Enhancement {
         if context.main_scoring and context.cardarea == G.play then
 
             local bleedCounting = 0
+            local tremorCounting = 0
 
             for i = 1, #G.play.cards do
                 if SMODS.has_enhancement(G.play.cards[i], 'm_pmcmod_bleed') then
@@ -18,8 +20,14 @@ SMODS.Enhancement {
                 end
             end
 
+            for i = 1, #G.play.cards do
+                if SMODS.has_enhancement(G.play.cards[i], 'm_pmcmod_tremor') then
+                    tremorCounting = tremorCounting + 1
+                end
+            end
+
         --if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, 'm_pmcmod_bleed') then
-            card.ability.perma_mult = (card.ability.perma_mult or 0) + bleedCounting
+            card.ability.perma_mult = (card.ability.perma_mult or 0) + (bleedCounting * (1 + tremorCounting))
             card.ability.triggersLeft = card.ability.triggersLeft - 1
 
             if card.ability.triggersLeft <= 0 then
@@ -37,6 +45,7 @@ SMODS.Enhancement {
     end
 }
 
+-- Sinking
 SMODS.Enhancement {
     key = "sinking",
     atlas = "ModdedProjectMoonEditions",
@@ -47,10 +56,17 @@ SMODS.Enhancement {
     end,
     calculate = function(self, card, context)
 
+        local tremorCounting = 0
+
+        for i = 1, #G.play.cards do
+            if SMODS.has_enhancement(G.play.cards[i], 'm_pmcmod_tremor') then
+                tremorCounting = tremorCounting + 1
+            end
+        end
 
         if context.main_scoring and context.cardarea == G.play then
 			G.E_MANAGER:add_event(Event({func = function()
-				G.GAME.blind.chips = G.GAME.blind.chips - math.floor(G.GAME.blind.chips * card.ability.reduction)
+				G.GAME.blind.chips = G.GAME.blind.chips - math.floor(G.GAME.blind.chips * card.ability.reduction * (1 + tremorCounting))
 				G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
 				G.FUNCS.blind_chip_UI_scale(G.hand_text_area.blind_chips)
 				G.HUD_blind:recalculate() 
@@ -64,6 +80,126 @@ SMODS.Enhancement {
     end
 }
 
+-- Rupture
+SMODS.Enhancement {
+    key = "rupture",
+    atlas = "ModdedProjectMoonEditions",
+    pos = { x = 4, y = 2},
+    config = { counter = 0, bonus = 0},
+    loc_vars = function(self, info_queue, card)
+        
+        return { vars = {card.ability.counter}}
+    end,
+    calculate = function(self, card, context)
+
+        local tremorCounting = 0
+
+        for i = 1, #G.play.cards do
+            if SMODS.has_enhancement(G.play.cards[i], 'm_pmcmod_tremor') then
+                tremorCounting = tremorCounting + 1
+            end
+        end
+
+        if context.main_scoring and context.cardarea == G.play then
+
+            local ziluPresent = false
+
+            for i=1, #G.jokers.cards do
+
+                if G.jokers.cards[i].config.center.key == "j_pmcmod_zilu" then
+                    ziluPresent = true
+                    break
+                end
+
+            end
+
+            if ziluPresent then
+
+                if card:is_face() then
+                    card.ability.counter = card.ability.counter + (4 * (1 + tremorCounting))
+                else
+                    card.ability.counter = card.ability.counter + (8 * (1 + tremorCounting))
+                end
+            else
+                if card:is_face() then
+                    card.ability.counter = card.ability.counter + (2 * (1 + tremorCounting))
+                else
+                    card.ability.counter = card.ability.counter + (4 * (1 + tremorCounting))
+                end
+            end
+
+            if card.ability.counter > 99 then
+                card.ability.counter = 99
+            end
+
+        end
+    end,
+    update = function(self, card, dt)
+        card.ability.bonus = card.ability.counter * 2
+    end
+}
+
+-- Poise
+SMODS.Enhancement {
+    key = "poise",
+    atlas = "ModdedProjectMoonEditions",
+    pos = { x = 5, y = 2},
+    config = { counter = 0, baseChance = 1, maxChance = 10, maxChanceShiomi = 2, extra = {xmult = 2}},
+    loc_vars = function(self, info_queue, card)
+        
+        local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.counter, card.ability.maxChance, 'poise')
+        local new_numeratorShiomi, new_denominatorShiomi = SMODS.get_probability_vars(card, card.ability.baseChance, card.ability.maxChanceShiomi, 'shiomi')
+        return {vars = { card.ability.extra.xmult, card.ability.counter, new_numerator, new_denominator, new_numeratorShiomi, new_denominatorShiomi } }
+    end,
+    calculate = function(self, card, context)
+
+        local tremorCounting = 0
+
+        for i = 1, #G.play.cards do
+            if SMODS.has_enhancement(G.play.cards[i], 'm_pmcmod_tremor') then
+                tremorCounting = tremorCounting + 1
+            end
+        end
+
+        if context.main_scoring and context.cardarea == G.play then
+            local ret = {}
+            local shiomiPresent = false
+
+            for i=1, #G.jokers.cards do
+
+                if G.jokers.cards[i].config.center.key == "j_pmcmod_shiomiYoru" then
+                    shiomiPresent = true
+                    break
+                end
+
+            end
+
+            if shiomiPresent then
+                if SMODS.pseudorandom_probability(card, 'shiomi', card.ability.baseChanceShiomi, card.ability.maxChanceShiomi, 'shiomi') then
+                    card.ability.counter = card.ability.counter + (2 * (1 + tremorCounting))
+                end
+            else
+                card.ability.counter = card.ability.counter + (1 * (1 + tremorCounting))
+            end
+
+            if SMODS.pseudorandom_probability(card, 'poise', card.ability.counter, card.ability.maxChance, 'poise') then
+                ret.xmult = card.ability.extra.xmult
+                card.ability.counter = 1
+            end
+
+            return ret
+
+        end
+
+        
+    end,
+    update = function(self, card, dt)
+        
+    end
+}
+
+
+-- Burn
 SMODS.Enhancement {
     key = "burn",
     atlas = "ModdedProjectMoonEditions",
@@ -86,6 +222,24 @@ SMODS.Enhancement {
     end
 }
 
+-- Tremor
+SMODS.Enhancement {
+    key = "tremor",
+    atlas = "ModdedProjectMoonEditions",
+    pos = { x = 6, y = 2},
+    config = { bonus = 0},
+    loc_vars = function(self, info_queue, card)
+
+        return { vars = {}}
+    end,
+    update = function(self, card, dt)
+
+    end
+}
+
+
+
+-- Pallid
 SMODS.Enhancement {
     key = "pallid",
     atlas = "ModdedProjectMoonEditions",
