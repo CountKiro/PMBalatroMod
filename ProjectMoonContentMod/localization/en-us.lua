@@ -1624,22 +1624,20 @@ return {
             j_pmcmod_xianrenA = {
                 name = 'Elder on a Branch',
                 text = {
-                    "If a card is about to be destroyed,",
-                    "sacrifice itself instead."
+                    "Gives {C:gold}#1#{} at the end of the Scene."
                 }
             },
             j_pmcmod_xianrenB = {
                 name = 'Elder on a Wheelchair',
                 text = {
-                    "If a card is about to be destroyed,",
-                    "sacrifice itself instead."
+                    "If the hand scored has more then 3 cards,",
+                    "give {C:mult}#1#{} Mult and {C:chips}#2#{} Chips"
                 }
             },
             j_pmcmod_xianrenC = {
                 name = 'Elder in a Machine',
                 text = {
-                    "If a card is about to be destroyed,",
-                    "sacrifice itself instead."
+                    "Gives {X:red, C:white}X#1#{} per scored card.",
                 }
             },
             j_pmcmod_xianrenD = {
@@ -1652,29 +1650,35 @@ return {
             j_pmcmod_xianrenE = {
                 name = 'Elder in a Jar',
                 text = {
-                    "If a card is about to be destroyed,",
-                    "sacrifice itself instead."
+                    "Level up {C:attention}first played hand{}."
                 }
             },
             j_pmcmod_xianrenF = {
                 name = 'Elder in Trimmed Robes',
                 text = {
-                    "If a card is about to be destroyed,",
-                    "sacrifice itself instead."
+                    "At the end of the Scene, increase",
+                    "the sell value of other Keypages by {C:gold}$#1#{}."
                 }
             },
             j_pmcmod_ladyWang = {
                 name = 'Lady Wang',
                 text = {
-                    "Scored 6s give {C:mult}#1#{} Mult",
+                    "Scored {C:attention}6s{} give {C:mult}#1#{} Mult",
                     "Mult increases by {C:mult}3{} for every Act",
                 }
             },
             j_pmcmod_jiaZheng = {
                 name = 'Jia Zheng',
                 text = {
-                    "Scored 6s give {C:chips}#1#{} Chips",
+                    "Scored {C:attention}6s{} give {C:chips}#1#{} Chips",
                     "Chips increases by {C:chips}5{} for every Act",
+                }
+            },
+            j_pmcmod_jiaYuanchun = {
+                name = 'Jia Yuanchun',
+                text = {
+                    "At the end of the Reception, give {C:gold}$#1#{},",
+                    "for every Tag queued up after the first one.",
                 }
             },
             j_pmcmod_jiaHuanChild = {
@@ -1706,15 +1710,14 @@ return {
             j_pmcmod_wangDawei = {
                 name = 'Wang Dawei',
                 text = {
-                    "After a card has been {C:attention}scored 3 times{}",
-                    "adds 15 Perma Mult and 30 Perma Chips to it.",
-                    "This effect only happens once per card"
+                    "Every tenth card played, add",
+                    "{C:mult}#1#{} Perma Mult and {C:chips}#2#{} Perma Chips.",
                 }
             },
             j_pmcmod_wangQingshan = {
                 name = 'Wang Qingshan',
                 text = {
-                    "If first hand of the Scene is a {C:attention}single 4{}",
+                    "If first hand of the Scene is a {C:attention}single 8{}",
                     "replace any Tags current queued up with random ones."
                 }
             },
@@ -1751,28 +1754,29 @@ return {
                 name = 'Kong Sihui',
                 text = {
                     "{C:green}1 in 5{} chance to gain {C:gold}$5{} on any played card.",
-                    "{C:green}1 in 20{} chance to destroy itself."
+                    "{C:green}1 in 20{} chance to {C:red}destroy itself{}."
                 }
             },
             j_pmcmod_kongYoujin = {
                 name = 'Kong Youjin',
                 text = {
                     "{C:green}1 in 5{} chance to gain {C:attention}retrigger{} any played card.",
-                    "{C:green}1 in 20{} chance to destroy itself."
+                    "{C:green}1 in 20{} chance to {C:red}destroy itself{}."
                 }
             },
             j_pmcmod_xiren = {
                 name = 'Xiren',
                 text = {
-                    "{C:green}1 in 5{} chance to gain {C:gold}$5{} on any played card.",
-                    "{C:green}1 in 20{} chance to destroy itself."
+                    "Gives {C:attention}triple{} the difference",
+                    "between most played hand and current hand as {C:mult}Mult{}."
                 }
             },
             j_pmcmod_wei = {
                 name = 'Wei',
                 text = {
-                    "Gives $1 for every remaining card left in hand",
-                    "at the end of the Scene."
+                    "Gives {C:gold}$#1#{} for every remaining card left in hand",
+                    "at the end of the Scene, as long as {C:red}your most played hand",
+                    "{C:red}isn't High Card{}."
                 }
             },
             j_pmcmod_zigong = {
@@ -1791,19 +1795,21 @@ return {
             j_pmcmod_nightDrifter = {
                 name = 'Night Drifter',
                 text = {
-                    "Gives between X0.8 and X2 Mult.",
-                    "Each consumable used decreases the min value by X0.1",
-                    "and increases the max value by X1",
-                    "Lose all stacks by the end of the Reception"
+                    "Gives either {X:mult,C:white}X#1#{} or {X:mult,C:white}X#2#{} Mult.",
+                    "Each consumable used decreases the min value by {X:mult,C:white}X#4#{}",
+                    "and increases the max value by {X:mult,C:white}X#5#{}",
+                    "Can stack up to 4 times",
+                    "Lose all stacks by the end of the Reception.",
+                    "{C:inactive}(Currently used {C:attention}#3#{C:inactive} Consumables)",
                 }
             },
             j_pmcmod_leiHeng = {
                 name = 'Lei Heng',
                 text = {
                     "Roll a random value between 0 and 4.",
-                    "If it lands on a 0, destroy the card to the left.",
-                    "If it lands on any other number, retrigger the Keypage",
-                    "to the left by the amount it landed on."
+                    "If it lands on a 0, {C:red}destroy the Keypage to the left{}.",
+                    "If it lands on any other number, {C:attention}retrigger{} the Keypage",
+                    "to the left by the {C:attention}amount it landed on{}."
                 }
             },
             j_pmcmod_valencina = {
