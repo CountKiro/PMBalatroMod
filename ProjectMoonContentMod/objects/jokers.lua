@@ -7418,7 +7418,7 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
-			local xianrenList = {"j_pmcmod_xiarenB", "j_pmcmod_xiarenC", "j_pmcmod_xiarenD", "j_pmcmod_xiarenE", "j_pmcmod_xiarenF"}
+			local xianrenList = {"j_pmcmod_xianrenB", "j_pmcmod_xianrenC", "j_pmcmod_xianrenD", "j_pmcmod_xianrenE", "j_pmcmod_xianrenF"}
 			local selectedXianren = pseudorandom_element(xianrenList, pseudoseed('xianren'))
 			local percent = 1.15
 			G.E_MANAGER:add_event(Event({
@@ -7467,11 +7467,11 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = { card.ability.extra.mult. card.ability.extra.chips } }
+        return {vars = { card.ability.extra.mult, card.ability.extra.chips } }
 	end,
 	calculate = function(self, card, context)
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
-			local xianrenList = {"j_pmcmod_xiarenA", "j_pmcmod_xiarenC", "j_pmcmod_xiarenD", "j_pmcmod_xiarenE", "j_pmcmod_xiarenF"}
+			local xianrenList = {"j_pmcmod_xianrenA", "j_pmcmod_xianrenC", "j_pmcmod_xianrenD", "j_pmcmod_xianrenE", "j_pmcmod_xianrenF"}
 			local selectedXianren = pseudorandom_element(xianrenList, pseudoseed('xianren'))
 			local percent = 1.15
 			G.E_MANAGER:add_event(Event({
@@ -7512,7 +7512,7 @@ SMODS.Joker {
 	key = 'xianrenC',
 	name = "Xianren C",
 	unlocked = false,
-	config = { extra = {  } },
+	config = { extra = { xmult = 1.15 } },
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -7525,11 +7525,11 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+        return {vars = { card.ability.extra.xmult } }
 	end,
 	calculate = function(self, card, context)
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
-			local xianrenList = {"j_pmcmod_xiarenA", "j_pmcmod_xiarenB", "j_pmcmod_xiarenD", "j_pmcmod_xiarenE", "j_pmcmod_xiarenF"}
+			local xianrenList = {"j_pmcmod_xianrenA", "j_pmcmod_xianrenB", "j_pmcmod_xianrenD", "j_pmcmod_xianrenE", "j_pmcmod_xianrenF"}
 			local selectedXianren = pseudorandom_element(xianrenList, pseudoseed('xianren'))
 			local percent = 1.15
 			G.E_MANAGER:add_event(Event({
@@ -7584,7 +7584,7 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
-			local xianrenList = {"j_pmcmod_xiarenA", "j_pmcmod_xiarenB", "j_pmcmod_xiarenC", "j_pmcmod_xiarenE", "j_pmcmod_xiarenF"}
+			local xianrenList = {"j_pmcmod_xianrenA", "j_pmcmod_xianrenB", "j_pmcmod_xianrenC", "j_pmcmod_xianrenE", "j_pmcmod_xianrenF"}
 			local selectedXianren = pseudorandom_element(xianrenList, pseudoseed('xianren'))
 			local percent = 1.15
 			G.E_MANAGER:add_event(Event({
@@ -7634,7 +7634,7 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
-			local xianrenList = {"j_pmcmod_xiarenA", "j_pmcmod_xiarenB", "j_pmcmod_xiarenC", "j_pmcmod_xiarenD", "j_pmcmod_xiarenF"}
+			local xianrenList = {"j_pmcmod_xianrenA", "j_pmcmod_xianrenB", "j_pmcmod_xianrenC", "j_pmcmod_xianrenD", "j_pmcmod_xianrenF"}
 			local selectedXianren = pseudorandom_element(xianrenList, pseudoseed('xianren'))
 			local percent = 1.15
 			G.E_MANAGER:add_event(Event({
@@ -7688,11 +7688,11 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+        return {vars = { card.ability.extra.sell_value } }
 	end,
 	calculate = function(self, card, context)
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
-			local xianrenList = {"j_pmcmod_xiarenA", "j_pmcmod_xiarenB", "j_pmcmod_xiarenC", "j_pmcmod_xiarenD", "j_pmcmod_xiarenE"}
+			local xianrenList = {"j_pmcmod_xianrenA", "j_pmcmod_xianrenB", "j_pmcmod_xianrenC", "j_pmcmod_xianrenD", "j_pmcmod_xianrenE"}
 			local selectedXianren = pseudorandom_element(xianrenList, pseudoseed('xianren'))
 			local percent = 1.15
 			G.E_MANAGER:add_event(Event({
@@ -7747,7 +7747,7 @@ SMODS.Joker {
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
-	pos = { x =8, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
@@ -7779,7 +7779,7 @@ SMODS.Joker {
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
-	pos = { x =8, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
         
@@ -7804,27 +7804,27 @@ SMODS.Joker {
 	key = 'jiaYuanchun',
 	name = "Jia Yuanchun",
 	unlocked = true,
-	config = { extra = { } },
+	config = { extra = { dollars = 6 } },
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
-	pos = { x = 0, y = 0 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+        return {vars = { card.ability.extra.dollars } }
 	end,
 	calculate = function(self, card, context)
 		
     end,
 	calc_dollar_bonus = function(self, card)
-        if G.GAME.dollars > 100  and #G.GAME.tags >= 2 and G.GAME.last_blind and G.GAME.last_blind.boss then
-            return ((#G.GAME.tags - 1) *  8)
+        if #G.GAME.tags >= 2 and G.GAME.last_blind and G.GAME.last_blind.boss then
+            return ((#G.GAME.tags - 1) *  card.ability.extra.dollars)
         end
     end,
 	set_badges = function(self, card, badges)
@@ -7939,7 +7939,7 @@ SMODS.Joker {
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
@@ -8074,7 +8074,7 @@ SMODS.Joker {
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
-	pos = { x = 0, y = 0 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
@@ -8274,13 +8274,13 @@ SMODS.Joker {
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+        return {vars = { card.ability.extra.chips_mod, card.ability.extra.chips } }
 	end,
 	calculate = function(self, card, context)
 		if context.joker_type_destroyed and not context.blueprint  then
@@ -8315,7 +8315,7 @@ SMODS.Joker {
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
@@ -8378,7 +8378,7 @@ SMODS.Joker {
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
@@ -8441,7 +8441,7 @@ SMODS.Joker {
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
@@ -8485,7 +8485,7 @@ SMODS.Joker {
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
@@ -8494,6 +8494,10 @@ SMODS.Joker {
         return {vars = { card.ability.extra.dollars, card.ability.extra.mostPlayedHand } }
 	end,
 	calculate = function(self, card, context)
+
+		if context.after then
+			card.ability.extra.cardsInHand = #G.hand.cards
+		end
 
 		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and G.GAME.last_blind and G.GAME.last_blind.boss then
 			local _hand, _tally = nil, 0
@@ -8504,7 +8508,6 @@ SMODS.Joker {
 				end
 			end
 			card.ability.extra.mostPlayedHand = _hand
-			card.ability.extra.cardsInHand = #G.hand.cards
 		end
     end,
 	calc_dollar_bonus = function(self, card)
@@ -8557,7 +8560,7 @@ SMODS.Joker {
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
@@ -8578,20 +8581,20 @@ SMODS.Joker {
 	key = 'nightDrifter',
 	name = "Night Drifter",
 	unlocked = true,
-	config = { extra = { minXMult = 0.8, maxXMult = 2, minXMult_mod = 0.1, maxXMult_mod = 1, currentConsumableCount = 0 } },
+	config = { extra = { minXMult = 0.8, maxXMult = 2, minXMult_mod = 0.1, maxXMult_mod = 0.5, currentConsumableCount = 0 } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = { (card.ability.extra.minXMult - (card.ability.extra.minXMult_mod * card.ability.extra.currentConsumableCount)), (card.ability.extra.maxXMult + (card.ability.extra.maxXMult_mod * card.ability.extra.currentConsumableCount)), card.ability.extra.currentConsumableCount  } }
+        return {vars = { (card.ability.extra.minXMult - (card.ability.extra.minXMult_mod * card.ability.extra.currentConsumableCount)), (card.ability.extra.maxXMult + (card.ability.extra.maxXMult_mod * card.ability.extra.currentConsumableCount)), card.ability.extra.currentConsumableCount, card.ability.extra.minXMult_mod, card.ability.extra.maxXMult_mod  } }
 	end,
 	calculate = function(self, card, context)
 		if context.using_consumeable and not context.blueprint and card.ability.extra.currentConsumableCount <= 3 then
@@ -8614,7 +8617,7 @@ SMODS.Joker {
 		end
 
         if context.end_of_round and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
-            card.ability.extra.currentConsumableCount = math.floor(card.ability.extra.currentConsumableCount / 2)
+            card.ability.extra.currentConsumableCount = 0
         end
     end,
 	set_badges = function(self, card, badges)
@@ -9292,6 +9295,49 @@ SMODS.Joker {
  	end
 }
 
+
+--Yellow Harpoon
+SMODS.Joker {
+	key = 'yellowHarpoon',
+	name = "Yellow Harpoon",
+	unlocked = true,
+	config = { extra = { base_xmult = 1.0 } },
+	eternal_compat = true,
+	blueprint_compat = false,
+	perishable_compat = false,
+	rarity = 4,
+	cost = 10,
+    atlas = 'ModdedProjectMoon',
+	pos = { x = 8, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = { card.ability.extra.base_xmult + 0.2, card.ability.extra.base_xmult + 1.0 } }
+	end,
+	calculate = function(self, card, context)
+		local selectedXMult = 1.0
+
+		if context.other_joker then
+			if context.other_joker.config.center.rarity == 1 or context.other_joker.config.center.rarity == "Common" then
+				selectedXMult = card.ability.extra.base_xmult + 0.2
+			elseif context.other_joker.config.center.rarity == 2 or context.other_joker.config.center.rarity == "Uncommon" then
+				selectedXMult = card.ability.extra.base_xmult + 0.4
+			elseif context.other_joker.config.center.rarity == 3 or context.other_joker.config.center.rarity == "Rare" then
+				selectedXMult = card.ability.extra.base_xmult + 0.6
+			else
+				selectedXMult = card.ability.extra.base_xmult + 1.0
+			end
+            return {
+                xmult = selectedXMult
+            }
+        end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("COLOR FIXER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
 
 ------------------
 -- DUMMY JOKERS --
