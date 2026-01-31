@@ -6978,23 +6978,65 @@ SMODS.Joker {
 	key = 'qingTao',
 	name = "Qing Tao",
 	unlocked = true,
-	config = { extra = { } },
+	config = { extra = { type = "Three of a Kind", baseChance = 1, maxChance = 3, counter = 0 } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+        local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'qingTao')
+        return {vars = { localize(card.ability.extra.type, 'poker_hands'), new_numerator, new_denominator } } 
 	end,
 	calculate = function(self, card, context)
-		
+		 if context.destroy_card and context.cardarea == G.play and not context.blueprint and next(context.poker_hands[card.ability.extra.type]) and G.GAME.current_round.hands_played == 0 and #context.full_hand == 3 then
+			if SMODS.pseudorandom_probability(card, 'qingTao', card.ability.extra.baseChance, card.ability.extra.maxChance, 'shanSan') then
+				card.ability.extra.counter = card.ability.extra.counter + 1
+				return {
+                    remove = true
+                }
+			end
+        end
+
+		if context.after then
+			if card.ability.extra.counter == 0 then
+			G.E_MANAGER:add_event(Event({
+					func = function()
+						play_sound('slice1', 0.96+math.random()*0.08)
+						card.T.r = -0.2
+						card:juice_up(0.3, 0.4)
+						card.states.drag.is = true
+						card.children.center.pinch.x = true
+
+						G.E_MANAGER:add_event(Event({
+							trigger = 'after',
+							delay = 0.3,
+							blockable = false,
+							func = function()
+								G.jokers:remove_card(card)
+								card:remove()
+								card = nil
+								return true;
+							end
+						}))
+						return true
+					end
+				}))
+
+				G.GAME.pool_flags.qingTao_extinct = true
+				return {
+					message = 'Died'
+				}
+			else
+				card.ability.extra.counter = 0
+			end
+		end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
@@ -7006,14 +7048,14 @@ SMODS.Joker {
 	key = 'shanSan',
 	name = "Shan San",
 	unlocked = true,
-	config = { extra = { type = "Three of a Kind", dollars = 3, baseChance = 1, maxChance = 3 } },
+	config = { extra = { type = "Three of a Kind", dollars = 3, baseChance = 1, maxChance = 3, counter = 0 } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
-	pos = { x =8, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
@@ -7025,11 +7067,46 @@ SMODS.Joker {
 	calculate = function(self, card, context)
 		if context.individual and context.cardarea == G.play and next(context.poker_hands[card.ability.extra.type]) then
 			if SMODS.pseudorandom_probability(card, 'shanSan', card.ability.extra.baseChance, card.ability.extra.maxChance, 'shanSan') then
+				card.ability.extra.counter = card.ability.extra.counter + 1
 				return {
 					dollars = card.ability.extra.dollars
 				}
 			end
         end
+
+		if context.after then
+			if card.ability.extra.counter == 0 then
+			G.E_MANAGER:add_event(Event({
+					func = function()
+						play_sound('slice1', 0.96+math.random()*0.08)
+						card.T.r = -0.2
+						card:juice_up(0.3, 0.4)
+						card.states.drag.is = true
+						card.children.center.pinch.x = true
+
+						G.E_MANAGER:add_event(Event({
+							trigger = 'after',
+							delay = 0.3,
+							blockable = false,
+							func = function()
+								G.jokers:remove_card(card)
+								card:remove()
+								card = nil
+								return true;
+							end
+						}))
+						return true
+					end
+				}))
+
+				G.GAME.pool_flags.shanSan_extinct = true
+				return {
+					message = 'Died'
+				}
+			else
+				card.ability.extra.counter = 0
+			end
+		end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
@@ -7117,17 +7194,19 @@ SMODS.Joker {
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
-		local keyToLocalize = nil
-		if #ProjectMoonMod.garnetJoker.cards >= 1 then
-			keyToLocalize = ProjectMoonMod.garnetJoker.cards[1].config.center.key
-		else
-			keyToLocalize = "j_pmcmod_garnet"
+		local keyToLocalize = "j_pmcmod_garnet"
+		if #ProjectMoonMod.garnetJoker then
+			if #ProjectMoonMod.garnetJoker.cards >= 1 then
+				keyToLocalize = ProjectMoonMod.garnetJoker.cards[1].config.center.key
+			else
+				keyToLocalize = "j_pmcmod_garnet"
+			end
 		end
         return {vars = { localize{type="name_text", set="Joker", key = (keyToLocalize)} } }
 	end,
@@ -7173,42 +7252,48 @@ SMODS.Joker {
 	key = 'catt',
 	name = "Catt",
 	unlocked = false,
-	config = { exhausted = false, counter = 2 },
+	config = { extra = {exhausted = false, rarity = 2, rarityName = "Hardcover"} },
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = true,
-	rarity = 2,
-	cost = 6,
+	rarity = 3,
+	cost = 12,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+		if card.ability.extra.rarity == 2 then
+			card.ability.extra.rarityName = "Hardcover"
+		elseif card.ability.extra.rarity == 3 then
+			card.ability.extra.rarityName = "Limited"
+		else
+			card.ability.extra.rarityName = "Objet D'Art"
+		end
+
+        return {vars = { card.ability.extra.rarityName, card.ability.extra.exhausted } }
 	end,
 	calculate = function(self, card, context)
 
-		if context.end_of_round and G.GAME.last_blind and G.GAME.last_blind.boss and card.ability.exhausted == true then
-			card.ability.counter = card.ability.counter - 1
-
-			if card.ability.counter == 0 then
-				card.ability.exhausted = false
-			end
+		if context.end_of_round and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss then
+				card.ability.extra.exhausted = false
 		end
 
-		if context.end_of_round and context.game_over and context.main_eval and card.ability.exhausted == false then
+		if context.end_of_round and context.game_over and context.main_eval and card.ability.extra.exhausted == false then
 			local destructable_jokers = {}
 			for i = 1, #G.jokers.cards do
-				if G.jokers.cards[i] ~= card and not G.jokers.cards[i].ability.eternal then
+				if G.jokers.cards[i] ~= card and not G.jokers.cards[i].ability.eternal and G.jokers.cards[i].config.center.rarity == card.ability.extra.rarity then
 					destructable_jokers[#destructable_jokers+1] = G.jokers.cards[i]
 				end
 			end
 			local joker_to_destroy = #destructable_jokers > 0 and pseudorandom_element(destructable_jokers, pseudoseed('catt')) or nil
 			if joker_to_destroy then
-				card.ability.exhausted = true
-				card.ability.counter = 2
+				card.ability.extra.exhausted = true
+				if card.ability.extra.rarity <= 3 then
+					card.ability.extra.rarity = card.ability.extra.rarity + 1
+				end
                 G.E_MANAGER:add_event(Event({
                     func = function()
                         G.hand_text_area.blind_chips:juice_up()
@@ -7220,7 +7305,7 @@ SMODS.Joker {
                 }))
                 return {
                     message = localize('k_saved_ex'),
-                    saved = 'ph_mr_bones', --kiro -- check this later
+                    saved = 'pmcmod_ph_catt', --kiro -- check this later
                     colour = G.C.RED
                 }
 			end
@@ -7337,23 +7422,38 @@ SMODS.Joker {
 	key = 'linDaiyu',
 	name = "Lin Daiyu",
 	unlocked = true,
-	config = { extra = { } },
+	config = { extra = { ruptureStack = 0, trigger = false } },
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = true,
 	rarity = 2,
 	cost = 7,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+        return {vars = { card.ability.extra.ruptureStack } }
 	end,
 	calculate = function(self, card, context)
-		
+		if context.individual and context.cardarea == G.play then
+			if context.scoring_hand[1]:get_id() == 5 then
+				if SMODS.has_enhancement(context.other_card, 'm_pmcmod_rupture') then
+					card.ability.extra.ruptureStack = card.ability.extra.ruptureStack + context.other_card.ability.counter
+					context.other_card.ability.counter = 0
+				end
+			end
+		end
+		if context.joker_main then
+			return{
+				xmult = 1 + 0.1*(card.ability.extra.ruptureStack / 5)
+			}
+		end
+		if context.after then
+			card.ability.extra.ruptureStack = 0
+		end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
@@ -7408,7 +7508,7 @@ SMODS.Joker {
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
@@ -7440,6 +7540,7 @@ SMODS.Joker {
 				end
 			}))
 		end
+
     end,
 	calc_dollar_bonus = function(self, card)
         return card.ability.extra.dollars
@@ -7461,7 +7562,7 @@ SMODS.Joker {
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
@@ -7493,14 +7594,15 @@ SMODS.Joker {
 				end
 			}))
 		end
-		if context.individual and context.cardarea == G.play and #context.full_hand >= 3 then
-			if context.scoring_hand[1] or context.scoring_hand[#context.full_hand] then
+		if context.individual and context.cardarea == G.play and (context.other_card == context.scoring_hand[1] or context.other_card == context.scoring_hand[#context.scoring_hand]) and #context.scoring_hand >= 4 then
 				return{
 					mult = card.ability.extra.mult,
 					chips = card.ability.extra.chips
 				}
-			end
 		end
+    end,
+	in_pool = function(self, args)
+        return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
@@ -7519,7 +7621,7 @@ SMODS.Joker {
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
@@ -7557,6 +7659,9 @@ SMODS.Joker {
 			}
         end
     end,
+	in_pool = function(self, args)
+        return G.GAME.pool_flags.fake_robot_flag
+    end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
  	end,
@@ -7567,20 +7672,20 @@ SMODS.Joker {
 	key = 'xianrenD',
 	name = "Xianren D",
 	unlocked = false,
-	config = { extra = {  } },
+	config = { extra = { repetitions = 1 } },
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+        return {vars = { card.ability.extra.repetitions } }
 	end,
 	calculate = function(self, card, context)
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
@@ -7606,6 +7711,15 @@ SMODS.Joker {
 				end
 			}))
 		end
+		if context.retrigger_joker_check and context.other_card ~= card and context.other_card == G.jokers.cards[1] then
+			print("Testing trigger")
+		return {
+				repetitions = card.ability.extra.repetitions
+			}
+		end
+    end,
+	in_pool = function(self, args)
+        return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
@@ -7624,7 +7738,7 @@ SMODS.Joker {
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
@@ -7665,6 +7779,9 @@ SMODS.Joker {
 			end
     	end
     end,
+	in_pool = function(self, args)
+        return G.GAME.pool_flags.fake_robot_flag
+    end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
  	end,
@@ -7682,7 +7799,7 @@ SMODS.Joker {
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
@@ -7729,6 +7846,9 @@ SMODS.Joker {
                 colour = G.C.MONEY
             }
         end
+    end,
+	in_pool = function(self, args)
+        return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
@@ -7885,7 +8005,7 @@ SMODS.Joker {
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
@@ -8039,35 +8159,7 @@ SMODS.Joker {
 	key = 'wangDawei',
 	name = "Wang Dawei",
 	unlocked = true,
-	config = { extra = { } },
-	eternal_compat = true,
-	blueprint_compat = true,
-	perishable_compat = true,
-	rarity = 1,
-	cost = 4,
-    atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
-    pools =
-	{
-
- 	},
-	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
-	end,
-	calculate = function(self, card, context)
-		
-    end,
-	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Wang Family", HEX("525252"), HEX('c2c2c2'), 1.2 )
- 	end,
-}
-
---Wang Qingshan
-SMODS.Joker {
-	key = 'wangQingshan',
-	name = "Wang Qingshan",
-	unlocked = true,
-	config = { extra = { } },
+	config = { extra = { counter = 0, permaMult_mod = 7, permaChips_mod = 15 } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -8080,46 +8172,51 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+        return {vars = { 8 - card.ability.extra.counter, card.ability.extra.permaMult_mod, card.ability.extra.permaChips_mod } }
 	end,
 	calculate = function(self, card, context)
-		if context.main_scoring and context.cardarea == G.play and #context.full_hand == 1 and context.full_hand[1]:get_id() == 8 and G.GAME.current_round.hands_played == 0 then
+		if context.individual and context.cardarea == G.play then
+            card.ability.extra.counter = card.ability.extra.counter + 1
+			if card.ability.extra.counter >= 8 then
+				context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) + card.ability.extra.permaMult_mod
+				context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) +  card.ability.extra.permaChips_mod
+				card.ability.extra.counter = 0
+			end
+        end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("Wang Family", HEX("525252"), HEX('c2c2c2'), 1.2 )
+ 	end,
+}
 
-			local tagCount = #G.GAME.tags
+--Wang Qingshan
+SMODS.Joker {
+	key = 'wangQingshan',
+	name = "Wang Qingshan",
+	unlocked = true,
+	config = { extra = { counter = 0, permaDollars_mod = 3 } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 1,
+	cost = 4,
+    atlas = 'ModdedProjectMoon',
+	pos = { x = 8, y = 14 },
+    pools =
+	{
 
-                if #G.GAME.tags >= 1 then
-
-					-- Deletes all current tags (need to figure out how to do this)
-					for i=1, #G.GAME.tags do
-
-					end
-
-					-- Create new tags
-					for i=1, tagCount do
-						local tag_pool = get_current_pool('Tag')
-						local selected_tag = pseudorandom_element(tag_pool, 'pmcmod_seed')
-						local it = 1
-
-						while selected_tag == 'UNAVAILABLE' do
-							it = it + 1
-							selected_tag = pseudorandom_element(tag_pool, 'pmcmod_seed'..it)
-						end
-						
-							G.E_MANAGER:add_event(Event({
-							func = (function()
-								add_tag(Tag(selected_tag, false, 'Small'))
-								play_sound('generic1', 0.9 + math.random() * 0.1, 0.8)
-								play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
-								return true
-							end)
-						}))
-            			return nil, true -- This is for Joker retrigger purposes
-					end
-                end
-                return {
-                    remove = true
-                }
-            end
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = { card.ability.extra.counter, card.ability.extra.permaDollars_mod } }
+	end,
+	calculate = function(self, card, context)
+		if context.individual and context.cardarea == G.play then
+            card.ability.extra.counter = card.ability.extra.counter + 1
+			if card.ability.extra.counter >= 8 then
+				context.other_card.ability.perma_p_dollars = (context.other_card.ability.perma_p_dollars or 0) + card.ability.extra.permaDollars_mod
+				card.ability.extra.counter = 0
+			end
+        end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
@@ -8198,22 +8295,40 @@ SMODS.Joker {
 	key = 'shiYihua',
 	name = "Shi Yihua",
 	unlocked = true,
-	config = { extra = { } },
+	config = { extra = { baseChips = 2} },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+		local diamond_tally = 0
+        if G.playing_cards then
+            for i = 1, #G.playing_cards do
+                if G.playing_cards[i]:is_suit('Diamonds', true) then diamond_tally = diamond_tally + 1 end
+            end
+        end
+        return {vars = { card.ability.extra.baseChips, card.ability.extra.baseChips * diamond_tally } }
 	end,
 	calculate = function(self, card, context)
+		local diamond_tally = 0
+        if G.playing_cards then
+            for i = 1, #G.playing_cards do
+                if G.playing_cards[i]:is_suit('Diamonds', true) then diamond_tally = diamond_tally + 1 end
+            end
+        end
+
+		if context.joker_main then
+			return{
+				chips = card.ability.extra.baseChips * diamond_tally
+			}
+		end
 		
     end,
 	set_badges = function(self, card, badges)
@@ -8525,23 +8640,44 @@ SMODS.Joker {
 	key = 'zigong',
 	name = "Zigong",
 	unlocked = true,
-	config = { extra = { } },
+	config = { extra = { chips = 3} },
 	eternal_compat = true,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+        return {vars = { card.ability.extra.chips } }
 	end,
 	calculate = function(self, card, context)
-		
+		if context.setting_blind and not context.blueprint then
+			local my_pos = nil
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+                    my_pos = i
+                    break
+                end
+            end
+
+			if G.jokers.cards[my_pos + 1] then
+				local affectedCard = G.jokers.cards[my_pos + 1]
+				card.ability.extra.chips = card.ability.extra.chips + (affectedCard.sell_cost * 3)
+				if affectedCard.sell_cost then
+                        affectedCard.sell_cost = 0
+                end
+			end
+        end
+		if context.joker_main then
+			return {
+				chips = card.ability.extra.chips
+			}
+		end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
@@ -8630,14 +8766,14 @@ SMODS.Joker {
 	key = 'leiHeng',
 	name = "Lei Heng",
 	unlocked = true,
-	config = { extra = { } },
+	config = { extra = { my_pos = 1 } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
@@ -8646,7 +8782,34 @@ SMODS.Joker {
         return {vars = {  } }
 	end,
 	calculate = function(self, card, context)
+		if context.before then
+			for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i] == card then
+                    card.ability.extra.my_pos = i
+                    break
+                end
+            end
+		end
 		
+		if context.retrigger_joker_check and context.other_card == G.jokers.cards[card.ability.extra.my_pos -1] then
+			local coinToss = math.random(0,4)
+
+			if coinToss == 0 then
+                local joker_to_destroy = G.jokers.cards[card.ability.extra.my_pos -1]
+
+                if joker_to_destroy and not (context.blueprint_card or self).getting_sliced then
+                    joker_to_destroy.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+                        card:juice_up(0.8, 0.8)
+                        joker_to_destroy:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
+                end
+			else
+				return {
+					repetitions = coinToss
+				}
+			end
+		end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
@@ -8658,23 +8821,64 @@ SMODS.Joker {
 	key = 'valencina',
 	name = "Valencina",
 	unlocked = true,
-	config = { extra = { } },
+	config = { extra = { currentPosition = 1, lucioDeathCounter = 0, lucioPresent = false, lucioPos = nil } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 9, y = 14 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+        return {vars = { card.ability.extra.lucioDeathCounter } }
 	end,
 	calculate = function(self, card, context)
-		
+
+		if context.before then
+			card.ability.extra.lucioPresent = false
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card then
+					card.ability.extra.currentPosition = i
+					break
+				end
+			end
+
+			if card.ability.extra.currentPosition <= #G.jokers.cards then
+				for i = card.ability.extra.currentPosition, #G.jokers.cards do
+					if G.jokers.cards[i].config.center.key == "j_pmcmod_lucio" then
+						card.ability.extra.lucioPresent = true
+						card.ability.extra.lucioPos = i
+						break
+					end
+				end
+			end
+			
+		end
+
+		if context.individual and context.cardarea == G.play and (context.other_card == context.scoring_hand[1]) and #context.scoring_hand >= 2 then
+			context.other_card:set_ability("m_pmcmod_tremor", nil, true)
+		end
+
+		if context.individual and context.cardarea == G.play and (context.other_card == context.scoring_hand[#context.scoring_hand]) and #context.scoring_hand > 2 and card.ability.extra.lucioPresent then
+			context.other_card:set_ability("m_pmcmod_tremor", nil, true)
+
+			card.ability.extra.lucioDeathCounter = card.ability.extra.lucioDeathCounter + 1
+
+			if card.ability.extra.lucioDeathCounter >= 5 then
+				local lucio = G.jokers.cards[card.ability.extra.lucioPos]
+				
+                    lucio.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+                        card:juice_up(0.8, 0.8)
+                        lucio:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
+			end
+
+		end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
@@ -8686,7 +8890,7 @@ SMODS.Joker {
 	key = 'rien',
 	name = "Rien",
 	unlocked = true,
-	config = { extra = { } },
+	config = { extra = { mult = 0, mult_mod = 15,  prescriptListShuffled = {}, prescriptActive = false, currentPrescript = 0, soraPresent = false, soraPos = nil } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -8701,8 +8905,67 @@ SMODS.Joker {
 	loc_vars = function(self, info_queue, card)
         return {vars = {  } }
 	end,
-	calculate = function(self, card, context)
+	add_to_deck = function(self, card, from_debuff)
 		
+		-- Shuffles prescripts
+        local prescriptListUnshuffled = {"j_pmcmod_prescript1", "j_pmcmod_prescript2", "j_pmcmod_prescript3", "j_pmcmod_prescript4", "j_pmcmod_prescript5", "j_pmcmod_prescript6", "j_pmcmod_prescript7", "j_pmcmod_prescript8", "j_pmcmod_prescript9", "j_pmcmod_prescript10", "j_pmcmod_prescript11"}
+		card.ability.extra.prescriptListShuffled = Shuffle(prescriptListUnshuffled)
+    end,
+	calculate = function(self, card, context)
+
+		-- Increase the prescript counter at the end of the boss
+		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
+
+			card.ability.extra.soraPresent = false
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card then
+					card.ability.extra.currentPosition = i
+					break
+				end
+			end
+
+			if card.ability.extra.currentPosition <= #G.jokers.cards then
+				for i = card.ability.extra.currentPosition, #G.jokers.cards do
+					if G.jokers.cards[i].config.center.key == "j_pmcmod_sora" then
+						card.ability.extra.soraPresent = true
+						card.ability.extra.soraPos = i
+					end
+				end
+			end
+
+			card.ability.extra.currentPrescript = card.ability.extra.currentPrescript + 1
+			card.ability.extra.prescriptActive = false
+			if card.ability.extra.soraPresent then
+				card.ability.extra.mult = card.ability.extra.mult + (card.ability.extra.mult_mod * 2)
+				card.ability.extra.soraDeathCounter = card.ability.extra.soraDeathCounter + 1
+			else
+				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod
+			end
+
+			if card.ability.extra.soraDeathCounter >= 3 then
+				local sora = G.jokers.cards[card.ability.extra.soraPos]
+				
+				sora.getting_sliced = true
+				G.E_MANAGER:add_event(Event({func = function()
+					card:juice_up(0.8, 0.8)
+					sora:start_dissolve({G.C.RED}, nil, 1.6)
+				return true end }))
+			end
+			
+		end
+
+		-- Spawn the next prescript
+		if context.ending_shop and card.ability.extra.prescriptActive == false and G.GAME.round_resets.ante > 1 and card.ability.extra.currentPrescript <= 10 then
+			SMODS.add_card({ key = card.ability.extra.prescriptListShuffled[card.ability.extra.currentPrescript], stickers = {"eternal"}, force_stickers = true })
+			card.ability.extra.prescriptActive = true
+		end
+
+		if context.joker_main then
+			return {
+				mult = card.ability.extra.mult
+			}
+		end
+
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
@@ -8714,7 +8977,7 @@ SMODS.Joker {
 	key = 'matthias',
 	name = "Matthias",
 	unlocked = true,
-	config = { extra = { } },
+	config = { extra = { hands = 1, dollarsBase = 2, kiraDeathCounter = 0, kiraPresent = false, kiraPos = nil } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -8727,10 +8990,76 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+		local burn_tally = 0
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_pmcmod_burn') then burn_tally = burn_tally + 1 end
+				end
+			end
+        return {vars = { card.ability.extra.hands, card.ability.extra.dollarsBase, card.ability.extra.dollarsBase * burn_tally, card.ability.extra.kiraDeathCounter } }
 	end,
 	calculate = function(self, card, context)
-		
+		if context.before then
+			card.ability.extra.kiraPresent = false
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card then
+					card.ability.extra.currentPosition = i
+					break
+				end
+			end
+
+			if card.ability.extra.currentPosition <= #G.jokers.cards then
+				for i = card.ability.extra.currentPosition, #G.jokers.cards do
+					if G.jokers.cards[i].config.center.key == "j_pmcmod_kira" then
+						card.ability.extra.kiraPresent = true
+						card.ability.extra.kiraPos = i
+					end
+				end
+			end
+			
+		end
+
+		if context.individual and context.cardarea == G.play and #context.scoring_hand <= 3 and G.GAME.current_round.hands_played == 0 then
+			
+			
+			local burn_tally = 0
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_pmcmod_burn') then burn_tally = burn_tally + 1 end
+				end
+			end
+
+			
+
+			if card.ability.extra.dollarsBase * burn_tally <= G.GAME.dollars then
+				context.other_card:set_ability("m_pmcmod_burn", nil, true)
+				if card.ability.extra.kiraPresent then
+					card.ability.extra.kiraDeathCounter = card.ability.extra.kiraDeathCounter + 1
+				else
+					ease_dollars (-card.ability.extra.dollarsBase * burn_tally)
+				end
+
+				if card.ability.extra.kiraDeathCounter >= 5 then
+					local kira = G.jokers.cards[card.ability.extra.kiraPos]
+				
+                    kira.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+                        card:juice_up(0.8, 0.8)
+                        kira:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
+				end
+			end
+		end
+
+
+			
+
+    end,
+	add_to_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hands
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hands
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
@@ -8742,7 +9071,7 @@ SMODS.Joker {
 	key = 'callisto',
 	name = "Callisto",
 	unlocked = true,
-	config = { extra = { } },
+	config = { extra = { currentPosition = 1, albinaPresent = false, albinaPos = nil, chips = 0, mult = 0, chips_gain = 20, mult_gain = 5  } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -8758,7 +9087,101 @@ SMODS.Joker {
         return {vars = {  } }
 	end,
 	calculate = function(self, card, context)
-		
+        if context.before and not context.blueprint then
+
+			card.ability.extra.albinaPresent = false
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card then
+					card.ability.extra.currentPosition = i
+					break
+				end
+			end
+
+			if card.ability.extra.currentPosition <= #G.jokers.cards then
+				for i = card.ability.extra.currentPosition, #G.jokers.cards do
+					if G.jokers.cards[i].config.center.key == "j_pmcmod_kira" then
+						card.ability.extra.albinaPresent = true
+						card.ability.extra.albinaPos = i
+					end
+				end
+			end
+
+            local enhancedChips = {}
+			local enhancedMult = {}
+            for _, scored_card in ipairs(context.scoring_hand) do
+                if next(SMODS.has_enhancement(playing_card, 'm_bonus')) and not scored_card.debuff and not scored_card.vampired then
+                    enhancedChips[#enhancedChips + 1] = scored_card
+                    scored_card.vampired = true
+                    scored_card:set_ability('c_base', nil, true)
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            scored_card:juice_up()
+                            scored_card.vampired = nil
+                            return true
+                        end
+                    }))
+                end
+
+				if next(SMODS.has_enhancement(playing_card, 'm_mult')) and not scored_card.debuff and not scored_card.vampired then
+                    enhancedMult[#enhancedMult + 1] = scored_card
+                    scored_card.vampired = true
+                    scored_card:set_ability('c_base', nil, true)
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            scored_card:juice_up()
+                            scored_card.vampired = nil
+                            return true
+                        end
+                    }))
+                end
+            end
+
+            if #enhancedChips > 0 then
+
+				if card.ability.extra.albinaPresent then
+					card.ability.extra.chips = card.ability.extra.chips + (card.ability.extra.chips_gain * #enhancedChips * 2)
+					card.ability.extra.albinaDeathCounter = card.ability.extra.albinaDeathCounter + 1
+				else
+					card.ability.extra.chips = card.ability.extra.chips + (card.ability.extra.chips_gain * #enhancedChips)
+				end
+				
+                return {
+                    message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } },
+                    colour = G.C.CHIPS
+                }
+            end
+
+			if #enhancedMult > 0 then
+				if card.ability.extra.albinaPresent then
+					card.ability.extra.mult = card.ability.extra.mult + (card.ability.extra.mult_gain * #enhancedMult * 2)
+					card.ability.extra.albinaDeathCounter = card.ability.extra.albinaDeathCounter + 1
+				else
+					card.ability.extra.mult = card.ability.extra.mult + (card.ability.extra.mult_gain * #enhancedMult)
+				end
+
+				
+                return {
+                    message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } },
+                    colour = G.C.MULT
+                }
+            end
+
+			if card.ability.extra.albinaDeathCounter >= 5 then
+					local albina = G.jokers.cards[card.ability.extra.albinaPos]
+				
+                    albina.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+                        card:juice_up(0.8, 0.8)
+                        albina:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
+			end
+        end
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult,
+				chips = card.ability.extra.chips
+            }
+        end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
@@ -8770,14 +9193,14 @@ SMODS.Joker {
 	key = 'shiomiYoru',
 	name = "Shiomi Yoru",
 	unlocked = true,
-	config = { extra = { } },
+	config = { extra = {renDeathCounter = 0, renPos = nil } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
@@ -8786,7 +9209,41 @@ SMODS.Joker {
         return {vars = {  } }
 	end,
 	calculate = function(self, card, context)
+
+		if context.before then
+			card.ability.extra.matthiasPresent = false
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card then
+					card.ability.extra.currentPosition = i
+					break
+				end
+			end
+
+			if card.ability.extra.currentPosition <= #G.jokers.cards then
+				for i = card.ability.extra.currentPosition, #G.jokers.cards do
+					if G.jokers.cards[i].config.center.key == "j_pmcmod_ren" then
+						card.ability.extra.renPresent = true
+						card.ability.extra.renPos = i
+						break
+					end
+				end
+			end
+			
+		end
+
+		if context.individual and context.cardarea == G.play and context.other_card.poise_trigger and card.ability.extra.renPresent then
+					
+			card.ability.extra.renDeathCounter = card.ability.extra.renDeathCounter + 1
 		
+				if card.ability.extra.renDeathCounter >= 5 then
+					local ren = G.jokers.cards[card.ability.extra.renPos]
+                    ren.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+                        card:juice_up(0.8, 0.8)
+                        ren:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
+				end
+		end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
@@ -8798,7 +9255,7 @@ SMODS.Joker {
 	key = 'lucio',
 	name = "Lucio",
 	unlocked = true,
-	config = { extra = { } },
+	config = { extra = { currentPosition = 1, lucioDeathCounter = 0, dollars = 3, valencinaPresent = false, valencinaPos = nil } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -8811,10 +9268,50 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+        return {vars = { card.ability.extra.lucioDeathCounter, card.ability.extra.dollars, card.ability.extra.dollars * 3} }
 	end,
 	calculate = function(self, card, context)
-		
+
+		if context.before then
+			card.ability.extra.valencinaPresent = false
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card then
+					card.ability.extra.currentPosition = i
+					break
+				end
+			end
+
+			if card.ability.extra.currentPosition <= #G.jokers.cards then
+				for i = card.ability.extra.currentPosition, #G.jokers.cards do
+					if G.jokers.cards[i].config.center.key == "j_pmcmod_valencina" then
+						card.ability.extra.valencinaPresent = true
+						card.ability.extra.valencinaPos = i
+						break
+					end
+				end
+			end
+			
+		end
+
+		if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, 'm_pmcmod_tremor') then
+			local multiplier = 1
+			if card.ability.extra.valencinaPresent then
+				multiplier = 3
+				card.ability.extra.lucioDeathCounter = card.ability.extra.lucioDeathCounter + 1
+			end
+			return {
+				dollars = card.ability.extra.dollars * multiplier,
+			}
+        end
+
+		if context.after then
+			if card.ability.extra.lucioDeathCounter >= 3 then
+                    card.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+                        card:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
+			end
+		end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
@@ -8826,7 +9323,7 @@ SMODS.Joker {
 	key = 'sora',
 	name = "Sora",
 	unlocked = true,
-	config = { extra = { } },
+	config = { extra = { chips = 0, chips_mod = 20, soraDeathCounter = 0, rienPresent = false, rienPos = nil, locked = false } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -8839,10 +9336,94 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+        return {vars = { card.ability.extra.chips, card.ability.extra.chips_mod, card.ability.extra.soraDeathCounter } }
 	end,
 	calculate = function(self, card, context)
-		
+
+		if context.before then
+			card.ability.extra.rienPresent = false
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card then
+					card.ability.extra.currentPosition = i
+					break
+				end
+			end
+
+			if card.ability.extra.currentPosition <= #G.jokers.cards then
+				for i = card.ability.extra.currentPosition, #G.jokers.cards do
+					if G.jokers.cards[i].config.center.key == "j_pmcmod_rien" then
+						card.ability.extra.rienPresent = true
+						card.ability.extra.rienPos = i
+						break
+					end
+				end
+			end
+			
+		end
+
+		if context.end_of_round and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and context.main_eval and not card.ability.extra.locked and not context.blueprint then
+
+			local editionJokers = {}
+			local edition
+
+			for i=1, #G.jokers.cards do
+				if G.jokers.cards[i].edition then
+					if not card.edition then
+						editionJokers[#editionJokers + 1] = G.jokers.cards[i]
+					else
+						if card.edition.key ~= G.jokers.cards[i].edition.key then
+							editionJokers[#editionJokers + 1] = G.jokers.cards[i]
+						end
+					end
+				end
+			end
+
+			if (#editionJokers > 0) then
+				local eligible_card = pseudorandom_element(editionJokers, 'sora')
+				local edition = editionJokers.edition.key
+				card:set_edition(edition, true)
+				eligible_card:set_edition('c_base', true)
+				card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
+				card.ability.extra.counter = 0
+
+			else
+				
+				card.ability.extra.counter = card.ability.extra.counter + 1
+
+				if card.ability.extra.counter >= 3 then
+					card:set_edition('c_base', true)
+					card.ability.extra.chips = card.ability.extra.chips * 2
+					card.ability.extra.locked = true
+				end
+				
+			end
+
+		end
+
+		if context.joker_main then
+
+			local multiplier = 1
+
+			if card.ability.extra.rienPresent then
+				multiplier = 2
+				card.ability.extra.soraDeathCounter = card.ability.extra.soraDeathCounter + 1
+			else
+				multiplier = 1
+			end
+
+			if card.ability.extra.soraDeathCounter >= 5 then
+				
+				card.getting_sliced = true
+				G.E_MANAGER:add_event(Event({func = function()
+					card:start_dissolve({G.C.RED}, nil, 1.6)
+				return true end }))
+			end
+
+			return {
+				chips = card.ability.extra.chips * multiplier
+			}
+		end
+
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
@@ -8854,7 +9435,7 @@ SMODS.Joker {
 	key = 'kira',
 	name = "Kira",
 	unlocked = true,
-	config = { extra = { } },
+	config = { extra = { currentPosition = 1, kiraDeathCounter = 0, dollars = 2, matthiasPresent = false, matthiasPos = nil } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -8867,10 +9448,49 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+        return {vars = { card.ability.extra.kiraDeathCounter, card.ability.extra.dollars, card.ability.extra.dollars * 3} }
 	end,
 	calculate = function(self, card, context)
-		
+		if context.before then
+			card.ability.extra.matthiasPresent = false
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card then
+					card.ability.extra.currentPosition = i
+					break
+				end
+			end
+
+			if card.ability.extra.currentPosition <= #G.jokers.cards then
+				for i = card.ability.extra.currentPosition, #G.jokers.cards do
+					if G.jokers.cards[i].config.center.key == "j_pmcmod_matthias" then
+						card.ability.extra.matthiasPresent = true
+						card.ability.extra.matthiasPos = i
+						break
+					end
+				end
+			end
+			
+		end
+
+		if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, 'm_pmcmod_burn') then
+			local multiplier = 1
+			if card.ability.extra.matthiasPresent then
+				multiplier = 3
+				card.ability.extra.kiraDeathCounter = card.ability.extra.kiraDeathCounter + 1
+			end
+			return {
+				dollars = card.ability.extra.dollars * multiplier,
+			}
+        end
+
+		if context.after then
+			if card.ability.extra.kiraDeathCounter >= 3 then
+                    card.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+                        card:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
+			end
+		end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
@@ -8882,7 +9502,7 @@ SMODS.Joker {
 	key = 'albina',
 	name = "Albina",
 	unlocked = true,
-	config = { extra = { } },
+	config = { extra = {callistoPresent = false, callistoPos = nil, albinaDeathCounter = 0, baseChance = 1, maxChance = 2, type = "Pair" } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -8895,10 +9515,62 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+		local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'ren')
+        return {vars = { card.ability.extra.albinaDeathCounter, localize(card.ability.extra.type, 'poker_hands'), new_numerator, new_denominator } }
 	end,
 	calculate = function(self, card, context)
-		
+		if context.before then
+			card.ability.extra.callistoPresent = false
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card then
+					card.ability.extra.currentPosition = i
+					break
+				end
+			end
+
+			if card.ability.extra.currentPosition <= #G.jokers.cards then
+				for i = card.ability.extra.currentPosition, #G.jokers.cards do
+					if G.jokers.cards[i].config.center.key == "j_pmcmod_callisto" then
+						card.ability.extra.callistoPresent = true
+						card.ability.extra.callistoPos = i
+					end
+				end
+			end
+			
+		end
+
+		if context.individual and context.cardarea == G.play and #context.scoring_hand == 2 then
+			if context.scoring_hand[1] then
+				if card.ability.extra.callistoPresent then
+					context.other_card:set_ability("m_mult", nil, true)
+					card.ability.extra.albinaDeathCounter = card.ability.extra.albinaDeathCounter + 1
+				else
+					if SMODS.pseudorandom_probability(card, 'albina', card.ability.extra.baseChance, card.ability.extra.maxChance, 'albina') then
+						context.other_card:set_ability("m_mult", nil, true)
+					end
+				end
+			end
+
+			if context.scoring_hand[2] then
+				if card.ability.extra.callistoPresent then
+					context.other_card:set_ability("m_bonus", nil, true)
+					card.ability.extra.albinaDeathCounter = card.ability.extra.albinaDeathCounter + 1
+				else
+					if SMODS.pseudorandom_probability(card, 'albina', card.ability.extra.baseChance, card.ability.extra.maxChance, 'albina') then
+						context.other_card:set_ability("m_bonus", nil, true)
+					end
+				end
+			end
+
+			if card.ability.extra.albinaDeathCounter >= 6 then
+				
+				card.getting_sliced = true
+				G.E_MANAGER:add_event(Event({func = function()
+					card:juice_up(0.8, 0.8)
+					card:start_dissolve({G.C.RED}, nil, 1.6)
+				return true end }))
+			end
+		end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
@@ -8910,7 +9582,7 @@ SMODS.Joker {
 	key = 'ren',
 	name = "Ren",
 	unlocked = true,
-	config = { extra = { } },
+	config = { extra = { shiomiPresent = false, shiomiPos = nil, renDeathCounter = 0, baseChance = 1, maxChance = 2} },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -8923,9 +9595,50 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+        local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'ren')
+        return {vars = { card.ability.extra.renDeathCounter, new_numerator, new_denominator } } 
 	end,
 	calculate = function(self, card, context)
+		if context.before then
+			card.ability.extra.shiomiPresent = false
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] == card then
+					card.ability.extra.currentPosition = i
+					break
+				end
+			end
+
+			if card.ability.extra.currentPosition <= #G.jokers.cards then
+				for i = card.ability.extra.currentPosition, #G.jokers.cards do
+					if G.jokers.cards[i].config.center.key == "j_pmcmod_shiomiYoru" then
+						card.ability.extra.shiomiPresent = true
+						card.ability.extra.shiomiPos = i
+					end
+				end
+			end
+			
+		end
+
+		if context.individual and context.cardarea == G.play then
+			if card.ability.extra.shiomiPresent then
+				context.other_card:set_ability("m_pmcmod_poise", nil, true)
+				card.ability.extra.renDeathCounter = card.ability.extra.renDeathCounter + 1
+			else
+				if SMODS.pseudorandom_probability(card, 'ren', card.ability.extra.baseChance, card.ability.extra.maxChance, 'ren') then
+					context.other_card:set_ability("m_pmcmod_poise", nil, true)
+				end
+			end
+
+			if card.ability.extra.renDeathCounter >= 5 then
+				
+				card.getting_sliced = true
+				G.E_MANAGER:add_event(Event({func = function()
+					card:juice_up(0.8, 0.8)
+					card:start_dissolve({G.C.RED}, nil, 1.6)
+				return true end }))
+			end
+		end
+
 		
     end,
 	set_badges = function(self, card, badges)
@@ -8938,22 +9651,54 @@ SMODS.Joker {
 	key = 'ravi',
 	name = "Ravi",
 	unlocked = true,
-	config = { extra = { } },
-	eternal_compat = true,
+	config = { extra = {chips = 0, chips_mod = 10, baseChance = 1, maxChance = 9 } },
+	eternal_compat = false,
 	blueprint_compat = true,
 	perishable_compat = true,
 	rarity = 1,
 	cost = 3,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 9, y = 14 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+        local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'ravi')
+        return {vars = { card.ability.extra.chips, card.ability.extra.chips_mod, new_numerator, new_denominator } } 
 	end,
 	calculate = function(self, card, context)
+
+
+		if context.joker_type_destroyed and context.card == card and not context.blueprint  then
+			card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
+
+			if SMODS.pseudorandom_probability(card, 'ravi', card.ability.extra.baseChance, card.ability.extra.maxChance, 'ravi') then
+				
+			card.getting_sliced = true
+			G.E_MANAGER:add_event(Event({func = function()
+				card:juice_up(0.8, 0.8)
+				card:start_dissolve({G.C.RED}, nil, 1.6)
+			return true end }))
+
+			else
+
+				SMODS.debuff_card(card, true, "ravi")
+				return{
+					no_destroy = true
+				}
+
+			end
+
+			
+			
+		end
+		
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+			SMODS.debuff_card(card, "reset", "ravi")
+		end
+
+		
 		
     end,
 	set_badges = function(self, card, badges)
@@ -8973,7 +9718,7 @@ SMODS.Joker {
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
@@ -8997,6 +9742,9 @@ SMODS.Joker {
 			}
 		end
     end,
+	in_pool = function(self, args)
+        return G.GAME.pool_flags.fake_robot_flag
+    end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
  	end,
@@ -9015,13 +9763,19 @@ SMODS.Joker {
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = { card.ability.multBase, card.ability.multBase * (#G.vouchers.cards or 0) } }
+		
+		local voucherAmount = 0
+		
+		if G.GAME.blind then
+			voucherAmount = #G.vouchers.cards
+		end
+        return {vars = { card.ability.multBase, card.ability.multBase * voucherAmount } }
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main then
@@ -9047,7 +9801,7 @@ SMODS.Joker {
 	rarity = 3,
 	cost = 10,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
@@ -9098,28 +9852,215 @@ SMODS.Joker {
  	end,
 }
 
---Araya
+--Araya (Child)
 SMODS.Joker {
-	key = 'araya',
-	name = "Araya",
-	unlocked = true,
-	config = { extra = { } },
+	key = 'arayaKid',
+	name = "Araya (Child)",
+	unlocked = false,
+	config = { chips = 20 },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+        return {vars = { card.ability.chips } }
 	end,
 	calculate = function(self, card, context)
-		
+		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
+			local arayaList = {"j_pmcmod_arayaTeen", "j_pmcmod_arayaYA", "j_pmcmod_arayaAdult"}
+			local selectedAraya = pseudorandom_element(arayaList, pseudoseed('araya'))
+			local percent = 1.15
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					card:flip()
+					play_sound('card1', percent)
+					card:juice_up(0.3, 0.3)
+					return true
+				end,
+			}))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+				func = function()
+					card:set_ability(G.P_CENTERS[selectedAraya])
+					return true
+				end
+			}))
+		end
+		if context.joker_main then
+			return {
+				message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.xmult } },
+				cips = card.ability.chips
+			}
+		end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Araya (Teen)
+SMODS.Joker {
+	key = 'arayaTeen',
+	name = "Araya (Teen)",
+	unlocked = false,
+	config = { permaChips_mod = 6 },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x = 8, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = { card.ability.permaChips_mod } }
+	end,
+	calculate = function(self, card, context)
+		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
+			local arayaList = {"j_pmcmod_arayaChild", "j_pmcmod_arayaYA", "j_pmcmod_arayaAdult"}
+			local selectedAraya = pseudorandom_element(arayaList, pseudoseed('araya'))
+			local percent = 1.15
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					card:flip()
+					play_sound('card1', percent)
+					card:juice_up(0.3, 0.3)
+					return true
+				end,
+			}))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+				func = function()
+					card:set_ability(G.P_CENTERS[selectedAraya])
+					return true
+				end
+			}))
+		end
+		if context.individual and context.cardarea == G.play then
+			context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) +  card.ability.permaChips_mod
+        end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Araya (Young Adult)
+SMODS.Joker {
+	key = 'arayaYA',
+	name = "Araya (Young Adult)",
+	unlocked = false,
+	config = { permaMult_mod = 3 },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x = 8, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = { card.ability.permaMult_mod } }
+	end,
+	calculate = function(self, card, context)
+		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
+			local arayaList = {"j_pmcmod_arayaChild", "j_pmcmod_arayaTeen", "j_pmcmod_arayaAdult"}
+			local selectedAraya = pseudorandom_element(arayaList, pseudoseed('araya'))
+			local percent = 1.15
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					card:flip()
+					play_sound('card1', percent)
+					card:juice_up(0.3, 0.3)
+					return true
+				end,
+			}))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+				func = function()
+					card:set_ability(G.P_CENTERS[selectedAraya])
+					return true
+				end
+			}))
+		end
+		if context.individual and context.cardarea == G.play then
+			context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) +  card.ability.permaMult_mod
+        end
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 	end,
+}
+
+--Araya (Adult)
+SMODS.Joker {
+	key = 'arayaAdult',
+	name = "Araya (Adult)",
+	unlocked = false,
+	config = { permaDollars_mod = 1 },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x = 8, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = { card.ability.permaDollars_mod } }
+	end,
+	calculate = function(self, card, context)
+		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
+			local arayaList = {"j_pmcmod_arayaChild", "j_pmcmod_arayaTeen", "j_pmcmod_arayaYA"}
+			local selectedAraya = pseudorandom_element(arayaList, pseudoseed('araya'))
+			local percent = 1.15
+			G.E_MANAGER:add_event(Event({
+				trigger = 'after',
+				delay = 0.15,
+				func = function()
+					card:flip()
+					play_sound('card1', percent)
+					card:juice_up(0.3, 0.3)
+					return true
+				end,
+			}))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+				func = function()
+					card:set_ability(G.P_CENTERS[selectedAraya])
+					return true
+				end
+			}))
+		end
+		if context.individual and context.cardarea == G.play then
+			context.other_card.ability.perma_p_dollars = (context.other_card.ability.perma_p_dollars or 0) +  card.ability.permaDollars_mod
+        end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
@@ -9309,6 +10250,7 @@ SMODS.Joker {
 	cost = 10,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 8, y = 14 },
+	soul_pos = { x = 3, y = 9 },
     pools =
 	{
 
@@ -9335,7 +10277,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("COLOR FIXER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Color Fixer", G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 }
 
