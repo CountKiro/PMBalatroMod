@@ -105,12 +105,10 @@ SMODS.Enhancement {
             local ziluPresent = false
 
             for i=1, #G.jokers.cards do
-
                 if G.jokers.cards[i].config.center.key == "j_pmcmod_zilu" then
                     ziluPresent = true
                     break
                 end
-
             end
 
             if ziluPresent then
@@ -164,6 +162,7 @@ SMODS.Enhancement {
         if context.main_scoring and context.cardarea == G.play then
             local ret = {}
             local shiomiPresent = false
+            local renPresent = false
 
             for i=1, #G.jokers.cards do
 
@@ -184,8 +183,16 @@ SMODS.Enhancement {
 
             if SMODS.pseudorandom_probability(card, 'poise', card.ability.counter, card.ability.maxChance, 'poise') then
                 ret.xmult = card.ability.extra.xmult
+                card.poise_trigger = true
                 card.ability.counter = 1
             end
+
+            G.E_MANAGER:add_event(Event {
+                func = function()
+                    card.poise_trigger = true
+                    return true
+                end
+            })
 
             return ret
 
