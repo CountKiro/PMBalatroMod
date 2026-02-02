@@ -7121,23 +7121,23 @@ SMODS.Joker {
 	key = 'jumsoon',
 	name = "Jumsoon",
 	unlocked = true,
-	config = { extra = { } },
+	config = { extra = { type = "Full House" } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
-	pos = { x =8, y = 14 },
+	pos = { x = 8, y = 14 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+        return {vars = { localize(card.ability.extra.type, 'poker_hands') } }
 	end,
 	calculate = function(self, card, context)
-		if context.setting_blind and not context.blueprint then
+		if context.joker_main and not context.blueprint and next(context.poker_hands[card.ability.extra.type]) and G.GAME.current_round.hands_played == 0 then
 
 			local my_pos = nil
 
@@ -7771,7 +7771,7 @@ SMODS.Joker {
 			}))
 		end
 
-		if context.before and context.main_eval and context.cardarea == G.play and G.GAME.current_round.hands_played == 0 then
+		if context.before and context.main_eval and G.GAME.current_round.hands_played == 0 then
 			if G.GAME.hands[context.scoring_name] then
 				return {
 					level_up = 1
@@ -8114,13 +8114,8 @@ SMODS.Joker {
 					G.jokers.cards[my_pos + 1]:set_cost()
 				end
 			end
-            return {
-                message = "Value loss",
-                colour = G.C.MONEY
-            }
-        end
-
-		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and card.ability.extra_value <= 0 then
+			if card.sell_cost <= 0 then
+				print("Testing destruction")
             G.E_MANAGER:add_event(Event({
 					func = function()
 						play_sound('slice1', 0.96+math.random()*0.08)
@@ -8128,6 +8123,8 @@ SMODS.Joker {
 						card:juice_up(0.3, 0.4)
 						card.states.drag.is = true
 						card.children.center.pinch.x = true
+
+						card.getting_sliced = true
 
 						G.E_MANAGER:add_event(Event({
 							trigger = 'after',
@@ -8146,6 +8143,11 @@ SMODS.Joker {
             G.GAME.pool_flags.wangZhao_extinct = true
             return {
                 message = 'Died'
+            }
+			end
+            return {
+                message = "Value loss",
+                colour = G.C.MONEY
             }
         end
     end,
@@ -8181,6 +8183,13 @@ SMODS.Joker {
 				context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) + card.ability.extra.permaMult_mod
 				context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) +  card.ability.extra.permaChips_mod
 				card.ability.extra.counter = 0
+				local cardToJuiceUp = context.other_card
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						cardToJuiceUp:juice_up()
+						return true
+					end
+				}))
 			end
         end
     end,
@@ -8215,6 +8224,13 @@ SMODS.Joker {
 			if card.ability.extra.counter >= 8 then
 				context.other_card.ability.perma_p_dollars = (context.other_card.ability.perma_p_dollars or 0) + card.ability.extra.permaDollars_mod
 				card.ability.extra.counter = 0
+				local cardToJuiceUp = context.other_card
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						cardToJuiceUp:juice_up()
+						return true
+					end
+				}))
 			end
         end
     end,
@@ -8252,6 +8268,8 @@ SMODS.Joker {
 						card:juice_up(0.3, 0.4)
 						card.states.drag.is = true
 						card.children.center.pinch.x = true
+
+						card.getting_sliced = true
 
 						G.E_MANAGER:add_event(Event({
 							trigger = 'after',
@@ -8366,10 +8384,12 @@ SMODS.Joker {
                 end
 				print(my_pos)
             end
-			return {
-				print(string.len(localize{type="name_text", set="Joker", key = G.jokers.cards[my_pos-1].config.center.key} or "")),
-				mult = card.ability.extra.mult_mod * (string.len((localize{type="name_text", set="Joker", key = G.jokers.cards[my_pos-1].config.center.key} or "") or 0))
-			}
+			if my_pos >= 2 then
+				return {
+					print(string.len(localize{type="name_text", set="Joker", key = G.jokers.cards[my_pos-1].config.center.key} or "")),
+					mult = card.ability.extra.mult_mod * (string.len((localize{type="name_text", set="Joker", key = G.jokers.cards[my_pos-1].config.center.key} or "") or 0))
+				}
+			end
 		end
     end,
 	set_badges = function(self, card, badges)
@@ -9361,7 +9381,7 @@ SMODS.Joker {
 			
 		end
 
-		if context.end_of_round and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and context.main_eval and not card.ability.extra.locked and not context.blueprint then
+		if contex.setting_blind and not card.ability.extra.locked and not context.blueprint then
 
 			local editionJokers = {}
 			local edition
@@ -9369,9 +9389,11 @@ SMODS.Joker {
 			for i=1, #G.jokers.cards do
 				if G.jokers.cards[i].edition then
 					if not card.edition then
+						print("First edition for Sora")
 						editionJokers[#editionJokers + 1] = G.jokers.cards[i]
 					else
 						if card.edition.key ~= G.jokers.cards[i].edition.key then
+							print("Second+ Edition for Sora")
 							editionJokers[#editionJokers + 1] = G.jokers.cards[i]
 						end
 					end
@@ -9379,10 +9401,12 @@ SMODS.Joker {
 			end
 
 			if (#editionJokers > 0) then
+				print("Choosing a random Joker")
 				local eligible_card = pseudorandom_element(editionJokers, 'sora')
-				local edition = editionJokers.edition.key
+				local edition = eligible_card.edition.key
+				print("Chosen edition" .. edition)
 				card:set_edition(edition, true)
-				eligible_card:set_edition('c_base', true)
+				eligible_card:set_edition()
 				card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
 				card.ability.extra.counter = 0
 
@@ -9391,7 +9415,7 @@ SMODS.Joker {
 				card.ability.extra.counter = card.ability.extra.counter + 1
 
 				if card.ability.extra.counter >= 3 then
-					card:set_edition('c_base', true)
+					card:set_edition()
 					card.ability.extra.chips = card.ability.extra.chips * 2
 					card.ability.extra.locked = true
 				end

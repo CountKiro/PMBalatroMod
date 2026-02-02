@@ -174,7 +174,7 @@ SMODS.Enhancement {
             end
 
             if shiomiPresent then
-                if SMODS.pseudorandom_probability(card, 'shiomi', card.ability.baseChanceShiomi, card.ability.maxChanceShiomi, 'shiomi') then
+                if SMODS.pseudorandom_probability(card, 'shiomi', card.ability.baseChance, card.ability.maxChanceShiomi, 'shiomi') then
                     card.ability.counter = card.ability.counter + (2 * (1 + tremorCounting))
                 end
             else

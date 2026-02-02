@@ -1573,8 +1573,8 @@ return {
             j_pmcmod_jumsoon = {
                 name = 'Jumsoon',
                 text = {
-                    "If the first hand of the hound is a {C:attention}Flush{},",
-                    "randomize all Keypages to others in the same rarity."
+                    "If the first hand of the Scene is a {C:attention}#1#{},",
+                    "randomize all Keypages to others of the same rarity."
                 }
             },
             j_pmcmod_garnet = {
@@ -1754,7 +1754,7 @@ return {
                 name = 'Shi Huazhen',
                 text = {
                     "Gives {C:mult}#1#{} Mult for every character",
-                    "in the name of the Keypage to the right."
+                    "in the name of the Keypage to the left."
                 }
             },
             j_pmcmod_shiSijing = {
