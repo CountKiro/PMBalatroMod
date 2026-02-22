@@ -5,6 +5,7 @@ SMODS.Enhancement {
     pos = { x = 2, y = 2},
     config = { triggersLeft = 5},
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue+1] = {set = "Other", key = "effect_perma"}
         return { vars = {card.ability.triggersLeft}}
     end,
     calculate = function(self, card, context)
