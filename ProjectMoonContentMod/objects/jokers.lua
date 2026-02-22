@@ -1319,6 +1319,7 @@ SMODS.Joker {
 		["Bloodfiends"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_perma"}
         return {vars = { card.ability.extra.chips } }
 	end,
 	calculate = function(self, card, context)
@@ -5595,6 +5596,7 @@ SMODS.Joker {
         ["Bloodfiends"] = true,
  	},
 	loc_vars = function (self, info_queue, card)
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_perma"}
     	return {vars = { card.ability.extra.mult }}
 	end,
 	calculate = function(self, card, context)
@@ -6984,8 +6986,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 0, y = 2 },
     pools =
 	{
 
@@ -7039,7 +7041,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge('Citizen', HEX('828282'), HEX('ebebeb'), 1.2 )
  	end,
 }
 
@@ -7054,8 +7056,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 1, y = 2 },
     pools =
 	{
 
@@ -7109,7 +7111,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge('Tri-axe Office', HEX('828282'), HEX('ebebeb'), 1.2 )
  	end,
 }
 
@@ -7127,8 +7129,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 3,
 	cost = 8,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 2, y = 2 },
     pools =
 	{
 
@@ -7178,7 +7180,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("The Ring", HEX('474747'), HEX('c4c4c4'), 1.2 )
  	end,
 }
 
@@ -7193,15 +7195,15 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 3,
 	cost = 8,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 3, y = 2 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
 		local keyToLocalize = "j_pmcmod_garnet"
-		if #ProjectMoonMod.garnetJoker then
+		if ProjectMoonMod.garnetJoker then
 			if #ProjectMoonMod.garnetJoker.cards >= 1 then
 				keyToLocalize = ProjectMoonMod.garnetJoker.cards[1].config.center.key
 			else
@@ -7240,7 +7242,7 @@ SMODS.Joker {
         
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Fixer", G.C.BLACK, G.C.WHITE, 1.2 )
  	end,
 }
 
@@ -7258,8 +7260,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 3,
 	cost = 12,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 4, y = 2 },
     pools =
 	{
 
@@ -7331,8 +7333,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 3,
 	cost = 10,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 5, y = 2 },
     pools =
 	{
 
@@ -7372,7 +7374,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("H Corp", HEX('b87869'), HEX('f0f0f0'), 1.2 )
  	end,
 }
 
@@ -7387,8 +7389,8 @@ SMODS.Joker {
 	perishable_compat = false,
 	rarity = 3,
 	cost = 8,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 6, y = 2 },
     pools =
 	{
 
@@ -7400,10 +7402,35 @@ SMODS.Joker {
 	calculate = function(self, card, context)
 
 
+		local leiHengDetected = false
+		local leiHengPos = nil
+
+		for i=1, #G.jokers.cards do
+			if G.jokers.cards[i].config.center.key == "j_pmcmod_leiHeng" then
+				leiHengDetected = true
+				leiHengPos = i
+				break
+			end
+		end
+
 		if context.joker_main then
 			local chosenMult = nil
-			if SMODS.pseudorandom_probability(card, 'jiaQiu', card.ability.extra.baseChance, card.ability.extra.maxChance, 'jiaQiu') then
+			if SMODS.pseudorandom_probability(card, 'jiaQiu', card.ability.extra.baseChance, card.ability.extra.maxChance, 'jiaQiu') or leiHengDetected then
 				chosenMult = card.ability.extra.xmult * 4
+
+				if leiHengDetected then
+					G.jokers.cards[leiHengPos].children.center:set_sprite_pos({x = 4 , y = 10})
+
+					G.jokers.cards[leiHengPos].getting_sliced = true
+                    G.E_MANAGER:add_event(Event({
+						trigger = 'after',
+						delay = 3.0,
+						func = function()
+						card:juice_up(0.8, 0.8)
+                        G.jokers.cards[leiHengPos]:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
+				end
+
 			else
 				chosenMult = card.ability.extra.xmult
 			end
@@ -7413,7 +7440,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Kong Family", HEX("8a001e"), HEX('242424'), 1.2 )
+ 		badges[#badges+1] = create_badge("Jia Family", HEX("b02121"), HEX('140e0e'), 1.2 )
  	end,
 }
 
@@ -7428,8 +7455,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 2,
 	cost = 7,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 7, y = 2 },
     pools =
 	{
 
@@ -7456,7 +7483,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Xue Family", HEX("f0a3a3"), HEX('c22929'), 1.2 )
  	end,
 }
 
@@ -7471,8 +7498,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
-    atlas = 'ModdedProjectMoon',
-	pos = { x =8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x =8, y = 2 },
     pools =
 	{
 
@@ -7492,7 +7519,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Xue Family", HEX("f0a3a3"), HEX('c22929'), 1.2 )
  	end,
 }
 
@@ -7507,8 +7534,8 @@ SMODS.Joker {
 	perishable_compat = false,
 	rarity = 3,
 	cost = 8,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 9, y = 2 },
     pools =
 	{
 
@@ -7546,7 +7573,7 @@ SMODS.Joker {
         return card.ability.extra.dollars
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("H Corp", HEX('b87869'), HEX('f0f0f0'), 1.2 )
  	end,
 }
 
@@ -7561,8 +7588,8 @@ SMODS.Joker {
 	perishable_compat = false,
 	rarity = 3,
 	cost = 8,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 0, y = 3 },
     pools =
 	{
 
@@ -7605,7 +7632,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("H Corp", HEX('b87869'), HEX('f0f0f0'), 1.2 )
  	end,
 }
 
@@ -7620,8 +7647,8 @@ SMODS.Joker {
 	perishable_compat = false,
 	rarity = 3,
 	cost = 8,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 1, y = 3 },
     pools =
 	{
 
@@ -7663,7 +7690,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("H Corp", HEX('b87869'), HEX('f0f0f0'), 1.2 )
  	end,
 }
 
@@ -7678,8 +7705,8 @@ SMODS.Joker {
 	perishable_compat = false,
 	rarity = 3,
 	cost = 8,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 2, y = 3 },
     pools =
 	{
 
@@ -7722,7 +7749,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("H Corp", HEX('b87869'), HEX('f0f0f0'), 1.2 )
  	end,
 }
 
@@ -7737,8 +7764,8 @@ SMODS.Joker {
 	perishable_compat = false,
 	rarity = 3,
 	cost = 8,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 2, y = 7 },
     pools =
 	{
 
@@ -7783,7 +7810,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("H Corp", HEX('b87869'), HEX('f0f0f0'), 1.2 )
  	end,
 }
 
@@ -7798,8 +7825,8 @@ SMODS.Joker {
 	perishable_compat = false,
 	rarity = 3,
 	cost = 8,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 3, y = 3 },
     pools =
 	{
 
@@ -7851,7 +7878,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("H Corp", HEX('b87869'), HEX('f0f0f0'), 1.2 )
  	end,
 }
 
@@ -7866,8 +7893,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 4, y = 3 },
     pools =
 	{
 
@@ -7883,7 +7910,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Wang Family", HEX("525252"), HEX('c2c2c2'), 1.2 )
  	end,
 }
 
@@ -7898,8 +7925,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 5, y = 3 },
     pools =
 	{
         
@@ -7915,7 +7942,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Jia Family", HEX("b02121"), HEX('140e0e'), 1.2 )
  	end,
 }
 
@@ -7930,8 +7957,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 6, y = 3 },
     pools =
 	{
 
@@ -7948,7 +7975,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Jia Family", HEX("b02121"), HEX('140e0e'), 1.2 )
  	end,
 }
 
@@ -7963,8 +7990,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 1,
 	cost = 2,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 7, y = 3 },
     pools =
 	{
 
@@ -7989,7 +8016,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("CHANGE_IT_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Jia Family", HEX("b02121"), HEX('140e0e'), 1.2 )
  	end,
 }
 
@@ -8004,8 +8031,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 8, y = 3 },
     pools =
 	{
 
@@ -8043,7 +8070,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Xue Family", HEX("f0a3a3"), HEX('c22929'), 1.2 )
  	end,
 }
 
@@ -8058,8 +8085,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 9, y = 3 },
     pools =
 	{
 
@@ -8167,13 +8194,14 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 0, y = 4 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_perma"}
         return {vars = { 8 - card.ability.extra.counter, card.ability.extra.permaMult_mod, card.ability.extra.permaChips_mod } }
 	end,
 	calculate = function(self, card, context)
@@ -8209,13 +8237,14 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 1, y = 4 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_perma"}
         return {vars = { card.ability.extra.counter, card.ability.extra.permaDollars_mod } }
 	end,
 	calculate = function(self, card, context)
@@ -8250,8 +8279,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 2, y = 4 },
     pools =
 	{
 
@@ -8319,8 +8348,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 3, y = 4 },
     pools =
 	{
 
@@ -8350,7 +8379,7 @@ SMODS.Joker {
 		
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Shi Family", HEX("8a753f"), HEX('2e4a37'), 1.2 )
  	end,
 }
 
@@ -8365,8 +8394,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 4, y = 4 },
     pools =
 	{
 
@@ -8408,8 +8437,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 5, y = 4 },
     pools =
 	{
 
@@ -8449,8 +8478,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 6, y = 4 },
     pools =
 	{
 
@@ -8497,7 +8526,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Kong Family", HEX("8a001e"), HEX('242424'), 1.2 )
  	end,
 }
 
@@ -8512,8 +8541,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 7, y = 4 },
     pools =
 	{
 
@@ -8560,7 +8589,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Kong Family", HEX("8a001e"), HEX('242424'), 1.2 )
  	end,
 }
 
@@ -8604,7 +8633,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Jia Family", HEX("b02121"), HEX('140e0e'), 1.2 )
  	end,
 }
 
@@ -8651,7 +8680,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Jia Family", HEX("b02121"), HEX('140e0e'), 1.2 )
  	end,
 }
 
@@ -8700,7 +8729,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Jia Family", HEX("b02121"), HEX('140e0e'), 1.2 )
  	end,
 }
 
@@ -8728,7 +8757,7 @@ SMODS.Joker {
 		
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Heishou Pack", HEX("362e29"), HEX('948e1c'), 1.2 )
  	end,
 }
 
@@ -8777,7 +8806,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Assassin", G.C.BLACK, G.C.WHITE, 1.2 )
  	end,
 }
 
@@ -8792,8 +8821,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 3,
 	cost = 8,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 3, y = 5 },
     pools =
 	{
 
@@ -8832,7 +8861,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 }
 
@@ -8847,8 +8876,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 3,
 	cost = 8,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 9, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 4, y = 5 },
     pools =
 	{
 
@@ -8901,7 +8930,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 }
 
@@ -8916,8 +8945,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 3,
 	cost = 8,
-    atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 5, y = 5 },
     pools =
 	{
 
@@ -8988,7 +9017,7 @@ SMODS.Joker {
 
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 }
 
@@ -9082,7 +9111,7 @@ SMODS.Joker {
         G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hands
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 }
 
@@ -9204,7 +9233,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 }
 
@@ -9266,7 +9295,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 }
 
@@ -9334,7 +9363,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 }
 
@@ -9381,7 +9410,7 @@ SMODS.Joker {
 			
 		end
 
-		if contex.setting_blind and not card.ability.extra.locked and not context.blueprint then
+		if context.setting_blind and not card.ability.extra.locked and not context.blueprint then
 
 			local editionJokers = {}
 			local edition
@@ -9450,7 +9479,7 @@ SMODS.Joker {
 
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 }
 
@@ -9517,7 +9546,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 }
 
@@ -9597,7 +9626,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 }
 
@@ -9666,7 +9695,7 @@ SMODS.Joker {
 		
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 }
 
@@ -9726,7 +9755,7 @@ SMODS.Joker {
 		
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Limbus Company", G.C.BLACK, G.C.RED, 1.2 )
  	end,
 }
 
@@ -9770,7 +9799,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("The Middle", HEX('5b0b75'), HEX('e3a81e'), 1.2 )
  	end,
 }
 
@@ -9809,7 +9838,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("LCA Udjat", HEX('212121'), HEX('ba8832'), 1.2 )
  	end,
 }
 
@@ -9872,7 +9901,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Abraxas Chariot", G.C.BLACK, G.C.WHITE, 1.2 )
  	end,
 }
 
@@ -9881,7 +9910,7 @@ SMODS.Joker {
 	key = 'arayaKid',
 	name = "Araya (Child)",
 	unlocked = false,
-	config = { chips = 20 },
+	config = { chips = 20, counters = {playedCards = 0, discardedCards = 0, moneyUsed = 0} },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -9894,41 +9923,114 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = { card.ability.chips } }
+        return {vars = { card.ability.chips, card.ability.counters.playedCards, card.ability.counters.discardedCards, card.ability.counters.moneyUsed } }
 	end,
 	calculate = function(self, card, context)
-		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
-			local arayaList = {"j_pmcmod_arayaTeen", "j_pmcmod_arayaYA", "j_pmcmod_arayaAdult"}
-			local selectedAraya = pseudorandom_element(arayaList, pseudoseed('araya'))
-			local percent = 1.15
-			G.E_MANAGER:add_event(Event({
-				trigger = 'after',
-				delay = 0.15,
-				func = function()
-					card:flip()
-					play_sound('card1', percent)
-					card:juice_up(0.3, 0.3)
-					return true
-				end,
-			}))
+
+		if context.joker_main then
+			return {
+				chips = card.ability.chips
+			}
+		end
+
+		if context.individual and context.cardarea == G.play and not context.blueprint then
+			card.ability.counters.playedCards = card.ability.counters.playedCards + 1
+        end
+
+		if context.discard and not context.blueprint then
+            card.ability.counters.discardedCards = card.ability.counters.discardedCards + 1
+            
+        end
+
+		if context.money_altered and context.amount < 0 and not context.blueprint then
+			card.ability.counters.moneyUsed = card.ability.counters.moneyUsed - context.amount
+		end
+
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and G.GAME.last_blind and G.GAME.last_blind.boss then
+
+				local highestValue = nil
+				local maxValue = -math.huge
+
+				for key, value in pairs(card.ability.counters) do
+					if value > maxValue then
+						maxValue = value
+						highestValue = key
+					end
+				end
+
+			if highestValue == "playedCards" then
+				local percent = 1.15
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    play_sound('card1', percent)
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
 
 			G.E_MANAGER:add_event(Event({
 				delay = 0.5,
-				func = function()
-					card:set_ability(G.P_CENTERS[selectedAraya])
-					return true
-				end
-			}))
-		end
-		if context.joker_main then
-			return {
-				message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.xmult } },
-				cips = card.ability.chips
-			}
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_pmcmod_arayaTeen"])
+                    return true
+                end
+            }))
+			elseif highestValue == "discardedCards" then
+				local percent = 1.15
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    play_sound('card1', percent)
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_pmcmod_arayaYA"])
+                    return true
+                end
+            }))
+
+			elseif highestValue == "moneyUsed" then
+				local percent = 1.15
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    play_sound('card1', percent)
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_pmcmod_arayaAdult"])
+                    return true
+                end
+            }))
+
+			end
+
+
+				card.ability.counters.playedCards = 0
+				card.ability.counters.discardedCards = 0
+				card.ability.counters.moneyUsed = 0
+				
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 }
 
@@ -9937,7 +10039,7 @@ SMODS.Joker {
 	key = 'arayaTeen',
 	name = "Araya (Teen)",
 	unlocked = false,
-	config = { permaChips_mod = 6 },
+	config = { permaChips_mod = 6, counters = {playedCards = 0, discardedCards = 0, moneyUsed = 0} },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -9950,38 +10052,113 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = { card.ability.permaChips_mod } }
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_perma"}
+        return {vars = { card.ability.permaChips_mod, card.ability.counters.playedCards, card.ability.counters.discardedCards, card.ability.counters.moneyUsed  } }
 	end,
 	calculate = function(self, card, context)
-		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
-			local arayaList = {"j_pmcmod_arayaChild", "j_pmcmod_arayaYA", "j_pmcmod_arayaAdult"}
-			local selectedAraya = pseudorandom_element(arayaList, pseudoseed('araya'))
-			local percent = 1.15
-			G.E_MANAGER:add_event(Event({
-				trigger = 'after',
-				delay = 0.15,
-				func = function()
-					card:flip()
-					play_sound('card1', percent)
-					card:juice_up(0.3, 0.3)
-					return true
-				end,
-			}))
 
-			G.E_MANAGER:add_event(Event({
-				delay = 0.5,
-				func = function()
-					card:set_ability(G.P_CENTERS[selectedAraya])
-					return true
-				end
-			}))
-		end
 		if context.individual and context.cardarea == G.play then
 			context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) +  card.ability.permaChips_mod
         end
+
+		if context.individual and context.cardarea == G.play and not context.blueprint then
+			card.ability.counters.playedCards = card.ability.counters.playedCards + 1
+        end
+
+		if context.discard and not context.blueprint then
+            card.ability.counters.discardedCards = card.ability.counters.discardedCards + 1
+            
+        end
+
+		if context.money_altered and context.amount < 0 and not context.blueprint then
+			card.ability.counters.moneyUsed = card.ability.counters.moneyUsed - context.amount
+		end
+
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and G.GAME.last_blind and G.GAME.last_blind.boss then
+
+				local highestValue = nil
+				local maxValue = -math.huge
+
+				for key, value in pairs(card.ability.counters) do
+					if value > maxValue then
+						maxValue = value
+						highestValue = key
+					end
+				end
+
+			if highestValue == "playedCards" then
+				local percent = 1.15
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    play_sound('card1', percent)
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_pmcmod_arayaChild"])
+                    return true
+                end
+            }))
+			elseif highestValue == "discardedCards" then
+				local percent = 1.15
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    play_sound('card1', percent)
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_pmcmod_arayaYA"])
+                    return true
+                end
+            }))
+
+			elseif highestValue == "moneyUsed" then
+				local percent = 1.15
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    play_sound('card1', percent)
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_pmcmod_arayaAdult"])
+                    return true
+                end
+            }))
+
+			end
+
+
+				card.ability.counters.playedCards = 0
+				card.ability.counters.discardedCards = 0
+				card.ability.counters.moneyUsed = 0
+				
+		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 }
 
@@ -9990,7 +10167,7 @@ SMODS.Joker {
 	key = 'arayaYA',
 	name = "Araya (Young Adult)",
 	unlocked = false,
-	config = { permaMult_mod = 3 },
+	config = { permaMult_mod = 3, counters = {playedCards = 0, discardedCards = 0, moneyUsed = 0} },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -10003,38 +10180,113 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = { card.ability.permaMult_mod } }
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_perma"}
+        return {vars = { card.ability.permaMult_mod, card.ability.counters.playedCards, card.ability.counters.discardedCards, card.ability.counters.moneyUsed  } }
 	end,
 	calculate = function(self, card, context)
-		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
-			local arayaList = {"j_pmcmod_arayaChild", "j_pmcmod_arayaTeen", "j_pmcmod_arayaAdult"}
-			local selectedAraya = pseudorandom_element(arayaList, pseudoseed('araya'))
-			local percent = 1.15
-			G.E_MANAGER:add_event(Event({
-				trigger = 'after',
-				delay = 0.15,
-				func = function()
-					card:flip()
-					play_sound('card1', percent)
-					card:juice_up(0.3, 0.3)
-					return true
-				end,
-			}))
 
-			G.E_MANAGER:add_event(Event({
-				delay = 0.5,
-				func = function()
-					card:set_ability(G.P_CENTERS[selectedAraya])
-					return true
-				end
-			}))
-		end
 		if context.individual and context.cardarea == G.play then
 			context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) +  card.ability.permaMult_mod
         end
+
+		if context.individual and context.cardarea == G.play and not context.blueprint then
+			card.ability.counters.playedCards = card.ability.counters.playedCards + 1
+        end
+
+		if context.discard and not context.blueprint then
+            card.ability.counters.discardedCards = card.ability.counters.discardedCards + 1
+            
+        end
+
+		if context.money_altered and context.amount < 0 and not context.blueprint then
+			card.ability.counters.moneyUsed = card.ability.counters.moneyUsed - context.amount
+		end
+
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and G.GAME.last_blind and G.GAME.last_blind.boss then
+
+				local highestValue = nil
+				local maxValue = -math.huge
+
+				for key, value in pairs(card.ability.counters) do
+					if value > maxValue then
+						maxValue = value
+						highestValue = key
+					end
+				end
+
+			if highestValue == "playedCards" then
+				local percent = 1.15
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    play_sound('card1', percent)
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_pmcmod_arayaTeen"])
+                    return true
+                end
+            }))
+			elseif highestValue == "discardedCards" then
+				local percent = 1.15
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    play_sound('card1', percent)
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_pmcmod_arayaChild"])
+                    return true
+                end
+            }))
+
+			elseif highestValue == "moneyUsed" then
+				local percent = 1.15
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    play_sound('card1', percent)
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_pmcmod_arayaAdult"])
+                    return true
+                end
+            }))
+
+			end
+
+
+				card.ability.counters.playedCards = 0
+				card.ability.counters.discardedCards = 0
+				card.ability.counters.moneyUsed = 0
+				
+		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 }
 
@@ -10043,7 +10295,7 @@ SMODS.Joker {
 	key = 'arayaAdult',
 	name = "Araya (Adult)",
 	unlocked = false,
-	config = { permaDollars_mod = 1 },
+	config = { permaDollars_mod = 1, counters = {playedCards = 0, discardedCards = 0, moneyUsed = 0} },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -10056,38 +10308,113 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = { card.ability.permaDollars_mod } }
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_perma"}
+        return {vars = { card.ability.permaDollars_mod, card.ability.counters.playedCards, card.ability.counters.discardedCards, card.ability.counters.moneyUsed  } }
 	end,
 	calculate = function(self, card, context)
-		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
-			local arayaList = {"j_pmcmod_arayaChild", "j_pmcmod_arayaTeen", "j_pmcmod_arayaYA"}
-			local selectedAraya = pseudorandom_element(arayaList, pseudoseed('araya'))
-			local percent = 1.15
-			G.E_MANAGER:add_event(Event({
-				trigger = 'after',
-				delay = 0.15,
-				func = function()
-					card:flip()
-					play_sound('card1', percent)
-					card:juice_up(0.3, 0.3)
-					return true
-				end,
-			}))
 
-			G.E_MANAGER:add_event(Event({
-				delay = 0.5,
-				func = function()
-					card:set_ability(G.P_CENTERS[selectedAraya])
-					return true
-				end
-			}))
-		end
 		if context.individual and context.cardarea == G.play then
 			context.other_card.ability.perma_p_dollars = (context.other_card.ability.perma_p_dollars or 0) +  card.ability.permaDollars_mod
         end
+
+		if context.individual and context.cardarea == G.play and not context.blueprint then
+			card.ability.counters.playedCards = card.ability.counters.playedCards + 1
+        end
+
+		if context.discard and not context.blueprint then
+            card.ability.counters.discardedCards = card.ability.counters.discardedCards + 1
+            
+        end
+
+		if context.money_altered and context.amount < 0 and not context.blueprint then
+			card.ability.counters.moneyUsed = card.ability.counters.moneyUsed - context.amount
+		end
+
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and G.GAME.last_blind and G.GAME.last_blind.boss then
+
+				local highestValue = nil
+				local maxValue = -math.huge
+
+				for key, value in pairs(card.ability.counters) do
+					if value > maxValue then
+						maxValue = value
+						highestValue = key
+					end
+				end
+
+			if highestValue == "playedCards" then
+				local percent = 1.15
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    play_sound('card1', percent)
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_pmcmod_arayaTeen"])
+                    return true
+                end
+            }))
+			elseif highestValue == "discardedCards" then
+				local percent = 1.15
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    play_sound('card1', percent)
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_pmcmod_arayaYA"])
+                    return true
+                end
+            }))
+
+			elseif highestValue == "moneyUsed" then
+				local percent = 1.15
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.15,
+                func = function()
+                    card:flip()
+                    play_sound('card1', percent)
+                    card:juice_up(0.3, 0.3)
+                    return true
+                end,
+            }))
+
+			G.E_MANAGER:add_event(Event({
+				delay = 0.5,
+                func = function()
+                    card:set_ability(G.P_CENTERS["j_pmcmod_arayaChild"])
+                    return true
+                end
+            }))
+
+			end
+
+
+				card.ability.counters.playedCards = 0
+				card.ability.counters.discardedCards = 0
+				card.ability.counters.moneyUsed = 0
+				
+		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("NEED_TO_CHANGE_LATER", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 }
 
@@ -10301,7 +10628,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Color Fixer", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge("Color Fixer", HEX('212121'), HEX('f0a524'), 1.2 )
  	end,
 }
 
