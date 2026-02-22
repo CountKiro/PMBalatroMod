@@ -144,7 +144,7 @@ return {
             e_pmcmod_charge = {
                 name = "Charge",
                 text = {
-                    "Retriggers Joker once",
+                    "Retriggers Keypage once",
                     "Count reaches {C:blue}4",
                     "Count: {C:blue}#1#{}"
                 },
@@ -154,7 +154,7 @@ return {
             m_pmcmod_bleed = {
                 name = "Bleed Card",
                 text = {
-                    "Gains {C:red}1{} Mult permanently for",
+                    "Gains {C:red}1{} Perma Mult for",
                     "every {C:red}Bleed{} card scored in the",
                     "played hand.",
                     "Remaining count: #1#"
@@ -431,10 +431,10 @@ return {
                 name = 'The Seventh Sinner, Heathcliff',
                 text = {
                     {"At the start of every Scene, destroy a random",
-                    "{C:dark_edition}Negative{} Key Page."},
-                    {"Gains {C:dark_edition}+1{} Key Page Slot",
-                    "for every 2 {C:dark_edition}Negative{} Key Page destroyed"},
-                    {"{C:inactive}(Currently {C:dark_edition}+#2#{C:inactive} Key Page slots)",}
+                    "{C:dark_edition}Negative{} Keypage."},
+                    {"Gains {C:dark_edition}+1{} Keypage Slot",
+                    "for every 2 {C:dark_edition}Negative{} Keypage destroyed"},
+                    {"{C:inactive}(Currently {C:dark_edition}+#2#{C:inactive} Keypage slots)",}
 
                 },
                 unlock = {
@@ -1554,20 +1554,20 @@ return {
                 }
             },
             j_pmcmod_qingTao = {
-                name = 'Qing Tao',
+                name = 'Qingtao',
                 text = {
-                    "If the first hand of the round is a {C:attention}#1#{}",
-                    "and the hand only has 3 cards, {C:red}destroy{} any scored cards at",
-                    "a {C:green}#2# in #3#{} chance.",
-                    "If no cards are destroyed, {C:red}destroy itself{}."
+                    {"If the first hand of the Scene is a {C:attention}#1#{}",
+                    "with only 3 cards, {C:red}destroy{} any scored cards at",
+                    "a {C:green}#2# in #3#{} chance."},
+                    {"If no cards are destroyed, {C:red}destroy itself{}."}
                 }
             },
             j_pmcmod_shanSan = {
                 name = 'Shan San',
                 text = {
-                    "If played hand is a {C:attention}#1#{},",
-                    "give {C:gold}#2#{} at a {}#3# in #4#{} chance.",
-                    "If no money is scored, {C:red}destroy itself{}."
+                    {"If played hand is a {C:attention}#1#{},",
+                    "give {C:gold}#2#{} at a {}#3# in #4#{} chance."},
+                    {"If no money is scored, {C:red}destroy itself{}."}
                 }
             },
             j_pmcmod_jumsoon = {
@@ -1588,36 +1588,36 @@ return {
             j_pmcmod_catt = {
                 name = 'Catt',
                 text = {
-                    "In {C:attention}Normal or Risky Encounters{}, if",
+                    {"In {C:attention}Normal or Risky Encounters{}, if",
                     "the Encounter is about to fail, destroy a random",
-                    "{C:attention}#1# Keypage{} and win the Encounter.",
-                    "Required rarity goes up with each trigger.",
-                    "Can only happen once by Act."
+                    "{C:attention}#1# Keypage{} and win it."},
+                    {"Required rarity goes up with each trigger.",
+                    "Can only happen once per Act."}
                 }
             },
             j_pmcmod_jiaMu = {
                 name = 'Jia Mu',
                 text = {
-                    "Disables a random amount of Keypages",
-                    "Retrigger {C:attention}every other Keypage{} 0 to 2 times,",
-                    "costing {C:gold}$#3#{} per retrigger"
+                    {"{C:red}Disables{} a random amount of Keypages"},
+                    {"Retrigger {C:attention}every other Keypage{} 0 to 2 times,",
+                    "costing {C:gold}$#3#{} per retrigger"}
                 }
             },
             j_pmcmod_jiaQiu = {
                 name = 'Jia Qiu',
                 text = {
-                    "{X:mult,C:white}X#1#{} Mult",
-                    "Has a {C:green}#3# in #4#{} chance",
+                    {"{X:mult,C:white}X#1#{} Mult"},
+                    {"Has a {C:green}#3# in #4#{} chance",
                     "to give {X:mult,C:white}X#2#{} Mult instead.",
-                    "{C:inactive}This page has a hidden interaction.",
+                    "{C:inactive}This page has a hidden interaction.",}
                 }
             },
             j_pmcmod_linDaiyu = {
                 name = 'Lin Daiyu',
                 text = {
-                    "If the first hand played {C:attention}starts with a 5{},",
-                    "consume all stacks of Rupture from the scored cards",
-                    "to score {X:mult,C:white}X0.1{} per 5 stacks consumed.",
+                    "If the first hand played {C:attention}starts with a 5{}, consum",
+                    "all stacks of Rupture from the scored cards",
+                    "to score {X:mult,C:white}X0.1{} Mult per 5 stacks consumed.",
                     "{C:inactive}(Rupture stacks {C:green}#1#{C:inactive})"
                 }
             },
@@ -1630,7 +1630,8 @@ return {
             j_pmcmod_xianrenA = {
                 name = 'Elder on a Branch',
                 text = {
-                    "Gives {C:gold}#1#{} at the end of the Scene."
+                    "Gives {C:gold}#1#{} at the end of the Scene.",
+                    "{C:inactive}Swaps with a different Elder after a Reception"
                 }
             },
             j_pmcmod_xianrenB = {
@@ -1644,7 +1645,7 @@ return {
             j_pmcmod_xianrenC = {
                 name = 'Elder in a Machine',
                 text = {
-                    "Gives {X:red, C:white}X#1#{} per scored card.",
+                    "Gives {X:mult, C:white}X#1#{} Mult per scored card.",
                     "{C:inactive}Swaps with a different Elder after a Reception"
                 }
             },
@@ -1658,7 +1659,7 @@ return {
             j_pmcmod_xianrenE = {
                 name = 'Elder in a Jar',
                 text = {
-                    "Level up {C:attention}first played hand{}.",
+                    "{C:attention}Level up{} the first played hand.",
                     "{C:inactive}Swaps with a different Elder after a Reception"
                 }
             },
@@ -1736,9 +1737,9 @@ return {
             j_pmcmod_wangRen = {
                 name = 'Wang Ren',
                 text = {
-                    "Gives {C:gold}$#1#{} at the end of the Scene.",
-                    "If current money dips below {C:gold}$100{},",
-                    "destroy itself at the start of the next Scene."
+                    {"Gives {C:gold}$#1#{} at the end of the Scene."},
+                    {"If current money dips below {C:gold}$100{},",
+                    "destroy itself at the start of the next Scene."}
                 }
             },
             j_pmcmod_shiYihua = {
@@ -1767,22 +1768,22 @@ return {
             j_pmcmod_kongSihui = {
                 name = 'Kong Sihui',
                 text = {
-                    "{C:green}1 in 5{} chance to gain {C:gold}$5{} on any played card.",
-                    "{C:green}1 in 20{} chance to {C:red}destroy itself{}."
+                    {"{C:green}1 in 5{} chance to gain {C:gold}$5{} on any played card."},
+                    {"{C:green}1 in 20{} chance to {C:red}destroy itself{}."}
                 }
             },
             j_pmcmod_kongYoujin = {
                 name = 'Kong Youjin',
                 text = {
-                    "{C:green}1 in 5{} chance to gain {C:attention}retrigger{} any played card.",
-                    "{C:green}1 in 20{} chance to {C:red}destroy itself{}."
+                    {"{C:green}1 in 5{} chance to gain {C:attention}retrigger{} any played card."},
+                    {"{C:green}1 in 20{} chance to {C:red}destroy itself{}."}
                 }
             },
             j_pmcmod_xiren = {
                 name = 'Xiren',
                 text = {
-                    "Gives {C:attention}triple{} the difference",
-                    "between most played hand and current hand as {C:mult}Mult{}."
+                    "Gives {C:attention}triple{} the difference between most",
+                    "played Poker Hand and current Poker Hand as {C:mult}Mult{}."
                 }
             },
             j_pmcmod_wei = {
@@ -1796,9 +1797,11 @@ return {
             j_pmcmod_zigong = {
                 name = 'Zigong',
                 text = {
-                    "At the start of the Scene, drains the {C:gold}sell value{} from the Keypage to the right",
-                    "and add it to your own. Gain {C:attention}triple{} that amount as {C:chips}Chips{}.",
-                    "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
+                    {"At the start of the Scene, drains the {C:gold}sell value{}",
+                    "from the Keypage to the right",
+                    "and add it to your own."},
+                    {"Gain {C:attention}triple{} that amount as {C:chips}Chips{}.",
+                    "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)"},
                 }
             },
             j_pmcmod_zilu = {
@@ -1810,126 +1813,130 @@ return {
             j_pmcmod_nightDrifter = {
                 name = 'Night Drifter',
                 text = {
-                    "Gives either {X:mult,C:white}X#1#{} or {X:mult,C:white}X#2#{} Mult.",
-                    "Each consumable used decreases the min value by {X:mult,C:white}X#4#{}",
+                    {"Gives either {X:mult,C:white}X#1#{} or {X:mult,C:white}X#2#{} Mult."},
+                    {"Each consumable used decreases the min value by {X:mult,C:white}X#4#{}",
                     "and increases the max value by {X:mult,C:white}X#5#{}",
-                    "Can stack up to 4 times",
-                    "Lose all stacks by the end of the Reception.",
-                    "{C:inactive}(Currently used {C:attention}#3#{C:inactive} Consumables)",
+                    "Can stack up to 4 times"},
+                    {"Lose all stacks by the end of the Reception.",
+                    "{C:inactive}(Currently used {C:attention}#3#{C:inactive} Consumables)"},
                 }
             },
             j_pmcmod_leiHeng = {
                 name = 'Lei Heng',
                 text = {
-                    "Roll a random value between 0 and 4.",
-                    "If it lands on a 0, {C:red}destroy the Keypage to the left{}.",
-                    "If it lands on any other number, {C:attention}retrigger{} the Keypage",
-                    "to the left by the {C:attention}amount it landed on{}."
+                    {"Roll a random value between 0 and 4."},
+                    {"If it lands on a 0, {C:red}destroy the Keypage to the left{}."},
+                    {"If it lands on any other number, {C:attention}retrigger{} the Keypage",
+                    "to the left by the {C:attention}amount it landed on{}."}
                 }
             },
             j_pmcmod_valencina = {
                 name = 'Valencina',
                 text = {
-                    "When hand is played, if it has more than 2 scored cards,",
-                    "turn the last card into a {C:gold}Tremor{} card.",
-                    "If Lucio is present and to the right, also",
+                    {"When hand is played, if it has more than 2 scored cards,",
+                    "turn the last card into a {C:gold}Tremor{} card."},
+                    {"{C:attention}Bonus effect: {}If Lucio is present and to the right, also",
                     "changes the first card into {C:gold}Tremor{}.",
                     "Lucio dies after this effect triggers 5 times.",
-                    "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})",
+                    "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})"},
                 }
             },
             j_pmcmod_rien = {
                 name = 'Rien',
                 text = {
-                    "Spawns in a random prescript at the start of the Act.",
-                    "Gain {C:mult}#1#{} for every Prescript fullfilled.",
-                    "Destroy itself if the Prescript fails.",
-                    "If Sora is present and to the right, gains double",
-                    "this value. Sora dies after this effect triggers 3 times.",
+                    {"Spawns in a random prescript at the start of the Act."},
+                    {"Gain {C:mult}#1#{} for every Prescript fullfilled.",
+                    "Destroy itself if the Prescript fails."},
+                    {"{C:attention}Bonus effect: {}If Sora is present and to the right, gains double",
+                    "this value. Sora dies after this effect triggers 3 times."},
                 }
             },
             j_pmcmod_matthias = {
                 name = 'Matthias',
                 text = {
-                    "{C:blue}-#1#{} Hand",
-                    "If first hand scored has less than 4 cards,",
-                    "turn all scored cards into {C:red}Burn{} Cards.",
-                    "Each card turned costs {C:gold}$#2#{}. Cost increase by",
-                    "{C:gold}$#3#{} for every Burn Card in deck.",
-                    "If Kira is present and to the right, reduces cost to $0.",
+                    {"{C:blue}-#1#{} Hand"},
+                    {"If first hand scored has less than 4 cards,",
+                    "turn all scored cards into {C:red}Burn{} Cards."},
+                    {"Each card turned costs {C:gold}$#2#{}. Cost increase by",
+                    "{C:gold}$#3#{} for every Burn Card in deck."},
+                    {"{C:attention}Bonus effect: {}If Kira is present and to the right, reduces cost to $0.",
                     "Kira dies after generating 5 Burn Cards without cost.",
-                    "{C:inactive}(Total triggers: {C:red}#4#{C:inactive})",
+                    "{C:inactive}(Total triggers: {C:red}#4#{C:inactive})"},
                 }
             },
             j_pmcmod_callisto = {
                 name = 'Callisto',
                 text = {
-                    "Drains Mult and Bonus enhancements from cards,",
-                    "gaining 80% of their value.",
-                    "If Albina is present, double this value.",
-                    "Albina dies after 5 Cards are drained."
+                    {"Drains Mult and Bonus enhancements from cards,",
+                    "gaining 80% of their value."},
+                    {"{C:attention}Bonus effect: {}If Albina is present, double this value.",
+                    "Albina dies after 5 Cards are drained."}
                 }
             },
             j_pmcmod_shiomiYoru = {
                 name = 'Shiomi Yoru',
                 text = {
-                    "Poise cards gain double stacks at {C:green}1 in 2{} chance.",
+                    {"Poise cards gain double stacks at {C:green}1 in 2{} chance."},
+                    {"{C:attention}Bonus effect: {} If Ren is present and to the right,",
+                    "the chance becomes a guarantee",
+                    "Ren dies after this effect is triggered 5 times.",
+                    "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})"},
                 }
             },
             j_pmcmod_lucio = {
                 name = 'Lucio',
                 text = {
-                    "Scored Tremor cards give {C:gold}$#2#{}",
-                    "If Valencina is present and to the right,",
+                    {"Scored Tremor cards give {C:gold}$#2#{}"},
+                    {"{C:attention}Bonus effect: {}If Valencina is present and to the right,",
                     "Tremor cards now give {C:gold}$#3#{}. Lucio dies after triggering 3 Tremor cards.",
-                    "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})",
+                    "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})"},
                 }
             },
             j_pmcmod_sora = {
                 name = 'Sora',
                 text = {
-                    "At the start of the Scene, Sora steals an {C:dark_edition}Edition",
+                    {"At the start of the Scene, Sora steals an {C:dark_edition}Edition",
                     "from a random Keypage, gaining {C:chips}#2#{} Chips in the process.",
-                    "Sora can't steal the same Edition twice in a row.",
-                    "After 3 Scenes without stealing an Edition, Sora",
-                    "reveals herself, doubling her current Chips count.",
-                    "If Rien is present and to the right, double the scoring Chips.",
+                    "Sora can't steal the same Edition twice in a row."},
+                    {"After 3 Scenes without stealing an Edition, Sora",
+                    "reveals herself, doubling her current Chips count."},
+                    {"{C:attention}Bonus effect: {}If Rien is present and to the right, double the scoring Chips.",
                     "Sora dies after triggering 4 times.",
                     "{C:inactive}(Total triggers: {C:red}#3#{C:inactive})",
-                    "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
+                    "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)"},
                 }
             },
             j_pmcmod_kira = {
                 name = 'Kira',
                 text = {
-                    "Burn Card gives {C:gold}$#2#{}",
-                    "If Matthias is present and to the right,",
+                    {"Burn Card gives {C:gold}$#2#{}"},
+                    {"{C:attention}Bonus effect: {}If Matthias is present and to the right,",
                     "Burn Cards will now give {C:gold}$#3#{}",
                     "Kira dies after triggering 5 Burn Cards",
-                    "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})",
+                    "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})"},
                 }
             },
             j_pmcmod_albina = {
                 name = 'Albina',
                 text = {
-                    "If Hand played is a {C:attention}#2#{} and only has 2 Cards,",
+                    {"If Hand played is a {C:attention}#2#{} and only has 2 Cards,",
                     "change the first card into a {C:blue}Endurance{} Card",
                     "and the second card into a {C:red}Strength{} Card",
-                    "at a {C:green}#3# in #4#{} chance.",
-                    "If Callisto is present and to the right,",
+                    "at a {C:green}#3# in #4#{} chance."},
+                    {"{C:attention}Bonus effect: {}If Callisto is present and to the right,",
                     "chance becomes guaranteed.",
                     "Albina dies after triggering this effect 5 times.",
-                    "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})",
+                    "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})"},
                 }
             },
             j_pmcmod_ren = {
                 name = 'Ren',
                 text = {
-                    "Has a {C:green}#2# in #3#{} chance to give Poise do scored cards.",
-                    "If Shiomi Yoru is present and to the right,",
+                    {"Has a {C:green}#2# in #3#{} chance to give Poise to scored cards."},
+                    {"{C:attention}Bonus effect: {}If Shiomi Yoru is present and to the right,",
                     "chance becomes guaranteed.",
                     "Ren dies after triggering this effect 5 times.",
-                    "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})",
+                    "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})"},
                 }
             },
             j_pmcmod_ravi = {
@@ -1951,7 +1958,7 @@ return {
             j_pmcmod_jamila = {
                 name = 'Jamila',
                 text = {
-                    "Gain {C:mult}#1# Mult for every Voucher claimed.",
+                    "Gain {C:mult}#1#{} Mult for every {C:attention}EGO Gift{} claimed.",
                     "{C:inactive}(Currently {C:mult}#2#{C:inactive} Mult)",
                 }
             },
@@ -1965,40 +1972,52 @@ return {
             j_pmcmod_arayaKid = {
                 name = 'Araya (Child)',
                 text = {
-                    "{C:chips}#1#{} Chips.",
-                    "Changes into a different version",
+                    {"{C:chips}#1#{} Chips."},
+                    {"Changes into a different version",
                     "depending on the action done more frequently",
-                    "last Act: cards scored, cards discarded or money used"
+                    "last Act: cards scored, cards discarded or money used"},
+                    {"{C:inactive}Cards scored: {C:chips}#2#{}",
+                    "{C:inactive}Cards discarded: {C:mult}#3#{}",
+                    "{C:inactive}Money used: {C:gold}#4#{}"}
                 }
             },
             j_pmcmod_arayaTeen = {
                 name = 'Araya (Teen)',
                 text = {
-                    "Cards scored gain 6 Perma Chips",
-                    "Changes into a different version",
+                    {"Cards scored gain 6 Perma Chips"},
+                    {"Changes into a different version",
                     "depending on the action done more frequently",
                     "last Act: cards scored, cards discarded or money used",
-                    "If it's cards scored, go back to Child version instead."
+                    "If it's cards scored, go back to Child version instead."},
+                    {"{C:inactive}Cards scored: {C:chips}#2#{}",
+                    "{C:inactive}Cards discarded: {C:mult}#3#{}",
+                    "{C:inactive}Money used: {C:gold}#4#{}"}
                 }
             },
             j_pmcmod_arayaYA = {
                 name = 'Araya (Young Adult)',
                 text = {
-                    "Cards scored gain 3 Perma Mult.",
-                    "Changes into a different version",
+                    {"Cards scored gain 3 Perma Mult."},
+                    {"Changes into a different version",
                     "depending on the action done more frequently",
                     "last Act: cards scored, cards discarded or money used",
-                    "If it's cards discarded, go back to Child version instead."
+                    "If it's cards discarded, go back to Child version instead."},
+                    {"{C:inactive}Cards scored: {C:chips}#2#{}",
+                    "{C:inactive}Cards discarded: {C:mult}#3#{}",
+                    "{C:inactive}Money used: {C:gold}#4#{}"}
                 }
             },
             j_pmcmod_arayaAdult = {
                 name = 'Araya (Adult)',
                 text = {
-                    "Cards scored gain $1 Perma money",
-                    "Changes into a different version",
+                    {"Cards scored gain $1 Perma money"},
+                    {"Changes into a different version",
                     "depending on the action done more frequently",
                     "last Act: cards scored, cards discarded or money used",
-                    "If it's money used, go back to Child version instead."
+                    "If it's money used, go back to Child version instead."},
+                    {"{C:inactive}Cards scored: {C:chips}#2#{}",
+                    "{C:inactive}Cards discarded: {C:mult}#3#{}",
+                    "{C:inactive}Money used: {C:gold}#4#{}"}
                 }
             },
             j_pmcmod_vermillionCross = {
@@ -2409,6 +2428,14 @@ return {
                 text={
                     "Cards that are unique in the deck",
                     "(only one of its rank)",
+                },
+            },
+            effect_perma={
+                name="Perma Effects",
+                text={
+                    "Effects added directly to the",
+                    "card and are not dependent",
+                    "on Enhancements, Seals or Editions"
                 },
             },
             pmcmod_markofcain_seal = {
