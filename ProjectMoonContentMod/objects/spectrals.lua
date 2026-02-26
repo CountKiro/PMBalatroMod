@@ -294,7 +294,7 @@ SMODS.Consumable {
 		"j_pmcmod_boris",
 		"j_pmcmod_esther",
 		"j_pmcmod_gloria",
-		"j_pmcmod_rubert",
+		"j_pmcmod_hubert",
 		"j_pmcmod_angelica",
 		"j_pmcmod_puppeteer",
 		"j_pmcmod_nikolai",
@@ -423,6 +423,31 @@ SMODS.Consumable {
     end
 }
 
+-- Concept Incinerator
+SMODS.Consumable {
+    key = 'conceptIncinerator',
+    name = "Concept Incinerator",
+    set = 'Spectral',
+    pos = { x = 5, y = 5 },
+    atlas = 'ModdedProjectMoonSpectrals',
+    config = { max_highlighted = 2 },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.max_highlighted } }
+    end,
+    use = function(self, card, area, copier)
+        for i = 1, #G.jokers.highlighted do
+            G.GAME.banned_keys[G.jokers.highlighted[i].config.center.key] = true
+            G.jokers.highlighted[i].getting_sliced = true
+            G.E_MANAGER:add_event(Event({func = function()
+                G.jokers.highlighted[i]:start_dissolve({G.C.RED}, nil, 1.6)
+            return true end }))
+        end
+    end,
+    can_use = function(self, card)
+        return G.jokers and #G.jokers.highlighted <= card.ability.max_highlighted and #G.jokers.highlighted > 0
+    end
+}
+
 -- Old Witness effect
 --[[SMODS.Consumable {
     key = 'witness',
@@ -478,4 +503,3 @@ SMODS.Consumable {
         return G.hand and #G.hand.cards > 0
     end
 }]]--
-
