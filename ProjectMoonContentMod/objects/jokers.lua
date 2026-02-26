@@ -1,3 +1,13 @@
+local function Shuffle(t)
+	local s = {}
+	for i = 1, #t do s[i] = t[i] end
+	for i = #t, 2, -1 do
+		local j = math.random(i)
+		s[i], s[j] = s[j], s[i]
+	end
+	return s
+end
+
 -----------------
 -- TRUE JOKERS --
 -----------------
@@ -7,6 +17,7 @@
 SMODS.Joker {
 	key = 'oswald',
 	name = "Oswald",
+	pronouns = "he_him",
 	unlocked = false,
 	blueprint_compat = false,
     eternal_compat = true,
@@ -24,7 +35,7 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 		
-		if context.joker_main then
+		if context.joker_main and not context.blueprint then
 
 			local chosenEffect = math.random(1, 18)
 
@@ -174,6 +185,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'esther',
 	name = "Esther",
+	pronouns = "he_him",
 	config = { extra = { xmult = 3 } },
     blueprint_compat = false,
     eternal_compat = true,
@@ -193,7 +205,7 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 		
-		if context.individual and context.cardarea == G.play and not context.blueprint_card then
+		if context.individual and context.cardarea == G.play and not context.blueprint then
 			local singletonCounter = 0 -- make this into a function
 			local singletonSuit = context.other_card.base.suit
 			local singletonRank = context.other_card:get_id()
@@ -233,6 +245,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'gloria',
 	name = "Gloria",
+	pronouns = "she_her",
 	config = { extra = { dollars = 7 } },
     blueprint_compat = false,
     eternal_compat = true,
@@ -252,7 +265,7 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 		
-		if context.individual and context.cardarea == G.play and not context.blueprint_card then
+		if context.individual and context.cardarea == G.play and not context.blueprint then
 			local singletonCounter = 0 -- make this into a function
 			local singletonSuit = context.other_card.base.suit
 			local singletonRank = context.other_card:get_id()
@@ -292,6 +305,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'hubert',
 	name = "Hubert",
+	pronouns = "he_him",
 	config = { extra = { retrigger = 2 } },
     blueprint_compat = false,
     eternal_compat = true,
@@ -311,7 +325,7 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 		
-		if context.repetition and context.cardarea == G.play and not context.blueprint_card then
+		if context.repetition and context.cardarea == G.play and not context.blueprint then
 			local singletonCounter = 0 -- make this into a function
 			local singletonSuit = context.other_card.base.suit
 			local singletonRank = context.other_card:get_id()
@@ -347,10 +361,56 @@ SMODS.Joker {
     end
 }
 
+-- Kim
+SMODS.Joker {
+	key = 'kim',
+	name = "Kim",
+	pronouns = "he_him",
+	config = { extra = {xmult = 3, xmult_mod = 0.1} },
+	no_collection = false,
+	eternal_compat = true,
+	blueprint_compat = false,
+	perishable_compat = false,
+	rarity = 3,
+	cost = 8,
+    atlas = 'ModdedProjectMoonTrue',
+	pos = { x = 2, y = 1 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+		return { vars = {  } }
+	end,
+	calculate = function(self, card, context)
+
+		if context.individual and context.cardarea == G.play and context.other_card.poise_trigger and not context.blueprint then
+
+            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.MULT,
+                message_card = card
+            }
+        end
+
+		if context.joker_main and G.GAME.current_round.hands_left == 0 then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+
+    end,
+	in_pool = function(self, args)
+        return G.GAME.pool_flags.fake_robot_flag
+    end,
+}
+
 -- Angelica
 SMODS.Joker {
 	key = 'angelica',
 	name = "Angelica",
+	pronouns = "she_her",
 	config = { extra = { mult = 100 } },
     blueprint_compat = false,
     eternal_compat = false,
@@ -367,7 +427,7 @@ SMODS.Joker {
     	return {vars = { card.ability.extra.mult }}
 	end,
 	calculate = function(self, card, context)
-		if context.joker_main then
+		if context.joker_main and not context.blueprint then
 			return {
 				mult = card.ability.extra.mult
 			}
@@ -392,6 +452,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'puppeteer',
 	name = "Puppeteer",
+	pronouns = "he_him",
 	config = { extra = { mult = 0 } },
     unlocked = false,
     blueprint_compat = true,
@@ -416,7 +477,7 @@ SMODS.Joker {
 			}
 		end
 
-		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_puppetA" then
+		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_puppetA" and not context.blueprint then
 --			print("Testing destruction")
 --			print(context.card.config.center.key)
 			card.ability.extra.mult = card.ability.extra.mult + 7.5
@@ -427,7 +488,7 @@ SMODS.Joker {
 			}
 		end
 
-		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_puppetB" then
+		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_puppetB" and not context.blueprint then
 			card.ability.extra.mult = card.ability.extra.mult + 15
 			return {
 				message = localize('k_upgrade_ex'),
@@ -436,7 +497,7 @@ SMODS.Joker {
 			}
 		end
 
-		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_puppetC" then
+		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_puppetC" and not context.blueprint then
 			card.ability.extra.mult = card.ability.extra.mult + 25
 			return {
 				message = localize('k_upgrade_ex'),
@@ -529,6 +590,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'nikolai',
 	name = "Nikolai",
+	pronouns = "she_her",
 	config = { extra = { mult = 0, mult_mod = 5, savedJokers = {} } },
 	rarity = 3,
 	unlocked = false,
@@ -595,10 +657,11 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'maxim',
 	name = "Maxim",
+	pronouns = "he_him",
 	config = { extra = { chargeCount = 0, dollars = 10, repetitions = 1 } },
 	rarity = 2,
 	unlocked = false,
-    blueprint_compat = true,
+    blueprint_compat = false,
     eternal_compat = true,
 	perishable_compat = true,
 	atlas = 'ModdedProjectMoonTrue',
@@ -613,7 +676,7 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 
-        if context.individual and context.cardarea == G.play then
+        if context.individual and context.cardarea == G.play and not context.blueprint then
 
 			if context.other_card:is_face() then
 				card.ability.extra.chargeCount = card.ability.extra.chargeCount + 5
@@ -625,7 +688,7 @@ SMODS.Joker {
 			end
         end
 
-		if context.repetition and context.cardarea == G.play then
+		if context.repetition and context.cardarea == G.play and not context.blueprint then
 			if card.ability.extra.chargeCount >= (context.other_card.base.nominal * 2) and not context.other_card:is_face() then
 					card.ability.extra.chargeCount = card.ability.extra.chargeCount - (context.other_card.base.nominal * 2)
 					return {
@@ -656,6 +719,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'rudolph',
 	name = "Rudolph",
+	pronouns = "he_him",
 	config = { extra = {  } },
 	rarity = 3,
 	unlocked = false,
@@ -694,6 +758,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "kalo",
 	name = "Kalo",
+	pronouns = "he_him",
 	unlocked = false,
 	config = {extra = { mult = 10, extraMult = 5, suit = 'Diamonds', odds = 5, extraMultValue = 0, quantityOfThumbMembers = 0 }},
     blueprint_compat = true,
@@ -714,7 +779,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
 
 
-		if context.setting_blind then
+		if context.setting_blind and not context.blueprint then
 			for i = 1, #G.jokers.cards do
 				for j = 1, #G.P_CENTER_POOLS.Thumb do
 					if G.jokers.cards[i] ~= card and (G.P_CENTER_POOLS.Thumb[j].key == G.jokers.cards[i].config.center.key)
@@ -762,6 +827,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "katriel",
 	name = "Katriel",
+	pronouns = "she_her",
 	unlocked = false,
 	config = {extra = { mult = 5, extraMult = 1, suit = 'Hearts' }},
     blueprint_compat = true,
@@ -816,6 +882,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "denis",
 	name = "Denis",
+	pronouns = "he_him",
 	unlocked = false,
 	config = {extra = { mult = 5, extraMult = 1, suit = 'Spades' }},
     blueprint_compat = true,
@@ -869,6 +936,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "boris",
 	name = "Boris",
+	pronouns = "he_him",
 	unlocked = false,
 	config = {extra = { mult = 5, extraMult = 1, suit = 'Clubs' }},
     blueprint_compat = true,
@@ -923,6 +991,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'angelaLoR',
 	name = "Angela",
+	pronouns = "she_her",
 	unlocked = false,
     blueprint_compat = false,
     eternal_compat = true,
@@ -939,7 +1008,7 @@ SMODS.Joker {
 
 	end,
 	calculate = function(self, card, context)
-		if context.setting_blind and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+		if context.setting_blind and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit and not context.blueprint then
             local jokers_to_create = math.min(card.ability.extra.creates,
                 G.jokers.config.card_limit - (#G.jokers.cards + G.GAME.joker_buffer))
             G.GAME.joker_buffer = G.GAME.joker_buffer + jokers_to_create
@@ -1020,6 +1089,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'angelica',
 	name = "Angelica",
+	pronouns = "she_her",
 	config = { extra = { mult = 100 } },
 	unlocked = false,
     blueprint_compat = false,
@@ -1037,7 +1107,7 @@ SMODS.Joker {
     	return {vars = { card.ability.extra.mult }}
 	end,
 	calculate = function(self, card, context)
-		if context.joker_main then
+		if context.joker_main and not context.blueprint then
 			return {
 				mult = card.ability.extra.mult
 			}
@@ -1052,6 +1122,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'yisang',
 	name = "Yi Sang",
+	pronouns = "he_him",
 	unlocked = false,
     blueprint_compat = true,
     eternal_compat = true,
@@ -1080,7 +1151,7 @@ SMODS.Joker {
 			end 
 		end
 
-		if context.using_consumeable and not context.blueprint and context.consumeable.ability.set == 'Planet' then
+		if context.using_consumeable and not context.blueprint and context.consumeable.ability.set == 'Planet' and not context.blueprint then
             -- See note about SMODS Scaling Manipulation on the wiki
             card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_bonus
             return {
@@ -1113,6 +1184,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'ishmael',
 	name = "Ishmael",
+	pronouns = "she_her",
 	unlocked = false,
     blueprint_compat = true,
     eternal_compat = true,
@@ -1227,10 +1299,277 @@ SMODS.Joker {
     end
 }
 
+-- Ryoshu
+SMODS.Joker {
+	key = 'ryoshu',
+	name = "Ryoshu",
+	pronouns = "she_her",
+	config = { extra = {xmult = 1, xmult_mod = 0.1} },
+	no_collection = false,
+	eternal_compat = true,
+	blueprint_compat = false,
+	perishable_compat = false,
+	rarity = 3,
+	cost = 8,
+    atlas = 'ModdedProjectMoonTrue',
+	pos = { x = 0, y = 6 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+		return { vars = {  } }
+	end,
+	calculate = function(self, card, context)
+
+		if context.selling_card and context.card.ability.set == "Joker" and not context.blueprint then
+			local keypageKey = context.card.config.center.key
+			G.GAME.banned_keys[keypageKey] = true
+        end
+
+    end,
+	in_pool = function(self, args)
+        return G.GAME.pool_flags.fake_robot_flag
+    end,
+}
+
+-- Hong Lu
+SMODS.Joker {
+	key = 'hongLu',
+	name = "Hong Lu",
+	pronouns = "he_him",
+	config = { extra = {
+		yiSangBonusApplied = false, 
+		faustBonusApplied = false, 
+		donQuixoteBonusApplied = false, 
+		ryoshuBonusApplied = false,
+		meursaultBonusApplied = false,
+		heathcliffBonusApplied = false,
+		ishmaelBonusApplied = false,
+		rodionBonusApplied = false,
+		sinclairBonusApplied = false,
+		outisBonusApplied = false,
+		gregorBonusApplied = false,
+		baseChanceYiSang = 1,
+		maxChanceYiSang = 2,
+		baseChanceFaust = 1,
+		maxChanceFaust = 4,
+		donQuixotePermaMult = 1,
+		ryoshuXMult = 1.1,
+		meursaultPermaChips = 2,
+		heathcliffMult = 20,
+		ishmaelChips = 40,
+		rodionDollars = 5,
+		sinclairHand = 1,
+		outisDiscard = 1,
+		gregorHandSize = 1} },
+	no_collection = false,
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 3,
+	cost = 8,
+    atlas = 'ModdedProjectMoonTrue',
+	pos = { x = 8, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+		local new_numeratorYiSang, new_denominatorYiSang = SMODS.get_probability_vars(card, card.ability.extra.baseChanceYiSang, card.ability.extra.maxChanceYiSang, 'HLYiSangChance')
+		local new_numeratorFaust, new_denominatorFaust = SMODS.get_probability_vars(card, card.ability.extra.baseChanceFaust, card.ability.extra.maxChanceFaust, 'HLFaustChance')
+    	return {vars = { card.ability.extra.baseChanceYiSang, card.ability.extra.maxChanceYiSang, card.ability.extra.baseChanceFaust, card.ability.extra.maxChanceFaust,new_numeratorYiSang, new_denominatorYiSang, new_numeratorFaust, new_denominatorFaust}}
+	end,
+	calculate = function(self, card, context)
+
+		local yiSangPresent = false  --ok
+		local faustPresent = false  --ok
+		local donQuixotePresent = false  --ok
+		local ryoshuPresent = false -- ok
+		local meursaultPresent = false --ok
+		local heathcliffPresent = false --ok
+		local ishmaelPresent = false  --ok
+		local sinclairPresent = false  --ok
+		local outisPresent = false  --ok
+		local gregorPresent = false  --ok
+
+		for i=1, #G.jokers.cards do
+
+				if G.jokers.cards[i].config.center.key == "j_pmcmod_yiSang" or G.jokers.cards[i].config.center.key == "j_constellation" then
+					yiSangPresent = true
+				end
+
+				if G.jokers.cards[i].config.center.key == "j_oops" then
+					faustPresent = true
+				end
+
+				if G.jokers.cards[i].config.center.key == "j_pmcmod_donQuixote" or G.jokers.cards[i].config.center.key == "j_seeing_double" then
+					donQuixotePresent = true
+				end
+
+				if G.jokers.cards[i].config.center.key == "j_pmcmod_ryoshu" or G.jokers.cards[i].config.center.key == "j_flower_pot" then
+					ryoshuPresent = true
+				end
+
+				if G.jokers.cards[i].config.center.key == "j_baron" then
+					meursaultPresent = true
+				end
+
+				if G.jokers.cards[i].config.center.key == "j_pmcmod_heathcliff" or G.jokers.cards[i].config.center.key == "j_hit_the_road" then
+					heathcliffPresent = true
+				end
+
+				if G.jokers.cards[i].config.center.key == "j_pmcmod_ishmael" or G.jokers.cards[i].config.center.key == "j_midas_mask" then
+					ishmaelPresent = true
+				end
+
+				if G.jokers.cards[i].config.center.key == "j_bootstraps" then
+					rodionPresent = true
+				end
+
+				if G.jokers.cards[i].config.center.key == "j_idol" then
+					sinclairPresent = true
+				end
+
+				if G.jokers.cards[i].config.center.key == "j_hanging_chad" then
+					outisPresent = true
+				end
+
+				if G.jokers.cards[i].config.center.key == "j_ring_master" then
+					gregorPresent = true
+				end
+
+		end
+
+
+		if context.repetition and context.cardarea == G.play and context.other_card == context.scoring_hand[1] and yiSangPresent and
+			SMODS.pseudorandom_probability(card, 'seed', card.ability.extra.baseChanceYiSang, card.ability.extra.maxChanceYiSang, 'HLYiSangChance') then
+			return {
+				repetitions = 1
+			}
+		end
+
+		if context.repetition and context.cardarea == G.play and context.other_card == context.scoring_hand[#context.scoring_hand] and faustPresent and
+			SMODS.pseudorandom_probability(card, 'seed', card.ability.extra.baseChanceFaust, card.ability.extra.maxChanceFaust, 'HLYiSangChance') then
+			return {
+				repetitions = 1
+			}
+		end
+
+		if context.individual and context.cardarea == G.play and not context.blueprint then
+			if donQuixotePresent then
+				context.other_card.ability.perma_mult = (context.other_card.ability.perma_mult or 0) + card.ability.extra.donQuixotePermaMult
+				local cardToJuiceUp = context.other_card
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						cardToJuiceUp:juice_up()
+						return true
+					end
+				}))
+			end
+
+			if meursaultPresent then
+				context.other_card.ability.perma_bonus = (context.other_card.ability.perma_bonus or 0) +  card.ability.extra.meursaultPermaChips
+				local cardToJuiceUp = context.other_card
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						cardToJuiceUp:juice_up()
+						return true
+					end
+				}))
+			end
+
+			local ret = {}
+
+            if ryoshuPresent then
+                ret.xmult = card.ability.extra.ryoshuXMult
+            end
+
+
+			return ret
+
+
+		end
+
+		if context.setting_blind and not context.blueprint then
+
+			if sinclairPresent and not card.ability.extra.sinclairBonusApplied then
+				G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.sinclairHand
+				card.ability.extra.sinclairBonusApplied = true
+			end
+
+			if card.ability.extra.sinclairBonusApplied and not sinclairPresent then
+				G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.sinclairHand
+				card.ability.extra.sinclairBonusApplied = false
+			end
+
+			if outisPresent and not card.ability.extra.outisBonusApplied then
+				G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.outisDiscard
+				card.ability.extra.sinclairBonusApplied = true
+			end
+
+			if card.ability.extra.outisBonusApplied and not outisPresent then
+				G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.outisDiscard
+				card.ability.extra.sinclairBonusApplied = false
+			end
+
+			if gregorPresent and not card.ability.extra.gregorBonusApplied then
+				G.GAME.starting_params.hand_size = G.GAME.starting_params.hand_size + card.ability.extra.gregorHandSize
+				card.ability.extra.gregorBonusApplied = true
+			end
+
+			if card.ability.extra.gregorBonusApplied and not gregorPresent then
+				G.GAME.starting_params.hand_size = G.GAME.starting_params.hand_size - card.ability.extra.gregorHandSize
+				card.ability.extra.gregorBonusApplied = false
+			end
+
+
+		end
+
+		if context.joker_main then
+
+			local ret = {}
+
+			if heathcliffPresent then
+				ret.mult = card.ability.extra.heathcliffMult
+			end
+
+			if heathcliffPresent then
+				ret.chips = card.ability.extra.ishmaelChips
+			end
+
+			return ret
+
+		end
+
+
+
+
+    end,
+	calc_dollar_bonus = function(self, card)
+
+		for i=1, #G.jokers.cards do
+			if G.jokers.cards[i].config.center.key == "j_bootstraps" then
+				return card.ability.extra.rodionDollars
+			end
+		end
+            
+    end,
+	in_pool = function(self, args)
+        return G.GAME.pool_flags.fake_robot_flag
+    end,
+}
+
+
+
+
+
+
 -- Heathcliff
 SMODS.Joker {
 	key = 'heathcliff',
 	name = "Heathcliff",
+	pronouns = "he_him",
 	config = { extra = { cardsDestroyed = 0, joker_slots = 0 } },
 	rarity = 3,
 	atlas = 'ModdedProjectMoon2',
@@ -1253,7 +1592,7 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 
-		if context.setting_blind then
+		if context.setting_blind and not context.blueprint then
 
 			local negative_jokers = {}
              for i = 1, #G.jokers.cards do
@@ -1305,6 +1644,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'donQuixote',
 	name = "Don Quixote",
+	pronouns = "she_her",
 	unlocked = false,
 	config = { extra = { chips = 0 } },
 	eternal_compat = true,
@@ -1323,7 +1663,7 @@ SMODS.Joker {
         return {vars = { card.ability.extra.chips } }
 	end,
 	calculate = function(self, card, context)
-		if context.individual and context.cardarea == G.play and context.other_card.ability.perma_mult > 0 then
+		if context.individual and context.cardarea == G.play and context.other_card.ability.perma_mult > 0 and not context.blueprint then
 			card.ability.extra.chips = card.ability.extra.chips + context.other_card.ability.perma_mult * 3
 			context.other_card.ability.perma_mult = 0
             return {
@@ -1361,6 +1701,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "angela",
 	name = "Angela",
+	pronouns = "she_her",
 	config = {extra = {current_day = 1}},
 	unlocked = false,
     blueprint_compat = false,
@@ -1411,6 +1752,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "michelle",
 	name = "Michelle",
+	pronouns = "she_her",
 	config = {extra = 0.5, xmult = 1, roundCount = 0},
 	unlocked = false,
     blueprint_compat = true,
@@ -1449,7 +1791,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
 
 
-		if G.GAME.blind and not G.GAME.blind.disabled and G.GAME.blind.boss then
+		if G.GAME.blind and not G.GAME.blind.disabled and G.GAME.blind.boss and not context.blueprint then
 			if context.press_play then
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
@@ -1562,9 +1904,10 @@ SMODS.Joker {
 SMODS.Joker {
     key = "elijah",
 	name = "Elijah",
+	pronouns = "she_her",
 	config = {extra = {mult = 0, roundCount = 0}},
 	unlocked = true,
-    blueprint_compat = false,
+    blueprint_compat = true,
     eternal_compat = false,
 	perishable_compat = false,
     rarity = 3,
@@ -1676,6 +2019,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "giovanni",
 	name = "Giovanni",
+	pronouns = "he_him",
 	config = {extra = {consumable_amount = 2, mult = 0, chips = 0, current_consumable_count = 0, roundCount = 0}},
 	unlocked = false,
     blueprint_compat = true,
@@ -1780,6 +2124,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "gabriel",
 	name = "Gabriel",
+	pronouns = "he_him",
 	config = {extra = {totalSpades = 0, totalClubs = 0, totalHearts = 0, totalDiamonds = 0, mult = 0, chips = 0, roundCount = 0}},
 	unlocked = false,
     blueprint_compat = true,
@@ -1799,23 +2144,23 @@ SMODS.Joker {
 
     calculate = function(self, card, context)
 
-		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Spades") then
+		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Spades") and not context.blueprint then
 			card.ability.extra.totalSpades = card.ability.extra.totalSpades + 1
 		end
 
-		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Clubs") then
+		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Clubs") and not context.blueprint then
 			card.ability.extra.totalClubs = card.ability.extra.totalClubs + 1
 		end
 
-		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Hearts") then
+		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Hearts") and not context.blueprint then
 			card.ability.extra.totalHearts = card.ability.extra.totalHearts + 1
 		end
 
-		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Diamonds") then
+		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Diamonds") and not context.blueprint then
 			card.ability.extra.totalDiamonds = card.ability.extra.totalDiamonds + 1
 		end
 
-		if context.after and context.main_eval and math.abs((card.ability.extra.totalSpades + card.ability.extra.totalClubs) - (card.ability.extra.totalHearts + card.ability.extra.totalDiamonds)) >= 6 then
+		if context.after and context.main_eval and math.abs((card.ability.extra.totalSpades + card.ability.extra.totalClubs) - (card.ability.extra.totalHearts + card.ability.extra.totalDiamonds)) >= 6 and not context.blueprint then
 			local percent = 1.15
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
@@ -1887,6 +2232,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "daniel",
 	name = "Daniel",
+	pronouns = "he_him",
 	config = {extra = {xmult = 2, xmult_mod = 0.1, roundCount = 0}},
 	unlocked = false,
     blueprint_compat = true,
@@ -1905,7 +2251,7 @@ SMODS.Joker {
     end,
 
     calculate = function(self, card, context)
-		if context.individual and context.cardarea == G.play then
+		if context.individual and context.cardarea == G.play and not context.blueprint then
 			card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
 			return {
 					message_card=card,
@@ -1921,7 +2267,7 @@ SMODS.Joker {
                 colour = G.C.MULT
             }
         end
-		if context.after and context.main_eval and card.ability.extra.xmult <= 1 then
+		if context.after and context.main_eval and card.ability.extra.xmult <= 1 and not context.blueprint then
 			local percent = 1.15
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
@@ -1986,9 +2332,10 @@ SMODS.Joker {
 SMODS.Joker {
     key = "kali",
 	name = "Kali",
+	pronouns = "she_her",
 	config = {extra = {mult = 0, roundCount = 0}},
 	unlocked = false,
-    blueprint_compat = true,
+    blueprint_compat = false,
     eternal_compat = false,
 	perishable_compat = false,
     rarity = 3,
@@ -2054,7 +2401,7 @@ SMODS.Joker {
             }))
 		end
 	end
-		if context.joker_main then
+		if context.joker_main and not context.blueprint then
 			return {
 				mult_mod = card.ability.extra.mult,
 				message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } }
@@ -2073,6 +2420,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "benjamin",
 	name = "Benjamin",
+	pronouns = "he_him",
 	config = {extra = {current_timer = 0, total_timer = 0, xmult = 1, xmult_mod = 0.2, consumablesUsed = 0, lastConsumable = "", roundCount = 0}},
 	unlocked = false,
     blueprint_compat = true,
@@ -2115,12 +2463,12 @@ SMODS.Joker {
 			end
 		end
 
-		if context.after and context.main_eval then
+		if context.after and context.main_eval and not context.blueprint then
 			card.ability.extra.total_timer = card.ability.extra.total_timer + card.ability.extra.current_timer
 			card.ability.extra.current_timer = 0
 		end
 
-		if context.after and context.main_eval and card.ability.extra.total_timer >= 666 then
+		if context.after and context.main_eval and card.ability.extra.total_timer >= 666 and not context.blueprint then
 			local percent = 1.15
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
@@ -2186,9 +2534,10 @@ SMODS.Joker {
 SMODS.Joker {
     key = "garion",
 	name = "Garion",
+	pronouns = "she_her",
 	config = {extra = {xmult = 1, xmult_mod = 0.2, roundCount = 0}},
 	unlocked = false,
-    blueprint_compat = true,
+    blueprint_compat = false,
     eternal_compat = false,
 	perishable_compat = false,
     rarity = 3,
@@ -2211,13 +2560,13 @@ SMODS.Joker {
                     remove = true
                 }
 		end
-		if context.joker_main then
+		if context.joker_main and not context.blueprint then
 			return {
 				message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } },
 				Xmult_mod = card.ability.extra.xmult
 			}
 		end
-		if context.after and context.main_eval and (#G.playing_cards) <= (G.GAME.starting_deck_size/2) then
+		if context.after and context.main_eval and (#G.playing_cards) <= (G.GAME.starting_deck_size/2) and not context.blueprint then
 			local percent = 1.15
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
@@ -2276,6 +2625,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "lisa",
 	name = "Lisa",
+	pronouns = "she_her",
 	config = {extra = {enochDeathCounter = 0, aceMult = 5, aceMult_mod = 10, roundCount = 0}},
 	unlocked = false,
     blueprint_compat = true,
@@ -2409,6 +2759,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "enoch",
 	name = "Enoch",
+	pronouns = "he_him",
 	config = {extra = {chips = 0, chip_mod = 5}},
 	no_collection = true,
     blueprint_compat = true,
@@ -2436,7 +2787,7 @@ SMODS.Joker {
                 message_card = card
             }
         end
-		if context.end_of_round and card.ability.extra.chips >= 100 then
+		if context.end_of_round and card.ability.extra.chips >= 100 and not context.blueprint then
 			card.getting_sliced = true
 			G.GAME.joker_buffer = G.GAME.joker_buffer - 1
 			G.E_MANAGER:add_event(Event({
@@ -2470,6 +2821,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "hermann",
 	name = "Hermann",
+	pronouns = "she_her",
 	config = {extra = {odds_seal = 2, odds_edition = 4}},
     blueprint_compat = false,
     eternal_compat = true,
@@ -2525,8 +2877,9 @@ SMODS.Joker {
 SMODS.Joker {
     key = "gubo",
 	name = "Gubo",
+	pronouns = "he_him",
 	config = {extra = {mult = 0, commonMult = 4, uncommonMult = 8, odds = 2, selected_keypage = "", aimingAtJoker = false, joker_to_destroy = {}}},
-    blueprint_compat = false,
+    blueprint_compat = true,
     eternal_compat = true,
 	perishable_compat = true,
     rarity = 2,
@@ -2543,7 +2896,7 @@ SMODS.Joker {
 	calculate = function(self, card, context)
 		local destructable_jokers = {}
 		local aimingAtJoker = false
-		if context.setting_blind and not card.getting_sliced and (pseudorandom('gubo') < G.GAME.probabilities.normal / card.ability.extra.odds) then
+		if context.setting_blind and not card.getting_sliced and (pseudorandom('gubo') < G.GAME.probabilities.normal / card.ability.extra.odds) and not context.blueprint then
 --			print("enteredAimingPhase")
 				for i = 1, #G.jokers.cards do
 					for j = 1, #G.P_CENTER_POOLS.Sinners do
@@ -2666,37 +3019,58 @@ SMODS.Joker {
 }
 
 -- Jia Huan
---[[SMODS.Joker {
-    key = "jiahuan",
+SMODS.Joker {
+	key = 'jiaHuan',
 	name = "Jia Huan",
-	config = {extra = {}},
-    blueprint_compat = true,
-    eternal_compat = false,
-	perishable_compat = false,
-    rarity = 3,
-    cost = 8,
-	atlas = 'ModdedProjectMoon',
-    pools = 
+	pronouns = "he_him",
+	config = { extra = {mult = 0} },
+	no_collection = false,
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x = 2, y = 1 },
+    pools =
 	{
- 		["Heretics"] = true,
+
  	},
-    pos = { x = 3, y = 0 },
-    loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
-    end,
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.mult } }
+	end,
+	calculate = function(self, card, context)
 
-    calculate = function(self, card, context)
+		
+		if context.modify_hand and not context.blueprint and G.GAME.current_round.hands_played == 0 then
+
+			card.ability.extra.mult = card.ability.extra.mult + mult
+
+        end
+
+		if context.before and context.main_eval and G.GAME.hands[context.scoring_name].level > 1 and not context.blueprint and G.GAME.current_round.hands_played == 0 then
+			return {
+				level_up = -(G.GAME.hands[context.scoring_name].level - 1),
+			}
+    	end
+
+		if context.joker_main then
+			return{
+				mult = card.ability.extra.mult
+			}
+		end
 
     end,
-	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
- 	end
-}--]]
+	in_pool = function(self, args)
+        return G.GAME.pool_flags.fake_robot_flag
+    end,
+}
 
 --Aseah
 SMODS.Joker {
     key = "aseah",
 	name = "Aseah",
+	pronouns = "he_him",
 	config = {extra = {baseChance = 1, maxChance = 2}},
     blueprint_compat = false,
     eternal_compat = true,
@@ -2728,7 +3102,7 @@ SMODS.Joker {
 					jokerToTheRightIsFromTheLeague = true
 				end
 			end
-			if context.setting_blind and my_pos and G.jokers.cards[my_pos + 1] and not G.jokers.cards[my_pos + 1].ability.eternal and G.jokers.cards[my_pos + 1].config.center.rarity <= 2 then
+			if context.setting_blind and my_pos and G.jokers.cards[my_pos + 1] and not G.jokers.cards[my_pos + 1].ability.eternal and G.jokers.cards[my_pos + 1].config.center.rarity <= 2 and not context.blueprint then
 				local sliced_card = G.jokers.cards[my_pos + 1]
 				local rarity = G.jokers.cards[my_pos + 1].config.center.rarity
                 sliced_card.getting_sliced = true
@@ -2813,6 +3187,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'panther',
 	name = "Panther",
+	pronouns = "he_him",
 	config = { extra = { mult = 0, mult_gain = 5 } },
 	unlocked = false,
     eternal_compat = true,
@@ -2858,6 +3233,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'lion',
 	name = "Lion",
+	pronouns = "she_her",
 	config = { extra = { chips = 0, chips_gain = 10 } },
 	unlocked = false,
     eternal_compat = true,
@@ -2903,6 +3279,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'wolf',
 	name = "Wolf",
+	pronouns = "she_her",
 	config = {extra = 0.1, xmult = 1},
 	unlocked = false,
 	eternal_compat = true,
@@ -2948,6 +3325,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'hopkins',
 	name = "Hopkins",
+	pronouns = "he_him",
 	config = { extra = { mult = 20, odds = 20 } },
     eternal_compat = false,
 	blueprint_compat = true,
@@ -3026,9 +3404,10 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'aya',
 	name = "Aya",
+	pronouns = "she_her",
 	config = { extra = { chips = 70, odds = 20, voucher = 'v_tarot_merchant' } },
     eternal_compat = false,
-	blueprint_compat = false,
+	blueprint_compat = true,
 	perishable_compat = false,
 	rarity = 1,
     cost = 4,
@@ -3103,9 +3482,10 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'yuri',
 	name = "Yuri",
+	pronouns = "she_her",
 	config = { extra = { odds = 13, rounds = 4, current_rounds = 0, consumables = { 'c_soul' }  } },
     eternal_compat = false,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	perishable_compat = false,
 	rarity = 3,
 	cost = 10,
@@ -3168,8 +3548,8 @@ SMODS.Joker {
 		if context.selling_self and (card.ability.extra.current_rounds >= card.ability.extra.rounds) and not context.blueprint then
                     SMODS.add_card({set = 'Spectral', key = 'c_soul' })
                     return { message = localize('k_duplicated_ex') }
-			end
-		end,
+		end
+	end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("Fixer", G.C.BLACK, G.C.WHITE, 1.2 )
  	end
@@ -3180,6 +3560,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "demian",
 	name = "Demian",
+	pronouns = "he_him",
     config = { extra = { Xmult = 1, Xmult_mod = 0.3 } },
 	unlocked = false,
 	eternal_compat = true,
@@ -3223,6 +3604,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "rim",
 	name = "Rim",
+	pronouns = "he_him",
     unlocked = false,
     blueprint_compat = false,
 	perishable_compat = true,
@@ -3259,6 +3641,8 @@ SMODS.Joker {
 -- Sanson
 SMODS.Joker {
 	key = 'sanson',
+	name = 'Sanson',
+	pronouns = "he_him",
 	config = { extra = { multiplied_value = 3 } },
 	rarity = 2,
 	atlas = 'ModdedProjectMoon',
@@ -3276,7 +3660,7 @@ SMODS.Joker {
 		return { vars = { card.ability.extra.multiplied_value } }
 	end,
 	calculate = function(self, card, context)
-        if context.hand_drawn then
+        if context.hand_drawn and not context.blueprint then
 			local any_forced = nil
 			for _, playing_card in ipairs(G.hand.cards) do
 				if playing_card.ability.forced_selection then
@@ -3290,7 +3674,7 @@ SMODS.Joker {
 				G.hand:add_to_highlighted(forced_card)
 			end
 		end
-		if context.modify_hand then
+		if context.modify_hand and not context.blueprint then
                 mult = math.max(math.floor(mult * card.ability.extra.multiplied_value), 1)
                 hand_chips = math.max(math.floor(hand_chips * card.ability.extra.multiplied_value), 0)
                 update_hand_text({ sound = 'chips2', modded = true }, { chips = hand_chips, mult = mult })
@@ -3305,6 +3689,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "effie",
 	name = "Effie",
+	pronouns = "he_him",
 	config = { extra = { mult = 0, mult_gain = 2, poker_hand = 'Pair', poker_hand_index = 0 } },
     eternal_compat = true,
 	blueprint_compat = true,
@@ -3361,6 +3746,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "saude",
 	name = "Saude",
+	pronouns = "she_her",
 	config = { extra = { chips = 0, chips_gain = 5, suit = 'Spades', suit_index = 0 } },
     eternal_compat = true,
 	blueprint_compat = true,
@@ -3469,6 +3855,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'aida',
 	name = "Aida",
+	pronouns = "she_her",
     config = { chipsValue1 = 1000, chipsValue2 = 100, chipsValue3 = 10, chipsValue4 = 1, chipsValue5 = -10, chipsValue6 = -100 },
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -3534,10 +3921,11 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'sonya',
 	name = "Sonya",
+	pronouns = "he_him",
 	unlocked = false,
 	config = { extra = { odds = 100, chips = 77} },
 	eternal_compat = true,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	perishable_compat = false,
 	rarity = 3,
 	cost = 8,
@@ -3552,7 +3940,7 @@ SMODS.Joker {
 		return { vars = { card.ability.extra.chips, (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
 	end,
 	calculate = function(self, card, context)
-		if context.joker_main and next(context.poker_hands["Flush"]) then
+		if context.joker_main and next(context.poker_hands["Flush"]) and not context.blueprint then
 			if pseudorandom('sonya') < G.GAME.probabilities.normal / card.ability.extra.odds then
 				SMODS.add_card({set = 'Spectral', key = 'c_soul' })
 			end
@@ -3576,6 +3964,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'kromer',
 	name = "Kromer",
+	pronouns = "she_her",
 	config = {extra = 0.5, xmult = 1},
 	unlocked = false,
 	eternal_compat = true,
@@ -3600,7 +3989,7 @@ SMODS.Joker {
 			}
 		end
 		
-		if context.setting_blind and not G.GAME.last_blind and not G.GAME.last_blind.boss and not card.getting_sliced then
+		if context.setting_blind and not G.GAME.last_blind and not G.GAME.last_blind.boss and not card.getting_sliced and not context.blueprint then
                 local destructable_jokers = {}
                 for i = 1, #G.jokers.cards do
 					for j = 1, #G.P_CENTER_POOLS.Heretics do
@@ -3634,6 +4023,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "siegfried",
 	name = "Siegfried",
+	pronouns = "he_him",
 	config = {extra = 0.2, xmult = 1},
 	unlocked = false,
     eternal_compat = true,
@@ -3655,7 +4045,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
 
 
-		if context.final_scoring_step and hand_chips * mult >= G.GAME.blind.chips then
+		if context.final_scoring_step and hand_chips * mult >= G.GAME.blind.chips and not context.blueprint then
 			card.ability.xmult = card.ability.xmult + card.ability.extra
 			return {
                 message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.xmult } }
@@ -3665,8 +4055,7 @@ SMODS.Joker {
 
 		if context.joker_main then
 			return {
-				message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.xmult } },
-				Xmult_mod = card.ability.xmult
+				xmult = card.ability.xmult
 			}
 		end
 
@@ -3685,6 +4074,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "guido",
 	name = "Guido",
+	pronouns = "he_him",
 	config = { extra = { mult = 3 }},
 	unlocked = false,
     eternal_compat = true,
@@ -3719,7 +4109,7 @@ SMODS.Joker {
                 mult = card.ability.extra.mult * red_seal_tally
             }
         end
-		if context.first_hand_drawn then
+		if context.first_hand_drawn and not context.blueprint then
             local _card = create_playing_card({
                 front = pseudorandom_element(G.P_CARDS, pseudoseed('guido')),
                 center = G.P_CENTERS.c_base
@@ -3767,9 +4157,10 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'papaBongy',
 	name = "Papa Bongy",
+	pronouns = "he_him",
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	perishable_compat = true,
 	config = { extra = { chips = 0, mult = 0, xmult = 1, dollars = 0, totalChickensSpawned = 0, chips_mod = 10, mult_mod = 5, xmult_mod = 0.1, dollars_mod = 1 } },
 	rarity = 3,
@@ -3858,7 +4249,7 @@ SMODS.Joker {
 			}
 		end
 
-		if context.joker_main then
+		if context.joker_main and not context.blueprint then
 			return {
                 chips = card.ability.extra.chips,
                 mult = card.ability.extra.mult,
@@ -3882,6 +4273,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'dongrang',
 	name = "Dongrang",
+	pronouns = "he_him",
 	unlocked = false,
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -3957,6 +4349,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'dongbaek',
 	name = 'Dongbaek',
+	pronouns = "she_her",
 	unlocked = false,
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -3994,6 +4387,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'samjo',
 	name = "Samjo",
+	pronouns = "he_him",
 	unlocked = false,
 	config = { chips = 20 },
 	eternal_compat = true,
@@ -4040,6 +4434,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'shrenne',
 	name = "Shrenne",
+	pronouns = "she_her",
 	config = { extra = { mult = 0 } },
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -4058,7 +4453,7 @@ SMODS.Joker {
 	calculate = function(self, card, context)
         if context.joker_main then
 			return {
-				mult_mod = card.ability.extra.mult,
+				mult = card.ability.extra.mult,
 				message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } }
 			}
 		end
@@ -4080,10 +4475,11 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'alfonso',
 	name = "Alfonso",
+	pronouns = "she_her",
 	config = { extra = { dollars = 10, odds = 2 } },
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	perishable_compat = true,
 	rarity = 3,
 	cost = 8,
@@ -4097,14 +4493,14 @@ SMODS.Joker {
 		return { vars = { card.ability.extra.dollars, (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
 	end,
 	calculate = function(self, card, context)
-		if context.before and context.main_eval and G.GAME.hands[context.scoring_name].level > 1 then
+		if context.before and context.main_eval and G.GAME.hands[context.scoring_name].level > 1 and not context.blueprint then
 			if pseudorandom('alfonso') < G.GAME.probabilities.normal / card.ability.extra.odds then
 				if G.GAME.hands[context.scoring_name].level > 1 then
-                        return {
-                            level_up = -1,
-							dollars = card.ability.extra.dollars
-                        }
-                    end
+					return {
+						level_up = -1,
+						dollars = card.ability.extra.dollars
+					}
+                end
 			else
 			return{
 				dollars = card.ability.extra.dollars
@@ -4125,6 +4521,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'marile',
 	name = "Marile",
+	pronouns = "he_him",
 	config = { extra = { mult = 40, mult_base = 40 } },
 	eternal_compat = false,
 	blueprint_compat = true,
@@ -4199,6 +4596,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'ran',
 	name = "Ran",
+	pronouns = "she_her",
 	config = { extra = { chips = 120, chips_base = 120 } },
 	eternal_compat = false,
 	blueprint_compat = true,
@@ -4271,6 +4669,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'niko',
 	name = "Niko",
+	pronouns = "he_him",
 	config = { extra = { mult = 0} },
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -4304,6 +4703,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'ahab',
 	name = "Ahab",
+	pronouns = "she_her",
 	config = { extra = { xmult = 1, xmult_mod = 0.05} },
 	unlocked = false,
 	eternal_compat = true,
@@ -4398,6 +4798,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'queequeg',
 	name = "Queequeg",
+	pronouns = "she_her",
 	config = { extra = { dollars = 1} },
 	unlocked = false,
 	eternal_compat = true,
@@ -4472,6 +4873,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'starbuck',
 	name = "Starbuck",
+	pronouns = "he_him",
 	config = { extra = { mult = 7} },
 	unlocked = false,
 	eternal_compat = true,
@@ -4537,6 +4939,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'stubb',
 	name = "Stubb",
+	pronouns = "he_him",
 	config = { extra = { repetitions = 2, odds = 2} },
 	unlocked = false,
 	eternal_compat = true,
@@ -4590,6 +4993,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'pip',
 	name = "Pip",
+	pronouns = "he_him",
 	config = { extra = { chips = 13} },
 	unlocked = false,
 	eternal_compat = true,
@@ -4655,6 +5059,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'pilot',
 	name = "Pilot",
+	pronouns = "he_him",
 	config = { extra = { mult = 0} },
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -4702,6 +5107,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'smee',
 	name = "Smee",
+	pronouns = "she_her",
 	config = { extra = { type = 'Flush'} },
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -4733,6 +5139,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'ricardo',
 	name = "Ricardo",
+	pronouns = "he_him",
 	unlocked = false,
 	config = { extra = { mult = 10, multBase = 10, mult_mod = 10, canSpawnDummy = true, xmult = 1} },
 	eternal_compat = true,
@@ -4794,6 +5201,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'catherine',
 	name = "Catherine",
+	pronouns = "she_her",
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -4850,6 +5258,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'everyCatherine',
 	name = "Every Catherine",
+	pronouns = "she_her",
 	config = { extra = { baseChance = 0, maxChance = 4} },
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -4931,6 +5340,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'nelly',
 	name = "Nelly",
+	pronouns = "she_her",
 	unlocked = false,
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -4979,6 +5389,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'erlking',
 	name = "Erlking",
+	pronouns = "he_him",
 	config = { extra = { xmult = 1, catherineDestroyed = 0} },
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -5027,6 +5438,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'hindley',
 	name = "Hindley",
+	pronouns = "he_him",
 	unlocked = false,
 	config = { extra = { chips = 20} },
 	eternal_compat = true,
@@ -5087,6 +5499,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'linton',
 	name = "Linton",
+	pronouns = "he_him",
 	unlocked = false,
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -5135,6 +5548,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'josephine',
 	name = "Josephine",
+	pronouns = "she_her",
 	unlocked = false,
 	config = { extra = { mult = 8} },
 	eternal_compat = true,
@@ -5196,6 +5610,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'olga',
 	name = "Olga",
+	pronouns = "she_her",
 	unlocked = false,
 	config = { extra = { xmult = 1, xmult_mod = 0.1} },
 	eternal_compat = true,
@@ -5250,6 +5665,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'rain',
 	name = "Rain",
+	pronouns = "he_him",
 	unlocked = false,
 	config = { extra = { chips = 0, chips_mod = 2} },
 	eternal_compat = true,
@@ -5304,6 +5720,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'mika',
 	name = "Mika",
+	pronouns = "she_her",
 	unlocked = false,
 	config = { extra = { mult = 0, mult_mod = 1} },
 	eternal_compat = true,
@@ -5358,6 +5775,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'moses',
 	name = 'Moses',
+	pronouns = "she_her",
 	unlocked = false,
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -5396,6 +5814,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "ezra",
     name = "Ezra",
+	pronouns = "she_her",
 	unlocked = false,
     blueprint_compat = true,
     eternal_compat = true,
@@ -5425,6 +5844,7 @@ SMODS.Joker {
 -- Santata
 SMODS.Joker {
     key = "santata",
+	pronouns = "it_its",
     unlocked = false,
     blueprint_compat = false,
 	eternal_compat = true,
@@ -5464,7 +5884,12 @@ SMODS.Joker {
 -- Crayon
 SMODS.Joker {
     key = "crayon",
+	name = "Crayon",
+	pronouns = "she_her",
+	unlocked = true,
     blueprint_compat = false,
+	eternal_compat = true,
+    perishable_compat = true,
     rarity = 1,
     cost = 4,
 	atlas = 'ModdedProjectMoon',
@@ -5547,7 +5972,12 @@ SMODS.Joker {
 -- Domino
 SMODS.Joker {
     key = "domino",
+	name = "Domino",
+	pronouns = "he_him",
+    unlocked = true,
     blueprint_compat = false,
+	eternal_compat = true,
+    perishable_compat = true,
     rarity = 1,
     cost = 4,
 	atlas = 'ModdedProjectMoon',
@@ -5582,8 +6012,8 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'dadQuixote',
 	name = "Don Quixote",
+	pronouns = "he_him",
 	unlocked = false,
-	config = { extra = { mult = 0 } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -5591,6 +6021,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 3, y = 6 },
+	config = { extra = { mult = 0 } },
     pools =
 	{
         ["Bloodfiends"] = true,
@@ -5636,8 +6067,8 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'sancho',
 	name = "Sancho",
+	pronouns = "she_her",
 	unlocked = false,
-	config = { extra = { repetitions = 1, baseChance = 1, maxChance = 2 } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -5645,6 +6076,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 4, y = 6 },
+	config = { extra = { repetitions = 1, baseChance = 1, maxChance = 2 } },
     pools =
 	{
 		["Bloodfiends"] = true,
@@ -5690,8 +6122,8 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'dulcinea',
 	name = "Dulcinea",
+	pronouns = "she_her",
 	unlocked = false,
-	config = { extra = { mult = 0, mult_mod = 2 } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -5699,6 +6131,7 @@ SMODS.Joker {
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 5, y = 6 },
+	config = { extra = { mult = 0, mult_mod = 2 } },
     pools =
 	{
 		["Bloodfiends"] = true,
@@ -5759,8 +6192,8 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'barber',
 	name = "Barber",
-	unlocked = false,
-	config = { extra = {chips = 0, chips_mod = 4 } },
+	pronouns = "she_her",
+	unlocked = false,	
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -5768,6 +6201,7 @@ SMODS.Joker {
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 7, y = 6 },
+	config = { extra = {chips = 0, chips_mod = 4 } },
     pools =
 	{
 		["Bloodfiends"] = true,
@@ -5818,8 +6252,8 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'priest',
 	name = "Priest",
+	pronouns = "he_him",
 	unlocked = false,
-	config = { extra = { xmult = 1.25 } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -5827,6 +6261,7 @@ SMODS.Joker {
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 6, y = 6 },
+	config = { extra = { xmult = 1.25 } },
     pools =
 	{
 		["Bloodfiends"] = true,
@@ -5870,8 +6305,8 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'bari',
 	name = "Bari",
+	pronouns = "she_her",
 	unlocked = false,
-	config = { extra = { xmult = 1.2 } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -5879,6 +6314,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 5 },
+	config = { extra = { xmult = 1.2 } },
     pools =
 	{
 		
@@ -5912,11 +6348,12 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'cesara',
 	name = "Cesara",
+	pronouns = "she_her",
 	unlocked = true,
-	config = { extra = { currentPosition = 0 } },
 	eternal_compat = true,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	perishable_compat = true,
+	config = { extra = { currentPosition = 0 } },
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
@@ -5930,7 +6367,7 @@ SMODS.Joker {
         return {vars = {  } }
 	end,
 	calculate = function(self, card, context)
-		if context.individual and context.cardarea == G.play and next(context.poker_hands["Flush"]) then
+		if context.individual and context.cardarea == G.play and next(context.poker_hands["Flush"]) and not context.blueprint then
 			for i = 1, #G.jokers.cards do
                 if G.jokers.cards[i] == card then
                     my_pos = i
@@ -5964,15 +6401,16 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'alessio',
 	name = "Alessio",
+	pronouns = "he_him",
 	unlocked = true,
-	config = { extra = { } },
 	eternal_compat = true,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 6, y = 5 },
+	config = { extra = { } },
     pools =
 	{
 
@@ -5982,7 +6420,7 @@ SMODS.Joker {
         return {vars = {  } }
 	end,
 	calculate = function(self, card, context)
-		if context.individual and context.poker_hands and next(context.poker_hands["Flush"]) then
+		if context.individual and context.poker_hands and next(context.poker_hands["Flush"]) and not context.blueprint then
 			for i = 1, #G.jokers.cards do
                 if G.jokers.cards[i] == card then
                     my_pos = i
@@ -6037,8 +6475,8 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'jiaXichun',
 	name = "Jia Xichun",
+	pronouns = "she_her",
 	unlocked = true,
-	config = { extra = { } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -6046,6 +6484,7 @@ SMODS.Joker {
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 8, y = 5 },
+	config = { extra = { } },
     pools =
 	{
 
@@ -6082,43 +6521,15 @@ SMODS.Joker {
  	end,
 }
 
---[[ Wei
-SMODS.Joker {
-	key = 'wei',
-	name = "Wei",
-	unlocked = false,
-	config = { extra = { } },
-	eternal_compat = true,
-	blueprint_compat = true,
-	perishable_compat = true,
-	rarity = 1,
-	cost = 4,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 9, y = 14 },
-    pools =
-	{
-
- 	},
-	loc_vars = function(self, info_queue, card)
-		
-        return {vars = {  } }
-	end,
-	calculate = function(self, card, context)
-
-    end,
-	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
- 	end,
-}]]--
-
 -- Hugo
 SMODS.Joker {
 	key = 'hugo',
 	name = "Hugo",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { dollars = 3 } },
 	eternal_compat = true,
-	blueprint_compat = true,
+	blueprint_compat = false,
 	perishable_compat = true,
 	rarity = 1,
 	cost = 3,
@@ -6149,6 +6560,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'camille',
 	name = "Camille",
+	pronouns = "he_him",
 	unlocked = false,
 	config = { extra = { mult = 0} },
 	eternal_compat = true,
@@ -6168,7 +6580,7 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 		
-		if context.setting_blind then
+		if context.setting_blind and not context.blueprint then
 
 			local moneyToSubtract = math.floor(G.GAME.dollars / 20)
 
@@ -6179,6 +6591,12 @@ SMODS.Joker {
                 message = localize('k_upgrade_ex'),
                 colour = G.C.MULT
             }
+		end
+
+		if context.joker_main then
+			return {
+				mult = card.ability.extra.mult
+			}
 		end
 
     end,
@@ -6194,6 +6612,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'paula',
 	name = "Paula",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = { currentScale = 0} },
 	eternal_compat = true,
@@ -6234,6 +6653,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'romero',
 	name = "Romero",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { mult = 10, mult_mod = 10 } },
 	eternal_compat = true,
@@ -6291,6 +6711,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'hanul',
 	name = "Han-ul",
+	pronouns = "she_her",
 	unlocked = false,
 	config = { extra = { type = 'Flush' } },
 	eternal_compat = true,
@@ -6336,6 +6757,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'caiman',
 	name = "Caiman",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = {baseChance = 1, maxChance = 6 } },
 	eternal_compat = true,
@@ -6388,6 +6810,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'aengDu',
 	name = "Aeng Du",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = {xmult = 2 } },
 	eternal_compat = true,
@@ -6421,6 +6844,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'jun',
 	name = "Jun",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = {xmult = 3} },
 	eternal_compat = true,
@@ -6454,6 +6878,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'herbert',
 	name = "Herbert",
+	pronouns = "he_him",
 	unlocked = false,
 	config = { extra = {baseChance = 1, maxChance = 3 } },
 	eternal_compat = true,
@@ -6492,6 +6917,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'mai',
 	name = "Mai",
+	pronouns = "she_her",
 	unlocked = false,
 	config = { extra = { xmult } },
 	eternal_compat = true,
@@ -6549,6 +6975,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'bumble',
 	name = "Bumble",
+	pronouns = "he_him",
 	unlocked = false,
 	config = { extra = { } },
 	eternal_compat = true,
@@ -6607,6 +7034,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'timeRipper',
 	name = "Time Ripper",
+	pronouns = "they_them",
 	unlocked = false,
 	config = { extra = {charges = 0 } },
 	eternal_compat = true,
@@ -6657,6 +7085,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'casetti',
 	name = "Casetti",
+	pronouns = "he_him",
 	unlocked = false,
 	config = { extra = { mult = 0, mult_mod = 2, suit = "Hearts", baseChance = 1, maxChance = 3 } },
 	eternal_compat = true,
@@ -6718,6 +7147,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'sasha',
 	name = "Sasha",
+	pronouns = "she_her",
 	unlocked = false,
 	config = { extra = { baseChance = 1, maxChance = 2 } },
 	eternal_compat = true,
@@ -6768,6 +7198,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'hohenheim',
 	name = "Hohenheim",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { cardsDestroyed = {}, extra = {  } },
 	eternal_compat = true,
@@ -6825,6 +7256,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'alyssa',
 	name = "Alyssa",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = { mult = 4} },
 	eternal_compat = true,
@@ -6873,6 +7305,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'marton',
 	name = "Marton",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { chips = 8} },
 	eternal_compat = true,
@@ -6921,6 +7354,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'johann',
 	name = "Johann",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { } },
 	eternal_compat = true,
@@ -6979,6 +7413,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'qingTao',
 	name = "Qing Tao",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { type = "Three of a Kind", baseChance = 1, maxChance = 3, counter = 0 } },
 	eternal_compat = true,
@@ -7049,6 +7484,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'shanSan',
 	name = "Shan San",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { type = "Three of a Kind", dollars = 3, baseChance = 1, maxChance = 3, counter = 0 } },
 	eternal_compat = true,
@@ -7122,6 +7558,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'jumsoon',
 	name = "Jumsoon",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { type = "Full House" } },
 	eternal_compat = true,
@@ -7182,12 +7619,23 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("The Ring", HEX('474747'), HEX('c4c4c4'), 1.2 )
  	end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_pmcmod_garnet" then
+                if get_joker_win_sticker(v, true) >= 1 then
+                    return true
+                end
+                break
+            end
+        end
+    end
 }
 
 --Garnet
 SMODS.Joker {
 	key = 'garnet',
 	name = "Garnet",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { availableJokers = {}, selectedJoker = "None", extra = {} },
 	eternal_compat = true,
@@ -7244,6 +7692,21 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("Fixer", G.C.BLACK, G.C.WHITE, 1.2 )
  	end,
+	check_for_unlock = function(self, args)
+        if args.type == 'discard_custom' then
+            local eval = evaluate_poker_hand(args.cards)
+            if next(eval['Flush House']) then
+                local min = 10
+                for j = 1, #args.cards do
+                    if args.cards[j]:get_id() < min then min = args.cards[j]:get_id() end
+                end
+                if min == 10 then
+                    return true
+                end
+            end
+        end
+        return false
+    end
 }
 
 -- WONDERLAB --
@@ -7253,6 +7716,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'catt',
 	name = "Catt",
+	pronouns = "she_her",
 	unlocked = false,
 	config = { extra = {exhausted = false, rarity = 2, rarityName = "Hardcover"} },
 	eternal_compat = true,
@@ -7316,6 +7780,16 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
  	end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_mr_bones" then
+                if get_joker_win_sticker(v, true) >= 1 then
+                    return true
+                end
+                break
+            end
+        end
+    end
 }
 
 
@@ -7326,6 +7800,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'jiaMu',
 	name = "Jia Mu",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = { baseChance = 1, maxChance = 2, moneyLoss = 3} },
 	eternal_compat = true,
@@ -7376,12 +7851,23 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("H Corp", HEX('b87869'), HEX('f0f0f0'), 1.2 )
  	end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_diet_cola" then
+                if get_joker_win_sticker(v, true) >= 8 then
+                    return true
+                end
+                break
+            end
+        end
+    end
 }
 
 --Jia Qiu
 SMODS.Joker {
 	key = 'jiaQiu',
 	name = "Jia Qiu",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { xmult = 2, baseChance = 1, maxChance = 4 } },
 	eternal_compat = true,
@@ -7442,12 +7928,16 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("Jia Family", HEX("b02121"), HEX('140e0e'), 1.2 )
  	end,
+	check_for_unlock = function(self, args)
+        return args.type == 'chip_score' and to_big(args.chips) >= to_big(800000)
+    end,
 }
 
 --Lin Daiyu
 SMODS.Joker {
 	key = 'linDaiyu',
 	name = "Lin Daiyu",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = { ruptureStack = 0, trigger = false } },
 	eternal_compat = true,
@@ -7485,12 +7975,25 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("Xue Family", HEX("f0a3a3"), HEX('c22929'), 1.2 )
  	end,
+	check_for_unlock = function(self, args)
+        if args.type == 'modify_deck' then
+            local count = 0
+            for _, playing_card in ipairs(G.playing_cards or {}) do
+                if SMODS.has_enhancement(playing_card, 'm_pmcmod_rupture') then count = count + 1 end
+                if count >= 5 then
+                    return true
+                end
+            end
+        end
+        return false
+    end
 }
 
 --Xue Baochai
 SMODS.Joker {
 	key = 'xueBaochai',
 	name = "Xue Baochai",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = { percentageToReduce = 0.9 } },
 	eternal_compat = true,
@@ -7886,6 +8389,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'ladyWang',
 	name = "ladyWang",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = { mult = 6 } },
 	eternal_compat = true,
@@ -7918,6 +8422,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'jiaZheng',
 	name = "Jia Zheng",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { chips = 16 } },
 	eternal_compat = true,
@@ -7950,6 +8455,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'jiaYuanchun',
 	name = "Jia Yuanchun",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = { dollars = 6 } },
 	eternal_compat = true,
@@ -7983,6 +8489,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'jiaHuanChild',
 	name = "Jia Huan (Child)",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { } },
 	eternal_compat = true,
@@ -8024,6 +8531,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'xuePan',
 	name = "Xue Pan",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { } },
 	eternal_compat = true,
@@ -8078,6 +8586,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'wangZhao',
 	name = "Wang Zhao",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { } },
 	eternal_compat = false,
@@ -8187,6 +8696,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'wangDawei',
 	name = "Wang Dawei",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { counter = 0, permaMult_mod = 7, permaChips_mod = 15 } },
 	eternal_compat = true,
@@ -8230,6 +8740,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'wangQingshan',
 	name = "Wang Qingshan",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = { counter = 0, permaDollars_mod = 3 } },
 	eternal_compat = true,
@@ -8272,6 +8783,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'wangRen',
 	name = "Wang Ren",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { dollars = 7 } },
 	eternal_compat = true,
@@ -8341,6 +8853,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'shiYihua',
 	name = "Shi Yihua",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { baseChips = 2} },
 	eternal_compat = true,
@@ -8387,6 +8900,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'shiHuazhen',
 	name = "Shi Huazhen",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = {mult_mod = 1 } },
 	eternal_compat = true,
@@ -8430,6 +8944,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'shiSijing',
 	name = "Shi Sijing",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { chips_mod = 10, chips = 0 } },
 	eternal_compat = true,
@@ -8471,6 +8986,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'kongSihui',
 	name = "Kong Sihui",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = { dollars = 2, baseChanceTrigger = 1, maxChanceTrigger = 5, baseChanceDeath = 1, maxChanceDeath = 20 } },
 	eternal_compat = true,
@@ -8534,6 +9050,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'kongYoujin',
 	name = "Kong Youjin",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { repetitions = 1, baseChanceTrigger = 1, maxChanceTrigger = 5, baseChanceDeath = 1, maxChanceDeath = 20 } },
 	eternal_compat = true,
@@ -8597,6 +9114,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'xiren',
 	name = "Xiren",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = { lastPlayedHand = "", mult_mod = 3 } },
 	eternal_compat = true,
@@ -8641,6 +9159,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'wei',
 	name = "Wei",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { mostPlayedHand = "", cardsInHand = 0, dollars = 2 } },
 	eternal_compat = true,
@@ -8688,6 +9207,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'zigong',
 	name = "Zigong",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = { chips = 3} },
 	eternal_compat = true,
@@ -8737,6 +9257,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'zilu',
 	name = "Zilu",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = { } },
 	eternal_compat = true,
@@ -8765,6 +9286,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'nightDrifter',
 	name = "Night Drifter",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { minXMult = 0.8, maxXMult = 2, minXMult_mod = 0.1, maxXMult_mod = 0.5, currentConsumableCount = 0 } },
 	eternal_compat = true,
@@ -8814,6 +9336,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'leiHeng',
 	name = "Lei Heng",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { my_pos = 1 } },
 	eternal_compat = true,
@@ -8863,12 +9386,23 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_flower_pot" then
+                if get_joker_win_sticker(v, true) >= 8 then
+                    return true
+                end
+                break
+            end
+        end
+    end
 }
 
 --Valencina
 SMODS.Joker {
 	key = 'valencina',
 	name = "Valencina",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = { currentPosition = 1, lucioDeathCounter = 0, lucioPresent = false, lucioPos = nil } },
 	eternal_compat = true,
@@ -8932,12 +9466,23 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_flower_pot" then
+                if get_joker_win_sticker(v, true) >= 8 then
+                    return true
+                end
+                break
+            end
+        end
+    end
 }
 
 --Rien
 SMODS.Joker {
 	key = 'rien',
 	name = "Rien",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { mult = 0, mult_mod = 15,  prescriptListShuffled = {}, prescriptActive = false, currentPrescript = 0, soraPresent = false, soraPos = nil } },
 	eternal_compat = true,
@@ -9019,6 +9564,16 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_flower_pot" then
+                if get_joker_win_sticker(v, true) >= 8 then
+                    return true
+                end
+                break
+            end
+        end
+    end
 }
 
 --Matthias
@@ -9026,6 +9581,7 @@ SMODS.Joker {
 	key = 'matthias',
 	name = "Matthias",
 	unlocked = true,
+	pronouns = "he_him",
 	config = { extra = { hands = 1, dollarsBase = 2, kiraDeathCounter = 0, kiraPresent = false, kiraPos = nil } },
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -9100,9 +9656,6 @@ SMODS.Joker {
 			end
 		end
 
-
-			
-
     end,
 	add_to_deck = function(self, card, from_debuff)
         G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hands
@@ -9113,6 +9666,16 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_flower_pot" then
+                if get_joker_win_sticker(v, true) >= 8 then
+                    return true
+                end
+                break
+            end
+        end
+    end
 }
 
 --Callisto
@@ -9120,6 +9683,7 @@ SMODS.Joker {
 	key = 'callisto',
 	name = "Callisto",
 	unlocked = true,
+	pronouns = "she_her",
 	config = { extra = { currentPosition = 1, albinaPresent = false, albinaPos = nil, chips = 0, mult = 0, chips_gain = 20, mult_gain = 5  } },
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -9235,12 +9799,23 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_flower_pot" then
+                if get_joker_win_sticker(v, true) >= 8 then
+                    return true
+                end
+                break
+            end
+        end
+    end
 }
 
 --Shiomi Yoru
 SMODS.Joker {
 	key = 'shiomiYoru',
 	name = "Shiomi Yoru",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = {renDeathCounter = 0, renPos = nil } },
 	eternal_compat = true,
@@ -9297,12 +9872,23 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_flower_pot" then
+                if get_joker_win_sticker(v, true) >= 8 then
+                    return true
+                end
+                break
+            end
+        end
+    end
 }
 
 --Lucio
 SMODS.Joker {
 	key = 'lucio',
 	name = "Lucio",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { currentPosition = 1, lucioDeathCounter = 0, dollars = 3, valencinaPresent = false, valencinaPos = nil } },
 	eternal_compat = true,
@@ -9365,12 +9951,23 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_pmcmod_valencina" then
+                if get_joker_win_sticker(v, true) >= 1 then
+                    return true
+                end
+                break
+            end
+        end
+    end
 }
 
 --Sora
 SMODS.Joker {
 	key = 'sora',
 	name = "Sora",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = { chips = 0, chips_mod = 20, soraDeathCounter = 0, rienPresent = false, rienPos = nil, locked = false } },
 	eternal_compat = true,
@@ -9481,12 +10078,23 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_pmcmod_rien" then
+                if get_joker_win_sticker(v, true) >= 1 then
+                    return true
+                end
+                break
+            end
+        end
+    end
 }
 
 --Kira
 SMODS.Joker {
 	key = 'kira',
 	name = "Kira",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = { currentPosition = 1, kiraDeathCounter = 0, dollars = 2, matthiasPresent = false, matthiasPos = nil } },
 	eternal_compat = true,
@@ -9548,12 +10156,23 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_pmcmod_matthias" then
+                if get_joker_win_sticker(v, true) >= 1 then
+                    return true
+                end
+                break
+            end
+        end
+    end
 }
 
 --Albina
 SMODS.Joker {
 	key = 'albina',
 	name = "Albina",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = {callistoPresent = false, callistoPos = nil, albinaDeathCounter = 0, baseChance = 1, maxChance = 2, type = "Pair" } },
 	eternal_compat = true,
@@ -9628,12 +10247,23 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_pmcmod_callisto" then
+                if get_joker_win_sticker(v, true) >= 1 then
+                    return true
+                end
+                break
+            end
+        end
+    end
 }
 
 --Ren
 SMODS.Joker {
 	key = 'ren',
 	name = "Ren",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { extra = { shiomiPresent = false, shiomiPos = nil, renDeathCounter = 0, baseChance = 1, maxChance = 2} },
 	eternal_compat = true,
@@ -9697,12 +10327,23 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_pmcmod_shiomiYoru" then
+                if get_joker_win_sticker(v, true) >= 1 then
+                    return true
+                end
+                break
+            end
+        end
+    end
 }
 
 --Ravi
 SMODS.Joker {
 	key = 'ravi',
 	name = "Ravi",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = {chips = 0, chips_mod = 10, baseChance = 1, maxChance = 9 } },
 	eternal_compat = false,
@@ -9763,6 +10404,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'werner',
 	name = "Werner",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = {chips = 0, chips_mod = 15 } },
 	eternal_compat = true,
@@ -9808,6 +10450,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'jamila',
 	name = "Jamila",
+	pronouns = "she_her",
 	unlocked = true,
 	config = { multBase = 10 },
 	eternal_compat = true,
@@ -9840,12 +10483,19 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge("LCA Udjat", HEX('212121'), HEX('ba8832'), 1.2 )
  	end,
+	check_for_unlock = function(self, args)
+        if #G.vouchers.cards >= 5 then
+			return true
+		end
+    end
+	
 }
 
 --A Certain Sinclair
 SMODS.Joker {
 	key = 'aCertainSinclair',
 	name = "A Certain Sinclair",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { counter = 0, currentPosition = 1 } },
 	eternal_compat = true,
@@ -9909,6 +10559,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'arayaKid',
 	name = "Araya (Child)",
+	pronouns = "she_her",
 	unlocked = false,
 	config = { chips = 20, counters = {playedCards = 0, discardedCards = 0, moneyUsed = 0} },
 	eternal_compat = true,
@@ -10032,12 +10683,23 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_pmcmod_ryoshu" then
+                if get_joker_win_sticker(v, true) >= 1 then
+                    return true
+                end
+                break
+            end
+        end
+    end
 }
 
 --Araya (Teen)
 SMODS.Joker {
 	key = 'arayaTeen',
 	name = "Araya (Teen)",
+	pronouns = "she_her",
 	unlocked = false,
 	config = { permaChips_mod = 6, counters = {playedCards = 0, discardedCards = 0, moneyUsed = 0} },
 	eternal_compat = true,
@@ -10166,6 +10828,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'arayaYA',
 	name = "Araya (Young Adult)",
+	pronouns = "she_her",
 	unlocked = false,
 	config = { permaMult_mod = 3, counters = {playedCards = 0, discardedCards = 0, moneyUsed = 0} },
 	eternal_compat = true,
@@ -10294,6 +10957,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'arayaAdult',
 	name = "Araya (Adult)",
+	pronouns = "she_her",
 	unlocked = false,
 	config = { permaDollars_mod = 1, counters = {playedCards = 0, discardedCards = 0, moneyUsed = 0} },
 	eternal_compat = true,
@@ -10425,6 +11089,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'vermillionCross',
 	name = "Vermillion Cross",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { percentageToReduce = 0.5 } },
 	eternal_compat = true,
@@ -10464,6 +11129,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'indigoElder',
 	name = "Indigo Elder",
+	pronouns = "he_him",
 	config = { extra = { mult = 0, chips = 0, dollars = 0, xmult = 0, lockedPosition = 0, debuffMult = 2, debuffChips = 5, debuffDollars = 1, debuffXmult = 0.9} },
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -10592,6 +11258,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'yellowHarpoon',
 	name = "Yellow Harpoon",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { base_xmult = 1.0 } },
 	eternal_compat = true,
@@ -10640,6 +11307,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "sephirahHod",
 	name = "Sephirah Hod",
+	pronouns = "she_her",
 	config = {extra = 1, xmult = 1},
     blueprint_compat = true,
 	perishable_compat = false,
@@ -10705,6 +11373,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "sephirahMalkuth",
 	name = "Sephirah Malkuth",
+	pronouns = "she_her",
 	config = {extra = {mult = 0}},
     blueprint_compat = true,
     eternal_compat = false,
@@ -10753,6 +11422,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "sephirahNetzach",
 	name = "Sephirah Netzach",
+	pronouns = "he_him",
 	config = {extra = {mult = 0, chips = 0, current_consumable_count = 0}},
     blueprint_compat = true,
     eternal_compat = false,
@@ -10804,6 +11474,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "sephirahYesod",
 	name = "Sephirah Yesod",
+	pronouns = "he_him",
 	config = {extra = {totalSpades = 0, totalClubs = 0, totalHearts = 0, totalDiamonds = 0, mult = 0, chips = 0}},
     blueprint_compat = true,
     eternal_compat = false,
@@ -10860,6 +11531,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "sephirahChesed",
 	name = "Sephirah Chesed",
+	pronouns = "he_him",
 	config = {extra = {xmult = 2, xmult_mod = 0.1, baseChance = 1, maxChance = 2}},
     blueprint_compat = true,
     eternal_compat = false,
@@ -10907,6 +11579,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "sephirahGebura",
 	name = "Sephirah Gebura",
+	pronouns = "she_her",
 	config = {extra = {mult = 0, roundCount = 0}},
     blueprint_compat = true,
     eternal_compat = false,
@@ -10949,6 +11622,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "sephirahHokma",
 	name = "Sephirah Hokma",
+	pronouns = "he_him",
 	config = {extra = {xmult = 1, xmult_mod = 0.3, consumablesUsed = 0}},
     blueprint_compat = true,
     eternal_compat = false,
@@ -10993,6 +11667,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "sephirahBinah",
 	name = "Sephirah Binah",
+	pronouns = "she_her",
 	config = {extra = {xmult = 1, xmult_mod = 0.3, bondedHand = "None", bonded = 0}},
     blueprint_compat = true,
     eternal_compat = false,
@@ -11046,6 +11721,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "sephirahTiphereth",
 	name = "Sephirah Tiphereth",
+	pronouns = "she_her",
 	config = {extra = {aceMult = 10, aceMult_mod = 10}},
     blueprint_compat = true,
     eternal_compat = false,
@@ -11089,6 +11765,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "robotHod",
 	name = "Hod (Robot)",
+	pronouns = "she_her",
 	config = {xmult = 2},
     blueprint_compat = true,
     eternal_compat = true,
@@ -11144,6 +11821,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "robotMalkuth",
 	name = "Malkuth (Robot)",
+	pronouns = "she_her",
 	config = {extra = {mult = 0, odds = 4}},
     blueprint_compat = true,
     eternal_compat = true,
@@ -11204,6 +11882,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "robotNetzach",
 	name = "Netzach (Robot)",
+	pronouns = "he_him",
 	config = {extra = {consumable_amount = 2, mult = 0, chips = 0, current_consumable_count = 0, priceIncrease = 0}},
     blueprint_compat = true,
     eternal_compat = true,
@@ -11254,6 +11933,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'robotYesod',
 	name = "Yesod (Robot)",
+	pronouns = "he_him",
 	config = {extra = {totalSpades = 0, totalClubs = 0, totalHearts = 0, totalDiamonds = 0, mult = 0, chips = 0, odds = 10}},
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -11329,6 +12009,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "robotChesed",
 	name = "Chesed (Robot)",
+	pronouns = "he_him",
 	config = {extra = {odds_upgrade = 8, xmult = 1, xmult_mod = 0.1}},
     blueprint_compat = true,
     eternal_compat = true,
@@ -11393,6 +12074,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "robotGebura",
 	name = "Gebura (Robot)",
+	pronouns = "she_her",
 	config = {extra = {mult = 0}},
     blueprint_compat = true,
     eternal_compat = true,
@@ -11432,6 +12114,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "robotHokma",
 	name = "Hokma (Robot)",
+	pronouns = "he_him",
 	config = {extra = {xmult = 1,xmult_mod_spectrals = 0.3, xmult_mod_tarot = 0.1, spectralsUsed = 0, tarotUsed = 0}},
     blueprint_compat = true,
     eternal_compat = true,
@@ -11481,6 +12164,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "robotBinah",
 	name = "Binah (Robot)",
+	pronouns = "she_her",
 	config = {extra = {xmult = 1, xmult_mod = 0.1}},
     blueprint_compat = true,
     eternal_compat = true,
@@ -11547,6 +12231,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "robotTiph",
 	name = "Tiph A (Robot)",
+	pronouns = "she_her",
 	config = {extra = {enochDeathCounter = 0, aceMult = 5, aceMult_mod = 3, aceChip = -10}},
     blueprint_compat = true,
     eternal_compat = false,
@@ -11610,6 +12295,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "robotEnoch",
 	name = "Tiph B (Robot)",
+	pronouns = "he_him",
 	config = {extra = {chips = 0, chip_mod = 10}},
     blueprint_compat = true,
     eternal_compat = false,
@@ -11672,6 +12358,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'silence',
 	name = "Time Flowing",
+	pronouns = "it_its",
 	-- This also searches G.GAME.pool_flags to see if Gros Michel went extinct. If so, enables the ability to show up in shop.
 	config = { extra = { current_timer = 0, total_timer = 30 } },
 	rarity = 3,
@@ -11745,6 +12432,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'shylook',
 	name = "Today's Shy Look",
+	pronouns = "it_its",
 	config = { extra = { randomValue = 4, timer = 0, selectedFace = 0, xmult = 1 } },
 	rarity = 3,
 	atlas = 'ModdedProjectMoon',
@@ -11803,6 +12491,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'queenOfHatred',
 	name = "Queen of Hatred",
+	pronouns = "she_her",
 	config = { extra = { discardedCount = 0, playedCount = 0, xmult = 0.5, retrigger = 1, chips = 100, debuffs = 1, transformationCount = 0, currentCount = 0, enableTransform = false } },
 	rarity = 3,
 	atlas = 'ModdedProjectMoon',
@@ -11935,6 +12624,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'chickenA',
 	name = "Chicken A",
+	pronouns = "it_its",
 	config = { extra = { roundsCompleted = 0 } },
 	rarity = 3,
 	atlas = 'ModdedProjectMoon',
@@ -11986,6 +12676,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'chickenB',
 	name = "Chicken B",
+	pronouns = "it_its",
 	config = { extra = { handsUsed = 0 } },
 	rarity = 3,
 	atlas = 'ModdedProjectMoon',
@@ -12036,6 +12727,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'chickenC',
 	name = "Chicken C",
+	pronouns = "it_its",
 	config = { extra = { discardsUsed = 0 } },
 	rarity = 3,
 	atlas = 'ModdedProjectMoon',
@@ -12087,6 +12779,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'chickenD',
 	name = "Chicken D",
+	pronouns = "it_its",
 	config = { extra = { boostersOpened = 0 } },
 	rarity = 3,
 	atlas = 'ModdedProjectMoon',
@@ -12138,6 +12831,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'puppetA',
 	name = "Puppet",
+	pronouns = "it_its",
 	config = { extra = { mult = 15, counter = 0 } },
     blueprint_compat = true,
     eternal_compat = false,
@@ -12200,6 +12894,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'puppetB',
 	name = "Nimble Puppet",
+	pronouns = "it_its",
 	config = { extra = { mult = 30, counter = 0 } },
     blueprint_compat = true,
     eternal_compat = false,
@@ -12262,6 +12957,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'puppetC',
 	name = "Weighty Puppet",
+	pronouns = "it_its",
 	config = { extra = { mult = 50, counter = 0 } },
     blueprint_compat = true,
     eternal_compat = false,
@@ -12325,6 +13021,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'puppetAngelica',
 	name = "Puppet Angelica",
+	pronouns = "it_its",
 	config = { extra = { mult = 60, counter = 0 } },
     blueprint_compat = true,
     eternal_compat = false,
@@ -12361,6 +13058,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'dummyRicardo',
 	name = "Dummy Ricardo",
+	pronouns = "it_its",
 	config = { extra = { ricardoDefeatCounter = 0, canSpawnRicardo = false, baseChance = 1, maxChance = 3} },
 	no_collection = true,    --In testing
 	eternal_compat = true,
@@ -12401,20 +13099,13 @@ SMODS.Joker {
 
 
 
-local function Shuffle(t)
-	local s = {}
-	for i = 1, #t do s[i] = t[i] end
-	for i = #t, 2, -1 do
-		local j = math.random(i)
-		s[i], s[j] = s[j], s[i]
-	end
-	return s
-end
+
 
 -- Voice of the City
 SMODS.Joker {
 	key = 'voiceOfTheCity',
 	name = "Voice of the City",
+	pronouns = "it_its",
 	config = { extra = { prescriptListShuffled = {}, prescriptActive = false, currentPrescript = 0} },
 	no_collection = true,    --In testing
 	eternal_compat = true,
@@ -12460,6 +13151,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'prescript1',
 	name = "Prescript",
+	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, faces = 5} },
 	no_collection = true,    --In testing
 	eternal_compat = true,
@@ -12533,6 +13225,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'prescript2',
 	name = "Prescript",
+	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, jokerSelected = false, selectedJoker = "", selectedJokerName = ""} },
 	no_collection = true,    --In testing
 	eternal_compat = true,
@@ -12629,6 +13322,7 @@ end
 SMODS.Joker {
 	key = 'prescript3',
 	name = "Prescript",
+	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, selectedRank = "", prescriptFailed = false} },
 	no_collection = true,    --In testing
 	eternal_compat = true,
@@ -12697,6 +13391,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'prescript4',
 	name = "Prescript",
+	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
 	no_collection = true,    --In testing
 	eternal_compat = true,
@@ -12765,6 +13460,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'prescript5',
 	name = "Prescript",
+	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
 	no_collection = true,    --In testing
 	eternal_compat = true,
@@ -12840,6 +13536,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'prescript6',
 	name = "Prescript",
+	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, boosterSkipCount = 0} },
 	no_collection = true,    --In testing
 	eternal_compat = true,
@@ -12915,6 +13612,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'prescript7',
 	name = "Prescript",
+	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
 	no_collection = true,    --In testing
 	eternal_compat = true,
@@ -12987,6 +13685,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'prescript8',
 	name = "Prescript",
+	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
 	no_collection = true,    --In testing
 	eternal_compat = true,
@@ -13057,6 +13756,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'prescript9',
 	name = "Prescript",
+	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
 	no_collection = true,    --In testing
 	eternal_compat = true,
@@ -13128,6 +13828,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'prescript10',
 	name = "Prescript",
+	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, current_consumable_count = 0} },
 	no_collection = true,    --In testing
 	eternal_compat = true,
@@ -13200,6 +13901,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'prescript11',
 	name = "Prescript",
+	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
 	no_collection = true,    --In testing
 	eternal_compat = true,
@@ -13324,6 +14026,7 @@ end
 SMODS.Joker {
 	key = 'childrenOfTheGalaxy',
 	name = "Children of The Galaxy",
+	pronouns = "they_them",
 	config = { extra = {baseChance = 1, maxChance = 4, priceIncrease = 20} },
 	no_collection = true,    --In testing
 	eternal_compat = true,
@@ -13371,6 +14074,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'laetitia',
 	name = "Laetitia",
+	pronouns = "they_them",
 	config = { extra = {baseChance = 1, maxChance = 10} },
 	no_collection = true,    --In testing
 	eternal_compat = true,
@@ -13466,6 +14170,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'censored',
 	name = "[CENSORED]",
+	pronouns = "it_its",
 	config = { extra = {} },
 	no_collection = true,    --In testing
 	eternal_compat = true,
@@ -13484,6 +14189,48 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 
+
+    end,
+	in_pool = function(self, args)
+        return G.GAME.pool_flags.fake_robot_flag
+    end,
+}
+
+
+-- Ryoshu
+SMODS.Joker {
+	key = 'ryoshu',
+	name = "Ryoshu",
+	pronouns = "she_her",
+	config = { extra = {xmult = 1, xmult_mod = 0.1} },
+	no_collection = false,
+	eternal_compat = true,
+	blueprint_compat = false,
+	perishable_compat = false,
+	rarity = 3,
+	cost = 8,
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 8, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+		return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod } }
+	end,
+	calculate = function(self, card, context)
+
+		if context.selling_card and context.card.ability.set == "Joker" and not context.blueprint then
+			local keypageKey = context.card.config.center.key
+			G.GAME.banned_keys[keypageKey] = true
+			card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
+        end
+
+		if context.joker_main then
+			return{
+				xmult = card.ability.extra.xmult
+			}
+		end
 
     end,
 	in_pool = function(self, args)
