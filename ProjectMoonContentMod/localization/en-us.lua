@@ -409,6 +409,16 @@ return {
                     'in at least {C:attention}The City Stake{}',
                 },
             },
+            j_pmcmod_ryoshu = {
+                name = 'The Fourth Sinner, Ryoshu',
+                text = {
+                    {"Gains {X:mult, C:white}#1#{} Mult for",
+                    "each Keypage sold."},
+                    {"Selling a Keypage prevents it from",
+                    "appearing for the rest of the run.",
+                    "{C:inactive}(Currently {X:mult, C:white}#2#{C:inactive} Mult)"}
+                }
+            },
             j_pmcmod_ishmael = {
                 name = 'The Eighth Sinner, Ishmael',
                 text = {
@@ -2509,6 +2519,13 @@ return {
         },
         Planet={},
         Spectral={
+            c_pmcmod_conceptIncinerator = {
+                name = "Concept Incinerator",
+                text = {
+                    "{C:red}Removes{} up to two Keypages from",
+                    "the pool for the rest fo the run.",
+                }
+            },
             c_pmcmod_witness = {
                 name = "Witness",
                 text = {
