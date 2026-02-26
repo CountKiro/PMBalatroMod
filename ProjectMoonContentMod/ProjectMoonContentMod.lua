@@ -16,6 +16,7 @@ end
 -- Loading files --
 -------------------
 
+if (SMODS.Mods['JokerDisplay'] or {}).can_load or false then SMODS.load_file("objects/joker_display_definitions.lua")() end
 if (SMODS.Mods['partner'] or {}).can_load or false then SMODS.load_file('objects/partners.lua')() end
 if (SMODS.Mods['CardSleeves'] or {}).can_load or false then SMODS.load_file('objects/sleeves.lua')() end
 SMODS.load_file("objects/backs.lua")()
