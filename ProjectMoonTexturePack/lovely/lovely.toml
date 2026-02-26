@@ -48,6 +48,32 @@ payload = '''G.SPLASH_BACK:define_draw_steps({{
                 }}})'''
 match_indent = true
 
+
+
+######################
+#Intro card
+
+[[patches]]
+[patches.pattern]
+target = "game.lua"
+pattern = '''--spawn in splash card'''
+position = "before"
+payload = '''local projectMoonJokersKeypages = {}
+
+			for i=1, #G.P_CENTER_POOLS.Joker do
+			
+				if G.P_CENTER_POOLS.Joker[i].mod then
+					if G.P_CENTER_POOLS.Joker[i].mod.id == "ProjectMoonContentMod" then
+						projectMoonJokersKeypages[#projectMoonJokersKeypages+1] = G.P_CENTER_POOLS.Joker[i]
+					end
+				else
+					projectMoonJokersKeypages[#projectMoonJokersKeypages+1] = G.P_CENTER_POOLS.Joker[i]
+				end
+			end
+'''
+match_indent = true
+
+
 ######################
 #Intro card
 
@@ -56,7 +82,7 @@ match_indent = true
 target = "game.lua"
 pattern = '''SC = Card(G.ROOM.T.w/2 - SC_scale*G.CARD_W/2, 10. + G.ROOM.T.h/2 - SC_scale*G.CARD_H/2, SC_scale*G.CARD_W, SC_scale*G.CARD_H, G.P_CARDS.empty, G.P_CENTERS['j_joker'])'''
 position = "at"
-payload = '''SC = Card(G.ROOM.T.w/2 - SC_scale*G.CARD_W/2, 10. + G.ROOM.T.h/2 - SC_scale*G.CARD_H/2, SC_scale*G.CARD_W, SC_scale*G.CARD_H, G.P_CARDS.empty, pseudorandom_element(G.P_CENTER_POOLS.Joker))'''
+payload = '''SC = Card(G.ROOM.T.w/2 - SC_scale*G.CARD_W/2, 10. + G.ROOM.T.h/2 - SC_scale*G.CARD_H/2, SC_scale*G.CARD_W, SC_scale*G.CARD_H, G.P_CARDS.empty, pseudorandom_element(projectMoonJokersKeypages))'''
 match_indent = true
 
 ######################
@@ -72,7 +98,7 @@ pattern = '''local card = Card(  card_pos.x + G.ROOM.T.w/2 - G.CARD_W*card_size/
 position = "at"
 payload = '''local card = Card(  card_pos.x + G.ROOM.T.w/2 - G.CARD_W*card_size/2,
                                     card_pos.y + G.ROOM.T.h/2 - G.CARD_H*card_size/2,
-                                    card_size*G.CARD_W, card_size*G.CARD_H, G.P_CARDS.empty, pseudorandom_element(G.P_CENTER_POOLS.Joker))
+                                    card_size*G.CARD_W, card_size*G.CARD_H, G.P_CARDS.empty, pseudorandom_element(projectMoonJokersKeypages))
                 if math.random() > 0.8 then card.sprite_facing = 'back'; card.facing = 'back' end'''
 match_indent = true
 
