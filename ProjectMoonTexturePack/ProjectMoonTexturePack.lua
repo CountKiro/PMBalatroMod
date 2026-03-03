@@ -368,1048 +368,1198 @@ SMODS.Joker:take_ownership('j_joker',
 --]]
 SMODS.Joker:take_ownership('j_greedy_joker', 
   {
+  pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Thumb', HEX('7d130f'), HEX('c29c29'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_thumb'), HEX('7d130f'), HEX('c29c29'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_lusty_joker', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Thumb', HEX('7d130f'), HEX('c29c29'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_thumb'), HEX('7d130f'), HEX('c29c29'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_wrathful_joker', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Thumb', HEX('7d130f'), HEX('c29c29'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_thumb'), HEX('7d130f'), HEX('c29c29'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_gluttenous_joker', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Thumb', HEX('7d130f'), HEX('c29c29'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_thumb'), HEX('7d130f'), HEX('c29c29'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_jolly', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Liu Association', HEX('9e0000'), HEX('e8970c'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_liu'), HEX('9e0000'), HEX('e8970c'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_zany', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Wedge Office', HEX('1c1c1c'), HEX('4387e0'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_wedge'), HEX('1c1c1c'), HEX('4387e0'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_mad', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The 8 o’Clock Circus', HEX('851734'), HEX('e8e6e3'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_circus'), HEX('851734'), HEX('e8e6e3'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_crazy', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Kurokumo Clan', HEX('292a2e'), HEX('6f7178'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_kurokumo'), HEX('292a2e'), HEX('6f7178'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_droll', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Hana Association', HEX('e3e3e3'), HEX('8a6d15'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_hana'), HEX('e3e3e3'), HEX('8a6d15'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_sly', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Liu Association', HEX('9e0000'), HEX('e8970c'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_liu'), HEX('9e0000'), HEX('e8970c'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_wily', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Wedge Office', HEX('1c1c1c'), HEX('4387e0'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_wedge'), HEX('1c1c1c'), HEX('4387e0'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_clever', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The 8 o’Clock Circus', HEX('851734'), HEX('e8e6e3'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_circus'), HEX('851734'), HEX('e8e6e3'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_devious', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Kurokumo Clan', HEX('292a2e'), HEX('6f7178'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_kurokumo'), HEX('292a2e'), HEX('6f7178'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_crafty', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Hana Association', HEX('e3e3e3'), HEX('8a6d15'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_hana'), HEX('e3e3e3'), HEX('8a6d15'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_half', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge("Charles' Office", HEX('3d3d3d'), HEX('b5b5b5'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_charles'), HEX('3d3d3d'), HEX('b5b5b5'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_stencil', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Library', HEX('998350'), HEX('0cf07e'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_library'), HEX('998350'), HEX('0cf07e'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_four_fingers', 
   {
+    pronouns = "they_them",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Carnival', HEX('242424'), HEX('8c0a0a'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_carnival'), HEX('242424'), HEX('8c0a0a'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_mime', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Blue Reverberation', HEX('09479e'), HEX('cfae42'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_blueReverberation'), HEX('09479e'), HEX('cfae42'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_credit_card', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Rats', HEX('3b2f28'), HEX('520f07'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_rats'), HEX('3b2f28'), HEX('520f07'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_ceremonial', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Blue Reverberation', HEX('09479e'), HEX('cfae42'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_blueReverberation'), HEX('09479e'), HEX('cfae42'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_banner', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Gaze Office', HEX('332e2c'), HEX('9b3f9e'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_gaze'), HEX('332e2c'), HEX('9b3f9e'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_mystic_summit', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Gaze Office', HEX('332e2c'), HEX('9b3f9e'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_gaze'), HEX('332e2c'), HEX('9b3f9e'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_marble', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Musicians of Bremen', HEX('200921'), HEX('f016fa'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_bremen'), HEX('200921'), HEX('f016fa'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_loyalty_card', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge("Pierre's Bistro", HEX('c4c4c4'), HEX('960c0c'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_pierre'), HEX('c4c4c4'), HEX('960c0c'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_8_ball', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Brotherhood of Iron', HEX('303030'), HEX('c29c29'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_brotherhood'), HEX('303030'), HEX('c29c29'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_misprint', 
   {
+    pronouns = "they_them",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Love Town', HEX('523f16'), HEX('f21b98'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_loveTown'), HEX('523f16'), HEX('f21b98'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_dusk', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Dawn Office', HEX('4a443d'), HEX('e0d482'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_dawnOffice'), HEX('4a443d'), HEX('e0d482'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_raised_fist', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Stray Dogs', HEX('303030'), HEX('c7c7c7'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_strayDogs'), HEX('303030'), HEX('c7c7c7'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_chaos', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge("Yun's Office", HEX('302c2c'), HEX('b5b1b1'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_yuns'), HEX('302c2c'), HEX('b5b1b1'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_fibonacci', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Brotherhood of Iron', HEX('303030'), HEX('c29c29'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_brotherhood'), HEX('303030'), HEX('c29c29'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_steel_joker', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Musicians of Bremen', HEX('200921'), HEX('f016fa'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_bremen'), HEX('200921'), HEX('f016fa'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_scary_face', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Hook Office', HEX('542813'), HEX('dbdbdb'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_hook'), HEX('542813'), HEX('dbdbdb'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_abstract', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('R Corp', HEX('2e2b2b'), HEX('c4560c'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_RCorp'), HEX('2e2b2b'), HEX('c4560c'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_delayed_grat', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Rusted Chains', HEX('2b2727'), HEX('56755b'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_rusted'), HEX('2b2727'), HEX('56755b'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_hack', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Zwei Association', HEX('23306e'), HEX('ab851d'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_zwei'), HEX('23306e'), HEX('ab851d'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_pareidolia', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Library', HEX('998350'), HEX('0cf07e'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_library'), HEX('998350'), HEX('0cf07e'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_gros_michel', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Shi Association', HEX('212121'), HEX('8f1313'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_shi'), HEX('212121'), HEX('8f1313'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_even_steven', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Citizen', HEX('828282'), HEX('ebebeb'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_citizen'), HEX('828282'), HEX('ebebeb'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_odd_todd', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Citizen', HEX('828282'), HEX('ebebeb'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_citizen'), HEX('828282'), HEX('ebebeb'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_scholar', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Brotherhood of Iron', HEX('303030'), HEX('c29c29'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_brotherhood'), HEX('303030'), HEX('c29c29'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_business', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Hook Office', HEX('542813'), HEX('dbdbdb'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_hook'), HEX('542813'), HEX('dbdbdb'), 1.2 )
          end
   }, true)
   
 SMODS.Joker:take_ownership('j_supernova', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Dawn Office', HEX('4a443d'), HEX('e0d482'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_dawnOffice'), HEX('4a443d'), HEX('e0d482'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_ride_the_bus', 
   {
+    pronouns = "they_them",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_space', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge("Charles' Office", HEX('3d3d3d'), HEX('b5b5b5'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_charles'), HEX('3d3d3d'), HEX('b5b5b5'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_egg', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Smiling Faces', HEX('521612'), HEX('d1d1d1'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_smiling'), HEX('521612'), HEX('d1d1d1'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_burglar', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Streetlight Office', HEX('232b2e'), HEX('8d9ba1'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_streetlight'), HEX('232b2e'), HEX('8d9ba1'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_blackboard', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Liu Association', HEX('9e0000'), HEX('e8970c'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_liu'), HEX('9e0000'), HEX('e8970c'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_runner', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Stray Dogs', HEX('303030'), HEX('c7c7c7'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_strayDogs'), HEX('303030'), HEX('c7c7c7'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_ice_cream', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Sweepers', HEX('2e3138'), HEX('a6190f'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_sweepers'), HEX('2e3138'), HEX('a6190f'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_dna', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('R Corp', HEX('2e2b2b'), HEX('c4560c'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_RCorp'), HEX('2e2b2b'), HEX('c4560c'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_splash', 
   {
+    pronouns = "they_them",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Carnival', HEX('242424'), HEX('8c0a0a'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_carnival'), HEX('242424'), HEX('8c0a0a'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_blue_joker', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Gaze Office', HEX('332e2c'), HEX('9b3f9e'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_gaze'), HEX('332e2c'), HEX('9b3f9e'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_sixth_sense', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Shi Association', HEX('212121'), HEX('8f1313'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_shi'), HEX('212121'), HEX('8f1313'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_constellation', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_hiker', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Stray Dogs', HEX('303030'), HEX('c7c7c7'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_strayDogs'), HEX('303030'), HEX('c7c7c7'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_faceless', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Molar Office', HEX('595447'), HEX('c9c9c9'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_molar'), HEX('595447'), HEX('c9c9c9'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_green_joker', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('W Corp', HEX('24303b'), HEX('0078e6'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_WCorp'), HEX('24303b'), HEX('0078e6'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_superposition', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Liu Association', HEX('9e0000'), HEX('e8970c'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_liu'), HEX('9e0000'), HEX('e8970c'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_todo_list', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Blue Reverberation', HEX('09479e'), HEX('cfae42'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_blueReverberation'), HEX('09479e'), HEX('cfae42'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_cavendish', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Index', HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_index'), HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_card_sharp', 
   {
+    pronouns = "they_them",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Seven Association', HEX('234a39'), HEX('b59c36'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_seven'), HEX('234a39'), HEX('b59c36'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_red_card', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Liu Association', HEX('9e0000'), HEX('e8970c'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_liu'), HEX('9e0000'), HEX('e8970c'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_madness', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Blue Reverberation', HEX('09479e'), HEX('cfae42'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_blueReverberation'), HEX('09479e'), HEX('cfae42'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_square', 
   {
+    pronouns = "he_him",
   display_size = { w = 71, h = 95 },
   pixel_size = { w = 71, h = 130 },
   set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Molar Office", HEX('23306e'), HEX('ab851d'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('badge_molar'), HEX('23306e'), HEX('ab851d'), 1.2 )
  	end
   }, true)
 
 SMODS.Joker:take_ownership('j_seance', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Blue Reverberation', HEX('09479e'), HEX('cfae42'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_blueReverberation'), HEX('09479e'), HEX('cfae42'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_riff_raff', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Library', HEX('998350'), HEX('0cf07e'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_library'), HEX('998350'), HEX('0cf07e'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_vampire', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Blue Reverberation', HEX('09479e'), HEX('cfae42'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_blueReverberation'), HEX('09479e'), HEX('cfae42'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_shortcut', 
   {
+    pronouns = "they_them",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Carnival', HEX('242424'), HEX('8c0a0a'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_carnival'), HEX('242424'), HEX('8c0a0a'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_hologram', 
   {
+    pronouns = "they_them",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Head', HEX('242424'), HEX('e0c02f'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_eye'), HEX('242424'), HEX('e0c02f'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_vagabond', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Rats', HEX('3b2f28'), HEX('520f07'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_rats'), HEX('3b2f28'), HEX('520f07'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_baron', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_cloud_9', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Cane Office', HEX('242424'), HEX('e87a20'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_cane'), HEX('242424'), HEX('e87a20'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_rocket', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Cane Office', HEX('242424'), HEX('e87a20'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_cane'), HEX('242424'), HEX('e87a20'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_obelisk', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('W Corp', HEX('24303b'), HEX('0078e6'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_WCorp'), HEX('24303b'), HEX('0078e6'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_midas_mask', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_luchador', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge("Yun's Office", HEX('302c2c'), HEX('b5b1b1'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_yuns'), HEX('302c2c'), HEX('b5b1b1'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_photograph', 
   {
+    pronouns = "he_him",
   display_size = { w = 71, h = 95 },
   pixel_size = { w = 71, h = 115 },
   set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Zwei Association", HEX('23306e'), HEX('ab851d'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('badge_zwei'), HEX('23306e'), HEX('ab851d'), 1.2 )
  	end
   }, true)
 
 SMODS.Joker:take_ownership('j_gift', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Full-Stop Office', HEX('3b3a38'), HEX('b59348'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_fullStop'), HEX('3b3a38'), HEX('b59348'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_turtle_bean', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Index', HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_index'), HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_erosion', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Streetlight Office', HEX('232b2e'), HEX('8d9ba1'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_streetlight'), HEX('232b2e'), HEX('8d9ba1'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_reserved_parking', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Full-Stop Office', HEX('3b3a38'), HEX('b59348'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_fullStop'), HEX('3b3a38'), HEX('b59348'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_mail', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_to_the_moon', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Full-Stop Office', HEX('3b3a38'), HEX('b59348'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_fullStop'), HEX('3b3a38'), HEX('b59348'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_hallucination', 
   {
+    pronouns = "they_them",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Leaftlet Workshop', HEX('240e0a'), HEX('613229'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_leaflet'), HEX('240e0a'), HEX('613229'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_fortune_teller', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Smiling Faces', HEX('521612'), HEX('d1d1d1'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_smiling'), HEX('521612'), HEX('d1d1d1'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_juggler', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Index', HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_index'), HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_drunkard', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Molar Office', HEX('595447'), HEX('c9c9c9'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_molar'), HEX('595447'), HEX('c9c9c9'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_stone', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Musicians of Bremen', HEX('200921'), HEX('f016fa'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_bremen'), HEX('200921'), HEX('f016fa'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_golden', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Cane Office', HEX('242424'), HEX('e87a20'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_cane'), HEX('242424'), HEX('e87a20'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_lucky_cat', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Fixer', HEX('1c1c1c'), HEX('808080'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_fixer'), HEX('1c1c1c'), HEX('808080'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_baseball', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Streetlight Office', HEX('232b2e'), HEX('8d9ba1'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_streetlight'), HEX('232b2e'), HEX('8d9ba1'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_bull', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('R Corp', HEX('2e2b2b'), HEX('c4560c'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_RCorp'), HEX('2e2b2b'), HEX('c4560c'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_diet_cola', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_trading', 
   {
+    pronouns = "he_him",
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Shi Association', HEX('212121'), HEX('8f1313'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_shi'), HEX('212121'), HEX('8f1313'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_flash', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge("Yun's Office", HEX('302c2c'), HEX('b5b1b1'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_yuns'), HEX('302c2c'), HEX('b5b1b1'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_popcorn', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Sweepers', HEX('2e3138'), HEX('a6190f'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_sweepers'), HEX('2e3138'), HEX('a6190f'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_trousers', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge("The 8 o’Clock Circus", HEX('851734'), HEX('e8e6e3'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_circus'), HEX('851734'), HEX('e8e6e3'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_ancient', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Bayard', HEX('283623'), HEX('bfbfbf'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_bayard'), HEX('283623'), HEX('bfbfbf'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_ramen', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge("Pierre's Bistro", HEX('c4c4c4'), HEX('960c0c'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_pierre'), HEX('c4c4c4'), HEX('960c0c'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_walkie_talkie', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Zwei Association', HEX('23306e'), HEX('ab851d'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_zwei'), HEX('23306e'), HEX('ab851d'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_selzer', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Lobotomy Corporation', HEX('b82c2c'), HEX('f2e396'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_LCorp'), HEX('b82c2c'), HEX('f2e396'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_castle', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Library', HEX('998350'), HEX('0cf07e'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_library'), HEX('998350'), HEX('0cf07e'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_smiley', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Hook Office', HEX('542813'), HEX('dbdbdb'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_hook'), HEX('542813'), HEX('dbdbdb'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_campfire', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('W Corp', HEX('24303b'), HEX('0078e6'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_WCorp'), HEX('24303b'), HEX('0078e6'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_ticket', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Rats', HEX('3b2f28'), HEX('520f07'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_rats'), HEX('3b2f28'), HEX('520f07'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_mr_bones', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Sweepers', HEX('2e3138'), HEX('a6190f'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_sweepers'), HEX('2e3138'), HEX('a6190f'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_acrobat', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Blade Lineage', HEX('26292e'), HEX('a81338'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_blade'), HEX('26292e'), HEX('a81338'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_sock_and_buskin', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Library', HEX('998350'), HEX('0cf07e'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_library'), HEX('998350'), HEX('0cf07e'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_swashbuckler', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('R Corp', HEX('2e2b2b'), HEX('c4560c'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_RCorp'), HEX('2e2b2b'), HEX('c4560c'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_troubadour', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Index', HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_index'), HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_certificate', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Night Awls', HEX('2b2b2b'), HEX('a1a1a1'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_nightAwls'), HEX('2b2b2b'), HEX('a1a1a1'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_smeared', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Library', HEX('998350'), HEX('0cf07e'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_library'), HEX('998350'), HEX('0cf07e'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_throwback', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Mirae Life Insurance', HEX('463a54'), HEX('c9c9c9'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_mirae'), HEX('463a54'), HEX('c9c9c9'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_hanging_chad', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_rough_gem', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Blue Reverberation', HEX('09479e'), HEX('cfae42'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_blueReverberation'), HEX('09479e'), HEX('cfae42'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_bloodstone', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Blue Reverberation', HEX('09479e'), HEX('cfae42'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_blueReverberation'), HEX('09479e'), HEX('cfae42'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_arrowhead', 
   {
+    pronouns = "they_them",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Blue Reverberation', HEX('09479e'), HEX('cfae42'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_blueReverberation'), HEX('09479e'), HEX('cfae42'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_onyx_agate', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Blue Reverberation', HEX('09479e'), HEX('cfae42'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_blueReverberation'), HEX('09479e'), HEX('cfae42'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_glass', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Index', HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_index'), HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_ring_master', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_flower_pot', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_blueprint', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Head', HEX('242424'), HEX('e0c02f'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_head'), HEX('242424'), HEX('e0c02f'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_wee', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The 8 o’Clock Circus...?', HEX('851734'), HEX('e8e6e3'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_circus'), HEX('851734'), HEX('e8e6e3'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_merry_andy', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Molar Office', HEX('595447'), HEX('c9c9c9'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_molar'), HEX('595447'), HEX('c9c9c9'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_oops', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_idol', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_seeing_double', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_matador', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Lobotomy Corporation', HEX('b82c2c'), HEX('f2e396'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_LCorp'), HEX('b82c2c'), HEX('f2e396'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_hit_the_road', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_duo', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Liu Association', HEX('9e0000'), HEX('e8970c'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_liu'), HEX('9e0000'), HEX('e8970c'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_trio', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Wedge Office', HEX('1c1c1c'), HEX('4387e0'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_wedge'), HEX('1c1c1c'), HEX('4387e0'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_family', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_order', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Kurokumo Clan', HEX('292a2e'), HEX('6f7178'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_kurokumo'), HEX('292a2e'), HEX('6f7178'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_tribe', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Hana Association', HEX('e3e3e3'), HEX('8a6d15'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_hana'), HEX('e3e3e3'), HEX('8a6d15'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_stuntman', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Library', HEX('998350'), HEX('0cf07e'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_library'), HEX('998350'), HEX('0cf07e'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_invisible', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Index', HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_index'), HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_brainstorm', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Claw', HEX('242424'), HEX('e0c02f'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_claw'), HEX('242424'), HEX('e0c02f'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_satellite', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Library', HEX('998350'), HEX('0cf07e'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_library'), HEX('998350'), HEX('0cf07e'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_shoot_the_moon', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Library', HEX('998350'), HEX('0cf07e'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_library'), HEX('998350'), HEX('0cf07e'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_drivers_license', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_cartomancer', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Library', HEX('998350'), HEX('0cf07e'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_library'), HEX('998350'), HEX('0cf07e'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_astronomer', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('The Library', HEX('998350'), HEX('0cf07e'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_library'), HEX('998350'), HEX('0cf07e'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_burnt', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Dawn Office', HEX('4a443d'), HEX('e0d482'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_dawnOffice'), HEX('4a443d'), HEX('e0d482'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_bootstraps', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_caino', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Color Fixer', HEX('495c3a'), HEX('330606'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_colorFixer'), HEX('495c3a'), HEX('330606'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_triboulet', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Color Fixer', HEX('330606'), HEX('db0707'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_colorFixer'), HEX('330606'), HEX('db0707'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_yorick', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Color Fixer', HEX('09479e'), HEX('cfae42'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_colorFixer'), HEX('09479e'), HEX('cfae42'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_chicot', 
   {
+    pronouns = "she_her",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Color Fixer', HEX('1c1c1c'), HEX('9e13bd'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_colorFixer'), HEX('1c1c1c'), HEX('9e13bd'), 1.2 )
          end
   }, true)
 
 SMODS.Joker:take_ownership('j_perkeo', 
   {
+    pronouns = "he_him",
   set_badges = function(self, card, badges)
-                 badges[#badges+1] = create_badge('Color Fixer', HEX('1c1c1c'), HEX('808080'), 1.2 )
+                 badges[#badges+1] = create_badge(localize('badge_colorFixer'), HEX('1c1c1c'), HEX('808080'), 1.2 )
          end
   }, true)
 
