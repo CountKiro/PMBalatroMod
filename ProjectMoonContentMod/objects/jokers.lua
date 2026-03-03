@@ -9122,8 +9122,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 8, y = 4 },
     pools =
 	{
 
@@ -9167,8 +9167,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 9, y = 4 },
     pools =
 	{
 
@@ -9215,8 +9215,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 0, y = 5 },
     pools =
 	{
 
@@ -9265,8 +9265,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 1, y = 5 },
     pools =
 	{
 
@@ -9294,8 +9294,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 2, y = 5 },
     pools =
 	{
 
@@ -9589,7 +9589,7 @@ SMODS.Joker {
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+	pos = { x =6, y = 5 },
     pools =
 	{
 
@@ -9690,8 +9690,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 3,
 	cost = 8,
-    atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x =7, y = 5 },
     pools =
 	{
 
@@ -9896,8 +9896,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
-    atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x =9, y = 5 },
     pools =
 	{
 
@@ -9975,8 +9975,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
-    atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x =0, y = 6 },
     pools =
 	{
 
@@ -10102,8 +10102,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
-    atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x =1, y = 6 },
     pools =
 	{
 
