@@ -3850,7 +3850,7 @@ return {
             badge_blade="검계",
             badge_nightAwls="밤의 송곳",
             badge_mirae="미래생명",
-            badge_claw="The Claw'",
+            badge_claw="발톱",
             badge_eye="눈",
             badge_head="머리",
             badge_colorFixer="특색",
