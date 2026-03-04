@@ -368,7 +368,7 @@ return {
         },
         Enhanced={
             m_bonus={
-                name="보너스 카드",
+                name="인내 카드",
                 text={
                 },
             },
@@ -398,7 +398,7 @@ return {
                 },
             },
             m_mult={
-                name="배수 카드",
+                name="힘 카드",
                 text={
                     "{C:mult}+#1#{} 배수",
                 },
