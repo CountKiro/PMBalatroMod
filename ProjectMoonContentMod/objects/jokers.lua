@@ -40,109 +40,109 @@ SMODS.Joker {
 			local chosenEffect = math.random(1, 18)
 
 			if chosenEffect == 1 then
-				card.ability.extra.lastEffect = "+ Chips"
+				card.ability.extra.lastEffect = localize('pmcmod_oswaldEffect1')
 				return {
 					chips = math.random(1, 100),
 				}
 			end
 			if chosenEffect == 2 then
-				card.ability.extra.lastEffect = "+ Mult"
+				card.ability.extra.lastEffect = localize('pmcmod_oswaldEffect2')
 				return {
 					mult = math.random(1, 100),
 				}
 			end
 			if chosenEffect == 3 then
-				card.ability.extra.lastEffect = "Xmult"
+				card.ability.extra.lastEffect = localize('pmcmod_oswaldEffect3')
 				return {
 					xmult = math.random(1, 20),
 				}
 			end
 			if chosenEffect == 4 then
-				card.ability.extra.lastEffect = "XMult"
+				card.ability.extra.lastEffect = localize('pmcmod_oswaldEffect4')
 				return {
 					xmult = math.random(1, 3),
 				}
 			end
 			if chosenEffect == 5 then
-				card.ability.extra.lastEffect = "Invert Mult"
+				card.ability.extra.lastEffect = localize('pmcmod_oswaldEffect5')
 				return {
 					xmult = -1,
 				}
 			end
 			if chosenEffect == 6 then
-				card.ability.extra.lastEffect = "Divides Mult"
+				card.ability.extra.lastEffect = localize('pmcmod_oswaldEffect6')
 				return {
 					xmult = math.random(0.5, 1.0),
 				}
 			end
 			if chosenEffect == 7 then
-				card.ability.extra.lastEffect = "- Chips"
+				card.ability.extra.lastEffect = localize('pmcmod_oswaldEffect7')
 				return {
 					chips = -math.random(1, 100),
 				}
 			end
 			if chosenEffect == 8 then
-				card.ability.extra.lastEffect = "- Mult"
+				card.ability.extra.lastEffect = localize('pmcmod_oswaldEffect8')
 				return {
 					mult = -math.random(1, 30),
 				}
 			end
 			if chosenEffect == 9 then
-				card.ability.extra.lastEffect = "+ $"
+				card.ability.extra.lastEffect = localize('pmcmod_oswaldEffect9')
 				return {
 					dollars = math.random(1, 10)
 				}
 			end
 			if chosenEffect == 10 then
-				card.ability.extra.lastEffect = "+ $"
+				card.ability.extra.lastEffect = localize('pmcmod_oswaldEffect10')
 				return {
 					dollars = math.random(10, 50)
 				}
 			end
 			if chosenEffect == 11 then
-				card.ability.extra.lastEffect = "- $"
+				card.ability.extra.lastEffect = localize('pmcmod_oswaldEffect11')
 				return {
 					dollars = -math.random(1, 20)
 				}
 			end
 			if chosenEffect == 12 then
-				card.ability.extra.lastEffect = "Spawns perishable Keypage"
+				card.ability.extra.lastEffect = localize('pmcmod_oswaldEffect12')
 				return {
 					SMODS.add_card {set = 'Joker', key_append = 'oswald', stickers = {"perishable"}, force_stickers = true}
 				}
 			end
 			if chosenEffect == 13 then
-				card.ability.extra.lastEffect = "Spawns rental Keypage"
+				card.ability.extra.lastEffect = localize('pmcmod_oswaldEffect13')
 				return {
 					SMODS.add_card {set = 'Joker', key_append = 'oswald', stickers = {"rental"}, force_stickers = true}
 				}
 			end
 			if chosenEffect == 14 then
-				card.ability.extra.lastEffect = "Spawns eternal Keypage"
+				card.ability.extra.lastEffect = localize('pmcmod_oswaldEffect14')
 				return {
 					SMODS.add_card {set = 'Joker', key_append = 'oswald', stickers = {"eternal"}, force_stickers = true}
 				}
 			end
 			if chosenEffect == 15 then
-				card.ability.extra.lastEffect = "Spawns Keypage"
+				card.ability.extra.lastEffect = localize('pmcmod_oswaldEffect15')
 				return {
 					SMODS.add_card {set = 'Joker', key_append = 'oswald'}
 				}
 			end
 			if chosenEffect == 16 then
-				card.ability.extra.lastEffect = "Spawns Tarot Card"
+				card.ability.extra.lastEffect = localize('pmcmod_oswaldEffect16')
 				return {
 					SMODS.add_card {set = 'Tarot', key_append = 'oswald'}
 				}
 			end
 			if chosenEffect == 17 then
-				card.ability.extra.lastEffect = "Spawns Spectral card"
+				card.ability.extra.lastEffect = localize('pmcmod_oswaldEffect17')
 				return {
 					SMODS.add_card {set = 'Spectral', key_append = 'oswald'}
 				}
 			end
 			if chosenEffect == 18 then
-				card.ability.extra.lastEffect = "Destroys a Keypage"
+				card.ability.extra.lastEffect = localize('pmcmod_oswaldEffect18')
 
 				if card.getting_sliced then
 					local destructable_jokers = {}
@@ -782,7 +782,7 @@ SMODS.Joker {
  	},
     loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
-        return {vars = { card.ability.extra.mult + card.ability.extra.extraMultValue, card.ability.extra.extraMult, card.ability.extra.suit, (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+        return {vars = { card.ability.extra.mult + card.ability.extra.extraMultValue, card.ability.extra.extraMult, localize(card.ability.extra.suit, 'suits_plural'), (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
     end,
     calculate = function(self, card, context)
 
@@ -857,7 +857,7 @@ SMODS.Joker {
             end
         end
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
-        return {vars = { card.ability.extra.mult, card.ability.extra.mult + card.ability.extra.extraMult * wildCardsTally, card.ability.extra.suit } }
+        return {vars = { card.ability.extra.mult, card.ability.extra.mult + card.ability.extra.extraMult * wildCardsTally, localize(card.ability.extra.suit, 'suits_plural') } }
     end,
     calculate = function(self, card, context)
 
@@ -912,7 +912,7 @@ SMODS.Joker {
             end
         end
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
-        return {vars = { card.ability.extra.mult, card.ability.extra.mult + card.ability.extra.extraMult * wildCardsTally, card.ability.extra.suit } }
+        return {vars = { card.ability.extra.mult, card.ability.extra.mult + card.ability.extra.extraMult * wildCardsTally, localize(card.ability.extra.suit, 'suits_plural') } }
     end,
     calculate = function(self, card, context)
 		if context.individual and context.cardarea == G.play and context.other_card:is_suit(card.ability.extra.suit) then
@@ -966,7 +966,7 @@ SMODS.Joker {
             end
         end
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
-        return {vars = { card.ability.extra.mult, card.ability.extra.mult + card.ability.extra.extraMult * wildCardsTally, card.ability.extra.suit } }
+        return {vars = { card.ability.extra.mult, card.ability.extra.mult + card.ability.extra.extraMult * wildCardsTally, localize(card.ability.extra.suit, 'suits_plural') } }
     end,
     calculate = function(self, card, context)
 
@@ -2439,9 +2439,9 @@ SMODS.Joker {
     loc_vars = function (self, info_queue, card)
     local random_mult = tostring(math.floor(card.ability.extra.total_timer)) or 1
 		main_end = {
-			{n=G.UIT.T, config={text = 'Elapsed time: ',colour = G.C.MULT, scale = 0.32}},
+			{n=G.UIT.T, config={text = localize('pmcmod_elapsedTime')..":",colour = G.C.MULT, scale = 0.32}},
 			{n=G.UIT.O, config={object = DynaText({string = random_mult, colours = {G.C.RED}, pop_in_rate = 9999999, silent = true, pop_delay = 0.2011, scale = 0.32, min_cycle_time = 0})}},
-			{n=G.UIT.T, config={text = ' seconds',colour = G.C.MULT, scale = 0.32}} or nil,
+			{n=G.UIT.T, config={text = localize('pmcmod_seconds'),colour = G.C.MULT, scale = 0.32}} or nil,
 		}
     	return {main_end = main_end, vars = { card.ability.extra.current_timer, card.ability.extra.total_timer, card.ability.extra.xmult + (card.ability.extra.xmult_mod * card.ability.extra.consumablesUsed), card.ability.extra.xmult_mod, card.ability.extra.roundCount }}
 	end,
@@ -7863,11 +7863,11 @@ SMODS.Joker {
  	},
 	loc_vars = function(self, info_queue, card)
 		if card.ability.extra.rarity == 2 then
-			card.ability.extra.rarityName = "Hardcover"
+			card.ability.extra.rarityName = localize('k_uncommon')
 		elseif card.ability.extra.rarity == 3 then
-			card.ability.extra.rarityName = "Limited"
+			card.ability.extra.rarityName = localize('k_rare')
 		else
-			card.ability.extra.rarityName = "Objet D'Art"
+			card.ability.extra.rarityName = localize('k_legendary')
 		end
 
         return {vars = { card.ability.extra.rarityName, card.ability.extra.exhausted } }
@@ -8206,6 +8206,16 @@ SMODS.Joker {
 	calc_dollar_bonus = function(self, card)
         return card.ability.extra.dollars
     end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_pmcmod_jiaMu" then
+                if get_joker_win_sticker(v, true) >= 1 then
+                    return true
+                end
+                break
+            end
+        end
+    end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_HCorp'), HEX('b87869'), HEX('f0f0f0'), 1.2 )
  	end,
@@ -8265,6 +8275,16 @@ SMODS.Joker {
 	in_pool = function(self, args)
         return G.GAME.pool_flags.fake_robot_flag
     end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_pmcmod_jiaMu" then
+                if get_joker_win_sticker(v, true) >= 1 then
+                    return true
+                end
+                break
+            end
+        end
+    end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_HCorp'), HEX('b87869'), HEX('f0f0f0'), 1.2 )
  	end,
@@ -8322,6 +8342,16 @@ SMODS.Joker {
     end,
 	in_pool = function(self, args)
         return G.GAME.pool_flags.fake_robot_flag
+    end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_pmcmod_jiaMu" then
+                if get_joker_win_sticker(v, true) >= 1 then
+                    return true
+                end
+                break
+            end
+        end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_HCorp'), HEX('b87869'), HEX('f0f0f0'), 1.2 )
@@ -8381,6 +8411,16 @@ SMODS.Joker {
     end,
 	in_pool = function(self, args)
         return G.GAME.pool_flags.fake_robot_flag
+    end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_pmcmod_jiaMu" then
+                if get_joker_win_sticker(v, true) >= 1 then
+                    return true
+                end
+                break
+            end
+        end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_HCorp'), HEX('b87869'), HEX('f0f0f0'), 1.2 )
@@ -8442,6 +8482,16 @@ SMODS.Joker {
     end,
 	in_pool = function(self, args)
         return G.GAME.pool_flags.fake_robot_flag
+    end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_pmcmod_jiaMu" then
+                if get_joker_win_sticker(v, true) >= 1 then
+                    return true
+                end
+                break
+            end
+        end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_HCorp'), HEX('b87869'), HEX('f0f0f0'), 1.2 )
@@ -8510,6 +8560,16 @@ SMODS.Joker {
     end,
 	in_pool = function(self, args)
         return G.GAME.pool_flags.fake_robot_flag
+    end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_pmcmod_jiaMu" then
+                if get_joker_win_sticker(v, true) >= 1 then
+                    return true
+                end
+                break
+            end
+        end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_HCorp'), HEX('b87869'), HEX('f0f0f0'), 1.2 )
@@ -9056,7 +9116,6 @@ SMODS.Joker {
                     my_pos = i
                     break
                 end
-				print(my_pos)
             end
 			if my_pos >= 2 then
 				return {
@@ -10645,6 +10704,26 @@ SMODS.Joker {
 		if context.after then
 			card.ability.extra.counter = 0
 			print("test reset")
+		end
+    end,
+	check_for_unlock = function(self, args)
+		local callistoOK = false
+		local albinaOK = false
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_pmcmod_callisto" then
+                if get_joker_win_sticker(v, true) >= 1 then
+                    callistoOK = true
+                end
+            end
+			if v.key == "j_pmcmod_albina" then
+                if get_joker_win_sticker(v, true) >= 1 then
+                    albinaOK = true
+                end
+            end
+        end
+
+		if callistoOK and albinaOK then
+			return true
 		end
     end,
 	set_badges = function(self, card, badges)
@@ -12419,9 +12498,9 @@ SMODS.Joker {
 	loc_vars = function (self, info_queue, card)
     local random_mult = tostring(math.floor(card.ability.extra.current_timer)) or 1
 		main_end = {
-			{n=G.UIT.T, config={text = 'Elapsed time: ',colour = G.C.MULT, scale = 0.32}},
+			{n=G.UIT.T, config={text = localize('pmcmod_elapsedTime')..":",colour = G.C.MULT, scale = 0.32}},
 			{n=G.UIT.O, config={object = DynaText({string = random_mult, colours = {G.C.RED}, pop_in_rate = 9999999, silent = true, pop_delay = 0.2011, scale = 0.32, min_cycle_time = 0})}},
-			{n=G.UIT.T, config={text = ' seconds',colour = G.C.MULT, scale = 0.32}} or nil,
+			{n=G.UIT.T, config={text = localize('pmcmod_seconds'),colour = G.C.MULT, scale = 0.32}} or nil,
 		}
     	return {main_end = main_end, vars = { card.ability.extra.current_timer, card.ability.extra.total_timer }}
 	end,
@@ -14244,5 +14323,4 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 }
-
 
