@@ -1588,7 +1588,10 @@ return {
                 text = {
                     "If the first hand of the Scene is a {C:attention}#1#{},",
                     "randomize all Keypages to others of the same rarity."
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Garnet Keypage{}',
+                },
             },
             j_pmcmod_garnet = {
                 name = 'Garnet',
@@ -1596,7 +1599,10 @@ return {
                     "Copies any random unlocked Keypage.",
                     "Keypage changes every Scene.",
                     "{C:inactive}(Currently copying: {C:red}#1#)",
-                }
+                },
+                unlock = {
+                    'Discard a {C:attention}Flush House',
+                },
             },
             j_pmcmod_catt = {
                 name = 'Catt',
@@ -1606,7 +1612,10 @@ return {
                     "{C:attention}#1# Keypage{} and win it."},
                     {"Required rarity goes up with each trigger.",
                     "Can only happen once per Act."}
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Valerie Keypage{}',
+                },
             },
             j_pmcmod_jiaMu = {
                 name = 'Jia Mu',
@@ -1614,7 +1623,11 @@ return {
                     {"{C:red}Disables{} a random amount of Keypages"},
                     {"Retrigger {C:attention}every other Keypage{} 0 to 2 times,",
                     "costing {C:gold}$#3#{} per retrigger"}
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Hong Lu Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
             },
             j_pmcmod_jiaQiu = {
                 name = 'Jia Qiu',
@@ -1623,7 +1636,11 @@ return {
                     {"Has a {C:green}#3# in #4#{} chance",
                     "to give {X:mult,C:white}X#2#{} Mult instead.",
                     "{C:inactive}This page has a hidden interaction.",}
-                }
+                },
+                unlock = {
+                    'Score over {C:chips}800000{} Chips',
+                    'in one hand',
+                },
             },
             j_pmcmod_linDaiyu = {
                 name = 'Lin Daiyu',
@@ -1632,7 +1649,10 @@ return {
                     "all stacks of Rupture from the scored cards",
                     "to score {X:mult,C:white}X0.1{} Mult per 5 stacks consumed.",
                     "{C:inactive}(Rupture stacks {C:green}#1#{C:inactive})"
-                }
+                },
+                unlock = {
+                    'Have at least 5 {C:green}Rupture{} Cards on deck'
+                },
             },
             j_pmcmod_xueBaochai = {
                 name = 'Xue Baochai',
@@ -1645,7 +1665,10 @@ return {
                 text = {
                     "Gives {C:gold}#1#{} at the end of the Scene.",
                     "{C:inactive}Swaps with a different Elder after a Reception"
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Jia Mu Keypage{}'
+                },
             },
             j_pmcmod_xianrenB = {
                 name = 'Elder on a Wheelchair',
@@ -1653,28 +1676,40 @@ return {
                     "If the hand scored has more then 3 cards,",
                     "give {C:mult}#1#{} Mult and {C:chips}#2#{} Chips",
                     "{C:inactive}Swaps with a different Elder after a Reception"
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Jia Mu Keypage{}'
+                },
             },
             j_pmcmod_xianrenC = {
                 name = 'Elder in a Machine',
                 text = {
                     "Gives {X:mult, C:white}X#1#{} Mult per scored card.",
                     "{C:inactive}Swaps with a different Elder after a Reception"
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Jia Mu Keypage{}'
+                },
             },
             j_pmcmod_xianrenD = {
                 name = 'Elder in Monk Robes',
                 text = {
                     "{C:attention}Retrigger{} the first Keypage.",
                     "{C:inactive}Swaps with a different Elder after a Reception"
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Jia Mu Keypage{}'
+                },
             },
             j_pmcmod_xianrenE = {
                 name = 'Elder in a Jar',
                 text = {
                     "{C:attention}Level up{} the first played hand.",
                     "{C:inactive}Swaps with a different Elder after a Reception"
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Jia Mu Keypage{}'
+                },
             },
             j_pmcmod_xianrenF = {
                 name = 'Elder in Trimmed Robes',
@@ -1682,7 +1717,10 @@ return {
                     "At the end of the Scene, increase",
                     "the sell value of other Keypages by {C:gold}$#1#{}.",
                     "{C:inactive}Swaps with a different Elder after a Reception"
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Jia Mu Keypage{}'
+                },
             },
             j_pmcmod_ladyWang = {
                 name = 'Lady Wang',
@@ -1841,7 +1879,11 @@ return {
                     {"If it lands on a 0, {C:red}destroy the Keypage to the left{}."},
                     {"If it lands on any other number, {C:attention}retrigger{} the Keypage",
                     "to the left by the {C:attention}amount it landed on{}."}
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Ryoshu Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
             },
             j_pmcmod_valencina = {
                 name = 'Valencina',
@@ -1852,7 +1894,11 @@ return {
                     "changes the first card into {C:gold}Tremor{}.",
                     "Lucio dies after this effect triggers 5 times.",
                     "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})"},
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Ryoshu Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
             },
             j_pmcmod_rien = {
                 name = 'Rien',
@@ -1862,7 +1908,11 @@ return {
                     "Destroy itself if the Prescript fails."},
                     {"{C:attention}Bonus effect: {}If Sora is present and to the right, gains double",
                     "this value. Sora dies after this effect triggers 3 times."},
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Ryoshu Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
             },
             j_pmcmod_matthias = {
                 name = 'Matthias',
@@ -1875,7 +1925,11 @@ return {
                     {"{C:attention}Bonus effect: {}If Kira is present and to the right, reduces cost to $0.",
                     "Kira dies after generating 5 Burn Cards without cost.",
                     "{C:inactive}(Total triggers: {C:red}#4#{C:inactive})"},
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Ryoshu Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
             },
             j_pmcmod_callisto = {
                 name = 'Callisto',
@@ -1884,7 +1938,11 @@ return {
                     "gaining 80% of their value."},
                     {"{C:attention}Bonus effect: {}If Albina is present, double this value.",
                     "Albina dies after 5 Cards are drained."}
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Ryoshu Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
             },
             j_pmcmod_shiomiYoru = {
                 name = 'Shiomi Yoru',
@@ -1894,7 +1952,11 @@ return {
                     "the chance becomes a guarantee",
                     "Ren dies after this effect is triggered 5 times.",
                     "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})"},
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Ryoshu Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
             },
             j_pmcmod_lucio = {
                 name = 'Lucio',
@@ -1903,7 +1965,10 @@ return {
                     {"{C:attention}Bonus effect: {}If Valencina is present and to the right,",
                     "Tremor cards now give {C:gold}$#3#{}. Lucio dies after triggering 3 Tremor cards.",
                     "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})"},
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Valencina Keypage{}'
+                },
             },
             j_pmcmod_sora = {
                 name = 'Sora',
@@ -1917,7 +1982,10 @@ return {
                     "Sora dies after triggering 4 times.",
                     "{C:inactive}(Total triggers: {C:red}#3#{C:inactive})",
                     "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)"},
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Rien Keypage{}'
+                },
             },
             j_pmcmod_kira = {
                 name = 'Kira',
@@ -1927,7 +1995,10 @@ return {
                     "Burn Cards will now give {C:gold}$#3#{}",
                     "Kira dies after triggering 5 Burn Cards",
                     "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})"},
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Matthias Keypage{}'
+                },
             },
             j_pmcmod_albina = {
                 name = 'Albina',
@@ -1940,7 +2011,10 @@ return {
                     "chance becomes guaranteed.",
                     "Albina dies after triggering this effect 5 times.",
                     "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})"},
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Callisto Keypage{}'
+                },
             },
             j_pmcmod_ren = {
                 name = 'Ren',
@@ -1950,7 +2024,10 @@ return {
                     "chance becomes guaranteed.",
                     "Ren dies after triggering this effect 5 times.",
                     "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})"},
-                }
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Shiomi Yoru Keypage{}'
+                },
             },
             j_pmcmod_ravi = {
                 name = 'Ravi',
@@ -1973,14 +2050,22 @@ return {
                 text = {
                     "Gain {C:mult}#1#{} Mult for every {C:attention}EGO Gift{} claimed.",
                     "{C:inactive}(Currently {C:mult}#2#{C:inactive} Mult)",
-                }
+                },
+                unlock = {
+                    'Have at least {C:attention}5 EGO Gifts{} claimed'
+                },
             },
             j_pmcmod_aCertainSinclair = {
                 name = 'A Certain Sinclair',
                 text = {
                     "Counts how many times the {C:attention}Keypage to the left{} triggers.",
                     "Retrigger the {C:attention}Keypage to the right{} by that amount."
-                }
+                },
+                unlock = {
+                    "Win a run with the {C:attention}Callisto and{}",
+                    "{C:attention}Albina Keypages{}",
+                    "(doesn't need to be on the same run)"
+                },
             },
             j_pmcmod_arayaKid = {
                 name = 'Araya (Child)',
@@ -1992,7 +2077,11 @@ return {
                     {"{C:inactive}Cards scored: {C:chips}#2#{}",
                     "{C:inactive}Cards discarded: {C:mult}#3#{}",
                     "{C:inactive}Money used: {C:gold}#4#{}"}
-                }
+                },
+                unlock = {
+                    "Win a run with",
+                    "{C:attention}The Fourth Sinner, Ryoshu Keypage{}"
+                },
             },
             j_pmcmod_arayaTeen = {
                 name = 'Araya (Teen)',
@@ -2806,6 +2895,26 @@ return {
             pmcmod_badge_colorFixer="Color Fixer",
             pmcmod_badge_abnormality="Abnormality",
             pmcmod_badge_foodMaybe="Food...?",
+            pmcmod_elapsedTime="Elapsed time",
+            pmcmod_seconds=" seconds",
+            pmcmod_oswaldEffect1="+ Chips",
+            pmcmod_oswaldEffect2="+ Mult",
+            pmcmod_oswaldEffect3="Xmult",
+            pmcmod_oswaldEffect4="XMult",
+            pmcmod_oswaldEffect5="Invert Mult",
+            pmcmod_oswaldEffect6="Divides Mult",
+            pmcmod_oswaldEffect7="- Chips",
+            pmcmod_oswaldEffect8="- Mult",
+            pmcmod_oswaldEffect9="+ $",
+            pmcmod_oswaldEffect10="+ $",
+            pmcmod_oswaldEffect11="- $",
+            pmcmod_oswaldEffect12="Spawns perishable Keypage",
+            pmcmod_oswaldEffect13="Spawns rental Keypage",
+            pmcmod_oswaldEffect14="Spawns eternal Keypage",
+            pmcmod_oswaldEffect15="Spawns Keypage",
+            pmcmod_oswaldEffect16="Spawns Tarot Card",
+            pmcmod_oswaldEffect17="Spawns Spectral Card",
+            pmcmod_oswaldEffect18="Destroys a Keypage",
         },
         high_scores={},
         labels={
