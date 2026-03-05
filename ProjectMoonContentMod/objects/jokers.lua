@@ -167,7 +167,7 @@ SMODS.Joker {
 
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("The 8 o’Clock Circus", HEX('851734'), HEX('e8e6e3'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_circus'), HEX('851734'), HEX('e8e6e3'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -227,7 +227,7 @@ SMODS.Joker {
 		
 	end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('The Index', HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_index'), HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -287,7 +287,7 @@ SMODS.Joker {
 		
 	end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('The Index', HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_index'), HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -347,7 +347,7 @@ SMODS.Joker {
 		
 	end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('The Index', HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_index'), HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -401,8 +401,16 @@ SMODS.Joker {
         end
 
     end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_blade'), HEX('3d3d3d'), HEX('b5b5b5'), 1.2 )
+ 	end,
 	in_pool = function(self, args)
-        return G.GAME.pool_flags.fake_robot_flag
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_pmcmod_poise') then
+                return true
+            end
+        end
+        return false
     end,
 }
 
@@ -434,7 +442,7 @@ SMODS.Joker {
 		end
 	end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Charles' Office", HEX('3d3d3d'), HEX('b5b5b5'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_charles'), HEX('3d3d3d'), HEX('b5b5b5'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -572,7 +580,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Puppets", G.C.BLACK, HEX('9e13bd'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_puppets'), G.C.BLACK, HEX('9e13bd'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -639,7 +647,7 @@ SMODS.Joker {
 		
 	end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("R Corp", HEX('2e2b2b'), HEX('c4560c'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_RCorp'), HEX('2e2b2b'), HEX('c4560c'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -701,7 +709,7 @@ SMODS.Joker {
         return card.ability.extra.chargeCount >= 90 and card.ability.extra.dollars
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("R Corp", HEX('2e2b2b'), HEX('c4560c'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_RCorp'), HEX('2e2b2b'), HEX('c4560c'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -740,7 +748,7 @@ SMODS.Joker {
 	
 	end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("R Corp", HEX('2e2b2b'), HEX('c4560c'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_RCorp'), HEX('2e2b2b'), HEX('c4560c'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -809,7 +817,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("The Thumb", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_thumb'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -864,7 +872,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("The Thumb", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_thumb'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -918,7 +926,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("The Thumb", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_thumb'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -973,7 +981,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("The Thumb", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_thumb'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -1071,7 +1079,7 @@ SMODS.Joker {
 
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('The Library', HEX('998350'), HEX('0cf07e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_library'), HEX('998350'), HEX('0cf07e'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -1085,38 +1093,6 @@ SMODS.Joker {
     end
 }
 
--- Angelica
-SMODS.Joker {
-	key = 'angelica',
-	name = "Angelica",
-	pronouns = "she_her",
-	config = { extra = { mult = 100 } },
-	unlocked = false,
-    blueprint_compat = false,
-    eternal_compat = false,
-	perishable_compat = true,
-	rarity = 3,
-    cost = 12,
-	atlas = 'ModdedProjectMoon',
-	pos = { x = 3, y = 14 },
-	pools =
-	{
-        ["Index"] = true,
- 	},
-	loc_vars = function (self, info_queue, card)
-    	return {vars = { card.ability.extra.mult }}
-	end,
-	calculate = function(self, card, context)
-		if context.joker_main and not context.blueprint then
-			return {
-				mult = card.ability.extra.mult
-			}
-		end
-	end,
-	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Charles Office", G.C.BLACK, HEX('9e13bd'), 1.2 )
- 	end
-}
 
 -- Yi Sang
 SMODS.Joker {
@@ -1166,7 +1142,7 @@ SMODS.Joker {
 		end
 	end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -1285,7 +1261,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -1328,9 +1304,22 @@ SMODS.Joker {
         end
 
     end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
+ 	end,
 	in_pool = function(self, args)
-        return G.GAME.pool_flags.fake_robot_flag
+
     end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_flower_pot" then
+                if get_joker_win_sticker(v, true) >= 8 then
+                    return true
+                end
+                break
+            end
+        end
+    end
 }
 
 -- Hong Lu
@@ -1555,9 +1544,22 @@ SMODS.Joker {
 		end
             
     end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
+ 	end,
 	in_pool = function(self, args)
-        return G.GAME.pool_flags.fake_robot_flag
+        
     end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_diet_cola" then
+                if get_joker_win_sticker(v, true) >= 8 then
+                    return true
+                end
+                break
+            end
+        end
+    end
 }
 
 
@@ -1626,7 +1628,7 @@ SMODS.Joker {
 		G.jokers:change_size(-card.ability.extra.joker_slots)
 	end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -1679,7 +1681,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Limbus Company', HEX('63160e'), HEX('eba313'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -1741,7 +1743,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'win_deck' and get_deck_win_stake('b_anaglyph') > 7
@@ -1893,7 +1895,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'win_deck' and get_deck_win_stake('b_anaglyph') >= 1
@@ -2008,7 +2010,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'win_deck' and get_deck_win_stake('b_anaglyph') > 1
@@ -2113,7 +2115,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'win_deck' and get_deck_win_stake('b_anaglyph') > 2
@@ -2221,7 +2223,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'win_deck' and get_deck_win_stake('b_anaglyph') > 2
@@ -2321,7 +2323,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'win_deck' and get_deck_win_stake('b_anaglyph') > 4
@@ -2409,7 +2411,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'win_deck' and get_deck_win_stake('b_anaglyph') > 5
@@ -2523,7 +2525,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'win_deck' and get_deck_win_stake('b_anaglyph') > 6
@@ -2614,7 +2616,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('The Head', HEX('242424'), HEX('e0c02f'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_head'), HEX('242424'), HEX('e0c02f'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'win_deck' and get_deck_win_stake('b_anaglyph') > 6
@@ -2748,7 +2750,7 @@ SMODS.Joker {
 
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'win_deck' and get_deck_win_stake('b_anaglyph') > 3
@@ -2813,7 +2815,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end
 }
 
@@ -2869,7 +2871,7 @@ SMODS.Joker {
         return args.type == 'win_deck' and get_deck_win_stake('b_erratic') > 5
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("New League of Nine Littérateurs", HEX('242b45'), HEX('d5001e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_newLeagueOfNine'), HEX('242b45'), HEX('d5001e'), 1.2 )
  	end
 }
 
@@ -3014,7 +3016,7 @@ SMODS.Joker {
         return args.type == 'win_deck' and get_deck_win_stake('b_erratic') > 5
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("New League of Nine Littérateurs", HEX('242b45'), HEX('d5001e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_newLeagueOfNine'), HEX('242b45'), HEX('d5001e'), 1.2 )
  	end
 }
 
@@ -3062,8 +3064,14 @@ SMODS.Joker {
 
     end,
 	in_pool = function(self, args)
-        return G.GAME.pool_flags.fake_robot_flag
+
     end,
+	check_for_unlock = function(self, args)
+        return args.type == 'win_deck' and get_deck_win_stake('b_erratic') > 5
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_newLeagueOfNine'), HEX('242b45'), HEX('d5001e'), 1.2 )
+ 	end
 }
 
 --Aseah
@@ -3179,7 +3187,7 @@ SMODS.Joker {
         return args.type == 'win_deck' and get_deck_win_stake('b_erratic') > 5
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("New League of Nine Littérateurs", HEX('242b45'), HEX('d5001e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_newLeagueOfNine'), HEX('242b45'), HEX('d5001e'), 1.2 )
  	end
 }
 
@@ -3222,7 +3230,7 @@ SMODS.Joker {
 		end
 	end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("??????", G.C.BLACK, HEX('9e13bd'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_unknown'), G.C.BLACK, HEX('9e13bd'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'win_deck' and get_deck_win_stake('b_pmcmod_serpent') > 1
@@ -3268,7 +3276,7 @@ SMODS.Joker {
 		end
 	end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("??????", G.C.BLACK, HEX('9e13bd'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_unknown'), G.C.BLACK, HEX('9e13bd'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'win_deck' and get_deck_win_stake('b_pmcmod_serpent') > 2
@@ -3314,7 +3322,7 @@ SMODS.Joker {
 		end
 	end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("??????", G.C.BLACK, HEX('9e13bd'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_unknown'), G.C.BLACK, HEX('9e13bd'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'win_deck' and get_deck_win_stake('b_pmcmod_serpent') > 3
@@ -3396,7 +3404,7 @@ SMODS.Joker {
 		end
 	end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Fixer", G.C.BLACK, G.C.WHITE, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_fixer'), G.C.BLACK, G.C.WHITE, 1.2 )
  	end
 }
 
@@ -3474,7 +3482,7 @@ SMODS.Joker {
 		end
 	end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Fixer", G.C.BLACK, G.C.WHITE, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_fixer'), G.C.BLACK, G.C.WHITE, 1.2 )
  	end
 }
 
@@ -3551,7 +3559,7 @@ SMODS.Joker {
 		end
 	end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Fixer", G.C.BLACK, G.C.WHITE, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_fixer'), G.C.BLACK, G.C.WHITE, 1.2 )
  	end
 
 }
@@ -3591,7 +3599,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Sovereigns of a Star", HEX('d61f11'), HEX('470d09'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_sovereigns'), HEX('d61f11'), HEX('470d09'), 1.2 )
  	end
 	,
 	check_for_unlock = function(self, args)
@@ -3634,7 +3642,7 @@ SMODS.Joker {
         return args.type == 'chip_score' and to_big(args.chips) >= to_big(100000)
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Sovereigns of a Star", HEX('d61f11'), HEX('470d09'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_sovereigns'), HEX('d61f11'), HEX('470d09'), 1.2 )
  	end
 }
 
@@ -3681,7 +3689,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Sovereigns of a Star", HEX('d61f11'), HEX('470d09'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_sovereigns'), HEX('d61f11'), HEX('470d09'), 1.2 )
  	end
 }
 
@@ -3738,7 +3746,7 @@ SMODS.Joker {
         card.ability.extra.poker_hand = pseudorandom_element(_poker_hands, pseudoseed('effie'))
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Limbus Company", G.C.BLACK, G.C.RED, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), G.C.BLACK, G.C.RED, 1.2 )
  	end
 }
 
@@ -3847,7 +3855,7 @@ SMODS.Joker {
         card.ability.extra.suit = pseudorandom_element(suits_type, pseudoseed('saude'))
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Limbus Company", G.C.BLACK, G.C.RED, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), G.C.BLACK, G.C.RED, 1.2 )
  	end
 }
 
@@ -3913,7 +3921,7 @@ SMODS.Joker {
 
 	end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Los Mariachis", G.C.YELLOW, G.C.GREEN, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_mariachis'), G.C.YELLOW, G.C.GREEN, 1.2 )
  	end
 }
 
@@ -3956,8 +3964,59 @@ SMODS.Joker {
         return args.type == 'chip_score' and to_big(args.chips) >= to_big(50000) and to_big(args.chips)%to_big(7) == to_big(0)
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("New League of Nine Littérateurs", HEX('242b45'), HEX('d5001e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_newLeagueOfNine'), HEX('242b45'), HEX('d5001e'), 1.2 )
  	end
+}
+
+--Siegfried
+SMODS.Joker {
+    key = "siegfried",
+	name = "Siegfried",
+	pronouns = "he_him",
+	config = {extra = 0.2, xmult = 1},
+	unlocked = false,
+    eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+    rarity = 3,
+	atlas = 'ModdedProjectMoon',
+    cost = 6,
+    pos = { x = 8, y = 2 },
+    pools =
+	{
+        ["KCorp"] = true,
+        ["Heretics"] = true,
+ 	},
+    loc_vars = function(self, info_queue, card)
+
+        return { vars = { card.ability.extra, card.ability.xmult } }
+    end,
+    calculate = function(self, card, context)
+
+
+		if context.final_scoring_step and hand_chips * mult >= G.GAME.blind.chips and not context.blueprint then
+			card.ability.xmult = card.ability.xmult + card.ability.extra
+			return {
+                message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.xmult } }
+            }
+		end
+		
+
+		if context.joker_main then
+			return {
+				xmult = card.ability.xmult
+			}
+		end
+
+		
+
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_KCorp'), G.C.GREEN, G.C.BLACK, 1.2 )
+ 	end,
+	check_for_unlock = function(self, args)
+        return args.type == 'win_deck' and get_deck_win_stake('b_plasma') > 5
+    end
 }
 
 -- Kromer
@@ -4012,63 +4071,13 @@ SMODS.Joker {
 		end
 	end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("N Corp Inquisition", G.C.RED, G.C.WHITE, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_NCorpInquisition'), G.C.RED, G.C.WHITE, 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'win_deck' and get_deck_win_stake('b_erratic') > 3
     end
 }
 
---Siegfried
-SMODS.Joker {
-    key = "siegfried",
-	name = "Siegfried",
-	pronouns = "he_him",
-	config = {extra = 0.2, xmult = 1},
-	unlocked = false,
-    eternal_compat = true,
-	blueprint_compat = true,
-	perishable_compat = true,
-    rarity = 3,
-	atlas = 'ModdedProjectMoon',
-    cost = 6,
-    pos = { x = 8, y = 2 },
-    pools =
-	{
-        ["KCorp"] = true,
-        ["Heretics"] = true,
- 	},
-    loc_vars = function(self, info_queue, card)
-
-        return { vars = { card.ability.extra, card.ability.xmult } }
-    end,
-    calculate = function(self, card, context)
-
-
-		if context.final_scoring_step and hand_chips * mult >= G.GAME.blind.chips and not context.blueprint then
-			card.ability.xmult = card.ability.xmult + card.ability.extra
-			return {
-                message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.xmult } }
-            }
-		end
-		
-
-		if context.joker_main then
-			return {
-				xmult = card.ability.xmult
-			}
-		end
-
-		
-
-    end,
-	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("K Corp", G.C.GREEN, G.C.BLACK, 1.2 )
- 	end,
-	check_for_unlock = function(self, args)
-        return args.type == 'win_deck' and get_deck_win_stake('b_plasma') > 5
-    end
-}
 
 --Guido
 SMODS.Joker {
@@ -4145,7 +4154,7 @@ SMODS.Joker {
         return false
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("N Corp Inquisition", G.C.RED, G.C.WHITE, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_NCorpInquisition'), G.C.RED, G.C.WHITE, 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'win_deck' and get_deck_win_stake('b_erratic') > 1
@@ -4265,7 +4274,7 @@ SMODS.Joker {
         return args.type == 'win_deck' and get_deck_win_stake('b_plasma') > 2
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Citizen', HEX('828282'), HEX('ebebeb'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_citizen'), HEX('828282'), HEX('ebebeb'), 1.2 )
  	end
 }
 
@@ -4341,7 +4350,7 @@ SMODS.Joker {
         return args.type == 'win_deck' and get_deck_win_stake('b_plasma') > 4
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("K Corp", G.C.GREEN, G.C.BLACK, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_KCorp'), G.C.GREEN, G.C.BLACK, 1.2 )
  	end
 }
 
@@ -4379,7 +4388,7 @@ SMODS.Joker {
         return args.type == 'win_deck' and get_deck_win_stake('b_plasma') > 3
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Technology Liberation Alliance", HEX('c28f29'), HEX('992118'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_TLA'), HEX('c28f29'), HEX('992118'), 1.2 )
  	end
 }
 
@@ -4426,7 +4435,7 @@ SMODS.Joker {
         return args.type == 'win_deck' and get_deck_win_stake('b_plasma') > 1
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("K Corp", G.C.GREEN, G.C.BLACK, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_KCorp'), G.C.GREEN, G.C.BLACK, 1.2 )
  	end
 }
 
@@ -4467,7 +4476,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("K Corp", G.C.GREEN, G.C.BLACK, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_KCorp'), G.C.GREEN, G.C.BLACK, 1.2 )
  	end
 }
 
@@ -4512,7 +4521,7 @@ SMODS.Joker {
         return args.type == 'win_deck' and get_deck_win_stake('b_plasma') > 6
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("K Corp", G.C.GREEN, G.C.BLACK, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_KCorp'), G.C.GREEN, G.C.BLACK, 1.2 )
  	end
 
 }
@@ -4588,7 +4597,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Technology Liberation Alliance", HEX('c28f29'), HEX('992118'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_TLA'), HEX('c28f29'), HEX('992118'), 1.2 )
  	end
 }
 
@@ -4661,7 +4670,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Technology Liberation Alliance", HEX('c28f29'), HEX('992118'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_TLA'), HEX('c28f29'), HEX('992118'), 1.2 )
  	end
 }
 
@@ -4695,7 +4704,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Rosespanner Workshop", HEX('380e21'), HEX('ed2680'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_rosespanner'), HEX('380e21'), HEX('ed2680'), 1.2 )
  	end
 }
 
@@ -4780,8 +4789,16 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("New League of Nine Littérateurs", HEX('242b45'), HEX('d5001e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_newLeagueOfNine'), HEX('242b45'), HEX('d5001e'), 1.2 )
  	end,
+	in_pool = function(self, args)
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_pmcmod_pallid') then
+                return true
+            end
+        end
+        return false
+    end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
             if v.key == "j_midas_mask" then
@@ -4855,7 +4872,7 @@ SMODS.Joker {
         return false
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("The Pequod", HEX('c9c9c9'), HEX('c20a0a'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_pequod'), HEX('c9c9c9'), HEX('c20a0a'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -4921,7 +4938,7 @@ SMODS.Joker {
         return false
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("The Pequod", HEX('c9c9c9'), HEX('c20a0a'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_pequod'), HEX('c9c9c9'), HEX('c20a0a'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -4975,7 +4992,7 @@ SMODS.Joker {
         return false
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("The Pequod", HEX('c9c9c9'), HEX('c20a0a'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_pequod'), HEX('c9c9c9'), HEX('c20a0a'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -5041,7 +5058,7 @@ SMODS.Joker {
         return false
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("The Pequod", HEX('c9c9c9'), HEX('c20a0a'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_pequod'), HEX('c9c9c9'), HEX('c20a0a'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -5099,7 +5116,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Limbus Company", G.C.BLACK, G.C.RED, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), G.C.BLACK, G.C.RED, 1.2 )
  	end
 }
 
@@ -5131,7 +5148,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Twinhook Pirates", HEX('c20a0a'), HEX('e3a81e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_twinhook'), HEX('c20a0a'), HEX('e3a81e'), 1.2 )
  	end
 }
 
@@ -5182,7 +5199,7 @@ SMODS.Joker {
 		end	
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("The Middle", HEX('5b0b75'), HEX('e3a81e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_middle'), HEX('5b0b75'), HEX('e3a81e'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -5250,7 +5267,7 @@ SMODS.Joker {
 		
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Wuthering Heights", HEX('3d2920'), HEX('998277'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_wuthering'), HEX('3d2920'), HEX('998277'), 1.2 )
  	end
 }
 
@@ -5329,7 +5346,7 @@ SMODS.Joker {
 		
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("         ", HEX('3d2920'), HEX('998277'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_empty'), HEX('3d2920'), HEX('998277'), 1.2 )
  	end,
 	in_pool = function(self, args)
         return G.GAME.pool_flags.fake_robot_flag
@@ -5371,7 +5388,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Wuthering Heights", HEX('3d2920'), HEX('998277'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_wuthering'), HEX('3d2920'), HEX('998277'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -5427,7 +5444,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("The Wild Hunt", HEX('40342d'), HEX('7a369c'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_wildHunt'), HEX('40342d'), HEX('7a369c'), 1.2 )
  	end,
 	in_pool = function(self, args)
         return G.GAME.pool_flags.fake_robot_flag
@@ -5481,7 +5498,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Wuthering Heights", HEX('3d2920'), HEX('998277'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_wuthering'), HEX('3d2920'), HEX('998277'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -5530,7 +5547,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Wuthering Heights", HEX('3d2920'), HEX('998277'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_wuthering'), HEX('3d2920'), HEX('998277'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -5592,7 +5609,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Wuthering Heights", HEX('3d2920'), HEX('998277'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_wuthering'), HEX('3d2920'), HEX('998277'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -5647,7 +5664,7 @@ SMODS.Joker {
 		end	
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Molar Boatworks', HEX('595447'), HEX('c9c9c9'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_molar'), HEX('595447'), HEX('c9c9c9'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -5702,7 +5719,7 @@ SMODS.Joker {
 		end	
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Molar Boatworks', HEX('595447'), HEX('c9c9c9'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_molar'), HEX('595447'), HEX('c9c9c9'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -5757,7 +5774,7 @@ SMODS.Joker {
 		end	
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Molar Boatworks', HEX('595447'), HEX('c9c9c9'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_molar'), HEX('595447'), HEX('c9c9c9'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -5805,7 +5822,7 @@ SMODS.Joker {
         return args.type == 'chip_score' and to_big(args.chips) >= to_big(100000) and to_big(args.chips)%to_big(7) == to_big(0)
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Seven Association', HEX('234a39'), HEX('b59c36'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_seven'), HEX('234a39'), HEX('b59c36'), 1.2 )
  	end
 	
 }
@@ -5837,7 +5854,7 @@ SMODS.Joker {
         return args.type == 'chip_score' and to_big(args.chips) >= to_big(100000) and to_big(args.chips)%to_big(7) == to_big(0)
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Seven Association', HEX('234a39'), HEX('b59c36'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_seven'), HEX('234a39'), HEX('b59c36'), 1.2 )
  	end
 }
 
@@ -5877,7 +5894,7 @@ SMODS.Joker {
         return (args.type == 'continue_game') and (os.date("%m/%d") == "12/25")
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Santata's Workshop", HEX('6e0920'), HEX('12c424'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_santata'), HEX('6e0920'), HEX('12c424'), 1.2 )
  	end
 }
 
@@ -5965,7 +5982,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Cloud Town", HEX('594237'), HEX('c4bfbc'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_cloud'), HEX('594237'), HEX('c4bfbc'), 1.2 )
  	end
 }
 
@@ -6004,7 +6021,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Cloud Town", HEX('594237'), HEX('c4bfbc'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_cloud'), HEX('594237'), HEX('c4bfbc'), 1.2 )
  	end
 }
 
@@ -6049,7 +6066,7 @@ SMODS.Joker {
 		end
 	end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('La Manchaland', HEX('400a18'), HEX('c7285f'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_lamanchaland'), HEX('400a18'), HEX('c7285f'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -6104,7 +6121,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('La Manchaland', HEX('400a18'), HEX('c7285f'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_lamanchaland'), HEX('400a18'), HEX('c7285f'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -6115,7 +6132,15 @@ SMODS.Joker {
                 break
             end
         end
-    end
+    end,
+	in_pool = function(self, args)
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_pmcmod_bleed') then
+                return true
+            end
+        end
+        return false
+    end,
 }
 
 -- Dulcinea
@@ -6174,7 +6199,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('La Manchaland', HEX('400a18'), HEX('c7285f'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_lamanchaland'), HEX('400a18'), HEX('c7285f'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -6185,7 +6210,15 @@ SMODS.Joker {
                 break
             end
         end
-    end
+    end,
+	in_pool = function(self, args)
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_pmcmod_bleed') then
+                return true
+            end
+        end
+        return false
+    end,
 }
 
 -- Barber
@@ -6234,7 +6267,7 @@ SMODS.Joker {
 
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('La Manchaland', HEX('400a18'), HEX('c7285f'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_lamanchaland'), HEX('400a18'), HEX('c7285f'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -6245,7 +6278,15 @@ SMODS.Joker {
                 break
             end
         end
-    end
+    end,
+	in_pool = function(self, args)
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_pmcmod_bleed') then
+                return true
+            end
+        end
+        return false
+    end,
 }
 
 -- Priest
@@ -6287,7 +6328,7 @@ SMODS.Joker {
 
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('La Manchaland', HEX('400a18'), HEX('c7285f'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_lamanchaland'), HEX('400a18'), HEX('c7285f'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -6298,7 +6339,15 @@ SMODS.Joker {
                 break
             end
         end
-    end
+    end,
+	in_pool = function(self, args)
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_pmcmod_bleed') then
+                return true
+            end
+        end
+        return false
+    end,
 }
 
 -- Bari
@@ -6330,7 +6379,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Fixer", G.C.BLACK, G.C.WHITE, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_fixer'), G.C.BLACK, G.C.WHITE, 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -6341,7 +6390,15 @@ SMODS.Joker {
                 break
             end
         end
-    end
+    end,
+	in_pool = function(self, args)
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_steel') then
+                return true
+            end
+        end
+        return false
+    end,
 }
 
 -- Cesara
@@ -6393,7 +6450,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('P Corp', HEX('dbd7c5'), HEX('eb8117'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_PCorp'), HEX('dbd7c5'), HEX('eb8117'), 1.2 )
  	end,
 }
 
@@ -6467,7 +6524,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('P Corp', HEX('dbd7c5'), HEX('eb8117'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_PCorp'), HEX('dbd7c5'), HEX('eb8117'), 1.2 )
  	end,
 }
 
@@ -6484,40 +6541,64 @@ SMODS.Joker {
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 8, y = 5 },
-	config = { extra = { } },
+	config = { extra = { zhiCount = 0, yongCount = 0, renCount = 0, totalCount = 0, dollars = 0 } },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
 		
-        return {vars = {  } }
+        return {vars = { card.ability.extra.zhiCount, card.ability.extra.yongCount, card.ability.extra.renCount, card.ability.extra.totalCount, card.ability.extra.dollars } }
 	end,
 	calculate = function(self, card, context)
 
-		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and G.GAME.last_blind and G.GAME.last_blind.boss then
+		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Spades") then
+			card.ability.extra.zhiCount = card.ability.extra.zhiCount + 1
+			card.ability.extra.totalCount = card.ability.extra.totalCount + 1
+		end
 
-			local tag_pool = get_current_pool('Tag')
-			local selected_tag = pseudorandom_element(tag_pool, 'modprefix_seed')
-			local it = 1
-			while selected_tag == 'UNAVAILABLE' do
-				it = it + 1
-				selected_tag = pseudorandom_element(tag_pool, 'modprefix_seed_resample'..it)
+		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Clubs") then
+			card.ability.extra.yongCount = card.ability.extra.yongCount + 1
+			card.ability.extra.totalCount = card.ability.extra.totalCount + 1
+		end
+
+		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Hearts") then
+			card.ability.extra.renCount = card.ability.extra.renCount + 1
+			card.ability.extra.totalCount = card.ability.extra.totalCount + 1
+		end
+
+		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Diamonds") then
+			if card.ability.extra.zhiCount >= 1 then
+				card.ability.extra.zhiCount = card.ability.extra.zhiCount - 1
+				card.ability.extra.totalCount = card.ability.extra.totalCount - 1
 			end
-			
-				G.E_MANAGER:add_event(Event({
-                func = (function()
-                    add_tag(Tag(selected_tag, false, 'Small'))
-                    play_sound('generic1', 0.9 + math.random() * 0.1, 0.8)
-                    play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
-                    return true
-                end)
-            }))
-            return nil, true -- This is for Joker retrigger purposes
+
+			if card.ability.extra.yongCount >= 1 then
+				card.ability.extra.yongCount = card.ability.extra.yongCount - 1
+				card.ability.extra.totalCount = card.ability.extra.totalCount - 1
+			end
+
+			if card.ability.extra.renCount >= 1 then
+				card.ability.extra.renCount = card.ability.extra.renCount - 1
+				card.ability.extra.totalCount = card.ability.extra.totalCount - 1
+			end
+		end
+
+		if context.joker_main then
+			return{
+				chips = card.ability.extra.zhiCount,
+				mult = card.ability.extra.renCount
+			}
 		end
     end,
+	calc_dollar_bonus = function(self, card)
+
+		card.ability.extra.dollars = math.floor(card.ability.extra.yongCount / 5)
+
+        return (card.ability.extra.dollars)
+    end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Hongyuan', HEX('ad886f'), HEX('e3deda'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_hongyuan'), HEX('ad886f'), HEX('e3deda'), 1.2 )
  	end,
 }
 
@@ -6552,7 +6633,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Fixer", G.C.BLACK, G.C.WHITE, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_fixer'), G.C.BLACK, G.C.WHITE, 1.2 )
  	end,
 }
 
@@ -6601,7 +6682,7 @@ SMODS.Joker {
 
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Cinq Association', HEX('1a2040'), HEX('bdc1db'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_cinq'), HEX('1a2040'), HEX('bdc1db'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'money' and to_big(G.GAME.dollars) >= to_big(600)
@@ -6645,7 +6726,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Zwei Association', HEX('23306e'), HEX('ab851d'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_zwei'), HEX('23306e'), HEX('ab851d'), 1.2 )
  	end,
 }
 
@@ -6703,7 +6784,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Fanghunt Office', HEX('383532'), HEX('c4c0bc'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_fanghunt'), HEX('383532'), HEX('c4c0bc'), 1.2 )
  	end,
 }
 
@@ -6746,7 +6827,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Hana Association', HEX('e3e3e3'), HEX('8a6d15'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_hana'), HEX('e3e3e3'), HEX('8a6d15'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'win_no_hand' and G.GAME.hands['Flush'].played == 0
@@ -6802,7 +6883,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Limbus Company", G.C.BLACK, G.C.RED, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), G.C.BLACK, G.C.RED, 1.2 )
  	end,
 }
 
@@ -6836,7 +6917,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Blade Lineage', HEX('26292e'), HEX('a81338'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_blade'), HEX('26292e'), HEX('a81338'), 1.2 )
  	end,
 }
 
@@ -6870,7 +6951,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Kurokumo Clan', HEX('292a2e'), HEX('6f7178'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_kurokumo'), HEX('292a2e'), HEX('6f7178'), 1.2 )
  	end,
 }
 
@@ -6906,7 +6987,7 @@ SMODS.Joker {
 		
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('T Corp', HEX('382d21'), HEX('a3802e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_TCorp'), HEX('382d21'), HEX('a3802e'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'money' and to_big(G.GAME.dollars) >= to_big(200)
@@ -6964,7 +7045,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('T Corp', HEX('382d21'), HEX('a3802e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_TCorp'), HEX('382d21'), HEX('a3802e'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'money' and to_big(G.GAME.dollars) >= to_big(200)
@@ -7023,7 +7104,7 @@ SMODS.Joker {
         G.GAME.interest_cap = G.GAME.interest_cap - 60
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('T Corp', HEX('382d21'), HEX('a3802e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_TCorp'), HEX('382d21'), HEX('a3802e'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'money' and to_big(G.GAME.dollars) >= to_big(200)
@@ -7067,7 +7148,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('T Corp', HEX('382d21'), HEX('a3802e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_TCorp'), HEX('382d21'), HEX('a3802e'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -7127,7 +7208,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('La Manchaland', HEX('400a18'), HEX('c7285f'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_lamanchaland'), HEX('400a18'), HEX('c7285f'), 1.2 )
  	end,
     check_for_unlock = function(self, args) -- equivalent to `unlock_condition = { type = 'modify_jokers', extra = { polychrome = true, count = 2 } }`
         if args.type == 'modify_deck' then
@@ -7178,7 +7259,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Multicrack Office', HEX('ccc49d'), HEX('c706b0'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_multicrack'), HEX('ccc49d'), HEX('c706b0'), 1.2 )
  	end,
     check_for_unlock = function(self, args) -- equivalent to `unlock_condition = { type = 'modify_jokers', extra = { polychrome = true, count = 2 } }`
         if args.type == 'modify_deck' then
@@ -7248,7 +7329,7 @@ SMODS.Joker {
 
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Limbus Company", G.C.BLACK, G.C.RED, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), G.C.BLACK, G.C.RED, 1.2 )
  	end,
 }
 
@@ -7297,7 +7378,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Limbus Company", G.C.BLACK, G.C.RED, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), G.C.BLACK, G.C.RED, 1.2 )
  	end,
 }
 
@@ -7346,7 +7427,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Limbus Company", G.C.BLACK, G.C.RED, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), G.C.BLACK, G.C.RED, 1.2 )
  	end,
 }
 
@@ -7401,7 +7482,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 }
 
@@ -7476,7 +7557,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Citizen', HEX('828282'), HEX('ebebeb'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_citizen'), HEX('828282'), HEX('ebebeb'), 1.2 )
  	end,
 }
 
@@ -7547,7 +7628,52 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Tri-axe Office', HEX('828282'), HEX('ebebeb'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_triAxe'), HEX('828282'), HEX('ebebeb'), 1.2 )
+ 	end,
+}
+
+--Werner
+SMODS.Joker {
+	key = 'werner',
+	name = "Werner",
+	pronouns = "he_him",
+	unlocked = true,
+	config = { extra = {chips = 0, chips_mod = 15 } },
+	eternal_compat = true,
+	blueprint_compat = true,
+	perishable_compat = true,
+	rarity = 2,
+	cost = 6,
+    atlas = 'ModdedProjectMoon',
+	pos = { x = 8, y = 14 },
+    pools =
+	{
+
+ 	},
+	loc_vars = function(self, info_queue, card)
+        return {vars = { card.ability.extra.chips, card.ability.extra.chips_mod } }
+	end,
+	calculate = function(self, card, context)
+		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_ricardo" and not context.blueprint  then
+			card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
+			return {
+				message = localize('k_upgrade_ex'),
+				colour = G.C.CHIPS,
+				message_card = card
+			}
+		end
+
+		if context.joker_main then
+			return {
+				chips = card.ability.extra.chips
+			}
+		end
+    end,
+	in_pool = function(self, args)
+        return G.GAME.pool_flags.fake_robot_flag
+    end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_middle'), HEX('5b0b75'), HEX('e3a81e'), 1.2 )
  	end,
 }
 
@@ -7617,7 +7743,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("The Ring", HEX('474747'), HEX('c4c4c4'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_ring'), HEX('474747'), HEX('c4c4c4'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -7658,6 +7784,11 @@ SMODS.Joker {
 				keyToLocalize = "j_pmcmod_garnet"
 			end
 		end
+
+		if card.ability.selectedJoker ~= "None" then
+			card.children.center:set_sprite_pos({x = 0 , y = 10})
+		end
+
         return {vars = { localize{type="name_text", set="Joker", key = (keyToLocalize)} } }
 	end,
 	calculate = function(self, card, context)
@@ -7690,7 +7821,7 @@ SMODS.Joker {
         
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Fixer", G.C.BLACK, G.C.WHITE, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_fixer'), G.C.BLACK, G.C.WHITE, 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         if args.type == 'discard_custom' then
@@ -7778,7 +7909,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -7849,7 +7980,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("H Corp", HEX('b87869'), HEX('f0f0f0'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_HCorp'), HEX('b87869'), HEX('f0f0f0'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -7926,7 +8057,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Jia Family", HEX("b02121"), HEX('140e0e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_jiaFamily'), HEX("b02121"), HEX('140e0e'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         return args.type == 'chip_score' and to_big(args.chips) >= to_big(800000)
@@ -7973,7 +8104,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Xue Family", HEX("f0a3a3"), HEX('c22929'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_xueFamily'), HEX("f0a3a3"), HEX('c22929'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         if args.type == 'modify_deck' then
@@ -8022,7 +8153,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Xue Family", HEX("f0a3a3"), HEX('c22929'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_xueFamily'), HEX("f0a3a3"), HEX('c22929'), 1.2 )
  	end,
 }
 
@@ -8076,7 +8207,7 @@ SMODS.Joker {
         return card.ability.extra.dollars
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("H Corp", HEX('b87869'), HEX('f0f0f0'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_HCorp'), HEX('b87869'), HEX('f0f0f0'), 1.2 )
  	end,
 }
 
@@ -8135,7 +8266,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("H Corp", HEX('b87869'), HEX('f0f0f0'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_HCorp'), HEX('b87869'), HEX('f0f0f0'), 1.2 )
  	end,
 }
 
@@ -8193,7 +8324,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("H Corp", HEX('b87869'), HEX('f0f0f0'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_HCorp'), HEX('b87869'), HEX('f0f0f0'), 1.2 )
  	end,
 }
 
@@ -8252,7 +8383,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("H Corp", HEX('b87869'), HEX('f0f0f0'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_HCorp'), HEX('b87869'), HEX('f0f0f0'), 1.2 )
  	end,
 }
 
@@ -8313,7 +8444,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("H Corp", HEX('b87869'), HEX('f0f0f0'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_HCorp'), HEX('b87869'), HEX('f0f0f0'), 1.2 )
  	end,
 }
 
@@ -8381,7 +8512,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("H Corp", HEX('b87869'), HEX('f0f0f0'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_HCorp'), HEX('b87869'), HEX('f0f0f0'), 1.2 )
  	end,
 }
 
@@ -8414,7 +8545,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Wang Family", HEX("525252"), HEX('c2c2c2'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_wangFamily'), HEX("525252"), HEX('c2c2c2'), 1.2 )
  	end,
 }
 
@@ -8447,7 +8578,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Jia Family", HEX("b02121"), HEX('140e0e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_jiaFamily'), HEX("b02121"), HEX('140e0e'), 1.2 )
  	end,
 }
 
@@ -8481,7 +8612,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Jia Family", HEX("b02121"), HEX('140e0e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_jiaFamily'), HEX("b02121"), HEX('140e0e'), 1.2 )
  	end,
 }
 
@@ -8523,7 +8654,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Jia Family", HEX("b02121"), HEX('140e0e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_jiaFamily'), HEX("b02121"), HEX('140e0e'), 1.2 )
  	end,
 }
 
@@ -8578,7 +8709,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Xue Family", HEX("f0a3a3"), HEX('c22929'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_xueFamily'), HEX("f0a3a3"), HEX('c22929'), 1.2 )
  	end,
 }
 
@@ -8688,7 +8819,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Wang Family", HEX("525252"), HEX('c2c2c2'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_wangFamily'), HEX("525252"), HEX('c2c2c2'), 1.2 )
  	end,
 }
 
@@ -8732,7 +8863,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Wang Family", HEX("525252"), HEX('c2c2c2'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_wangFamily'), HEX("525252"), HEX('c2c2c2'), 1.2 )
  	end,
 }
 
@@ -8775,7 +8906,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_wangFamily'), HEX("525252"), HEX('c2c2c2'), 1.2 )
  	end,
 }
 
@@ -8845,7 +8976,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Wang Family", HEX("525252"), HEX('c2c2c2'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_wangFamily'), HEX("525252"), HEX('c2c2c2'), 1.2 )
  	end,
 }
 
@@ -8892,7 +9023,7 @@ SMODS.Joker {
 		
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Shi Family", HEX("8a753f"), HEX('2e4a37'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_shiFamily'), HEX("8a753f"), HEX('2e4a37'), 1.2 )
  	end,
 }
 
@@ -8936,7 +9067,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Shi Family", HEX("8a753f"), HEX('2e4a37'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_shiFamily'), HEX("8a753f"), HEX('2e4a37'), 1.2 )
  	end,
 }
 
@@ -8978,7 +9109,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Shi Family", HEX("8a753f"), HEX('2e4a37'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_shiFamily'), HEX("8a753f"), HEX('2e4a37'), 1.2 )
  	end,
 }
 
@@ -9042,7 +9173,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Kong Family", HEX("8a001e"), HEX('242424'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_kongFamily'), HEX("8a001e"), HEX('242424'), 1.2 )
  	end,
 }
 
@@ -9106,7 +9237,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Kong Family", HEX("8a001e"), HEX('242424'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_kongFamily'), HEX("8a001e"), HEX('242424'), 1.2 )
  	end,
 }
 
@@ -9151,7 +9282,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Jia Family", HEX("b02121"), HEX('140e0e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_jiaFamily'), HEX("b02121"), HEX('140e0e'), 1.2 )
  	end,
 }
 
@@ -9199,7 +9330,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Jia Family", HEX("b02121"), HEX('140e0e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_jiaFamily'), HEX("b02121"), HEX('140e0e'), 1.2 )
  	end,
 }
 
@@ -9249,7 +9380,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Jia Family", HEX("b02121"), HEX('140e0e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_jiaFamily'), HEX("b02121"), HEX('140e0e'), 1.2 )
  	end,
 }
 
@@ -9278,7 +9409,7 @@ SMODS.Joker {
 		
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Heishou Pack", HEX("362e29"), HEX('948e1c'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_heishou'), HEX("362e29"), HEX('948e1c'), 1.2 )
  	end,
 }
 
@@ -9328,7 +9459,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Assassin", G.C.BLACK, G.C.WHITE, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_assassin'), G.C.BLACK, G.C.WHITE, 1.2 )
  	end,
 }
 
@@ -9384,7 +9515,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -9464,7 +9595,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -9562,7 +9693,7 @@ SMODS.Joker {
 
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -9664,7 +9795,7 @@ SMODS.Joker {
         G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hands
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -9683,7 +9814,7 @@ SMODS.Joker {
 	key = 'callisto',
 	name = "Callisto",
 	unlocked = true,
-	pronouns = "she_her",
+	pronouns = "he_him",
 	config = { extra = { currentPosition = 1, albinaPresent = false, albinaPos = nil, chips = 0, mult = 0, chips_gain = 20, mult_gain = 5  } },
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -9797,7 +9928,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -9870,7 +10001,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -9949,7 +10080,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -9982,6 +10113,17 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
+		
+		if card.edition then
+			card.children.center:set_sprite_pos({x = 0 , y = 11})
+		end
+		
+		if card.ability.extra.locked then
+			card.children.center:set_sprite_pos({x = 1 , y = 11})
+		end
+
+
+
         return {vars = { card.ability.extra.chips, card.ability.extra.chips_mod, card.ability.extra.soraDeathCounter } }
 	end,
 	calculate = function(self, card, context)
@@ -10076,7 +10218,7 @@ SMODS.Joker {
 
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -10154,7 +10296,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -10180,8 +10322,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
-    atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 2, y = 6 },
     pools =
 	{
 
@@ -10245,7 +10387,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -10263,7 +10405,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'ren',
 	name = "Ren",
-	pronouns = "she_her",
+	pronouns = "he_him",
 	unlocked = true,
 	config = { extra = { shiomiPresent = false, shiomiPos = nil, renDeathCounter = 0, baseChance = 1, maxChance = 2} },
 	eternal_compat = true,
@@ -10271,8 +10413,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
-    atlas = 'ModdedProjectMoon',
-	pos = { x =9, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 3, y = 6 },
     pools =
 	{
 
@@ -10325,7 +10467,7 @@ SMODS.Joker {
 		
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -10351,8 +10493,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 1,
 	cost = 3,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 9, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 4, y = 6 },
     pools =
 	{
 
@@ -10396,52 +10538,7 @@ SMODS.Joker {
 		
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Limbus Company", G.C.BLACK, G.C.RED, 1.2 )
- 	end,
-}
-
---Werner
-SMODS.Joker {
-	key = 'werner',
-	name = "Werner",
-	pronouns = "he_him",
-	unlocked = true,
-	config = { extra = {chips = 0, chips_mod = 15 } },
-	eternal_compat = true,
-	blueprint_compat = true,
-	perishable_compat = true,
-	rarity = 2,
-	cost = 6,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
-    pools =
-	{
-
- 	},
-	loc_vars = function(self, info_queue, card)
-        return {vars = { card.ability.extra.chips, card.ability.extra.chips_mod } }
-	end,
-	calculate = function(self, card, context)
-		if context.joker_type_destroyed and context.card.config.center.key == "j_pmcmod_ricardo" and not context.blueprint  then
-			card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
-			return {
-				message = localize('k_upgrade_ex'),
-				colour = G.C.CHIPS,
-				message_card = card
-			}
-		end
-
-		if context.joker_main then
-			return {
-				chips = card.ability.extra.chips
-			}
-		end
-    end,
-	in_pool = function(self, args)
-        return G.GAME.pool_flags.fake_robot_flag
-    end,
-	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("The Middle", HEX('5b0b75'), HEX('e3a81e'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), G.C.BLACK, G.C.RED, 1.2 )
  	end,
 }
 
@@ -10458,8 +10555,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 6, y = 6 },
     pools =
 	{
 
@@ -10481,7 +10578,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("LCA Udjat", HEX('212121'), HEX('ba8832'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCAUdjat'), HEX('212121'), HEX('ba8832'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         if #G.vouchers.cards >= 5 then
@@ -10503,8 +10600,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 3,
 	cost = 10,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 7, y = 6 },
     pools =
 	{
 
@@ -10551,7 +10648,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Abraxas Chariot", G.C.BLACK, G.C.WHITE, 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_abraxas'), G.C.BLACK, G.C.WHITE, 1.2 )
  	end,
 }
 
@@ -10567,8 +10664,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 8, y = 6 },
     pools =
 	{
 
@@ -10681,7 +10778,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -10707,8 +10804,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 9, y = 6 },
     pools =
 	{
 
@@ -10820,7 +10917,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 }
 
@@ -10836,8 +10933,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 0, y = 7 },
     pools =
 	{
 
@@ -10949,7 +11046,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 }
 
@@ -10965,8 +11062,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 1, y = 7 },
     pools =
 	{
 
@@ -11078,7 +11175,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('House of Spiders', HEX('121212'), HEX('d90000'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
 }
 
@@ -11121,7 +11218,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('Color Fixer', HEX('2b1313'), HEX('f50000'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_colorFixer'), HEX('2b1313'), HEX('f50000'), 1.2 )
  	end,
 }
 
@@ -11130,7 +11227,9 @@ SMODS.Joker {
 	key = 'indigoElder',
 	name = "Indigo Elder",
 	pronouns = "he_him",
-	config = { extra = { mult = 0, chips = 0, dollars = 0, xmult = 0, lockedPosition = 0, debuffMult = 2, debuffChips = 5, debuffDollars = 1, debuffXmult = 0.9} },
+	config = { extra = { dollars = 2, chips = 10, mult = 5, xmult = 1, 
+						 dollars_mod = 1, chips_mod = 10, mult_mod = 3, xmult_mod = 0.2,
+						 lockedPosition = 0} },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -11144,10 +11243,13 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.mult, card.ability.extra.chips, card.ability.extra.dollars, card.ability.extra.xmult, card.ability.extra.lockedPosition, card.ability.extra.debuffMult,
-		card.ability.extra.debuffChips, card.ability.extra.debuffDollars, card.ability.extra.debuffXmult } }
+		return { vars = { card.ability.extra.dollars, card.ability.extra.chips, card.ability.extra.mult, card.ability.extra.xmult, card.ability.extra.lockedPosition } }
 	end,
 	calculate = function(self, card, context)
+
+		if G.shop then
+			card.ability.extra.lockedPosition = 0
+		end
 
 		if context.setting_blind and card.ability.extra.lockedPosition == 0 then
 			for i = 1, #G.jokers.cards do
@@ -11161,55 +11263,10 @@ SMODS.Joker {
 
 		if context.individual and context.cardarea == G.play then
 
-			if card.ability.extra.lockedPosition == 2 then
-				return
-				{
-					mult = - card.ability.extra.debuffMult,
-					chips = card.ability.extra.chips,
-					xmult = card.ability.extra.xmult
-					
-				}
-			elseif card.ability.extra.lockedPosition == 3 then
+			if card.ability.extra.lockedPosition == 1 or card.ability.extra.lockedPosition == 4 then
 				return
 				{
 					mult = card.ability.extra.mult,
-					chips = - card.ability.extra.debuffChips,
-					xmult = card.ability.extra.xmult					
-				}
-
-			elseif card.ability.extra.lockedPosition == 4 then
-				G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + card.ability.extra.dollars
-				return
-				{
-					mult = card.ability.extra.mult,
-					chips = card.ability.extra.chips,
-					xmult = card.ability.extra.xmult,
-					dollars = -card.ability.extra.debuffDollars,
-                	func = function()
-						G.E_MANAGER:add_event(Event({
-							func = function()
-								G.GAME.dollar_buffer = 0
-								return true
-							end
-						}))
-					end
-					
-				}
-			elseif card.ability.extra.lockedPosition == 5 then
-				return
-				{
-					mult = card.ability.extra.mult,
-					chips = card.ability.extra.chips,
-					xmult = card.ability.extra.xmultDebuff
-					
-				}
-			else
-				return
-				{
-					mult = card.ability.extra.mult,
-					chips = card.ability.extra.chips,
-					xmult = card.ability.extra.xmult
-					
 				}
 			end
 
@@ -11217,39 +11274,31 @@ SMODS.Joker {
 
 
 		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and G.GAME.last_blind and G.GAME.last_blind.boss then
-			card.ability.extra.debuffMult = card.ability.extra.debuffMult + 2
-			card.ability.extra.debuffChips = card.ability.extra.debuffChips + 5
-			card.ability.extra.debuffXmult = card.ability.extra.debuffXmult - 0.1
-			card.ability.extra.debuffDollars = card.ability.extra.debuffDollars + 1
 
 			if card.ability.extra.lockedPosition == 1 then
-				card.ability.extra.mult = card.ability.extra.mult + 15
-				card.ability.extra.chips = card.ability.extra.chips + 30
-				card.ability.extra.dollars = card.ability.extra.dollars + 2
-				card.ability.extra.xmult = card.ability.extra.xmult + 1
-
+				card.ability.extra.dollars = card.ability.extra.dollars + card.ability.extra.dollars_mod
+				card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
+				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod
+				card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
 			elseif card.ability.extra.lockedPosition == 2 then
-				card.ability.extra.mult = card.ability.extra.mult + 15
-
+				card.ability.extra.dollars = card.ability.extra.dollars + card.ability.extra.dollars_mod
 			elseif card.ability.extra.lockedPosition == 3 then
-				card.ability.extra.chips = card.ability.extra.chips + 30
-
+				card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
 			elseif card.ability.extra.lockedPosition == 4 then
-				card.ability.extra.dollars = card.ability.extra.dollars + 2
+				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod
+			else 
+				card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
+			end
 
-			else
-				card.ability.extra.xmult = card.ability.extra.xmult + 1
-			end	
-
-			card.ability.extra.lockedPosition = 0
-			return {message = localize('k_reset')}
 		end
     end,
 	calc_dollar_bonus = function(self, card)
-        return card.ability.extra.dollars
+		if card.ability.extra.lockedPosition == 1 or card.ability.extra.lockedPosition == 2 then
+        	return card.ability.extra.dollars
+		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Color Fixer", HEX('243542'), HEX('35c5e6'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_colorFixer'), HEX('243542'), HEX('35c5e6'), 1.2 )
  	end
 }
 
@@ -11295,7 +11344,7 @@ SMODS.Joker {
         end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Color Fixer", HEX('212121'), HEX('f0a524'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_colorFixer'), HEX('212121'), HEX('f0a524'), 1.2 )
  	end,
 }
 
@@ -11365,7 +11414,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 }
 
@@ -11414,7 +11463,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 }
 
@@ -11466,7 +11515,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 }
 
@@ -11523,7 +11572,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 }
 
@@ -11568,7 +11617,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 	in_pool = function(self, args)
         return G.GAME.pool_flags.fake_robot_flag
@@ -11614,7 +11663,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 }
 
@@ -11659,7 +11708,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 }
 
@@ -11713,7 +11762,7 @@ SMODS.Joker {
 		end
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 }
 
@@ -11757,7 +11806,7 @@ SMODS.Joker {
 
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
 }
 
@@ -11813,7 +11862,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end
 }
 
@@ -11874,7 +11923,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end
 }
 
@@ -11925,7 +11974,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end
 }
 
@@ -12001,7 +12050,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end
 }
 
@@ -12066,7 +12115,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end
 }
 
@@ -12106,7 +12155,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end
 }
 
@@ -12156,7 +12205,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end
 }
 
@@ -12223,7 +12272,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end
 }
 
@@ -12287,7 +12336,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end
 }
 
@@ -12350,7 +12399,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Lobotomy Corporation", G.C.RED, HEX('f2e396'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end
 }
 
@@ -12423,7 +12472,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_silent_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Abnormality", G.C.BLACK, HEX('9e13bd'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_abnormality'), G.C.BLACK, HEX('9e13bd'), 1.2 )
  	end
 }
 
@@ -12483,7 +12532,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_shy_look_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Abnormality", G.C.BLACK, HEX('9e13bd'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_abnormality'), G.C.BLACK, HEX('9e13bd'), 1.2 )
  	end
 }
 
@@ -12616,7 +12665,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_queen_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Abnormality", G.C.BLACK, HEX('9e13bd'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_abnormality'), G.C.BLACK, HEX('9e13bd'), 1.2 )
  	end
 }
 
@@ -12668,7 +12717,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_bongy_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Food...?", G.C.BLACK, HEX('9e13bd'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_foodMaybe'), G.C.BLACK, HEX('9e13bd'), 1.2 )
  	end
 }
 
@@ -12719,7 +12768,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_bongy_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Food...?", G.C.BLACK, HEX('9e13bd'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_foodMaybe'), G.C.BLACK, HEX('9e13bd'), 1.2 )
  	end
 }
 
@@ -12771,7 +12820,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_bongy_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Food...?", G.C.BLACK, HEX('9e13bd'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_foodMaybe'), G.C.BLACK, HEX('9e13bd'), 1.2 )
  	end
 }
 
@@ -12823,7 +12872,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_bongy_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Food...?", G.C.BLACK, HEX('9e13bd'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_foodMaybe'), G.C.BLACK, HEX('9e13bd'), 1.2 )
  	end
 }
 
@@ -12886,7 +12935,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Puppets", HEX('bd0d19'), HEX('4f3d2d'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_puppets'), HEX('bd0d19'), HEX('4f3d2d'), 1.2 )
  	end
 }
 
@@ -12949,7 +12998,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Puppets", HEX('bd0d19'), HEX('4f3d2d'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_puppets'), HEX('bd0d19'), HEX('4f3d2d'), 1.2 )
  	end
 }
 
@@ -13013,7 +13062,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Puppets", HEX('bd0d19'), HEX('4f3d2d'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_puppets'), HEX('bd0d19'), HEX('4f3d2d'), 1.2 )
  	end
 }
 
@@ -13050,7 +13099,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge("Puppets", HEX('bd0d19'), HEX('4f3d2d'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_puppets'), HEX('bd0d19'), HEX('4f3d2d'), 1.2 )
  	end
 }
 
@@ -13143,7 +13192,7 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge('The Index', HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_index'), HEX('e0e0e0'), HEX('59a5e3'), 1.2 )
  	end
 }
 
@@ -14197,43 +14246,3 @@ SMODS.Joker {
 }
 
 
--- Ryoshu
-SMODS.Joker {
-	key = 'ryoshu',
-	name = "Ryoshu",
-	pronouns = "she_her",
-	config = { extra = {xmult = 1, xmult_mod = 0.1} },
-	no_collection = false,
-	eternal_compat = true,
-	blueprint_compat = false,
-	perishable_compat = false,
-	rarity = 3,
-	cost = 8,
-    atlas = 'ModdedProjectMoon2',
-	pos = { x = 8, y = 14 },
-    pools =
-	{
-
- 	},
-	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod } }
-	end,
-	calculate = function(self, card, context)
-
-		if context.selling_card and context.card.ability.set == "Joker" and not context.blueprint then
-			local keypageKey = context.card.config.center.key
-			G.GAME.banned_keys[keypageKey] = true
-			card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
-        end
-
-		if context.joker_main then
-			return{
-				xmult = card.ability.extra.xmult
-			}
-		end
-
-    end,
-	in_pool = function(self, args)
-        return G.GAME.pool_flags.fake_robot_flag
-    end,
-}
