@@ -380,7 +380,7 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = {  } }
+		return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod } }
 	end,
 	calculate = function(self, card, context)
 
@@ -1106,7 +1106,7 @@ SMODS.Joker {
 	config = { extra = { xmult = 1, xmult_mod = 0.3, xmult_bonus = 0.1 } },
 	rarity = 3,
 	atlas = 'ModdedProjectMoon2',
-	pos = { x = 3, y = 0 },
+	pos = { x = 0, y = 0 },
 	cost = 8,
 	loc_vars = function (self, info_queue, card)
 
@@ -1156,108 +1156,42 @@ SMODS.Joker {
     end
 }
 
--- True Ishmael
+-- Don Quixote
 SMODS.Joker {
-	key = 'ishmael',
-	name = "Ishmael",
+	key = 'donQuixote',
+	name = "Don Quixote",
 	pronouns = "she_her",
 	unlocked = false,
-    blueprint_compat = true,
-    eternal_compat = true,
+	config = { extra = { chips = 0 } },
+	eternal_compat = true,
+	blueprint_compat = true,
 	perishable_compat = true,
-	config = { extra = { mult = 0, mult_mod = 10, xmult = 1, xmult_mod = 5, baseChance = 1, maxChance = 3} },
 	rarity = 3,
-	atlas = 'ModdedProjectMoon2',
-	pos = { x = 4, y = 0 },
 	cost = 8,
-	loc_vars = function (self, info_queue, card)
-		info_queue[#info_queue + 1] = G.P_CENTERS.m_pmcmod_pallid
-		local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'ishamelChance')
-    	return {vars = { card.ability.extra.xmult, card.ability.extra.mult, card.ability.extra.mult_mod, new_numerator, new_denominator}}
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 2, y = 0 },
+    pools =
+	{
+		["Bloodfiends"] = true,
+ 	},
+	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_perma"}
+        return {vars = { card.ability.extra.chips } }
 	end,
 	calculate = function(self, card, context)
-		
-		if context.before and not context.blueprint then
-            local enhanced = {}
-            for _, scored_card in ipairs(context.scoring_hand) do
-                if next(SMODS.get_enhancements(scored_card)) and not scored_card.debuff and not scored_card.vampired then
-					if SMODS.has_enhancement(scored_card, "m_pmcmod_pallid") then
-						if SMODS.pseudorandom_probability(card, 'seed', card.ability.extra.baseChance, card.ability.extra.maxChance, 'ishmaelChance') then
-							enhanced[#enhanced + 1] = scored_card
-							scored_card.vampired = true
-							scored_card:set_ability('c_base', nil, true)
-							G.E_MANAGER:add_event(Event({
-								func = function()
-									scored_card:juice_up()
-									scored_card.vampired = nil
-									return true
-								end
-							}))
-						end
-					end
-                end
-            end
-
-            if #enhanced > 0 then
-                -- See note about SMODS Scaling Manipulation on the wiki
-                card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod * #enhanced
-                return {
-                    message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } },
-                    colour = G.C.MULT
-                }
-            end
+		if context.individual and context.cardarea == G.play and context.other_card.ability.perma_mult > 0 and not context.blueprint then
+			card.ability.extra.chips = card.ability.extra.chips + context.other_card.ability.perma_mult * 3
+			context.other_card.ability.perma_mult = 0
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.MULT,
+				message_card = card
+            }
         end
-
-		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
-			local pallidTally = 0
-			local ahabDetected = false
-			local joker_to_destroy
-			for _, playing_card in ipairs(G.playing_cards or {}) do
-				if SMODS.has_enhancement(playing_card, 'm_pmcmod_pallid') then
-					pallidTally = pallidTally + 1
-				end
-			end
-
-			for i = 1, #G.jokers.cards do
-				if G.jokers.cards[i] ~= card and G.jokers.cards[i].config.center.key == "j_pmcmod_ahab" then 
-					ahabDetected = true
-					joker_to_destroy = G.jokers.cards[i]
-				end
-            end
-
-			if pallidTally <= 0  and ahabDetected then
-				if joker_to_destroy and not (context.blueprint_card or self).getting_sliced then
-					card.ability.extra.xmult = card.ability.extra.xmult + 2
-                    joker_to_destroy.getting_sliced = true
-                    G.E_MANAGER:add_event(Event({func = function()
-                        card:juice_up(0.8, 0.8)
-                        joker_to_destroy:start_dissolve({G.C.RED}, nil, 1.6)
-                    return true end }))
-					card_eval_status_text((context.blueprint_card or card), 'extra', nil, nil, nil, {message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.xmult}}})
-                end
-			end
-		end
-
 		if context.joker_main then
-			return
-			{
-				mult = card.ability.extra.mult,
-				xmult = card.ability.extra.xmult
+			return {
+				chips = card.ability.extra.chips
 			}
-		end
-	end,
-	in_pool = function(self, args)
-		local pallidTally = 0
-        for _, playing_card in ipairs(G.playing_cards or {}) do
-            if SMODS.has_enhancement(playing_card, 'm_pmcmod_pallid') then
-                pallidTally = pallidTally + 1
-            end
-        end
-
-		if pallidTally >= 10 then
-			return true
-		else
-        	return false
 		end
     end,
 	set_badges = function(self, card, badges)
@@ -1265,7 +1199,7 @@ SMODS.Joker {
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
-            if v.key == "j_midas_mask" then
+            if v.key == "j_seeing_double" then
                 if get_joker_win_sticker(v, true) >= 8 then
                     return true
                 end
@@ -1287,8 +1221,8 @@ SMODS.Joker {
 	perishable_compat = false,
 	rarity = 3,
 	cost = 8,
-    atlas = 'ModdedProjectMoonTrue',
-	pos = { x = 0, y = 6 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 3, y = 0 },
     pools =
 	{
 
@@ -1358,8 +1292,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 3,
 	cost = 8,
-    atlas = 'ModdedProjectMoonTrue',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 5, y = 0 },
     pools =
 	{
 
@@ -1563,10 +1497,6 @@ SMODS.Joker {
 }
 
 
-
-
-
-
 -- Heathcliff
 SMODS.Joker {
 	key = 'heathcliff',
@@ -1575,7 +1505,7 @@ SMODS.Joker {
 	config = { extra = { cardsDestroyed = 0, joker_slots = 0 } },
 	rarity = 3,
 	atlas = 'ModdedProjectMoon2',
-	pos = { x = 5, y = 0 },
+	pos = { x = 6, y = 0 },
 	cost = 8,
 	unlocked = false,
     blueprint_compat = false,
@@ -1642,42 +1572,109 @@ SMODS.Joker {
     end
 }
 
--- Don Quixote
+
+-- True Ishmael
 SMODS.Joker {
-	key = 'donQuixote',
-	name = "Don Quixote",
+	key = 'ishmael',
+	name = "Ishmael",
 	pronouns = "she_her",
 	unlocked = false,
-	config = { extra = { chips = 0 } },
-	eternal_compat = true,
-	blueprint_compat = true,
+    blueprint_compat = true,
+    eternal_compat = true,
 	perishable_compat = true,
+	config = { extra = { mult = 0, mult_mod = 10, xmult = 1, xmult_mod = 5, baseChance = 1, maxChance = 3} },
 	rarity = 3,
+	atlas = 'ModdedProjectMoon2',
+	pos = { x = 7, y = 0 },
 	cost = 8,
-    atlas = 'ModdedProjectMoon2',
-	pos = { x = 6, y = 0 },
-    pools =
-	{
-		["Bloodfiends"] = true,
- 	},
-	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue+1] = {set = "Other", key = "effect_perma"}
-        return {vars = { card.ability.extra.chips } }
+	loc_vars = function (self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_pmcmod_pallid
+		local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'ishamelChance')
+    	return {vars = { card.ability.extra.xmult, card.ability.extra.mult, card.ability.extra.mult_mod, new_numerator, new_denominator}}
 	end,
 	calculate = function(self, card, context)
-		if context.individual and context.cardarea == G.play and context.other_card.ability.perma_mult > 0 and not context.blueprint then
-			card.ability.extra.chips = card.ability.extra.chips + context.other_card.ability.perma_mult * 3
-			context.other_card.ability.perma_mult = 0
-            return {
-                message = localize('k_upgrade_ex'),
-                colour = G.C.MULT,
-				message_card = card
-            }
+		
+		if context.before and not context.blueprint then
+            local enhanced = {}
+            for _, scored_card in ipairs(context.scoring_hand) do
+                if next(SMODS.get_enhancements(scored_card)) and not scored_card.debuff and not scored_card.vampired then
+					if SMODS.has_enhancement(scored_card, "m_pmcmod_pallid") then
+						if SMODS.pseudorandom_probability(card, 'seed', card.ability.extra.baseChance, card.ability.extra.maxChance, 'ishmaelChance') then
+							enhanced[#enhanced + 1] = scored_card
+							scored_card.vampired = true
+							scored_card:set_ability('c_base', nil, true)
+							G.E_MANAGER:add_event(Event({
+								func = function()
+									scored_card:juice_up()
+									scored_card.vampired = nil
+									return true
+								end
+							}))
+						end
+					end
+                end
+            end
+
+            if #enhanced > 0 then
+                -- See note about SMODS Scaling Manipulation on the wiki
+                card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod * #enhanced
+                return {
+                    message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } },
+                    colour = G.C.MULT
+                }
+            end
         end
+
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+			local pallidTally = 0
+			local ahabDetected = false
+			local joker_to_destroy
+			for _, playing_card in ipairs(G.playing_cards or {}) do
+				if SMODS.has_enhancement(playing_card, 'm_pmcmod_pallid') then
+					pallidTally = pallidTally + 1
+				end
+			end
+
+			for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] ~= card and G.jokers.cards[i].config.center.key == "j_pmcmod_ahab" then 
+					ahabDetected = true
+					joker_to_destroy = G.jokers.cards[i]
+				end
+            end
+
+			if pallidTally <= 0  and ahabDetected then
+				if joker_to_destroy and not (context.blueprint_card or self).getting_sliced then
+					card.ability.extra.xmult = card.ability.extra.xmult + 2
+                    joker_to_destroy.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+                        card:juice_up(0.8, 0.8)
+                        joker_to_destroy:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
+					card_eval_status_text((context.blueprint_card or card), 'extra', nil, nil, nil, {message = localize{type = 'variable', key = 'a_xmult', vars = {card.ability.xmult}}})
+                end
+			end
+		end
+
 		if context.joker_main then
-			return {
-				chips = card.ability.extra.chips
+			return
+			{
+				mult = card.ability.extra.mult,
+				xmult = card.ability.extra.xmult
 			}
+		end
+	end,
+	in_pool = function(self, args)
+		local pallidTally = 0
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_pmcmod_pallid') then
+                pallidTally = pallidTally + 1
+            end
+        end
+
+		if pallidTally >= 10 then
+			return true
+		else
+        	return false
 		end
     end,
 	set_badges = function(self, card, badges)
@@ -1685,7 +1682,7 @@ SMODS.Joker {
  	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
-            if v.key == "j_seeing_double" then
+            if v.key == "j_midas_mask" then
                 if get_joker_win_sticker(v, true) >= 8 then
                     return true
                 end
@@ -1694,6 +1691,8 @@ SMODS.Joker {
         end
     end
 }
+
+
 
 ------------
 -- JOKERS --
