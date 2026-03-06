@@ -327,6 +327,19 @@ return {
                     'in at least {C:attention}The City Stake{}',
                 },
             },
+            j_pmcmod_kim = {
+                name = 'Bamboo-hatted Kim',
+                text = {
+                    "{X:red,C:white} X#1# {} Mult on {C:attention}final",
+                    "{C:attention}hand{} of round.",
+                    "This value increases by {X:red,C:white}X#2#{}",
+                    "every time a {C:spade}Poise Card{} triggers."
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Aspect of Bamboo-hatted Kim Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
+            },
             j_pmcmod_nikolai = {
                 name = 'Nikolai',
                 text = {
@@ -409,6 +422,19 @@ return {
                     'in at least {C:attention}The City Stake{}',
                 },
             },
+            j_pmcmod_donQuixote = {
+                name = 'The Third Sinner, Don Quixote',
+                text = {
+                    "Drains {C:mult}Perma Mult{} from every score card.",
+                    "Gains {C:attention}triple{} the drained value as {C:chips}Chips",
+                    "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)"
+
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Don Quixote Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
+            },
             j_pmcmod_ryoshu = {
                 name = 'The Fourth Sinner, Ryoshu',
                 text = {
@@ -417,23 +443,20 @@ return {
                     {"Selling a Keypage prevents it from",
                     "appearing for the rest of the run.",
                     "{C:inactive}(Currently {X:mult, C:white}#2#{C:inactive} Mult)"}
-                }
-            },
-            j_pmcmod_ishmael = {
-                name = 'The Eighth Sinner, Ishmael',
-                text = {
-                    {"Has a {C:green}#4# in #5#{} chance",
-                    "to remove Pallid from all scored cards.",
-                    "Gain {C:mult}10{} Mult for every Pallid removed."},
-                    {"If there's no more Pallid cards and Ahab",
-                    "is present, {C:red}destroy her{} at the end of the Encounter",
-                    "and gain {X:mult,C:white}X3{} Mult",
-                    "{C:inactive}Currently {C:mult}+#2#{} Mult",
-                    "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)"},
-
                 },
                 unlock = {
-                    'Win a run with the {C:attention}Ishmael Keypage{}',
+                    'Win a run with the {C:attention}Ryoshu Keypage{}',
+                    'in at least {C:attention}The City Stake{}',
+                },
+            },
+            j_pmcmod_hongLu = {
+                name = 'The Sixth Sinner, Hong Lu',
+                text = {
+                    "Gain a bonus based on each",
+                    "Sinner Keypage on your team."
+                },
+                unlock = {
+                    'Win a run with the {C:attention}Hong Lu Keypage{}',
                     'in at least {C:attention}The City Stake{}',
                 },
             },
@@ -452,16 +475,21 @@ return {
                     'in at least {C:attention}The City Stake{}',
                 },
             },
-            j_pmcmod_donQuixote = {
-                name = 'The Third Sinner, Don Quixote',
+            j_pmcmod_ishmael = {
+                name = 'The Eighth Sinner, Ishmael',
                 text = {
-                    "Drains {C:mult}Perma Mult{} from every score card.",
-                    "Gains {C:attention}triple{} the drained value as {C:chips}Chips",
-                    "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)"
+                    {"Has a {C:green}#4# in #5#{} chance",
+                    "to remove Pallid from all scored cards.",
+                    "Gain {C:mult}10{} Mult for every Pallid removed."},
+                    {"If there's no more Pallid cards and Ahab",
+                    "is present, {C:red}destroy her{} at the end of the Encounter",
+                    "and gain {X:mult,C:white}X3{} Mult",
+                    "{C:inactive}Currently {C:mult}+#2#{} Mult",
+                    "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)"},
 
                 },
                 unlock = {
-                    'Win a run with the {C:attention}Don Quixote Keypage{}',
+                    'Win a run with the {C:attention}Ishmael Keypage{}',
                     'in at least {C:attention}The City Stake{}',
                 },
             },
@@ -2627,8 +2655,9 @@ return {
             c_pmcmod_conceptIncinerator = {
                 name = "Concept Incinerator",
                 text = {
-                    "{C:red}Removes{} up to two Keypages from",
-                    "the pool for the rest fo the run.",
+                    "{C:red}Removes{} the selected Keypage and any Keypage to",
+                    "the left from the pool for the rest fo the run.",
+                    "{C:inactive}(selected Keypage must be on the team)"
                 }
             },
             c_pmcmod_witness = {
