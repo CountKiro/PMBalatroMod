@@ -446,7 +446,7 @@ return {
                 },
             },
             j_acrobat={
-                name="김삿갓",
+                name="김삿갓(찢어짐)",
                 text={
                     "막의 {C:attention}마지막 핸드{}일 경우",
                     "{X:red,C:white} X#1# {} 배수를 획득합니다",
