@@ -3046,7 +3046,9 @@ SMODS.Joker {
 		
 		if context.modify_hand and not context.blueprint and G.GAME.current_round.hands_played == 0 then
 
-			card.ability.extra.mult = card.ability.extra.mult + mult
+			if card.ability.extra.mult < mult then
+				card.ability.extra.mult = card.ability.extra.mult + mult
+			end
 
         end
 
@@ -10013,8 +10015,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 3,
 	cost = 8,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 8, y = 5 },
     pools =
 	{
 
