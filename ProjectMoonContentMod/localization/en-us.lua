@@ -708,7 +708,8 @@ return {
                 text = {
                     "On the {C:attention}first hand played{}, if the Poker Hand",
                     "is Level 2 or above, gain the base {C:mult}Mult{} value",
-                    "of the Poker Hand and {C:red}reset the Poker Hand level{}."
+                    "of the Poker Hand and {C:red}reset the Poker Hand level{}.",
+                    "This can only happen if the base Mult is higher than this card's."
                 },
                 unlock = {
                     'Win a run with {C:attention}K Corp Deck{}',
