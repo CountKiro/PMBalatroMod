@@ -703,6 +703,18 @@ return {
                     'in at least {C:attention}Impuritas Civitatis Stake{}',
                 },
             },
+            j_pmcmod_jiaHuan = {
+                name = 'Jia Huan',
+                text = {
+                    "On the {C:attention}first hand played{}, if the Poker Hand",
+                    "is Level 2 or above, gain the base {C:mult}Mult{} value",
+                    "of the Poker Hand and {C:red}reset the Poker Hand level{}."
+                },
+                unlock = {
+                    'Win a run with {C:attention}K Corp Deck{}',
+                    'in at least {C:attention}Impuritas Civitatis Stake{}',
+                },
+            },
             j_pmcmod_aseah = {
                 name = 'Aseah',
                 text = {
