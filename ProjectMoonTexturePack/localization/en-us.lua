@@ -451,7 +451,7 @@ return {
                 },
             },
             j_acrobat={
-                name="Bamboo-hatted Kim",
+                name="Aspect of Bamboo-hatted Kim",
                 text={
                     "{X:red,C:white} X#1# {} Mult on {C:attention}final",
                     "{C:attention}hand{} of scene",
