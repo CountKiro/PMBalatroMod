@@ -368,7 +368,7 @@ return {
         },
         Enhanced={
             m_bonus={
-                name="보너스 카드",
+                name="인내 카드",
                 text={
                 },
             },
@@ -398,7 +398,7 @@ return {
                 },
             },
             m_mult={
-                name="배수 카드",
+                name="힘 카드",
                 text={
                     "{C:mult}+#1#{} 배수",
                 },
@@ -3850,7 +3850,7 @@ return {
             badge_blade="검계",
             badge_nightAwls="밤의 송곳",
             badge_mirae="미래생명",
-            badge_claw="The Claw'",
+            badge_claw="발톱",
             badge_eye="눈",
             badge_head="머리",
             badge_colorFixer="특색",
