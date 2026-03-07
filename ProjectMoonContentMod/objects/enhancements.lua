@@ -186,14 +186,18 @@ SMODS.Enhancement {
                 ret.xmult = card.ability.extra.xmult
                 card.poise_trigger = true
                 card.ability.counter = 1
-            end
 
-            G.E_MANAGER:add_event(Event {
+                G.E_MANAGER:add_event(Event {
                 func = function()
+                    play_sound('pmcmod_poiseTrigger', 0.9, 0.9)
                     card.poise_trigger = true
                     return true
                 end
             })
+
+            end
+
+            
 
             return ret
 
