@@ -7645,8 +7645,8 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
-    atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
+    atlas = 'ModdedProjectMoon2',
+	pos = { x = 5, y = 6 },
     pools =
 	{
 
@@ -9779,7 +9779,7 @@ SMODS.Joker {
 	perishable_compat = true,
 	rarity = 3,
 	cost = 8,
-    atlas = 'ModdedProjectMoon',
+    atlas = 'ModdedProjectMoon2',
 	pos = { x =6, y = 5 },
     pools =
 	{
@@ -11396,8 +11396,8 @@ SMODS.Joker {
 	rarity = 4,
 	cost = 10,
     atlas = 'ModdedProjectMoon',
-	pos = { x = 8, y = 14 },
-	soul_pos = { x = 3, y = 9 },
+	pos = { x = 4, y = 8 },
+	soul_pos = { x = 4, y = 9 },
     pools =
 	{
 
