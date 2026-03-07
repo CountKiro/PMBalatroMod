@@ -215,7 +215,7 @@ SMODS.Consumable {
     key = 'barbed',
     name = "Barbed",
     set = 'Spectral',
-    pos = { x = 4, y = 5 },
+    pos = { x = 9, y = 4 },
     atlas = 'ModdedProjectMoonSpectrals',
     config = { max_highlighted = 2, mod_conv = 'm_pmcmod_rupture' },
     loc_vars = function(self, info_queue, card)
@@ -224,12 +224,12 @@ SMODS.Consumable {
     end
 }
 
--- Poise Time Duck
+-- Poise Sleeping Bag of a Bygone Day
 SMODS.Consumable {
     key = 'bygone',
     name = "Bygone",
     set = 'Spectral',
-    pos = { x = 4, y = 5 },
+    pos = { x = 8, y = 4 },
     atlas = 'ModdedProjectMoonSpectrals',
     config = { max_highlighted = 2, mod_conv = 'm_pmcmod_poise' },
     loc_vars = function(self, info_queue, card)
@@ -238,12 +238,12 @@ SMODS.Consumable {
     end
 }
 
--- Tremor Sleeping Bag of a Bygone Day
+-- Tremor Time Duck
 SMODS.Consumable {
     key = 'ticking',
     name = "Ticking",
     set = 'Spectral',
-    pos = { x = 4, y = 5 },
+    pos = { x = 0, y = 5 },
     atlas = 'ModdedProjectMoonSpectrals',
     config = { max_highlighted = 2, mod_conv = 'm_pmcmod_tremor' },
     loc_vars = function(self, info_queue, card)
@@ -277,14 +277,18 @@ SMODS.Consumable {
 		"j_turtle_bean",
 		"j_troubadour",
 		"j_juggler",
+        "j_acrobat",
 		"j_half",
 		"j_onyx_agate",
 		"j_abstract",
 		"j_swashbuckler",
 		"j_bull",
 		"j_constellation",
-		"j_midas_mask",
-		"j_hit_the_road",}
+        "j_seeing_double",
+        "j_flower_pot",
+        "j_diet_cola",
+		"j_hit_the_road",
+        "j_midas_mask",}
 
         card.ability.trueVersions = {"j_pmcmod_oswald",
 		"j_pmcmod_angelaLoR",
@@ -295,14 +299,18 @@ SMODS.Consumable {
 		"j_pmcmod_esther",
 		"j_pmcmod_gloria",
 		"j_pmcmod_hubert",
+        "j_pmcmod_kim",
 		"j_pmcmod_angelica",
 		"j_pmcmod_puppeteer",
 		"j_pmcmod_nikolai",
 		"j_pmcmod_rudolph",
 		"j_pmcmod_maxim",
 		"j_pmcmod_yisang",
-		"j_pmcmod_ishmael",
-		"j_pmcmod_heathcliff",}
+        "j_pmcmod_donQuixote",
+        "j_pmcmod_ryoshu",
+        "j_pmcmod_hongLu",
+		"j_pmcmod_heathcliff",
+        "j_pmcmod_ishmael",}
 
 		for i=1, #card.ability.aspects do
 			if G.jokers.highlighted[1].config.center.key == card.ability.aspects[i] then
@@ -428,18 +436,27 @@ SMODS.Consumable {
     key = 'conceptIncinerator',
     name = "Concept Incinerator",
     set = 'Spectral',
-    pos = { x = 5, y = 5 },
+    pos = { x = 1, y = 5 },
     atlas = 'ModdedProjectMoonSpectrals',
-    config = { max_highlighted = 2 },
+    config = { max_highlighted = 1 },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.max_highlighted } }
     end,
     use = function(self, card, area, copier)
-        for i = 1, #G.jokers.highlighted do
-            G.GAME.banned_keys[G.jokers.highlighted[i].config.center.key] = true
-            G.jokers.highlighted[i].getting_sliced = true
+
+        local my_pos = nil
+        for i = 1, #G.jokers.cards do
+            if G.jokers.cards[i] == G.jokers.highlighted[i] then
+                my_pos = i
+                break
+            end
+        end
+
+        for i = 1, my_pos-1 do
+            G.GAME.banned_keys[G.jokers.cards[i].config.center.key] = true
+            G.jokers.cards[i].getting_sliced = true
             G.E_MANAGER:add_event(Event({func = function()
-                G.jokers.highlighted[i]:start_dissolve({G.C.RED}, nil, 1.6)
+                G.jokers.cards[i]:start_dissolve({G.C.RED}, nil, 1.6)
             return true end }))
         end
     end,
