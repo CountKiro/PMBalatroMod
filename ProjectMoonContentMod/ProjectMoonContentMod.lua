@@ -75,6 +75,13 @@ SMODS.Sound{
 	volume = 0.6,
 }
 
+SMODS.Sound{
+	key = 'poiseTrigger',
+	path = 'poiseTrigger.ogg',
+	pitch = 0.7,
+	volume = 0.6,
+}
+
 
 ------------------
 -- Object Types --
