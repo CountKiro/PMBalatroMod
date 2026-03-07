@@ -2653,7 +2653,7 @@ return {
         Planet={},
         Spectral={
             c_pmcmod_conceptIncinerator = {
-                name = "Concept Incinerator",
+                name = "Erasure",
                 text = {
                     "{C:red}Removes{} the selected Keypage and any Keypage to",
                     "the left from the pool for the rest fo the run.",
@@ -2707,7 +2707,7 @@ return {
                     "Enhances 2 card to {C:blue}Sinking{}",
                 }
             },
-            c_pmcmod_bardbed= {
+            c_pmcmod_barbed= {
                 name = "Barbed",
                 text = {
                     "Enhances 2 card to {C:rupture}Rupture{}",
