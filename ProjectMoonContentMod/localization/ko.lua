@@ -417,7 +417,7 @@ return {
                 text = {
                     "모든 득점 카드에서 {C:mult}영구 배수{}를 흡수함.",
                     "흡수한 수치의 {C:attention}3배{}만큼 {C:chips}칩{} 획득",
-                    "{C:inactive}(현재 {C:chips}#1#{C:inactive} 칩)"
+                    "{C:inactive}(현재 {C:chips}+#1#{C:inactive} 칩)"
 
                 },
                 unlock = {
@@ -1160,7 +1160,7 @@ return {
                     {"1번 위치에 두면 {C:attention}모든 효과가 적용되지만,{}",
                     "{C:red}보너스가 증가하지 않음.{}",
                     "{C:inactive}(현재 위치: {C:red}#5#{})",
-                    "{C:inactive}(현재 {C:gold}$#1#{}) {C:inactive}(현재 {C:chips}#2#{} 칩)",
+                    "{C:inactive}(현재 {C:gold}$#1#{}) {C:inactive}(현재 {C:chips}+#2#{} 칩)",
                     "{C:inactive}(현재 {C:mult}#3#{} 배수) {C:inactive}(현재 {X:mult,C:white}X#4#{} 배수)"},
                 },
             },
@@ -1686,7 +1686,7 @@ return {
                 name = '환자 어르신',
                 text = {
                     "득점한 핸드가 3장을 초과할 경우,",
-                    "{C:mult}+#1#{} 배수 및 {C:chips}#2#{} 칩 제공",
+                    "{C:mult}+#1#{} 배수 및 {C:chips}+#2#{} 칩 제공",
                     "{C:inactive}접대가 끝난 후 다른 어르신으로 교체됨"
                 },
                 unlock = {
@@ -1744,8 +1744,8 @@ return {
             j_pmcmod_jiaZheng = {
                 name = '가정',
                 text = {
-                    "득점한 {C:attention}6{}마다 {C:chips}#1#{} 칩 제공",
-                    "칩은 매 무대마다 {C:chips}5{}씩 증가함",
+                    "득점한 {C:attention}6{}마다 {C:chips}+#1#{} 칩 제공",
+                    "칩은 매 무대마다 {C:chips}+5{}씩 증가함",
                 }
             },
             j_pmcmod_jiaYuanchun = {
@@ -1785,7 +1785,7 @@ return {
                 name = '왕대위',
                 text = {
                     "{C:attention}8장{} 득점 할 때마다",
-                    "{C:mult}+#2#{} 영구 배수 및 {C:chips}#3#{} 영구 칩 획득.",
+                    "{C:mult}+#2#{} 영구 배수 및 {C:chips}+#3#{} 영구 칩 획득.",
                     "{C:inactive}(다음 발동까지 남은 득점 카드: {C:attention}#1#{C:inactive})"
                 }
             },
@@ -1809,8 +1809,8 @@ return {
                 name = '사이화',
                 text = {
                     "덱에 있는 {C:diamonds}다이아몬드{} 카드",
-                    "1장당 {C:chips}#1#{} 칩 획득.",
-                    "{C:inactive}(현재 {C:chips}#2#{C:inactive} 칩)"
+                    "1장당 {C:chips}+#1#{} 칩 획득.",
+                    "{C:inactive}(현재 {C:chips}+#2#{C:inactive} 칩)"
                 }
             },
             j_pmcmod_shiHuazhen = {
@@ -1823,8 +1823,8 @@ return {
             j_pmcmod_shiSijing = {
                 name = '사사정',
                 text = {
-                    "책장이 파괴될 때마다 {C:chips}#1#{} 칩 획득",
-                    "{C:inactive}(현재 {C:chips}#2#{C:inactive} 칩)"
+                    "책장이 파괴될 때마다 {C:chips}+#1#{} 칩 획득",
+                    "{C:inactive}(현재 {C:chips}+#2#{C:inactive} 칩)"
                 }
             },
             j_pmcmod_kongSihui = {
@@ -1863,7 +1863,7 @@ return {
                     "{C:gold}판매 가치{}를 모두 흡수하여",
                     "자신의 판매 가치에 더함."},
                     {"흡수한 수치의 {C:attention}3배{}만큼 {C:chips}칩{} 획득.",
-                    "{C:inactive}(현재 {C:chips}#1#{C:inactive} 칩)"},
+                    "{C:inactive}(현재 {C:chips}+#1#{C:inactive} 칩)"},
                 }
             },
             j_pmcmod_zilu = {
@@ -1985,14 +1985,14 @@ return {
                 name = '소라',
                 text = {
                     {"막 시작 시, 무작위 책장에서 {C:dark_edition}에디션{}을 훔치고",
-                    "그 과정에서 {C:chips}#2#{} 칩을 획득함.",
+                    "그 과정에서 {C:chips}+#2#{} 칩을 획득함.",
                     "동일한 에디션을 연속으로 훔칠 수는 없음."},
                     {"에디션을 훔치지 못한 채 3막이 지나면,",
                     "소라가 모습을 드러내고 현재 칩 수치를 2배로 만듦."},
                     {"{C:attention}추가 효과: {}오른쪽에 뤼엔이 있다면 획득하는 칩이 2배가 됨.",
                     "이 효과가 4번 발동하면 소라는 사망함.",
                     "{C:inactive}(총 발동 횟수: {C:red}#3#{C:inactive})",
-                    "{C:inactive}(현재 {C:chips}#1#{C:inactive} 칩)"},
+                    "{C:inactive}(현재 {C:chips}+#1#{C:inactive} 칩)"},
                 },
                 unlock = {
                     '{C:attention}뤼엔 책장{}으로 승리 시 해금'
@@ -2044,16 +2044,16 @@ return {
                 name = '라비',
                 text = {
                     "이 카드가 파괴될 위기에 처하면, 죽은 척하며",
-                    "대신 자신에게 디버프를 걺. 이때 {C:chips}#2#{} 칩 획득.",
+                    "대신 자신에게 디버프를 걺. 이때 {C:chips}+#2#{} 칩 획득.",
                     "{C:green}#3# / #4#{} 확률로 죽은 척하기에 실패함.",
-                    "{C:inactive}(현재 {C:chips}#1#{C:inactive} 칩)",
+                    "{C:inactive}(현재 {C:chips}+#1#{C:inactive} 칩)",
                 }
             },
             j_pmcmod_werner = {
                 name = '베르너',
                 text = {
-                    "리카르도가 파괴될 때마다 {C:chips}#2#{} 칩 획득.",
-                    "{C:inactive}(현재 {C:chips}#1#{C:inactive} 칩)",
+                    "리카르도가 파괴될 때마다 {C:chips}+#2#{} 칩 획득.",
+                    "{C:inactive}(현재 {C:chips}+#1#{C:inactive} 칩)",
                 }
             },
             j_pmcmod_jamila = {
@@ -2080,7 +2080,7 @@ return {
             j_pmcmod_arayaKid = {
                 name = '아라야 (어린이)',
                 text = {
-                    {"{C:chips}#1#{} 칩 제공."},
+                    {"{C:chips}+#1#{} 칩 제공."},
                     {"지난 무대에서 가장 많이 한 행동에 따라",
                     "다른 버전으로 모습이 변경됨:",
                     "카드 득점, 카드 버리기, 또는 돈 사용"},
