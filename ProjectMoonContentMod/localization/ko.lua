@@ -883,7 +883,7 @@ return {
             j_pmcmod_kromer = {
                 name = '크로머',
                 text = {
-                    "{C:attention}일반 전투{} 또는 {C:attention}위험 전투{} 선택 시,",
+                    "{C:attention}일반 전투{} 또는 {C:attention}정예 전투{} 선택 시,",
                     "이단 책장이 존재한다면 파괴하고",
                     "{X:mult,C:white}X#1#{} 배수 획득",
                     "(전투당 한 번만 발동)",
@@ -909,7 +909,7 @@ return {
             j_pmcmod_guido = {
                 name = '귀도',
                 text = {
-                    {"{C:attention}일반 전투{} 또는 {C:attention}위험 전투{} 선택 시,",
+                    {"{C:attention}일반 전투{} 또는 {C:attention}정예 전투{} 선택 시,",
                     "붉은색 인장이 찍힌 무작위 카드를 추가함."},
                     {"덱에 있는 붉은색 인장 하나당 {C:mult}+#1#{} 배수 획득",
                     "{C:inactive}(현재 {C:mult}+#2# {C:inactive} 배수)"},
@@ -1441,7 +1441,7 @@ return {
             j_pmcmod_romero = {
                 name = '로메로',
                 text = {
-                    "{C:attention}일반 전투{} 또는 {C:attention}위험 전투{} 선택 시,",
+                    "{C:attention}일반 전투{} 또는 {C:attention}정예 전투{} 선택 시,",
                     "{C:green}보급{} 또는 {C:blue}고급{} 등급의 혈귀 책장이 존재하면,",
                     "이를 파괴하고 {C:mult}+#2#{} 배수 획득",
                     "(전투당 한 번만 발동)",
@@ -1620,7 +1620,7 @@ return {
             j_pmcmod_catt = {
                 name = '캣',
                 text = {
-                    {"{C:attention}일반 전투{} 또는 {C:attention}위험 전투{}에서,",
+                    {"{C:attention}일반 전투{} 또는 {C:attention}정예 전투{}에서,",
                     "패배할 위기에 처하면 무작위 {C:attention}#1# 책장{}을 파괴하고 승리함."},
                     {"발동할 때마다 요구되는 희귀도가 올라감.",
                     "막마다 한 번만 발동할 수 있음."}
