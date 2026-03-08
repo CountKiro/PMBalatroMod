@@ -2614,7 +2614,7 @@ return {
         Planet={},
         Spectral={
             c_pmcmod_conceptIncinerator = {
-                name = "개념 소각기",
+                name = "지운다",
                 text = {
                     "최대 2개의 책장을 남은 게임 동안",
                     "등장하지 않도록 {C:red}제거{}합니다.",
