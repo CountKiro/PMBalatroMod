@@ -5823,7 +5823,7 @@ SMODS.Joker {
         return args.type == 'chip_score' and to_big(args.chips) >= to_big(100000) and to_big(args.chips)%to_big(7) == to_big(0)
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge(localize('pmcmod_badge_seven'), HEX('234a39'), HEX('b59c36'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), HEX('1c1c1c'), HEX('e6ed1a'), 1.2 )
  	end
 	
 }
@@ -5855,7 +5855,7 @@ SMODS.Joker {
         return args.type == 'chip_score' and to_big(args.chips) >= to_big(100000) and to_big(args.chips)%to_big(7) == to_big(0)
     end,
 	set_badges = function(self, card, badges)
- 		badges[#badges+1] = create_badge(localize('pmcmod_badge_seven'), HEX('234a39'), HEX('b59c36'), 1.2 )
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), HEX('1c1c1c'), HEX('e6ed1a'), 1.2 )
  	end
 }
 
@@ -9675,7 +9675,7 @@ SMODS.Joker {
 	name = "Rien",
 	pronouns = "he_him",
 	unlocked = true,
-	config = { extra = { mult = 0, mult_mod = 15,  prescriptListShuffled = {}, prescriptActive = false, currentPrescript = 0, soraPresent = false, soraPos = nil } },
+	config = { extra = { mult = 0, mult_mod = 15,  prescriptListShuffled = {}, prescriptActive = false, currentPrescript = 0, soraPresent = false, soraPos = nil, soraDeathCounter = 0 } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -10160,7 +10160,7 @@ SMODS.Joker {
 	name = "Sora",
 	pronouns = "she_her",
 	unlocked = true,
-	config = { extra = { chips = 0, chips_mod = 20, soraDeathCounter = 0, rienPresent = false, rienPos = nil, locked = false } },
+	config = { extra = { chips = 0, chips_mod = 20, soraDeathCounter = 0, rienPresent = false, rienPos = nil, locked = false, counter = 0 } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
