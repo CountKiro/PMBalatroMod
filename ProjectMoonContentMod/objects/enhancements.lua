@@ -135,7 +135,25 @@ SMODS.Enhancement {
     end,
     update = function(self, card, dt)
         card.ability.bonus = card.ability.counter * 2
-    end
+    end,
+    set_sprites = function(self, card, front)
+    G.E_MANAGER:add_event(Event({
+      blockable = false,
+      func = function()
+        card.canvas_text = SMODS.CanvasSprite {
+          canvasW = 71, canvasH = 95,
+          text_offset = { x = 10, y = 86 },
+          text_colour = G.C.UI.TEXT_DARK,
+          text_width = 15,
+          text_height = 10,
+          ref_table = card.ability,
+          ref_value = "counter",
+          text = "?"
+        }
+        return true
+      end
+    }))
+  end,
 }
 
 -- Poise
