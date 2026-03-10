@@ -788,6 +788,7 @@ SMODS.Joker {
 
 
 		if context.setting_blind and not context.blueprint then
+		card.ability.extra.quantityOfThumbMembers = 0
 			for i = 1, #G.jokers.cards do
 				for j = 1, #G.P_CENTER_POOLS.Thumb do
 					if G.jokers.cards[i] ~= card and (G.P_CENTER_POOLS.Thumb[j].key == G.jokers.cards[i].config.center.key)
@@ -4049,7 +4050,7 @@ SMODS.Joker {
 			}
 		end
 		
-		if context.setting_blind and not G.GAME.last_blind and not G.GAME.last_blind.boss and not card.getting_sliced and not context.blueprint then
+		if context.setting_blind and not G.GAME.last_blind.boss and not card.getting_sliced and not context.blueprint then
                 local destructable_jokers = {}
                 for i = 1, #G.jokers.cards do
 					for j = 1, #G.P_CENTER_POOLS.Heretics do
@@ -5369,7 +5370,7 @@ SMODS.Joker {
 	pos = { x = 0, y = 5 },
     pools =
 	{
-
+		["NewLeagueOfNine"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
 		
@@ -9539,7 +9540,7 @@ SMODS.Joker {
 	pos = { x = 3, y = 5 },
     pools =
 	{
-
+		["Thumb"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
         return {vars = {  } }
@@ -9605,7 +9606,8 @@ SMODS.Joker {
 	pos = { x = 4, y = 5 },
     pools =
 	{
-
+		["Heretics"] = true,
+		["Thumb"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
         return {vars = { card.ability.extra.lucioDeathCounter } }
