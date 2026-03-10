@@ -446,13 +446,14 @@ SMODS.Consumable {
 
         local my_pos = nil
         for i = 1, #G.jokers.cards do
-            if G.jokers.cards[i] == G.jokers.highlighted[i] then
+            if G.jokers.cards[i] == G.jokers.highlighted[1] then
                 my_pos = i
+                print(my_pos)
                 break
             end
         end
 
-        for i = 1, my_pos-1 do
+        for i = 1, my_pos do
             G.GAME.banned_keys[G.jokers.cards[i].config.center.key] = true
             G.jokers.cards[i].getting_sliced = true
             G.E_MANAGER:add_event(Event({func = function()
