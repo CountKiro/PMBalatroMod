@@ -4065,6 +4065,7 @@ SMODS.Joker {
 					card.ability.xmult = card.ability.xmult + card.ability.extra
                     joker_to_destroy.getting_sliced = true
                     G.E_MANAGER:add_event(Event({func = function()
+						play_sound('pmcmod_kromerWhistle', 0.9, 0.9)
                         card:juice_up(0.8, 0.8)
                         joker_to_destroy:start_dissolve({G.C.RED}, nil, 1.6)
                     return true end }))
@@ -10741,7 +10742,7 @@ SMODS.Joker {
 	pronouns = "she_her",
 	unlocked = false,
 	config = { chips = 20, counters = {playedCards = 0, discardedCards = 0, moneyUsed = 0} },
-	eternal_compat = true,
+	eternal_compat = false,
 	blueprint_compat = true,
 	perishable_compat = true,
 	rarity = 2,
@@ -10881,7 +10882,7 @@ SMODS.Joker {
 	pronouns = "she_her",
 	unlocked = false,
 	config = { permaChips_mod = 6, counters = {playedCards = 0, discardedCards = 0, moneyUsed = 0} },
-	eternal_compat = true,
+	eternal_compat = false,
 	blueprint_compat = true,
 	perishable_compat = true,
 	rarity = 2,
@@ -10998,6 +10999,9 @@ SMODS.Joker {
 				
 		end
     end,
+	in_pool = function(self, args)
+        return G.GAME.pool_flags.fake_robot_flag
+    end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
@@ -11010,7 +11014,7 @@ SMODS.Joker {
 	pronouns = "she_her",
 	unlocked = false,
 	config = { permaMult_mod = 3, counters = {playedCards = 0, discardedCards = 0, moneyUsed = 0} },
-	eternal_compat = true,
+	eternal_compat = false,
 	blueprint_compat = true,
 	perishable_compat = true,
 	rarity = 2,
@@ -11127,6 +11131,9 @@ SMODS.Joker {
 				
 		end
     end,
+	in_pool = function(self, args)
+        return G.GAME.pool_flags.fake_robot_flag
+    end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
@@ -11139,7 +11146,7 @@ SMODS.Joker {
 	pronouns = "she_her",
 	unlocked = false,
 	config = { permaDollars_mod = 1, counters = {playedCards = 0, discardedCards = 0, moneyUsed = 0} },
-	eternal_compat = true,
+	eternal_compat = false,
 	blueprint_compat = true,
 	perishable_compat = true,
 	rarity = 2,
@@ -11255,6 +11262,9 @@ SMODS.Joker {
 				card.ability.counters.moneyUsed = 0
 				
 		end
+    end,
+	in_pool = function(self, args)
+        return G.GAME.pool_flags.fake_robot_flag
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
@@ -13358,7 +13368,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, jokerSelected = false, selectedJoker = "", selectedJokerName = ""} },
-	no_collection = true,    --In testing
+--	no_collection = true,    --In testing
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -14034,7 +14044,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
-	no_collection = true,    --In testing
+--	no_collection = true,    --In testing
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
