@@ -2,6 +2,7 @@ sendDebugMessage("Launching Project Moon Content Mod!", "ProjectMoonContentMod")
 
 ProjectMoonMod = {}
 
+PMCMOD = SMODS.current_mod
 
 SMODS.current_mod.optional_features = function()
     return {
@@ -78,6 +79,13 @@ SMODS.Sound{
 SMODS.Sound{
 	key = 'poiseTrigger',
 	path = 'poiseTrigger.ogg',
+	pitch = 0.7,
+	volume = 0.6,
+}
+
+SMODS.Sound{
+	key = 'kromerWhistle',
+	path = 'kromerWhistle.ogg',
 	pitch = 0.7,
 	volume = 0.6,
 }
