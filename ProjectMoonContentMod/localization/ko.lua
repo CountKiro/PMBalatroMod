@@ -2668,7 +2668,7 @@ return {
                     "카드 2장에 {C:blue}침잠{} 부여",
                 }
             },
-            c_pmcmod_bardbed= {
+            c_pmcmod_barbed= {
                 name = "가시 돋친",
                 text = {
                     "카드 2장에 {C:rupture}파열{} 부여",
