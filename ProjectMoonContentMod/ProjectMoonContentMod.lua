@@ -90,6 +90,78 @@ SMODS.Sound{
 	volume = 0.6,
 }
 
+SMODS.Sound{
+	key = 'heathcliffGood',
+	path = 'heathcliffGood.ogg',
+	pitch = 1.0,
+	volume = 0.7,
+}
+
+SMODS.Sound{
+	key = 'heathcliffBad',
+	path = 'heathcliffBad.ogg',
+	pitch = 1.0,
+	volume = 0.7,
+}
+
+
+SMODS.Tarot:take_ownership('c_wheel_of_fortune', 
+  {
+	config = { extra = { odds = 4 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds,
+            'pmcmod_wheel_of_fortune')
+        return { vars = { numerator, denominator } }
+    end,
+    use = function(self, card, area, copier)
+        if SMODS.pseudorandom_probability(card, 'pmcmod_wheel_of_fortune', 1, card.ability.extra.odds) then
+            local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
+
+            local eligible_card = pseudorandom_element(editionless_jokers, 'pmcmod_wheel_of_fortune')
+            local edition = SMODS.poll_edition { key = "pmcmod_wheel_of_fortune", guaranteed = true, no_negative = true, options = { 'e_polychrome', 'e_holo', 'e_foil' } }
+            eligible_card:set_edition(edition, true)
+            check_for_unlock({ type = 'have_edition' })
+			G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        func = function()
+                            play_sound('pmcmod_heathcliffGood', 1.0, 0.7)
+                            return true
+                        end
+                    }))
+        else
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.4,
+                func = function()
+                    attention_text({
+                        text = localize('k_nope_ex'),
+                        scale = 1.3,
+                        hold = 1.4,
+                        major = card,
+                        backdrop_colour = G.C.SECONDARY_SET.Tarot,
+                        align = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and
+                            'tm' or 'cm',
+                        offset = { x = 0, y = (G.STATE == G.STATES.TAROT_PACK or G.STATE == G.STATES.SPECTRAL_PACK or G.STATE == G.STATES.SMODS_BOOSTER_OPENED) and -0.2 or 0 },
+                        silent = true
+                    })
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.06 * G.SETTINGS.GAMESPEED,
+                        blockable = false,
+                        blocking = false,
+                        func = function()
+                            play_sound('pmcmod_heathcliffBad', 1.0, 0.7)
+                            return true
+                        end
+                    }))
+                    play_sound('tarot2', 1, 0.4)
+                    card:juice_up(0.3, 0.5)
+                    return true
+                end
+            }))
+        end
+    end,
+  }, true)
 
 ------------------
 -- Object Types --
