@@ -1308,7 +1308,7 @@ return {
             j_pmcmod_ezra = {
                 name = 'Ezra',
                 text = {
-                    "Retriggers {C:attention}7{} cards",
+                    "Retriggers each played {C:attention}7{}",
                 },
                 unlock = {
                     'Score over 100000 chips,',
@@ -1976,9 +1976,11 @@ return {
                 name = 'Callisto',
                 text = {
                     {"Drains Mult and Bonus enhancements from cards,",
-                    "gaining 80% of their value."},
-                    {"{C:attention}Bonus effect: {}If Albina is present, double this value.",
-                    "Albina dies after 5 Cards are drained."}
+                    "gaining 50% of their value."},
+                    {"{C:attention}Bonus effect: {}If Albina is present, gain the full value.",
+                    "Albina dies after 5 Cards are drained.",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",}
                 },
                 unlock = {
                     'Win a run with the {C:attention}Ryoshu Keypage{}',
