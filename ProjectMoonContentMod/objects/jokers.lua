@@ -9878,7 +9878,7 @@ SMODS.Joker {
 	name = "Callisto",
 	unlocked = true,
 	pronouns = "he_him",
-	config = { extra = { currentPosition = 1, albinaPresent = false, albinaPos = nil, chips = 0, mult = 0, chips_gain = 20, mult_gain = 5  } },
+	config = { extra = { currentPosition = 1, albinaPresent = false, albinaPos = nil, chips = 0, mult = 0, chips_gain = 25, mult_gain = 5, albinaDeathCounter = 0  } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -9891,10 +9891,10 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+        return {vars = { card.ability.extra.chips, card.ability.extra.mult } }
 	end,
 	calculate = function(self, card, context)
-        if context.before and not context.blueprint then
+        if context.individual and not context.blueprint then
 
 			card.ability.extra.albinaPresent = false
 			for i = 1, #G.jokers.cards do
@@ -9913,65 +9913,54 @@ SMODS.Joker {
 				end
 			end
 
-            local enhancedChips = {}
-			local enhancedMult = {}
-            for _, scored_card in ipairs(context.scoring_hand) do
-                if next(SMODS.has_enhancement(playing_card, 'm_bonus')) and not scored_card.debuff and not scored_card.vampired then
-                    enhancedChips[#enhancedChips + 1] = scored_card
-                    scored_card.vampired = true
-                    scored_card:set_ability('c_base', nil, true)
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            scored_card:juice_up()
-                            scored_card.vampired = nil
-                            return true
-                        end
-                    }))
-                end
-
-				if next(SMODS.has_enhancement(playing_card, 'm_mult')) and not scored_card.debuff and not scored_card.vampired then
-                    enhancedMult[#enhancedMult + 1] = scored_card
-                    scored_card.vampired = true
-                    scored_card:set_ability('c_base', nil, true)
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            scored_card:juice_up()
-                            scored_card.vampired = nil
-                            return true
-                        end
-                    }))
-                end
-            end
-
-            if #enhancedChips > 0 then
-
+			if SMODS.has_enhancement(context.other_card, 'm_bonus') and not context.other_card.debuff and not context.other_card.vampired then
+				context.other_card.vampired = true
+				context.other_card:set_ability('c_base', nil, true)
 				if card.ability.extra.albinaPresent then
-					card.ability.extra.chips = card.ability.extra.chips + (card.ability.extra.chips_gain * #enhancedChips * 2)
+					card.ability.extra.chips = card.ability.extra.chips + (card.ability.extra.chips_gain * 2)
 					card.ability.extra.albinaDeathCounter = card.ability.extra.albinaDeathCounter + 1
 				else
-					card.ability.extra.chips = card.ability.extra.chips + (card.ability.extra.chips_gain * #enhancedChips)
+					card.ability.extra.chips = card.ability.extra.chips + (card.ability.extra.chips_gain)
 				end
-				
-                return {
+				local cardToRemoveEnhancement = context.other_card
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						cardToRemoveEnhancement:juice_up()
+						cardToRemoveEnhancement.vampired = nil
+						return true
+					end
+				}))
+				return {
                     message = localize { type = 'variable', key = 'a_chips', vars = { card.ability.extra.chips } },
                     colour = G.C.CHIPS
                 }
-            end
+			end
 
-			if #enhancedMult > 0 then
+			if SMODS.has_enhancement(context.other_card, 'm_mult') and not context.other_card.debuff and not context.other_card.vampired then
+				context.other_card.vampired = true
+				context.other_card:set_ability('c_base', nil, true)
 				if card.ability.extra.albinaPresent then
-					card.ability.extra.mult = card.ability.extra.mult + (card.ability.extra.mult_gain * #enhancedMult * 2)
+					card.ability.extra.mult = card.ability.extra.mult + (card.ability.extra.mult_gain * 2)
 					card.ability.extra.albinaDeathCounter = card.ability.extra.albinaDeathCounter + 1
 				else
-					card.ability.extra.mult = card.ability.extra.mult + (card.ability.extra.mult_gain * #enhancedMult)
+					card.ability.extra.mult = card.ability.extra.mult + (card.ability.extra.mult_gain)
 				end
-
-				
-                return {
+				local cardToRemoveEnhancement = context.other_card
+				G.E_MANAGER:add_event(Event({
+					func = function()
+						cardToRemoveEnhancement:juice_up()
+						cardToRemoveEnhancement.vampired = nil
+						return true
+					end
+				}))
+				return {
                     message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult } },
-                    colour = G.C.MULT
+                    colour = G.C.CHIPS
                 }
-            end
+			end
+
+
+
 
 			if card.ability.extra.albinaDeathCounter >= 5 then
 					local albina = G.jokers.cards[card.ability.extra.albinaPos]
@@ -10880,7 +10869,7 @@ SMODS.Joker {
 	key = 'arayaTeen',
 	name = "Araya (Teen)",
 	pronouns = "she_her",
-	unlocked = false,
+	unlocked = true,
 	config = { permaChips_mod = 6, counters = {playedCards = 0, discardedCards = 0, moneyUsed = 0} },
 	eternal_compat = false,
 	blueprint_compat = true,
@@ -11012,7 +11001,7 @@ SMODS.Joker {
 	key = 'arayaYA',
 	name = "Araya (Young Adult)",
 	pronouns = "she_her",
-	unlocked = false,
+	unlocked = true,
 	config = { permaMult_mod = 3, counters = {playedCards = 0, discardedCards = 0, moneyUsed = 0} },
 	eternal_compat = false,
 	blueprint_compat = true,
@@ -11144,7 +11133,7 @@ SMODS.Joker {
 	key = 'arayaAdult',
 	name = "Araya (Adult)",
 	pronouns = "she_her",
-	unlocked = false,
+	unlocked = true,
 	config = { permaDollars_mod = 1, counters = {playedCards = 0, discardedCards = 0, moneyUsed = 0} },
 	eternal_compat = false,
 	blueprint_compat = true,
@@ -13275,7 +13264,7 @@ SMODS.Joker {
 			card.ability.extra.prescriptActive = false
 		end
 
-		if context.ending_shop and card.ability.extra.prescriptActive == false and G.GAME.round_resets.ante > 1 and card.ability.extra.currentPrescript <= 10 then
+		if context.ending_shop and card.ability.extra.prescriptActive == false and G.GAME.round_resets.ante > 1 and card.ability.extra.currentPrescript <= 11 then
 			SMODS.add_card({ key = card.ability.extra.prescriptListShuffled[card.ability.extra.currentPrescript], stickers = {"eternal"}, force_stickers = true })
 			card.ability.extra.prescriptActive = true
 		end
