@@ -405,7 +405,7 @@ return {
             m_mult={
                 name="Strength Card",
                 text={
-                    "{C:mult}+#1#{} Mult",
+                    "{C:mult}#1#{} Mult",
                 },
             },
             m_steel={
@@ -419,7 +419,7 @@ return {
             m_stone={
                 name="Stone Card",
                 text={
-                    "{C:chips}+#1#{} Chips",
+                    "{C:chips}#1#{} Chips",
                     "no rank or suit",
                 },
             },
@@ -923,7 +923,7 @@ return {
                     "{C:hearts}Heart{} card, and {C:spades}Spade{} card",
                 },
                 unlock={
-                    "Reach Ante",
+                    "Reach Act",
                     "level {E:1,C:attention}#1#",
                 },
             },
@@ -1427,7 +1427,7 @@ return {
                     "appear multiple times",
                 },
                 unlock={
-                    "Reach Ante",
+                    "Reach Act",
                     "level {E:1,C:attention}#1#",
                 },
             },
@@ -1915,7 +1915,7 @@ return {
             },
             card_extra_chips={
                 text={
-                    "{C:chips}+#1#{} extra chips",
+                    "{C:chips}#1#{} extra chips",
                 },
             },
             challenge_locked={
@@ -2594,7 +2594,7 @@ return {
                 name="Urban Legend Stake",
                 text={
                     "Required score scales",
-                    "faster for each {C:attention}Ante",
+                    "faster for each {C:attention}Act",
                     "{s:0.8}Applies all previous Stakes",
                 },
             },
@@ -2610,7 +2610,7 @@ return {
                 name="Star of the City Stake",
                 text={
                     "Required score scales",
-                    "faster for each {C:attention}Ante",
+                    "faster for each {C:attention}Act",
                     "{s:0.8}Applies all previous Stakes",
                 },
             },
@@ -3025,7 +3025,7 @@ return {
                 name="Tear-stained Spoon",
                 text={
                     "Reroll Reception",
-                    "{C:attention}1{} time per Ante,",
+                    "{C:attention}1{} time per Act,",
                     "{C:money}$#1#{} per roll",
                 },
             },
@@ -3054,7 +3054,7 @@ return {
             v_hieroglyph={
                 name="Operation Authorization Card",
                 text={
-                    "{C:attention}-#1#{} Ante,",
+                    "{C:attention}-#1#{} Act,",
                     "{C:blue}-#1#{} hand",
                     "each scene",
                 },
@@ -3195,12 +3195,12 @@ return {
             v_petroglyph={
                 name="Glimpse of Flames",
                 text={
-                    "{C:attention}-#1#{} Ante,",
+                    "{C:attention}-#1#{} Act,",
                     "{C:red}-#1#{} discard",
                     "each scene",
                 },
                 unlock={
-                    "Reach Ante",
+                    "Reach Act",
                     "level {E:1,C:attention}#1#",
                 },
             },
@@ -3324,8 +3324,8 @@ return {
             _100000k="Score 100,000,000 Chips in a single hand",
             _1000k="Score 1,000,000 Chips in a single hand",
             _10k="Score 10,000 Chips in a single hand",
-            ante_up="Reach Ante 4",
-            ante_upper="Reach Ante 8",
+            ante_up="Reach Act 4",
+            ante_upper="Reach Act 8",
             astronomy="Discover every Sinner card",
             big_hands="Have 80 or more cards in your deck",
             card_discarder="Discard at least 2500 Cards",
@@ -3344,7 +3344,7 @@ return {
             mid_stakes="Win a run on at least Urban Plague Stake difficulty",
             nest_egg="Have $400 or more during a single run",
             retrograde="Get any poker hand to level 10",
-            roi="Buy 5 EGO Gifts by Ante 4",
+            roi="Buy 5 EGO Gifts by Act 4",
             royale="Play a Royal Flush",
             rule_bender="Complete any challenge run",
             rule_breaker="Complete every challenge run",
@@ -3357,8 +3357,8 @@ return {
             _100000k="100,000K",
             _1000k="1,000K",
             _10k="10K",
-            ante_up="Ante Up!",
-            ante_upper="Ante Upper!",
+            ante_up="Act Up!",
+            ante_upper="Act Upper!",
             astronomy="Astronomy",
             big_hands="Big Hands",
             card_discarder="Card Discarder",
@@ -3804,7 +3804,7 @@ return {
             ph_select_challenge="Select a Challenge",
             ph_sneak_peek="Sneak Peek",
             ph_stat_consumable="Number of times this card has been used",
-            ph_stat_joker="Total completed rounds with this card",
+            ph_stat_joker="Total completed Scenes with this card",
             ph_stat_voucher="Number of times this EGO Gift has been redeemed",
             ph_unscored_hand="Hand will not score",
             ph_up_ante_1="Next Scene",
@@ -4263,7 +4263,7 @@ return {
             a_sold_tally="#1#/#2# Sold",
             a_xmult="X#1# Mult",
             a_xmult_minus="-X#1# Mult",
-            ante_x_voucher="ANTE #1# EGO GIFT",
+            ante_x_voucher="ACT #1# EGO GIFT",
             challenges_completed="Completed #1#/#2# Challenges",
             completed="#1#/#2# Completed",
             deck_preview_wheel_plural="Numbers may be lower due to the #1# cards drawn face down",
