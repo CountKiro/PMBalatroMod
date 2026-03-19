@@ -24,6 +24,7 @@ CardSleeves.Sleeve {
     	end,
         apply = function(self, sleeve)
             G.GAME.edition_rate = G.GAME.edition_rate + 2
+			G.GAME.starting_params.dollars = G.GAME.starting_params.dollars + 100
         end,
 		unlock_condition = { deck = "b_pmcmod_thumbDeck", stake = "stake_white" },
 }
