@@ -422,11 +422,12 @@ jd_def["j_pmcmod_wolf"] = {
             {
                 border_nodes = {
                     { text = "X" },
-                    { ref_table = "card.ability.extra", ref_value = "xmult", retrigger_type = "exp" }
+                    { ref_table = "card.ability", ref_value = "xmult", retrigger_type = "exp" }
                 }
             }
         }
 }
+
 
 --[[jd_def["j_pmcmod_hopkins"] = {
     text = {
@@ -462,7 +463,7 @@ jd_def["j_pmcmod_demian"] = {
 
 jd_def["j_pmcmod_shiHuazhen"] = {
     text = {
-            { text = "X" },
+            { text = "+" },
             { ref_table = "card.joker_display_values", ref_value = "mult", retrigger_type = "mult" }
         },
     text_config = { colour = G.C.MULT },
@@ -473,7 +474,6 @@ jd_def["j_pmcmod_shiHuazhen"] = {
                         my_pos = i
                         break
                     end
-                    print(my_pos)
                 end
                 if my_pos >= 2 then
                     --card.joker_display_values.mult = card.ability.extra.mult_mod * (string.len((localize{type="name_text", set="Joker", key = G.jokers.cards[my_pos-1].config.center.key} or "") or 0))
