@@ -9122,7 +9122,7 @@ SMODS.Joker {
             end
 			if my_pos >= 2 then
 				return {
-					print(string.len(localize{type="name_text", set="Joker", key = G.jokers.cards[my_pos-1].config.center.key} or "")),
+					--print(string.len(localize{type="name_text", set="Joker", key = G.jokers.cards[my_pos-1].config.center.key} or "")),
 					mult = card.ability.extra.mult_mod * (string.len((localize{type="name_text", set="Joker", key = G.jokers.cards[my_pos-1].config.center.key} or "") or 0))
 				}
 			end
