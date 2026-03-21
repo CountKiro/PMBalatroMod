@@ -2616,7 +2616,7 @@ return {
         Planet={},
         Spectral={
             c_pmcmod_conceptIncinerator = {
-                name = "지운다",
+                name = "삭제",
                 text = {
                     "최대 2개의 책장을 남은 게임 동안",
                     "등장하지 않도록 {C:red}제거{}합니다.",
@@ -2677,7 +2677,7 @@ return {
                 }
             },
             c_pmcmod_bygone= {
-                name = "지나간",
+                name = "지난 날",
                 text = {
                     "카드 2장에 {C:spade}호흡{} 부여",
                 }
