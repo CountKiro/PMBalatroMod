@@ -438,11 +438,11 @@ return {
             j_pmcmod_ryoshu = {
                 name = 'The Fourth Sinner, Ryoshu',
                 text = {
-                    {"Gains {X:mult, C:white}#1#{} Mult for",
+                    {"Gains {X:mult, C:white}X#1#{} Mult for",
                     "each Keypage sold."},
                     {"Selling a Keypage prevents it from",
                     "appearing for the rest of the run.",
-                    "{C:inactive}(Currently {X:mult, C:white}#2#{C:inactive} Mult)"}
+                    "{C:inactive}(Currently {X:mult, C:white}X#2#{C:inactive} Mult)"}
                 },
                 unlock = {
                     'Win a run with the {C:attention}Ryoshu Keypage{}',
@@ -1945,11 +1945,12 @@ return {
                 name = 'Rien',
                 text = {
                     {"Spawns in a random prescript at the start of the Act."},
-                    {"Gain {C:mult}#1#{} for every Prescript fullfilled.",
+                    {"Gain {C:mult}#3#{} for every Prescript fullfilled.",
                     "Destroy itself if the Prescript fails."},
                     {"{C:attention}Bonus effect: {}If Sora is present and to the right, gains double",
                     "this value. Sora dies after this effect triggers 3 times.",
-                    "{C:inactive}(Total triggers: {C:red}#2#{C:inactive})"},
+                    "{C:inactive}(Total triggers: {C:red}#2#{C:inactive})",
+                    "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)"},
                 },
                 unlock = {
                     'Win a run with the {C:attention}Ryoshu Keypage{}',
