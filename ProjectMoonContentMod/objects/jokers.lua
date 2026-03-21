@@ -3770,7 +3770,7 @@ SMODS.Joker {
 
  	},
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.chips, card.ability.extra.chips_gain, card.ability.extra.suit, card.ability.extra.suit_index } }
+        return { vars = { card.ability.extra.chips, card.ability.extra.chips_gain, localize(card.ability.extra.suit, 'suits_plural'), card.ability.extra.suit_index } }
     end,
     calculate = function(self, card, context)
 		if context.joker_main then
@@ -13366,7 +13366,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, jokerSelected = false, selectedJoker = "", selectedJokerName = ""} },
---	no_collection = true,    --In testing
+	no_collection = true,    --In testing
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -14042,7 +14042,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
---	no_collection = true,    --In testing
+	no_collection = true,    --In testing
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
