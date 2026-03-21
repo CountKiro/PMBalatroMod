@@ -1948,7 +1948,8 @@ return {
                     {"Gain {C:mult}#1#{} for every Prescript fullfilled.",
                     "Destroy itself if the Prescript fails."},
                     {"{C:attention}Bonus effect: {}If Sora is present and to the right, gains double",
-                    "this value. Sora dies after this effect triggers 3 times."},
+                    "this value. Sora dies after this effect triggers 3 times.",
+                    "{C:inactive}(Total triggers: {C:red}#2#{C:inactive})"},
                 },
                 unlock = {
                     'Win a run with the {C:attention}Ryoshu Keypage{}',
@@ -2253,7 +2254,7 @@ return {
                     "hand of the Scene, {C:red}destroy all scored cards{}."},
                     {"Gains {X:mult,C:white}X#2#{} for every card destroyed",
                     "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
-                    "{C:inactive}(Currently bonded hand: {C:attention}X#3#{C:inactive}"},
+                    "{C:inactive}(Currently bonded hand: {C:attention}#3#{C:inactive}"},
                 },
             },
             j_pmcmod_sephirahTiphereth = {
