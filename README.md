@@ -16,9 +16,11 @@ A Balatro Mod that adds custom made textures with Project Moon related character
 
 ## Installing the mod
 
-1. Download and install, [Steammodded 1.0.0 beta (1224a)](https://github.com/Steamodded/smods/releases/tag/1.0.0-beta-1224a), [Lovely v0.7.1](https://github.com/ethangreen-dev/lovely-injector) and [Malverk 1.1.3](https://github.com/Eremel/Malverk)
+**NOTE: If you're updating from a previous version, delete the ProjectMoonTexturePack, ProjectMoonMusicAddon and ProjectMoonContentMod from your mod folders and replace with the latest links in the following steps. The same applies for Steamodded, Lovely and Malverk.**
 
-2. Download the ProjectMoonTexturePack.zip file from [Releases](https://github.com/CountKiro/PMBalatroMod/releases/tag/v1.4) on the right menu, extract it and then place it in your Mods folder. You'll know it's correct if you open the ProjectMoonTexturePack folder and there's an assets, localization and .lua file inside
+1. Download and install, [Steamodded 1.0.0 beta (1503a)](https://github.com/Steamodded/smods/releases/tag/1.0.0-beta-1503a), [Lovely v0.9.0](https://github.com/ethangreen-dev/lovely-injector/releases/tag/v0.9.0) and [Malverk 1.1.3](https://github.com/Eremel/Malverk)
+
+2. Download the ProjectMoonTexturePack.zip file from [Releases](https://github.com/CountKiro/PMBalatroMod/releases/tag/v1.5) on the right menu, extract it and then place it in your Mods folder. You'll know it's correct if you open the ProjectMoonTexturePack folder and there's an assets, localization and .lua file inside
 
 3. Repeat step 2 for the ProjectMoonMusicAddon.zip if you desire to include the music and ProjectMoonContentMod.zip if you desire the new content
    
@@ -35,20 +37,14 @@ A Balatro Mod that adds custom made textures with Project Moon related character
 ## What is in the latest update?
 
 ### Texture pack
-- Added 3 new variations for the main menu logo
-- New texture for Vouchers (EGO Gifts)
-- Improvements on some Joker textures
-- Minor bugfixes
+- New Korean translation by [YiYatt](https://x.com/YiYatt_)
+- Improvements to Joker textures
 
 ### [NEW!] Content mod
-- Added 46 new Jokers (now up to 144 total)
-- Added 3 new Deck (now up to 11 total)
-- Added 3 new Spectral Card (now up to 7 total)
-- Added 2 new Enhancement (now up to 4 total)
-- Added 4 new Card Sleeve (now up to 8 total)
-- Added 2 new Seals (now up to 3 total)
-- Added 1 new Edition
-
+- Added 60 new Jokers
+- Added 4 new Spectral Card
+- Added 3 new Enhancement
+- New Korean translation by [YiYatt](https://x.com/YiYatt_)
 
 ## FAQ
 
@@ -82,6 +78,8 @@ Music, sound effects and character designs are owned by Project Moon! Special th
 Special thanks to Novell, [Dawni](https://x.com/hidawnihere), Sans, Simon and Oath for testing out the mod and giving suggestions!
 
 Also thanks to [DB](https://x.com/Despair_Bears) for showcasing my work on Twitter and in Detroit and everyone in the RegretfulDiscord and MentalBlock servers for the support!
+
+And of course, [YiYatt](https://x.com/YiYatt_) for providing the Korean translation for the mod!
 
 And thanks for the streamers that showcased the mod, go check them out!
 
