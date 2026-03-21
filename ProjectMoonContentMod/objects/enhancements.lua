@@ -208,7 +208,7 @@ SMODS.Enhancement {
                 G.E_MANAGER:add_event(Event {
                 func = function()
                     play_sound('pmcmod_poiseTrigger', 0.9, 0.9)
-                    card.poise_trigger = true
+                    card.poise_trigger = false
                     return true
                 end
             })

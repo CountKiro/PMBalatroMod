@@ -1229,7 +1229,7 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = {  } }
+		return { vars = { card.ability.extra.xmult_mod, card.ability.extra.xmult } }
 	end,
 	calculate = function(self, card, context)
 
@@ -3770,7 +3770,7 @@ SMODS.Joker {
 
  	},
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.chips, card.ability.extra.chips_gain, card.ability.extra.suit, card.ability.extra.suit_index } }
+        return { vars = { card.ability.extra.chips, card.ability.extra.chips_gain, localize(card.ability.extra.suit, 'suits_plural'), card.ability.extra.suit_index } }
     end,
     calculate = function(self, card, context)
 		if context.joker_main then
@@ -9678,7 +9678,7 @@ SMODS.Joker {
 	name = "Rien",
 	pronouns = "he_him",
 	unlocked = true,
-	config = { extra = { mult = 0, mult_mod = 15,  prescriptListShuffled = {}, prescriptActive = false, currentPrescript = 0, soraPresent = false, soraPos = nil, soraDeathCounter = 0 } },
+	config = { extra = { mult = 0, mult_mod = 15,  prescriptListShuffled = {}, prescriptActive = false, currentPrescript = 0, soraPresent = false, soraPos = nil, soraDeathCounter = 0, allowPrescriptCheck = true } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -9691,7 +9691,7 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = {  } }
+        return {vars = { card.ability.extra.mult, card.ability.extra.soraDeathCounter, card.ability.extra.mult_mod, } }
 	end,
 	add_to_deck = function(self, card, from_debuff)
 		
@@ -9701,8 +9701,9 @@ SMODS.Joker {
     end,
 	calculate = function(self, card, context)
 
-		-- Increase the prescript counter at the end of the boss
-		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
+
+		if context.joker_type_destroyed then
+
 
 			card.ability.extra.soraPresent = false
 			for i = 1, #G.jokers.cards do
@@ -9719,16 +9720,33 @@ SMODS.Joker {
 						card.ability.extra.soraPos = i
 					end
 				end
+			end		
+
+
+			for i=1, #card.ability.extra.prescriptListShuffled do
+				--print("cardDestroyed")
+				if context.card.config.center.key == card.ability.extra.prescriptListShuffled[i] then
+					--print("prescript destroyed")
+					if context.card.prescriptFullfilled then
+						--print("prescript fullfilled")
+						if card.ability.extra.soraPresent then
+							card.ability.extra.mult = card.ability.extra.mult + (card.ability.extra.mult_mod * 2)
+							card.ability.extra.soraDeathCounter = card.ability.extra.soraDeathCounter + 1
+						else
+							card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod
+						end
+					else
+						card.getting_sliced = true
+						G.E_MANAGER:add_event(Event({func = function()
+							card:juice_up(0.8, 0.8)
+							card:start_dissolve({G.C.RED}, nil, 1.6)
+						return true end }))
+					end
+				end
 			end
 
-			card.ability.extra.currentPrescript = card.ability.extra.currentPrescript + 1
-			card.ability.extra.prescriptActive = false
-			if card.ability.extra.soraPresent then
-				card.ability.extra.mult = card.ability.extra.mult + (card.ability.extra.mult_mod * 2)
-				card.ability.extra.soraDeathCounter = card.ability.extra.soraDeathCounter + 1
-			else
-				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod
-			end
+
+			
 
 			if card.ability.extra.soraDeathCounter >= 3 then
 				local sora = G.jokers.cards[card.ability.extra.soraPos]
@@ -9739,8 +9757,23 @@ SMODS.Joker {
 					sora:start_dissolve({G.C.RED}, nil, 1.6)
 				return true end }))
 			end
+
+
+		end
+
+		-- Increase the prescript counter at the end of the boss
+		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
+
+			
+
+			card.ability.extra.currentPrescript = card.ability.extra.currentPrescript + 1
+			card.ability.extra.prescriptActive = false
+			card.ability.extra.allowPrescriptCheck = true
+			
 			
 		end
+		
+		
 
 		-- Spawn the next prescript
 		if context.ending_shop and card.ability.extra.prescriptActive == false and G.GAME.round_resets.ante > 1 and card.ability.extra.currentPrescript <= 10 then
@@ -13292,7 +13325,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, faces = 5} },
-	no_collection = true,    --In testing
+--	no_collection = true,    --In testing
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13321,35 +13354,22 @@ SMODS.Joker {
 
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then			
 				-- This part plays the animation.
-				G.E_MANAGER:add_event(Event({
-					func = function()
-						play_sound('tarot1')
-						card.T.r = -0.2
-						card:juice_up(0.3, 0.4)
-						card.states.drag.is = true
-						card.children.center.pinch.x = true
 
-						G.E_MANAGER:add_event(Event({
-							trigger = 'after',
-							delay = 0.3,
-							blockable = false,
-							func = function()
-								G.jokers:remove_card(card)
-								card:remove()
-								card = nil
-								return true;
-							end
-						}))
-						return true
-					end
-				}))
+				card.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+						play_sound('tarot1', 0.9, 0.9)
+                        card:juice_up(0.8, 0.8)
+                        card:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
 				G.GAME.pool_flags.prescript1Extinct = true
 				
 				if card.ability.extra.prescriptFullfilled then
+					card.prescriptFullfilled = true
 					return{
 						dollars = 15
 					}
 				else
+					card.prescriptFullfilled = false
 					ease_dollars(-G.GAME.dollars, true)
 				end
 		end
@@ -13366,7 +13386,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, jokerSelected = false, selectedJoker = "", selectedJokerName = ""} },
---	no_collection = true,    --In testing
+	no_collection = true,    --In testing
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13403,36 +13423,22 @@ SMODS.Joker {
 
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then			
 				-- This part plays the animation.
-				G.E_MANAGER:add_event(Event({
-					func = function()
-						play_sound('tarot1')
-						card.T.r = -0.2
-						card:juice_up(0.3, 0.4)
-						card.states.drag.is = true
-						card.children.center.pinch.x = true
-
-						G.E_MANAGER:add_event(Event({
-							trigger = 'after',
-							delay = 0.3,
-							blockable = false,
-							func = function()
-								G.jokers:remove_card(card)
-								card:remove()
-								card = nil
-								return true;
-							end
-						}))
-						return true
-					end
-				}))
+				card.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+						play_sound('tarot1', 0.9, 0.9)
+                        card:juice_up(0.8, 0.8)
+                        card:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
 				G.GAME.pool_flags.prescript2Extinct = true
 
 				if card.ability.extra.prescriptFullfilled == true then
+					card.prescriptFullfilled = true
 					return{
 						dollars = 15
 					}
 				else
 					ease_dollars(-G.GAME.dollars, true)
+					card.prescriptFullfilled = false
 				end
 		end
 		
@@ -13487,33 +13493,19 @@ SMODS.Joker {
 
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then			
 				-- This part plays the animation.
-				G.E_MANAGER:add_event(Event({
-					func = function()
-						play_sound('tarot1')
-						card.T.r = -0.2
-						card:juice_up(0.3, 0.4)
-						card.states.drag.is = true
-						card.children.center.pinch.x = true
-
-						G.E_MANAGER:add_event(Event({
-							trigger = 'after',
-							delay = 0.3,
-							blockable = false,
-							func = function()
-								G.jokers:remove_card(card)
-								card:remove()
-								card = nil
-								return true;
-							end
-						}))
-						return true
-					end
-				}))
+				card.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+						play_sound('tarot1', 0.9, 0.9)
+                        card:juice_up(0.8, 0.8)
+                        card:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
 				G.GAME.pool_flags.prescript3Extinct = true
 
 				if card.ability.extra.prescriptFailed == true then
 					ease_dollars(-G.GAME.dollars, true)
+					card.prescriptFullfilled = false
 				else
+					card.prescriptFullfilled = true
 					return{
 						dollars = 15
 					}
@@ -13556,35 +13548,21 @@ SMODS.Joker {
 
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then			
 				-- This part plays the animation.
-				G.E_MANAGER:add_event(Event({
-					func = function()
-						play_sound('tarot1')
-						card.T.r = -0.2
-						card:juice_up(0.3, 0.4)
-						card.states.drag.is = true
-						card.children.center.pinch.x = true
-
-						G.E_MANAGER:add_event(Event({
-							trigger = 'after',
-							delay = 0.3,
-							blockable = false,
-							func = function()
-								G.jokers:remove_card(card)
-								card:remove()
-								card = nil
-								return true;
-							end
-						}))
-						return true
-					end
-				}))
+				card.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+						play_sound('tarot1', 0.9, 0.9)
+                        card:juice_up(0.8, 0.8)
+                        card:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
 				G.GAME.pool_flags.prescript4Extinct = true
 
 				if card.ability.extra.prescriptFullfilled == true then
+					card.prescriptFullfilled = true
 					return{
 						dollars = 15
 					}
 				else
+					card.prescriptFullfilled = false
 					ease_dollars(-G.GAME.dollars, true)
 				end
 		end
@@ -13632,33 +13610,19 @@ SMODS.Joker {
 
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then			
 				-- This part plays the animation.
-				G.E_MANAGER:add_event(Event({
-					func = function()
-						play_sound('tarot1')
-						card.T.r = -0.2
-						card:juice_up(0.3, 0.4)
-						card.states.drag.is = true
-						card.children.center.pinch.x = true
-
-						G.E_MANAGER:add_event(Event({
-							trigger = 'after',
-							delay = 0.3,
-							blockable = false,
-							func = function()
-								G.jokers:remove_card(card)
-								card:remove()
-								card = nil
-								return true;
-							end
-						}))
-						return true
-					end
-				}))
+				card.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+						play_sound('tarot1', 0.9, 0.9)
+                        card:juice_up(0.8, 0.8)
+                        card:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
 				G.GAME.pool_flags.prescript4Extinct = true
 
 				if card.ability.extra.prescriptFailed == true then
+					card.prescriptFullfilled = false
 					ease_dollars(-G.GAME.dollars, true)
 				else
+					card.prescriptFullfilled = true
 					return{
 						dollars = 15
 					}
@@ -13706,37 +13670,23 @@ SMODS.Joker {
 
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then			
 				-- This part plays the animation.
-				G.E_MANAGER:add_event(Event({
-					func = function()
-						play_sound('tarot1')
-						card.T.r = -0.2
-						card:juice_up(0.3, 0.4)
-						card.states.drag.is = true
-						card.children.center.pinch.x = true
-
-						G.E_MANAGER:add_event(Event({
-							trigger = 'after',
-							delay = 0.3,
-							blockable = false,
-							func = function()
-								G.jokers:remove_card(card)
-								card:remove()
-								card = nil
-								return true;
-							end
-						}))
-						return true
-					end
-				}))
+				card.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+						play_sound('tarot1', 0.9, 0.9)
+                        card:juice_up(0.8, 0.8)
+                        card:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
 				G.GAME.pool_flags.prescript4Extinct = true
 
 				
 
 				if card.ability.extra.prescriptFullfilled == true then
+					card.prescriptFullfilled = true
 					return{
 						dollars = 15
 					}
 				else
+					card.prescriptFullfilled = false
 					ease_dollars(-G.GAME.dollars, true)
 				end
 		end
@@ -13779,37 +13729,23 @@ SMODS.Joker {
 
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then			
 				-- This part plays the animation.
-				G.E_MANAGER:add_event(Event({
-					func = function()
-						play_sound('tarot1')
-						card.T.r = -0.2
-						card:juice_up(0.3, 0.4)
-						card.states.drag.is = true
-						card.children.center.pinch.x = true
-
-						G.E_MANAGER:add_event(Event({
-							trigger = 'after',
-							delay = 0.3,
-							blockable = false,
-							func = function()
-								G.jokers:remove_card(card)
-								card:remove()
-								card = nil
-								return true;
-							end
-						}))
-						return true
-					end
-				}))
+				card.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+						play_sound('tarot1', 0.9, 0.9)
+                        card:juice_up(0.8, 0.8)
+                        card:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
 				G.GAME.pool_flags.prescript4Extinct = true
 
 				
 
 				if card.ability.extra.prescriptFullfilled == true then
+					card.prescriptFullfilled = true
 					return{
 						dollars = 15
 					}
 				else
+					card.prescriptFullfilled = false
 					ease_dollars(-G.GAME.dollars, true)
 				end
 		end
@@ -13850,37 +13786,23 @@ SMODS.Joker {
 
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then			
 				-- This part plays the animation.
-				G.E_MANAGER:add_event(Event({
-					func = function()
-						play_sound('tarot1')
-						card.T.r = -0.2
-						card:juice_up(0.3, 0.4)
-						card.states.drag.is = true
-						card.children.center.pinch.x = true
-
-						G.E_MANAGER:add_event(Event({
-							trigger = 'after',
-							delay = 0.3,
-							blockable = false,
-							func = function()
-								G.jokers:remove_card(card)
-								card:remove()
-								card = nil
-								return true;
-							end
-						}))
-						return true
-					end
-				}))
+				card.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+						play_sound('tarot1', 0.9, 0.9)
+                        card:juice_up(0.8, 0.8)
+                        card:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
 				G.GAME.pool_flags.prescript4Extinct = true
 
 				
 
 				if card.ability.extra.prescriptFullfilled == true then
+					card.prescriptFullfilled = true
 					return{
 						dollars = 15
 					}
 				else
+					card.prescriptFullfilled = false
 					ease_dollars(-G.GAME.dollars, true)
 				end
 		end
@@ -13922,37 +13844,23 @@ SMODS.Joker {
 
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then			
 				-- This part plays the animation.
-				G.E_MANAGER:add_event(Event({
-					func = function()
-						play_sound('tarot1')
-						card.T.r = -0.2
-						card:juice_up(0.3, 0.4)
-						card.states.drag.is = true
-						card.children.center.pinch.x = true
-
-						G.E_MANAGER:add_event(Event({
-							trigger = 'after',
-							delay = 0.3,
-							blockable = false,
-							func = function()
-								G.jokers:remove_card(card)
-								card:remove()
-								card = nil
-								return true;
-							end
-						}))
-						return true
-					end
-				}))
+				card.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+						play_sound('tarot1', 0.9, 0.9)
+                        card:juice_up(0.8, 0.8)
+                        card:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
 				G.GAME.pool_flags.prescript4Extinct = true
 
 				
 
 				if card.ability.extra.prescriptFullfilled == true then
+					card.prescriptFullfilled = true
 					return{
 						dollars = 15
 					}
 				else
+					card.prescriptFullfilled = false
 					ease_dollars(-G.GAME.dollars, true)
 				end
 		end
@@ -13995,37 +13903,23 @@ SMODS.Joker {
 
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then			
 				-- This part plays the animation.
-				G.E_MANAGER:add_event(Event({
-					func = function()
-						play_sound('tarot1')
-						card.T.r = -0.2
-						card:juice_up(0.3, 0.4)
-						card.states.drag.is = true
-						card.children.center.pinch.x = true
-
-						G.E_MANAGER:add_event(Event({
-							trigger = 'after',
-							delay = 0.3,
-							blockable = false,
-							func = function()
-								G.jokers:remove_card(card)
-								card:remove()
-								card = nil
-								return true;
-							end
-						}))
-						return true
-					end
-				}))
+				card.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+						play_sound('tarot1', 0.9, 0.9)
+                        card:juice_up(0.8, 0.8)
+                        card:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
 				G.GAME.pool_flags.prescript4Extinct = true
 
 				
 
 				if card.ability.extra.prescriptFullfilled == true then
+					card.prescriptFullfilled = true
 					return{
 						dollars = 15
 					}
 				else
+					card.prescriptFullfilled = false
 					ease_dollars(-G.GAME.dollars, true)
 				end
 		end
@@ -14042,7 +13936,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
---	no_collection = true,    --In testing
+	no_collection = true,    --In testing
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -14108,37 +14002,23 @@ SMODS.Joker {
 		
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then			
 				-- This part plays the animation.
-				G.E_MANAGER:add_event(Event({
-					func = function()
-						play_sound('tarot1')
-						card.T.r = -0.2
-						card:juice_up(0.3, 0.4)
-						card.states.drag.is = true
-						card.children.center.pinch.x = true
-
-						G.E_MANAGER:add_event(Event({
-							trigger = 'after',
-							delay = 0.3,
-							blockable = false,
-							func = function()
-								G.jokers:remove_card(card)
-								card:remove()
-								card = nil
-								return true;
-							end
-						}))
-						return true
-					end
-				}))
+				card.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+						play_sound('tarot1', 0.9, 0.9)
+                        card:juice_up(0.8, 0.8)
+                        card:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
 				G.GAME.pool_flags.prescript4Extinct = true
 
 				
 
 				if card.ability.extra.prescriptFullfilled == true then
+					card.prescriptFullfilled = true
 					return{
 						dollars = 15
 					}
 				else
+					card.prescriptFullfilled = false
 					ease_dollars(-G.GAME.dollars, true)
 				end
 		end
