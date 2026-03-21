@@ -428,10 +428,10 @@ return {
             j_pmcmod_ryoshu = {
                 name = '4번 수감자 료슈',
                 text = {
-                    {"책장을 판매할 때마다 {X:mult, C:white}+#1#{} 배수 획득."},
+                    {"책장을 판매할 때마다 {X:mult, C:white}X#1#{} 배수 획득."},
                     {"책장을 판매하면 남은 게임 동안",
                     "해당 책장이 더 이상 등장하지 않음.",
-                    "{C:inactive}(현재 {X:mult, C:white}+#2#{C:inactive} 배수)"}
+                    "{C:inactive}(현재 {X:mult, C:white}X#2#{C:inactive} 배수)"}
                 },
                 unlock = {
                     '{C:attention}료슈 책장{}으로 최소',
@@ -1915,10 +1915,12 @@ return {
                 name = '뤼엔',
                 text = {
                     {"무대 시작 시 무작위 지령을 하나 생성함."},
-                    {"지령 수행에 성공 할 때마다 {C:mult}+#1#{} 배수 획득.",
+                    {"지령 수행에 성공 할 때마다 {C:mult}+#3#{} 배수 획득.",
                     "지령 수행에 실패하면 스스로 파괴됨."},
                     {"{C:attention}추가 효과: {}오른쪽에 소라가 있다면, 이 수치를 2배로 얻음.",
-                    "이 효과가 3번 발동하면 소라는 사망함."},
+                    "이 효과가 3번 발동하면 소라는 사망함.",
+                    "{C:inactive}(총 발동 횟수: {C:red}#2#{C:inactive})",
+                    "{C:inactive}(현재 {C:mult}+#1#{C:inactive} 배수)"}
                 },
                 unlock = {
                     '{C:attention}료슈 책장{}으로 최소',
@@ -2219,7 +2221,7 @@ return {
                     "{C:red}득점한 모든 카드를 파괴함{}."},
                     {"파괴된 카드 하나당 {X:mult,C:white}X#2#{} 배수 획득",
                     "{C:inactive}(현재 {X:mult,C:white}X#1#{C:inactive} 배수)",
-                    "{C:inactive}(현재 결속된 핸드: {C:attention}X#3#{C:inactive}"},
+                    "{C:inactive}(현재 결속된 핸드: {C:attention}#3#{C:inactive}"},
                 },
             },
             j_pmcmod_sephirahTiphereth = {
@@ -2616,7 +2618,7 @@ return {
         Planet={},
         Spectral={
             c_pmcmod_conceptIncinerator = {
-                name = "지운다",
+                name = "삭제",
                 text = {
                     "최대 2개의 책장을 남은 게임 동안",
                     "등장하지 않도록 {C:red}제거{}합니다.",
@@ -2677,7 +2679,7 @@ return {
                 }
             },
             c_pmcmod_bygone= {
-                name = "지나간",
+                name = "지난 날",
                 text = {
                     "카드 2장에 {C:spade}호흡{} 부여",
                 }
