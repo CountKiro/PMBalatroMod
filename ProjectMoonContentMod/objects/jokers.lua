@@ -7850,7 +7850,7 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'catt',
 	name = "Catt",
-	pronouns = "she_her",
+	pronouns = "they_them",
 	unlocked = false,
 	config = { extra = {exhausted = false, rarity = 2, rarityName = "Hardcover"} },
 	eternal_compat = true,
