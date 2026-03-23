@@ -1835,7 +1835,7 @@ return {
                 }
             },
             j_pmcmod_shiYihua = {
-                name = 'Shi Yiuha',
+                name = 'Shi Yihua',
                 text = {
                     "Gains {C:chips}#1#{} Chips for each",
                     "{C:diamonds}Diamond{} Card in the Deck.",
@@ -1944,9 +1944,9 @@ return {
             j_pmcmod_rien = {
                 name = 'Rien',
                 text = {
-                    {"Spawns in a random prescript at the start of the Act."},
-                    {"Gain {C:mult}#3#{} for every Prescript fullfilled.",
-                    "Destroy itself if the Prescript fails."},
+                    {"Spawns in a random {C:blue}Prescript{} at the start of the Act."},
+                    {"Gain {C:mult}#3#{} for every {C:blue}Prescript{} fullfilled.",
+                    "Destroy itself if the {C:blue}Prescript fails."},
                     {"{C:attention}Bonus effect: {}If Sora is present and to the right, gains double",
                     "this value. Sora dies after this effect triggers 3 times.",
                     "{C:inactive}(Total triggers: {C:red}#2#{C:inactive})",
@@ -2398,7 +2398,7 @@ return {
             j_pmcmod_childrenOfTheGalaxy = {
                 name = "Pebble",
                 text = {
-                    "Has a {C:green}#1# in #2#{} to give",
+                    "Has a {C:green}#1# in #2#{} chance to give",
                     "{C:attention}Pebble{} to any card in Deck.",
                 },
             },
@@ -2489,10 +2489,10 @@ return {
                 name = 'Voice of the City',
                 text = {
                     {"After the first Act",
-                    "create a Prescript",
+                    "create a {C:blue}Prescript{}",
                     "on the next shop"},
-                    {"Completing a prescript gives you 15$",
-                    "Failing to complete a prescript sets your money to 0$}"}
+                    {"Completing a prescript gives you {C:gold}$15{}",
+                    "Failing to complete a prescript sets your money to {C:red}$0{}"}
                 },
             },
             j_pmcmod_prescript1 = {
