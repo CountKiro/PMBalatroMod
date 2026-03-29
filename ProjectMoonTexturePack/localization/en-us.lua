@@ -2542,7 +2542,7 @@ return {
                 },
             },
             c_talisman={
-                name="Hunt",
+                name="Time",
                 text={
                     "Add a {C:attention}Gold Seal{}",
                     "to {C:attention}1{} selected",
