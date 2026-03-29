@@ -10439,7 +10439,7 @@ SMODS.Joker {
 		end
 
 		if context.individual and context.cardarea == G.play and #context.scoring_hand == 2 then
-			if context.scoring_hand[1] then
+			if context.other_card == context.scoring_hand[1] then
 				if card.ability.extra.callistoPresent then
 					context.other_card:set_ability("m_mult", nil, true)
 					card.ability.extra.albinaDeathCounter = card.ability.extra.albinaDeathCounter + 1
@@ -10450,7 +10450,7 @@ SMODS.Joker {
 				end
 			end
 
-			if context.scoring_hand[2] then
+			if context.other_card == context.scoring_hand[2] then
 				if card.ability.extra.callistoPresent then
 					context.other_card:set_ability("m_bonus", nil, true)
 					card.ability.extra.albinaDeathCounter = card.ability.extra.albinaDeathCounter + 1
@@ -11442,7 +11442,7 @@ SMODS.Joker {
 	calculate = function(self, card, context)
 		local selectedXMult = 1.0
 
-		if context.other_joker then
+		if context.other_joker and not context.blueprint then
 			if context.other_joker.config.center.rarity == 1 or context.other_joker.config.center.rarity == "Common" then
 				selectedXMult = card.ability.extra.base_xmult + 0.2
 			elseif context.other_joker.config.center.rarity == 2 or context.other_joker.config.center.rarity == "Uncommon" then
@@ -13325,7 +13325,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, faces = 5} },
---	no_collection = true,    --In testing
+	no_collection = true,    --In testing
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13417,8 +13417,10 @@ SMODS.Joker {
 				card.ability.extra.selectedJokerName = #selectableJokers > 0 and localize{type="name_text", set="Joker", key = card.ability.extra.selectedJoker.config.center.key} or nil
 		end
 
-		if context.selling_card and context.card.ability.set == "Joker" and context.card.config.center.key == card.ability.extra.selectedJoker.config.center.key and not context.blueprint then
+		if context.selling_card and context.card.ability.set == "Joker" and card.ability.extra.selectedJoker.config then
+			if context.card.config.center.key == card.ability.extra.selectedJoker.config.center.key and not context.blueprint then
 				card.ability.extra.prescriptFullfilled = true
+			end
 		end
 
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then			
