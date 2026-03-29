@@ -1588,7 +1588,7 @@ return {
                 name = 'Alyssa',
                 text = {
                     "Gains {C:mult}#1#{} Mult for",
-                    "every {C:mult}Mult{} Card in deck",
+                    "every {C:mult}Strength{} Card in deck",
                     "{C:inactive}(Currently {C:mult}#2#{C:inactive} Mult)",
                 }
             },
@@ -1596,7 +1596,7 @@ return {
                 name = 'Marton',
                 text = {
                     "Gains {C:chips}#1#{} Chips for",
-                    "every {C:chips}Bonus{} Card in deck",
+                    "every {C:chips}Endurance{} Card in deck",
                     "{C:inactive}(Currently {C:chips}#2#{C:inactive} Chips)",
                 }
             },
