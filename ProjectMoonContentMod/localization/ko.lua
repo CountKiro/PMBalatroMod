@@ -1559,7 +1559,7 @@ return {
             j_pmcmod_alyssa = {
                 name = '알리사',
                 text = {
-                    "덱에 있는 {C:mult}배수{} 카드 하나당",
+                    "덱에 있는 {C:mult}힘{} 카드 하나당",
                     "{C:mult}+#1#{} 배수 획득",
                     "{C:inactive}(현재 {C:mult}+#2#{C:inactive} 배수)",
                 }
@@ -1567,7 +1567,7 @@ return {
             j_pmcmod_marton = {
                 name = '마튼',
                 text = {
-                    "덱에 있는 {C:chips}보너스{} 카드 하나당",
+                    "덱에 있는 {C:chips}인내{} 카드 하나당",
                     "{C:chips}+#1#{} 칩 획득",
                     "{C:inactive}(현재 {C:chips}+#2#{C:inactive} 칩)",
                 }
