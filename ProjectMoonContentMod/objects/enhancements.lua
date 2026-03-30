@@ -3,10 +3,10 @@ SMODS.Enhancement {
     key = "bleed",
     atlas = "ModdedProjectMoonEditions",
     pos = { x = 2, y = 2},
-    config = { triggersLeft = 5},
+    config = { },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue+1] = {set = "Other", key = "effect_perma"}
-        return { vars = {card.ability.triggersLeft}}
+        return { vars = {}}
     end,
     calculate = function(self, card, context)
 
@@ -29,11 +29,6 @@ SMODS.Enhancement {
 
         --if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, 'm_pmcmod_bleed') then
             card.ability.perma_mult = (card.ability.perma_mult or 0) + (bleedCounting * (1 + tremorCounting))
-            card.ability.triggersLeft = card.ability.triggersLeft - 1
-
-            if card.ability.triggersLeft <= 0 then
-                card:set_ability("c_base")
-            end
 
             return {
                 message = localize('k_upgrade_ex'),
@@ -234,7 +229,7 @@ SMODS.Enhancement {
     key = "burn",
     atlas = "ModdedProjectMoonEditions",
     pos = { x = 0, y = 2},
-    config = { bonus = 0},
+    config = { bonus = 0, triggersLeft = 4},
     loc_vars = function(self, info_queue, card)
         local currentBlindCount = 0
         if G.GAME.blind and G.GAME.blind.in_blind then
@@ -247,6 +242,13 @@ SMODS.Enhancement {
             card.ability.bonus = G.GAME.blind.chips * 0.001
             if to_big(card.ability.bonus) >= to_big(9999) then
                 card.ability.bonus = 9999
+            end
+        end
+        if context.after then
+            card.ability.triggersLeft = card.ability.triggersLeft - 1
+
+            if card.ability.triggersLeft <= 0 then
+                card:set_ability("c_base")
             end
         end
     end
@@ -274,7 +276,7 @@ SMODS.Enhancement {
     key = "pallid",
     atlas = "ModdedProjectMoonEditions",
     pos = { x = 1, y = 2},
-    config = { bonus = 0, odds = 5},
+    config = { bonus = 0, odds = 3},
     no_rank = false,
     no_suit = false,
     loc_vars = function(self, info_queue, card)
@@ -303,7 +305,6 @@ SMODS.Enhancement {
                             return true
                         end
                     }))
-                    print("Testing left")
 			    end
             end
 
@@ -317,7 +318,6 @@ SMODS.Enhancement {
                             return true
                         end
                     }))
-                    print("Testing right")
 			    end
             end
             ret.chips = -card.base.nominal
