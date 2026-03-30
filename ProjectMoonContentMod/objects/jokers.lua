@@ -186,7 +186,7 @@ SMODS.Joker {
 	key = 'esther',
 	name = "Esther",
 	pronouns = "he_him",
-	config = { extra = { xmult = 3 } },
+	config = { extra = { xchips = 3 } },
     blueprint_compat = false,
     eternal_compat = true,
 	perishable_compat = true,
@@ -201,7 +201,7 @@ SMODS.Joker {
  	},
 	loc_vars = function (self, info_queue, card)
 		info_queue[#info_queue+1] = {set = "Other", key = "effect_singleton"}
-    	return {vars = { card.ability.extra.xmult }}
+    	return {vars = { card.ability.extra.xchips }}
 	end,
 	calculate = function(self, card, context)
 		
@@ -220,7 +220,7 @@ SMODS.Joker {
 
 			if singletonCounter == 1 then
 				return {
-					xmult = card.ability.extra.xmult,
+					xchips = card.ability.extra.xchips,
 				}
 			end
 		end
@@ -666,7 +666,7 @@ SMODS.Joker {
 	key = 'maxim',
 	name = "Maxim",
 	pronouns = "he_him",
-	config = { extra = { chargeCount = 0, dollars = 10, repetitions = 1 } },
+	config = { extra = { chargeCount = 0, dollars = 10, repetitions = 1, charge_mod = 5, maxCharge = 100 } },
 	rarity = 2,
 	unlocked = false,
     blueprint_compat = false,
@@ -680,7 +680,7 @@ SMODS.Joker {
         ["R Corp"] = true,
  	},
 	loc_vars = function (self, info_queue, card)
-    	return {vars = { card.ability.extra.chargeCount, card.ability.extra.dollars }}
+    	return {vars = { card.ability.extra.chargeCount, card.ability.extra.dollars, card.ability.extra.charge_mod, card.ability.extra.maxCharge }}
 	end,
 	calculate = function(self, card, context)
 
@@ -782,7 +782,8 @@ SMODS.Joker {
  	},
     loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
-        return {vars = { card.ability.extra.mult + card.ability.extra.extraMultValue, card.ability.extra.extraMult, localize(card.ability.extra.suit, 'suits_plural'), (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
+        return {vars = { card.ability.extra.mult + card.ability.extra.extraMultValue, card.ability.extra.extraMult, 
+		localize(card.ability.extra.suit, 'suits_plural'), (G.GAME.probabilities.normal or 1), card.ability.extra.odds, card.ability.extra.mult } }
     end,
     calculate = function(self, card, context)
 
@@ -858,7 +859,7 @@ SMODS.Joker {
             end
         end
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
-        return {vars = { card.ability.extra.mult, card.ability.extra.mult + card.ability.extra.extraMult * wildCardsTally, localize(card.ability.extra.suit, 'suits_plural') } }
+        return {vars = { card.ability.extra.extraMult, card.ability.extra.mult + card.ability.extra.extraMult * wildCardsTally, localize(card.ability.extra.suit, 'suits_plural') } }
     end,
     calculate = function(self, card, context)
 
@@ -913,7 +914,7 @@ SMODS.Joker {
             end
         end
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
-        return {vars = { card.ability.extra.mult, card.ability.extra.mult + card.ability.extra.extraMult * wildCardsTally, localize(card.ability.extra.suit, 'suits_plural') } }
+        return {vars = { card.ability.extra.extraMult, card.ability.extra.mult + card.ability.extra.extraMult * wildCardsTally, localize(card.ability.extra.suit, 'suits_plural') } }
     end,
     calculate = function(self, card, context)
 		if context.individual and context.cardarea == G.play and context.other_card:is_suit(card.ability.extra.suit) then
@@ -967,7 +968,7 @@ SMODS.Joker {
             end
         end
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_wild
-        return {vars = { card.ability.extra.mult, card.ability.extra.mult + card.ability.extra.extraMult * wildCardsTally, localize(card.ability.extra.suit, 'suits_plural') } }
+        return {vars = { card.ability.extra.extraMult, card.ability.extra.mult + card.ability.extra.extraMult * wildCardsTally, localize(card.ability.extra.suit, 'suits_plural') } }
     end,
     calculate = function(self, card, context)
 
@@ -1104,7 +1105,7 @@ SMODS.Joker {
     blueprint_compat = true,
     eternal_compat = true,
 	perishable_compat = true,
-	config = { extra = { xmult = 1, xmult_mod = 0.3, xmult_bonus = 0.1 } },
+	config = { extra = { xchips = 1, xchips_mod = 0.3, xchips_bonus = 0.1 } },
 	rarity = 3,
 	atlas = 'ModdedProjectMoon2',
 	pos = { x = 0, y = 0 },
@@ -1118,7 +1119,7 @@ SMODS.Joker {
 			end 
 		end
 
-    	return {vars = { card.ability.extra.xmult + card.ability.extra.xmult_mod*planets_used, card.ability.extra.xmult_mod, card.ability.extra.xmult_bonus }}
+    	return {vars = { card.ability.extra.xchips + card.ability.extra.xchips_mod*planets_used, card.ability.extra.xchips_mod, card.ability.extra.xchips_bonus }}
 	end,
 	calculate = function(self, card, context)
 		local planets_used = 0
@@ -1130,15 +1131,15 @@ SMODS.Joker {
 
 		if context.using_consumeable and not context.blueprint and context.consumeable.ability.set == 'Planet' and not context.blueprint then
             -- See note about SMODS Scaling Manipulation on the wiki
-            card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_bonus
+            card.ability.extra.xchips = card.ability.extra.xchips + card.ability.extra.xchips_bonus
             return {
-                message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult_bonus } }
+                message = localize { type = 'variable', key = 'a_xchips', vars = { card.ability.extra.xchips_bonus } }
             }
         end
 
 		if context.joker_main then
 			return {
-				xmult = card.ability.extra.xmult + (planets_used * card.ability.extra.xmult_mod)
+				xchips = card.ability.extra.xchips + (planets_used * card.ability.extra.xchips_mod)
 			}
 		end
 	end,
@@ -1300,9 +1301,143 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
+
+		if G.jokers then
+            local yiSangPresent = false  --ok
+            local faustPresent = false  --ok
+            local donQuixotePresent = false  --ok
+            local ryoshuPresent = false -- ok
+            local meursaultPresent = false --ok
+            local heathcliffPresent = false --ok
+            local ishmaelPresent = false  --ok
+            local sinclairPresent = false  --ok
+            local outisPresent = false  --ok
+            local gregorPresent = false  --ok
+
+            for i=1, #G.jokers.cards do
+
+                    if G.jokers.cards[i].config.center.key == "j_pmcmod_yiSang" or G.jokers.cards[i].config.center.key == "j_constellation" then
+                        yiSangPresent = true
+                    end
+
+                    if G.jokers.cards[i].config.center.key == "j_oops" then
+                        faustPresent = true
+                    end
+
+                    if G.jokers.cards[i].config.center.key == "j_pmcmod_donQuixote" or G.jokers.cards[i].config.center.key == "j_seeing_double" then
+                        donQuixotePresent = true
+                    end
+
+                    if G.jokers.cards[i].config.center.key == "j_pmcmod_ryoshu" or G.jokers.cards[i].config.center.key == "j_flower_pot" then
+                        ryoshuPresent = true
+                    end
+
+                    if G.jokers.cards[i].config.center.key == "j_baron" then
+                        meursaultPresent = true
+                    end
+
+                    if G.jokers.cards[i].config.center.key == "j_pmcmod_heathcliff" or G.jokers.cards[i].config.center.key == "j_hit_the_road" then
+                        heathcliffPresent = true
+                    end
+
+                    if G.jokers.cards[i].config.center.key == "j_pmcmod_ishmael" or G.jokers.cards[i].config.center.key == "j_midas_mask" then
+                        ishmaelPresent = true
+                    end
+
+                    if G.jokers.cards[i].config.center.key == "j_bootstraps" then
+                        rodionPresent = true
+                    end
+
+                    if G.jokers.cards[i].config.center.key == "j_idol" then
+                        sinclairPresent = true
+                    end
+
+                    if G.jokers.cards[i].config.center.key == "j_hanging_chad" then
+                        outisPresent = true
+                    end
+
+                    if G.jokers.cards[i].config.center.key == "j_ring_master" then
+                        gregorPresent = true
+                    end
+
+            end
+        end
+
+        local tempText = ""
+
+        for i = 1, 11 do
+            if i == 1 then
+
+                if yiSangPresent then
+                    tempText = tempText + localize('pmcmod_hongLu_yiSangEffect') + "\n"
+                end
+
+                if faustPresent then
+                    tempText = tempText + localize('pmcmod_hongLu_faustEffect') + "\n"
+                end
+
+                if donQuixotePresent then
+                    tempText = tempText + localize('pmcmod_hongLu_donQuixoteEffect') + "\n"
+                end
+
+                if ryoshuPresent then
+                    tempText = tempText + localize('pmcmod_hongLu_ryoshuEffect') + "\n"
+                end
+
+                if meursaultPresent then
+                    tempText = tempText + localize('pmcmod_hongLu_meursaultEffect') + "\n"
+                end
+
+                if heathcliffPresent then
+                    tempText = tempText + localize('pmcmod_hongLu_heathcliffEffect') + "\n"
+                end
+
+                if ishmaelPresent then
+                    tempText = tempText + localize('pmcmod_hongLu_ishmaelEffect') + "\n"
+                end
+
+                if rodionPresent then
+                    tempText = tempText + localize('pmcmod_hongLu_rodionEffect') + "\n"
+                end
+
+                if sinclairPresent then
+                    tempText = tempText + localize('pmcmod_hongLu_sinclairEffect') + "\n"
+                end
+
+                if outisPresent then
+                    tempText = tempText + localize('pmcmod_hongLu_outisEffect') + "\n"
+                end
+
+                if gregorPresent then
+                    tempText = tempText + localize('pmcmod_hongLu_gregorEffect') + "\n"
+                end
+
+            end
+        end
+
+
+        local main_end = nil
+        if card.area and (card.area == G.jokers) then
+            main_end = {
+                {
+                    n = G.UIT.C,
+                    config = { align = "bm", minh = 0.4 },
+                    nodes = {
+                        {
+                            n = G.UIT.C,
+                            config = { ref_table = card, align = "m", colour = G.C.RED, r = 0.05, padding = 0.06 },
+                            nodes = {
+                                { n = G.UIT.T, config = { text = tempText, colour = G.C.UI.TEXT_LIGHT, scale = 0.32 * 0.9 } },
+                            }
+                        }
+                    }
+                }
+            }
+        end
+
 		local new_numeratorYiSang, new_denominatorYiSang = SMODS.get_probability_vars(card, card.ability.extra.baseChanceYiSang, card.ability.extra.maxChanceYiSang, 'HLYiSangChance')
 		local new_numeratorFaust, new_denominatorFaust = SMODS.get_probability_vars(card, card.ability.extra.baseChanceFaust, card.ability.extra.maxChanceFaust, 'HLFaustChance')
-    	return {vars = { card.ability.extra.baseChanceYiSang, card.ability.extra.maxChanceYiSang, card.ability.extra.baseChanceFaust, card.ability.extra.maxChanceFaust,new_numeratorYiSang, new_denominatorYiSang, new_numeratorFaust, new_denominatorFaust}}
+    	return {main_end = main_end, vars = { card.ability.extra.baseChanceYiSang, card.ability.extra.maxChanceYiSang, card.ability.extra.baseChanceFaust, card.ability.extra.maxChanceFaust,new_numeratorYiSang, new_denominatorYiSang, new_numeratorFaust, new_denominatorFaust}}
 	end,
 	calculate = function(self, card, context)
 
@@ -1503,7 +1638,7 @@ SMODS.Joker {
 	key = 'heathcliff',
 	name = "Heathcliff",
 	pronouns = "he_him",
-	config = { extra = { cardsDestroyed = 0, joker_slots = 0 } },
+	config = { extra = { cardsDestroyed = 0, joker_slots = 0, extraJokerSlot = 1 } },
 	rarity = 3,
 	atlas = 'ModdedProjectMoon2',
 	pos = { x = 6, y = 0 },
@@ -1521,7 +1656,7 @@ SMODS.Joker {
 			end 
 		end
 
-    	return {vars = { card.ability.extra.cardsDestroyed, card.ability.extra.joker_slots }}
+    	return {vars = { card.ability.extra.cardsDestroyed, card.ability.extra.joker_slots, card.ability.extra.extraJokerSlot }}
 	end,
 	calculate = function(self, card, context)
 
@@ -1550,7 +1685,7 @@ SMODS.Joker {
 				if card.ability.extra.cardsDestroyed >= 2 then
 					G.jokers:change_size(1)
 					card.ability.extra.cardsDestroyed = 0
-					card.ability.extra.joker_slots = card.ability.extra.joker_slots + 1
+					card.ability.extra.joker_slots = card.ability.extra.joker_slots + card.ability.extra.extraJokerSlot
 				end
 			end
 		end
@@ -1755,7 +1890,7 @@ SMODS.Joker {
     key = "michelle",
 	name = "Michelle",
 	pronouns = "she_her",
-	config = {extra = 0.5, xmult = 1, roundCount = 0},
+	config = {extra = 0.5, xchips = 1, roundCount = 0},
 	unlocked = false,
     blueprint_compat = true,
     eternal_compat = false,
@@ -1788,7 +1923,8 @@ SMODS.Joker {
                 }
             }
         end
-        return { main_end = main_end, vars = { card.ability.extra, card.ability.xmult, card.ability.roundCount } }
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_meltdown"}
+        return { main_end = main_end, vars = { card.ability.extra, card.ability.xchips, card.ability.roundCount } }
     end,
     calculate = function(self, card, context)
 
@@ -1817,13 +1953,13 @@ SMODS.Joker {
 
 		if context.joker_main then
 			return {
-				message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.xmult } },
-				Xmult_mod = card.ability.xmult
+				message = localize { type = 'variable', key = 'a_xchips', vars = { card.ability.xchips } },
+				xchips = card.ability.xchips
 			}
 		end
         if context.selling_card and context.card.ability.set == "Joker" and not context.blueprint then
             if G.GAME.blind and not G.GAME.blind.disabled and G.GAME.blind.boss then
-			card.ability.xmult = card.ability.xmult + card.ability.extra	
+			card.ability.xchips = card.ability.xchips + card.ability.extra	
                 return {
                     message = localize('ph_boss_disabled'),
                     func = function()
@@ -1921,6 +2057,7 @@ SMODS.Joker {
  		["Heretics"] = true,
  	},
     loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_meltdown"}
         return {vars = { card.ability.extra.mult, card.ability.extra.roundCount } }
     end,
     calculate = function(self, card, context)
@@ -2022,7 +2159,7 @@ SMODS.Joker {
     key = "giovanni",
 	name = "Giovanni",
 	pronouns = "he_him",
-	config = {extra = {consumable_amount = 2, mult = 0, chips = 0, current_consumable_count = 0, roundCount = 0}},
+	config = {extra = {consumable_amount = 2, mult = 0, chips = 0, current_consumable_count = 0, roundCount = 0, mult_mod = 7, chips_mod = 10}},
 	unlocked = false,
     blueprint_compat = true,
     eternal_compat = false,
@@ -2036,7 +2173,9 @@ SMODS.Joker {
  	},
     pos = { x = 3, y = 0 },
     loc_vars = function(self, info_queue, card)
-        return {vars = { card.ability.extra.consumable_amount, card.ability.extra.mult, card.ability.extra.chips, card.ability.extra.current_consumable_count, card.ability.extra.roundCount } }
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_meltdown"}
+        return {vars = { card.ability.extra.consumable_amount, card.ability.extra.mult, card.ability.extra.chips, card.ability.extra.current_consumable_count, card.ability.extra.roundCount,
+						card.ability.extra.mult_mod, card,ability.extra.chips_mod } }
     end,
 
     calculate = function(self, card, context)
@@ -2117,6 +2256,9 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCorp'), G.C.RED, HEX('f2e396'), 1.2 )
  	end,
+	add_to_deck = function(self, card, from_debuff)
+        
+    end,
 	check_for_unlock = function(self, args)
         return args.type == 'win_deck' and get_deck_win_stake('b_anaglyph') > 2
     end
@@ -2141,6 +2283,7 @@ SMODS.Joker {
  	},
     pos = { x = 4, y = 0 },
     loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_meltdown"}
         return {vars = { card.ability.extra.totalSpades, card.ability.extra.totalClubs, card.ability.extra.totalHearts, card.ability.extra.totalDiamonds, card.ability.extra.mult, card.ability.extra.chips, card.ability.extra.roundCount  } }
     end,
 
@@ -2235,7 +2378,7 @@ SMODS.Joker {
     key = "daniel",
 	name = "Daniel",
 	pronouns = "he_him",
-	config = {extra = {xmult = 2, xmult_mod = 0.1, roundCount = 0}},
+	config = {extra = {xchips = 2, xchips_mod = 0.1, roundCount = 0}},
 	unlocked = false,
     blueprint_compat = true,
     eternal_compat = false,
@@ -2249,27 +2392,28 @@ SMODS.Joker {
  	},
     pos = { x = 5, y = 0 },
     loc_vars = function(self, info_queue, card)
-        return {vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod, card.ability.extra.roundCount } } 
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_meltdown"}
+        return {vars = { card.ability.extra.xchips, card.ability.extra.xchips_mod, card.ability.extra.roundCount } } 
     end,
 
     calculate = function(self, card, context)
 		if context.individual and context.cardarea == G.play and not context.blueprint then
-			card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
+			card.ability.extra.xchips = card.ability.extra.xchips + card.ability.extra.xchips_mod
 			return {
 					message_card=card,
-					message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult_mod } },
+					message = localize { type = 'variable', key = 'a_xchips', vars = { card.ability.extra.xchips_mod } },
 					colour = G.C.RED
 			}
         end
 		if context.discard and not context.blueprint and not context.other_card.debuff then
-            card.ability.extra.xmult = card.ability.extra.xmult - card.ability.extra.xmult_mod
+            card.ability.extra.xchips = card.ability.extra.xchips - card.ability.extra.xchips_mod
             return {
 				message_card=card,
-                message = localize { type = 'variable', key = 'a_xmult_minus', vars = { card.ability.extra.xmult_mod } },
+                message = localize { type = 'variable', key = 'a_xchips_minus', vars = { card.ability.extra.xchips_mod } },
                 colour = G.C.MULT
             }
         end
-		if context.after and context.main_eval and card.ability.extra.xmult <= 1 and not context.blueprint then
+		if context.after and context.main_eval and card.ability.extra.xchips <= 1 and not context.blueprint then
 			local percent = 1.15
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
@@ -2318,7 +2462,7 @@ SMODS.Joker {
 	end
 		if context.joker_main then
 			return {
-				xmult = card.ability.extra.xmult
+				xchips = card.ability.extra.xchips
 			}
 		end
     end,
@@ -2349,6 +2493,7 @@ SMODS.Joker {
  	},
     pos = { x = 6, y = 0 },
     loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_meltdown"}
         return {vars = { card.ability.extra.mult, card.ability.extra.roundCount } }
     end,
     calculate = function(self, card, context)
@@ -2423,7 +2568,7 @@ SMODS.Joker {
     key = "benjamin",
 	name = "Benjamin",
 	pronouns = "he_him",
-	config = {extra = {current_timer = 0, total_timer = 0, xmult = 1, xmult_mod = 0.2, consumablesUsed = 0, lastConsumable = "", roundCount = 0}},
+	config = {extra = {current_timer = 0, total_timer = 0, xmult = 1, xmult_mod = 0.2, consumablesUsed = 0, lastConsumable = "", roundCount = 0, time_limit = 400}},
 	unlocked = false,
     blueprint_compat = true,
     eternal_compat = false,
@@ -2443,7 +2588,8 @@ SMODS.Joker {
 			{n=G.UIT.O, config={object = DynaText({string = random_mult, colours = {G.C.RED}, pop_in_rate = 9999999, silent = true, pop_delay = 0.2011, scale = 0.32, min_cycle_time = 0})}},
 			{n=G.UIT.T, config={text = localize('pmcmod_seconds'),colour = G.C.MULT, scale = 0.32}} or nil,
 		}
-    	return {main_end = main_end, vars = { card.ability.extra.current_timer, card.ability.extra.total_timer, card.ability.extra.xmult + (card.ability.extra.xmult_mod * card.ability.extra.consumablesUsed), card.ability.extra.xmult_mod, card.ability.extra.roundCount }}
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_meltdown"}
+    	return {main_end = main_end, vars = { card.ability.extra.current_timer, card.ability.extra.total_timer, card.ability.extra.xmult + (card.ability.extra.xmult_mod * card.ability.extra.consumablesUsed), card.ability.extra.xmult_mod, card.ability.extra.roundCount, card.ability.extra.time_limit }}
 	end,
 	update = function (self, card, dt)
 			if G.GAME.blind and G.GAME.blind.in_blind then
@@ -2470,7 +2616,7 @@ SMODS.Joker {
 			card.ability.extra.current_timer = 0
 		end
 
-		if context.after and context.main_eval and card.ability.extra.total_timer >= 666 and not context.blueprint then
+		if context.after and context.main_eval and card.ability.extra.total_timer >= card.abilit.extra.time_limit and not context.blueprint then
 			local percent = 1.15
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
@@ -2551,6 +2697,7 @@ SMODS.Joker {
  	},
     pos = { x = 7, y = 0 },
     loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_meltdown"}
         return {vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod, card.ability.extra.roundCount } }
     end,
 
@@ -2642,6 +2789,7 @@ SMODS.Joker {
  	},
     pos = { x = 8, y = 0 },
     loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_meltdown"}
         return {vars = { card.ability.extra.enochDeathCounter, card.ability.extra.aceMult, card.ability.extra.aceMult_mod, card.ability.extra.roundCount } }
     end,
 
@@ -3235,7 +3383,7 @@ SMODS.Joker {
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_unknown'), G.C.BLACK, HEX('9e13bd'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
-        return args.type == 'win_deck' and get_deck_win_stake('b_pmcmod_serpent') > 1
+        return args.type == 'win_deck' and get_deck_win_stake('b_pmcmod_serpentDeck') > 1
     end
 }
 
@@ -3281,7 +3429,7 @@ SMODS.Joker {
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_unknown'), G.C.BLACK, HEX('9e13bd'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
-        return args.type == 'win_deck' and get_deck_win_stake('b_pmcmod_serpent') > 2
+        return args.type == 'win_deck' and get_deck_win_stake('b_pmcmod_serpentDeck') > 2
     end
 }
 
@@ -3327,7 +3475,7 @@ SMODS.Joker {
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_unknown'), G.C.BLACK, HEX('9e13bd'), 1.2 )
  	end,
 	check_for_unlock = function(self, args)
-        return args.type == 'win_deck' and get_deck_win_stake('b_pmcmod_serpent') > 3
+        return args.type == 'win_deck' and get_deck_win_stake('b_pmcmod_serpentDeck') > 3
     end
 }
 
@@ -3571,7 +3719,7 @@ SMODS.Joker {
     key = "demian",
 	name = "Demian",
 	pronouns = "he_him",
-    config = { extra = { Xmult = 1, Xmult_mod = 0.3 } },
+    config = { extra = { xchips = 1, xchips_mod = 0.3 } },
 	unlocked = false,
 	eternal_compat = true,
     blueprint_compat = true,
@@ -3585,25 +3733,24 @@ SMODS.Joker {
         ["DemiansGroup"] = true,
  	},
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.Xmult_mod, card.ability.extra.Xmult } }
+        return { vars = { card.ability.extra.xchips_mod, card.ability.extra.xchips } }
     end,
     calculate = function(self, card, context)
         if context.using_consumeable and not context.blueprint and context.consumeable.ability.set == 'Spectral' then
-            card.ability.extra.Xmult = card.ability.extra.Xmult + card.ability.extra.Xmult_mod
+            card.ability.extra.xchips = card.ability.extra.xchips + card.ability.extra.xchips_mod
             return {
-                message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.Xmult } }
+                message = localize { type = 'variable', key = 'a_xchips', vars = { card.ability.extra.xchips } }
             }
         end
         if context.joker_main then
             return {
-                Xmult = card.ability.extra.Xmult
+                xchips = card.ability.extra.xchips
             }
         end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_sovereigns'), HEX('d61f11'), HEX('470d09'), 1.2 )
- 	end
-	,
+ 	end,
 	check_for_unlock = function(self, args)
         return args.type == 'win_deck' and get_deck_win_stake('b_erratic') > 4
     end
@@ -3653,7 +3800,7 @@ SMODS.Joker {
 	key = 'sanson',
 	name = 'Sanson',
 	pronouns = "he_him",
-	config = { extra = { multiplied_value = 3 } },
+	config = { extra = { multiplied_value = 5 } },
 	rarity = 2,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 6, y = 1 },
@@ -4290,7 +4437,7 @@ SMODS.Joker {
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
-	config = { extra = { xmult = 1, xmult_gain = 1 } },
+	config = { extra = { xchips = 1, xchips_gain = 1 } },
 	rarity = 3,
 	cost = 9,
     atlas = 'ModdedProjectMoon',
@@ -4314,7 +4461,7 @@ SMODS.Joker {
 			card.children.center:set_sprite_pos({x = 0 , y = 3})
 		end
 
-		return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_gain },key = tempKey, }
+		return { vars = { card.ability.extra.xchips, card.ability.extra.xchips_gain },key = tempKey, }
 		
 	end,
 	calculate = function(self, card, context)
@@ -4327,12 +4474,12 @@ SMODS.Joker {
 					end
 				end
 			end
-		card.ability.extra.xmult = 1 + joker_count
+		card.ability.extra.xchips = 1 + joker_count
 
 		if context.joker_main then
 			return {
-				xmult = card.ability.extra.xmult,
-				message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } }
+				xchips = card.ability.extra.xchips,
+				message = localize { type = 'variable', key = 'a_xchips', vars = { card.ability.extra.xchips } }
 			}
 		end
 
@@ -4695,7 +4842,7 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.mult } }
+		return { vars = { card.ability.extra.mult, card.ability.extra.handSize } }
 	end,
 	calculate = function(self, card, context)
 		if context.joker_main then
@@ -4708,7 +4855,14 @@ SMODS.Joker {
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_rosespanner'), HEX('380e21'), HEX('ed2680'), 1.2 )
- 	end
+ 	end,
+	add_to_deck = function(self, card, from_debuff)
+        G.GAME.starting_params.hand_size = G.GAME.starting_params.hand_size + card.ability.extra.handSize
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.starting_params.hand_size = G.GAME.starting_params.hand_size - card.ability.extra.handSize
+    end,
+	
 }
 
 -- Ahab
@@ -4819,7 +4973,7 @@ SMODS.Joker {
 	key = 'queequeg',
 	name = "Queequeg",
 	pronouns = "she_her",
-	config = { extra = { dollars = 1} },
+	config = { extra = { dollars = 3} },
 	unlocked = false,
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -4848,7 +5002,7 @@ SMODS.Joker {
 			tempKey = self.key
 			card.children.center:set_sprite_pos({x = 9 , y = 3})
 		end
-		return { vars = { card.ability.extra.mult, key = tempKey  } }
+		return { vars = { card.ability.extra.dollars, key = tempKey  } }
 	end,
 	calculate = function(self, card, context)
 		if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, 'm_pmcmod_pallid') then
@@ -4894,7 +5048,7 @@ SMODS.Joker {
 	key = 'starbuck',
 	name = "Starbuck",
 	pronouns = "he_him",
-	config = { extra = { mult = 7} },
+	config = { extra = { mult = 12} },
 	unlocked = false,
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -5014,7 +5168,7 @@ SMODS.Joker {
 	key = 'pip',
 	name = "Pip",
 	pronouns = "he_him",
-	config = { extra = { chips = 13} },
+	config = { extra = { chips = 30} },
 	unlocked = false,
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -5080,7 +5234,7 @@ SMODS.Joker {
 	key = 'pilot',
 	name = "Pilot",
 	pronouns = "he_him",
-	config = { extra = { mult = 0} },
+	config = {  },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -5093,7 +5247,7 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.mult } }
+		return { vars = {  } }
 	end,
 	calculate = function(self, card, context)
 		if context.setting_blind and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
@@ -5161,7 +5315,7 @@ SMODS.Joker {
 	name = "Ricardo",
 	pronouns = "he_him",
 	unlocked = false,
-	config = { extra = { mult = 10, multBase = 10, mult_mod = 10, canSpawnDummy = true, xmult = 1} },
+	config = { extra = { mult = 15, multBase = 10, mult_mod = 10, canSpawnDummy = true, xmult = 1} },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -5197,7 +5351,7 @@ SMODS.Joker {
 		if context.joker_main then
 			return {
 				mult = card.ability.extra.mult,
-				xmult= card.ability.extra.xmult
+				xmult = card.ability.extra.xmult
 			}
 		end	
     end,
@@ -5800,7 +5954,7 @@ SMODS.Joker {
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
-	config = { extra = { Xmult = 1.25 } },
+	config = { extra = { xchips = 1.25 } },
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
@@ -5810,13 +5964,13 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.Xmult } }
+		return { vars = { card.ability.extra.xchips } }
 	end,
 	calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play then
             if context.other_card:get_id() == 7 then
                 return {
-                    Xmult = card.ability.extra.Xmult,
+                    xchips = card.ability.extra.xchips,
                 }
             end
         end
@@ -5914,14 +6068,15 @@ SMODS.Joker {
     cost = 4,
 	atlas = 'ModdedProjectMoon',
     pos = { x = 5, y = 7 },
-	config = { extra = { baseChance = 1, maxChance = 4 } },
+	config = { extra = { baseChance = 1, maxChance = 2, pity = false } },
 	loc_vars = function(self, info_queue, card)
 		local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'crayonChance')
 		return { vars = { new_numerator, new_denominator } }
 	end,
     calculate = function(self, card, context)
         if context.setting_blind then
-			if SMODS.pseudorandom_probability(card, 'crayon', card.ability.extra.baseChance, card.ability.extra.maxChance, 'crayonChance') then
+			if SMODS.pseudorandom_probability(card, 'crayon', card.ability.extra.baseChance, card.ability.extra.maxChance, 'crayonChance') or card.ability.extra.pity then
+				card.ability.extra.pity = false
 				if #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
 					local chosenConsumable = math.random(1, 10)
 					if chosenConsumable == 1 then
@@ -5981,6 +6136,10 @@ SMODS.Joker {
 						}
 					end
 				end
+			else
+
+				card.ability.extra.pity = true
+
         	end
 		end
     end,
@@ -5998,11 +6157,11 @@ SMODS.Joker {
     blueprint_compat = false,
 	eternal_compat = true,
     perishable_compat = true,
-    rarity = 1,
-    cost = 4,
+    rarity = 2,
+    cost = 6,
 	atlas = 'ModdedProjectMoon',
     pos = { x = 6, y = 7 },
-	config = { extra = { baseChance = 1, maxChance = 4 } },
+	config = { extra = { baseChance = 1, maxChance = 1 } },
 	loc_vars = function(self, info_queue, card)
 		local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'dominoChance')
 		info_queue[#info_queue + 1] = { key = 'tag_coupon', set = 'Tag' }
@@ -6366,18 +6525,18 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 5 },
-	config = { extra = { xmult = 1.2 } },
+	config = { extra = { xmult = 1.3 } },
     pools =
 	{
 		
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = { card.ability.extra.xmult } }
+        return {vars = { card.ability.extra.xchips } }
 	end,
 	calculate = function(self, card, context)
 		if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, 'm_steel') then
                 return {
-                    xmult = card.ability.extra.xmult,
+                    xchips = card.ability.extra.xchips,
                 }
         end
     end,
@@ -6646,7 +6805,7 @@ SMODS.Joker {
 	name = "Camille",
 	pronouns = "he_him",
 	unlocked = false,
-	config = { extra = { mult = 0} },
+	config = { extra = { mult = 0, percentage = 10} },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -6660,13 +6819,13 @@ SMODS.Joker {
  	},
 	loc_vars = function(self, info_queue, card)
 		
-        return {vars = { card.ability.extra.mult } }
+        return {vars = { card.ability.extra.mult, card.ability.extra.percentage } }
 	end,
 	calculate = function(self, card, context)
 		
 		if context.setting_blind and not context.blueprint then
 
-			local moneyToSubtract = math.floor(G.GAME.dollars / 20)
+			local moneyToSubtract = math.floor(G.GAME.dollars * card.ability.extra.percentage / 100)
 
 			ease_dollars(-moneyToSubtract)
 
@@ -6771,6 +6930,9 @@ SMODS.Joker {
 
                 if joker_to_destroy and not (context.blueprint_card or self).getting_sliced then
 					card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod
+					if card.ability.extra.mult_mod > 10 then
+						card.ability.extra.mult_mod = 10
+					end
                     joker_to_destroy.getting_sliced = true
                     G.E_MANAGER:add_event(Event({func = function()
                         card:juice_up(0.8, 0.8)
@@ -6784,6 +6946,11 @@ SMODS.Joker {
 			return {
 				mult = card.ability.extra.mult
 			}
+		end
+    end,
+	add_to_deck = function(self, card, from_debuff)
+        if PMCMOD.config.enable_adaptative_scaling and G.GAME.round_resets.blind_ante > 1 then
+			card.ability.extra.mult_mod = card.ability.extra.mult_mod + ((G.GAME.round_resets.blind_ante - 2) * 5)
 		end
     end,
 	set_badges = function(self, card, badges)
@@ -6843,7 +7010,7 @@ SMODS.Joker {
 	name = "Caiman",
 	pronouns = "she_her",
 	unlocked = true,
-	config = { extra = {baseChance = 1, maxChance = 6 } },
+	config = { extra = {baseChance = 1, maxChance = 4 } },
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = true,
@@ -6930,7 +7097,7 @@ SMODS.Joker {
 	name = "Jun",
 	pronouns = "he_him",
 	unlocked = true,
-	config = { extra = {xmult = 3} },
+	config = { extra = {xmult = 2.5} },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -7003,7 +7170,7 @@ SMODS.Joker {
 	name = "Mai",
 	pronouns = "she_her",
 	unlocked = false,
-	config = { extra = { xmult } },
+	config = { extra = { xmult = 0 } },
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = true,
@@ -7342,7 +7509,7 @@ SMODS.Joker {
 	name = "Alyssa",
 	pronouns = "she_her",
 	unlocked = true,
-	config = { extra = { mult = 4} },
+	config = { extra = { mult = 8} },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -7391,7 +7558,7 @@ SMODS.Joker {
 	name = "Marton",
 	pronouns = "he_him",
 	unlocked = true,
-	config = { extra = { chips = 8} },
+	config = { extra = { chips = 14} },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -7419,7 +7586,7 @@ SMODS.Joker {
 
         if G.playing_cards then
             for _, playing_card in ipairs(G.playing_cards) do
-                if SMODS.has_enhancement(playing_card, 'm_mult') then chipsCardsTally = chipsCardsTally + 1 end
+                if SMODS.has_enhancement(playing_card, 'm_bonus') then chipsCardsTally = chipsCardsTally + 1 end
             end
         end
 
@@ -7452,12 +7619,14 @@ SMODS.Joker {
 	{
 
  	},
+	no_pool_flag = 'johann_extinct',
 	loc_vars = function(self, info_queue, card)
 		
         return {vars = {  } }
 	end,
 	calculate = function(self, card, context)
 		if context.joker_type_destroyed then
+			G.GAME.pool_flags.johann_extinct = true
 			G.E_MANAGER:add_event(Event({
 					func = function()
 						play_sound('slice1', 0.96+math.random()*0.08)
@@ -7651,7 +7820,7 @@ SMODS.Joker {
 	pos = { x = 5, y = 6 },
     pools =
 	{
-
+		["Middle"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
         return {vars = { card.ability.extra.chips, card.ability.extra.chips_mod } }
@@ -7699,7 +7868,7 @@ SMODS.Joker {
 	pos = { x = 2, y = 2 },
     pools =
 	{
-
+		["Ring"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
         return {vars = { localize(card.ability.extra.type, 'poker_hands') } }
@@ -7776,7 +7945,15 @@ SMODS.Joker {
 	pos = { x = 3, y = 2 },
     pools =
 	{
-
+		["Thumb"] = true,
+        ["Index"] = true,
+        ["Middle"] = true,
+        ["Ring"] = true,
+        ["Pinky"] = true,
+        ["Bloodfiend"] = true,
+        ["LCorp"] = true,
+        ["Limbus"] = true,
+        ["Sinner"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
 		local keyToLocalize = "j_pmcmod_garnet"
@@ -9688,7 +9865,7 @@ SMODS.Joker {
 	pos = { x = 5, y = 5 },
     pools =
 	{
-
+		["Index"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
         return {vars = { card.ability.extra.mult, card.ability.extra.soraDeathCounter, card.ability.extra.mult_mod, } }
@@ -9819,7 +9996,7 @@ SMODS.Joker {
 	pos = { x =6, y = 5 },
     pools =
 	{
-
+		["Middle"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
 		local burn_tally = 0
@@ -9921,7 +10098,7 @@ SMODS.Joker {
 	pos = { x =7, y = 5 },
     pools =
 	{
-
+		["Ring"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
         return {vars = { card.ability.extra.chips, card.ability.extra.mult } }
@@ -10043,7 +10220,7 @@ SMODS.Joker {
 	pos = { x = 8, y = 5 },
     pools =
 	{
-
+		["Pinky"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
         return {vars = {  } }
@@ -10106,7 +10283,7 @@ SMODS.Joker {
 	name = "Lucio",
 	pronouns = "he_him",
 	unlocked = true,
-	config = { extra = { currentPosition = 1, lucioDeathCounter = 0, dollars = 3, valencinaPresent = false, valencinaPos = nil } },
+	config = { extra = { currentPosition = 1, lucioDeathCounter = 0, dollars = 6, valencinaPresent = false, valencinaPos = nil } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -10116,10 +10293,10 @@ SMODS.Joker {
 	pos = { x =9, y = 5 },
     pools =
 	{
-
+		["Thumb"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = { card.ability.extra.lucioDeathCounter, card.ability.extra.dollars, card.ability.extra.dollars * 3} }
+        return {vars = { card.ability.extra.lucioDeathCounter, card.ability.extra.dollars, card.ability.extra.dollars * 2} }
 	end,
 	calculate = function(self, card, context)
 
@@ -10147,7 +10324,7 @@ SMODS.Joker {
 		if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, 'm_pmcmod_tremor') then
 			local multiplier = 1
 			if card.ability.extra.valencinaPresent then
-				multiplier = 3
+				multiplier = 2
 				card.ability.extra.lucioDeathCounter = card.ability.extra.lucioDeathCounter + 1
 			end
 			return {
@@ -10195,7 +10372,7 @@ SMODS.Joker {
 	pos = { x =0, y = 6 },
     pools =
 	{
-
+		["Index"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
 		
@@ -10323,7 +10500,7 @@ SMODS.Joker {
 	name = "Kira",
 	pronouns = "she_her",
 	unlocked = true,
-	config = { extra = { currentPosition = 1, kiraDeathCounter = 0, dollars = 2, matthiasPresent = false, matthiasPos = nil } },
+	config = { extra = { currentPosition = 1, kiraDeathCounter = 0, dollars = 4, matthiasPresent = false, matthiasPos = nil } },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -10333,10 +10510,10 @@ SMODS.Joker {
 	pos = { x =1, y = 6 },
     pools =
 	{
-
+		["Middle"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = { card.ability.extra.kiraDeathCounter, card.ability.extra.dollars, card.ability.extra.dollars * 3} }
+        return {vars = { card.ability.extra.kiraDeathCounter, card.ability.extra.dollars, card.ability.extra.dollars * 2} }
 	end,
 	calculate = function(self, card, context)
 		if context.before then
@@ -10363,7 +10540,7 @@ SMODS.Joker {
 		if context.individual and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, 'm_pmcmod_burn') then
 			local multiplier = 1
 			if card.ability.extra.matthiasPresent then
-				multiplier = 3
+				multiplier = 2
 				card.ability.extra.kiraDeathCounter = card.ability.extra.kiraDeathCounter + 1
 			end
 			return {
@@ -10411,7 +10588,7 @@ SMODS.Joker {
 	pos = { x = 2, y = 6 },
     pools =
 	{
-
+		["Ring"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
 		local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'ren')
@@ -10502,7 +10679,7 @@ SMODS.Joker {
 	pos = { x = 3, y = 6 },
     pools =
 	{
-
+		["Pinky"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
         local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'ren')
@@ -10582,7 +10759,7 @@ SMODS.Joker {
 	pos = { x = 4, y = 6 },
     pools =
 	{
-
+		["Limbus"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
         local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'ravi')
@@ -10634,7 +10811,7 @@ SMODS.Joker {
 	name = "Jamila",
 	pronouns = "she_her",
 	unlocked = true,
-	config = { multBase = 10 },
+	config = { multBase = 15 },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -10644,7 +10821,7 @@ SMODS.Joker {
 	pos = { x = 6, y = 6 },
     pools =
 	{
-
+		["LCorp"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
 		
@@ -10689,7 +10866,7 @@ SMODS.Joker {
 	pos = { x = 7, y = 6 },
     pools =
 	{
-
+		["Sinner"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
         return {vars = {  } }
@@ -11341,8 +11518,8 @@ SMODS.Joker {
 	key = 'indigoElder',
 	name = "Indigo Elder",
 	pronouns = "he_him",
-	config = { extra = { dollars = 2, chips = 10, mult = 5, xmult = 1, 
-						 dollars_mod = 1, chips_mod = 10, mult_mod = 3, xmult_mod = 0.2,
+	config = { extra = { dollars = 2, chips = 10, mult = 5, xchips = 1, 
+						 dollars_mod = 1, chips_mod = 10, mult_mod = 3, xchips_mod = 0.2,
 						 lockedPosition = 0} },
 	eternal_compat = true,
 	blueprint_compat = true,
@@ -11357,7 +11534,7 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.dollars, card.ability.extra.chips, card.ability.extra.mult, card.ability.extra.xmult, card.ability.extra.lockedPosition } }
+		return { vars = { card.ability.extra.dollars, card.ability.extra.chips, card.ability.extra.mult, card.ability.extra.xchips, card.ability.extra.lockedPosition } }
 	end,
 	calculate = function(self, card, context)
 
@@ -11393,7 +11570,7 @@ SMODS.Joker {
 				card.ability.extra.dollars = card.ability.extra.dollars + card.ability.extra.dollars_mod
 				card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
 				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod
-				card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
+				card.ability.extra.xchips = card.ability.extra.xchips + card.ability.extra.xchips_mod
 			elseif card.ability.extra.lockedPosition == 2 then
 				card.ability.extra.dollars = card.ability.extra.dollars + card.ability.extra.dollars_mod
 			elseif card.ability.extra.lockedPosition == 3 then
@@ -11401,7 +11578,7 @@ SMODS.Joker {
 			elseif card.ability.extra.lockedPosition == 4 then
 				card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_mod
 			else 
-				card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
+				card.ability.extra.xchips = card.ability.extra.xchips + card.ability.extra.xchips_mod
 			end
 
 		end
@@ -11423,7 +11600,7 @@ SMODS.Joker {
 	name = "Yellow Harpoon",
 	pronouns = "he_him",
 	unlocked = true,
-	config = { extra = { base_xmult = 1.0 } },
+	config = { extra = { base_xchips = 1.0 } },
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -11437,23 +11614,23 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = { card.ability.extra.base_xmult + 0.2, card.ability.extra.base_xmult + 1.0 } }
+        return {vars = { card.ability.extra.base_xchips + 0.2, card.ability.extra.base_xchips + 1.0 } }
 	end,
 	calculate = function(self, card, context)
 		local selectedXMult = 1.0
 
 		if context.other_joker and not context.blueprint then
 			if context.other_joker.config.center.rarity == 1 or context.other_joker.config.center.rarity == "Common" then
-				selectedXMult = card.ability.extra.base_xmult + 0.2
+				selectedXMult = card.ability.extra.base_xchips + 0.2
 			elseif context.other_joker.config.center.rarity == 2 or context.other_joker.config.center.rarity == "Uncommon" then
-				selectedXMult = card.ability.extra.base_xmult + 0.4
+				selectedXMult = card.ability.extra.base_xchips + 0.4
 			elseif context.other_joker.config.center.rarity == 3 or context.other_joker.config.center.rarity == "Rare" then
-				selectedXMult = card.ability.extra.base_xmult + 0.6
+				selectedXMult = card.ability.extra.base_xchips + 0.6
 			else
-				selectedXMult = card.ability.extra.base_xmult + 1.0
+				selectedXMult = card.ability.extra.base_xchips + 1.0
 			end
             return {
-                xmult = selectedXMult
+                xchips = selectedXMult
             }
         end
     end,
@@ -11471,7 +11648,7 @@ SMODS.Joker {
     key = "sephirahHod",
 	name = "Sephirah Hod",
 	pronouns = "she_her",
-	config = {extra = 1, xmult = 1},
+	config = {extra = 1, xchips = 1},
     blueprint_compat = true,
 	perishable_compat = false,
     rarity = 3,
@@ -11503,18 +11680,18 @@ SMODS.Joker {
                 }
             }
         end
-        return { main_end = main_end, vars = { card.ability.extra, card.ability.xmult } }
+        return { main_end = main_end, vars = { card.ability.extra, card.ability.xchips } }
     end,
     calculate = function(self, card, context)
 		if context.joker_main then
 			return {
-				message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.xmult } },
-				xmult = card.ability.xmult
+				message = localize { type = 'variable', key = 'a_xchips', vars = { card.ability.xchips } },
+				xchips = card.ability.xchips
 			}
 		end
         if context.selling_card and context.card.ability.set == "Joker" and not context.blueprint then
             if G.GAME.blind and not G.GAME.blind.disabled and G.GAME.blind.boss then
-			card.ability.xmult = card.ability.xmult + card.ability.extra	
+			card.ability.xchips = card.ability.xchips + card.ability.extra	
                 return {
                     message = localize('ph_boss_disabled'),
                     func = function()
@@ -11695,7 +11872,7 @@ SMODS.Joker {
     key = "sephirahChesed",
 	name = "Sephirah Chesed",
 	pronouns = "he_him",
-	config = {extra = {xmult = 2, xmult_mod = 0.1, baseChance = 1, maxChance = 2}},
+	config = {extra = {xchips = 2, xchips_mod = 0.1, baseChance = 1, maxChance = 2}},
     blueprint_compat = true,
     eternal_compat = false,
 	perishable_compat = false,
@@ -11709,15 +11886,15 @@ SMODS.Joker {
     pos = { x = 5, y = 11 },
     loc_vars = function(self, info_queue, card)
 		local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'chesed')
-        return {vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod, new_numerator, new_denominator } } 
+        return {vars = { card.ability.extra.xchips, card.ability.extra.xchips_mod, new_numerator, new_denominator } } 
     end,
 
     calculate = function(self, card, context)
 		if context.individual and context.cardarea == G.play then
 			if SMODS.pseudorandom_probability(card, 'chesed', card.ability.extra.baseChance, card.ability.extra.maxChance, 'chesed') then
-				card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
+				card.ability.extra.xchips = card.ability.extra.xchips + card.ability.extra.xchips_mod
 				return {
-						message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.xmult_mod } },
+						message = localize { type = 'variable', key = 'a_xchips', vars = { card.ability.extra.xchips_mod } },
 						colour = G.C.RED
 				}
 			end
@@ -11725,8 +11902,8 @@ SMODS.Joker {
 
 		if context.joker_main then
 			return {
-				message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } },
-				xmult = card.ability.xmult
+				message = localize { type = 'variable', key = 'a_xchips', vars = { card.ability.extra.xchips } },
+				xchips = card.ability.xchips
 			}
 		end
     end,
@@ -11938,7 +12115,7 @@ SMODS.Joker {
     key = "robotHod",
 	name = "Hod (Robot)",
 	pronouns = "she_her",
-	config = {xmult = 2},
+	config = {xchips = 2},
     blueprint_compat = true,
     eternal_compat = true,
 	perishable_compat = false,
@@ -11951,7 +12128,7 @@ SMODS.Joker {
  		["Heretics"] = true,
  	},
     loc_vars = function(self, info_queue, card)
-        return { main_end = main_end, vars = { card.ability.xmult } }
+        return { vars = { card.ability.xchips } }
     end,
     calculate = function(self, card, context)
 		local selectedJoker
@@ -11976,7 +12153,7 @@ SMODS.Joker {
 
 		if context.joker_main then
 			return {
-				xmult = card.ability.xmult
+				xchips = card.ability.xchips
 			}
 		end
 		
@@ -12110,7 +12287,7 @@ SMODS.Joker {
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
-	rarity = 2,
+	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 4, y = 12 },
@@ -12182,7 +12359,7 @@ SMODS.Joker {
     key = "robotChesed",
 	name = "Chesed (Robot)",
 	pronouns = "he_him",
-	config = {extra = {odds_upgrade = 8, xmult = 1, xmult_mod = 0.1}},
+	config = {extra = {odds_upgrade = 8, xchips = 1, xchips_mod = 0.1}},
     blueprint_compat = true,
     eternal_compat = true,
 	perishable_compat = false,
@@ -12195,7 +12372,7 @@ SMODS.Joker {
  	},
     pos = { x = 5, y = 12 },
     loc_vars = function(self, info_queue, card)
-        return {vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds_upgrade, card.ability.extra.xmult, card.ability.extra.xmult_mod } } 
+        return {vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds_upgrade, card.ability.extra.xchips, card.ability.extra.xchips_mod } } 
     end,
     calculate = function(self, card, context)
 
@@ -12219,17 +12396,16 @@ SMODS.Joker {
 
 		if context.individual and context.cardarea == G.play then
             if (pseudorandom('daniel_upgrade') < G.GAME.probabilities.normal / card.ability.extra.odds_upgrade) then
-				card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
+				card.ability.extra.xchips = card.ability.extra.xchips + card.ability.extra.xchips_mod
 				return {
-						message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.xmult_mod } },
+						message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.xchips_mod } },
 						colour = G.C.RED
 				}
 			end
         end
 		if context.joker_main then
 			return {
-				message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.xmult } },
-				Xmult_mod = card.ability.extra.xmult
+				xchips = card.ability.extra.xchips
 			}
 		end
 		
@@ -13004,7 +13180,7 @@ SMODS.Joker {
 	key = 'puppetA',
 	name = "Puppet",
 	pronouns = "it_its",
-	config = { extra = { mult = 15, counter = 0 } },
+	config = { extra = { mult = 10, counter = 0 } },
     blueprint_compat = true,
     eternal_compat = false,
 	perishable_compat = true,
@@ -13067,7 +13243,7 @@ SMODS.Joker {
 	key = 'puppetB',
 	name = "Nimble Puppet",
 	pronouns = "it_its",
-	config = { extra = { mult = 30, counter = 0 } },
+	config = { extra = { mult = 20, counter = 0 } },
     blueprint_compat = true,
     eternal_compat = false,
 	perishable_compat = true,
@@ -13130,7 +13306,7 @@ SMODS.Joker {
 	key = 'puppetC',
 	name = "Weighty Puppet",
 	pronouns = "it_its",
-	config = { extra = { mult = 50, counter = 0 } },
+	config = { extra = { mult = 30, counter = 0 } },
     blueprint_compat = true,
     eternal_compat = false,
 	perishable_compat = true,
@@ -13194,7 +13370,7 @@ SMODS.Joker {
 	key = 'puppetAngelica',
 	name = "Puppet Angelica",
 	pronouns = "it_its",
-	config = { extra = { mult = 60, counter = 0 } },
+	config = { extra = { mult = 40, counter = 0 } },
     blueprint_compat = true,
     eternal_compat = false,
 	perishable_compat = true,
@@ -13232,7 +13408,7 @@ SMODS.Joker {
 	name = "Dummy Ricardo",
 	pronouns = "it_its",
 	config = { extra = { ricardoDefeatCounter = 0, canSpawnRicardo = false, baseChance = 1, maxChance = 3} },
-	no_collection = true,    --In testing
+	no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -13279,7 +13455,7 @@ SMODS.Joker {
 	name = "Voice of the City",
 	pronouns = "it_its",
 	config = { extra = { prescriptListShuffled = {}, prescriptActive = false, currentPrescript = 0} },
-	no_collection = true,    --In testing
+	no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -13325,7 +13501,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, faces = 5} },
-	no_collection = true,    --In testing
+	no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13386,7 +13562,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, jokerSelected = false, selectedJoker = "", selectedJokerName = ""} },
-	no_collection = true,    --In testing
+	no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13471,7 +13647,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, selectedRank = "", prescriptFailed = false} },
-	no_collection = true,    --In testing
+	no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13526,7 +13702,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
-	no_collection = true,    --In testing
+	no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13581,7 +13757,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
-	no_collection = true,    --In testing
+	no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13643,7 +13819,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, boosterSkipCount = 0} },
-	no_collection = true,    --In testing
+	no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13705,7 +13881,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
-	no_collection = true,    --In testing
+	no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13724,7 +13900,7 @@ SMODS.Joker {
 
 
 		if context.selling_card and context.card.ability.set == "Joker" and not context.blueprint then
-			if context.card.config.center.rarity == 2 then
+			if context.card.config.center.rarity >= 2 then
 				card.ability.extra.prescriptFullfilled = true
             end
         end
@@ -13764,7 +13940,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
-	no_collection = true,    --In testing
+	no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13821,7 +13997,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
-	no_collection = true,    --In testing
+	no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13879,7 +14055,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, current_consumable_count = 0} },
-	no_collection = true,    --In testing
+	no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13938,7 +14114,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
-	no_collection = true,    --In testing
+	no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -14049,7 +14225,7 @@ SMODS.Joker {
 	name = "Children of The Galaxy",
 	pronouns = "they_them",
 	config = { extra = {baseChance = 1, maxChance = 4, priceIncrease = 20} },
-	no_collection = true,    --In testing
+	no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -14097,7 +14273,7 @@ SMODS.Joker {
 	name = "Laetitia",
 	pronouns = "they_them",
 	config = { extra = {baseChance = 1, maxChance = 10} },
-	no_collection = true,    --In testing
+	no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -14193,7 +14369,7 @@ SMODS.Joker {
 	name = "[CENSORED]",
 	pronouns = "it_its",
 	config = { extra = {} },
-	no_collection = true,    --In testing
+	no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -14216,4 +14392,3 @@ SMODS.Joker {
         return G.GAME.pool_flags.fake_robot_flag
     end,
 }
-
