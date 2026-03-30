@@ -45,7 +45,7 @@ return {
                 name = 'The Index Deck',
                 text = {
                     "Starts with an eternal",
-			        "{C:attention,T:j_pmcmod_voiceOfTheCity}Voice of the City{} page.",
+			        "{C:attention,T:j_pmcmod_voiceOfTheCity}Voice of the City{} page",
                 },
                 unlock = {
                     'Win a run with {C:attention}Natural Sciences Deck{}',
@@ -56,7 +56,7 @@ return {
                 name = 'Silent Deck',
                 text = {
                     "Starts with an Eternal",
-                    "{C:attention,T:j_pmcmod_silence}Time Flowing{} page.",
+                    "{C:attention,T:j_pmcmod_silence}Time Flowing{} page",
                     "{C:blue}+2 hands{}",
                     "{C:red}+2 discards{}",
                     "{C:inactive}+1 Keypage slot{}",
@@ -70,7 +70,7 @@ return {
                 name = 'Shy Deck',
                 text = {
                     "Starts with an eternal",
-			        "{C:attention,T:j_pmcmod_shylook}Today's Shy Look{} page.",
+			        "{C:attention,T:j_pmcmod_shylook}Today's Shy Look{} page",
                 },
                 unlock = {
                     'Win a run with {C:attention}Literature Deck{}',
@@ -81,7 +81,7 @@ return {
                 name = 'Love Deck',
                 text = {
                     "Starts with an eternal",
-			        "{C:attention,T:j_pmcmod_queenOfHatred}Queen of Hatred{} page.",
+			        "{C:attention,T:j_pmcmod_queenOfHatred}Queen of Hatred{} page",
                 },
                 unlock = {
                     'Win a run with {C:attention}Natural Sciences Deck{}',
@@ -92,8 +92,8 @@ return {
                 name = 'Serpent Deck',
                 text = {
                     "Gets a new bonus with {C:attention}each{}",
-			        "{C:attention}cleared Act{} (up until Act 10).",
-			        "Required score scaling is doubled.",
+			        "{C:attention}cleared Act{} (up until Act 10)",
+			        "Required score scaling is doubled",
                 },
                 unlock = {
                     'Win a run with {C:attention}General Deck{}',
@@ -104,7 +104,7 @@ return {
                 name = 'Gift Deck',
                 text = {
                     "Starts with an Eternal",
-                    "{C:attention,T:j_pmcmod_laetitia}Here’s a Gift~{} page.",
+                    "{C:attention,T:j_pmcmod_laetitia}Here’s a Gift~{} page",
                     "{C:blue}+2 hands{}",
                 },
                 unlock = {
@@ -116,9 +116,9 @@ return {
                 name = 'Galaxy Deck',
                 text = {
                     "Starts with an Eternal",
-                    "{C:attention,T:j_pmcmod_childrenOfTheGalaxy}Pebble{} page.",
+                    "{C:attention,T:j_pmcmod_childrenOfTheGalaxy}Pebble{} page",
                     "No money from extra hands,",
-                    "discards or interest.",
+                    "discards or interest",
                     "Shop prices increased"
                 },
                 unlock = {
@@ -130,7 +130,7 @@ return {
                 name = 'Censored Deck',
                 text = {
                     "Start with an eternal",
-                    "{C:attention,T:j_pmcmod_censored}Censored{} page.",
+                    "{C:attention,T:j_pmcmod_censored}Censored{} page",
                     "{C:blue}+4 hands{}",
                 },
                 unlock = {
@@ -154,9 +154,9 @@ return {
             m_pmcmod_bleed = {
                 name = "Bleed Card",
                 text = {
-                    "Gains {C:red}1{} Perma Mult for",
+                    "Gains {C:red}+1{} Perma Mult for",
                     "every {C:red}Bleed{} card scored in the",
-                    "played hand.",
+                    "played hand",
                     "Remaining count: #1#"
                 },
             },
@@ -171,17 +171,17 @@ return {
                 name = "Poise Card",
                 text = {
                     "Has a {C:green}#3# in #4#{} chance to give {X:red,C:white}X#1#{} Mult",
-                    "Chance increase every time the card is scored.",
-                    "Chance resets every time the effect triggers."
+                    "Chance increase every time the card is scored",
+                    "Chance resets every time the effect triggers"
 
                 },
             },
             m_pmcmod_rupture = {
                 name = "Rupture Card",
                 text = {
-                    "Give stacks of Rupture {C:attention}every time the card scores{}.",
-                    "Non face cards give double stacks.",
-                    "Give double the amount of stacks as {C:chips}Chips{}.",
+                    "Give stacks of Rupture {C:attention}every time the card scores{}",
+                    "Non face cards give double stacks",
+                    "Give double the amount of stacks as {C:chips}Chips{}",
                     "{C:inactive}(Current stacks: {C:attention}#1#{})"
 
                 },
@@ -190,7 +190,7 @@ return {
                 name = "Tremor Card",
                 text = {
                     "Enhance the effects of select Enhancements",
-                    "when scored together."
+                    "when scored together"
                 },
             },
             m_pmcmod_sinking = {
@@ -212,7 +212,8 @@ return {
             j_pmcmod_oswald = {
                 name = 'Oswald',
                 text = {
-                    "Gives a {C:attention}random effect{} every played Hand",
+                    "Activates a {C:attention}random effect{}",
+                    "on every played Hand",
                     "Last effect: #1#"
                 },
                 unlock = {
@@ -224,12 +225,11 @@ return {
                 name = 'Kalo',
                 text = {
                     {"Played cards with {C:diamonds}#3#{} suit",
-			        "give {C:mult}+10{} Mult when scored."},
+			        "give {C:mult}+#1#{} Mult when scored"},
     			    {"Value increases by {C:mult}#2#{} for every member of",
-                    "{C:gold}The Thumb{} currently on the team."},
+                    "{C:gold}The Thumb{} currently on the team"},
                     {"Has a {C:green} #4# in #5# {}chance to change every",
-                    "scored {C:diamonds}#3#{} Card into a {C:attention}Wild Card{}.",
-                    "{C:inactive}(Currently {C:mult}+#1#{} Mult)"},
+                    "scored {C:diamonds}#3#{} Card into a {C:attention}Wild Card{}"},
                 },
                 unlock = {
                     'Win a run with the {C:attention}Aspect of Kalo Keypage{}',
@@ -240,10 +240,9 @@ return {
                 name = 'Katriel',
                 text = {
                     {"Played cards with {C:hearts}#3#{} suit ",
-			        "give {C:mult}+#1#{} Mult when scored."},
-    			    {"Value increases by {C:mult}1{} for every {C:attention}Wild Card",
-                    "currently in the deck.",
-                    "{C:inactive}(Currently {C:mult}+#2#{} Mult)"},
+			        "give {C:mult}+#2#{} Mult when scored"},
+    			    {"Value increases by {C:mult}#1#{} for every {C:attention}Wild Card",
+                    "currently in the deck"},
                 },
                 unlock = {
                     'Win a run with the {C:attention}Aspect of Katriel Keypage{}',
@@ -254,10 +253,9 @@ return {
                 name = 'Denis',
                 text = {
                     {"Played cards with {C:spades}#3#{} suit ",
-			        "give {C:mult}+#1#{} Mult when scored."},
-    			    {"Value increases by {C:mult}1{} for every {C:attention}Wild Card",
-                    "currently in the deck.",
-                    "{C:inactive}Currently {C:mult}+#2#{} Mult"},
+			        "give {C:mult}+#2#{} Mult when scored"},
+    			    {"Value increases by {C:mult}#1#{} for every {C:attention}Wild Card",
+                    "currently in the deck"},
                 },
                 unlock = {
                     'Win a run with the {C:attention}Aspect of Denis Keypage{}',
@@ -268,10 +266,9 @@ return {
                 name = 'Boris',
                 text = {
                     {"Played cards with {C:clubs}#3#{} suit ",
-			        "give {C:mult}+#1#{} Mult when scored."},
-    			    {"Value increases by {C:mult}1{} for every {C:attention}Wild Card",
-                    "currently in the deck.",
-                    "{C:inactive}Currently {C:mult}+#2#{} Mult"},
+			        "give {C:mult}+#2#{} Mult when scored"},
+    			    {"Value increases by {C:mult}#1#{} for every {C:attention}Wild Card",
+                    "currently in the deck"},
                 },
                 unlock = {
                     'Win a run with the {C:attention}Aspect of Boris Keypage{}',
@@ -286,7 +283,7 @@ return {
                     {"At the start of the Shop,",
                     "{C:red}destroys all perished Keypages{}",
                     "and gains {C:chips}#3#{} Chips for every",
-                    "Keypage destroyed.",
+                    "Keypage destroyed",
                     "{C:inactive}Currently {C:chips}+#2#{} Chips"}
                 },
                 unlock = {
@@ -297,8 +294,8 @@ return {
             j_pmcmod_esther = {
                 name = 'Esther',
                 text = {
-                    "If scored card is a {C:attention}Singleton{},",
-                    "give it {X:red,C:white}X3{} Mult",
+                    "When a {C:attention}Singleton{} card scores,",
+                    "it gives {X:chips,C:white}X#1#{} Chips",
                 },
                 unlock = {
                     'Win a run with {C:attention}Aspect of Esther Keypage{}',
@@ -308,8 +305,8 @@ return {
             j_pmcmod_gloria = {
                 name = 'Gloria',
                 text = {
-                    "If scored card is a {C:attention}Singleton{},",
-                    "give it {C:gold}$5{} Mult",
+                    "When a {C:attention}Singleton{} card scores,",
+                    "it gives {C:gold}$#1#{}",
                 },
                 unlock = {
                     'Win a run with {C:attention}Aspect of Gloria Keypage{}',
@@ -319,7 +316,7 @@ return {
             j_pmcmod_hubert = {
                 name = 'Hubert',
                 text = {
-                    "If scored card is a {C:attention}Singleton{},",
+                    "When a {C:attention}Singleton{} card scores,",
                     "retrigger it once",
                 },
                 unlock = {
@@ -330,10 +327,10 @@ return {
             j_pmcmod_kim = {
                 name = 'Bamboo-hatted Kim',
                 text = {
-                    "{X:red,C:white} X#1# {} Mult on {C:attention}final",
-                    "{C:attention}hand{} of round.",
+                    "{X:red,C:white}X#1#{} Mult on {C:attention}final",
+                    "{C:attention}hand{} of round",
                     "This value increases by {X:red,C:white}X#2#{}",
-                    "every time a {C:spade}Poise Card{} triggers."
+                    "every time a {C:spade}Poise Card{} triggers"
                 },
                 unlock = {
                     'Win a run with the {C:attention}Aspect of Bamboo-hatted Kim Keypage{}',
@@ -343,7 +340,7 @@ return {
             j_pmcmod_nikolai = {
                 name = 'Nikolai',
                 text = {
-                    "Catalogues every bought Keypage.",
+                    "Catalogues every {C:attention} directly bought Keypage",
                     "Gain {C:mult}#2#{} Mult for every Keypage catalogued",
                     "{C:inactive}Currently {C:mult}#1#{} Mult"
                 },
@@ -355,13 +352,13 @@ return {
             j_pmcmod_maxim = {
                 name = 'Maxim',
                 text = {
-                    {"Gain {C:blue}5{} Charge every time",
-                    "a Face Card scores, up to {C:blue}100{} Charge.",},
+                    {"Gain {C:blue}#3#{} Charge every time",
+                    "a Face Card scores, up to {C:blue}#4#{} Charge",},
                     {"If Charge is >= 90, gain {C:gold}$#2#{} at",
                     "the end of the Scene"},
-                    {"If a Number card is played, use",
+                    {"If a Number card is played, consume",
                     "Charge equivalent to the card's rank",
-                    "to retrigger it once.",
+                    "to retrigger it once",
                     "{C:inactive}Currently {C:blue}#1#{} Charges"}
 
                 },
@@ -384,10 +381,10 @@ return {
             j_pmcmod_angelica = {
                 name = 'Angelica',
                 text = {
-                    "{C:mult}#1#{} Mult",
+                    "{C:mult}+#1#{} Mult",
                 },
                 unlock = {
-                    'Win a run with {C:attention}Aspect of Angel- Keypage{}',
+                    'Win a run with {C:attention}Aspect of Angelica Keypage{}',
                     'in at least {C:attention}The City Stake{}',
                 },
             },
@@ -396,7 +393,7 @@ return {
                 text = {
                     {"At the start of the Encounter,",
                     "transforms a random Keypage into",
-                    "a {C:red}Puppet{}, based on the rarity.",},
+                    "a {C:red}Puppet{}, based on the Rarity",},
                     {"Puppets destroy themselves after triggering 5 times",
                     "When a Puppet gets destroyed by any means,",
                     "gain {C:mult}half of their mult value{}",
@@ -410,11 +407,11 @@ return {
             j_pmcmod_yisang = {
                 name = 'The First Sinner, Yi Sang',
                 text = {
-                    {"Gains {X:mult,C:white}X#2#{} for each {C:attention}unique{}",
-                    "{C:planet}Sinner{} card used."},
-                    {"Gains an additional {X:mult,C:white}X#3#{} for each",
-                    "{C:planet}Sinner{} card used.",
-                    "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)"},
+                    {"Gains {X:chips,C:white}X#2#{} Chips for each {C:attention}unique{}",
+                    "{C:planet}Sinner{} card used"},
+                    {"Gains an additional {X:chips,C:white}X#3#{} Chips for each",
+                    "{C:planet}Sinner{} card used",
+                    "{C:inactive}(Currently {X:chips,C:white} X#1# {C:inactive} Chips)"},
 
                 },
                 unlock = {
@@ -425,7 +422,7 @@ return {
             j_pmcmod_donQuixote = {
                 name = 'The Third Sinner, Don Quixote',
                 text = {
-                    "Drains {C:mult}Perma Mult{} from every score card.",
+                    "Drains {C:mult}Perma Mult{} from every score card",
                     "Gains {C:attention}triple{} the drained value as {C:chips}Chips",
                     "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)"
 
@@ -439,9 +436,9 @@ return {
                 name = 'The Fourth Sinner, Ryoshu',
                 text = {
                     {"Gains {X:mult, C:white}X#1#{} Mult for",
-                    "each Keypage sold."},
+                    "each Keypage sold"},
                     {"Selling a Keypage prevents it from",
-                    "appearing for the rest of the run.",
+                    "appearing for the rest of the run",
                     "{C:inactive}(Currently {X:mult, C:white}X#2#{C:inactive} Mult)"}
                 },
                 unlock = {
@@ -452,8 +449,8 @@ return {
             j_pmcmod_hongLu = {
                 name = 'The Sixth Sinner, Hong Lu',
                 text = {
-                    "Gain a bonus based on each",
-                    "Sinner Keypage on your team."
+                    "Gain a {C:attention}bonus{} based on each",
+                    "{C:planet}Sinner Keypage{} on your team"
                 },
                 unlock = {
                     'Win a run with the {C:attention}Hong Lu Keypage{}',
@@ -464,8 +461,8 @@ return {
                 name = 'The Seventh Sinner, Heathcliff',
                 text = {
                     {"At the start of every Scene, destroy a random",
-                    "{C:dark_edition}Negative{} Keypage."},
-                    {"Gains {C:dark_edition}+1{} Keypage Slot",
+                    "{C:dark_edition}Negative{} Keypage"},
+                    {"Gains {C:dark_edition}+#3#{} Keypage Slot",
                     "for every 2 {C:dark_edition}Negative{} Keypage destroyed"},
                     {"{C:inactive}(Currently {C:dark_edition}+#2#{C:inactive} Keypage slots)",}
 
@@ -479,13 +476,13 @@ return {
                 name = 'The Eighth Sinner, Ishmael',
                 text = {
                     {"Has a {C:green}#4# in #5#{} chance",
-                    "to remove Pallid from all scored cards.",
-                    "Gain {C:mult}10{} Mult for every Pallid removed."},
-                    {"If there's no more Pallid cards and Ahab",
+                    "to remove Pallid from scored cards",
+                    "Gain {C:mult}+#3#{} Mult for every Pallid removed"},
+                    {"If there's no more Pallid cards in the Deck and Ahab",
                     "is present, {C:red}destroy her{} at the end of the Encounter",
                     "and gain {X:mult,C:white}X3{} Mult",
                     "{C:inactive}Currently {C:mult}+#2#{} Mult",
-                    "{C:inactive}(Currently {X:mult,C:white} X#1# {C:inactive} Mult)"},
+                    "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"},
 
                 },
                 unlock = {
@@ -496,9 +493,9 @@ return {
             j_pmcmod_angela = {
                 name = 'Assistant Angela',
                 text = {
-                    "Hello, Manager.",
-			        "This is {C:red}Day #1#{}.",
-    			    "Let's do our best today.",
+                    "Hello, Manager",
+			        "This is {C:red}Day #1#{}",
+    			    "Let's do our best today",
                 },
                 unlock = {
                     'Win a run with {C:attention}L Corp Deck{}',
@@ -509,17 +506,17 @@ return {
                 name = 'Michelle',
                 text = {
                     {"Selling another {C:attention}Keypage{} during a",
-                    "{C:attention}Reception{} disables its effect.",
-			        "Gain {X:mult,C:white}X#1#{} Mult for every",
-                    "Reception disabled this way."},
+                    "{C:attention}Reception{} disables its effect",
+			        "Gain {X:chips,C:white}X#1#{} Chips for every",
+                    "Reception disabled this way"},
                     {"During Receptions, if it's not disabled,",
-                    "lose {C:gold}4${} for each card scored."},
-                    {"If a Reception is disabled more than",
-                    "{C:attention}2 times{}, or total money is 0 or less,",
-                    "{C:red}suffer a meltdown{}."},
+                    "lose {C:gold}4${} for each card scored"},
+                    {"If Receptions are disabled more than",
+                    "{C:attention}2 times{}, or total money is {C:red}$0{} or less,",
+                    "{C:red}suffer a Meltdown{}"},
                     {"If this Keypage survives through 4 Acts,",
-                    "{C:attention}gain another chance.",
-                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+                    "{C:attention}gain another chance",
+                    "{C:inactive}(Currently {X:chips,C:white} X#2# {C:inactive} Chips)",
                     "{C:inactive}({C:red}#3#{C:inactive} Acts survived)"},
                 },
                 unlock = {
@@ -530,13 +527,13 @@ return {
             j_pmcmod_elijah = {
                 name = 'Elijah',
                 text = {
-                    {"Gains {C:mult}2{} Mult for {C:attention}every{}",
-                    "{C:attention}Poker Hand level above 1{}."},
+                    {"Gains {C:mult}+2{} Mult for {C:attention}every{}",
+                    "{C:attention}Poker Hand level above 1{}"},
 			        {"If any Poker Hand level",
-                    "goes {C:attention}above 3{}, {C:red}suffer a meltdown{}."},
+                    "goes {C:attention}above 3{}, {C:red}suffer a Meltdown{}"},
                     {"If this Keypage survives through 4 Acts,",
-                    "{C:attention}gain another chance.",
-                    "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)",
+                    "{C:attention}gain another chance",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
                     "{C:inactive}({C:red}#2#{C:inactive} Acts survived)"},
                 },
                 unlock = {
@@ -547,14 +544,14 @@ return {
             j_pmcmod_giovanni = {
                 name = 'Giovanni',
                 text = {
-                    {"Gains {C:mult}7 Mult{} and {C:chips}10 Chips{}",
-                    "at the end of every Act."},
-                    {"Requires {C:attention}#1# consumable(s){} to be used every Act.",
-                    "Required consumable usage goes up every ante."},
+                    {"Gains {C:mult}+#6#{} Mult and {C:chips}+#7#{} Chips",
+                    "at the end of every Act"},
+                    {"Requires {C:attention}#1# consumable(s){} to be used every Act",
+                    "Required consumable usage goes up every ante"},
                     {"If consumable usage is not met after",
-                    "defeating a Reception, {C:red}suffer a meltdown{}."},
+                    "defeating a Reception, {C:red}suffer a Meltdown{}"},
                     {"If this Keypage survives through 4 Acts,",
-                    "{C:attention}gain another chance.",
+                    "{C:attention}gain another chance",
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
                     "{C:inactive}(Currently {C:chips}+#3#{C:inactive} Chips)",
                     "{C:inactive}(Current consumables used: {C:chips}#4#{C:inactive})",
@@ -568,12 +565,12 @@ return {
             j_pmcmod_gabriel = {
                 name = 'Gabriel',
                 text = {
-                    {"Gains {C:mult}1{} Mult for every {C:hearts}Hearts{} and {C:diamonds}Diamonds{} card scored.",
-                    "Gains {C:chips}3{} Chips for every {C:spades}Spades{} or {C:clubs}Clubs{} card scored."},
+                    {"Gains {C:mult}+1{} Mult for every {C:hearts}Hearts{} or {C:diamonds}Diamonds{} card scored",
+                    "Gains {C:chips}+3{} Chips for every {C:spades}Spades{} or {C:clubs}Clubs{} card scored"},
                     {"If the difference between the amount of {C:spades}Spades{}/{C:clubs}Clubs{}",
-                    "and {C:hearts}Hearts{}/{C:diamonds}Diamonds{} surpass 6, {C:red}suffer a meltdown{}."},
+                    "and {C:hearts}Hearts{}/{C:diamonds}Diamonds{} surpass 6, {C:red}suffer a Meltdown{}"},
                     {"If this Keypage survives through 4 Acts,",
-                    "{C:attention}gain another chance.",
+                    "{C:attention}gain another chance",
                     "{C:inactive}(Total {C:hearts}Hearts{}: #3#)",
                     "{C:inactive}(Total {C:diamonds}Diamonds{}: #4#)",
                     "{C:inactive}(Total {C:spades}Spades{}: #1#)",
@@ -590,16 +587,16 @@ return {
             j_pmcmod_daniel = {
                 name = 'Daniel',
                 text = {
-                    {"Starts with {X:mult,C:white}X2{} Mult",
+                    {"Starts with {X:chips,C:white}X2{} Chips",
                     "Every time a card scores,",
-                    "increase Mult by {X:mult,C:white}X#2#{}.",
-                    "Every card Discarded decreases Mult",
-                    "by {X:mult,C:white}X#2#{}"},
-                    {"If the Mult reaches {X:mult,C:white}X1{},",
-                    "{C:red}suffer a meltdown{}."},
+                    "increase Chips by {X:chips,C:white}X#2#{}",
+                    "Every card Discarded decreases Chips",
+                    "by {X:chips,C:white}X#2#{}"},
+                    {"If the Chips reaches {X:chips,C:white}X1{},",
+                    "{C:red}suffer a Meltdown{}"},
                     {"If this Keypage survives through 4 Acts,",
-                    "{C:attention}gain another chance.",
-                    "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
+                    "{C:attention}gain another chance",
+                    "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips)",
                     "{C:inactive}({C:red}#3#{C:inactive} Acts survived)"},
                 },
                 unlock = {
@@ -610,12 +607,12 @@ return {
             j_pmcmod_kali = {
                 name = 'Kali',
                 text = {
-                    {"Gets {C:mult}25{} Mult for",
-                    "every {C:blue}Hand{} played this Scene."},
+                    {"Gains {C:mult}+25{} Mult for",
+                    "every {C:blue}Hand{} played this Scene"},
                     {"If the last {C:blue}Hand{} is played,",
-                    "{C:red}suffer a meltdown{}."},
+                    "{C:red}suffer a Meltdown{}"},
                     {"If this Keypage survives through 4 Acts,",
-                    "{C:attention}gain another chance.",
+                    "{C:attention}gain another chance",
                     "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)",
                     "{C:inactive}({C:red}#2#{C:inactive} Acts survived)"},
                 },
@@ -628,12 +625,12 @@ return {
                 name = 'Benjamin',
                 text = {
                     {"Gains {X:mult,C:white}X#4#{} Mult per unique",
-                    "Tarot or Spectral used."},
-                    {"Counts elapsed time.",
-                    "If the timer reaches {C:red}666{} seconds,",
-                    "{C:red}suffer a meltdown{}."},
+                    "Tarot or Spectral used"},
+                    {"Counts elapsed time",
+                    "If the timer reaches {C:red}#6#{} seconds,",
+                    "{C:red}suffer a Meltdown{}"},
                     {"If this Keypage survives through 4 Acts,",
-                    "{C:attention}gain another chance.",
+                    "{C:attention}gain another chance",
                     "{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)",
                     "{C:inactive}({C:red}#5#{C:inactive} Acts survived)"},
                 },
@@ -648,13 +645,13 @@ return {
                     {"If the first hand of the Scene",
                     "has {C:attention}more than one card{},",
                     "destroy all scored cards and",
-                    "add {X:mult,C:white}X#2#{} Mult per card destroyed."},
+                    "add {X:mult,C:white}X#2#{} Mult per card destroyed"},
                     {"If the amount of cards currently",
                     "in the deck is less than half",
                     "the original amount of cards,",
-                    "{C:red}suffer a meltdown{}."},
+                    "{C:red}suffer a Meltdown{}"},
                     {"If this Keypage survives through 4 Acts,",
-                    "{C:attention}gain another chance.",
+                    "{C:attention}gain another chance",
                     "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
                     "{C:inactive}({C:red}#3#{C:inactive} Acts survived)"},
                 },
@@ -666,14 +663,14 @@ return {
             j_pmcmod_lisa = {
                 name = 'Lisa',
                 text = {
-                    {"Ace cards give {C:mult}#2#{} Mult",
+                    {"Played {C:attention}Aces{} give {C:mult}+#2#{} Mult when scored",
                     "If {C:attention}Enoch{} is not present at the start",
-                    "of an Encounter, spawn him in."},
+                    "of an Encounter, spawn him in"},
                     {"Every time {C:attention}Enoch{} is destroyed,",
-                    "increase the Ace Mult by {C:mult}#3#{}."},
-                    {"If {C:attention}Enoch{} dies more than 3 times, {C:red}suffer a meltdown{}."},
+                    "increase the Ace Mult by {C:mult}#3#{}"},
+                    {"If {C:attention}Enoch{} dies more than 3 times, {C:red}suffer a Meltdown{}"},
                     {"If this Keypage survives through 4 Acts,",
-                    "{C:attention}gain another chance.",
+                    "{C:attention}gain another chance",
                     "{C:inactive}(Witnessed Enoch's death {C:mult}#1#{C:inactive} times)",
                     "{C:inactive}({C:red}#4#{C:inactive} Acts survived)"},
                     
@@ -686,9 +683,9 @@ return {
             j_pmcmod_enoch = {
                 name = 'Enoch',
                 text = {
-                    {"Gets {C:chips}#2#{} chips per played card."},
+                    {"Gains {C:chips}#2#{} chips per played card"},
                     {"If this values reaches {C:chips}100{},",
-                    "{C:red}destroy this card{} at the end of the Encounter.",
+                    "{C:red}destroy this card{} at the end of the Encounter",
                     "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"},
                 },
                 unlock = {
@@ -700,10 +697,10 @@ return {
                 name = 'Hermann',
                 text = {
                     {"On the {C:attention}first played hand{},",
-                    "randomize the scoring cards' enhancements."},
+                    "randomize the scoring cards' Enhancements"},
                     {"Also has {C:green}#1# in #2#{} chance of giving",
                     "them a random {C:attention}seal{} and {C:green}#1# in #3#{} chance",
-                    "of giving them a random {C:dark_edition}Edition{}."},
+                    "of giving them a random {C:dark_edition}Edition{}"},
                 },
                 unlock = {
                     'Win a run with {C:attention}K Corp Deck{}',
@@ -715,16 +712,16 @@ return {
                 text = {
                     {"At the {C:attention}start of the Encounter{},",
                     "has a {C:green}#4# in #5#{} chance do aim at",
-                    "a random {C:attention}Keypage{}."},
+                    "a random {C:attention}Keypage{}"},
                     {"Gubo will shoot at the selected",
-                    "Keypage at the end of the Encounter."},
+                    "Keypage at the end of the Encounter"},
                     {"If the Keypage is {C:green}Paperback{} or",
 			        "{C:blue}Hardcover{}, gain either {C:mult}#2#{} or",
-                    "{C:mult}#3#{} Mult depending on the rarity.",
+                    "{C:mult}#3#{} Mult depending on the Rarity",
                     "This value doubles if the Keypage is of a {C:red}Sinner{}",
                     "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
                     "{C:inactive}(Currently aiming at: {C:red}#6#{C:inactive})",
-                    "{C:inactive}This page has a hidden interaction."},
+                    "{C:inactive}This page has a hidden interaction"},
                 },
                 unlock = {
                     'Win a run with {C:attention}K Corp Deck{}',
@@ -736,8 +733,8 @@ return {
                 text = {
                     "On the {C:attention}first hand played{}, if the Poker Hand",
                     "is Level 2 or above, gain the base {C:mult}Mult{} value",
-                    "of the Poker Hand and {C:red}reset the Poker Hand level{}.",
-                    "This can only happen if the base Mult is higher than this card's."
+                    "of the Poker Hand and {C:red}reset the Poker Hand level{}",
+                    "This can only happen if the base Mult is higher than this card's"
                 },
                 unlock = {
                     'Win a run with {C:attention}K Corp Deck{}',
@@ -749,7 +746,7 @@ return {
                 text = {
                     "At the start of the Encounter,",
                     "changes the {C:attention}Keypage{} to the right",
-                    "into a {C:attention}random Keypage{}.",
+                    "into a {C:attention}random Keypage{}",
                     "{C:green}#1# in #2#{} change into a Keypage",
                     "of a higher rarity",
                     "(up to {C:purple}Limited{})"
@@ -817,18 +814,18 @@ return {
                 name = 'Yuri',
                 text = {
                     {"{C:green}#1# in #2#{} chance this Keypage destroys",
-                    "itself at the end of the Scene."},
+                    "itself at the end of the Scene"},
                     {"If this Keypage survives {C:red}#3#{} Scenes,",
-                    "sell it to get a {C:money, T:c_soul}Golden Bough{}",
+                    "sell it to get a {C:money}Golden Bough{}",
                     "Current Scenes survived: {C:red}#4#{}"},
                 },
             },
             j_pmcmod_demian = {
                 name = 'Demian',
                 text = {
-                    "Gain {X:mult,C:white} X#1# {} Mult for",
+                    "Gain {X:chips,C:white} X#1# {} Chips for",
                     "every {C:spectral}Spectral card{} used",
-                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+                    "{C:inactive}(Currently {X:chips,C:white} X#2# {C:inactive} Chips)",
                 },
                 unlock = {
                     'Win a run with {C:attention}N Corp Deck{}',
@@ -851,16 +848,16 @@ return {
                 name = 'Sanson',
                 text = {
                     "Forces a card to always be selected",
-                    "Triples played {C:attention}Poker Hand base value{}",
+                    "Multiplies {C:attention}Poker Hand{} base values by {C:red}#1#{} ",
                 }
             },
             j_pmcmod_effie = {
                 name = 'Effie',
                 text = {
                     {"Gain{C:mult} +#2# {}Mult if the played hand",
-                    "is a{C:attention} #3#{}."},
+                    "is a{C:attention} #3#{}"},
                     {"Value resets if the hand",
-                    "played doesn't contain it.",
+                    "played doesn't contain it",
                     "(Poker hand changes after every Scene)",
                     "{C:inactive}(Currently{C:mult} #1# {C:inactive}Mult)"}
                 },
@@ -869,9 +866,9 @@ return {
                 name = 'Saude',
                 text = {
                     {"Gain{C:chips} +#2# {}Chips if the played hand",
-                    "contains a{C:attention} #3# {}card."},
+                    "contains a{C:attention} #3# {}card"},
                     {"Value resets if the hand",
-                    "played doesn't contain it.",
+                    "played doesn't contain it",
                     "(Suit changes after every Scene) ",
                     "{C:inactive}(Currently{C:chips} #1# {C:inactive}Chips)"},
                 },
@@ -889,7 +886,7 @@ return {
             j_pmcmod_sonya = {
                 name = 'Sonya',
                 text = {
-                    {"Grants {C:chips}#1#{} Chips if the played",
+                    {"{C:chips}#1#{} Chips if the played",
                     "Poker Hand contains a {C:attention}Flush{}"},
                     {"Additionaly, has {C:green}#2# in #3#{} chance",
                     "to spawn in a {C:attention, T:c_soul}Golden Bough{}"},
@@ -929,7 +926,7 @@ return {
                 name = 'Guido',
                 text = {
                     {"When {C:attention}Normal Encounter{} or {C:attention}Risky Encounter{}",
-                    "is selected, adds a random card with a red seal."},
+                    "is selected, adds a random card with a red seal"},
                     {"Gains {C:mult}+#1#{} Mult for every red seal in deck",
                     "{C:inactive}(Currently {C:mult} +#2# {C:inactive} Mult)"},
                 },
@@ -943,17 +940,17 @@ return {
                 text = {
                     {"When an {C:attention}Encounter{} starts,",
                     "spawn in up to 4 random Bongys,",
-                    "up to 20 Bongys in total for the whole game."},
+                    "up to 20 Bongys in total for the whole game"},
                     {"For every Bongys defeated, Papa Bongy",
                     "gets a different bonus:",
-                    "Bongy (Soy Sauce): {C:chips}10{} Chips",
-                    "Bongy (Red Sauce): {C:mult}5{} Mult",
+                    "Bongy (Soy Sauce): {C:chips}+10{} Chips",
+                    "Bongy (Red Sauce): {C:mult}+5{} Mult",
                     "Bongy (Normal): {X:mult,C:white}X0.1{} Mult",
                     "Bongy (Chef): {C:gold}1${} at the end of the Encounter",
-                    "{C:inactive}(Currently{C:chips} #1# {C:inactive} Chips)",
-                    "{C:inactive}(Currently{C:mult} #2# {C:inactive} Mult)",
+                    "{C:inactive}(Currently{C:chips} +#1# {C:inactive} Chips)",
+                    "{C:inactive}(Currently{C:mult} +#2# {C:inactive} Mult)",
                     "{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)",
-                    "{C:inactive}(Currently{C:gold} #4#$ {C:inactive})"},
+                    "{C:inactive}(Currently{C:gold} $#4# {C:inactive})"},
                 },
                 unlock = {
                     'Win a run with {C:attention}K Corp Deck{}',
@@ -964,9 +961,9 @@ return {
                 name = 'Dongrang',
                 text = {
                     {"At the end of every Reception, adds",
-                    "{C:dark_edition}Polychrome{} to a random editionless Keypage."},
-                    {"Gains {X:mult,C:white}X#2#{} Mult for every {C:dark_edition}Polychrome{} Keypage",
-                    "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"},
+                    "{C:dark_edition}Polychrome{} to a random editionless Keypage"},
+                    {"Gains {X:chips,C:white}X#2#{} Chips for every {C:dark_edition}Polychrome{} Keypage",
+                    "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips)"},
                 },
                 unlock = {
                     'Win a run with {C:attention}K Corp Deck{}',
@@ -995,10 +992,10 @@ return {
             j_pmcmod_samjo = {
                 name = 'Samjo',
                 text = {
-                    "{C:chips}20{} base chips",
-                    "Gains {C:chips}20{} chips for every",
+                    "{C:chips}+20{} base Chips",
+                    "Gain {C:chips}+20{} Chips for every",
                     "{C:dark_edition}Polychrome{} Keypage in possesion",
-                    "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
                 },
                 unlock = {
                     'Win a run with {C:attention}K Corp Deck{}',
@@ -1009,15 +1006,15 @@ return {
                 name = 'Shrenne',
                 text = {
                     "Selling a Keypage adds half of",
-                    "its sell value as mult.",
-                    "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)",
+                    "its sell value as mult",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
                 },
             },
             j_pmcmod_alfonso = {
                 name = 'Alfonso',
                 text = {
                     {"Gives {C:money}$#1#{} per played hand, if the",
-                    "respective Poker Hand's level is above 1."},
+                    "respective Poker Hand's level is above 1"},
                     {"{C:green}#2# in #3#{} chance to {C:red}reduce the Poker Hand level{}"},
                 },
                 unlock = {
@@ -1028,9 +1025,9 @@ return {
             j_pmcmod_marile = {
                 name = 'Marile',
                 text = {
-                    {"This Keypage starts with {C:mult}#2#{} Mult",
+                    {"Start with {C:mult}+#2#{} Mult",
                     "Lose {C:mult}8{} Mult for every enhanced Keypage",
-                    "and {C:mult}2{} Mult for every enhanced Card."},
+                    "and {C:mult}2{} Mult for every enhanced Card in the Deck"},
                     {"Destroys this Keypage on the next played hand",
                     "if Mult is 0 or less",
                     "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)"},
@@ -1039,17 +1036,18 @@ return {
             j_pmcmod_ran = {
                 name = 'Ran',
                 text = {
-                    {"This Keypage starts with {C:chips}#2#{} Chips",
+                    {"Start with {C:chips}+#2#{} Chips",
 			        "Lose {C:chips}24{} Chips for every enhanced Keypage",
-			        "and {C:chips}5{} Chips for every enhanced Card."},
+			        "and {C:chips}5{} Chips for every enhanced Card in the Deck"},
 			        {"Destroys this Keypage on the next played hand",
 			        "if Chips is 0 or less",
-			        "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)"},
+			        "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"},
                 },
             },
             j_pmcmod_niko = {
                 name = 'Niko',
                 text = {
+                    "{C:attention}+#2# Hand Size{}",
                     "Adds {C:mult}Mult{} equal to {C:attention}triple{} the amount",
 			        "of Cards in hands after the hand is played",
                 },
@@ -1057,7 +1055,7 @@ return {
             j_pmcmod_ahab = {
                 name = 'Ahab',
                 text = {
-                    {"Start every blind with a {C:tarot}Hunt Spectral card."},
+                    {"Start every Encounter with a {C:tarot}Hunt Spectral card"},
                     {"Gains {X:mult,C:white}X#1#{} Mult every time a Pallid card is scored",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"},
                 },
@@ -1069,7 +1067,7 @@ return {
             j_pmcmod_ahab_alt = {
                 name = 'Captain of the Pequod, Ahab',
                 text = {
-                    {"Start every blind with a {C:tarot}Hunt Spectral card."},
+                    {"Start every blind with a {C:tarot}Hunt Spectral card"},
                     {"Gains {X:mult,C:white}X#1#{} Mult every time a Pallid card is scored",
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"},
                 },
@@ -1077,7 +1075,7 @@ return {
             j_pmcmod_queequeg = {
                 name = 'Queequeg',
                 text = {
-                    "Pallid cards now give {C:gold}$1{}",
+                    "Pallid cards now give {C:gold}$#1#{}",
                 },
                 unlock = {
                     'Win a run with the {C:attention}Ahab Keypage{}',
@@ -1086,7 +1084,7 @@ return {
             j_pmcmod_queequeg_alt = {
                 name = 'Harpooner of The Pequod, Queequeg',
                 text = {
-                    "Pallid cards now give {C:gold}$1{}",
+                    "Pallid cards now give {C:gold}$#1#{}",
                 },
                 unlock = {
                     'Win a run with the {C:attention}Ahab Keypage{}',
@@ -1095,7 +1093,7 @@ return {
             j_pmcmod_starbuck = {
                 name = 'Starbuck',
                 text = {
-                    "Pallid cards now give {C:mult}#1#{} Mult",
+                    "Pallid cards now give {C:mult}+#1#{} Mult",
                 },
                 unlock = {
                     'Win a run with the {C:attention}Ahab Keypage{}',
@@ -1104,7 +1102,7 @@ return {
             j_pmcmod_starbuck_alt = {
                 name = 'First Mate of The Pequod, Starbuck',
                 text = {
-                    "Pallid cards now give {C:mult}#1#{} Mult",
+                    "Pallid cards now give {C:mult}+#1#{} Mult",
                 },
                 unlock = {
                     'Win a run with the {C:attention}Ahab Keypage{}',
@@ -1122,7 +1120,7 @@ return {
             j_pmcmod_pip = {
                 name = 'Pip',
                 text = {
-                    "Pallid cards now give {C:chips}#1#{} Chips",
+                    "Pallid cards now give {C:chips}+#1#{} Chips",
                 },
                 unlock = {
                     'Win a run with the {C:attention}Ahab Keypage{}',
@@ -1131,7 +1129,7 @@ return {
             j_pmcmod_pip_alt = {
                 name = 'Crew member of The Pequod, Pip',
                 text = {
-                    "Pallid cards now give {C:chips}10{} Chips",
+                    "Pallid cards now give {C:chips}+#1#{} Chips",
                 },
                 unlock = {
                     'Win a run with the {C:attention}Ahab Keypage{}',
@@ -1154,12 +1152,12 @@ return {
             j_pmcmod_ricardo = {
                 name = 'Ricardo',
                 text = {
-                    {"Starts with {C:mult}#2#{} Mult"},
+                    {"Starts with {C:mult}+#2#{} Mult"},
                     {"After this card is destroyed, come back",
                     "at the end of the {C:attention}Shop{} and gain",
-                    "{C:mult}#3#{} Mult"},
+                    "{C:mult}+#3#{} Mult"},
                     {"Gains {X:mult,C:white}X2{} Mult if {C:attention}Hair Coupon{} was redeemed",
-                    "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
                     "{C:inactive}(Currently {X:mult,C:white}X#4#{C:inactive} Mult)"},
                 },
                 unlock = {
@@ -1169,33 +1167,30 @@ return {
             j_pmcmod_indigoElder = {
                 name = 'Indigo Elder',
                 text = {
-                    {"Gain an effect depending on the position",
-                    "this Keypage is in (chosen at the start of the round):",
+                    {"Gain an effect depending on the position this Keypage is in at the start of the Scene:",
                     "2   -> {C:gold}Money{} at the end of the Scene",
                     "3   -> {C:chips}Chips{}",
                     "4   -> {C:mult}Mult{} for each scoring card",
-                    "5   -> {X:mult,C:white}XMult{}"},
-                    {"When the Scene is cleared, increase the",
-                    "bonuses for every other position."},
-                    {"If set to position 1, {C:attention}all effects apply,",
-                    "but {C:red}bonuses don't increase.",
+                    "5   -> {X:mult,C:white}XChips{}"},
+                    {"When the Scene is cleared, increase the bonuses for every other position"},
+                    {"If set to position 1, {C:attention}all effects apply, but {C:red}bonuses don't increase",
                     "{C:inactive}(Current Position: {C:red}#5#{})",
                     "{C:inactive}(Currently {C:gold}$#1#{})",
-                    "{C:inactive}(Currently {C:chips}#2#{} Chips)",
-                    "{C:inactive}(Currently {C:mult}#3#{} Mult)",
-                    "{C:inactive}(Currently {X:mult,C:white}X#4#{} Mult)"},
+                    "{C:inactive}(Currently {C:chips}+#2#{} Chips)",
+                    "{C:inactive}(Currently {C:mult}+#3#{} Mult)",
+                    "{C:inactive}(Currently {X:mult,C:white}X#4#{} Chips)"},
                 },
             },
             j_pmcmod_catherine = {
                 name = 'Catherine',
                 text = {
-                    "Does nothing.",
+                    "Does nothing",
                 },
             },
             j_pmcmod_catherine_alt = {
                 name = '___________',
                 text = {
-                    "Does nothing.",
+                    "Does nothing",
                 },
             },
             j_pmcmod_everyCatherine = {
@@ -1204,7 +1199,7 @@ return {
                     {"Always {C:dark_edition}Negative"},
                     {"At the end of every Reception,",
                     "creates a {C:dark_edition}Negative{} copy of a random Keypage"},
-                    {"Has a {C:green}#1# in #2#{} chance to destroy itself after that.",
+                    {"Has a {C:green}#1# in #2#{} chance to destroy itself after that",
                     "This chance goes up by 1 for every successful trigger"}
                 },
             },
@@ -1228,10 +1223,10 @@ return {
             j_pmcmod_hindley = {
                 name = 'Hindley',
                 text = {
-                    {"Starts with {C:chips}20{} Chips"},
-                    {"Gains {C:chips}20{} Chips for every",
-                    "Negative Keypage",
-                    "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)"},
+                    {"{C:chips}+20{} base Chips"},
+                    {"Gain {C:chips}+20{} Chips for every",
+                    "{C:dark_edition}Negative{} Keypage",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"},
                 },
                 unlock = {
                     'Win a run with the {C:attention}Nelly Keypage',
@@ -1249,10 +1244,10 @@ return {
             j_pmcmod_josephine = {
                 name = 'Josephine',
                 text = {
-                    {"Starts with {C:mult}8{} Mult"},
-                    {"Gains {C:mult}8{} Mult for every",
-                    "Negative Keypage",
-                    "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)"},
+                    {"{C:mult}+8{} base Mult"},
+                    {"Gain {C:mult}+8{} Mult for every",
+                    "{C:dark_edition}Negative{} Keypage",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"},
 
                 },
                 unlock = {
@@ -1274,10 +1269,10 @@ return {
             j_pmcmod_rain = {
                 name = 'Molar Boatworks Rain',
                 text = {
-                    "Every card discarded gives this Keypage {C:chips}#2#{} Chips,",
-                    "up to {C:chips}60{} Chips",
+                    "Every card discarded gives this Keypage {C:chips}+#2#{} Chips,",
+                    "up to {C:chips}+60{} Chips",
                     "Resets this value after every Reception",
-                    "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
                 },
                 unlock = {
                     'Win a run with the {C:attention}Rain Keypage{}',
@@ -1286,10 +1281,10 @@ return {
             j_pmcmod_mika = {
                 name = 'Molar Boatworks Mika',
                 text = {
-                    "Every card discarded gives this Keypage {C:mult}#2#{} Mult,",
-                    "up to {C:mult}30{} Mult",
+                    "Every card discarded gives this Keypage {C:mult}+#2#{} Mult,",
+                    "up to {C:mult}+30{} Mult",
                     "Resets this value after every Reception",
-                    "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
                 },  
                 unlock = {
                     'Win a run with the {C:attention}Mika Keypage{}',
@@ -1298,7 +1293,7 @@ return {
             j_pmcmod_moses = {
                 name = 'Moses',
                 text = {
-                    "{C:mult}X#1#{} on every played {C:attention}7{}",
+                    "{X:chips, C:white}X#1#{} Chips on every played {C:attention}7{}",
                 },
                 unlock = {
                     'Score over 100000 chips,',
@@ -1327,24 +1322,25 @@ return {
             j_pmcmod_crayon = {
                 name = 'Crayon',
                 text = {
-                    "{c:green}#1# in #2#{} chance to create",
+                    {"{c:green}#1# in #2#{} chance to create",
                     "a random {C:attention}Consumable{} at the start of",
-                    "every Encounter {C:inactive}(must have room)"
+                    "every Encounter {C:inactive}(must have room)"},
+                    {"In case the effect doesn't trigger, the",
+                    "next chance is {C:attention}guaranteed{}"}
                 }
             },
             j_pmcmod_domino = {
                 name = 'Domino',
                 text = {
-                    "{c:green}#2# in #3#{} chance to create",
-                    "a {C:attention}Coupon Tag{} after every Reception"
+                    "Creates a {C:attention}Coupon Tag{} after every Reception"
                 }
             },
             j_pmcmod_dadQuixote = {
                 name = 'Don Quixote',
                 text = {
-                    "Gains {C:red}Mult{} based on the",
-                    "total Perma Mult in all cards in the deck",
-                    "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)"
+                    "Gain {C:red}Mult{} based on the",
+                    "total Perma Mult in all cards in the Deck",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"
                 },
                 unlock = {
                     'Win a run with the {C:attention}Don Quixote Keypage{}',
@@ -1355,9 +1351,9 @@ return {
                 name = 'Sancho',
                 text = {
                     "Retriggers {C:hearts}Hearts{} cards",
-                    "at a {C:green}#2# in #3#{}chance.",
+                    "at a {C:green}#2# in #3#{}chance",
                     "If the card has {C:red}Bleed{},",
-                    "always retriggers."
+                    "always retriggers"
                 },
                 unlock = {
                     'Win a run with the {C:attention}Don Quixote Keypage{}',
@@ -1367,10 +1363,10 @@ return {
             j_pmcmod_dulcinea = {
                 name = 'Dulcinea',
                 text = {
-                    "Gain {C:mult}#2#{} Mult for every",
+                    "Gain {C:mult}+#2#{} Mult for every",
                     "{C:hearts}Hearts{} or {C:red}Bleed card scored",
-                    "If any other card is played, lose the same amount.",
-                    "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)",
+                    "If any other card is played, lose the same amount",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
                 },
                 unlock = {
                     'Win a run with the {C:attention}Sancho Keypage{}',
@@ -1379,10 +1375,10 @@ return {
             j_pmcmod_barber = {
                 name = 'Barber',
                 text = {
-                    "Gain {C:chips}#2#{} Chips for every",
+                    "Gain {C:chips}+#2#{} Chips for every",
                     "{C:hearts}Hearts{} or {C:red}Bleed card scored",
-                    "If any other card is played, lose the same amount.",
-                    "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
+                    "If any other card is played, lose the same amount",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
                 },
                 unlock = {
                     'Win a run with the {C:attention}Dulcinea Keypage{}',
@@ -1402,7 +1398,7 @@ return {
                 name = 'Bari',
                 text = {
                     "Played {C:attention}Steel{} cards",
-                    "give {X:mult,C:white}X#1#{}"
+                    "give {X:chips,C:white}X#1#{} Chips"
                 },
                 unlock = {
                     'Win a run with the {C:attention}Director Angela Keypage{}',
@@ -1428,12 +1424,13 @@ return {
                 name = 'Jia Xichun',
                 text = {
                     {"Scored suits give you a stack of",
-                    "{C:spades}Zhi (Spades){}, {C:clubs}Yong (Clubs){} or {C:hearts}Ren (Hearts){}."},
+                    "{C:spades}Zhi (Spades){}, {C:clubs}Yong (Clubs){} or {C:hearts}Ren (Hearts){}"},
                     {"Each stack gives you the following bonuses:",
-                    "1x Zhi -> {C:chips}1{} Chip",
+                    "1x Zhi -> {C:chips}+1{} Chip",
                     "5x Yong -> {C:gold}$1{} at the end of the Scene",
-                    "1x Ren -> {C:mult}1{} Mult"},
-                    {"Can have a max of 50 stacks. Diamond suit reduces every stack by 1.",
+                    "1x Ren -> {C:mult}+1{} Mult"},
+                    {"Can have a max of 50 stacks",
+                    "Scored {C:diamonds}Diamonds{]} reduces every stack by 1",
                     "{C:inactive}(Zhi: {C:chips}#1#{C:inactive})",
                     "{C:inactive}(Yong: {C:gold}#1#{C:inactive})",
                     "{C:inactive}(Ren: {C:mult}#1#{C:inactive})"},
@@ -1450,9 +1447,9 @@ return {
                 name = 'Camille',
                 text = {
                     "At the start of every blind,",
-                    "take away {C:attention}5%{} of the current",
+                    "take away {C:attention}#2#%{} of the current",
                     "money and add it to {C:mult}Mult{}",
-                    "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
                 },
                 unlock = {
                     'Obtain more than {C:gold}$600{} in a run',
@@ -1469,9 +1466,9 @@ return {
                 text = {
                     "When {C:attention}Normal Encounter{} or {C:attention}Risky Encounter{}",
                     "is selected, if a {C:green}Paperback{} or {C:blue}Uncommon{} Bloodfiend Keypage",
-                    "is present, destroy it and gain {C:mult}#2#{} Mult",
+                    "is present, destroy it and gain {C:mult}+#2#{} Mult",
                     "(can only happen once per blind)",
-                    "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
                 }
             },
             j_pmcmod_hanul = {
@@ -1479,7 +1476,7 @@ return {
                 text = {
                     "When a {C:attention}#1#{} is played,",
                     "gain {C:gold}money{} based on the {C:attention}average value{}",
-                    "of the Ranks played."
+                    "of the Ranks played"
                 },
                 unlock = {
                     'Win a game without playing a single {C:attention}Flush{}',
@@ -1521,9 +1518,9 @@ return {
                 name = 'Mai',
                 text = {
                     "Disables a random Keypage at the",
-                    "start of the Scene. Gives between",
+                    "start of the Scene Gives between",
                     "{X:red,C:white}X2{} and {X:red,C:white}X3{} Mult",
-                    "based on the rarity of the disabled card."
+                    "based on the rarity of the disabled card"
 
                 },
                 unlock = {
@@ -1533,8 +1530,8 @@ return {
             j_pmcmod_bumble = {
                 name = 'Bumble',
                 text = {
-                    "Increase interest cap by {C:gold}$60{}.",
-                    "Lose {C:gold}$1{} for every card played."
+                    "Increase interest cap by {C:gold}$60{}",
+                    "Lose {C:gold}$1{} for every card played"
                 },
                 unlock = {
                     'Obtain more than {C:gold}$200{} in a run',
@@ -1555,9 +1552,9 @@ return {
             j_pmcmod_casetti = {
                 name = 'Casetti',
                 text = {
-                    {"Scored {C:hearts}Hearts{} cards give {C:mult}#1#{} Mult for every Bleed card in deck",},
+                    {"Scored {C:hearts}Hearts{} cards give {C:mult}+#1#{} Mult for every Bleed card in deck",},
                     {"Has a {C:green}#3# in #4#{} chance to add Bleed to any scored {C:heart}Heart{} card",
-                    "{C:inactive}(Currently {C:mult}#2#{C:inactive} Mult)",}
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",}
                 },
                 unlock = {
                     'Have 5 or more {C:red}Bleed Cards{} in your deck',
@@ -1572,7 +1569,6 @@ return {
                 unlock = {
                     'Have 3 or more {C:red}Bleed Cards{} in your deck',
                 },
-                
             },
             j_pmcmod_hohenheim = {
                 name = 'Hohenheim',
@@ -1587,24 +1583,24 @@ return {
             j_pmcmod_alyssa = {
                 name = 'Alyssa',
                 text = {
-                    "Gains {C:mult}#1#{} Mult for",
+                    "Gain {C:mult}+#1#{} Mult for",
                     "every {C:mult}Strength{} Card in deck",
-                    "{C:inactive}(Currently {C:mult}#2#{C:inactive} Mult)",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
                 }
             },
             j_pmcmod_marton = {
                 name = 'Marton',
                 text = {
-                    "Gains {C:chips}#1#{} Chips for",
+                    "Gain {C:chips}+#1#{} Chips for",
                     "every {C:chips}Endurance{} Card in deck",
-                    "{C:inactive}(Currently {C:chips}#2#{C:inactive} Chips)",
+                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
                 }
             },
             j_pmcmod_johann = {
                 name = 'Johann',
                 text = {
-                    "If a card is about to be destroyed,",
-                    "sacrifice itself instead."
+                    "If a {C:joker}Keypage{} is about to be destroyed,",
+                    "{C:red}sacrifice itself{} instead"
                 }
             },
             j_pmcmod_qingTao = {
@@ -1612,23 +1608,23 @@ return {
                 text = {
                     {"If the first hand of the Scene is a {C:attention}#1#{}",
                     "with only 3 cards, {C:red}destroy{} any scored cards at",
-                    "a {C:green}#2# in #3#{} chance."},
-                    {"If no cards are destroyed, {C:red}destroy itself{}."}
+                    "a {C:green}#2# in #3#{} chance"},
+                    {"If no cards are destroyed, {C:red}destroy itself{}"}
                 }
             },
             j_pmcmod_shanSan = {
                 name = 'Shan San',
                 text = {
                     {"If played hand is a {C:attention}#1#{},",
-                    "give {C:gold}#2#{} at a {}#3# in #4#{} chance."},
-                    {"If no money is scored, {C:red}destroy itself{}."}
+                    "give {C:gold}$#2#{} at a {}#3# in #4#{} chance"},
+                    {"If no money is scored, {C:red}destroy itself{}"}
                 }
             },
             j_pmcmod_jumsoon = {
                 name = 'Jumsoon',
                 text = {
                     "If the first hand of the Scene is a {C:attention}#1#{},",
-                    "randomize all Keypages to others of the same rarity."
+                    "randomize all Keypages to others of the same rarity"
                 },
                 unlock = {
                     'Win a run with the {C:attention}Garnet Keypage{}',
@@ -1637,8 +1633,8 @@ return {
             j_pmcmod_garnet = {
                 name = 'Garnet',
                 text = {
-                    "Copies any random unlocked Keypage.",
-                    "Keypage changes every Scene.",
+                    "Copies the effect of any random unlocked Keypage",
+                    "Keypage changes every Scene",
                     "{C:inactive}(Currently copying: {C:red}#1#)",
                 },
                 unlock = {
@@ -1650,9 +1646,9 @@ return {
                 text = {
                     {"In {C:attention}Normal or Risky Encounters{}, if",
                     "the Encounter is about to fail, destroy a random",
-                    "{C:attention}#1# Keypage{} and win it."},
-                    {"Required rarity goes up with each trigger.",
-                    "Can only happen once per Act."}
+                    "{C:attention}#1# Keypage{} and win it"},
+                    {"Required rarity goes up with each trigger",
+                    "Can only happen once per Act"}
                 },
                 unlock = {
                     'Win a run with the {C:attention}Valerie Keypage{}',
@@ -1675,8 +1671,8 @@ return {
                 text = {
                     {"{X:mult,C:white}X#1#{} Mult"},
                     {"Has a {C:green}#3# in #4#{} chance",
-                    "to give {X:mult,C:white}X#2#{} Mult instead.",
-                    "{C:inactive}This page has a hidden interaction.",}
+                    "to give {X:mult,C:white}X#2#{} Mult instead",
+                    "{C:inactive}This page has a hidden interaction",}
                 },
                 unlock = {
                     'Score over {C:chips}800000{} Chips',
@@ -1688,7 +1684,7 @@ return {
                 text = {
                     "If the first hand played {C:attention}starts with a 5{}, consum",
                     "all stacks of Rupture from the scored cards",
-                    "to score {X:mult,C:white}X0.1{} Mult per 5 stacks consumed.",
+                    "to score {X:mult,C:white}X0.1{} Mult per 5 stacks consumed",
                     "{C:inactive}(Rupture stacks {C:green}#1#{C:inactive})"
                 },
                 unlock = {
@@ -1698,13 +1694,13 @@ return {
             j_pmcmod_xueBaochai = {
                 name = 'Xue Baochai',
                 text = {
-                    "Reduce Encounter score by {C:attention}10%{}.",
+                    "Reduce Encounter score by {C:attention}10%{}",
                 }
             },
             j_pmcmod_xianrenA = {
                 name = 'Elder on a Branch',
                 text = {
-                    "Gives {C:gold}#1#{} at the end of the Scene.",
+                    "Gives {C:gold}#1#{} at the end of the Scene",
                     "{C:inactive}Swaps with a different Elder after a Reception"
                 },
                 unlock = {
@@ -1715,7 +1711,7 @@ return {
                 name = 'Elder on a Wheelchair',
                 text = {
                     "If the hand scored has more then 3 cards,",
-                    "give {C:mult}#1#{} Mult and {C:chips}#2#{} Chips",
+                    "give {C:mult}+#1#{} Mult and {C:chips}+#2#{} Chips",
                     "{C:inactive}Swaps with a different Elder after a Reception"
                 },
                 unlock = {
@@ -1725,7 +1721,7 @@ return {
             j_pmcmod_xianrenC = {
                 name = 'Elder in a Machine',
                 text = {
-                    "Gives {X:mult, C:white}X#1#{} Mult per scored card.",
+                    "Gives {X:mult, C:white}X#1#{} Mult per scored card",
                     "{C:inactive}Swaps with a different Elder after a Reception"
                 },
                 unlock = {
@@ -1735,7 +1731,7 @@ return {
             j_pmcmod_xianrenD = {
                 name = 'Elder in Monk Robes',
                 text = {
-                    "{C:attention}Retrigger{} the first Keypage.",
+                    "{C:attention}Retrigger{} the first Keypage",
                     "{C:inactive}Swaps with a different Elder after a Reception"
                 },
                 unlock = {
@@ -1745,7 +1741,7 @@ return {
             j_pmcmod_xianrenE = {
                 name = 'Elder in a Jar',
                 text = {
-                    "{C:attention}Level up{} the first played hand.",
+                    "{C:attention}Level up{} the first played hand",
                     "{C:inactive}Swaps with a different Elder after a Reception"
                 },
                 unlock = {
@@ -1756,7 +1752,7 @@ return {
                 name = 'Elder in Trimmed Robes',
                 text = {
                     "At the end of the Scene, increase",
-                    "the sell value of other Keypages by {C:gold}$#1#{}.",
+                    "the sell value of other Keypages by {C:gold}$#1#{}",
                     "{C:inactive}Swaps with a different Elder after a Reception"
                 },
                 unlock = {
@@ -1766,14 +1762,14 @@ return {
             j_pmcmod_ladyWang = {
                 name = 'Lady Wang',
                 text = {
-                    "Scored {C:attention}6s{} give {C:mult}#1#{} Mult",
+                    "Every scored {C:attention}6{} gives {C:mult}+#1#{} Mult",
                     "Mult increases by {C:mult}3{} for every Act",
                 }
             },
             j_pmcmod_jiaZheng = {
                 name = 'Jia Zheng',
                 text = {
-                    "Scored {C:attention}6s{} give {C:chips}#1#{} Chips",
+                    "Every scored {C:attention}6{} gives {C:chips}+#1#{} Chips",
                     "Chips increases by {C:chips}5{} for every Act",
                 }
             },
@@ -1781,7 +1777,7 @@ return {
                 name = 'Jia Yuanchun',
                 text = {
                     "At the end of the Reception, give {C:gold}$#1#{},",
-                    "for every Tag queued up after the first one.",
+                    "for every Tag queued up after the first one",
                 }
             },
             j_pmcmod_jiaHuanChild = {
@@ -1795,26 +1791,26 @@ return {
                 text = {
                     "At the start of the Encounter,",
                     "either {C:red}destroy{} a Keypage or",
-                    "give it a random {C:dark_edition}Edition{}.",
-                    "Keypages with {C:dark_edition}Editions{} can't be destroyed."
+                    "give it a random {C:dark_edition}Edition{}",
+                    "Keypages with {C:dark_edition}Editions{} can't be destroyed"
                 }
             },
             j_pmcmod_wangZhao = {
                 name = 'Wang Zhao',
                 text = {
                     "Gain {C:gold}$1{} sell value every time a Reception is cleared",
-                    "and gain {C:gold}$1{} sell value when any Encounter is cleared with one hand.",
+                    "and gain {C:gold}$1{} sell value when any Encounter is cleared with one hand",
                     "At the start of any non Reception Encounter, increase the value of",
-                    "the adjascent Keypages by {C:gold}$4{}.",
-                    "Lose {C:red}$2{} for each Keypage affected.",
-                    "{C:red}Destroys itself if own sell value dips below $0."
+                    "the adjascent Keypages by {C:gold}$4{}",
+                    "Lose {C:red}$2{} for each Keypage affected",
+                    "{C:red}Destroys itself if own sell value dips below $0"
                 }
             },
             j_pmcmod_wangDawei = {
                 name = 'Wang Dawei',
                 text = {
                     "Every {C:attention}eighth{} card scored gains",
-                    "{C:mult}#2#{} Perma Mult and {C:chips}#3#{} Perma Chips.",
+                    "{C:mult}+#2#{} Perma Mult and {C:chips}+#3#{} Perma Chips",
                     "{C:inactive}(Scored cards until next trigger {C:attention}#1#{C:inactive})"
                 }
             },
@@ -1822,60 +1818,60 @@ return {
                 name = 'Wang Qingshan',
                 text = {
                     "Every {C:attention}eighth{} card scored,",
-                    "gains {C:mult}#2#{} Perma Dollars.",
+                    "gains {C:mult}+#2#{} Perma Dollars",
                     "{C:inactive}(Scored cards until next trigger {C:attention}#1#{C:inactive})"
                 }
             },
             j_pmcmod_wangRen = {
                 name = 'Wang Ren',
                 text = {
-                    {"Gives {C:gold}$#1#{} at the end of the Scene."},
+                    {"Gives {C:gold}$#1#{} at the end of the Scene"},
                     {"If current money dips below {C:gold}$100{},",
-                    "destroy itself at the start of the next Scene."}
+                    "destroy itself at the start of the next Scene"}
                 }
             },
             j_pmcmod_shiYihua = {
                 name = 'Shi Yihua',
                 text = {
-                    "Gains {C:chips}#1#{} Chips for each",
-                    "{C:diamonds}Diamond{} Card in the Deck.",
-                    "{C:inactive}(Currently {C:chips}#2#{C:inactive} Chips)"
+                    "Gain {C:chips}+#1#{} Chips for each",
+                    "{C:diamonds}Diamond{} Card in the Deck",
+                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
 
                 }
             },
             j_pmcmod_shiHuazhen = {
                 name = 'Shi Huazhen',
                 text = {
-                    "Gives {C:mult}#1#{} Mult for every character",
-                    "in the name of the Keypage to the left."
+                    "Gain {C:mult}+#1#{} Mult for every character",
+                    "in the name of the Keypage to the left"
                 }
             },
             j_pmcmod_shiSijing = {
                 name = 'Shi Sijing',
                 text = {
-                    "Gain {C:chips}#1#{} Chips when a Keypage is destroyed",
-                    "{C:inactive}(Currently {C:chips}#2#{C:inactive} Chips)"
+                    "Gain {C:chips}+#1#{} Chips when a Keypage is destroyed",
+                    "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)"
                 }
             },
             j_pmcmod_kongSihui = {
                 name = 'Kong Sihui',
                 text = {
-                    {"{C:green}1 in 5{} chance to gain {C:gold}$5{} on any played card."},
-                    {"{C:green}1 in 20{} chance to {C:red}destroy itself{}."}
+                    {"{C:green}1 in 5{} chance to gain {C:gold}$5{} on any played card"},
+                    {"{C:green}1 in 20{} chance to {C:red}destroy itself{}"}
                 }
             },
             j_pmcmod_kongYoujin = {
                 name = 'Kong Youjin',
                 text = {
-                    {"{C:green}1 in 5{} chance to gain {C:attention}retrigger{} any played card."},
-                    {"{C:green}1 in 20{} chance to {C:red}destroy itself{}."}
+                    {"{C:green}1 in 5{} chance to gain {C:attention}retrigger{} any played card"},
+                    {"{C:green}1 in 20{} chance to {C:red}destroy itself{}"}
                 }
             },
             j_pmcmod_xiren = {
                 name = 'Xiren',
                 text = {
                     "Gives {C:attention}triple{} the difference between most",
-                    "played Poker Hand and current Poker Hand as {C:mult}Mult{}."
+                    "played Poker Hand and current Poker Hand as {C:mult}Mult{}"
                 }
             },
             j_pmcmod_wei = {
@@ -1883,7 +1879,7 @@ return {
                 text = {
                     "Gives {C:gold}$#1#{} for every remaining card left in hand",
                     "at the end of the Scene, as long as {C:red}your most played hand",
-                    "{C:red}isn't High Card{}."
+                    "{C:red}isn't High Card{}"
                 }
             },
             j_pmcmod_zigong = {
@@ -1891,9 +1887,9 @@ return {
                 text = {
                     {"At the start of the Scene, drains the {C:gold}sell value{}",
                     "from the Keypage to the right",
-                    "and add it to your own."},
-                    {"Gain {C:attention}triple{} that amount as {C:chips}Chips{}.",
-                    "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)"},
+                    "and add it to your own"},
+                    {"Gain {C:attention}triple{} that amount as {C:chips}Chips{}",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"},
                 }
             },
             j_pmcmod_zilu = {
@@ -1905,21 +1901,21 @@ return {
             j_pmcmod_nightDrifter = {
                 name = 'Night Drifter',
                 text = {
-                    {"Gives either {X:mult,C:white}X#1#{} or {X:mult,C:white}X#2#{} Mult."},
+                    {"Gives either {X:mult,C:white}X#1#{} or {X:mult,C:white}X#2#{} Mult"},
                     {"Each consumable used decreases the min value by {X:mult,C:white}X#4#{}",
                     "and increases the max value by {X:mult,C:white}X#5#{}",
                     "Can stack up to 4 times"},
-                    {"Lose all stacks by the end of the Reception.",
+                    {"Lose all stacks by the end of the Reception",
                     "{C:inactive}(Currently used {C:attention}#3#{C:inactive} Consumables)"},
                 }
             },
             j_pmcmod_leiHeng = {
                 name = 'Lei Heng',
                 text = {
-                    {"Roll a random value between 0 and 4."},
-                    {"If it lands on a 0, {C:red}destroy the Keypage to the left{}."},
+                    {"Roll a random value between 0 and 4"},
+                    {"If it lands on a 0, {C:red}destroy the Keypage to the left{}"},
                     {"If it lands on any other number, {C:attention}retrigger{} the Keypage",
-                    "to the left by the {C:attention}amount it landed on{}."}
+                    "to the left by the {C:attention}amount it landed on{}"}
                 },
                 unlock = {
                     'Win a run with the {C:attention}Ryoshu Keypage{}',
@@ -1930,10 +1926,10 @@ return {
                 name = 'Valencina',
                 text = {
                     {"When hand is played, if it has more than 2 scored cards,",
-                    "turn the last card into a {C:gold}Tremor{} card."},
+                    "turn the last card into a {C:gold}Tremor{} card"},
                     {"{C:attention}Bonus effect: {}If Lucio is present and to the right, also",
-                    "changes the first card into {C:gold}Tremor{}.",
-                    "Lucio dies after this effect triggers 5 times.",
+                    "changes the first card into {C:gold}Tremor{}",
+                    "Lucio dies after this effect triggers 5 times",
                     "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})"},
                 },
                 unlock = {
@@ -1944,11 +1940,11 @@ return {
             j_pmcmod_rien = {
                 name = 'Rien',
                 text = {
-                    {"Spawns in a random {C:blue}Prescript{} at the start of the Act."},
+                    {"Spawns in a random {C:blue}Prescript{} at the start of the Act"},
                     {"Gain {C:mult}#3#{} for every {C:blue}Prescript{} fullfilled.",
-                    "Destroy itself if the {C:blue}Prescript fails."},
+                    "Destroy itself if the {C:blue}Prescript fails"},
                     {"{C:attention}Bonus effect: {}If Sora is present and to the right, gains double",
-                    "this value. Sora dies after this effect triggers 3 times.",
+                    "this value. Sora dies after this effect triggers 3 times",
                     "{C:inactive}(Total triggers: {C:red}#2#{C:inactive})",
                     "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)"},
                 },
@@ -1962,11 +1958,11 @@ return {
                 text = {
                     {"{C:blue}-#1#{} Hand"},
                     {"If first hand scored has less than 4 cards,",
-                    "turn all scored cards into {C:red}Burn{} Cards."},
-                    {"Each card turned costs {C:gold}$#2#{}. Cost increase by",
-                    "{C:gold}$#3#{} for every Burn Card in deck."},
-                    {"{C:attention}Bonus effect: {}If Kira is present and to the right, reduces cost to $0.",
-                    "Kira dies after generating 5 Burn Cards without cost.",
+                    "turn all scored cards into {C:red}Burn{} Cards"},
+                    {"Each card turned costs {C:gold}$#2#{} Cost increase by",
+                    "{C:gold}$#3#{} for every Burn Card in deck"},
+                    {"{C:attention}Bonus effect: {}If Kira is present and to the right, reduces cost to $0",
+                    "Kira dies after generating 5 Burn Cards without cost",
                     "{C:inactive}(Total triggers: {C:red}#4#{C:inactive})"},
                 },
                 unlock = {
@@ -1978,9 +1974,9 @@ return {
                 name = 'Callisto',
                 text = {
                     {"Drains Mult and Bonus enhancements from cards,",
-                    "gaining 50% of their value."},
-                    {"{C:attention}Bonus effect: {}If Albina is present, gain the full value.",
-                    "Albina dies after 5 Cards are drained.",
+                    "gaining 50% of their value"},
+                    {"{C:attention}Bonus effect: {}If Albina is present, gain the full value",
+                    "Albina dies after 5 Cards are drained",
                     "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",}
                 },
@@ -1992,10 +1988,10 @@ return {
             j_pmcmod_shiomiYoru = {
                 name = 'Shiomi Yoru',
                 text = {
-                    {"Poise cards gain double stacks at {C:green}1 in 2{} chance."},
+                    {"Poise cards gain double stacks at {C:green}1 in 2{} chance"},
                     {"{C:attention}Bonus effect: {} If Ren is present and to the right,",
                     "the chance becomes a guarantee",
-                    "Ren dies after this effect is triggered 5 times.",
+                    "Ren dies after this effect is triggered 5 times",
                     "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})"},
                 },
                 unlock = {
@@ -2008,7 +2004,8 @@ return {
                 text = {
                     {"Scored Tremor cards give {C:gold}$#2#{}"},
                     {"{C:attention}Bonus effect: {}If Valencina is present and to the right,",
-                    "Tremor cards now give {C:gold}$#3#{}. Lucio dies after triggering 3 Tremor cards.",
+                    "Tremor cards now give {C:gold}$#3#{}",
+                    "Lucio dies after triggering 3 Tremor cards",
                     "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})"},
                 },
                 unlock = {
@@ -2019,14 +2016,14 @@ return {
                 name = 'Sora',
                 text = {
                     {"At the start of the Scene, Sora steals an {C:dark_edition}Edition",
-                    "from a random Keypage, gaining {C:chips}#2#{} Chips in the process.",
-                    "Sora can't steal the same Edition twice in a row."},
+                    "from a random Keypage, gaining {C:chips}+#2#{} Chips in the process",
+                    "Sora can't steal the same Edition twice in a row"},
                     {"After 3 Scenes without stealing an Edition, Sora",
-                    "reveals herself, doubling her current Chips count."},
-                    {"{C:attention}Bonus effect: {}If Rien is present and to the right, double the scoring Chips.",
-                    "Sora dies after triggering 4 times.",
+                    "reveals herself, doubling her current Chips count"},
+                    {"{C:attention}Bonus effect: {}If Rien is present and to the right, double the scoring Chips",
+                    "Sora dies after triggering 4 times",
                     "{C:inactive}(Total triggers: {C:red}#3#{C:inactive})",
-                    "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)"},
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"},
                 },
                 unlock = {
                     'Win a run with the {C:attention}Rien Keypage{}'
@@ -2051,10 +2048,10 @@ return {
                     {"If Hand played is a {C:attention}#2#{} and only has 2 Cards,",
                     "change the first card into a {C:blue}Endurance{} Card",
                     "and the second card into a {C:red}Strength{} Card",
-                    "at a {C:green}#3# in #4#{} chance."},
+                    "at a {C:green}#3# in #4#{} chance"},
                     {"{C:attention}Bonus effect: {}If Callisto is present and to the right,",
-                    "chance becomes guaranteed.",
-                    "Albina dies after triggering this effect 5 times.",
+                    "chance becomes guaranteed",
+                    "Albina dies after triggering this effect 5 times",
                     "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})"},
                 },
                 unlock = {
@@ -2064,10 +2061,10 @@ return {
             j_pmcmod_ren = {
                 name = 'Ren',
                 text = {
-                    {"Has a {C:green}#2# in #3#{} chance to give Poise to scored cards."},
+                    {"Has a {C:green}#2# in #3#{} chance to give Poise to scored cards"},
                     {"{C:attention}Bonus effect: {}If Shiomi Yoru is present and to the right,",
-                    "chance becomes guaranteed.",
-                    "Ren dies after triggering this effect 5 times.",
+                    "chance becomes guaranteed",
+                    "Ren dies after triggering this effect 5 times",
                     "{C:inactive}(Total triggers: {C:red}#1#{C:inactive})"},
                 },
                 unlock = {
@@ -2078,23 +2075,24 @@ return {
                 name = 'Ravi',
                 text = {
                     "If this card is about to be destroyed, play dead",
-                    "and debuff itself instead. Gain {C:chips}#2#{} Chips when this happens.",
-                    "There's a {C:green}#3# in #4#{} chance this fails.",
-                    "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
+                    "and debuff itself instead",
+                    "Gain {C:chips}+#2#{} Chips when this happens",
+                    "There's a {C:green}#3# in #4#{} chance this fails",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
                 }
             },
             j_pmcmod_werner = {
                 name = 'Werner',
                 text = {
-                    "Gains {C:chips}#2#{} Chips every time Ricardo is destroyed.",
-                    "{C:inactive}(Currently {C:chips}#1#{C:inactive} Chips)",
+                    "Gain {C:chips}+#2#{} Chips every time Ricardo is destroyed",
+                    "{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)",
                 }
             },
             j_pmcmod_jamila = {
                 name = 'Jamila',
                 text = {
-                    "Gain {C:mult}#1#{} Mult for every {C:attention}EGO Gift{} claimed.",
-                    "{C:inactive}(Currently {C:mult}#2#{C:inactive} Mult)",
+                    "Gain {C:mult}+#1#{} Mult for every {C:attention}EGO Gift{} claimed",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
                 },
                 unlock = {
                     'Have at least {C:attention}5 EGO Gifts{} claimed'
@@ -2103,8 +2101,8 @@ return {
             j_pmcmod_aCertainSinclair = {
                 name = 'A Certain Sinclair',
                 text = {
-                    "Counts how many times the {C:attention}Keypage to the left{} triggers.",
-                    "Retrigger the {C:attention}Keypage to the right{} by that amount."
+                    "Counts how many times the {C:attention}Keypage to the left{} triggers",
+                    "Retrigger the {C:attention}Keypage to the right{} by that amount"
                 },
                 unlock = {
                     "Win a run with the {C:attention}Callisto and{}",
@@ -2115,7 +2113,7 @@ return {
             j_pmcmod_arayaKid = {
                 name = 'Araya (Child)',
                 text = {
-                    {"{C:chips}#1#{} Chips."},
+                    {"{C:chips}+#1#{} Chips"},
                     {"Changes into a different version",
                     "depending on the action done more frequently",
                     "last Act: cards scored, cards discarded or money used"},
@@ -2135,7 +2133,7 @@ return {
                     {"Changes into a different version",
                     "depending on the action done more frequently",
                     "last Act: cards scored, cards discarded or money used",
-                    "If it's cards scored, go back to Child version instead."},
+                    "If it's cards scored, go back to Child version instead"},
                     {"{C:inactive}Cards scored: {C:chips}#2#{}",
                     "{C:inactive}Cards discarded: {C:mult}#3#{}",
                     "{C:inactive}Money used: {C:gold}#4#{}"}
@@ -2144,11 +2142,11 @@ return {
             j_pmcmod_arayaYA = {
                 name = 'Araya (Young Adult)',
                 text = {
-                    {"Cards scored gain 3 Perma Mult."},
+                    {"Cards scored gain 3 Perma Mult"},
                     {"Changes into a different version",
                     "depending on the action done more frequently",
                     "last Act: cards scored, cards discarded or money used",
-                    "If it's cards discarded, go back to Child version instead."},
+                    "If it's cards discarded, go back to Child version instead"},
                     {"{C:inactive}Cards scored: {C:chips}#2#{}",
                     "{C:inactive}Cards discarded: {C:mult}#3#{}",
                     "{C:inactive}Money used: {C:gold}#4#{}"}
@@ -2161,7 +2159,7 @@ return {
                     {"Changes into a different version",
                     "depending on the action done more frequently",
                     "last Act: cards scored, cards discarded or money used",
-                    "If it's money used, go back to Child version instead."},
+                    "If it's money used, go back to Child version instead"},
                     {"{C:inactive}Cards scored: {C:chips}#2#{}",
                     "{C:inactive}Cards discarded: {C:mult}#3#{}",
                     "{C:inactive}Money used: {C:gold}#4#{}"}
@@ -2176,44 +2174,44 @@ return {
             j_pmcmod_yellowHarpoon = {
                 name = 'The Yellow Harpoon',
                 text = {
-                    "Gives between {X:mult,C:white}X#1#{} and {X:mult,C:white}X#2#{} Mult",
-                    "for every Keypage. Value depends on the rarity."
+                    "Gives between {X:chips,C:white}X#1#{} and {X:chips,C:white}X#2#{} Chips",
+                    "for every Keypage, depending on the Rarity"
                 }
             },
             j_pmcmod_sephirahHod = {
                 name = 'Sephirah Hod',
                 text = {
                     {"Selling another {C:attention}Keypage{} during a",
-                    "{C:attention}Reception{} disables its effect."},
-			        {"Gain {X:mult,C:white} X#1# {} Mult for every",
+                    "{C:attention}Reception{} disables its effect"},
+			        {"Gain {X:chips,C:white} X#1# {} Chips for every",
                     "Reception disabled this way",
-                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)"},
+                    "{C:inactive}(Currently {X:chips,C:white} X#2# {C:inactive} Chips)"},
                 },
             },
             j_pmcmod_sephirahMalkuth = {
                 name = 'Sephirah Malkuth',
                 text = {
-                    "Gains {C:mult}3{} Mult for {C:attention}every{}",
+                    "Gain {C:mult}+3{} Mult for {C:attention}every{}",
                     "{C:attention}Poker Hand level above 1{}",
-                    "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
                 },
             },
             j_pmcmod_sephirahNetzach = {
                 name = 'Sephirah Netzach',
                 text = {
-                    "Gains {C:mult}3 Mult{} and {C:chips}5 Chips{}",
+                    "Gain {C:mult}+3{} Mult and {C:chips}+5{} Chips",
                     "at the end of every Act for every {C:attention}Consumable",
-                    "used during this Act.",
+                    "used during this Act",
                     "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)",
                     "{C:inactive}(Currently {C:chips}+#2#{C:inactive} Chips)",
-                    "{C:inactive}(Current consumables used: {C:chips}#3#{C:inactive})",
+                    "{C:inactive}(Current consumables used: {C:attention}#3#{C:inactive})",
                 },
             },
             j_pmcmod_sephirahYesod = {
                 name = 'Sephirah Yesod',
                 text = {
-                    {"Gains {C:mult}1{} Mult for every {C:hearts}Hearts{} and {C:diamonds}Diamonds{} card scored"},
-                    {"Gains {C:chips}3{} Chips for every {C:spades}Spades{} or {C:clubs}Clubs{} card scored"},
+                    {"Gain {C:mult}+1{} Mult for every {C:hearts}Hearts{} and {C:diamonds}Diamonds{} card scored"},
+                    {"Gain {C:chips}+3{} Chips for every {C:spades}Spades{} or {C:clubs}Clubs{} card scored"},
                     {"{C:inactive}(Currently {C:mult}+#5#{C:inactive} Mult)",
                     "{C:inactive}(Currently {C:chips}+#6#{C:inactive} Chips)"},
                 },
@@ -2221,21 +2219,21 @@ return {
             j_pmcmod_sephirahChesed = {
                 name = 'Sephirah Chesed',
                 text = {
-                    {"Starts with {X:mult,C:white}X2{} Mult"},
+                    {"Starts with {X:chips,C:white}X2{} Chips"},
                     {"Every time a card scores,",
                     "there's a {C:green}#3# in #4#{} chance to",
-                    "increase Mult by {X:mult,C:white}X#2#{}.",
-                    "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"},
+                    "increase Mult by {X:chips,C:white}X#2#{}",
+                    "{C:inactive}(Currently {X:chips,C:white}X#1#{C:inactive} Chips)"},
                 },
             },
             j_pmcmod_sephirahGebura = {
                 name = 'Sephirah Gebura',
                 text = {
-                    {"Gets {C:mult}15{} Mult for",
-                    "every {C:blue}Hand{} played this Scene"},
+                    {"Gain {C:mult}+15{} Mult for",
+                    "each {C:blue}Hand{} played this Scene"},
                     {"Boost this value by {C:mult}5{}",
-                    "for every Reception defeated.",
-                    "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)"},
+                    "for every Reception defeated",
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"},
                 },
             },
             j_pmcmod_sephirahHokma = {
@@ -2252,7 +2250,7 @@ return {
                     {"Bonds with the first played",
                     "Poker Hand after obtaining this Keypage"},
                     {"If the bonded Poker Hand is the first",
-                    "hand of the Scene, {C:red}destroy all scored cards{}."},
+                    "hand of the Scene, {C:red}destroy all scored cards{}"},
                     {"Gains {X:mult,C:white}X#2#{} for every card destroyed",
                     "{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)",
                     "{C:inactive}(Currently bonded hand: {C:attention}#3#{C:inactive}"},
@@ -2261,9 +2259,9 @@ return {
             j_pmcmod_sephirahTiphereth = {
                 name = 'Sephirah Tiphereth',
                 text = {
-                    {"Ace cards give {C:mult}#1#{} Mult"},
+                    {"Ace cards give {C:mult}+#1#{} Mult"},
                     {"Every time {C:attention}a Reception is defeated{},",
-                    "increment the Ace Mult by {C:mult}#2#{}."},
+                    "increment the Ace Mult by {C:mult}#2#{}"},
                 },
             },
             j_pmcmod_robotHod = {
@@ -2279,14 +2277,14 @@ return {
                 text = {
                     {"Gains 1 Mult for every Poker Hand level above 1"},
                     {"Has {C:green}#2# in #3#{} chance to decrease the played Poker Hand level",
-                    "{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)"},
+                    "{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"},
                 },
             },
             j_pmcmod_robotNetzach = {
                 name = 'Netzach (Robot)',
                 text = {
-                    {"Gains {C:mult}3 Mult{} and {C:chips}5 Chips{}",
-                    "at the end of every Act."},
+                    {"Gains {C:mult}+3{} Mult and {C:chips}+5{} Chips",
+                    "at the end of every Act"},
                     {"{C:red}Increases shop prices by 5%{}",
                     "{C:red}after every Encounter{}"},
                     {"{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
@@ -2297,8 +2295,8 @@ return {
             j_pmcmod_robotYesod = {
                 name = 'Yesod (Robot)',
                 text = {
-                    {"Gains {C:mult}1{} Mult for every three {C:hearts}Hearts{} and {C:diamonds}Diamonds{} card played",
-                    "and {C:chips}1{} Chips for every {C:spades}Spades{} or {C:clubs}Clubs{} card played"},
+                    {"Gains {C:mult}+1{} Mult for every three {C:hearts}Hearts{} and {C:diamonds}Diamonds{} card played",
+                    "and {C:chips}+1{} Chips for every {C:spades}Spades{} or {C:clubs}Clubs{} card played"},
                     {"Has a {C:green}#7# in #8#{} chance to add Perishable to a random Keypage",
                     "every Hand played"},
                     {"{C:inactive}(Currently {C:mult}+#5#{C:inactive} Mult)",
@@ -2308,33 +2306,33 @@ return {
             j_pmcmod_robotChesed = {
                 name = 'Chesed (Robot)',
                 text = {
-                    {"Starts with {X:mult,C:white}X#4#{} Mult"},
+                    {"Starts with {X:chips,C:white}X#4#{} Chips"},
                     {"Every time a card scores, there's a {C:green}#1# in #2#{} chance",
-                    "to increase the Mult by 0.1."},
+                    "to increase the Chips by {X:chips, C:white}X0.1{}"},
                     {"Removes enhancements from played cards"},
-                    {"{C:inactive}(Currently {X:mult,C:white}X#3#{C:inactive} Mult)"},
+                    {"{C:inactive}(Currently {X:chips,C:white}X#3#{C:inactive} Chips)"},
                 },
             },
             j_pmcmod_robotGebura = {
                 name = 'Gebura (Robot)',
                 text = {
-                    {"Gets {C:mult}10{} Mult for every hand played this Scene",
+                    {"Gain {C:mult}+10{} Mult for each hand played this Scene",
                     "Also {C:gold}lose half that value as money{} on every played hand"},
-                    {"{C:inactive}(Currently {C:mult}#1#{C:inactive} Mult)"},
+                    {"{C:inactive}(Currently {C:mult}+#1#{C:inactive} Mult)"},
                 },
             },
             j_pmcmod_robotHokma = {
                 name = 'Hokma (Robot)',
                 text = {
-                    {"Gains {X:mult,C:white}X#2#{} Mult per unique Spectral card used."},
-                    {"Lose {X:mult,C:white}X#3#{} Mult per unique Tarot card used."},
+                    {"Gain {X:mult,C:white}X#2#{} Mult per unique Spectral card used"},
+                    {"Lose {X:mult,C:white}X#3#{} Mult per unique Tarot card used"},
                     {"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"},
                 },
             },
             j_pmcmod_robotBinah = {
                 name = 'Binah (Robot)',
                 text = {
-                    {"Gains {X:mult,C:white}X#2#{} for every card below",
+                    {"Gain {X:mult,C:white}X#2#{} for every card below",
                     "the deck's starting size"},
                     {"Adds a random card at the start of every Encounter"},
                     {"{C:inactive}(Currently {X:mult,C:white}X#1#{C:inactive} Mult)"},
@@ -2344,14 +2342,14 @@ return {
                 name = 'Tiph A (Robot)',
                 text = {
                     {"Ace cards give {C:mult}#2#{} Mult and {C:chips}#4# Chips{}"},
-                    {"If {C:attention}Enoch{} is not present at the start of a blind, spawn him in."},
+                    {"If {C:attention}Enoch{} is not present at the start of a blind, spawn him in"},
                     {"Every time {C:attention}Enoch{} is destroyed, increment the Ace mult by {C:mult}#3#{}"},
                 },
             },
             j_pmcmod_robotEnoch = {
                 name = 'Tiph B (Robot)',
                 text = {
-                    {"Gets {C:chips}#2#{} chips per played card"},
+                    {"Gain {C:chips}+#2#{} chips per played card"},
                     {"If this values reaches {C:chips}100{}, destroy this card"},
                     {"{C:inactive}(Currently {C:chips}+#1#{C:inactive} Chips)"},
                 },
@@ -2366,7 +2364,7 @@ return {
             j_pmcmod_shylook = {
                 name = "Today's Shy Look",
                 text = {
-                    {"Changes expressions regularly."},
+                    {"Changes expressions regularly"},
                     {"Gives between {X:mult,C:white}X0{} and {X:mult,C:white}X2{} Mult depending on",
                     "the expression it's at when a hand is played"},
                 },
@@ -2377,9 +2375,9 @@ return {
                     {"Every card played and discarded is counted"},
                     {"Gains effects based on the difference between values:",
                     "< 4: {C:attention}Retriggers{} every Keypage",
-                    "< 7: Gain {C:chips}100{} chips (scale with every Act)",
+                    "< 7: Gain {C:chips}+100{} chips (scale with every Act)",
                     "> 10: {X:mult,C:white}X0.5{} Mult",
-                    "> 14: {C:attention}Transforms{}. Disables a random Keypage every Scene"},
+                    "> 14: {C:attention}Transforms{} and disables a random Keypage every Scene"},
                     {"If transformation occurs, stays in this state for",
                     "the next 3 Encounters, then reset value to 9"},
                     {"{C:inactive}(Discarded:{C:attention} #1# {C:inactive})",
@@ -2392,27 +2390,27 @@ return {
                 name = "Here’s a Gift~",
                 text = {
                     "Has a {C:green}#2# in #3#{} to give",
-                    "{C:attention}Gift{} to any card in Deck.",
+                    "{C:attention}Gift{} to any card in Deck",
                 },
             },
             j_pmcmod_childrenOfTheGalaxy = {
                 name = "Pebble",
                 text = {
                     "Has a {C:green}#1# in #2#{} chance to give",
-                    "{C:attention}Pebble{} to any card in Deck.",
+                    "{C:attention}Pebble{} to any card in Deck",
                 },
             },
             j_pmcmod_censored = {
                 name = "{X:black,C:mult}[CENSORED]",
                 text = {
                     "Censors sprites, names",
-                    "and descriptions from Keypages.",
+                    "and descriptions from Keypages",
                 },
             },
             j_pmcmod_chickenA = {
                 name = "Bongy (Normal)",
                 text = {
-                    {"Crispy on the outside, juicy on the inside."},
+                    {"Crispy on the outside, juicy on the inside"},
                     {"Destroys itself at the end of the Encounter",
                     "once {C:attention}3 Scenes are completed{}"},
                     {"{C:inactive}(Currently{C:attention} #1# {C:inactive}Scenes completed)"},
@@ -2421,7 +2419,7 @@ return {
             j_pmcmod_chickenB = {
                 name = "Bongy (Soy Sauce)",
                 text = {
-                    {"Covered in fragrant spices."},
+                    {"Covered in fragrant spices"},
                     {"Destroy itself at the end of the Encounter",
                     "once {C:blue}5 Hands{} are played"},
                     {"{C:inactive}(Currently{C:blue} #1# {C:inactive}hands played)"},
@@ -2430,7 +2428,7 @@ return {
             j_pmcmod_chickenC = {
                 name = "Bongy (Red Sauce)",
                 text = {
-                    {"Covered in a delicious red tomato (?) sauce."},
+                    {"Covered in a delicious red tomato (?) sauce"},
                     {"Destroys itself at the end of the Encounter",
                     "once {C:red}20 cards are discarded{}"},
                     {"{C:inactive}(Currently{C:mult} #1# {C:inactive}Discards used)"},
@@ -2499,7 +2497,7 @@ return {
                 name = 'Prescript',
                 text = {
                     {"{C:red}Discard{} 5 Face cards in a single hand"},
-                    {"Prescript fullfilled: {c:green}#1#{}"}
+                    {"Status: {c:green}#1#{}"}
                 },
             },
             j_pmcmod_prescript2 = {
@@ -2573,8 +2571,25 @@ return {
             effect_singleton={
                 name="Singleton",
                 text={
-                    "Cards that are unique in the deck",
+                    "Cards that are {C:attention}unique{} in the deck",
                     "(only one of its rank)",
+                },
+            },
+            effect_meltdown={
+                name="Meltdown",
+                text={
+                    "When triggered, {C:attention}transforms{} the Keypage",
+                    "into a worse version of itself",
+                },
+            },
+            effect_prescript={
+                name="Prescript",
+                text={
+                    "Gives you a {C:attention}random task{} that must",
+                    "be completed by the end of the Act",
+                    "Completing a Prescript gives you {C:gold}$15{}",
+                    "Failing to complete a Prescript sets",
+                    "your money to {C:red}$0{}"
                 },
             },
             effect_perma={
@@ -2594,7 +2609,7 @@ return {
             pmcmod_gift_seal = {
                 name = "Gift",
                 text = {
-                    "{C:mult}10 Mult{}",
+                    "{C:mult}+10{} Mult",
                     "Loses {C:gold}$10{} for each",
                     "remaining Gift after a Reception",
                     "Goes away after being used"
@@ -2619,10 +2634,10 @@ return {
                 name = "Dante",
                 text = {
                     "Manager",
-                    "Gives {C:mult}#2#{} Mult",
+                    "Gain {C:mult}+#2#{} Mult",
                     "on every played hand",
                     "if it doesn't contain",
-                    "a Face card.",
+                    "a Face card",
                     "{C:inactive}(Currently{C:mult} #1# {C:inactive}Mult)",
                 }
             },
@@ -2640,7 +2655,7 @@ return {
                     "",
                     "Spawns a {C:planet}Sinner{} card",
                     "after defeating a",
-                    "Reception.",
+                    "Reception",
                 }
             },
             pnr_pmcmod_angela = {
@@ -2648,9 +2663,9 @@ return {
                 text = {
                     "Director",
                     "",
-                    "Spawns a {C:planet}Keypage{}",
+                    "Spawns a {C:attention}Keypage{}",
                     "at the start of a",
-                    "Reception.",
+                    "Reception",
                 }
             },
         },
@@ -2660,7 +2675,7 @@ return {
                 name = "Erasure",
                 text = {
                     "{C:red}Removes{} the selected Keypage and any Keypage to",
-                    "the left from the pool for the rest fo the run.",
+                    "the left from the pool for the rest fo the run",
                     "{C:inactive}(selected Keypage must be on the team)"
                 }
             },
@@ -2733,7 +2748,7 @@ return {
                 name = "Manifest",
                 text = {
                     "Upgrades an {C:attention}Aspect Keypage{} into",
-                    "their complete version."
+                    "their complete version"
                 }
             },
         },
@@ -2786,7 +2801,7 @@ return {
                 name = "Index Sleeve",
                 text = {
                     "Starts with an eternal",
-			        "{C:attention,T:j_pmcmod_voiceOfTheCity}Voice of the City{} page.",
+			        "{C:attention,T:j_pmcmod_voiceOfTheCity}Voice of the City{} page",
                 },
                 unlock = {
                     'Win a run with {C:attention}Index Deck{}',
@@ -2797,7 +2812,7 @@ return {
                 name = "Silence Sleeve",
                 text = {
                     "Starts with an Eternal",
-                    "{C:attention, T:j_pmcmod_silence}Time Flowing{} page.",
+                    "{C:attention, T:j_pmcmod_silence}Time Flowing{} page",
                     "{C:blue}+2 hands{}",
                     "{C:red}+2 discards{}",
                     "{C:inactive}+1 Keypage slot{}",
@@ -2811,7 +2826,7 @@ return {
                 name = "Shy Sleeve",
                 text = {
                     "Starts with an eternal",
-			        "{C:attention,T:j_pmcmod_shylook}Today's Shy Look{} page.",         
+			        "{C:attention,T:j_pmcmod_shylook}Today's Shy Look{} page",         
                 },
                 unlock = {
                     'Win a run with {C:attention}Shy Deck{}',
@@ -2822,7 +2837,7 @@ return {
                 name = "Love Sleeve",
                 text = {
                     "Starts with an eternal",
-			        "{C:attention,T:j_pmcmod_queenOfHatred}Queen of Hatred{} page.",
+			        "{C:attention,T:j_pmcmod_queenOfHatred}Queen of Hatred{} page",
                 },
                 unlock = {
                     'Win a run with {C:attention}Love Deck{}',
@@ -2833,7 +2848,7 @@ return {
                 name = "Galaxy Sleeve",
                 text = {
                     "Starts with an eternal",
-			        "{C:attention,T:j_pmcmod_childrenOfTheGalaxy}Pebble{} page.",
+			        "{C:attention,T:j_pmcmod_childrenOfTheGalaxy}Pebble{} page",
                 },
                 unlock = {
                     'Win a run with {C:attention}Galaxy Deck{}',
@@ -2844,7 +2859,7 @@ return {
                 name = "Gift Sleeve",
                 text = {
                     "Starts with an eternal",
-			        "{C:attention,T:j_pmcmod_laetitia}Here’s a Gift~{} page.",
+			        "{C:attention,T:j_pmcmod_laetitia}Here’s a Gift~{} page",
                 },
                 unlock = {
                     'Win a run with {C:attention}Gift Deck{}',
@@ -2855,7 +2870,7 @@ return {
                 name = "Censored Sleeve",
                 text = {
                     "Starts with an eternal",
-			        "{C:attention,T:j_pmcmod_censored}CENSORED{} page.",
+			        "{C:attention,T:j_pmcmod_censored}CENSORED{} page",
                 },
                 unlock = {
                     'Win a run with {C:attention}Censored Deck{}',
@@ -2866,8 +2881,8 @@ return {
                 name = "Serpent Sleeve",
                 text = {
                     "Gets a new bonus with {C:attention}each{}",
-			        "{C:attention}cleared Act{} (up until Act 10).",
-			        "Required score scaling is doubled.",
+			        "{C:attention}cleared Act{} (up until Act 10)",
+			        "Required score scaling is doubled",
                 },
                 unlock = {
                     'Win a run with {C:attention}Serpent Deck{}',
@@ -2940,6 +2955,7 @@ return {
             pmcmod_badge_abraxas="Abraxas Chariot",
             pmcmod_badge_colorFixer="Color Fixer",
             pmcmod_badge_abnormality="Abnormality",
+            pmcmod_badge_distortion="Distortion",
             pmcmod_badge_foodMaybe="Food...?",
             pmcmod_elapsedTime="Elapsed time",
             pmcmod_seconds=" seconds",
@@ -2961,6 +2977,20 @@ return {
             pmcmod_oswaldEffect16="Spawns Tarot Card",
             pmcmod_oswaldEffect17="Spawns Spectral Card",
             pmcmod_oswaldEffect18="Destroys a Keypage",
+            pmcmod_hongLu_yiSangEffect="Yi Sang: {C;green}1 in 2{} chance to retrigger the first scored card",
+            pmcmod_hongLu_faustEffect="Faust: {C:green}1 in 4{} chance to retrigger the last scored card",
+            pmcmod_hongLu_donQuixotePresent="Don Quixote: Adds {C:mult}+1{} Perma Mult to scored cards",
+            pmcmod_hongLu_ryoshuEffect="Ryoshu: Scored cards give {X:mult, C:white}X1.1{} Mult",
+            pmcmod_hongLu_meursaultEffect="Meursault: Adds {C:chips}+2{} Perma Chips to scored cards",
+            pmcmod_hongLu_heathcliffEffect="Heathcliff: {C:mult}+40{} Mult",
+            pmcmod_hongLu_ishmaelEffect="Ishmael: {C:chips}+40{} Chips",
+            pmcmod_hongLu_rodionEffect="Rodion: {C:gold}$5{} at the end of the Scene",
+            pmcmod_hongLu_sinclairEffect="Sinclair: {C:blue}+1{} Hand",
+            pmcmod_hongLu_outisEffect="Outis: {C:red}+1{} Discard",
+            pmcmod_hongLu_gregorEffect="Gregor: {C:attention}+1{} Hand size",
+            pmcmod_prescriptFailed="{C:red}Failed{}",
+            pmcmod_prescriptInProgress="{C:attention}In Progress{}",
+            pmcmod_prescriptFulfilled="{C:green}Fulfilled{}",
         },
         high_scores={},
         labels={
