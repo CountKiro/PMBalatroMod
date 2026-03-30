@@ -11,7 +11,11 @@ SMODS.current_mod.optional_features = function()
     }
 end
 
-
+PMCMOD.config_tab = function()
+    return {n=G.UIT.ROOT, config = {align = "cm", padding = 0.05, colour = G.C.CLEAR}, nodes={
+        create_toggle({label = "Enable Adaptative Scaling", ref_table = PMCMOD.config, ref_value = "enable_adaptative_scaling"}),
+    }}
+end
 
 -------------------
 -- Loading files --
