@@ -1302,6 +1302,8 @@ SMODS.Joker {
  	},
 	loc_vars = function(self, info_queue, card)
 
+--[[	local main_end = nil
+
 		if G.jokers then
             local yiSangPresent = false  --ok
             local faustPresent = false  --ok
@@ -1310,6 +1312,7 @@ SMODS.Joker {
             local meursaultPresent = false --ok
             local heathcliffPresent = false --ok
             local ishmaelPresent = false  --ok
+			local rodionPresent = false  --ok
             local sinclairPresent = false  --ok
             local outisPresent = false  --ok
             local gregorPresent = false  --ok
@@ -1322,10 +1325,12 @@ SMODS.Joker {
 
                     if G.jokers.cards[i].config.center.key == "j_oops" then
                         faustPresent = true
+						print("faustPresent")
                     end
 
                     if G.jokers.cards[i].config.center.key == "j_pmcmod_donQuixote" or G.jokers.cards[i].config.center.key == "j_seeing_double" then
                         donQuixotePresent = true
+						print("donPresent")
                     end
 
                     if G.jokers.cards[i].config.center.key == "j_pmcmod_ryoshu" or G.jokers.cards[i].config.center.key == "j_flower_pot" then
@@ -1361,83 +1366,85 @@ SMODS.Joker {
                     end
 
             end
-        end
 
-        local tempText = ""
-
-        for i = 1, 11 do
-            if i == 1 then
-
-                if yiSangPresent then
-                    tempText = tempText + localize('pmcmod_hongLu_yiSangEffect') + "\n"
-                end
-
-                if faustPresent then
-                    tempText = tempText + localize('pmcmod_hongLu_faustEffect') + "\n"
-                end
-
-                if donQuixotePresent then
-                    tempText = tempText + localize('pmcmod_hongLu_donQuixoteEffect') + "\n"
-                end
-
-                if ryoshuPresent then
-                    tempText = tempText + localize('pmcmod_hongLu_ryoshuEffect') + "\n"
-                end
-
-                if meursaultPresent then
-                    tempText = tempText + localize('pmcmod_hongLu_meursaultEffect') + "\n"
-                end
-
-                if heathcliffPresent then
-                    tempText = tempText + localize('pmcmod_hongLu_heathcliffEffect') + "\n"
-                end
-
-                if ishmaelPresent then
-                    tempText = tempText + localize('pmcmod_hongLu_ishmaelEffect') + "\n"
-                end
-
-                if rodionPresent then
-                    tempText = tempText + localize('pmcmod_hongLu_rodionEffect') + "\n"
-                end
-
-                if sinclairPresent then
-                    tempText = tempText + localize('pmcmod_hongLu_sinclairEffect') + "\n"
-                end
-
-                if outisPresent then
-                    tempText = tempText + localize('pmcmod_hongLu_outisEffect') + "\n"
-                end
-
-                if gregorPresent then
-                    tempText = tempText + localize('pmcmod_hongLu_gregorEffect') + "\n"
-                end
-
-            end
-        end
+			local tempText = ""
 
 
-        local main_end = nil
-        if card.area and (card.area == G.jokers) then
-            main_end = {
-                {
-                    n = G.UIT.C,
-                    config = { align = "bm", minh = 0.4 },
-                    nodes = {
-                        {
-                            n = G.UIT.C,
-                            config = { ref_table = card, align = "m", colour = G.C.RED, r = 0.05, padding = 0.06 },
-                            nodes = {
-                                { n = G.UIT.T, config = { text = tempText, colour = G.C.UI.TEXT_LIGHT, scale = 0.32 * 0.9 } },
-                            }
-                        }
-                    }
-                }
-            }
-        end
+			if yiSangPresent then
+				tempText = tempText .. localize('pmcmod_hongLu_yiSangEffect') .. "\n"
+			end
+
+			if faustPresent then
+				tempText = tempText .. localize('pmcmod_hongLu_faustEffect') .. "\n"
+				print("faustText")
+			end
+
+			if donQuixotePresent then
+				tempText = tempText .. localize('pmcmod_hongLu_donQuixoteEffect') .. "\n"
+				print("donText")
+			end
+
+			if ryoshuPresent then
+				tempText = tempText .. localize('pmcmod_hongLu_ryoshuEffect') .. "\n"
+			end
+
+			if meursaultPresent then
+				tempText = tempText .. localize('pmcmod_hongLu_meursaultEffect') .. "\n"
+			end
+
+			if heathcliffPresent then
+				tempText = tempText .. localize('pmcmod_hongLu_heathcliffEffect') .. "\n"
+			end
+
+			if ishmaelPresent then
+				tempText = tempText .. localize('pmcmod_hongLu_ishmaelEffect') .. "\n"
+			end
+
+			if rodionPresent then
+				tempText = tempText .. localize('pmcmod_hongLu_rodionEffect') .. "\n"
+			end
+
+			if sinclairPresent then
+				tempText = tempText .. localize('pmcmod_hongLu_sinclairEffect') .. "\n"
+			end
+
+			if outisPresent then
+				tempText = tempText .. localize('pmcmod_hongLu_outisEffect') .. "\n"
+			end
+
+			if gregorPresent then
+				tempText = tempText .. localize('pmcmod_hongLu_gregorEffect') .. "\n"
+			end
+			
+			if card.area and (card.area == G.jokers) then
+				main_end = {
+					{
+						n = G.UIT.C,
+						config = { align = "bm", minh = 0.4 },
+						nodes = {
+							{
+								n = G.UIT.C,
+								config = { ref_table = card, align = "m", colour = G.C.RED, r = 0.05, padding = 0.06 },
+								nodes = {
+									{ n = G.UIT.T, config = { text = tempText, colour = G.C.UI.TEXT_LIGHT, scale = 0.32 * 0.9 } },
+								}
+							}
+						}
+					}
+				}
+			end
+        end]]--
+
+        
+
+
+
+        
 
 		local new_numeratorYiSang, new_denominatorYiSang = SMODS.get_probability_vars(card, card.ability.extra.baseChanceYiSang, card.ability.extra.maxChanceYiSang, 'HLYiSangChance')
 		local new_numeratorFaust, new_denominatorFaust = SMODS.get_probability_vars(card, card.ability.extra.baseChanceFaust, card.ability.extra.maxChanceFaust, 'HLFaustChance')
-    	return {main_end = main_end, vars = { card.ability.extra.baseChanceYiSang, card.ability.extra.maxChanceYiSang, card.ability.extra.baseChanceFaust, card.ability.extra.maxChanceFaust,new_numeratorYiSang, new_denominatorYiSang, new_numeratorFaust, new_denominatorFaust}}
+    	--return {main_end = main_end, vars = { card.ability.extra.baseChanceYiSang, card.ability.extra.maxChanceYiSang, card.ability.extra.baseChanceFaust, card.ability.extra.maxChanceFaust,new_numeratorYiSang, new_denominatorYiSang, new_numeratorFaust, new_denominatorFaust}}
+		return { vars = { card.ability.extra.baseChanceYiSang, card.ability.extra.maxChanceYiSang, card.ability.extra.baseChanceFaust, card.ability.extra.maxChanceFaust,new_numeratorYiSang, new_denominatorYiSang, new_numeratorFaust, new_denominatorFaust}}
 	end,
 	calculate = function(self, card, context)
 
@@ -13501,7 +13508,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, faces = 5} },
-	no_collection = true,    
+	--no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13514,7 +13521,49 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.prescriptFullfilled } }
+
+		local status = nil
+
+		if card.ability.extra.prescriptFullfilled then
+			status = localize('pmcmod_prescriptFulfilled')
+		else
+			status = localize('pmcmod_prescriptInProgress')
+		end
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
+
+
+		local statusColour = G.C.RED
+		local tempText = ""
+
+		if card.ability.extra.prescriptFullfilled == false then
+			tempText = localize('pmcmod_prescriptInProgress')
+			statusColour = G.C.GOLD
+		else
+			tempText = localize('pmcmod_prescriptFulfilled')
+			statusColour = G.C.BLUE
+		end
+
+
+		if card.area and (card.area == G.jokers) then
+			main_end = {
+				{
+					n = G.UIT.C,
+					config = { align = "bm", minh = 0.4 },
+					nodes = {
+						{
+							n = G.UIT.C,
+							config = { ref_table = card, align = "m", colour = statusColour, r = 0.05, padding = 0.06 },
+							nodes = {
+								{ n = G.UIT.T, config = { text = tempText, colour = G.C.WHITE, scale = 0.32 * 0.9 } },
+							}
+						}
+					}
+				}
+			}
+		end
+
+
+		return { main_end = main_end, vars = {  } }
 	end,
 	calculate = function(self, card, context)
 
@@ -13562,7 +13611,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, jokerSelected = false, selectedJoker = "", selectedJokerName = ""} },
-	no_collection = true,    
+	--no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13575,26 +13624,57 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.prescriptFullfilled, card.ability.extra.selectedJokerName } }
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
+
+		local statusColour = G.C.RED
+		local tempText = ""
+
+		if card.ability.extra.prescriptFullfilled == false then
+			tempText = localize('pmcmod_prescriptInProgress')
+			statusColour = G.C.GOLD
+		else
+			tempText = localize('pmcmod_prescriptFulfilled')
+			statusColour = G.C.BLUE
+		end
+
+		if card.area and (card.area == G.jokers) then
+			main_end = {
+				{
+					n = G.UIT.C,
+					config = { align = "bm", minh = 0.4 },
+					nodes = {
+						{
+							n = G.UIT.C,
+							config = { ref_table = card, align = "m", colour = statusColour, r = 0.05, padding = 0.06 },
+							nodes = {
+								{ n = G.UIT.T, config = { text = tempText, colour = G.C.WHITE, scale = 0.32 * 0.9 } },
+							}
+						}
+					}
+				}
+			}
+		end
+
+		return { main_end = main_end, vars = { card.ability.extra.prescriptFullfilled, card.ability.extra.selectedJokerName } }
 	end,
 	calculate = function(self, card, context)
 
 		local selectableJokers = {}
 
-		if context.setting_blind and card.ability.extra.jokerSelected == false then
+		if context.setting_blind and (card.ability.extra.jokerSelected == false or not card.ability.extra.selectedJoker.config) then
 				for i = 1, #G.jokers.cards do
 					if G.jokers.cards[i] ~= card and not G.jokers.cards[i].ability.eternal
-					then selectableJokers[#selectableJokers+1] = G.jokers.cards[i] end
+					then selectableJokers[#selectableJokers+1] = G.jokers.cards[i].config.center.key end
                 end
                 card.ability.extra.selectedJoker = #selectableJokers > 0 and pseudorandom_element(selectableJokers, pseudoseed('prescript')) or nil
 				if #selectableJokers > 0 then
 					card.ability.extra.jokerSelected = true
 				end
-				card.ability.extra.selectedJokerName = #selectableJokers > 0 and localize{type="name_text", set="Joker", key = card.ability.extra.selectedJoker.config.center.key} or nil
+				card.ability.extra.selectedJokerName = #selectableJokers > 0 and localize{type="name_text", set="Joker", key = card.ability.extra.selectedJoker} or nil
 		end
 
-		if context.selling_card and context.card.ability.set == "Joker" and card.ability.extra.selectedJoker.config then
-			if context.card.config.center.key == card.ability.extra.selectedJoker.config.center.key and not context.blueprint then
+		if context.selling_card and context.card.ability.set == "Joker" and card.ability.extra.selectedJoker then
+			if context.card.config.center.key == card.ability.extra.selectedJoker and not context.blueprint then
 				card.ability.extra.prescriptFullfilled = true
 			end
 		end
@@ -13647,7 +13727,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, selectedRank = "", prescriptFailed = false} },
-	no_collection = true,    
+	--no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13660,8 +13740,39 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
 		local cardRank = G.GAME.current_round.reset_prescript_3 or { rank = 'Ace'}
-		return { vars = { card.ability.extra.prescriptFullfilled, localize(cardRank.rank, 'ranks'), card.ability.extra.prescriptFailed } }
+
+		local statusColour = G.C.RED
+		local tempText = ""
+
+		if card.ability.extra.prescriptFailed == true then
+			tempText = localize('pmcmod_prescriptFailed')
+			statusColour = G.C.GOLD
+		else
+			tempText = localize('pmcmod_prescriptInProgress')
+			statusColour = G.C.GOLD
+		end
+
+		if card.area and (card.area == G.jokers) then
+			main_end = {
+				{
+					n = G.UIT.C,
+					config = { align = "bm", minh = 0.4 },
+					nodes = {
+						{
+							n = G.UIT.C,
+							config = { ref_table = card, align = "m", colour = statusColour, r = 0.05, padding = 0.06 },
+							nodes = {
+								{ n = G.UIT.T, config = { text = tempText, colour = G.C.WHITE, scale = 0.32 * 0.9 } },
+							}
+						}
+					}
+				}
+			}
+		end
+
+		return { main_end = main_end, vars = { card.ability.extra.prescriptFullfilled, localize(cardRank.rank, 'ranks'), card.ability.extra.prescriptFailed } }
 	end,
 	calculate = function(self, card, context)
 
@@ -13702,7 +13813,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
-	no_collection = true,    
+	--no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13715,7 +13826,39 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.prescriptFullfilled } }
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
+
+		local statusColour = G.C.RED
+		local tempText = ""
+
+		if card.ability.extra.prescriptFullfilled == false then
+			tempText = localize('pmcmod_prescriptInProgress')
+			statusColour = G.C.GOLD
+		else
+			tempText = localize('pmcmod_prescriptFulfilled')
+			statusColour = G.C.BLUE
+		end
+
+
+		if card.area and (card.area == G.jokers) then
+			main_end = {
+				{
+					n = G.UIT.C,
+					config = { align = "bm", minh = 0.4 },
+					nodes = {
+						{
+							n = G.UIT.C,
+							config = { ref_table = card, align = "m", colour = statusColour, r = 0.05, padding = 0.06 },
+							nodes = {
+								{ n = G.UIT.T, config = { text = tempText, colour = G.C.WHITE, scale = 0.32 * 0.9 } },
+							}
+						}
+					}
+				}
+			}
+		end
+
+		return { main_end = main_end, vars = { card.ability.extra.prescriptFullfilled } }
 	end,
 	calculate = function(self, card, context)
 
@@ -13757,7 +13900,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
-	no_collection = true,    
+	--no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13770,7 +13913,39 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.prescriptFullfilled } }
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
+
+		local statusColour = G.C.RED
+		local tempText = ""
+
+		if card.ability.extra.prescriptFullfilled == false then
+			tempText = localize('pmcmod_prescriptInProgress')
+			statusColour = G.C.GOLD
+		else
+			tempText = localize('pmcmod_prescriptFulfilled')
+			statusColour = G.C.BLUE
+		end
+
+
+		if card.area and (card.area == G.jokers) then
+			main_end = {
+				{
+					n = G.UIT.C,
+					config = { align = "bm", minh = 0.4 },
+					nodes = {
+						{
+							n = G.UIT.C,
+							config = { ref_table = card, align = "m", colour = statusColour, r = 0.05, padding = 0.06 },
+							nodes = {
+								{ n = G.UIT.T, config = { text = tempText, colour = G.C.WHITE, scale = 0.32 * 0.9 } },
+							}
+						}
+					}
+				}
+			}
+		end
+
+		return { main_end = main_end, vars = { card.ability.extra.prescriptFullfilled } }
 	end,
 	calculate = function(self, card, context)
 
@@ -13819,7 +13994,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, boosterSkipCount = 0} },
-	no_collection = true,    
+	--no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13832,7 +14007,39 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.prescriptFullfilled, card.ability.extra.boosterSkipCount } }
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
+
+		local statusColour = G.C.RED
+		local tempText = ""
+
+		if card.ability.extra.prescriptFullfilled == false then
+			tempText = localize('pmcmod_prescriptInProgress')
+			statusColour = G.C.GOLD
+		else
+			tempText = localize('pmcmod_prescriptFulfilled')
+			statusColour = G.C.BLUE
+		end
+
+
+		if card.area and (card.area == G.jokers) then
+			main_end = {
+				{
+					n = G.UIT.C,
+					config = { align = "bm", minh = 0.4 },
+					nodes = {
+						{
+							n = G.UIT.C,
+							config = { ref_table = card, align = "m", colour = statusColour, r = 0.05, padding = 0.06 },
+							nodes = {
+								{ n = G.UIT.T, config = { text = tempText, colour = G.C.WHITE, scale = 0.32 * 0.9 } },
+							}
+						}
+					}
+				}
+			}
+		end
+
+		return { main_end = main_end, vars = { card.ability.extra.prescriptFullfilled, card.ability.extra.boosterSkipCount } }
 	end,
 	calculate = function(self, card, context)
 
@@ -13881,7 +14088,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
-	no_collection = true,    
+	--no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13894,7 +14101,39 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.prescriptFullfilled} }
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
+
+		local statusColour = G.C.RED
+		local tempText = ""
+
+		if card.ability.extra.prescriptFullfilled == false then
+			tempText = localize('pmcmod_prescriptInProgress')
+			statusColour = G.C.GOLD
+		else
+			tempText = localize('pmcmod_prescriptFulfilled')
+			statusColour = G.C.BLUE
+		end
+
+
+		if card.area and (card.area == G.jokers) then
+			main_end = {
+				{
+					n = G.UIT.C,
+					config = { align = "bm", minh = 0.4 },
+					nodes = {
+						{
+							n = G.UIT.C,
+							config = { ref_table = card, align = "m", colour = statusColour, r = 0.05, padding = 0.06 },
+							nodes = {
+								{ n = G.UIT.T, config = { text = tempText, colour = G.C.WHITE, scale = 0.32 * 0.9 } },
+							}
+						}
+					}
+				}
+			}
+		end
+
+		return { main_end = main_end, vars = { card.ability.extra.prescriptFullfilled} }
 	end,
 	calculate = function(self, card, context)
 
@@ -13940,7 +14179,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
-	no_collection = true,    
+	--no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -13953,7 +14192,39 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.prescriptFullfilled } }
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
+
+		local statusColour = G.C.RED
+		local tempText = ""
+
+		if card.ability.extra.prescriptFullfilled == false then
+			tempText = localize('pmcmod_prescriptInProgress')
+			statusColour = G.C.GOLD
+		else
+			tempText = localize('pmcmod_prescriptFulfilled')
+			statusColour = G.C.BLUE
+		end
+
+
+		if card.area and (card.area == G.jokers) then
+			main_end = {
+				{
+					n = G.UIT.C,
+					config = { align = "bm", minh = 0.4 },
+					nodes = {
+						{
+							n = G.UIT.C,
+							config = { ref_table = card, align = "m", colour = statusColour, r = 0.05, padding = 0.06 },
+							nodes = {
+								{ n = G.UIT.T, config = { text = tempText, colour = G.C.WHITE, scale = 0.32 * 0.9 } },
+							}
+						}
+					}
+				}
+			}
+		end
+
+		return { main_end = main_end, vars = { card.ability.extra.prescriptFullfilled } }
 	end,
 	calculate = function(self, card, context)
 
@@ -13997,7 +14268,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
-	no_collection = true,    
+	--no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -14010,7 +14281,39 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.prescriptFullfilled } }
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
+
+		local statusColour = G.C.RED
+		local tempText = ""
+
+		if card.ability.extra.prescriptFullfilled == false then
+			tempText = localize('pmcmod_prescriptInProgress')
+			statusColour = G.C.GOLD
+		else
+			tempText = localize('pmcmod_prescriptFulfilled')
+			statusColour = G.C.BLUE
+		end
+
+
+		if card.area and (card.area == G.jokers) then
+			main_end = {
+				{
+					n = G.UIT.C,
+					config = { align = "bm", minh = 0.4 },
+					nodes = {
+						{
+							n = G.UIT.C,
+							config = { ref_table = card, align = "m", colour = statusColour, r = 0.05, padding = 0.06 },
+							nodes = {
+								{ n = G.UIT.T, config = { text = tempText, colour = G.C.WHITE, scale = 0.32 * 0.9 } },
+							}
+						}
+					}
+				}
+			}
+		end
+
+		return { main_end = main_end, vars = { card.ability.extra.prescriptFullfilled } }
 	end,
 	calculate = function(self, card, context)
 
@@ -14055,7 +14358,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false, current_consumable_count = 0} },
-	no_collection = true,    
+	--no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -14068,7 +14371,39 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.prescriptFullfilled, card.ability.extra.current_consumable_count } }
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
+
+		local statusColour = G.C.RED
+		local tempText = ""
+
+		if card.ability.extra.prescriptFullfilled == false then
+			tempText = localize('pmcmod_prescriptInProgress')
+			statusColour = G.C.GOLD
+		else
+			tempText = localize('pmcmod_prescriptFulfilled')
+			statusColour = G.C.BLUE
+		end
+
+
+		if card.area and (card.area == G.jokers) then
+			main_end = {
+				{
+					n = G.UIT.C,
+					config = { align = "bm", minh = 0.4 },
+					nodes = {
+						{
+							n = G.UIT.C,
+							config = { ref_table = card, align = "m", colour = statusColour, r = 0.05, padding = 0.06 },
+							nodes = {
+								{ n = G.UIT.T, config = { text = tempText, colour = G.C.WHITE, scale = 0.32 * 0.9 } },
+							}
+						}
+					}
+				}
+			}
+		end
+
+		return { main_end = main_end, vars = { card.ability.extra.prescriptFullfilled, card.ability.extra.current_consumable_count } }
 	end,
 	calculate = function(self, card, context)
 
@@ -14114,7 +14449,7 @@ SMODS.Joker {
 	name = "Prescript",
 	pronouns = "it_its",
 	config = { extra = {prescriptFullfilled = false} },
-	no_collection = true,    
+	--no_collection = true,    
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -14127,7 +14462,39 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
-		return { vars = { card.ability.extra.prescriptFullfilled } }
+		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
+
+		local statusColour = G.C.RED
+		local tempText = ""
+
+		if card.ability.extra.prescriptFullfilled == false then
+			tempText = localize('pmcmod_prescriptInProgress')
+			statusColour = G.C.GOLD
+		else
+			tempText = localize('pmcmod_prescriptFulfilled')
+			statusColour = G.C.BLUE
+		end
+
+
+		if card.area and (card.area == G.jokers) then
+			main_end = {
+				{
+					n = G.UIT.C,
+					config = { align = "bm", minh = 0.4 },
+					nodes = {
+						{
+							n = G.UIT.C,
+							config = { ref_table = card, align = "m", colour = statusColour, r = 0.05, padding = 0.06 },
+							nodes = {
+								{ n = G.UIT.T, config = { text = tempText, colour = G.C.WHITE, scale = 0.32 * 0.9 } },
+							}
+						}
+					}
+				}
+			}
+		end
+
+		return { main_end = main_end, vars = { card.ability.extra.prescriptFullfilled } }
 	end,
 	calculate = function(self, card, context)
 
