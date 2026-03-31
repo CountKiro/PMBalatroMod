@@ -1941,7 +1941,7 @@ return {
                 name = 'Rien',
                 text = {
                     {"Spawns in a random {C:blue}Prescript{} at the start of the Act"},
-                    {"Gain {C:mult}#3#{} for every {C:blue}Prescript{} fullfilled.",
+                    {"Gain {C:mult}#3#{} Mult for every {C:blue}Prescript{} fullfilled.",
                     "Destroy itself if the {C:blue}Prescript fails"},
                     {"{C:attention}Bonus effect: {}If Sora is present and to the right, gains double",
                     "this value. Sora dies after this effect triggers 3 times",
@@ -2496,74 +2496,79 @@ return {
             j_pmcmod_prescript1 = {
                 name = 'Prescript',
                 text = {
-                    {"{C:red}Discard{} 5 Face cards in a single hand"},
-                    {"Status: {c:green}#1#{}"}
+                    "{C:red}Discard{} 5 Face cards in a single hand",
+                    
                 },
             },
             j_pmcmod_prescript2 = {
                 name = 'Prescript',
                 text = {
-                    {"Sell the {C:red}#2#{} Keypage"},
-                    {"Prescript fullfilled: {c:green}#1#{}"}
+                    "Sell the {C:red}#2#{} Keypage",
+                    
                 },
             },
             j_pmcmod_prescript3 = {
                 name = 'Prescript',
                 text = {
-                    {"Must not play {C:attention}#2#{} cards"},
-                    {"Prescript failed: {c:red}#3#{}"}
+                    "Must not play {C:attention}#2#{} cards",
+                    
                 },
             },
             j_pmcmod_prescript4 = {
                 name = 'Prescript',
                 text = {
-                    {"Finish 1 Scene with {C:attention}game speed{} set to 1"},
-                    {"Prescript fullfilled: {c:green}#1#{}"}
+                    "Finish 1 Scene with {C:attention}game speed{} set to 1",
+                    
                 },
             },
             j_pmcmod_prescript5 = {
                 name = 'Prescript',
                 text = {
                     "Must not use any {C:red}Discards",
+                    
                 },
             },
             j_pmcmod_prescript6 = {
                 name = 'Prescript',
                 text = {
-                    {"Open and skip 3 {C:attention}Booster packs{}"},
-                    {"Boosters skipped: {c:attention}#2#{}"}
+                    "Open and skip 3 {C:attention}Booster packs{}",
+                    "Boosters skipped: {c:attention}#2#{}"
+
                 },
             },
             j_pmcmod_prescript7 = {
                 name = 'Prescript',
                 text = {
-                    {"Sell a Keypage of at least {C:blue}Hardcover{} rarity"},
-                    {"Prescript fullfilled: {c:green}#1#{}"}
+                    "Sell a Keypage of at least {C:blue}Hardcover{} rarity",
+                    
                 },
             },
             j_pmcmod_prescript8 = {
                 name = 'Prescript',
                 text = {
                     "Win a Scene with your {C:blue}last Hand",
+
                 },
             },
             j_pmcmod_prescript9 = {
                 name = 'Prescript',
                 text = {
                     "Trigger the {C:red}Reception ability",
+
                 },
             },
             j_pmcmod_prescript10 = {
                 name = 'Prescript',
                 text = {
                     "Use {C:attention}3 Consumables",
+
                 },
             },
             j_pmcmod_prescript11 = {
                 name = 'Prescript',
                 text = {
-                    {"Play the first 5 digits of e"},
-                    {"Prescript fullfilled: {c:green}#1#{}"}
+                    "Play the first 5 digits of e",
+                    
                 },
             },
         },
@@ -2979,7 +2984,7 @@ return {
             pmcmod_oswaldEffect18="Destroys a Keypage",
             pmcmod_hongLu_yiSangEffect="Yi Sang: {C;green}1 in 2{} chance to retrigger the first scored card",
             pmcmod_hongLu_faustEffect="Faust: {C:green}1 in 4{} chance to retrigger the last scored card",
-            pmcmod_hongLu_donQuixotePresent="Don Quixote: Adds {C:mult}+1{} Perma Mult to scored cards",
+            pmcmod_hongLu_donQuixoteEffect="Don Quixote: Adds {C:mult}+1{} Perma Mult to scored cards",
             pmcmod_hongLu_ryoshuEffect="Ryoshu: Scored cards give {X:mult, C:white}X1.1{} Mult",
             pmcmod_hongLu_meursaultEffect="Meursault: Adds {C:chips}+2{} Perma Chips to scored cards",
             pmcmod_hongLu_heathcliffEffect="Heathcliff: {C:mult}+40{} Mult",
@@ -2988,9 +2993,9 @@ return {
             pmcmod_hongLu_sinclairEffect="Sinclair: {C:blue}+1{} Hand",
             pmcmod_hongLu_outisEffect="Outis: {C:red}+1{} Discard",
             pmcmod_hongLu_gregorEffect="Gregor: {C:attention}+1{} Hand size",
-            pmcmod_prescriptFailed="{C:red}Failed{}",
-            pmcmod_prescriptInProgress="{C:attention}In Progress{}",
-            pmcmod_prescriptFulfilled="{C:green}Fulfilled{}",
+            pmcmod_prescriptFailed="Failed",
+            pmcmod_prescriptInProgress="In Progress",
+            pmcmod_prescriptFulfilled="Fulfilled",
         },
         high_scores={},
         labels={
