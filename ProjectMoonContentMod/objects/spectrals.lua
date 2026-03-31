@@ -455,7 +455,7 @@ SMODS.Consumable {
 
         for i = 1, my_pos do
             G.GAME.banned_keys[G.jokers.cards[i].config.center.key] = true
-            G.jokers.cards[i].getting_sliced = true
+            --G.jokers.cards[i].getting_sliced = true
             G.E_MANAGER:add_event(Event({func = function()
                 G.jokers.cards[i]:start_dissolve({G.C.RED}, nil, 1.6)
             return true end }))
