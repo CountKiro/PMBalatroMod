@@ -244,6 +244,8 @@ SMODS.Enhancement {
                 card.ability.bonus = 9999
             end
         end
+    end,
+    calculate = function(self, card, context)
         if context.after then
             card.ability.triggersLeft = card.ability.triggersLeft - 1
 
