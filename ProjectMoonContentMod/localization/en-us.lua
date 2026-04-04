@@ -342,7 +342,8 @@ return {
                 text = {
                     "Catalogues every {C:attention}directly bought Keypage",
                     "Gain {C:mult}#2#{} Mult for every Keypage catalogued",
-                    "{C:inactive}Currently {C:mult}#1#{} Mult"
+                    "{C:inactive}Currently {C:mult}#1#{} Mult",
+                    "{C:inactive}Selected Keypage: {C:attention}#3#{}"
                 },
                 unlock = {
                     'Win a run with {C:attention}Aspect of Nikolai Keypage{}',
@@ -435,11 +436,11 @@ return {
             j_pmcmod_ryoshu = {
                 name = 'The Fourth Sinner, Ryoshu',
                 text = {
-                    {"Gains {X:mult, C:white}X#1#{} Mult for",
+                    {"Gains {X:mult,C:white}X#1#{} Mult for",
                     "each Keypage sold"},
                     {"Selling a Keypage prevents it from",
                     "appearing for the rest of the run",
-                    "{C:inactive}(Currently {X:mult, C:white}X#2#{C:inactive} Mult)"}
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)"}
                 },
                 unlock = {
                     'Win a run with the {C:attention}Ryoshu Keypage{}',
@@ -571,12 +572,9 @@ return {
                     "and {C:hearts}Hearts{}/{C:diamonds}Diamonds{} surpass 6, {C:red}suffer a Meltdown{}"},
                     {"If this Keypage survives through 4 Acts,",
                     "{C:attention}gain another chance",
-                    "{C:inactive}(Total {C:hearts}Hearts{}: #3#)",
-                    "{C:inactive}(Total {C:diamonds}Diamonds{}: #4#)",
-                    "{C:inactive}(Total {C:spades}Spades{}: #1#)",
-                    "{C:inactive}(Total {C:clubs}Clubs{}: #2#)",
-                    "{C:inactive}(Currently {C:mult}+#5#{C:inactive} Mult)",
-                    "{C:inactive}(Currently {C:chips}+#6#{C:inactive} Chips)",
+                    "{C:inactive}(Total {C:hearts}Hearts{}: #3# / {C:diamonds}Diamonds{}: #4#)",
+                    "{C:inactive}(Total {C:spades}Spades{}: #1# / {C:clubs}Clubs{}: #2#)",
+                    "{C:inactive}(Currently {C:mult}+#5#{} / {C:chips}+#6# Chips{}{C:inactive} Mult)",
                     "{C:inactive}({C:red}#7#{C:inactive} Acts survived)"},
                 },
                 unlock = {
@@ -1168,17 +1166,11 @@ return {
                 name = 'Indigo Elder',
                 text = {
                     {"Gain an effect depending on the position this Keypage is in at the start of the Scene:",
-                    "2   -> {C:gold}Money{} at the end of the Scene",
-                    "3   -> {C:chips}Chips{}",
-                    "4   -> {C:mult}Mult{} for each scoring card",
-                    "5   -> {X:mult,C:white}XChips{}"},
+                    "2 = {C:gold}${} after Encounter / 3 = {C:chips}Chips{} 4 = {C:mult}Mult{} per scoring card / {X:chips,C:white}XChips{}",},
                     {"When the Scene is cleared, increase the bonuses for every other position"},
                     {"If set to position 1, {C:attention}all effects apply, but {C:red}bonuses don't increase",
                     "{C:inactive}(Current Position: {C:red}#5#{})",
-                    "{C:inactive}(Currently {C:gold}$#1#{})",
-                    "{C:inactive}(Currently {C:chips}+#2#{} Chips)",
-                    "{C:inactive}(Currently {C:mult}+#3#{} Mult)",
-                    "{C:inactive}(Currently {X:mult,C:white}X#4#{} Chips)"},
+                    "{C:inactive}(Currently {C:gold}$#1#{} / {C:chips}+#2#{} Chips / {C:mult}+#3#{} Mult / {X:chips,C:white}X#4#{} Chips",},
                 },
             },
             j_pmcmod_catherine = {
@@ -1293,7 +1285,7 @@ return {
             j_pmcmod_moses = {
                 name = 'Moses',
                 text = {
-                    "{X:chips, C:white}X#1#{} Chips on every played {C:attention}7{}",
+                    "{X:chips,C:white}X#1#{} Chips on every played {C:attention}7{}",
                 },
                 unlock = {
                     'Score over 100000 chips,',
@@ -1351,7 +1343,7 @@ return {
                 name = 'Sancho',
                 text = {
                     "Retriggers {C:hearts}Hearts{} cards",
-                    "at a {C:green}#2# in #3#{}chance",
+                    "at a {C:green}#2# in #3#{} chance",
                     "If the card has {C:red}Bleed{},",
                     "always retriggers"
                 },
@@ -1458,7 +1450,7 @@ return {
             j_pmcmod_paula = {
                 name = 'Paula',
                 text = {
-                    "Decrease the Encounter scaling",
+                    "{C:attention}Decrease{} the Encounter scaling",
                 }
             },
             j_pmcmod_romero = {
@@ -1475,8 +1467,8 @@ return {
                 name = 'Han-ul',
                 text = {
                     "When a {C:attention}#1#{} is played,",
-                    "gain {C:gold}money{} based on the {C:attention}average value{}",
-                    "of the Ranks played"
+                    "gain {C:gold}money{} based on {C:attention}half the average value{}",
+                    "of the Ranks scored"
                 },
                 unlock = {
                     'Win a game without playing a single {C:attention}Flush{}',
@@ -1492,8 +1484,8 @@ return {
             j_pmcmod_aengDu = {
                 name = 'Aeng-Du',
                 text = {
-                    "Gives {X:red,C:white}X#1#{} Mult",
-                    "on any hand that is not the first or last"
+                    "Gives {X:red,C:white}X#1#{} Mult on any hand",
+                    "that is {C:attention}not the first or last{}"
                 }
             },
             j_pmcmod_jun = {
@@ -1542,7 +1534,7 @@ return {
                 text = {
                     {"Gains a stack for every Keypage sold,",
                     "up to 3 stacks",},
-                    {"Sell this Keypage to return Acts",
+                    {"Sell this Keypage to {C:attention}return Acts{}",
                     "based on the amount of stacks"}
                 },
                 unlock = {
@@ -1574,10 +1566,10 @@ return {
                 name = 'Hohenheim',
                 text = {
                     {"After obtaining this Keypage",
-                    "compile the names of every destroyed Keypage",},
+                    "compile the names of every {C:attention}destroyed Keypage{}",},
                     {"At the end of the Encounter,",
                     "revive a random Keypage",
-                    "with Perishable and Negative"}
+                    "with {C:dark_edition}Perishable{} and {C:dark_edition}Negative{}"}
                 }
             },
             j_pmcmod_alyssa = {
@@ -1700,7 +1692,7 @@ return {
             j_pmcmod_xianrenA = {
                 name = 'Elder on a Branch',
                 text = {
-                    "Gives {C:gold}#1#{} at the end of the Scene",
+                    "Gives {C:gold}$#1#{} at the end of the Scene",
                     "{C:inactive}Swaps with a different Elder after a Reception"
                 },
                 unlock = {
@@ -1721,7 +1713,7 @@ return {
             j_pmcmod_xianrenC = {
                 name = 'Elder in a Machine',
                 text = {
-                    "Gives {X:mult, C:white}X#1#{} Mult per scored card",
+                    "Gives {X:mult,C:white}X#1#{} Mult per scored card",
                     "{C:inactive}Swaps with a different Elder after a Reception"
                 },
                 unlock = {
@@ -2573,6 +2565,77 @@ return {
             },
         },
         Other={
+            hongLu_yiSangEffect={
+                name="Yi Sang",
+                text={
+                    "{C;green}1 in 2{} chance to",
+                    "retrigger the first scored card",
+                },
+            },
+            hongLu_faustEffect={
+                name="Faust",
+                text={
+                    "{C;green}1 in 4{} chance to",
+                    "retrigger the last scored card",
+                },
+            },
+            hongLu_donQuixoteEffect={
+                name="Don Quixote",
+                text={
+                    "Adds {C:mult}+1{} Perma Mult",
+                    "to scored cards",
+                },
+            },
+            hongLu_ryoshuEffect={
+                name="Ryoshu",
+                text={
+                    "Scored cards give",
+                    "{X:mult,C:white}X1.1{} Mult",
+                },
+            },
+            hongLu_meursaultEffect={
+                name="Meursault",
+                text={
+                    "Adds {C:chips}+2{} Perma Chips",
+                    "to scored cards",
+                },
+            },
+            hongLu_heathcliffEffect={
+                name="Heathcliff",
+                text={
+                    "{C:mult}+20{} Mult",
+                },
+            },
+            hongLu_ishmaelEffect={
+                name="Ishmael",
+                text={
+                    "{C:chips}+40{} Chips",
+                },
+            },
+            hongLu_rodionEffect={
+                name="Rodion",
+                text={
+                    "{C:gold}$5{} at the end of the Scene",
+                },
+            },
+            hongLu_sinclairEffect={
+                name="Sinclair",
+                text={
+                    "{C:blue}+1{} Hand",
+                },
+            },
+            hongLu_outisEffect={
+                name="Outis",
+                text={
+                    "{C:red}+1{} Discard",
+                },
+            },
+            hongLu_gregorEffect={
+                name="Gregor",
+                text={
+                    "{C:attention}+1{} Hand size",
+                },
+            },
             effect_singleton={
                 name="Singleton",
                 text={
@@ -2998,6 +3061,8 @@ return {
             pmcmod_prescriptFailed="Failed",
             pmcmod_prescriptInProgress="In Progress",
             pmcmod_prescriptFulfilled="Fulfilled",
+            pmcmod_nikolaiCataloguedTrue="Catalogued",
+            pmcmod_nikolaiCataloguedFalse="Not catalogued"
         },
         high_scores={},
         labels={
