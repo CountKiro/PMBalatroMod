@@ -6568,7 +6568,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 5 },
-	config = { extra = { xmult = 1.3 } },
+	config = { extra = { xchips = 1.3 } },
     pools =
 	{
 		
