@@ -2072,21 +2072,6 @@ SMODS.Joker {
                     return true
                 end
             }))
-			
-			
-			--[[card.getting_sliced = true
-			G.GAME.joker_buffer = G.GAME.joker_buffer - 1
-			G.E_MANAGER:add_event(Event({
-							trigger = 'after',
-							delay = 0.3,
-							blockable = false,
-							func = function()
-								 G.GAME.joker_buffer = 0
-								card:start_dissolve({ HEX("57ecab") }, nil, 1.6)
-								play_sound('slice1', 0.96 + math.random() * 0.08)
-                        		return true
-							end
-						}))]]--
 		end
 		if context.end_of_round and context.game_over == false and context.main_eval and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint and card.ability.xmult < 3 then
 			card.ability.roundCount = card.ability.roundCount + 1
