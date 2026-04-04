@@ -7031,7 +7031,7 @@ SMODS.Joker {
 				accumulatedValue = accumulatedValue + G.play.cards[i].base.nominal
 			end
 
-			averageValue = math.floor(accumulatedValue / #G.play.cards)
+			averageValue = math.floor(math.floor(accumulatedValue / #G.play.cards))/2
 
 			return
 			{
@@ -7394,6 +7394,7 @@ SMODS.Joker {
 		["Bloodfiends"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_pmcmod_bleed
 		local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'casettiChance')
 		local bleedCardsTally = 0
         if G.playing_cards then
@@ -7457,6 +7458,7 @@ SMODS.Joker {
 		["Heretics"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_pmcmod_bleed
 		local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'sashaChance')
     	return {vars = { new_numerator, new_denominator}}
 	end,
