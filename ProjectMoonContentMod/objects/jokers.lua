@@ -1,3 +1,60 @@
+function Card:keypage_add_speech_bubble(text_key, align, loc_vars)
+        if self.children.speech_bubble then self.children.speech_bubble:remove() end
+        self.config.speech_bubble_align = {align=align or 'bm', offset = {x=0,y=0},parent = self}
+        self.children.speech_bubble = 
+        UIBox{
+            definition = G.UIDEF.speech_bubble(text_key, loc_vars),
+            config = self.config.speech_bubble_align
+        }
+        self.children.speech_bubble:set_role{
+            role_type = 'Minor',
+            xy_bond = 'Weak',
+            r_bond = 'Strong',
+            major = self,
+        }
+        self.children.speech_bubble.states.visible = false
+		local hold_time = (G.SETTINGS.GAMESPEED*4) or 4
+		G.E_MANAGER:add_event(Event({trigger = "after", delay = hold_time, blockable = false, blocking = false, func = function()
+			self.children.speech_bubble:remove()
+		return true end}))
+    end
+function Card:keypage_say_stuff(n, not_first)
+    self.talking = true
+    if not not_first then 
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.1,
+            func = function()
+                if self.children.speech_bubble then self.children.speech_bubble.states.visible = true end
+                self:keypage_say_stuff(n, true)
+              return true
+            end
+        }))
+    else
+        if n <= 0 then self.talking = false; return end
+        local new_said = math.random(1, 11)
+        while new_said == self.last_said do 
+            new_said = math.random(1, 11)
+        end
+        self.last_said = new_said
+        play_sound('voice'..math.random(1, 11), G.SPEEDFACTOR*(math.random()*0.2+1), 0.5)
+        self:juice_up()
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            blockable = false, blocking = false,
+            delay = 0.13,
+            func = function()
+                self:keypage_say_stuff(n-1, true)
+            return true
+            end
+        }), 'tutorial')
+		local hold_time = (G.SETTINGS.GAMESPEED*4) or 4
+		G.E_MANAGER:add_event(Event({trigger = "after", delay = hold_time, blockable = false, blocking = false, func = function()
+			self.children.speech_bubble:remove()
+		return true end}))
+    end
+end
+
 local function Shuffle(t)
 	local s = {}
 	for i = 1, #t do s[i] = t[i] end
@@ -380,6 +437,7 @@ SMODS.Joker {
 
  	},
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_pmcmod_poise
 		return { vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod } }
 	end,
 	calculate = function(self, card, context)
@@ -3379,6 +3437,11 @@ SMODS.Joker {
 		
 		if context.selling_card and context.card.ability.set == "Planet" and not context.blueprint then
                     card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+					--local quip = "pnr_pmcmod_panther_test"
+					--card:keypage_add_speech_bubble(quip, nil, { quip = true })
+					--card:keypage_say_stuff(5, false, quip)
+					--Card:add_partner_speech_bubble(pnr_pmcmod_panther_test)
+                	--Card:partner_say_stuff(5)
 			return {
 				message = 'Upgraded!',
 				colour = G.C.MULT,
@@ -4836,7 +4899,7 @@ SMODS.Joker {
 	key = 'niko',
 	name = "Niko",
 	pronouns = "he_him",
-	config = { extra = { mult = 0} },
+	config = { extra = { mult = 0, handSize = 1} },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -9932,8 +9995,24 @@ SMODS.Joker {
 
 			
 
-			if card.ability.extra.soraDeathCounter >= 3 then
+			if card.ability.extra.soraDeathCounter >= 3 and card.ability.extra.soraPresent then
+
+				for i = 1, #G.jokers.cards do
+					if G.jokers.cards[i] == card then
+						card.ability.extra.currentPosition = i
+						break
+					end
+				end
+
+				for i = card.ability.extra.currentPosition, #G.jokers.cards do
+					if G.jokers.cards[i].config.center.key == "j_pmcmod_sora" then
+						card.ability.extra.soraPos = i
+					end
+				end
+
 				local sora = G.jokers.cards[card.ability.extra.soraPos]
+				
+				card.ability.extra.soraDeathCounter = 0
 				
 				sora.getting_sliced = true
 				G.E_MANAGER:add_event(Event({func = function()
