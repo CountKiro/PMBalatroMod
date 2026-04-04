@@ -1356,7 +1356,7 @@ SMODS.Joker {
 		baseChanceFaust = 1,
 		maxChanceFaust = 4,
 		donQuixotePermaMult = 1,
-		ryoshuXMult = 1.1,
+		ryoshuXMult = 2,
 		meursaultPermaChips = 2,
 		heathcliffMult = 20,
 		ishmaelChips = 40,
@@ -1378,7 +1378,7 @@ SMODS.Joker {
  	},
 	loc_vars = function(self, info_queue, card)
 
---[[	local main_end = nil
+
 
 		if G.jokers then
             local yiSangPresent = false  --ok
@@ -1401,12 +1401,10 @@ SMODS.Joker {
 
                     if G.jokers.cards[i].config.center.key == "j_oops" then
                         faustPresent = true
-						print("faustPresent")
                     end
 
                     if G.jokers.cards[i].config.center.key == "j_pmcmod_donQuixote" or G.jokers.cards[i].config.center.key == "j_seeing_double" then
                         donQuixotePresent = true
-						print("donPresent")
                     end
 
                     if G.jokers.cards[i].config.center.key == "j_pmcmod_ryoshu" or G.jokers.cards[i].config.center.key == "j_flower_pot" then
@@ -1443,79 +1441,53 @@ SMODS.Joker {
 
             end
 
-			local tempText = ""
-
-
 			if yiSangPresent then
-				tempText = tempText .. localize('pmcmod_hongLu_yiSangEffect') .. "\n"
+				info_queue[#info_queue + 1] = {set = "Other", key = "hongLu_yiSangEffect"}
 			end
 
 			if faustPresent then
-				tempText = tempText .. localize('pmcmod_hongLu_faustEffect') .. "\n"
-				print("faustText")
+				info_queue[#info_queue + 1] = {set = "Other", key = "hongLu_faustEffect"}
 			end
 
 			if donQuixotePresent then
-				tempText = tempText .. localize('pmcmod_hongLu_donQuixoteEffect') .. "\n"
-				print("donText")
+				info_queue[#info_queue + 1] = {set = "Other", key = "hongLu_donQuixoteEffect"}
 			end
 
 			if ryoshuPresent then
-				tempText = tempText .. localize('pmcmod_hongLu_ryoshuEffect') .. "\n"
+				info_queue[#info_queue + 1] = {set = "Other", key = "hongLu_ryoshuEffect"}
 			end
 
 			if meursaultPresent then
-				tempText = tempText .. localize('pmcmod_hongLu_meursaultEffect') .. "\n"
+				info_queue[#info_queue + 1] = {set = "Other", key = "hongLu_meursaultEffect"}
 			end
 
 			if heathcliffPresent then
-				tempText = tempText .. localize('pmcmod_hongLu_heathcliffEffect') .. "\n"
+				info_queue[#info_queue + 1] = {set = "Other", key = "hongLu_heathcliffEffect"}
 			end
 
 			if ishmaelPresent then
-				tempText = tempText .. localize('pmcmod_hongLu_ishmaelEffect') .. "\n"
+				info_queue[#info_queue + 1] = {set = "Other", key = "hongLu_ishmaelEffect"}
 			end
 
 			if rodionPresent then
-				tempText = tempText .. localize('pmcmod_hongLu_rodionEffect') .. "\n"
+				info_queue[#info_queue + 1] = {set = "Other", key = "hongLu_rodionEffect"}
 			end
 
 			if sinclairPresent then
-				tempText = tempText .. localize('pmcmod_hongLu_sinclairEffect') .. "\n"
+				info_queue[#info_queue + 1] = {set = "Other", key = "hongLu_sinclairEffect"}
 			end
 
 			if outisPresent then
-				tempText = tempText .. localize('pmcmod_hongLu_outisEffect') .. "\n"
+				info_queue[#info_queue + 1] = {set = "Other", key = "hongLu_outisEffect"}
 			end
 
 			if gregorPresent then
-				tempText = tempText .. localize('pmcmod_hongLu_gregorEffect') .. "\n"
+				info_queue[#info_queue + 1] = {set = "Other", key = "hongLu_gregorEffect"}
 			end
-			
-			if card.area and (card.area == G.jokers) then
-				main_end = {
-					{
-						n = G.UIT.C,
-						config = { align = "bm", minh = 0.4 },
-						nodes = {
-							{
-								n = G.UIT.C,
-								config = { ref_table = card, align = "m", colour = G.C.RED, r = 0.05, padding = 0.06 },
-								nodes = {
-									{ n = G.UIT.T, config = { text = tempText, colour = G.C.UI.TEXT_LIGHT, scale = 0.32 * 0.9 } },
-								}
-							}
-						}
-					}
-				}
-			end
-        end]]--
 
-        
+        end
 
 
-
-        
 
 		local new_numeratorYiSang, new_denominatorYiSang = SMODS.get_probability_vars(card, card.ability.extra.baseChanceYiSang, card.ability.extra.maxChanceYiSang, 'HLYiSangChance')
 		local new_numeratorFaust, new_denominatorFaust = SMODS.get_probability_vars(card, card.ability.extra.baseChanceFaust, card.ability.extra.maxChanceFaust, 'HLFaustChance')
@@ -1530,6 +1502,7 @@ SMODS.Joker {
 		local ryoshuPresent = false -- ok
 		local meursaultPresent = false --ok
 		local heathcliffPresent = false --ok
+		local rodionPresent = false  --ok
 		local ishmaelPresent = false  --ok
 		local sinclairPresent = false  --ok
 		local outisPresent = false  --ok
@@ -1621,15 +1594,6 @@ SMODS.Joker {
 				}))
 			end
 
-			local ret = {}
-
-            if ryoshuPresent then
-                ret.xmult = card.ability.extra.ryoshuXMult
-            end
-
-
-			return ret
-
 
 		end
 
@@ -1678,6 +1642,11 @@ SMODS.Joker {
 
 			if heathcliffPresent then
 				ret.chips = card.ability.extra.ishmaelChips
+			end
+
+
+			if ryoshuPresent then
+				ret.xmult = card.ability.extra.ryoshuXMult
 			end
 
 			return ret
@@ -6333,6 +6302,7 @@ SMODS.Joker {
 		["Bloodfiends"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_pmcmod_bleed
         local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'sanchoChance')
     	return {vars = { card.ability.extra.repetitions, new_numerator, new_denominator}}
 	end,
@@ -6396,7 +6366,7 @@ SMODS.Joker {
 		["Bloodfiends"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
-		
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_pmcmod_bleed
         return {vars = { card.ability.extra.mult, card.ability.extra.mult_mod } }
 	end,
 	calculate = function(self, card, context)
@@ -6474,6 +6444,7 @@ SMODS.Joker {
 		["Bloodfiends"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_pmcmod_bleed
         return {vars = { card.ability.extra.chips, card.ability.extra.chips_mod } }
 	end,
 	calculate = function(self, card, context)
@@ -6542,12 +6513,12 @@ SMODS.Joker {
 		["Bloodfiends"] = true,
  	},
 	loc_vars = function(self, info_queue, card)
-		
+		info_queue[#info_queue + 1] = G.P_CENTERS.m_pmcmod_bleed
         return {vars = { card.ability.extra.xmult } }
 	end,
 	calculate = function(self, card, context)
 
-		if context.individual and context.cardarea == G.hand and not context.end_of_round and context.other_card:is_suit("Hearts") then
+		if context.individual and context.cardarea == G.hand and not context.end_of_round and (SMODS.has_enhancement(context.other_card, 'm_pmcmod_bleed') or context.other_card:is_suit("Hearts")) then
             if context.other_card.debuff then
                 return {
                     message = localize('k_debuffed'),
