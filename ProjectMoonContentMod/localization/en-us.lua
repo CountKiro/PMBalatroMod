@@ -340,7 +340,7 @@ return {
             j_pmcmod_nikolai = {
                 name = 'Nikolai',
                 text = {
-                    "Catalogues every {C:attention} directly bought Keypage",
+                    "Catalogues every {C:attention}directly bought Keypage",
                     "Gain {C:mult}#2#{} Mult for every Keypage catalogued",
                     "{C:inactive}Currently {C:mult}#1#{} Mult"
                 },
@@ -2576,15 +2576,17 @@ return {
             effect_singleton={
                 name="Singleton",
                 text={
-                    "Cards that are {C:attention}unique{} in the deck",
+                    "Cards that are ",
+                    "{C:attention}unique{} in the deck",
                     "(only one of its rank)",
                 },
             },
             effect_meltdown={
                 name="Meltdown",
                 text={
-                    "When triggered, {C:attention}transforms{} the Keypage",
-                    "into a worse version of itself",
+                    "When triggered, {C:attention}transforms{}",
+                    "the Keypage into a worse",
+                    "version of itself",
                 },
             },
             effect_prescript={
@@ -3160,6 +3162,9 @@ return {
             },
             pnr_pmcmod_angela_3={
                 "Greetings, dear guests.",
+            },
+            pnr_pmcmod_panther_test={
+                "This is a test",
             },
         },
         ranks={},
