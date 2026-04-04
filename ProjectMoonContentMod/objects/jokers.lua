@@ -657,7 +657,7 @@ SMODS.Joker {
 	key = 'nikolai',
 	name = "Nikolai",
 	pronouns = "she_her",
-	config = { extra = { mult = 0, mult_mod = 5, savedJokers = {} } },
+	config = { extra = { mult = 0, mult_mod = 5, savedJokers = {}, highlightedJokerStatus = "" } },
 	rarity = 3,
 	unlocked = false,
     blueprint_compat = true,
@@ -671,7 +671,23 @@ SMODS.Joker {
         ["R Corp"] = true,
  	},
 	loc_vars = function (self, info_queue, card)
-    	return {vars = { card.ability.extra.mult, card.ability.extra.mult_mod }}
+
+
+		if G.GAME.blind then
+			if G.jokers.highlighted[1] then
+				card.ability.extra.highlightedJokerStatus = localize('pmcmod_nikolaiCataloguedFalse')
+				for i=1, #card.ability.extra.savedJokers do
+					if card.ability.extra.savedJokers[i] == G.jokers.highlighted[1].config.center.key then
+						card.ability.extra.highlightedJokerStatus = localize('pmcmod_nikolaiCataloguedTrue')
+						break
+					end
+				end
+			else
+				card.ability.extra.highlightedJokerStatus = ""
+			end
+		end
+
+    	return {vars = { card.ability.extra.mult, card.ability.extra.mult_mod, card.ability.extra.highlightedJokerStatus }}
 	end,
 	calculate = function(self, card, context)
 		
@@ -800,6 +816,7 @@ SMODS.Joker {
         ["R Corp"] = true,
  	},
 	loc_vars = function (self, info_queue, card)
+		info_queue[#info_queue + 1] = G.P_CENTERS.e_pmcmod_charge
     	return {vars = {  }}
 	end,
 	calculate = function(self, card, context)
@@ -1070,6 +1087,7 @@ SMODS.Joker {
 	pos = { x = 1, y = 12 },
 	cost = 8,
 	loc_vars = function (self, info_queue, card)
+		info_queue[#info_queue + 1] = { key = "perishable", set = "Other", vars = { G.GAME.perishable_rounds, G.GAME.perishable_rounds } }
     	return {vars = { card.ability.extra.creates, card.ability.extra.chips, card.ability.extra.chips_mod}}
 	end,
 	update = function (self, card, dt)
@@ -2018,7 +2036,6 @@ SMODS.Joker {
 
 		if context.joker_main then
 			return {
-				message = localize { type = 'variable', key = 'a_xchips', vars = { card.ability.xchips } },
 				xchips = card.ability.xchips
 			}
 		end
@@ -2033,7 +2050,7 @@ SMODS.Joker {
                 }
             end
         end
-		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and (card.ability.xmult >= 3 or G.GAME.dollars <= 0) then
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and (card.ability.xchips >= 3 or G.GAME.dollars <= 0) then
 --			SMODS.add_card({ key = "j_pmcmod_robotHod", stickers = { "eternal" } })
 			local percent = 1.15
             G.E_MANAGER:add_event(Event({
@@ -2240,7 +2257,7 @@ SMODS.Joker {
     loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = "Other", key = "effect_meltdown"}
         return {vars = { card.ability.extra.consumable_amount, card.ability.extra.mult, card.ability.extra.chips, card.ability.extra.current_consumable_count, card.ability.extra.roundCount,
-						card.ability.extra.mult_mod, card,ability.extra.chips_mod } }
+						card.ability.extra.mult_mod, card.ability.extra.chips_mod } }
     end,
 
     calculate = function(self, card, context)
