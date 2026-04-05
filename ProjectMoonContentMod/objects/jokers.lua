@@ -5356,7 +5356,7 @@ SMODS.Joker {
 	name = "Ricardo",
 	pronouns = "he_him",
 	unlocked = false,
-	config = { extra = { mult = 15, multBase = 10, mult_mod = 10, canSpawnDummy = true, xmult = 1} },
+	config = { extra = { mult = 10, multBase = 10, mult_mod = 15, canSpawnDummy = true, xmult = 1} },
 	eternal_compat = true,
 	blueprint_compat = true,
 	perishable_compat = true,
@@ -7271,9 +7271,9 @@ SMODS.Joker {
 	name = "Bumble",
 	pronouns = "he_him",
 	unlocked = false,
-	config = { extra = { } },
-	eternal_compat = true,
-	blueprint_compat = true,
+	config = { extra = { storedMoney = 0 } },
+	eternal_compat = false,
+	blueprint_compat = false,
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
@@ -7285,36 +7285,49 @@ SMODS.Joker {
  	},
 	loc_vars = function(self, info_queue, card)
 		
-        return {vars = {  } }
+        return {vars = { card.ability.extra.storedMoney } }
 	end,
 	calculate = function(self, card, context)
-		if G.GAME.blind and not G.GAME.blind.disabled then
-			if context.press_play then
-                G.E_MANAGER:add_event(Event({
-                    trigger = 'after',
-                    delay = 0.2,
-                    func = function()
-                        for i = 1, #G.play.cards do
-                            G.E_MANAGER:add_event(Event({
-                                func = function()
-                                    G.play.cards[i]:juice_up()
-                                    return true
-                                end,
-                            }))
-                            ease_dollars(-1)
-                            delay(0.23)
-                        end
-                        return true
-                    end
-                }))
+
+		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then
+
+			local jokersWithoutStickers = {}
+              
+
+			for i=1, #G.jokers.cards do
+				local is_rental = G.jokers.cards[i].ability.rental
+				if G.jokers.cards[i] ~= card and not is_rental then
+					jokersWithoutStickers[#jokersWithoutStickers+1] = G.jokers.cards[i]
+				end
 			end
+
+			
+
+			if #jokersWithoutStickers > 0 then
+				local selected_joker = #jokersWithoutStickers > 0 and pseudorandom_element(jokersWithoutStickers, pseudoseed('bumble')) or nil
+				selected_joker:add_sticker('rental',true)
+			end		
+
 		end
-    end,
-	add_to_deck = function(self, card, from_debuff)
-        G.GAME.interest_cap = G.GAME.interest_cap + 60
-    end,
-    remove_from_deck = function(self, card, from_debuff)
-        G.GAME.interest_cap = G.GAME.interest_cap - 60
+
+		
+
+		if context.end_of_round and not context.repetition and not context.individual and not context.blueprint then
+			local rentalTally = 0
+			
+            for i=1, #G.jokers.cards do
+				local is_rental = G.jokers.cards[i].ability.rental
+				if is_rental then
+					rentalTally = rentalTally + 1
+				end
+			end
+
+			card.ability.extra.storedMoney = card.ability.extra.storedMoney + (G.GAME.rental_rate * rentalTally)
+        end
+
+		if context.selling_self and not context.blueprint then
+        		ease_dollars(math.floor(card.ability.extra.storedMoney * 1.5), true)
+		end
     end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_TCorp'), HEX('382d21'), HEX('a3802e'), 1.2 )
