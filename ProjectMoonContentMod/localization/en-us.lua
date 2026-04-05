@@ -1522,8 +1522,12 @@ return {
             j_pmcmod_bumble = {
                 name = 'Bumble',
                 text = {
-                    "Increase interest cap by {C:gold}$60{}",
-                    "Lose {C:gold}$1{} for every card played"
+                    {"At the end of the Encounter, turn a",
+                    "random Keypage into a {C:attention}Rental{}"},
+                    {"{C:attention}Compile{} value lost by Rental Keypages"},
+                    {"Sell this Keypage to get the compiled",
+                    "value back with {C:attention}50% interest{}",
+                    "{C:inactive}(Currently stored: {C:gold}$#1#{C:inactive})",}
                 },
                 unlock = {
                     'Obtain more than {C:gold}$200{} in a run',
