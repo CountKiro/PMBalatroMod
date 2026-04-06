@@ -1748,6 +1748,9 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
  	end,
+	get_weight = function(self, weight)
+    	return weight*(2^(#SMODS.find_card('j_pmcmod_catherine')*G.GAME.round_resets.ante * 6))
+	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
             if v.key == "j_hit_the_road" then
@@ -4997,6 +5000,17 @@ SMODS.Joker {
         end
         return false
     end,
+	get_weight = function(self, weight)
+		local pallid_card_tally = 0
+		if G.GAME.blind then
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_pmcmod_pallid') then pallid_card_tally = pallid_card_tally + 1 end
+				end
+			end
+		end
+    	return weight*(2^(pallid_card_tally + 1))
+	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
             if v.key == "j_midas_mask" then
@@ -5069,6 +5083,17 @@ SMODS.Joker {
         end
         return false
     end,
+	get_weight = function(self, weight)
+		local pallid_card_tally = 0
+		if G.GAME.blind then
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_pmcmod_pallid') then pallid_card_tally = pallid_card_tally + 1 end
+				end
+			end
+		end
+    	return weight*(2^(pallid_card_tally + 1))
+	end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_pequod'), HEX('c9c9c9'), HEX('c20a0a'), 1.2 )
  	end,
@@ -5135,6 +5160,17 @@ SMODS.Joker {
         end
         return false
     end,
+	get_weight = function(self, weight)
+		local pallid_card_tally = 0
+		if G.GAME.blind then
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_pmcmod_pallid') then pallid_card_tally = pallid_card_tally + 1 end
+				end
+			end
+		end
+    	return weight*(2^(pallid_card_tally + 1))
+	end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_pequod'), HEX('c9c9c9'), HEX('c20a0a'), 1.2 )
  	end,
@@ -5189,6 +5225,17 @@ SMODS.Joker {
         end
         return false
     end,
+	get_weight = function(self, weight)
+		local pallid_card_tally = 0
+		if G.GAME.blind then
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_pmcmod_pallid') then pallid_card_tally = pallid_card_tally + 1 end
+				end
+			end
+		end
+    	return weight*(2^(pallid_card_tally + 1))
+	end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_pequod'), HEX('c9c9c9'), HEX('c20a0a'), 1.2 )
  	end,
@@ -5255,6 +5302,17 @@ SMODS.Joker {
         end
         return false
     end,
+	get_weight = function(self, weight)
+		local pallid_card_tally = 0
+		if G.GAME.blind then
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_pmcmod_pallid') then pallid_card_tally = pallid_card_tally + 1 end
+				end
+			end
+		end
+    	return weight*(2^(pallid_card_tally + 1))
+	end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_pequod'), HEX('c9c9c9'), HEX('c20a0a'), 1.2 )
  	end,
@@ -5464,6 +5522,9 @@ SMODS.Joker {
 
 		
     end,
+	get_weight = function(self, weight)
+    	return weight*(2^((#SMODS.find_card('j_pmcmod_heathcliff') + #SMODS.find_card('j_hit_the_road'))*G.GAME.round_resets.ante * 2))
+	end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_wuthering'), HEX('3d2920'), HEX('998277'), 1.2 )
  	end
@@ -6337,6 +6398,17 @@ SMODS.Joker {
             end
         end
     end,
+	get_weight = function(self, weight)
+		local bleed_card_tally = 0
+		if G.GAME.blind then
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_pmcmod_bleed') then bleed_card_tally = bleed_card_tally + 1 end
+				end
+			end
+		end
+    	return weight*(2^(bleed_card_tally + 1))
+	end,
 	in_pool = function(self, args)
         for _, playing_card in ipairs(G.playing_cards or {}) do
             if SMODS.has_enhancement(playing_card, 'm_pmcmod_bleed') then
@@ -6415,6 +6487,17 @@ SMODS.Joker {
             end
         end
     end,
+	get_weight = function(self, weight)
+		local bleed_card_tally = 0
+		if G.GAME.blind then
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_pmcmod_bleed') then bleed_card_tally = bleed_card_tally + 1 end
+				end
+			end
+		end
+    	return weight*(2^(bleed_card_tally + 1))
+	end,
 	in_pool = function(self, args)
         for _, playing_card in ipairs(G.playing_cards or {}) do
             if SMODS.has_enhancement(playing_card, 'm_pmcmod_bleed') then
@@ -6474,6 +6557,17 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_lamanchaland'), HEX('400a18'), HEX('c7285f'), 1.2 )
  	end,
+	get_weight = function(self, weight)
+		local bleed_card_tally = 0
+		if G.GAME.blind then
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_pmcmod_bleed') then bleed_card_tally = bleed_card_tally + 1 end
+				end
+			end
+		end
+    	return weight*(2^(bleed_card_tally + 1))
+	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
             if v.key == "j_pmcmod_dulcinea" then
@@ -6545,6 +6639,17 @@ SMODS.Joker {
             end
         end
     end,
+	get_weight = function(self, weight)
+		local bleed_card_tally = 0
+		if G.GAME.blind then
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_pmcmod_bleed') then bleed_card_tally = bleed_card_tally + 1 end
+				end
+			end
+		end
+    	return weight*(2^(bleed_card_tally + 1))
+	end,
 	in_pool = function(self, args)
         for _, playing_card in ipairs(G.playing_cards or {}) do
             if SMODS.has_enhancement(playing_card, 'm_pmcmod_bleed') then
@@ -6596,6 +6701,17 @@ SMODS.Joker {
             end
         end
     end,
+	get_weight = function(self, weight)
+		local steel_card_tally = 0
+		if G.GAME.blind then
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_steel') then steel_card_tally = steel_card_tally + 1 end
+				end
+			end
+		end
+    	return weight*(2^(steel_card_tally + 1))
+	end,
 	in_pool = function(self, args)
         for _, playing_card in ipairs(G.playing_cards or {}) do
             if SMODS.has_enhancement(playing_card, 'm_steel') then
@@ -7437,6 +7553,17 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_lamanchaland'), HEX('400a18'), HEX('c7285f'), 1.2 )
  	end,
+	get_weight = function(self, weight)
+		local bleed_card_tally = 0
+		if G.GAME.blind then
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_pmcmod_bleed') then bleed_card_tally = bleed_card_tally + 1 end
+				end
+			end
+		end
+    	return weight*(2^(bleed_card_tally + 1))
+	end,
     check_for_unlock = function(self, args) -- equivalent to `unlock_condition = { type = 'modify_jokers', extra = { polychrome = true, count = 2 } }`
         if args.type == 'modify_deck' then
             local count = 0
@@ -7489,6 +7616,17 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_multicrack'), HEX('ccc49d'), HEX('c706b0'), 1.2 )
  	end,
+	get_weight = function(self, weight)
+		local bleed_card_tally = 0
+		if G.GAME.blind then
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_pmcmod_bleed') then bleed_card_tally = bleed_card_tally + 1 end
+				end
+			end
+		end
+    	return weight*(2^(bleed_card_tally + 1))
+	end,
     check_for_unlock = function(self, args) -- equivalent to `unlock_condition = { type = 'modify_jokers', extra = { polychrome = true, count = 2 } }`
         if args.type == 'modify_deck' then
             local count = 0
@@ -7605,6 +7743,17 @@ SMODS.Joker {
 			}
 		end
     end,
+	get_weight = function(self, weight)
+		local strength_card_tally = 0
+		if G.GAME.blind then
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_mult') then strength_card_tally = strength_card_tally + 1 end
+				end
+			end
+		end
+    	return weight*(2^(strength_card_tally + 1))
+	end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), G.C.BLACK, G.C.RED, 1.2 )
  	end,
@@ -7654,6 +7803,17 @@ SMODS.Joker {
 			}
 		end
     end,
+	get_weight = function(self, weight)
+		local endurance_card_tally = 0
+		if G.GAME.blind then
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_bonus') then endurance_card_tally = endurance_card_tally + 1 end
+				end
+			end
+		end
+    	return weight*(2^(endurance_card_tally + 1))
+	end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), G.C.BLACK, G.C.RED, 1.2 )
  	end,
@@ -8058,6 +8218,17 @@ SMODS.Joker {
 		return ret
         
     end,
+	get_weight = function(self, weight)
+		local pallid_card_tally = 0
+		if G.GAME.blind then
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_pmcmod_pallid') then pallid_card_tally = pallid_card_tally + 1 end
+				end
+			end
+		end
+    	return weight*(2^(pallid_card_tally + 1))
+	end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_fixer'), G.C.BLACK, G.C.WHITE, 1.2 )
  	end,
@@ -9895,6 +10066,9 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	get_weight = function(self, weight)
+    	return weight*(2^(#SMODS.find_card('j_pmcmod_lucio')*G.GAME.round_resets.ante * 3))
+	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
             if v.key == "j_flower_pot" then
@@ -10042,6 +10216,9 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	get_weight = function(self, weight)
+    	return weight*(2^(#SMODS.find_card('j_pmcmod_sora')*G.GAME.round_resets.ante * 3))
+	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
             if v.key == "j_flower_pot" then
@@ -10144,6 +10321,9 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	get_weight = function(self, weight)
+    	return weight*(2^(#SMODS.find_card('j_pmcmod_kira')*G.GAME.round_resets.ante * 3))
+	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
             if v.key == "j_flower_pot" then
@@ -10266,6 +10446,19 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	get_weight = function(self, weight)
+		local strength_card_tally = 0
+		local endurance_card_tally = 0
+		if G.GAME.blind then
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_mult') then strength_card_tally = strength_card_tally + 1 end
+					if SMODS.has_enhancement(playing_card, 'm_bonus') then endurance_card_tally = endurance_card_tally + 1 end
+				end
+			end
+		end
+    	return weight*(2^(strength_card_tally + endurance_card_tally + 1))
+	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
             if v.key == "j_flower_pot" then
@@ -10339,6 +10532,17 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	get_weight = function(self, weight)
+		local poise_card_tally = 0
+		if G.GAME.blind then
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_pmcmod_poise') then poise_card_tally = poise_card_tally + 1 end
+				end
+			end
+		end
+    	return weight*(2^(poise_card_tally + 1))
+	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
             if v.key == "j_flower_pot" then
@@ -10359,7 +10563,17 @@ SMODS.Joker {
 	unlocked = true,
 	config = { extra = { currentPosition = 1, lucioDeathCounter = 0, dollars = 6, valencinaPresent = false, valencinaPos = nil } },
 	eternal_compat = true,
-	blueprint_compat = true,
+	blueprint_compat = true,get_weight = function(self, weight)
+		local poise_card_tally = 0
+		if G.GAME.blind then
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_pmcmod_poise') then poise_card_tally = poise_card_tally + 1 end
+				end
+			end
+		end
+    	return weight*(2^(poise_card_tally + 1))
+	end,
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
@@ -10418,6 +10632,9 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	get_weight = function(self, weight)
+    	return weight*(2^(#SMODS.find_card('j_pmcmod_valencina')*G.GAME.round_resets.ante * 3))
+	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
             if v.key == "j_pmcmod_valencina" then
@@ -10556,6 +10773,9 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	get_weight = function(self, weight)
+    	return weight*(2^(#SMODS.find_card('j_pmcmod_rien')*G.GAME.round_resets.ante * 3))
+	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
             if v.key == "j_pmcmod_rien" then
@@ -10634,6 +10854,9 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	get_weight = function(self, weight)
+    	return weight*(2^(#SMODS.find_card('j_pmcmod_matthias')*G.GAME.round_resets.ante * 3))
+	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
             if v.key == "j_pmcmod_matthias" then
@@ -10725,6 +10948,9 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	get_weight = function(self, weight)
+    	return weight*(2^(#SMODS.find_card('j_pmcmod_callisto')*G.GAME.round_resets.ante * 3))
+	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
             if v.key == "j_pmcmod_callisto" then
@@ -10805,6 +11031,17 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_spiders'), HEX('121212'), HEX('d90000'), 1.2 )
  	end,
+	get_weight = function(self, weight)
+		local poise_card_tally = 0
+		if G.GAME.blind then
+			if G.playing_cards then
+				for _, playing_card in ipairs(G.playing_cards) do
+					if SMODS.has_enhancement(playing_card, 'm_pmcmod_poise') then poise_card_tally = poise_card_tally + 1 end
+				end
+			end
+		end
+    	return weight*(2^(poise_card_tally + 1))
+	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
             if v.key == "j_pmcmod_shiomiYoru" then
@@ -10916,6 +11153,9 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_LCAUdjat'), HEX('212121'), HEX('ba8832'), 1.2 )
  	end,
+	get_weight = function(self, weight)
+    	return weight*(2^(#G.vouchers.cards + 1))
+	end,
 	check_for_unlock = function(self, args)
         if #G.vouchers.cards >= 5 then
 			return true
