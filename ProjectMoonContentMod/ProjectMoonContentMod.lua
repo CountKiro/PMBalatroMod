@@ -7,7 +7,8 @@ PMCMOD = SMODS.current_mod
 SMODS.current_mod.optional_features = function()
     return {
         retrigger_joker = true,
-		post_trigger = true
+		post_trigger = true,
+        object_weights = true
     }
 end
 
