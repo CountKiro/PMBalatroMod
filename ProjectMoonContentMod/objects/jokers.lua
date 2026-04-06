@@ -8218,17 +8218,6 @@ SMODS.Joker {
 		return ret
         
     end,
-	get_weight = function(self, weight)
-		local pallid_card_tally = 0
-		if G.GAME.blind then
-			if G.playing_cards then
-				for _, playing_card in ipairs(G.playing_cards) do
-					if SMODS.has_enhancement(playing_card, 'm_pmcmod_pallid') then pallid_card_tally = pallid_card_tally + 1 end
-				end
-			end
-		end
-    	return weight*(2^(pallid_card_tally + 1))
-	end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_fixer'), G.C.BLACK, G.C.WHITE, 1.2 )
  	end,
