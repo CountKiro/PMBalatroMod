@@ -31,6 +31,7 @@ SMODS.load_file("objects/jokers.lua")()
 SMODS.load_file("objects/seals.lua")()
 SMODS.load_file("objects/spectrals.lua")()
 SMODS.load_file("objects/editions.lua")()
+SMODS.load_file("objects/challenges.lua")()
 
 ---------------------
 -- Preparing atlas --
