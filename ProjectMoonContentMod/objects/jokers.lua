@@ -1749,7 +1749,15 @@ SMODS.Joker {
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_limbus'), HEX('63160e'), HEX('eba313'), 1.2 )
  	end,
 	get_weight = function(self, weight)
-    	return weight*(2^(#SMODS.find_card('j_pmcmod_catherine')*G.GAME.round_resets.ante * 6))
+		local joker_count = 0
+		for i = 1, #G.jokers.cards do
+			if G.jokers.cards[i].edition then
+				if G.jokers.cards[i].ability.set == 'Joker' and G.jokers.cards[i].edition.key == "e_negative" then
+					joker_count = joker_count + 1
+				end
+			end
+		end
+    	return weight*(2^(#SMODS.find_card('j_pmcmod_catherine')*G.GAME.round_resets.ante * joker_count * 6))
 	end,
 	check_for_unlock = function(self, args)
         for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
@@ -1894,7 +1902,7 @@ SMODS.Joker {
     key = "angela",
 	name = "Angela",
 	pronouns = "she_her",
-	config = {extra = {current_day = 1}},
+	config = {extra = {current_day = 1, resetCounter = 0}},
 	unlocked = false,
     blueprint_compat = false,
     eternal_compat = true,
@@ -1922,13 +1930,30 @@ SMODS.Joker {
 			local necessary_blind_reset = G.GAME.round_resets.ante
 
 			if G.GAME.round_resets.ante >= 6 then
+				local counter = 0
         		ease_ante(-necessary_blind_reset)
         		G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
         		G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - necessary_blind_reset
 
-				G.GAME.modifiers.scaling = (G.GAME.modifiers.scaling or 1) + 2
+				G.GAME.modifiers.scaling = (G.GAME.modifiers.scaling or 1) + 3
 
-				
+				for i=1, #G.jokers.cards do
+					if G.jokers.cards[i] ~= card and not G.jokers.cards[i].ability.rental then
+						local currentKeypage = G.jokers.cards[i]
+						currentKeypage:add_sticker('eternal',true)
+						counter = counter + 1
+						card.ability.extra.resetCounter = card.ability.extra.resetCounter + 1
+					end
+				end
+
+				if counter >= 1 then
+					G.jokers:change_size(counter)
+				end
+
+				if card.ability.extra.resetCounter >= 3 then
+					card:remove_sticker('eternal')
+				end
+
 			end
 		end
     end,
@@ -7606,7 +7631,7 @@ SMODS.Joker {
 		if context.individual and context.cardarea == G.play then 
 			if SMODS.has_enhancement(context.other_card, 'm_pmcmod_bleed') then
 				if SMODS.pseudorandom_probability(card, 'sasha', card.ability.extra.baseChance, card.ability.extra.maxChance, 'sasha') then
-					local edition = 'e_negative'
+					local edition = 'e_pmcmod_charge'
 					context.other_card:set_edition(edition, true)
 					check_for_unlock({ type = 'have_edition' })
 				end
@@ -8168,7 +8193,7 @@ SMODS.Joker {
         ["Middle"] = true,
         ["Ring"] = true,
         ["Pinky"] = true,
-        ["Bloodfiend"] = true,
+        ["Bloodfiends"] = true,
         ["LCorp"] = true,
         ["Limbus"] = true,
         ["Sinner"] = true,
@@ -11186,25 +11211,30 @@ SMODS.Joker {
 			end
 		end
 
-		if context.post_trigger and G.jokers.cards[card.ability.extra.currentPosition-1].config.center.key == context.other_card.config.center.key then
+		if context.post_trigger and G.jokers.cards[card.ability.extra.currentPosition-1] then
 
-			if card.ability.extra.currentPosition > 1 then
-					cardTriggeredIsToTheLeft = true
-					print("card to the left detected")
-			end
+			if G.jokers.cards[card.ability.extra.currentPosition-1].config.center.key == context.other_card.config.center.key then
 
-			if cardTriggeredIsToTheLeft == true then
-				card.ability.extra.counter = card.ability.extra.counter + 1
-				print(card.ability.extra.counter)
+				if card.ability.extra.currentPosition > 1 then
+						cardTriggeredIsToTheLeft = true
+						print("card to the left detected")
+				end
+
+				if cardTriggeredIsToTheLeft == true then
+					card.ability.extra.counter = card.ability.extra.counter + 1
+					print(card.ability.extra.counter)
+				end
 			end
 		end
 
 
-		if context.retrigger_joker_check and context.other_card == G.jokers.cards[card.ability.extra.currentPosition + 1] and #G.jokers.cards > card.ability.extra.currentPosition then
+		if context.retrigger_joker_check and #G.jokers.cards > card.ability.extra.currentPosition then
+			if context.other_card == G.jokers.cards[card.ability.extra.currentPosition + 1] then
 			print("Testing trigger")
-		return {
-				repetitions = card.ability.extra.counter
-			}
+				return {
+						repetitions = card.ability.extra.counter
+				}
+			end
 		end
 
 		if context.after then
@@ -13749,6 +13779,77 @@ SMODS.Joker {
 }
 
 
+-- Bloodfiend
+SMODS.Joker {
+	key = 'bloodfiend',
+	name = "Bloodfiend",
+	pronouns = "they_them",
+	config = { extra = { mult = 8} },
+    blueprint_compat = true,
+    eternal_compat = false,
+	perishable_compat = true,
+    --	no_collection = true,
+	rarity = 1,
+    cost = 3,
+	atlas = 'ModdedProjectMoon',
+	pos = { x = 5, y = 13 },
+	pools =
+	{
+        ["Bloodfiends"] = true,
+ 	},
+	loc_vars = function (self, info_queue, card)
+    	return {vars = { card.ability.extra.mult}}
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main then
+			return {
+				mult = card.ability.extra.mult
+			}
+		end
+	end,
+	get_weight = function(self, weight)
+    	return weight*(2^(#SMODS.find_card('j_pmcmod_romero')*G.GAME.round_resets.ante * 6))
+	end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_lamanchaland'), HEX('bd0d19'), HEX('4f3d2d'), 1.2 )
+ 	end
+}
+
+-- Heretic
+SMODS.Joker {
+	key = 'heretic',
+	name = "Heretic",
+	pronouns = "they_them",
+	config = { extra = { chips = 15} },
+    blueprint_compat = true,
+    eternal_compat = false,
+	perishable_compat = true,
+    --	no_collection = true,
+	rarity = 1,
+    cost = 3,
+	atlas = 'ModdedProjectMoon',
+	pos = { x = 5, y = 13 },
+	pools =
+	{
+        ["Heretics"] = true,
+ 	},
+	loc_vars = function (self, info_queue, card)
+    	return {vars = { card.ability.extra.chips}}
+	end,
+	calculate = function(self, card, context)
+		if context.joker_main then
+			return {
+				chips = card.ability.extra.chips
+			}
+		end
+	end,
+	get_weight = function(self, weight)
+    	return weight*(2^(#SMODS.find_card('j_pmcmod_kromer')*G.GAME.round_resets.ante * 2))
+	end,
+	set_badges = function(self, card, badges)
+ 		badges[#badges+1] = create_badge(localize('pmcmod_badge_unknown'), HEX('bd0d19'), HEX('4f3d2d'), 1.2 )
+ 	end
+}
 
 
 
