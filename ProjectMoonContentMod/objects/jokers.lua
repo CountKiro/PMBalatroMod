@@ -13815,6 +13815,11 @@ SMODS.Joker {
 	get_weight = function(self, weight)
     	return weight*(2^(#SMODS.find_card('j_pmcmod_romero')*G.GAME.round_resets.ante * 6))
 	end,
+	in_pool = function(self, args)
+		if SMODS.find_card('j_pmcmod_romero') then
+			return true
+		end
+    end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_lamanchaland'), HEX('bd0d19'), HEX('4f3d2d'), 1.2 )
  	end
@@ -13851,6 +13856,11 @@ SMODS.Joker {
 	get_weight = function(self, weight)
     	return weight*(2^(#SMODS.find_card('j_pmcmod_kromer')*G.GAME.round_resets.ante * 2))
 	end,
+	in_pool = function(self, args)
+		if SMODS.find_card('j_pmcmod_kromer') then
+			return true
+		end
+    end,
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_unknown'), HEX('bd0d19'), HEX('4f3d2d'), 1.2 )
  	end

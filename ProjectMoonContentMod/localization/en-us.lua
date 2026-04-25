@@ -2479,6 +2479,20 @@ return {
                     "GIIGIGIGI{C:red}#1#{}MultGIIGGI",
                 },
             },
+            j_pmcmod_bloodfiend = {
+                name = "Bloodfiend",
+                text = {
+                    "Thirsty",
+                    "{C:mult}#1#{} Mult",
+                },
+            },
+            j_pmcmod_heretic = {
+                name = "Heretic",
+                text = {
+                    "Must be purged",
+                    "{C:chips}#1#{} Chips",
+                },
+            },
             j_pmcmod_voiceOfTheCity = {
                 name = 'Voice of the City',
                 text = {
