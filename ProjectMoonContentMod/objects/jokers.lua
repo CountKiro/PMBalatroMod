@@ -1313,7 +1313,14 @@ SMODS.Joker {
 		if context.selling_card and context.card.ability.set == "Joker" and not context.blueprint then
 			local keypageKey = context.card.config.center.key
 			G.GAME.banned_keys[keypageKey] = true
+			card.ability.extra.xmult = card.ability.extra.xmult + card.ability.extra.xmult_mod
         end
+
+		if context.joker_main then
+			return{
+				xmult = card.ability.extra.xmult
+			}
+		end
 
     end,
 	set_badges = function(self, card, badges)
