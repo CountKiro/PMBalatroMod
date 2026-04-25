@@ -38,7 +38,25 @@ SMODS.Enhancement {
     end,
     update = function(self, card, dt)
         
-    end
+    end,
+    set_sprites = function(self, card, front)
+    G.E_MANAGER:add_event(Event({
+      blockable = false,
+      func = function()
+        card.canvas_text = SMODS.CanvasSprite {
+          canvasW = 71, canvasH = 95,
+          text_offset = { x = 10, y = 86 },
+          text_colour = HEX('ded5d3'),
+          text_width = 15,
+          text_height = 10,
+          ref_table = card.ability,
+          ref_value = "perma_mult",
+          text = "?"
+        }
+        return true
+      end
+    }))
+    end,
 }
 
 -- Sinking
@@ -138,7 +156,7 @@ SMODS.Enhancement {
         card.canvas_text = SMODS.CanvasSprite {
           canvasW = 71, canvasH = 95,
           text_offset = { x = 10, y = 86 },
-          text_colour = G.C.UI.TEXT_DARK,
+          text_colour = HEX('00f5b4'),
           text_width = 15,
           text_height = 10,
           ref_table = card.ability,
@@ -148,7 +166,7 @@ SMODS.Enhancement {
         return true
       end
     }))
-  end,
+    end,
 }
 
 -- Poise
@@ -220,7 +238,25 @@ SMODS.Enhancement {
     end,
     update = function(self, card, dt)
         
-    end
+    end,
+    set_sprites = function(self, card, front)
+    G.E_MANAGER:add_event(Event({
+      blockable = false,
+      func = function()
+        card.canvas_text = SMODS.CanvasSprite {
+          canvasW = 71, canvasH = 95,
+          text_offset = { x = 9, y = 86 },
+          text_colour = G.C.UI.TEXT_DARK,
+          text_width = 15,
+          text_height = 10,
+          ref_table = card.ability,
+          ref_value = "counter",
+          text = "?"
+        }
+        return true
+      end
+    }))
+    end,
 }
 
 
@@ -253,7 +289,25 @@ SMODS.Enhancement {
                 card:set_ability("c_base")
             end
         end
-    end
+    end,
+    set_sprites = function(self, card, front)
+    G.E_MANAGER:add_event(Event({
+      blockable = false,
+      func = function()
+        card.canvas_text = SMODS.CanvasSprite {
+          canvasW = 71, canvasH = 95,
+          text_offset = { x = 9, y = 86 },
+          text_colour = HEX('260a03'),
+          text_width = 15,
+          text_height = 10,
+          ref_table = card.ability,
+          ref_value = "triggersLeft",
+          text = "?"
+        }
+        return true
+      end
+    }))
+    end,
 }
 
 -- Tremor
