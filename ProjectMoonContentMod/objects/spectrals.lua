@@ -448,16 +448,15 @@ SMODS.Consumable {
         for i = 1, #G.jokers.cards do
             if G.jokers.cards[i] == G.jokers.highlighted[1] then
                 my_pos = i
-                print(my_pos)
                 break
             end
         end
 
-        for i = 1, my_pos do
-            G.GAME.banned_keys[G.jokers.cards[i].config.center.key] = true
+        for i = 0, my_pos-1 do
+            G.GAME.banned_keys[G.jokers.cards[my_pos-i].config.center.key] = true
             --G.jokers.cards[i].getting_sliced = true
             G.E_MANAGER:add_event(Event({func = function()
-                G.jokers.cards[i]:start_dissolve({G.C.RED}, nil, 1.6)
+                G.jokers.cards[my_pos-i]:start_dissolve({G.C.RED}, nil, 1.6)
             return true end }))
         end
     end,
