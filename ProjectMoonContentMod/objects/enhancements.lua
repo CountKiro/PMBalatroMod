@@ -235,7 +235,7 @@ SMODS.Enhancement {
         if G.GAME.blind and G.GAME.blind.in_blind then
             currentBlindCount = G.GAME.blind.chips
         end
-        return { vars = {(currentBlindCount or 0) * 0.001}}
+        return { vars = {(currentBlindCount or 0) * 0.001, card.ability.triggersLeft}}
     end,
     update = function(self, card, dt)
         if G.GAME.blind and G.GAME.blind.in_blind then
