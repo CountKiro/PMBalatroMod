@@ -157,7 +157,6 @@ return {
                     "Gains {C:red}+1{} Perma Mult for",
                     "every {C:red}Bleed{} card scored in the",
                     "played hand",
-                    "Remaining count: #1#"
                 },
             },
             m_pmcmod_burn = {
@@ -165,6 +164,7 @@ return {
                 text = {
                     "Gives {C:chips}0.001%{} of the total Encounter",
                     "score as extra chips",
+                    "Remaining count: #2#"
                 },
             },
             m_pmcmod_poise = {
@@ -2969,7 +2969,17 @@ return {
         achievement_descriptions={},
         achievement_names={},
         blind_states={},
-        challenge_names={},
+        challenge_names={
+            c_pmcmod_bloodfiend_1 = "AB Positive",
+            c_pmcmod_pequod = "HARK",
+            c_pmcmod_poise = "Not a Poiser",
+            c_pmcmod_index = "Why can't I hold all these Prescripts?!",
+            c_pmcmod_vengeance = "The Book of Vengeance",
+            c_pmcmod_money = "Communism was a red herring",
+            c_pmcmod_luck = "45 Sanity Tails",
+            c_pmcmod_colors = "Pride Parade",
+            c_pmcmod_wuthering = "It's one banana, Heathcliff. How much could it cost?",
+        },
         collabs={},
         dictionary={
             pmcmod_ph_catt="Saved by Catt",
