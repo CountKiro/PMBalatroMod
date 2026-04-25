@@ -15,9 +15,9 @@ extern MY_HIGHP_OR_MEDIUMP vec4 burn_colour_2;
 
 vec3 effect_colour = vec3(0.2, 0.3, 0.8);
 int octave_count = 10;
-uniform float amp_start = 0.5;
-uniform float amp_coeff = 0.5;
-uniform float freq_coeff = 2.0;
+float amp_start = 0.5;
+float amp_coeff = 0.5;
+float freq_coeff = 2.0;
 
 float noise(vec2 uv){
 	return sin(uv.x + uv.y);
@@ -160,7 +160,7 @@ vec4 effect( vec4 colour, Image texture, vec2 texture_coords, vec2 screen_coords
 //		{
         sepiaEffect.r = (tex.r * 0.33) + (tex.r * 0.33) + (tex.r * 0.33);
         sepiaEffect.g = (tex.g * 0.33) + (tex.g * 0.33) + (tex.g * 0.33);
-        sepiaEffect.b = (tex.r * 0.33) + (tex.g * 0.33) + (tex.b*0.8 +(tex.b * 1*hash12(vec2(t))));
+        sepiaEffect.b = (tex.r * 0.33) + (tex.g * 0.33) + (tex.b*0.8 +(tex.b * 1.*hash12(vec2(t))));
 //		}
     }
 
