@@ -6899,22 +6899,22 @@ SMODS.Joker {
 	end,
 	calculate = function(self, card, context)
 
-		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Spades") then
+		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Spades") and card.ability.extra.totalCount < 50 then
 			card.ability.extra.zhiCount = card.ability.extra.zhiCount + 1
 			card.ability.extra.totalCount = card.ability.extra.totalCount + 1
 		end
 
-		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Clubs") then
+		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Clubs") and card.ability.extra.totalCount < 50 then
 			card.ability.extra.yongCount = card.ability.extra.yongCount + 1
 			card.ability.extra.totalCount = card.ability.extra.totalCount + 1
 		end
 
-		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Hearts") then
+		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Hearts") and card.ability.extra.totalCount < 50 then
 			card.ability.extra.renCount = card.ability.extra.renCount + 1
 			card.ability.extra.totalCount = card.ability.extra.totalCount + 1
 		end
 
-		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Diamonds") then
+		if context.individual and context.cardarea == G.play and context.other_card:is_suit("Diamonds") and card.ability.extra.totalCount < 50 then
 			if card.ability.extra.zhiCount >= 1 then
 				card.ability.extra.zhiCount = card.ability.extra.zhiCount - 1
 				card.ability.extra.totalCount = card.ability.extra.totalCount - 1
