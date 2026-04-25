@@ -13796,8 +13796,8 @@ SMODS.Joker {
     --	no_collection = true,
 	rarity = 1,
     cost = 3,
-	atlas = 'ModdedProjectMoon',
-	pos = { x = 5, y = 13 },
+	atlas = 'ModdedProjectMoon2',
+	pos = { x = 3, y = 11 },
 	pools =
 	{
         ["Bloodfiends"] = true,
@@ -13837,8 +13837,8 @@ SMODS.Joker {
     --	no_collection = true,
 	rarity = 1,
     cost = 3,
-	atlas = 'ModdedProjectMoon',
-	pos = { x = 5, y = 13 },
+	atlas = 'ModdedProjectMoon2',
+	pos = { x = 2, y = 11 },
 	pools =
 	{
         ["Heretics"] = true,
