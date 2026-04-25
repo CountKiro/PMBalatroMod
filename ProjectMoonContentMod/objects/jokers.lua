@@ -2070,7 +2070,7 @@ SMODS.Joker {
                 end
             }))
 		end
-		if context.end_of_round and context.game_over == false and context.main_eval and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint and card.ability.xmult < 3 then
+		if context.end_of_round and context.game_over == false and context.main_eval and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint and card.ability.xchips < 3 then
 			card.ability.roundCount = card.ability.roundCount + 1
 			if card.ability.roundCount >= 4 then
 				local percent = 1.15
