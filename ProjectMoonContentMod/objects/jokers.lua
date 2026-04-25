@@ -2646,6 +2646,7 @@ SMODS.Joker {
  	},
     pos = { x = 9, y = 11 },
     loc_vars = function (self, info_queue, card)
+	local main_end = nil
     local random_mult = tostring(math.floor(card.ability.extra.total_timer)) or 1
 		main_end = {
 			{n=G.UIT.T, config={text = localize('pmcmod_elapsedTime')..":",colour = G.C.MULT, scale = 0.32}},
@@ -2680,7 +2681,7 @@ SMODS.Joker {
 			card.ability.extra.current_timer = 0
 		end
 
-		if context.after and context.main_eval and card.ability.extra.total_timer >= card.abilit.extra.time_limit and not context.blueprint then
+		if context.after and context.main_eval and card.ability.extra.total_timer >= card.ability.extra.time_limit and not context.blueprint then
 			local percent = 1.15
             G.E_MANAGER:add_event(Event({
                 trigger = 'after',
@@ -10209,6 +10210,9 @@ SMODS.Joker {
 			card.ability.extra.prescriptActive = false
 			card.ability.extra.allowPrescriptCheck = true
 			
+			if card.ability.extra.currentPrescript >= 12 then
+				card.ability.extra.currentPrescript = 1
+			end
 			
 		end
 		
@@ -13049,6 +13053,7 @@ SMODS.Joker {
 	cost = 8,
 	eternal_compat = true,
 	loc_vars = function (self, info_queue, card)
+	local main_end = nil
     local random_mult = tostring(math.floor(card.ability.extra.current_timer)) or 1
 		main_end = {
 			{n=G.UIT.T, config={text = localize('pmcmod_elapsedTime')..":",colour = G.C.MULT, scale = 0.32}},
@@ -13884,6 +13889,10 @@ SMODS.Joker {
 		if context.end_of_round and not context.repetition and context.game_over == false and G.GAME.last_blind and G.GAME.last_blind.boss and not context.blueprint then	
 			card.ability.extra.currentPrescript = card.ability.extra.currentPrescript + 1
 			card.ability.extra.prescriptActive = false
+
+			if card.ability.extra.currentPrescript >= 12 then
+				card.ability.extra.currentPrescript = 1
+			end
 		end
 
 		if context.ending_shop and card.ability.extra.prescriptActive == false and G.GAME.round_resets.ante > 1 and card.ability.extra.currentPrescript <= 11 then
@@ -13928,7 +13937,7 @@ SMODS.Joker {
 		end
 		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
 
-
+		local main_end = nil
 		local statusColour = G.C.RED
 		local tempText = ""
 
@@ -14023,6 +14032,7 @@ SMODS.Joker {
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
 
+		local main_end = nil
 		local statusColour = G.C.RED
 		local tempText = ""
 
@@ -14140,6 +14150,7 @@ SMODS.Joker {
 		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
 		local cardRank = G.GAME.current_round.reset_prescript_3 or { rank = 'Ace'}
 
+		local main_end = nil
 		local statusColour = G.C.RED
 		local tempText = ""
 
@@ -14225,6 +14236,7 @@ SMODS.Joker {
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
 
+		local main_end = nil
 		local statusColour = G.C.RED
 		local tempText = ""
 
@@ -14312,6 +14324,7 @@ SMODS.Joker {
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
 
+		local main_end = nil
 		local statusColour = G.C.RED
 		local tempText = ""
 
@@ -14406,6 +14419,7 @@ SMODS.Joker {
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
 
+		local main_end = nil
 		local statusColour = G.C.RED
 		local tempText = ""
 
@@ -14500,6 +14514,7 @@ SMODS.Joker {
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
 
+		local main_end = nil
 		local statusColour = G.C.RED
 		local tempText = ""
 
@@ -14591,6 +14606,7 @@ SMODS.Joker {
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
 
+		local main_end = nil
 		local statusColour = G.C.RED
 		local tempText = ""
 
@@ -14680,6 +14696,7 @@ SMODS.Joker {
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
 
+		local main_end = nil
 		local statusColour = G.C.RED
 		local tempText = ""
 
@@ -14770,6 +14787,7 @@ SMODS.Joker {
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
 
+		local main_end = nil
 		local statusColour = G.C.RED
 		local tempText = ""
 
@@ -14861,6 +14879,7 @@ SMODS.Joker {
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = "Other", key = "effect_prescript"}
 
+		local main_end = nil
 		local statusColour = G.C.RED
 		local tempText = ""
 
