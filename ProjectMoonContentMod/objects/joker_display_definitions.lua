@@ -150,10 +150,10 @@ jd_def["j_pmcmod_katriel"] = {
             card.joker_display_values.mult = mult
             card.joker_display_values.localized_text = localize(card.ability.extra.suit, 'suits_plural')
         end,
-        style_function = function(card, text, reminder_text, extra)
-            local suit_node = reminder_text and reminder_text.children and reminder_text.children[2]
-            if suit_node then suit_node.config.colour = lighten(G.C.SUITS["Hearts"], 0.35) end
-        end
+    style_function = function(card, text, reminder_text, extra)
+        local suit_node = reminder_text and reminder_text.children and reminder_text.children[2]
+        if suit_node then suit_node.config.colour = lighten(G.C.SUITS["Hearts"], 0.35) end
+    end
 }
 
 jd_def["j_pmcmod_denis"] = {
@@ -852,11 +852,19 @@ jd_def["j_pmcmod_sancho"] = {
 }
 
 jd_def["j_pmcmod_dulcinea"] = {
-    
+    text = {
+        { text = "+" },
+        { ref_table = "card.ability.extra", ref_value = "mult", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.MULT }
 }
 
 jd_def["j_pmcmod_barber"] = {
-    
+    text = {
+        { text = "+" },
+        { ref_table = "card.ability.extra", ref_value = "chips", retrigger_type = "mult" }
+    },
+    text_config = { colour = G.C.CHIPS }
 }
 
 jd_def["j_pmcmod_priest"] = {
