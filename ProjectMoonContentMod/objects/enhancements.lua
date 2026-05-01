@@ -203,10 +203,17 @@ SMODS.Enhancement {
                     break
                 end
 
+                if G.jokers.cards[i].config.center.key == "j_pmcmod_ren" then
+                    renPresent = true
+                    break
+                end
+
             end
 
             if shiomiPresent then
-                if SMODS.pseudorandom_probability(card, 'shiomi', card.ability.baseChance, card.ability.maxChanceShiomi, 'shiomi') then
+                if renPresent then
+                    card.ability.counter = card.ability.counter + (3 * (1 + tremorCounting))
+                else
                     card.ability.counter = card.ability.counter + (2 * (1 + tremorCounting))
                 end
             else
@@ -227,9 +234,7 @@ SMODS.Enhancement {
             })
 
             end
-
             
-
             return ret
 
         end
@@ -325,6 +330,43 @@ SMODS.Enhancement {
     end
 }
 
+-- Painted
+SMODS.Enhancement {
+    key = "painted",
+    atlas = "ModdedProjectMoonEditions",
+    pos = { x = 6, y = 2},
+    config = { bonus = 0, mult = 0, steel_h_x_mult = 1, gold_h_dollars = 0, 
+    multCollected = false, bonusCollected = false, goldCollected = false, steelCollected = false, stoneCollected = false, bleedCollected = false, ruptureCollected = false},
+    any_suit = true,
+    loc_vars = function(self, info_queue, card)
+
+        return { vars = {}}
+    end,
+    in_pool = function(self, args)
+        return G.GAME.pool_flags.fake_paintedCard_flag
+    end,
+    update = function(self, card, dt)
+
+    end
+}
+
+-- Ammo
+SMODS.Enhancement {
+    key = "ammo",
+    atlas = "ModdedProjectMoonEditions",
+    pos = { x = 6, y = 2},
+    config = { },
+    always_scores = true,
+    loc_vars = function(self, info_queue, card)
+        return { vars = {}}
+    end,
+    in_pool = function(self, args)
+        return G.GAME.pool_flags.fake_ammoCard_flag
+    end,
+    update = function(self, card, dt)
+
+    end
+}
 
 
 -- Pallid
