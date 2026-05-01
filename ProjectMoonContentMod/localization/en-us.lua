@@ -201,6 +201,27 @@ return {
                     "card is scored"
                 },
             },
+            m_pmcmod_painted = {
+                name = "Painted Card",
+                text = {
+                    "{C:attention}Absorves{} some the values of Enhanced cards",
+                    "scored in the same hand. Effect can only",
+                    "be triggered once per Enhancement type",
+                    "(chance and percentage base Enhancements cannot be assimilated)"
+
+                },
+            },
+            m_pmcmod_ammo = {
+                name = "Ammo Card",
+                text = {
+                    "Contains bullets for use",
+                    "with certain Keypages",
+                    "No rank",
+                    "Always scores",
+                    "Current ammo: {C:attention}#1#{}"
+
+                },
+            },
             m_pmcmod_pallid = {
                 name = "Pallid Card",
                 text = {
@@ -2161,6 +2182,38 @@ return {
                     "{C:inactive}Money used: {C:gold}#4#{}"}
                 }
             },
+            j_pmcmod_emile = {
+                name = 'Émile Benoît',
+                text = {
+                    "If the first scored hand is a",
+                    "{C:attention}single Wild Card{}, transform it",
+                    "into a {C:attention}Painted Card{}",
+                }
+            },
+            j_pmcmod_rufo = {
+                name = 'Rufo',
+                text = {
+                    "At the end of each Scene",
+                    "give a random card in the deck",
+                    "a random Enhancement."
+                }
+            },
+            j_pmcmod_alan = {
+                name = 'Alan',
+                text = {
+                    {"At the start of the Scene, choose",
+                    "a random spot and a random Keypage"},
+                    {"If the selected Keypage is in the selected",
+                    "spot for 5 Hands, give it a random Edition"},
+                    {"If any Hand is played while the Keypage",
+                    "is in the wrong spot, destroy it"},
+                    {"Only one Keypage and spot is selected at a time",
+                    "Destroys itself if there's no more Keypages to upgrade",
+                    "{C:inactive}(Position: {C:red}#1#{C:inactive})",
+                    "{C:inactive}(Keypage: {C:red}#2#{C:inactive})",
+                    "{C:inactive}(Counter: {C:red}#3#{C:inactive})"}
+                }
+            },
             j_pmcmod_vermillionCross = {
                 name = 'Vermillion Cross',
                 text = {
@@ -2385,8 +2438,12 @@ return {
             j_pmcmod_laetitia = {
                 name = "Here’s a Gift~",
                 text = {
-                    "Has a {C:green}#2# in #3#{} to give",
-                    "{C:attention}Gift{} to any card in Deck",
+                    {"Has a {C:green}#2# in #3#{} to give",
+                    "{C:attention}Gift{} to any card in Deck"},
+                    {"At the end of the Reception, if no Gifts",
+                    "are present, gain one copy of {C:attention}Standard{},",
+                    "{C:tarot}Charm{}, {C:planet}Meteor{} and {C:joker}Buffoon{} Tags",
+                    "otherwise lose {C:gold}$10{} for each unused Gift Seal"}
                 },
             },
             j_pmcmod_childrenOfTheGalaxy = {
