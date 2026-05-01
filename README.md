@@ -18,9 +18,9 @@ A Balatro Mod that adds custom made textures with Project Moon related character
 
 **NOTE: If you're updating from a previous version, delete the ProjectMoonTexturePack, ProjectMoonMusicAddon and ProjectMoonContentMod from your mod folders and replace with the latest links in the following steps. The same applies for Steamodded, Lovely and Malverk.**
 
-1. Download and install, [Steamodded 1.0.0 beta (1503a)](https://github.com/Steamodded/smods/releases/tag/1.0.0-beta-1503a), [Lovely v0.9.0](https://github.com/ethangreen-dev/lovely-injector/releases/tag/v0.9.0) and [Malverk 1.1.3](https://github.com/Eremel/Malverk)
+1. Download and install, [Steamodded 1.0.0 beta (1606b)](https://github.com/Steamodded/smods/releases/tag/1.0.0-beta-1606b), [Lovely v0.9.0](https://github.com/ethangreen-dev/lovely-injector/releases/tag/v0.9.0) and [Malverk 1.1.3](https://github.com/Eremel/Malverk)
 
-2. Download the ProjectMoonTexturePack.zip file from [Releases](https://github.com/CountKiro/PMBalatroMod/releases/tag/v1.5) on the right menu, extract it and then place it in your Mods folder. You'll know it's correct if you open the ProjectMoonTexturePack folder and there's an assets, localization and .lua file inside
+2. Download the ProjectMoonTexturePack.zip file from [Releases](https://github.com/CountKiro/PMBalatroMod/releases/tag/v1.5.2) on the right menu, extract it and then place it in your Mods folder. You'll know it's correct if you open the ProjectMoonTexturePack folder and there's an assets, localization and .lua file inside
 
 3. Repeat step 2 for the ProjectMoonMusicAddon.zip if you desire to include the music and ProjectMoonContentMod.zip if you desire the new content
    
