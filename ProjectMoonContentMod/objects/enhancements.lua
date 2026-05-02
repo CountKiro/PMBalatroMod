@@ -334,7 +334,7 @@ SMODS.Enhancement {
 SMODS.Enhancement {
     key = "painted",
     atlas = "ModdedProjectMoonEditions",
-    pos = { x = 6, y = 2},
+    pos = { x = 3, y = 1},
     config = { bonus = 0, mult = 0, steel_h_x_mult = 1, gold_h_dollars = 0, 
     multCollected = false, bonusCollected = false, goldCollected = false, steelCollected = false, stoneCollected = false, bleedCollected = false, ruptureCollected = false},
     any_suit = true,
