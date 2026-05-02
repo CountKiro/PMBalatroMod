@@ -204,10 +204,13 @@ return {
             m_pmcmod_painted = {
                 name = "Painted Card",
                 text = {
-                    "{C:attention}Absorves{} some the values of Enhanced cards",
-                    "scored in the same hand. Effect can only",
-                    "be triggered once per Enhancement type",
-                    "(chance and percentage base Enhancements cannot be assimilated)"
+                    "{C:attention}Absorves{} the values of",
+                    "some {C:blue}Enhanced{} cards",
+                    "scored in the same hand.",
+                    "Effect can only be triggered",
+                    "once per Enhancement type",
+                    "({C:attention}chance{} and {C:attention}percentage{} based",
+                    "Enhancements {C:red}cannot be absorved{})"
 
                 },
             },
@@ -1211,7 +1214,7 @@ return {
                 text = {
                     {"Always {C:dark_edition}Negative"},
                     {"At the end of every Reception,",
-                    "creates a {C:dark_edition}Negative{} copy of a random Keypage"},
+                    "adds {C:dark_edition}Negative{} to a random Keypage"},
                     {"Has a {C:green}#1# in #2#{} chance to destroy itself after that",
                     "This chance goes up by 1 for every successful trigger"}
                 },
@@ -2193,29 +2196,29 @@ return {
             j_pmcmod_rufo = {
                 name = 'Rufo',
                 text = {
-                    "At the end of each Scene",
+                    "At the {C:attention}end of each Scene{}",
                     "give a random card in the deck",
-                    "a random Enhancement."
+                    "a random {C:blue}Enhancement{}."
                 }
             },
             j_pmcmod_alan = {
                 name = 'Alan',
                 text = {
-                    {"At the start of the Scene, choose",
+                    {"At the {C:attention}start of the Scene{}, choose",
                     "a random spot and a random Keypage"},
                     {"If the selected Keypage is in the selected",
-                    "spot for 5 Hands, give it a random Edition"},
+                    "spot for 5 Hands, give it a random {C:dark_edition}Edition{}"},
                     {"If any Hand is played while the Keypage",
-                    "is in the wrong spot, destroy it"},
+                    "is in the wrong spot, {C:red}destroy it{}"},
                     {"Only one Keypage and spot is selected at a time",
-                    "Destroys itself if there's no more Keypages to upgrade",
-                    "{C:inactive}(Position: {C:red}#1#{C:inactive})",
-                    "{C:inactive}(Keypage: {C:red}#2#{C:inactive})",
+                    "{C:attention}Destroys itself if there's no more Keypages to upgrade{}",
+                    "{C:inactive}(Position: {C:attention}#1#{C:inactive})",
+                    "{C:inactive}(Keypage: {C:blue}#2#{C:inactive})",
                     "{C:inactive}(Counter: {C:red}#3#{C:inactive})"}
                 }
             },
             j_pmcmod_vermillionCross = {
-                name = 'Vermillion Cross',
+                name = 'Vermilion Cross',
                 text = {
                     "Reduce Encounter score by half",
                 }
