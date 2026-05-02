@@ -8488,8 +8488,8 @@ SMODS.Joker {
 				chosenMult = card.ability.extra.xmult * 4
 
 				if leiHengDetected then
+					G.GAME.banned_keys["j_pmcmod_leiHeng"] = true
 					G.jokers.cards[leiHengPos].children.center:set_sprite_pos({x = 4 , y = 10})
-
 					G.jokers.cards[leiHengPos].getting_sliced = true
                     G.E_MANAGER:add_event(Event({
 						trigger = 'after',
@@ -10095,13 +10095,13 @@ SMODS.Joker {
 			card.ability.extra.lucioDeathCounter = card.ability.extra.lucioDeathCounter + 1
 
 			if card.ability.extra.lucioDeathCounter >= 5 then
+				G.GAME.banned_keys["j_pmcmod_lucio"] = true
 				local lucio = G.jokers.cards[card.ability.extra.lucioPos]
-				
-                    lucio.getting_sliced = true
-                    G.E_MANAGER:add_event(Event({func = function()
-                        card:juice_up(0.8, 0.8)
-                        lucio:start_dissolve({G.C.RED}, nil, 1.6)
-                    return true end }))
+				lucio.getting_sliced = true
+				G.E_MANAGER:add_event(Event({func = function()
+					card:juice_up(0.8, 0.8)
+					lucio:start_dissolve({G.C.RED}, nil, 1.6)
+				return true end }))
 			end
 
 		end
@@ -10214,11 +10214,9 @@ SMODS.Joker {
 						card.ability.extra.soraPos = i
 					end
 				end
-
+				G.GAME.banned_keys["j_pmcmod_sora"] = true
 				local sora = G.jokers.cards[card.ability.extra.soraPos]
-				
 				card.ability.extra.soraDeathCounter = 0
-				
 				sora.getting_sliced = true
 				G.E_MANAGER:add_event(Event({func = function()
 					card:juice_up(0.8, 0.8)
@@ -10346,8 +10344,8 @@ SMODS.Joker {
 				end
 
 				if card.ability.extra.kiraDeathCounter >= 5 then
+					G.GAME.banned_keys["j_pmcmod_kira"] = true
 					local kira = G.jokers.cards[card.ability.extra.kiraPos]
-				
                     kira.getting_sliced = true
                     G.E_MANAGER:add_event(Event({func = function()
                         card:juice_up(0.8, 0.8)
@@ -10473,13 +10471,13 @@ SMODS.Joker {
 
 
 			if card.ability.extra.albinaDeathCounter >= 5 then
-					local albina = G.jokers.cards[card.ability.extra.albinaPos]
-				
-                    albina.getting_sliced = true
-                    G.E_MANAGER:add_event(Event({func = function()
-                        card:juice_up(0.8, 0.8)
-                        albina:start_dissolve({G.C.RED}, nil, 1.6)
-                    return true end }))
+				G.GAME.banned_keys["j_pmcmod_albina"] = true
+				local albina = G.jokers.cards[card.ability.extra.albinaPos]
+				albina.getting_sliced = true
+				G.E_MANAGER:add_event(Event({func = function()
+					card:juice_up(0.8, 0.8)
+					albina:start_dissolve({G.C.RED}, nil, 1.6)
+				return true end }))
 			end
         end
         if context.joker_main then
@@ -10566,6 +10564,7 @@ SMODS.Joker {
 			card.ability.extra.renDeathCounter = card.ability.extra.renDeathCounter + 1
 		
 				if card.ability.extra.renDeathCounter >= 5 then
+					G.GAME.banned_keys["j_pmcmod_ren"] = true
 					local ren = G.jokers.cards[card.ability.extra.renPos]
                     ren.getting_sliced = true
                     G.E_MANAGER:add_event(Event({func = function()
