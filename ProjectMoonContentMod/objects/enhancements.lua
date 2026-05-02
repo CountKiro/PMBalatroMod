@@ -356,6 +356,7 @@ SMODS.Enhancement {
     atlas = "ModdedProjectMoonEditions",
     pos = { x = 6, y = 2},
     config = { },
+    no_collection = true,
     always_scores = true,
     loc_vars = function(self, info_queue, card)
         return { vars = {}}
