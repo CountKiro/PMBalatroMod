@@ -5597,7 +5597,22 @@ SMODS.Joker {
 	calculate = function(self, card, context)
 
 		if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and G.GAME.last_blind and G.GAME.last_blind.boss then
-			local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
+
+			local editionless_jokers = {}
+
+			for i=1, #G.jokers.cards do
+				print("loop")
+				print(i)
+				if G.jokers.cards[i] ~= card and G.jokers.cards[i].config.center.key ~= "j_pmcmod_erlking" and G.jokers.cards[i].config.center.key ~= "j_pmcmod_catherine" then
+					print("found card")
+					if G.jokers.cards[i].edition == nil then
+						print("found editionless card")
+						editionless_jokers[#editionless_jokers + 1] = G.jokers.cards[i]
+						print(editionless_jokers[i])
+					end
+				end
+			end
+			--local editionless_jokers = SMODS.Edition:get_edition_cards(G.jokers, true)
 
 			if (#editionless_jokers > 0) then
 				local eligible_card = pseudorandom_element(editionless_jokers, 'everyCatherine')
@@ -5640,6 +5655,9 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_empty'), HEX('3d2920'), HEX('998277'), 1.2 )
  	end,
+	add_to_deck = function(self, card, from_debuff)
+        G.GAME.banned_keys["j_pmcmod_everyCatherine"] = true
+    end,
 	in_pool = function(self, args)
         return G.GAME.pool_flags.fake_robot_flag
     end,
@@ -5738,6 +5756,9 @@ SMODS.Joker {
 	set_badges = function(self, card, badges)
  		badges[#badges+1] = create_badge(localize('pmcmod_badge_wildHunt'), HEX('40342d'), HEX('7a369c'), 1.2 )
  	end,
+	add_to_deck = function(self, card, from_debuff)
+        G.GAME.banned_keys["j_pmcmod_erlking"] = true
+    end,
 	in_pool = function(self, args)
         return G.GAME.pool_flags.fake_robot_flag
     end,
@@ -11827,7 +11848,7 @@ SMODS.Joker {
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
-	pos = { x = 1, y = 7 },
+	pos = { x = 3, y = 7 },
     pools =
 	{
 
@@ -11862,83 +11883,85 @@ SMODS.Joker {
 			end
 
 			for i=1, #context.full_hand do
-				if SMODS.has_enhancement(context.full_hand[i], 'm_wild') then
+				if SMODS.has_enhancement(context.full_hand[i], 'm_pmcmod_painted') then
 					paintedDetected = true
 					painted_pos = i
 				end
 			
 			end
 
-			for i=1, #context.full_hand do
-				
-				if SMODS.has_enhancement(context.full_hand[i], 'm_mult') then
+			if paintedDetected then
+				for i=1, #context.full_hand do
 					
-					if context.full_hand[painted_pos].ability.multCollected == false and paintedDetected == true then
-						context.full_hand[painted_pos].ability.mult = context.full_hand[painted_pos].ability.mult + 10
-						context.full_hand[painted_pos].ability.multCollected = true
-						context.full_hand[i]:set_ability('c_base', nil, true)
+					if SMODS.has_enhancement(context.full_hand[i], 'm_mult') then
+						
+						if context.full_hand[painted_pos].ability.multCollected == false and paintedDetected == true then
+							context.full_hand[painted_pos].ability.mult = context.full_hand[painted_pos].ability.mult + 10
+							context.full_hand[painted_pos].ability.multCollected = true
+							context.full_hand[i]:set_ability('c_base', nil, true)
+						end
+
 					end
 
-				end
+					if SMODS.has_enhancement(context.full_hand[i], 'm_bonus') then
 
-				if SMODS.has_enhancement(context.full_hand[i], 'm_bonus') then
+						if context.full_hand[painted_pos].ability.bonusCollected == false and paintedDetected == true then
+							context.full_hand[painted_pos].ability.bonus = context.full_hand[painted_pos].ability.bonus + 30
+							context.full_hand[painted_pos].ability.bonusCollected = true
+							context.full_hand[i]:set_ability('c_base', nil, true)
+						end
 
-					if context.full_hand[painted_pos].ability.bonusCollected == false and paintedDetected == true then
-						context.full_hand[painted_pos].ability.bonus = context.full_hand[painted_pos].ability.bonus + 30
-						context.full_hand[painted_pos].ability.bonusCollected = true
-						context.full_hand[i]:set_ability('c_base', nil, true)
 					end
 
-				end
+					if SMODS.has_enhancement(context.full_hand[i], 'm_steel') then
 
-				if SMODS.has_enhancement(context.full_hand[i], 'm_steel') then
+						if context.full_hand[painted_pos].ability.steelCollected == false and paintedDetected == true then
+							context.full_hand[painted_pos].ability.h_x_mult = 1.5
+							context.full_hand[painted_pos].ability.steelCollected = true
+							context.full_hand[i]:set_ability('c_base', nil, true)
+						end
 
-					if context.full_hand[painted_pos].ability.steelCollected == false and paintedDetected == true then
-						context.full_hand[painted_pos].ability.steel_h_x_mult = 1.5
-						context.full_hand[painted_pos].ability.steelCollected = true
-						context.full_hand[i]:set_ability('c_base', nil, true)
 					end
 
-				end
+					if SMODS.has_enhancement(context.full_hand[i], 'm_gold') then
 
-				if SMODS.has_enhancement(context.full_hand[i], 'm_gold') then
+						if context.full_hand[painted_pos].ability.goldCollected == false and paintedDetected == true then
+							context.full_hand[painted_pos].ability.h_dollars = 3
+							context.full_hand[painted_pos].ability.goldCollected = true
+							context.full_hand[i]:set_ability('c_base', nil, true)
+						end
 
-					if context.full_hand[painted_pos].ability.goldCollected == false and paintedDetected == true then
-						context.full_hand[painted_pos].ability.gold_h_dollars = 3
-						context.full_hand[painted_pos].ability.goldCollected = true
-						context.full_hand[i]:set_ability('c_base', nil, true)
 					end
 
-				end
+					if SMODS.has_enhancement(context.full_hand[i], 'm_stone') then
 
-				if SMODS.has_enhancement(context.full_hand[i], 'm_stone') then
+						if context.full_hand[painted_pos].ability.stoneCollected == false and paintedDetected == true then
+							context.full_hand[painted_pos].ability.bonus = context.full_hand[painted_pos].ability.bonus + 50
+							context.full_hand[painted_pos].ability.stoneCollected = true
+							context.full_hand[i]:set_ability('c_base', nil, true)
+						end
 
-					if context.full_hand[painted_pos].ability.stoneCollected == false and paintedDetected == true then
-						context.full_hand[painted_pos].ability.bonus = context.full_hand[painted_pos].ability.bonus + 50
-						context.full_hand[painted_pos].ability.stoneCollected = true
-						context.full_hand[i]:set_ability('c_base', nil, true)
 					end
 
-				end
+					if SMODS.has_enhancement(context.full_hand[i], 'm_pmcmod_bleed') then
 
-				if SMODS.has_enhancement(context.full_hand[i], 'm_bleed') then
+						if context.full_hand[painted_pos].ability.bleedCollected == false and paintedDetected == true and context.full_hand[i].ability.perma_mult then
+							context.full_hand[painted_pos].ability.mult = context.full_hand[painted_pos].ability.mult + context.full_hand[i].ability.perma_mult
+							context.full_hand[painted_pos].ability.bleedCollected = true
+							context.full_hand[i]:set_ability('c_base', nil, true)
+						end
 
-					if context.full_hand[painted_pos].ability.bleedCollected == false and paintedDetected == true and context.full_hand[i].ability.perma_mult then
-						context.full_hand[painted_pos].ability.mult = context.full_hand[painted_pos].ability.mult + context.full_hand[i].ability.perma_mult
-						context.full_hand[painted_pos].ability.bleedCollected = true
-						context.full_hand[i]:set_ability('c_base', nil, true)
 					end
 
-				end
+					if SMODS.has_enhancement(context.full_hand[i], 'm_pmcmod_rupture') then
 
-				if SMODS.has_enhancement(context.full_hand[i], 'm_rupture') then
+						if context.full_hand[painted_pos].ability.stoneCollected == false and paintedDetected == true and context.full_hand[i].ability.counter then
+							context.full_hand[painted_pos].ability.bonus = context.full_hand[painted_pos].ability.bonus + context.full_hand[i].ability.counter * 2
+							context.full_hand[painted_pos].ability.ruptureCollected = true
+							context.full_hand[i]:set_ability('c_base', nil, true)
+						end
 
-					if context.full_hand[painted_pos].ability.stoneCollected == false and paintedDetected == true and context.full_hand[i].ability.counter then
-						context.full_hand[painted_pos].ability.bonus = context.full_hand[painted_pos].ability.bonus + context.full_hand[i].ability.counter * 2
-						context.full_hand[painted_pos].ability.ruptureCollected = true
-						context.full_hand[i]:set_ability('c_base', nil, true)
 					end
-
 				end
 			end
 			
@@ -12008,14 +12031,13 @@ SMODS.Joker {
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
-	pos = { x = 1, y = 7 },
+	pos = { x = 4, y = 7 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue+1] = {set = "Other", key = "effect_perma"}
-        return {vars = { card.ability.permaDollars_mod, card.ability.counters.playedCards, card.ability.counters.discardedCards, card.ability.counters.moneyUsed  } }
+        return {vars = {   } }
 	end,
 	calculate = function(self, card, context)
 
@@ -12025,15 +12047,15 @@ SMODS.Joker {
 			local unenhancedCards = {}
 
 			for i=1, #G.playing_cards do
-				if SMODS.has_enhancement(playing_card) then
-					unenhancedCards[#unenhancedCards+1] = G.playing_cards[i]
+				if not SMODS.has_enhancement(G.playing_cards[i]) then
+					unenhancedCards[#unenhancedCards+1] = i
 				end
 			end
 
 			local cardToEnhance = #unenhancedCards > 0 and pseudorandom_element(unenhancedCards, pseudoseed('rufo')) or nil
 			
 			if #unenhancedCards > 0 then
-				cardToEnhance:set_ability(pseudorandom_element(possible_enhancements, pseudoseed('rufo')), nil, true)
+				G.playing_cards[cardToEnhance]:set_ability(pseudorandom_element(possible_enhancements, pseudoseed('rufo')), nil, true)
 			end
 
 		end
@@ -12095,44 +12117,51 @@ SMODS.Joker {
 	name = "Alan",
 	pronouns = "he_him",
 	unlocked = true,
-	config = { spotSelected = false, jokerSelected = nil, jokerSelectedFlag = nil, jokerFailed = false, counter = 0 },
+	config = { spotSelected = 0, jokerSelected = "None", jokerName = "None", jokerSelectedFlag = false, jokerFailed = false, counter = 0 },
 	eternal_compat = false,
 	blueprint_compat = false,
 	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
-	pos = { x = 1, y = 7 },
+	pos = { x = 5, y = 7 },
     pools =
 	{
 
  	},
 	loc_vars = function(self, info_queue, card)
-        return {vars = { card.ability.spotSelected, card.ability.jokerSelected, card.ability.counter  } }
+        return {vars = { card.ability.spotSelected, card.ability.jokerName, card.ability.counter  } }
 	end,
 	calculate = function(self, card, context)
 
 		local availableJokers = {}
 		local possible_editions = {'e_foil', 'e_holo', 'e_polychrome', 'e_pmcmod_charge'}
 
-		for i=1, #G.jokers.cards do
-			if G.jokers.cards[i] ~= card and not G.jokers.cards[i].ability.eternal then
-				availableJokers[#availableJokers+1] = G.jokers.cards[i]
-			end
-		end
+		
 
 		if context.setting_blind and #G.jokers.cards > 1 and card.ability.jokerSelectedFlag == false and not context.blueprint then
 
-			local joker_count = 0
-             for i = 1, #G.jokers.cards do
-				if G.jokers.cards[i].edition then
-                	if G.jokers.cards[i].ability.set == 'Joker' then
-					 	joker_count = joker_count + 1
+			for i=1, #G.jokers.cards do
+				if G.jokers.cards[i] ~= card and not G.jokers.cards[i].ability.eternal then
+					if not G.jokers.cards[i].edition then
+						print(G.jokers.cards[i].config.center.key)
+						availableJokers[#availableJokers+1] = G.jokers.cards[i]
 					end
 				end
 			end
 
-			if joker_count < 2 then
+			local joker_count = 0
+             for i = 1, #G.jokers.cards do
+				if G.jokers.cards[i] ~= card then
+					if not G.jokers.cards[i].edition then
+						if G.jokers.cards[i].ability.set == 'Joker' then
+							joker_count = joker_count + 1
+						end
+					end
+				end
+			end
+
+			if joker_count < 1 then
 
 				G.E_MANAGER:add_event(Event({
 					func = function()
@@ -12167,6 +12196,7 @@ SMODS.Joker {
 				card.ability.spotSelected = math.random(1,#G.jokers.cards)
 				card.ability.jokerSelected = cardToSelect
 				card.ability.jokerSelectedFlag = true
+				card.ability.jokerName = localize { type = 'name_text', set = "Joker", key = card.ability.jokerSelected.config.center.key }
 			end
 
 			
@@ -12177,11 +12207,13 @@ SMODS.Joker {
 			local selectedJokerPos = nil
 
 			for i=1, #G.jokers.cards do
-				if #G.jokers.cards[i] == card.ability.jokerSelected then
+
+				if G.jokers.cards[i]== card.ability.jokerSelected then
 					selectedJokerPos = i
 					break
 				end
 			end
+
 
 			if card.ability.spotSelected == selectedJokerPos then
 				card.ability.counter = card.ability.counter + 1
