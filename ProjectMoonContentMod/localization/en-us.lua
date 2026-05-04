@@ -2823,7 +2823,7 @@ return {
                 name = "Erasure",
                 text = {
                     "{C:red}Removes{} the selected Keypage and any Keypage to",
-                    "the left from the pool for the rest fo the run",
+                    "the left from the pool for the rest of the run",
                     "{C:inactive}(selected Keypage must be on the team)"
                 }
             },
