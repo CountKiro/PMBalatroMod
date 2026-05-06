@@ -1,3 +1,93 @@
+SMODS.Attribute{
+	key = "summoning",
+}
+
+SMODS.Attribute{
+	key = "random",
+}
+
+SMODS.Attribute{
+	key = "charge",
+}
+
+SMODS.Attribute{
+	key = "erasing",
+}
+
+SMODS.Attribute{
+	key = "bleed",
+}
+
+SMODS.Attribute{
+	key = "rupture",
+}
+
+SMODS.Attribute{
+	key = "sinking",
+}
+
+SMODS.Attribute{
+	key = "burn",
+}
+
+SMODS.Attribute{
+	key = "poise",
+}
+
+SMODS.Attribute{
+	key = "pallid",
+}
+
+SMODS.Attribute{
+	key = "ammo",
+}
+
+SMODS.Attribute{
+	key = "painted",
+}
+
+SMODS.Attribute{
+	key = "erasing",
+}
+
+SMODS.Attribute{
+	key = "negative",
+}
+
+SMODS.Attribute{
+	key = "polychrome",
+}
+
+SMODS.Attribute{
+	key = "ante_reset",
+}
+
+SMODS.Attribute{
+	key = "consumable",
+}
+
+SMODS.Attribute{
+	key = "destroy_itself",
+}
+
+SMODS.Attribute{
+	key = "position",
+}
+
+SMODS.Attribute{
+	key = "voucher",
+}
+
+SMODS.Attribute{
+	key = "selling_card",
+}
+
+SMODS.Attribute{
+	key = "stickers",
+}
+
+
+
 function Card:keypage_add_speech_bubble(text_key, align, loc_vars)
         if self.children.speech_bubble then self.children.speech_bubble:remove() end
         self.config.speech_bubble_align = {align=align or 'bm', offset = {x=0,y=0},parent = self}
@@ -83,6 +173,7 @@ SMODS.Joker {
 	rarity = 3,
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 0, y = 0 },
+	attributes = {'random'},
 	cost = 8,
 	loc_vars = function (self, info_queue, card)
     	return {vars = { card.ability.extra.lastEffect }}
@@ -252,6 +343,7 @@ SMODS.Joker {
     cost = 8,
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 4, y = 13 },
+	attributes = {'xchips', 'singleton'},
 	pools =
 	{
         ["Index"] = true,
@@ -312,6 +404,7 @@ SMODS.Joker {
     cost = 6,
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 0, y = 2 },
+	attributes = {'economy', 'singleton'},
 	pools =
 	{
         ["Index"] = true,
@@ -371,6 +464,7 @@ SMODS.Joker {
 	rarity = 2,
     cost = 6,
 	atlas = 'ModdedProjectMoonTrue',
+	attributes = {'retrigger', 'singleton'},
 	pos = { x = 0, y = 1 },
 	pools =
 	{
@@ -432,6 +526,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 2, y = 1 },
+	attributes = {'xmult', 'hands'},
     pools =
 	{
 
@@ -485,6 +580,7 @@ SMODS.Joker {
     cost = 12,
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 7, y = 0 },
+	attributes = {'mult'},
 	pools =
 	{
         ["Index"] = true,
@@ -528,6 +624,7 @@ SMODS.Joker {
     cost = 10,
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 2, y = 8 },
+	attributes = {'mult', 'summoning'},
 	pools =
 	{
         
@@ -665,6 +762,7 @@ SMODS.Joker {
 	perishable_compat = true,
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 3, y = 3 },
+	attributes = {'mult', 'scaling'},
 	cost = 8,
 	pools =
 	{
@@ -749,6 +847,7 @@ SMODS.Joker {
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 7, y = 14 },
 	cost = 6,
+	attributes = {'economy', 'retrigger'},
 	pools =
 	{
         ["R Corp"] = true,
@@ -811,6 +910,7 @@ SMODS.Joker {
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 9, y = 5 },
 	cost = 8,
+	attributes = {'charge'},
 	pools =
 	{
         ["R Corp"] = true,
@@ -851,6 +951,7 @@ SMODS.Joker {
     cost = 10,
 	atlas = 'ModdedProjectMoonTrue',
     pos = { x = 6, y = 1 },
+	attributes = {'mult', 'scaling', 'diamonds', 'chance', 'modify_card'},
     pools =
 	{
  		["Thumb"] = true,
@@ -922,6 +1023,7 @@ SMODS.Joker {
     cost = 5,
 	atlas = 'ModdedProjectMoonTrue',
     pos = { x = 7, y = 1 },
+	attributes = {'mult', 'hearts'},
     pools =
 	{
  		["Thumb"] = true,
@@ -977,6 +1079,7 @@ SMODS.Joker {
     cost = 5,
 	atlas = 'ModdedProjectMoonTrue',
     pos = { x = 8, y = 1 },
+	attributes = {'mult', 'spades'},
     pools =
 	{
  		["Thumb"] = true,
@@ -1031,6 +1134,7 @@ SMODS.Joker {
     cost = 5,
 	atlas = 'ModdedProjectMoonTrue',
     pos = { x = 9, y = 1 },
+	attributes = {'mult', 'clubs'},
     pools =
 	{
  		["Thumb"] = true,
@@ -1086,6 +1190,7 @@ SMODS.Joker {
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 1, y = 12 },
 	cost = 8,
+	attributes = {'chips', 'scaling', 'summoning'},
 	loc_vars = function (self, info_queue, card)
 		info_queue[#info_queue + 1] = { key = "perishable", set = "Other", vars = { G.GAME.perishable_rounds, G.GAME.perishable_rounds } }
     	return {vars = { card.ability.extra.creates, card.ability.extra.chips, card.ability.extra.chips_mod}}
@@ -1186,6 +1291,7 @@ SMODS.Joker {
 	atlas = 'ModdedProjectMoon2',
 	pos = { x = 0, y = 0 },
 	cost = 8,
+	attributes = {'xchips', 'scaling', 'planet'},
 	loc_vars = function (self, info_queue, card)
 
 		local planets_used = 0
@@ -1252,6 +1358,7 @@ SMODS.Joker {
 	{
 		["Bloodfiends"] = true,
  	},
+	attributes = {'chips', 'perma_bonus'},
 	loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = "Other", key = "effect_perma"}
         return {vars = { card.ability.extra.chips } }
@@ -1301,6 +1408,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 3, y = 0 },
+	attributes = {'xmult', 'scaling', 'erasing'},
     pools =
 	{
 
@@ -1379,6 +1487,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 5, y = 0 },
+	attributes = {'mult', 'chips', 'xmult', 'economy', 'hands', 'hand_size', 'discard', 'perma_bonus', 'retrigger', 'chance'},
     pools =
 	{
 
@@ -1706,6 +1815,7 @@ SMODS.Joker {
     blueprint_compat = false,
     eternal_compat = true,
 	perishable_compat = true,
+	attributes = {'joker', 'joker_slot', 'negative'},
 	loc_vars = function (self, info_queue, card)
 
 		local planets_used = 0
@@ -1792,6 +1902,7 @@ SMODS.Joker {
 	rarity = 3,
 	atlas = 'ModdedProjectMoon2',
 	pos = { x = 7, y = 0 },
+	attributes = {'mult', 'xmult', 'chance', 'scaling'},
 	cost = 8,
 	loc_vars = function (self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_pmcmod_pallid
@@ -1918,6 +2029,7 @@ SMODS.Joker {
     cost = 10,
 	atlas = 'ModdedProjectMoon',
     pos = { x = 0, y = 0 },
+	attributes = {'ante_reset'},
     pools =
 	{
  		["Heretics"] = true,
@@ -1986,6 +2098,7 @@ SMODS.Joker {
     cost = 8,
 	atlas = 'ModdedProjectMoon',
     pos = { x = 1, y = 0 },
+	attributes = {'xchips', 'scaling', 'meltdown', 'boss_blind'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -2123,6 +2236,7 @@ SMODS.Joker {
     cost = 8,
 	atlas = 'ModdedProjectMoon',
     pos = { x = 2, y = 0 },
+	attributes = {'mult', 'meltdown'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -2238,11 +2352,12 @@ SMODS.Joker {
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	pos = { x = 3, y = 0 },
+	attributes = {'consumable', 'mult', 'chips', 'scaling', 'meltdown'},
     pools = 
 	{
  		["Heretics"] = true,
  	},
-    pos = { x = 3, y = 0 },
     loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = "Other", key = "effect_meltdown"}
         return {vars = { card.ability.extra.consumable_amount, card.ability.extra.mult, card.ability.extra.chips, card.ability.extra.current_consumable_count, card.ability.extra.roundCount,
@@ -2348,11 +2463,12 @@ SMODS.Joker {
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	pos = { x = 4, y = 0 },
+	attributes = {'spades', 'clubs', 'hearts', 'diamonds', 'mult', 'chips', 'scaling', 'meltdown'},
     pools = 
 	{
  		["Heretics"] = true,
  	},
-    pos = { x = 4, y = 0 },
     loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = "Other", key = "effect_meltdown"}
         return {vars = { card.ability.extra.totalSpades, card.ability.extra.totalClubs, card.ability.extra.totalHearts, card.ability.extra.totalDiamonds, card.ability.extra.mult, card.ability.extra.chips, card.ability.extra.roundCount  } }
@@ -2457,11 +2573,12 @@ SMODS.Joker {
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	pos = { x = 5, y = 0 },
+	attributes = {'xchips', 'scaling', 'meltdown'},
     pools = 
 	{
  		["Heretics"] = true,
  	},
-    pos = { x = 5, y = 0 },
     loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = "Other", key = "effect_meltdown"}
         return {vars = { card.ability.extra.xchips, card.ability.extra.xchips_mod, card.ability.extra.roundCount } } 
@@ -2558,6 +2675,7 @@ SMODS.Joker {
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	attributes = {'mult', 'hands', 'meltdown'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -2647,11 +2765,12 @@ SMODS.Joker {
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	pos = { x = 9, y = 11 },
+	attributes = {'tarot', 'spectral', 'xmult', 'scaling', 'timer', 'meltdown'},
     pools = 
 	{
  		["Heretics"] = true,
  	},
-    pos = { x = 9, y = 11 },
     loc_vars = function (self, info_queue, card)
 	local main_end = nil
     local random_mult = tostring(math.floor(card.ability.extra.total_timer)) or 1
@@ -2763,11 +2882,12 @@ SMODS.Joker {
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	pos = { x = 7, y = 0 },
+	attributes = {'xmult', 'scaling', 'destroy_card', 'meltdown'},
     pools = 
 	{
  		["Heretics"] = true,
- 	},
-    pos = { x = 7, y = 0 },
+ 	},    
     loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = "Other", key = "effect_meltdown"}
         return {vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod, card.ability.extra.roundCount } }
@@ -2855,11 +2975,12 @@ SMODS.Joker {
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	pos = { x = 8, y = 0 },
+	attributes = {'ace', 'mult', 'scaling', 'meltdown'},
     pools = 
 	{
  		["Heretics"] = true,
  	},
-    pos = { x = 8, y = 0 },
     loc_vars = function(self, info_queue, card)
 		info_queue[#info_queue+1] = {set = "Other", key = "effect_meltdown"}
         return {vars = { card.ability.extra.enochDeathCounter, card.ability.extra.aceMult, card.ability.extra.aceMult_mod, card.ability.extra.roundCount } }
@@ -2990,11 +3111,12 @@ SMODS.Joker {
     rarity = 3,
     cost = 0,
 	atlas = 'ModdedProjectMoon',
+	pos = { x = 9, y = 0 },
+	attributes = {'chips', 'scaling', 'destroy_itself', 'meltdown'},
     pools = 
 	{
  		["Heretics"] = true,
  	},
-    pos = { x = 9, y = 0 },
     loc_vars = function(self, info_queue, card)
         return {vars = { card.ability.extra.chips, card.ability.extra.chip_mod } }
     end,
@@ -3052,6 +3174,7 @@ SMODS.Joker {
     cost = 9,
 	atlas = 'ModdedProjectMoon',
     pos = { x = 0, y = 1 },
+	attributes = {'chance', 'enhancements', 'seals', 'editions', 'modify_card'},
     pools = 
 	{
  		["NewLeagueOfNine"] = true,
@@ -3108,6 +3231,7 @@ SMODS.Joker {
     cost = 9,
 	atlas = 'ModdedProjectMoon',
     pos = { x = 1, y = 1 },
+	attributes = {'mult', 'scaling', 'destroy_card', 'destroy_itself', 'chance'},
     pools = 
 	{
  		["NewLeagueOfNine"] = true,
@@ -3254,6 +3378,7 @@ SMODS.Joker {
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 2, y = 1 },
+	attributes = {'mult'},
     pools =
 	{
 
@@ -3309,6 +3434,7 @@ SMODS.Joker {
     cost = 9,
 	atlas = 'ModdedProjectMoon',
     pos = { x = 3, y = 1 },
+	attributes = {'chance', 'modify_card', 'position'},
     pools = 
 	{
  		["NewLeagueOfNine"] = true,
@@ -3427,6 +3553,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 7, y = 1 },
+	attributes = {'mult', 'scaling', 'planet'},
     pools = 
 	{
 
@@ -3478,6 +3605,7 @@ SMODS.Joker {
     cost = 8,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 8, y = 1 },
+	attributes = {'chips', 'scaling', 'planet'},
     pools = 
 	{
 
@@ -3524,6 +3652,7 @@ SMODS.Joker {
     cost = 8,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 1 },
+	attributes = {'xmult', 'scaling', 'planet'},
     pools = 
 	{
 
@@ -3569,6 +3698,7 @@ SMODS.Joker {
     cost = 3,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 2, y = 2 },
+	attributes = {'mult', 'chance', 'destroy_itself'},
     pools = 
 	{
 
@@ -3578,6 +3708,7 @@ SMODS.Joker {
 		return { vars = { card.ability.extra.mult, (G.GAME.probabilities.normal or 1), card.ability.extra.odds } }
 	end,
 	calculate = function(self, card, context)
+
 		if context.joker_main then
 			return {
 				mult_mod = card.ability.extra.mult,
@@ -3648,6 +3779,7 @@ SMODS.Joker {
     cost = 4,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 1, y = 2 },
+	attributes = {'chips', 'chance', 'destroy_itself', 'voucher'},
     pools = 
 	{
 
@@ -3726,6 +3858,7 @@ SMODS.Joker {
 	cost = 10,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 0, y = 2 },
+	attributes = {'chips', 'chance', 'destroy_itself', 'on_sell'},
     pools =
 	{
 
@@ -3805,6 +3938,7 @@ SMODS.Joker {
     cost = 8,
     atlas = 'ModdedProjectMoon',
     pos = { x = 4, y = 1 },
+	attributes = {'xchips', 'scaling', 'spectral'},
     pools =
 	{
         ["DemiansGroup"] = true,
@@ -3846,6 +3980,7 @@ SMODS.Joker {
 	atlas = 'ModdedProjectMoon',
     cost = 6,
     pos = { x = 5, y = 1 },
+	attributes = {'passive', 'mod_chance'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -3877,14 +4012,15 @@ SMODS.Joker {
 	key = 'sanson',
 	name = 'Sanson',
 	pronouns = "he_him",
+	eternal_compat = false,
+	blueprint_compat = false,
+	perishable_compat = true,
 	config = { extra = { multiplied_value = 5 } },
 	rarity = 2,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 6, y = 1 },
 	cost = 6,
-	eternal_compat = false,
-	blueprint_compat = false,
-	perishable_compat = true,
+	attributes = {'passive', 'mod_chance'},
     pools =
 	{
         ["Bloodfiends"] = true,
@@ -3932,6 +4068,7 @@ SMODS.Joker {
     cost = 4,
     atlas = 'ModdedProjectMoon',
     pos = { x = 4, y = 2 },
+	attributes = {'mult', 'scaling', 'hand_type'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -3989,6 +4126,7 @@ SMODS.Joker {
     cost = 4,
     atlas = 'ModdedProjectMoon',
     pos = { x = 5, y = 2 },
+	attributes = {'chips', 'scaling', 'spades'},
     pools =
 	{
 
@@ -4098,6 +4236,7 @@ SMODS.Joker {
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 6, y = 2 },
+	attributes = {'chips', 'random'},
     pools =
 	{
 
@@ -4165,6 +4304,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 3, y = 2 },
+	attributes = {'chance', 'chips', 'hand_type'},
     pools =
 	{
         ["NewLeagueOfNine"] = true,
@@ -4208,6 +4348,7 @@ SMODS.Joker {
 	atlas = 'ModdedProjectMoon',
     cost = 6,
     pos = { x = 8, y = 2 },
+	attributes = {'xmult', 'scaling', 'hands'},
     pools =
 	{
         ["KCorp"] = true,
@@ -4259,6 +4400,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 7, y = 2 },
+	attributes = {'xmult', 'scaling', 'destroy_card'},
     pools =
 	{
         ["NCorp"] = true,
@@ -4320,6 +4462,7 @@ SMODS.Joker {
     cost = 6,
     atlas = 'ModdedProjectMoon',
     pos = { x = 9, y = 2 },
+	attributes = {'mult', 'scaling', 'seals'},
     pools =
 	{
         ["NCorp"] = true,
@@ -4403,6 +4546,7 @@ SMODS.Joker {
 	cost = 9,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 4, y = 14 },
+	attributes = {'mult', 'chips', 'xmult', 'economy', 'scaling', 'summoning'},
     pools =
 	{
         ["KCorp"] = true,
@@ -4519,6 +4663,7 @@ SMODS.Joker {
 	cost = 9,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 0, y = 3 },
+	attributes = {'xchips', 'scaling', 'polychrome', 'modify_card', 'editions'},
     pools =
 	{
         ["KCorp"] = true,
@@ -4595,6 +4740,7 @@ SMODS.Joker {
 	cost = 9,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 1, y = 3 },
+	attributes = {'xmult', 'nine', 'rank'},
     pools =
 	{
 
@@ -4633,6 +4779,7 @@ SMODS.Joker {
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 2, y = 3 },
+	attributes = {'chips', 'polychrome'},
     pools =
 	{
         ["KCorp"] = true,
@@ -4679,6 +4826,7 @@ SMODS.Joker {
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 3, y = 3 },
+	attributes = {'mult', 'scaling', 'selling_card'},
     pools =
 	{
         ["KCorp"] = true,
@@ -4721,6 +4869,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 4, y = 3 },
+	attributes = {'economy', 'chance'},
     pools =
 	{
         ["KCorp"] = true,
@@ -4766,6 +4915,7 @@ SMODS.Joker {
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 5, y = 3 },
+	attributes = {'mult', 'enhancements'},
     pools =
 	{
 
@@ -4841,6 +4991,7 @@ SMODS.Joker {
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 6, y = 3 },
+	attributes = {'chips', 'enhancements'},
     pools =
 	{
 
@@ -4914,6 +5065,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 7, y = 3 },
+	attributes = {'mult', 'hand_size'},
     pools =
 	{
 
@@ -4956,6 +5108,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 8, y = 3 },
+	attributes = {'xmult', 'scaling', 'pallid', 'spectral'},
     pools =
 	{
 		["Heretics"] = true,
@@ -5070,6 +5223,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 3 },
+	attributes = {'economy', 'pallid'},
     pools =
 	{
 
@@ -5156,6 +5310,7 @@ SMODS.Joker {
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 0, y = 4 },
+	attributes = {'mult', 'pallid'},
     pools =
 	{
 
@@ -5233,6 +5388,7 @@ SMODS.Joker {
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 1, y = 4 },
+	attributes = {'retrigger', 'chance', 'pallid'},
     pools =
 	{
 
@@ -5298,6 +5454,7 @@ SMODS.Joker {
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 2, y = 4 },
+	attributes = {'chips', 'pallid'},
     pools =
 	{
 
@@ -5374,6 +5531,7 @@ SMODS.Joker {
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 3, y = 4 },
+	attributes = {'planet'},
     pools =
 	{
 
@@ -5422,6 +5580,7 @@ SMODS.Joker {
 	cost = 5,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 4, y = 4 },
+	attributes = {'hand_type', 'mult'},
     pools =
 	{
 
@@ -5455,6 +5614,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 5, y = 4 },
+	attributes = {'mult', 'scaling'},
     pools =
 	{
 
@@ -5515,6 +5675,7 @@ SMODS.Joker {
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 6, y = 4 },
+	attributes = {'summoning'},
     pools =
 	{
 
@@ -5576,6 +5737,7 @@ SMODS.Joker {
 	cost = 5,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 7, y = 4 },
+	attributes = {'chance', 'negative', 'modify_card'},
 	soul_pos = {
         x = 7, y = 9,
 --        draw = function(card, scale_mod, rotate_mod)
@@ -5676,6 +5838,7 @@ SMODS.Joker {
 	cost = 5,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 0, y = 5 },
+	attributes = {'summoning', 'negative', 'stickers'},
     pools =
 	{
 		["NewLeagueOfNine"] = true,
@@ -5725,6 +5888,7 @@ SMODS.Joker {
 	cost = 5,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 8, y = 4 },
+	attributes = {'xmult', 'scaling', 'negative'},
     pools =
 	{
 
@@ -5778,6 +5942,7 @@ SMODS.Joker {
 	cost = 5,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 1, y = 5 },
+	attributes = {'chips', 'scaling', 'negative'},
     pools =
 	{
 
@@ -5838,6 +6003,7 @@ SMODS.Joker {
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 2, y = 5 },
+	attributes = {'on_sell', 'tag', 'negative'},
     pools =
 	{
 
@@ -5888,6 +6054,7 @@ SMODS.Joker {
 	cost = 5,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 3, y = 5 },
+	attributes = {'mult', 'scaling', 'negative'},
     pools =
 	{
 
@@ -5950,6 +6117,7 @@ SMODS.Joker {
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 1, y = 7 },
+	attributes = {'xmult', 'scaling', 'discard'},
     pools =
 	{
 
@@ -6005,6 +6173,7 @@ SMODS.Joker {
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 2, y = 7 },
+	attributes = {'chips', 'scaling', 'discard'},
     pools =
 	{
 
@@ -6060,6 +6229,7 @@ SMODS.Joker {
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 3, y = 7 },
+	attributes = {'mult', 'scaling', 'discard'},
     pools =
 	{
 
@@ -6115,6 +6285,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 1, y = 6 },
+	attributes = {'xchips', 'seven'},
     pools =
 	{
 
@@ -6153,6 +6324,7 @@ SMODS.Joker {
     cost = 6,
     atlas = 'ModdedProjectMoon',
     pos = { x = 2, y = 6 },
+	attributes = {'retrigger', 'seven'},
     config = { extra = { repetitions = 1 } },
     calculate = function(self, card, context)
         if context.repetition and context.cardarea == G.play then
@@ -6183,6 +6355,7 @@ SMODS.Joker {
     cost = 10,
 	atlas = 'ModdedProjectMoon',
     pos = { x = 4, y = 7 },
+	attributes = {'voucher'},
     add_to_deck = function(self, card, from_debuff)
         G.E_MANAGER:add_event(Event({
             func = function()
@@ -6224,6 +6397,7 @@ SMODS.Joker {
     cost = 4,
 	atlas = 'ModdedProjectMoon',
     pos = { x = 5, y = 7 },
+	attributes = {'chance', 'consumable'},
 	config = { extra = { baseChance = 1, maxChance = 2, pity = false } },
 	loc_vars = function(self, info_queue, card)
 		local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'crayonChance')
@@ -6317,6 +6491,7 @@ SMODS.Joker {
     cost = 6,
 	atlas = 'ModdedProjectMoon',
     pos = { x = 6, y = 7 },
+	attributes = {'tag', 'economy'},
 	config = { extra = { baseChance = 1, maxChance = 1 } },
 	loc_vars = function(self, info_queue, card)
 		local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'dominoChance')
@@ -6357,6 +6532,7 @@ SMODS.Joker {
     atlas = 'ModdedProjectMoon',
 	pos = { x = 3, y = 6 },
 	config = { extra = { mult = 0 } },
+	attributes = {'mult', 'perma_bonus'},
     pools =
 	{
         ["Bloodfiends"] = true,
@@ -6412,6 +6588,7 @@ SMODS.Joker {
     atlas = 'ModdedProjectMoon',
 	pos = { x = 4, y = 6 },
 	config = { extra = { repetitions = 1, baseChance = 1, maxChance = 2 } },
+	attributes = {'retrigger', 'hearts', 'bleed'},
     pools =
 	{
 		["Bloodfiends"] = true,
@@ -6487,6 +6664,7 @@ SMODS.Joker {
     atlas = 'ModdedProjectMoon',
 	pos = { x = 5, y = 6 },
 	config = { extra = { mult = 0, mult_mod = 2 } },
+	attributes = {'mult', 'scaling', 'bleed', 'hearts'},
     pools =
 	{
 		["Bloodfiends"] = true,
@@ -6503,7 +6681,7 @@ SMODS.Joker {
 
 				return {
                     message = localize { type = 'variable', key = 'a_mult', vars = { card.ability.extra.mult_mod } },
-                    colour = G.C.CHIPS
+                    colour = G.C.MULT
                 }
 
 			else
@@ -6512,7 +6690,7 @@ SMODS.Joker {
 					
 					return {
 						message = localize { type = 'variable', key = 'a_mult_minus', vars = { card.ability.extra.mult_mod } },
-						colour = G.C.CHIPS
+						colour = G.C.MULT
                 	}
 				end
 
@@ -6576,6 +6754,7 @@ SMODS.Joker {
     atlas = 'ModdedProjectMoon',
 	pos = { x = 7, y = 6 },
 	config = { extra = {chips = 0, chips_mod = 4 } },
+	attributes = {'chips', 'scaling', 'bleed', 'hearts'},
     pools =
 	{
 		["Bloodfiends"] = true,
@@ -6656,6 +6835,7 @@ SMODS.Joker {
     atlas = 'ModdedProjectMoon',
 	pos = { x = 6, y = 6 },
 	config = { extra = { xmult = 1.25 } },
+	attributes = {'xmult', 'bleed', 'hearts'},
     pools =
 	{
 		["Bloodfiends"] = true,
@@ -6728,6 +6908,7 @@ SMODS.Joker {
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 5 },
 	config = { extra = { xchips = 1.3 } },
+	attributes = {'xchips', 'enhancements'},
     pools =
 	{
 		
@@ -6790,6 +6971,7 @@ SMODS.Joker {
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 5, y = 5 },
+	attributes = {'position', 'rank', 'hand_type', 'modify_card'},
     pools =
 	{
 		
@@ -6843,6 +7025,7 @@ SMODS.Joker {
     atlas = 'ModdedProjectMoon',
 	pos = { x = 6, y = 5 },
 	config = { extra = { } },
+	attributes = {'position', 'suit', 'hand_type', 'modify_card'},
     pools =
 	{
 
@@ -6916,6 +7099,7 @@ SMODS.Joker {
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 8, y = 5 },
+	attributes = {'chips', 'mult', 'economy', 'scaling', 'suit'},
 	config = { extra = { zhiCount = 0, yongCount = 0, renCount = 0, totalCount = 0, dollars = 0 } },
     pools =
 	{
@@ -6991,6 +7175,7 @@ SMODS.Joker {
 	cost = 3,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 7, y = 5 },
+	attributes = {'economy', 'selling_card'},
     pools =
 	{
 
@@ -7025,6 +7210,7 @@ SMODS.Joker {
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
+	attributes = {'mult', 'scaling'},
 	pos = { x = 9, y = 4 },
     pools =
 	{
@@ -7078,6 +7264,7 @@ SMODS.Joker {
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 8, y = 6 },
+	attributes = {},
     pools =
 	{
 
@@ -7119,6 +7306,7 @@ SMODS.Joker {
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 4, y = 5 },
+	attributes = {'mult', 'scaling', 'destroy_card'},
     pools =
 	{
 
@@ -7185,6 +7373,7 @@ SMODS.Joker {
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 2, y = 8 },
+	attributes = {'hand_type', 'economy'},
     pools =
 	{
 
@@ -7231,6 +7420,7 @@ SMODS.Joker {
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 6 },
+	attributes = {'planet', 'chance'},
     pools =
 	{
 
@@ -7284,6 +7474,7 @@ SMODS.Joker {
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 8, y = 7 },
+	attributes = {'xmult', 'hands'},
     pools =
 	{
 
@@ -7318,6 +7509,7 @@ SMODS.Joker {
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 7, y = 7 },
+	attributes = {'xmult', 'hands'},
     pools =
 	{
 
@@ -7352,6 +7544,7 @@ SMODS.Joker {
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 0, y = 7 },
+	attributes = {'chance', 'economy'},
     pools =
 	{
 
@@ -7391,6 +7584,7 @@ SMODS.Joker {
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 0, y = 8 },
+	attributes = {'xmult', 'position'},
     pools =
 	{
 
@@ -7449,6 +7643,7 @@ SMODS.Joker {
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 1, y = 8 },
+	attributes = {'economy', 'stickers'},
     pools =
 	{
 		
@@ -7521,6 +7716,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 7 },
+	attributes = {'ante_reset', 'selling_card'},
     pools =
 	{
 		["Heretics"] = true,
@@ -7572,6 +7768,7 @@ SMODS.Joker {
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 0, y = 6 },
+	attributes = {'mult', 'scaling', 'bleed', 'hearts'},
     pools =
 	{
 		["Bloodfiends"] = true,
@@ -10667,6 +10864,7 @@ SMODS.Joker {
 
 		if context.after then
 			if card.ability.extra.lucioDeathCounter >= 3 then
+					G.GAME.banned_keys["j_pmcmod_lucio"] = true
                     card.getting_sliced = true
                     G.E_MANAGER:add_event(Event({func = function()
                         card:start_dissolve({G.C.RED}, nil, 1.6)
@@ -10802,7 +11000,7 @@ SMODS.Joker {
 			end
 
 			if card.ability.extra.soraDeathCounter >= 5 then
-				
+				G.GAME.banned_keys["j_pmcmod_sora"] = true
 				card.getting_sliced = true
 				G.E_MANAGER:add_event(Event({func = function()
 					card:start_dissolve({G.C.RED}, nil, 1.6)
@@ -10889,10 +11087,11 @@ SMODS.Joker {
 
 		if context.after then
 			if card.ability.extra.kiraDeathCounter >= 3 then
-                    card.getting_sliced = true
-                    G.E_MANAGER:add_event(Event({func = function()
-                        card:start_dissolve({G.C.RED}, nil, 1.6)
-                    return true end }))
+				G.GAME.banned_keys["j_pmcmod_kira"] = true
+				card.getting_sliced = true
+				G.E_MANAGER:add_event(Event({func = function()
+					card:start_dissolve({G.C.RED}, nil, 1.6)
+				return true end }))
 			end
 		end
     end,
@@ -10981,7 +11180,7 @@ SMODS.Joker {
 			end
 
 			if card.ability.extra.albinaDeathCounter >= 6 then
-				
+				G.GAME.banned_keys["j_pmcmod_albina"] = true
 				card.getting_sliced = true
 				G.E_MANAGER:add_event(Event({func = function()
 					card:juice_up(0.8, 0.8)
@@ -11062,7 +11261,7 @@ SMODS.Joker {
 			end
 
 			if card.ability.extra.renDeathCounter >= 5 then
-				
+				G.GAME.banned_keys["j_pmcmod_ren"] = true
 				card.getting_sliced = true
 				G.E_MANAGER:add_event(Event({func = function()
 					card:juice_up(0.8, 0.8)
