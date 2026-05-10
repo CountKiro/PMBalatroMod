@@ -1,91 +1,110 @@
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "summoning",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "random",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "charge",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "erasing",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "bleed",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "rupture",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "sinking",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "burn",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "poise",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "pallid",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "ammo",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "painted",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "erasing",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "negative",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "polychrome",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "ante_reset",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "consumable",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "destroy_itself",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "position",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "voucher",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "selling_card",
 }
 
-SMODS.Attribute{
+SMODS.Attributes{
 	key = "stickers",
 }
 
+SMODS.Attributes{
+	key = "on_destroy",
+}
+
+SMODS.Attributes{
+	key = "debuff",
+}
+
+SMODS.Attributes{
+	key = "game_over",
+}
+
+SMODS.Attributes{
+	key = "gimmick",
+}
+
+SMODS.Attributes{
+	key = "obfuscation",
+}
 
 
 function Card:keypage_add_speech_bubble(text_key, align, loc_vars)
@@ -165,16 +184,16 @@ SMODS.Joker {
 	key = 'oswald',
 	name = "Oswald",
 	pronouns = "he_him",
-	unlocked = false,
-	blueprint_compat = false,
-    eternal_compat = true,
-	perishable_compat = true,
 	config = { extra = { lastEffect = "None" } },
+	unlocked = false,
+	eternal_compat = true,
+	perishable_compat = true,
+	blueprint_compat = false,
 	rarity = 3,
+	cost = 8,
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 0, y = 0 },
 	attributes = {'random'},
-	cost = 8,
 	loc_vars = function (self, info_queue, card)
     	return {vars = { card.ability.extra.lastEffect }}
 	end,
@@ -335,10 +354,10 @@ SMODS.Joker {
 	name = "Esther",
 	pronouns = "he_him",
 	config = { extra = { xchips = 3 } },
-    blueprint_compat = false,
-    eternal_compat = true,
-	perishable_compat = true,
 	unlocked = false,
+	eternal_compat = true,
+	perishable_compat = true,	
+    blueprint_compat = false,
 	rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoonTrue',
@@ -396,10 +415,10 @@ SMODS.Joker {
 	name = "Gloria",
 	pronouns = "she_her",
 	config = { extra = { dollars = 7 } },
-    blueprint_compat = false,
-    eternal_compat = true,
-	perishable_compat = true,
 	unlocked = false,
+	eternal_compat = true,
+	perishable_compat = true,
+    blueprint_compat = false,    
 	rarity = 2,
     cost = 6,
 	atlas = 'ModdedProjectMoonTrue',
@@ -457,15 +476,15 @@ SMODS.Joker {
 	name = "Hubert",
 	pronouns = "he_him",
 	config = { extra = { retrigger = 2 } },
-    blueprint_compat = false,
-    eternal_compat = true,
-	perishable_compat = true,
 	unlocked = false,
+	eternal_compat = true,
+	perishable_compat = true,
+    blueprint_compat = false,
 	rarity = 2,
     cost = 6,
 	atlas = 'ModdedProjectMoonTrue',
-	attributes = {'retrigger', 'singleton'},
 	pos = { x = 0, y = 1 },
+	attributes = {'retrigger', 'singleton'},
 	pools =
 	{
         ["Index"] = true,
@@ -518,10 +537,10 @@ SMODS.Joker {
 	name = "Kim",
 	pronouns = "he_him",
 	config = { extra = {xmult = 3, xmult_mod = 0.1} },
-	no_collection = false,
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = false,
+	blueprint_compat = false,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoonTrue',
@@ -565,6 +584,16 @@ SMODS.Joker {
         end
         return false
     end,
+	check_for_unlock = function(self, args)
+        for _, v in pairs(G.P_CENTER_POOLS["Joker"]) do
+            if v.key == "j_acrobat" then
+                if get_joker_win_sticker(v, true) >= 8 then
+                    return true
+                end
+                break
+            end
+        end
+    end
 }
 
 -- Angelica
@@ -573,9 +602,9 @@ SMODS.Joker {
 	name = "Angelica",
 	pronouns = "she_her",
 	config = { extra = { mult = 100 } },
-    blueprint_compat = false,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = true,
+    blueprint_compat = false,
 	rarity = 3,
     cost = 12,
 	atlas = 'ModdedProjectMoonTrue',
@@ -617,9 +646,9 @@ SMODS.Joker {
 	pronouns = "he_him",
 	config = { extra = { mult = 0 } },
     unlocked = false,
-    blueprint_compat = true,
-    eternal_compat = true,
+	eternal_compat = true,
 	perishable_compat = true,
+    blueprint_compat = true,
 	rarity = 3,
     cost = 10,
 	atlas = 'ModdedProjectMoonTrue',
@@ -754,16 +783,16 @@ SMODS.Joker {
 	key = 'nikolai',
 	name = "Nikolai",
 	pronouns = "she_her",
-	config = { extra = { mult = 0, mult_mod = 5, savedJokers = {}, highlightedJokerStatus = "" } },
-	rarity = 3,
+	config = { extra = { mult = 0, mult_mod = 5, savedJokers = {}, highlightedJokerStatus = "" } },	
 	unlocked = false,
-    blueprint_compat = true,
-    eternal_compat = true,
+	eternal_compat = true,
 	perishable_compat = true,
+    blueprint_compat = true,
+	rarity = 3,
+	cost = 8,
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 3, y = 3 },
 	attributes = {'mult', 'scaling'},
-	cost = 8,
 	pools =
 	{
         ["R Corp"] = true,
@@ -839,14 +868,14 @@ SMODS.Joker {
 	name = "Maxim",
 	pronouns = "he_him",
 	config = { extra = { chargeCount = 0, dollars = 10, repetitions = 1, charge_mod = 5, maxCharge = 100 } },
-	rarity = 2,
 	unlocked = false,
-    blueprint_compat = false,
-    eternal_compat = true,
+	eternal_compat = true,
 	perishable_compat = true,
+    blueprint_compat = false,
+	rarity = 2,
+	cost = 6,
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 7, y = 14 },
-	cost = 6,
 	attributes = {'economy', 'retrigger'},
 	pools =
 	{
@@ -902,14 +931,14 @@ SMODS.Joker {
 	name = "Rudolph",
 	pronouns = "he_him",
 	config = { extra = {  } },
-	rarity = 3,
 	unlocked = false,
-    blueprint_compat = false,
-    eternal_compat = true,
+	eternal_compat = true,
 	perishable_compat = true,
+    blueprint_compat = false,
+	rarity = 3,
+	cost = 8,
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 9, y = 5 },
-	cost = 8,
 	attributes = {'charge'},
 	pools =
 	{
@@ -942,8 +971,8 @@ SMODS.Joker {
     key = "kalo",
 	name = "Kalo",
 	pronouns = "he_him",
-	unlocked = false,
 	config = {extra = { mult = 10, extraMult = 5, suit = 'Diamonds', odds = 5, extraMultValue = 0, quantityOfThumbMembers = 0 }},
+	unlocked = false,
     blueprint_compat = true,
     eternal_compat = true,
 	perishable_compat = true,
@@ -1014,11 +1043,11 @@ SMODS.Joker {
     key = "katriel",
 	name = "Katriel",
 	pronouns = "she_her",
-	unlocked = false,
 	config = {extra = { mult = 5, extraMult = 1, suit = 'Hearts' }},
-    blueprint_compat = true,
-    eternal_compat = true,
+	unlocked = false,
+	eternal_compat = true,
 	perishable_compat = true,
+    blueprint_compat = true,
     rarity = 2,
     cost = 5,
 	atlas = 'ModdedProjectMoonTrue',
@@ -1070,11 +1099,11 @@ SMODS.Joker {
     key = "denis",
 	name = "Denis",
 	pronouns = "he_him",
-	unlocked = false,
 	config = {extra = { mult = 5, extraMult = 1, suit = 'Spades' }},
-    blueprint_compat = true,
-    eternal_compat = true,
+	unlocked = false,
+	eternal_compat = true,
 	perishable_compat = true,
+    blueprint_compat = true,
     rarity = 2,
     cost = 5,
 	atlas = 'ModdedProjectMoonTrue',
@@ -1125,11 +1154,11 @@ SMODS.Joker {
     key = "boris",
 	name = "Boris",
 	pronouns = "he_him",
-	unlocked = false,
 	config = {extra = { mult = 5, extraMult = 1, suit = 'Clubs' }},
-    blueprint_compat = true,
-    eternal_compat = true,
+	unlocked = false,
+	eternal_compat = true,
 	perishable_compat = true,
+    blueprint_compat = true,
     rarity = 2,
     cost = 5,
 	atlas = 'ModdedProjectMoonTrue',
@@ -1181,15 +1210,15 @@ SMODS.Joker {
 	key = 'angelaLoR',
 	name = "Angela",
 	pronouns = "she_her",
-	unlocked = false,
-    blueprint_compat = false,
-    eternal_compat = true,
-	perishable_compat = true,
 	config = { extra = { creates = 5, chips = 0, chips_mod = 15} },
+	unlocked = false,
+	eternal_compat = true,
+	perishable_compat = true,	
+    blueprint_compat = false,
 	rarity = 3,
+	cost = 8,
 	atlas = 'ModdedProjectMoonTrue',
 	pos = { x = 1, y = 12 },
-	cost = 8,
 	attributes = {'chips', 'scaling', 'summoning'},
 	loc_vars = function (self, info_queue, card)
 		info_queue[#info_queue + 1] = { key = "perishable", set = "Other", vars = { G.GAME.perishable_rounds, G.GAME.perishable_rounds } }
@@ -1282,15 +1311,15 @@ SMODS.Joker {
 	key = 'yisang',
 	name = "Yi Sang",
 	pronouns = "he_him",
-	unlocked = false,
-    blueprint_compat = true,
-    eternal_compat = true,
-	perishable_compat = true,
 	config = { extra = { xchips = 1, xchips_mod = 0.3, xchips_bonus = 0.1 } },
+	unlocked = false,
+	eternal_compat = true,
+	perishable_compat = true,
+    blueprint_compat = true,
 	rarity = 3,
+	cost = 8,
 	atlas = 'ModdedProjectMoon2',
 	pos = { x = 0, y = 0 },
-	cost = 8,
 	attributes = {'xchips', 'scaling', 'planet'},
 	loc_vars = function (self, info_queue, card)
 
@@ -1345,11 +1374,11 @@ SMODS.Joker {
 	key = 'donQuixote',
 	name = "Don Quixote",
 	pronouns = "she_her",
-	unlocked = false,
 	config = { extra = { chips = 0 } },
-	eternal_compat = true,
+	unlocked = false,
 	blueprint_compat = true,
 	perishable_compat = true,
+	eternal_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
@@ -1402,8 +1431,8 @@ SMODS.Joker {
 	config = { extra = {xmult = 1, xmult_mod = 0.1} },
 	no_collection = false,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = false,
+	blueprint_compat = false,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
@@ -1481,8 +1510,8 @@ SMODS.Joker {
 		gregorHandSize = 1} },
 	no_collection = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
@@ -1807,14 +1836,14 @@ SMODS.Joker {
 	name = "Heathcliff",
 	pronouns = "he_him",
 	config = { extra = { cardsDestroyed = 0, joker_slots = 0, extraJokerSlot = 1 } },
+	unlocked = false,
+	eternal_compat = true,
+	perishable_compat = true,
+    blueprint_compat = false,
 	rarity = 3,
+	cost = 8,
 	atlas = 'ModdedProjectMoon2',
 	pos = { x = 6, y = 0 },
-	cost = 8,
-	unlocked = false,
-    blueprint_compat = false,
-    eternal_compat = true,
-	perishable_compat = true,
 	attributes = {'joker', 'joker_slot', 'negative'},
 	loc_vars = function (self, info_queue, card)
 
@@ -1894,16 +1923,16 @@ SMODS.Joker {
 	key = 'ishmael',
 	name = "Ishmael",
 	pronouns = "she_her",
-	unlocked = false,
-    blueprint_compat = true,
-    eternal_compat = true,
-	perishable_compat = true,
 	config = { extra = { mult = 0, mult_mod = 10, xmult = 1, xmult_mod = 5, baseChance = 1, maxChance = 3} },
+	unlocked = false,
+	eternal_compat = true,
+	perishable_compat = true,
+    blueprint_compat = true,
 	rarity = 3,
+	cost = 8,
 	atlas = 'ModdedProjectMoon2',
 	pos = { x = 7, y = 0 },
 	attributes = {'mult', 'xmult', 'chance', 'scaling'},
-	cost = 8,
 	loc_vars = function (self, info_queue, card)
 		info_queue[#info_queue + 1] = G.P_CENTERS.m_pmcmod_pallid
 		local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'ishamelChance')
@@ -2022,9 +2051,9 @@ SMODS.Joker {
 	pronouns = "she_her",
 	config = {extra = {current_day = 1, resetCounter = 0}},
 	unlocked = false,
-    blueprint_compat = false,
-    eternal_compat = true,
+	eternal_compat = true,
 	perishable_compat = false,
+    blueprint_compat = false,
     rarity = 3,
     cost = 10,
 	atlas = 'ModdedProjectMoon',
@@ -2091,14 +2120,14 @@ SMODS.Joker {
 	pronouns = "she_her",
 	config = {extra = 0.5, xchips = 1, roundCount = 0},
 	unlocked = false,
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
     pos = { x = 1, y = 0 },
-	attributes = {'xchips', 'scaling', 'meltdown', 'boss_blind'},
+	attributes = {'xchips', 'scaling', 'meltdown', 'boss_blind', 'gimmick'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -2229,14 +2258,14 @@ SMODS.Joker {
 	pronouns = "she_her",
 	config = {extra = {mult = 0, roundCount = 0}},
 	unlocked = true,
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
     pos = { x = 2, y = 0 },
-	attributes = {'mult', 'meltdown'},
+	attributes = {'mult', 'meltdown', 'gimmick'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -2346,14 +2375,14 @@ SMODS.Joker {
 	pronouns = "he_him",
 	config = {extra = {consumable_amount = 2, mult = 0, chips = 0, current_consumable_count = 0, roundCount = 0, mult_mod = 7, chips_mod = 10}},
 	unlocked = false,
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 3, y = 0 },
-	attributes = {'consumable', 'mult', 'chips', 'scaling', 'meltdown'},
+	attributes = {'consumable', 'mult', 'chips', 'scaling', 'meltdown', 'gimmick'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -2457,14 +2486,14 @@ SMODS.Joker {
 	pronouns = "he_him",
 	config = {extra = {totalSpades = 0, totalClubs = 0, totalHearts = 0, totalDiamonds = 0, mult = 0, chips = 0, roundCount = 0}},
 	unlocked = false,
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 4, y = 0 },
-	attributes = {'spades', 'clubs', 'hearts', 'diamonds', 'mult', 'chips', 'scaling', 'meltdown'},
+	attributes = {'spades', 'clubs', 'hearts', 'diamonds', 'mult', 'chips', 'scaling', 'meltdown', 'gimmick'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -2567,14 +2596,14 @@ SMODS.Joker {
 	pronouns = "he_him",
 	config = {extra = {xchips = 2, xchips_mod = 0.1, roundCount = 0}},
 	unlocked = false,
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 5, y = 0 },
-	attributes = {'xchips', 'scaling', 'meltdown'},
+	attributes = {'xchips', 'scaling', 'meltdown', 'gimmick'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -2669,13 +2698,13 @@ SMODS.Joker {
 	pronouns = "she_her",
 	config = {extra = {mult = 0, roundCount = 0}},
 	unlocked = false,
-    blueprint_compat = false,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+    blueprint_compat = false,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
-	attributes = {'mult', 'hands', 'meltdown'},
+	attributes = {'mult', 'hands', 'meltdown', 'gimmick'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -2759,14 +2788,14 @@ SMODS.Joker {
 	pronouns = "he_him",
 	config = {extra = {current_timer = 0, total_timer = 0, xmult = 1, xmult_mod = 0.2, consumablesUsed = 0, lastConsumable = "", roundCount = 0, time_limit = 400}},
 	unlocked = false,
-    blueprint_compat = true,
-    eternal_compat = false,
 	perishable_compat = false,
+    blueprint_compat = true,
+	eternal_compat = false,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 11 },
-	attributes = {'tarot', 'spectral', 'xmult', 'scaling', 'timer', 'meltdown'},
+	attributes = {'tarot', 'spectral', 'xmult', 'scaling', 'timer', 'meltdown', 'gimmick'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -2876,14 +2905,14 @@ SMODS.Joker {
 	pronouns = "she_her",
 	config = {extra = {xmult = 1, xmult_mod = 0.2, roundCount = 0}},
 	unlocked = false,
-    blueprint_compat = false,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+    blueprint_compat = false,    
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 7, y = 0 },
-	attributes = {'xmult', 'scaling', 'destroy_card', 'meltdown'},
+	attributes = {'xmult', 'scaling', 'destroy_card', 'meltdown', 'gimmick'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -2969,14 +2998,14 @@ SMODS.Joker {
 	pronouns = "she_her",
 	config = {extra = {enochDeathCounter = 0, aceMult = 5, aceMult_mod = 10, roundCount = 0}},
 	unlocked = false,
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 8, y = 0 },
-	attributes = {'ace', 'mult', 'scaling', 'meltdown'},
+	attributes = {'ace', 'mult', 'scaling', 'meltdown', 'gimmick'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -3105,14 +3134,14 @@ SMODS.Joker {
 	pronouns = "he_him",
 	config = {extra = {chips = 0, chip_mod = 5}},
 	no_collection = true,
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 0,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 0 },
-	attributes = {'chips', 'scaling', 'destroy_itself', 'meltdown'},
+	attributes = {'chips', 'scaling', 'destroy_itself', 'meltdown', 'gimmick'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -3167,9 +3196,9 @@ SMODS.Joker {
 	name = "Hermann",
 	pronouns = "she_her",
 	config = {extra = {odds_seal = 2, odds_edition = 4}},
-    blueprint_compat = false,
-    eternal_compat = true,
+	eternal_compat = true,
 	perishable_compat = true,
+    blueprint_compat = false,
     rarity = 3,
     cost = 9,
 	atlas = 'ModdedProjectMoon',
@@ -3224,9 +3253,9 @@ SMODS.Joker {
 	name = "Gubo",
 	pronouns = "he_him",
 	config = {extra = {mult = 0, commonMult = 4, uncommonMult = 8, odds = 2, selected_keypage = "", aimingAtJoker = false, joker_to_destroy = {}}},
-    blueprint_compat = true,
-    eternal_compat = true,
+	eternal_compat = true,
 	perishable_compat = true,
+    blueprint_compat = true,
     rarity = 2,
     cost = 9,
 	atlas = 'ModdedProjectMoon',
@@ -3372,8 +3401,8 @@ SMODS.Joker {
 	config = { extra = {mult = 0} },
 	no_collection = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
@@ -3427,9 +3456,9 @@ SMODS.Joker {
 	name = "Aseah",
 	pronouns = "he_him",
 	config = {extra = {baseChance = 1, maxChance = 2}},
-    blueprint_compat = false,
-    eternal_compat = true,
+	eternal_compat = true,
 	perishable_compat = true,
+    blueprint_compat = false,
     rarity = 2,
     cost = 9,
 	atlas = 'ModdedProjectMoon',
@@ -3547,8 +3576,8 @@ SMODS.Joker {
 	config = { extra = { mult = 0, mult_gain = 5 } },
 	unlocked = false,
     eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,	
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
@@ -3599,8 +3628,8 @@ SMODS.Joker {
 	config = { extra = { chips = 0, chips_gain = 10 } },
 	unlocked = false,
     eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,	
 	rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
@@ -3646,8 +3675,8 @@ SMODS.Joker {
 	config = {extra = 0.1, xmult = 1},
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,	
 	rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
@@ -3692,8 +3721,8 @@ SMODS.Joker {
 	pronouns = "he_him",
 	config = { extra = { mult = 20, odds = 20 } },
     eternal_compat = false,
-	blueprint_compat = true,
 	perishable_compat = false,
+	blueprint_compat = true,	
 	rarity = 1,
     cost = 3,
 	atlas = 'ModdedProjectMoon',
@@ -3773,8 +3802,8 @@ SMODS.Joker {
 	pronouns = "she_her",
 	config = { extra = { chips = 70, odds = 20, voucher = 'v_tarot_merchant' } },
     eternal_compat = false,
-	blueprint_compat = true,
 	perishable_compat = false,
+	blueprint_compat = true,	
 	rarity = 1,
     cost = 4,
 	atlas = 'ModdedProjectMoon',
@@ -3852,8 +3881,8 @@ SMODS.Joker {
 	pronouns = "she_her",
 	config = { extra = { odds = 13, rounds = 4, current_rounds = 0, consumables = { 'c_soul' }  } },
     eternal_compat = false,
-	blueprint_compat = false,
 	perishable_compat = false,
+	blueprint_compat = false,
 	rarity = 3,
 	cost = 10,
     atlas = 'ModdedProjectMoon',
@@ -3932,8 +3961,8 @@ SMODS.Joker {
     config = { extra = { xchips = 1, xchips_mod = 0.3 } },
 	unlocked = false,
 	eternal_compat = true,
+	perishable_compat = true,
     blueprint_compat = true,
-    perishable_compat = true,
     rarity = 3,
     cost = 8,
     atlas = 'ModdedProjectMoon',
@@ -3973,9 +4002,11 @@ SMODS.Joker {
     key = "rim",
 	name = "Rim",
 	pronouns = "he_him",
+	config = {},
     unlocked = false,
-    blueprint_compat = false,
+	eternal_compat = true,
 	perishable_compat = true,
+    blueprint_compat = false,
     rarity = 2,
 	atlas = 'ModdedProjectMoon',
     cost = 6,
@@ -4012,14 +4043,14 @@ SMODS.Joker {
 	key = 'sanson',
 	name = 'Sanson',
 	pronouns = "he_him",
-	eternal_compat = false,
-	blueprint_compat = false,
-	perishable_compat = true,
 	config = { extra = { multiplied_value = 5 } },
+	eternal_compat = false,
+	perishable_compat = true,
+	blueprint_compat = false,
 	rarity = 2,
+	cost = 6,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 6, y = 1 },
-	cost = 6,
 	attributes = {'passive', 'mod_chance'},
     pools =
 	{
@@ -4062,8 +4093,8 @@ SMODS.Joker {
 	pronouns = "he_him",
 	config = { extra = { mult = 0, mult_gain = 2, poker_hand = 'Pair', poker_hand_index = 0 } },
     eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
     rarity = 1,
     cost = 4,
     atlas = 'ModdedProjectMoon',
@@ -4120,8 +4151,8 @@ SMODS.Joker {
 	pronouns = "she_her",
 	config = { extra = { chips = 0, chips_gain = 5, suit = 'Spades', suit_index = 0 } },
     eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
     rarity = 1,
     cost = 4,
     atlas = 'ModdedProjectMoon',
@@ -4230,8 +4261,8 @@ SMODS.Joker {
 	pronouns = "she_her",
     config = { chipsValue1 = 1000, chipsValue2 = 100, chipsValue3 = 10, chipsValue4 = 1, chipsValue5 = -10, chipsValue6 = -100 },
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
@@ -4295,11 +4326,11 @@ SMODS.Joker {
 	key = 'sonya',
 	name = "Sonya",
 	pronouns = "he_him",
-	unlocked = false,
 	config = { extra = { odds = 100, chips = 77} },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = false,
+	blueprint_compat = false,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
@@ -4342,11 +4373,11 @@ SMODS.Joker {
 	config = {extra = 0.2, xmult = 1},
 	unlocked = false,
     eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
     rarity = 3,
+	cost = 6,
 	atlas = 'ModdedProjectMoon',
-    cost = 6,
     pos = { x = 8, y = 2 },
 	attributes = {'xmult', 'scaling', 'hands'},
     pools =
@@ -4394,8 +4425,8 @@ SMODS.Joker {
 	config = {extra = 0.5, xmult = 1},
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
@@ -4456,8 +4487,8 @@ SMODS.Joker {
 	config = { extra = { mult = 3 }},
 	unlocked = false,
     eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
     rarity = 2,
     cost = 6,
     atlas = 'ModdedProjectMoon',
@@ -4537,11 +4568,11 @@ SMODS.Joker {
 	key = 'papaBongy',
 	name = "Papa Bongy",
 	pronouns = "he_him",
+	config = { extra = { chips = 0, mult = 0, xmult = 1, dollars = 0, totalChickensSpawned = 0, chips_mod = 10, mult_mod = 5, xmult_mod = 0.1, dollars_mod = 1 } },
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = true,
-	config = { extra = { chips = 0, mult = 0, xmult = 1, dollars = 0, totalChickensSpawned = 0, chips_mod = 10, mult_mod = 5, xmult_mod = 0.1, dollars_mod = 1 } },
+	blueprint_compat = false,
 	rarity = 3,
 	cost = 9,
     atlas = 'ModdedProjectMoon',
@@ -4654,11 +4685,11 @@ SMODS.Joker {
 	key = 'dongrang',
 	name = "Dongrang",
 	pronouns = "he_him",
+	config = { extra = { xchips = 1, xchips_gain = 1 } },
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
-	config = { extra = { xchips = 1, xchips_gain = 1 } },
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 9,
     atlas = 'ModdedProjectMoon',
@@ -4731,11 +4762,11 @@ SMODS.Joker {
 	key = 'dongbaek',
 	name = 'Dongbaek',
 	pronouns = "she_her",
+	config = { extra = { Xmult = 1.15 } },
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
-	config = { extra = { Xmult = 1.15 } },
+	blueprint_compat = true,	
 	rarity = 2,
 	cost = 9,
     atlas = 'ModdedProjectMoon',
@@ -4770,11 +4801,11 @@ SMODS.Joker {
 	key = 'samjo',
 	name = "Samjo",
 	pronouns = "he_him",
-	unlocked = false,
 	config = { chips = 20 },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
@@ -4820,8 +4851,8 @@ SMODS.Joker {
 	pronouns = "she_her",
 	config = { extra = { mult = 0 } },
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
@@ -4863,8 +4894,8 @@ SMODS.Joker {
 	config = { extra = { dollars = 10, odds = 2 } },
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = true,
+	blueprint_compat = false,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
@@ -4909,8 +4940,8 @@ SMODS.Joker {
 	pronouns = "he_him",
 	config = { extra = { mult = 40, mult_base = 40 } },
 	eternal_compat = false,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
@@ -4985,8 +5016,8 @@ SMODS.Joker {
 	pronouns = "she_her",
 	config = { extra = { chips = 120, chips_base = 120 } },
 	eternal_compat = false,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
@@ -5059,8 +5090,8 @@ SMODS.Joker {
 	pronouns = "he_him",
 	config = { extra = { mult = 0, handSize = 1} },
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
@@ -5102,8 +5133,8 @@ SMODS.Joker {
 	config = { extra = { xmult = 1, xmult_mod = 0.05} },
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
@@ -5217,8 +5248,8 @@ SMODS.Joker {
 	config = { extra = { dollars = 3} },
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
@@ -5304,8 +5335,8 @@ SMODS.Joker {
 	config = { extra = { mult = 12} },
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
@@ -5382,8 +5413,8 @@ SMODS.Joker {
 	config = { extra = { repetitions = 2, odds = 2} },
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
@@ -5448,8 +5479,8 @@ SMODS.Joker {
 	config = { extra = { chips = 30} },
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,	
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
@@ -5523,10 +5554,10 @@ SMODS.Joker {
 	key = 'pilot',
 	name = "Pilot",
 	pronouns = "he_him",
-	config = {  },
+	config = {},
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
@@ -5574,8 +5605,8 @@ SMODS.Joker {
 	pronouns = "she_her",
 	config = { extra = { type = 'Flush'} },
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 5,
     atlas = 'ModdedProjectMoon',
@@ -5605,11 +5636,11 @@ SMODS.Joker {
 	key = 'ricardo',
 	name = "Ricardo",
 	pronouns = "he_him",
-	unlocked = false,
 	config = { extra = { mult = 10, multBase = 10, mult_mod = 15, canSpawnDummy = true, xmult = 1} },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
@@ -5668,9 +5699,10 @@ SMODS.Joker {
 	key = 'catherine',
 	name = "Catherine",
 	pronouns = "she_her",
+	config = {},
+	perishable_compat = true,
 	eternal_compat = true,
 	blueprint_compat = true,
-	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
@@ -5731,8 +5763,8 @@ SMODS.Joker {
 	pronouns = "she_her",
 	config = { extra = { baseChance = 0, maxChance = 4} },
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 5,
     atlas = 'ModdedProjectMoon',
@@ -5830,10 +5862,11 @@ SMODS.Joker {
 	key = 'nelly',
 	name = "Nelly",
 	pronouns = "she_her",
+	config = {},
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 5,
     atlas = 'ModdedProjectMoon',
@@ -5882,8 +5915,8 @@ SMODS.Joker {
 	pronouns = "he_him",
 	config = { extra = { xmult = 1, catherineDestroyed = 0} },
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 5,
     atlas = 'ModdedProjectMoon',
@@ -5933,11 +5966,11 @@ SMODS.Joker {
 	key = 'hindley',
 	name = "Hindley",
 	pronouns = "he_him",
-	unlocked = false,
 	config = { extra = { chips = 20} },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 5,
     atlas = 'ModdedProjectMoon',
@@ -5995,10 +6028,11 @@ SMODS.Joker {
 	key = 'linton',
 	name = "Linton",
 	pronouns = "he_him",
+	config = {},
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
@@ -6045,11 +6079,11 @@ SMODS.Joker {
 	key = 'josephine',
 	name = "Josephine",
 	pronouns = "she_her",
-	unlocked = false,
 	config = { extra = { mult = 8} },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 5,
     atlas = 'ModdedProjectMoon',
@@ -6108,16 +6142,16 @@ SMODS.Joker {
 	key = 'olga',
 	name = "Olga",
 	pronouns = "she_her",
-	unlocked = false,
 	config = { extra = { xmult = 1, xmult_mod = 0.1} },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 1, y = 7 },
-	attributes = {'xmult', 'scaling', 'discard'},
+	attributes = {'xmult', 'scaling', 'discard', 'reset'},
     pools =
 	{
 
@@ -6164,16 +6198,16 @@ SMODS.Joker {
 	key = 'rain',
 	name = "Rain",
 	pronouns = "he_him",
-	unlocked = false,
 	config = { extra = { chips = 0, chips_mod = 2} },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 2, y = 7 },
-	attributes = {'chips', 'scaling', 'discard'},
+	attributes = {'chips', 'scaling', 'discard', 'reset'},
     pools =
 	{
 
@@ -6220,16 +6254,16 @@ SMODS.Joker {
 	key = 'mika',
 	name = "Mika",
 	pronouns = "she_her",
-	unlocked = false,
 	config = { extra = { mult = 0, mult_mod = 1} },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,	
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 3, y = 7 },
-	attributes = {'mult', 'scaling', 'discard'},
+	attributes = {'mult', 'scaling', 'discard', 'reset'},
     pools =
 	{
 
@@ -6276,11 +6310,11 @@ SMODS.Joker {
 	key = 'moses',
 	name = 'Moses',
 	pronouns = "she_her",
+	config = { extra = { xchips = 1.25 } },
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
-	config = { extra = { xchips = 1.25 } },
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
@@ -6316,16 +6350,16 @@ SMODS.Joker {
     key = "ezra",
     name = "Ezra",
 	pronouns = "she_her",
+	config = { extra = { repetitions = 1 } },
 	unlocked = false,
     blueprint_compat = true,
+	perishable_compat = true,
     eternal_compat = true,
-    perishable_compat = true,
     rarity = 2,
     cost = 6,
     atlas = 'ModdedProjectMoon',
     pos = { x = 2, y = 6 },
 	attributes = {'retrigger', 'seven'},
-    config = { extra = { repetitions = 1 } },
     calculate = function(self, card, context)
         if context.repetition and context.cardarea == G.play then
             if context.other_card:get_id() == 7 then
@@ -6346,11 +6380,13 @@ SMODS.Joker {
 -- Santata
 SMODS.Joker {
     key = "santata",
+	name = "Santata",
 	pronouns = "it_its",
+	config = {},
     unlocked = false,
     blueprint_compat = false,
+	perishable_compat = true,
 	eternal_compat = true,
-    perishable_compat = true,
     rarity = 3,
     cost = 10,
 	atlas = 'ModdedProjectMoon',
@@ -6389,16 +6425,16 @@ SMODS.Joker {
     key = "crayon",
 	name = "Crayon",
 	pronouns = "she_her",
+	config = { extra = { baseChance = 1, maxChance = 2, pity = false } },
 	unlocked = true,
-    blueprint_compat = false,
 	eternal_compat = true,
-    perishable_compat = true,
+	perishable_compat = true,
+    blueprint_compat = false,
     rarity = 1,
     cost = 4,
 	atlas = 'ModdedProjectMoon',
     pos = { x = 5, y = 7 },
 	attributes = {'chance', 'consumable'},
-	config = { extra = { baseChance = 1, maxChance = 2, pity = false } },
 	loc_vars = function(self, info_queue, card)
 		local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'crayonChance')
 		return { vars = { new_numerator, new_denominator } }
@@ -6483,16 +6519,16 @@ SMODS.Joker {
     key = "domino",
 	name = "Domino",
 	pronouns = "he_him",
+	config = { extra = { baseChance = 1, maxChance = 1 } },
     unlocked = true,
-    blueprint_compat = false,
 	eternal_compat = true,
     perishable_compat = true,
+    blueprint_compat = false,
     rarity = 2,
     cost = 6,
 	atlas = 'ModdedProjectMoon',
     pos = { x = 6, y = 7 },
 	attributes = {'tag', 'economy'},
-	config = { extra = { baseChance = 1, maxChance = 1 } },
 	loc_vars = function(self, info_queue, card)
 		local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'dominoChance')
 		info_queue[#info_queue + 1] = { key = 'tag_coupon', set = 'Tag' }
@@ -6523,15 +6559,15 @@ SMODS.Joker {
 	key = 'dadQuixote',
 	name = "Don Quixote",
 	pronouns = "he_him",
+	config = { extra = { mult = 0 } },
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 3, y = 6 },
-	config = { extra = { mult = 0 } },
 	attributes = {'mult', 'perma_bonus'},
     pools =
 	{
@@ -6579,15 +6615,15 @@ SMODS.Joker {
 	key = 'sancho',
 	name = "Sancho",
 	pronouns = "she_her",
+	config = { extra = { repetitions = 1, baseChance = 1, maxChance = 2 } },
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 4, y = 6 },
-	config = { extra = { repetitions = 1, baseChance = 1, maxChance = 2 } },
 	attributes = {'retrigger', 'hearts', 'bleed'},
     pools =
 	{
@@ -6655,15 +6691,15 @@ SMODS.Joker {
 	key = 'dulcinea',
 	name = "Dulcinea",
 	pronouns = "she_her",
+	config = { extra = { mult = 0, mult_mod = 2 } },
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 5, y = 6 },
-	config = { extra = { mult = 0, mult_mod = 2 } },
 	attributes = {'mult', 'scaling', 'bleed', 'hearts'},
     pools =
 	{
@@ -6745,15 +6781,15 @@ SMODS.Joker {
 	key = 'barber',
 	name = "Barber",
 	pronouns = "she_her",
+	config = { extra = {chips = 0, chips_mod = 4 } },
 	unlocked = false,	
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 7, y = 6 },
-	config = { extra = {chips = 0, chips_mod = 4 } },
 	attributes = {'chips', 'scaling', 'bleed', 'hearts'},
     pools =
 	{
@@ -6826,15 +6862,15 @@ SMODS.Joker {
 	key = 'priest',
 	name = "Priest",
 	pronouns = "he_him",
+	config = { extra = { xmult = 1.25 } },
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 6, y = 6 },
-	config = { extra = { xmult = 1.25 } },
 	attributes = {'xmult', 'bleed', 'hearts'},
     pools =
 	{
@@ -6899,15 +6935,15 @@ SMODS.Joker {
 	key = 'bari',
 	name = "Bari",
 	pronouns = "she_her",
+	config = { extra = { xchips = 1.3 } },
 	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 5 },
-	config = { extra = { xchips = 1.3 } },
 	attributes = {'xchips', 'enhancements'},
     pools =
 	{
@@ -6962,11 +6998,11 @@ SMODS.Joker {
 	key = 'cesara',
 	name = "Cesara",
 	pronouns = "she_her",
+	config = { extra = { currentPosition = 0 } },
 	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = true,
-	config = { extra = { currentPosition = 0 } },
+	blueprint_compat = false,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
@@ -7016,15 +7052,15 @@ SMODS.Joker {
 	key = 'alessio',
 	name = "Alessio",
 	pronouns = "he_him",
+	config = { extra = { } },
 	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = true,
+	blueprint_compat = false,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 6, y = 5 },
-	config = { extra = { } },
 	attributes = {'position', 'suit', 'hand_type', 'modify_card'},
     pools =
 	{
@@ -7091,16 +7127,16 @@ SMODS.Joker {
 	key = 'jiaXichun',
 	name = "Jia Xichun",
 	pronouns = "she_her",
+	config = { extra = { zhiCount = 0, yongCount = 0, renCount = 0, totalCount = 0, dollars = 0 } },
 	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 8, y = 5 },
 	attributes = {'chips', 'mult', 'economy', 'scaling', 'suit'},
-	config = { extra = { zhiCount = 0, yongCount = 0, renCount = 0, totalCount = 0, dollars = 0 } },
     pools =
 	{
 
@@ -7166,11 +7202,11 @@ SMODS.Joker {
 	key = 'hugo',
 	name = "Hugo",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { dollars = 3 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = true,
+	blueprint_compat = false,
 	rarity = 1,
 	cost = 3,
     atlas = 'ModdedProjectMoon',
@@ -7202,11 +7238,11 @@ SMODS.Joker {
 	key = 'camille',
 	name = "Camille",
 	pronouns = "he_him",
-	unlocked = false,
 	config = { extra = { mult = 0, percentage = 10} },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
@@ -7255,11 +7291,11 @@ SMODS.Joker {
 	key = 'paula',
 	name = "Paula",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { extra = { currentScale = 0} },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
@@ -7297,11 +7333,11 @@ SMODS.Joker {
 	key = 'romero',
 	name = "Romero",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { mult = 10, mult_mod = 10 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,	
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
@@ -7364,11 +7400,11 @@ SMODS.Joker {
 	key = 'hanul',
 	name = "Han-ul",
 	pronouns = "she_her",
-	unlocked = false,
 	config = { extra = { type = 'Flush' } },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,	
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
@@ -7411,11 +7447,11 @@ SMODS.Joker {
 	key = 'caiman',
 	name = "Caiman",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { extra = {baseChance = 1, maxChance = 4 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = true,
+	blueprint_compat = false,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
@@ -7465,11 +7501,11 @@ SMODS.Joker {
 	key = 'aengDu',
 	name = "Aeng Du",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { extra = {xmult = 2 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
@@ -7500,11 +7536,11 @@ SMODS.Joker {
 	key = 'jun',
 	name = "Jun",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = {xmult = 2.5} },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
@@ -7535,11 +7571,11 @@ SMODS.Joker {
 	key = 'herbert',
 	name = "Herbert",
 	pronouns = "he_him",
-	unlocked = false,
 	config = { extra = {baseChance = 1, maxChance = 3 } },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
@@ -7575,11 +7611,11 @@ SMODS.Joker {
 	key = 'mai',
 	name = "Mai",
 	pronouns = "she_her",
-	unlocked = false,
 	config = { extra = { xmult = 0 } },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = true,
+	blueprint_compat = false,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
@@ -7634,11 +7670,11 @@ SMODS.Joker {
 	key = 'bumble',
 	name = "Bumble",
 	pronouns = "he_him",
-	unlocked = false,
 	config = { extra = { storedMoney = 0 } },
+	unlocked = false,
 	eternal_compat = false,
-	blueprint_compat = false,
 	perishable_compat = true,
+	blueprint_compat = false,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
@@ -7707,11 +7743,11 @@ SMODS.Joker {
 	key = 'timeRipper',
 	name = "Time Ripper",
 	pronouns = "they_them",
-	unlocked = false,
 	config = { extra = {charges = 0 } },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
@@ -7759,11 +7795,11 @@ SMODS.Joker {
 	key = 'casetti',
 	name = "Casetti",
 	pronouns = "he_him",
-	unlocked = false,
 	config = { extra = { mult = 0, mult_mod = 2, suit = "Hearts", baseChance = 1, maxChance = 3 } },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
@@ -7834,15 +7870,16 @@ SMODS.Joker {
 	key = 'sasha',
 	name = "Sasha",
 	pronouns = "she_her",
-	unlocked = false,
 	config = { extra = { baseChance = 1, maxChance = 2 } },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 7, y = 10 },
+	attributes = {'chance', 'editions', 'charge'},
     pools =
 	{
 		["Bloodfiends"] = true,
@@ -7897,11 +7934,11 @@ SMODS.Joker {
 	key = 'hohenheim',
 	name = "Hohenheim",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { cardsDestroyed = {}, extra = {  } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
@@ -7955,15 +7992,16 @@ SMODS.Joker {
 	key = 'alyssa',
 	name = "Alyssa",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { extra = { mult = 8} },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 8 },
+	attributes = {'mult', 'enhancements', 'scaling'},
     pools =
 	{
 
@@ -8015,15 +8053,16 @@ SMODS.Joker {
 	key = 'marton',
 	name = "Marton",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { chips = 14} },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 8, y = 8 },
+	attributes = {'chips', 'enhancements', 'scaling'},
     pools =
 	{
 
@@ -8075,15 +8114,16 @@ SMODS.Joker {
 	key = 'johann',
 	name = "Johann",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 10 },
+	attributes = {'destroy_itself'},
     pools =
 	{
 
@@ -8136,15 +8176,16 @@ SMODS.Joker {
 	key = 'qingTao',
 	name = "Qing Tao",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { type = "Three of a Kind", baseChance = 1, maxChance = 3, counter = 0 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 0, y = 2 },
+	attributes = {'mult', 'enhancements', 'scaling'},
     pools =
 	{
 
@@ -8207,15 +8248,16 @@ SMODS.Joker {
 	key = 'shanSan',
 	name = "Shan San",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { type = "Three of a Kind", dollars = 3, baseChance = 1, maxChance = 3, counter = 0 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 1, y = 2 },
+	attributes = {'economy', 'chance', 'destroy_card'},
     pools =
 	{
 
@@ -8278,15 +8320,16 @@ SMODS.Joker {
 	key = 'werner',
 	name = "Werner",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = {chips = 0, chips_mod = 15 } },
+	unlocked = true,
+	perishable_compat = true,
 	eternal_compat = true,
 	blueprint_compat = true,
-	perishable_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 5, y = 6 },
+	attributes = {'chips', 'on_destroy', 'scaling'},
     pools =
 	{
 		["Middle"] = true,
@@ -8326,15 +8369,16 @@ SMODS.Joker {
 	key = 'jumsoon',
 	name = "Jumsoon",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { type = "Full House" } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,	
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 2, y = 2 },
+	attributes = {'hand_type', 'modify_card'},
     pools =
 	{
 		["Ring"] = true,
@@ -8403,15 +8447,16 @@ SMODS.Joker {
 	key = 'garnet',
 	name = "Garnet",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { availableJokers = {}, selectedJoker = "None", extra = {} },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 3, y = 2 },
+	attributes = {'random', 'copying'},
     pools =
 	{
 		["Thumb"] = true,
@@ -8497,15 +8542,16 @@ SMODS.Joker {
 	key = 'catt',
 	name = "Catt",
 	pronouns = "they_them",
-	unlocked = false,
 	config = { extra = {exhausted = false, rarity = 2, rarityName = "Hardcover"} },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = true,
+	blueprint_compat = false,
 	rarity = 3,
 	cost = 12,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 4, y = 2 },
+	attributes = {'selling_card', 'blind'},
     pools =
 	{
 
@@ -8581,15 +8627,16 @@ SMODS.Joker {
 	key = 'jiaMu',
 	name = "Jia Mu",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { extra = { baseChance = 1, maxChance = 2, moneyLoss = 3} },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = true,
+	blueprint_compat = false,
 	rarity = 3,
 	cost = 10,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 5, y = 2 },
+	attributes = {'chance', 'retrigger'},
     pools =
 	{
 
@@ -8648,15 +8695,16 @@ SMODS.Joker {
 	key = 'jiaQiu',
 	name = "Jia Qiu",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { xmult = 2, baseChance = 1, maxChance = 4 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = false,
+	blueprint_compat = false,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 6, y = 2 },
+	attributes = {'xmult', 'chance'},
     pools =
 	{
 
@@ -8718,15 +8766,16 @@ SMODS.Joker {
 	key = 'linDaiyu',
 	name = "Lin Daiyu",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { extra = { ruptureStack = 0, trigger = false } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = true,
+	blueprint_compat = false,
 	rarity = 2,
 	cost = 7,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 7, y = 2 },
+	attributes = {'rupture', 'on_destroy', 'scaling'},
     pools =
 	{
 
@@ -8774,15 +8823,15 @@ SMODS.Joker {
 	key = 'xueBaochai',
 	name = "Xue Baochai",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { extra = { percentageToReduce = 0.9 } },
+	unlocked = true,
+	perishable_compat = true,
 	eternal_compat = true,
 	blueprint_compat = false,
-	perishable_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon2',
-	pos = { x =8, y = 2 },
+	pos = { x = 8, y = 2 },
     pools =
 	{
 
@@ -8810,8 +8859,9 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'xianrenA',
 	name = "Xianren A",
-	unlocked = false,
+	pronouns = 'they_them',
 	config = { extra = { dollars = 10 } },
+	unlocked = false,
 	eternal_compat = true,
 	blueprint_compat = false,
 	perishable_compat = false,
@@ -8819,6 +8869,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 9, y = 2 },
+	attributes = {'transform', 'economy'},
     pools =
 	{
 
@@ -8874,15 +8925,17 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'xianrenB',
 	name = "Xianren B",
-	unlocked = false,
+	pronouns = 'they_them',
 	config = { extra = { mult = 30, chips = 50  } },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = false,
+	blueprint_compat = false,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 0, y = 3 },
+	attributes = {'transform', 'mult', 'chips'},
     pools =
 	{
 
@@ -8943,15 +8996,17 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'xianrenC',
 	name = "Xianren C",
-	unlocked = false,
+	pronouns = 'they_them',
 	config = { extra = { xmult = 1.15 } },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = false,
+	blueprint_compat = false,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 1, y = 3 },
+	attributes = {'transform', 'xmult'},
     pools =
 	{
 
@@ -9011,15 +9066,17 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'xianrenD',
 	name = "Xianren D",
-	unlocked = false,
+	pronouns = 'they_them',
 	config = { extra = { repetitions = 1 } },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = false,
+	blueprint_compat = false,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 2, y = 3 },
+	attributes = {'transform', 'retrigger'},
     pools =
 	{
 
@@ -9080,15 +9137,17 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'xianrenE',
 	name = "Xianren E",
-	unlocked = false,
+	pronouns = 'they_them',
 	config = { extra = {  } },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = false,
+	blueprint_compat = false,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 2, y = 7 },
+	attributes = {'transform'},
     pools =
 	{
 
@@ -9151,15 +9210,17 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'xianrenF',
 	name = "Xianren F",
-	unlocked = false,
+	pronouns = 'they_them',
 	config = { extra = { sell_value = 3 } },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = false,
+	blueprint_compat = false,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 3, y = 3 },
+	attributes = {'transform', 'economy'},
     pools =
 	{
 
@@ -9230,15 +9291,16 @@ SMODS.Joker {
 	key = 'ladyWang',
 	name = "ladyWang",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { extra = { mult = 6 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 4, y = 3 },
+	attributes = {'mult', 'six'},
     pools =
 	{
 
@@ -9263,15 +9325,16 @@ SMODS.Joker {
 	key = 'jiaZheng',
 	name = "Jia Zheng",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { chips = 16 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 5, y = 3 },
+	attributes = {'chips', 'six'},
     pools =
 	{
         
@@ -9296,15 +9359,16 @@ SMODS.Joker {
 	key = 'jiaYuanchun',
 	name = "Jia Yuanchun",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { extra = { dollars = 6 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = true,
+	blueprint_compat = false,	
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 6, y = 3 },
+	attributes = {'tags', 'economy'},
     pools =
 	{
 
@@ -9330,15 +9394,16 @@ SMODS.Joker {
 	key = 'jiaHuanChild',
 	name = "Jia Huan (Child)",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = true,
+	blueprint_compat = false,
 	rarity = 1,
 	cost = 2,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 7, y = 3 },
+	attributes = {'transform', 'economy'},
     pools =
 	{
 
@@ -9372,15 +9437,16 @@ SMODS.Joker {
 	key = 'xuePan',
 	name = "Xue Pan",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 8, y = 3 },
+	attributes = {'editions', 'destroy_card', 'modify_card'},
     pools =
 	{
 
@@ -9427,15 +9493,16 @@ SMODS.Joker {
 	key = 'wangZhao',
 	name = "Wang Zhao",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { } },
+	unlocked = true,
 	eternal_compat = false,
-	blueprint_compat = false,
 	perishable_compat = true,
+	blueprint_compat = false,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 9, y = 3 },
+	attributes = {'sell_value'},
     pools =
 	{
 
@@ -9537,15 +9604,16 @@ SMODS.Joker {
 	key = 'wangDawei',
 	name = "Wang Dawei",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { counter = 0, permaMult_mod = 7, permaChips_mod = 15 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 0, y = 4 },
+	attributes = {'perma_bonus', 'chips', 'mult'},
     pools =
 	{
 
@@ -9581,15 +9649,16 @@ SMODS.Joker {
 	key = 'wangQingshan',
 	name = "Wang Qingshan",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { extra = { counter = 0, permaDollars_mod = 3 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 1, y = 4 },
+	attributes = {'perma_bonus', 'economy'},
     pools =
 	{
 
@@ -9624,15 +9693,16 @@ SMODS.Joker {
 	key = 'wangRen',
 	name = "Wang Ren",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { dollars = 7 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 2, y = 4 },
+	attributes = {'transform', 'economy'},
     pools =
 	{
 
@@ -9694,15 +9764,16 @@ SMODS.Joker {
 	key = 'shiYihua',
 	name = "Shi Yihua",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { baseChips = 2} },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 3, y = 4 },
+	attributes = {'chips', 'diamonds', 'scaling', 'full_deck'},
     pools =
 	{
 
@@ -9741,15 +9812,16 @@ SMODS.Joker {
 	key = 'shiHuazhen',
 	name = "Shi Huazhen",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = {mult_mod = 1 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 4, y = 4 },
+	attributes = {'mult', 'scaling', 'joker'},
     pools =
 	{
 
@@ -9784,15 +9856,16 @@ SMODS.Joker {
 	key = 'shiSijing',
 	name = "Shi Sijing",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { chips_mod = 10, chips = 0 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 5, y = 4 },
+	attributes = {'chips', 'scaling', 'on_destroy'},
     pools =
 	{
 
@@ -9826,15 +9899,16 @@ SMODS.Joker {
 	key = 'kongSihui',
 	name = "Kong Sihui",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { extra = { dollars = 2, baseChanceTrigger = 1, maxChanceTrigger = 5, baseChanceDeath = 1, maxChanceDeath = 20 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 6, y = 4 },
+	attributes = {'chance', 'destroy_itself', 'economy'},
     pools =
 	{
 
@@ -9890,15 +9964,16 @@ SMODS.Joker {
 	key = 'kongYoujin',
 	name = "Kong Youjin",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { repetitions = 1, baseChanceTrigger = 1, maxChanceTrigger = 5, baseChanceDeath = 1, maxChanceDeath = 20 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 7, y = 4 },
+	attributes = {'chance', 'destroy_itself', 'retrigger'},
     pools =
 	{
 
@@ -9954,15 +10029,16 @@ SMODS.Joker {
 	key = 'xiren',
 	name = "Xiren",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { extra = { lastPlayedHand = "", mult_mod = 3 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 8, y = 4 },
+	attributes = {'mult', 'hand_type'},
     pools =
 	{
 
@@ -9999,15 +10075,16 @@ SMODS.Joker {
 	key = 'wei',
 	name = "Wei",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { mostPlayedHand = "", cardsInHand = 0, dollars = 2 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 9, y = 4 },
+	attributes = {'economy', 'hand_type'},
     pools =
 	{
 
@@ -10047,15 +10124,16 @@ SMODS.Joker {
 	key = 'zigong',
 	name = "Zigong",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { extra = { chips = 3} },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = true,
+	blueprint_compat = false,	
 	rarity = 1,
 	cost = 4,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 0, y = 5 },
+	attributes = {'chips', 'sell_value'},
     pools =
 	{
 
@@ -10097,15 +10175,16 @@ SMODS.Joker {
 	key = 'zilu',
 	name = "Zilu",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { extra = { } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,	
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 1, y = 5 },
+	attributes = {'rupture', 'passive'},
     pools =
 	{
 
@@ -10126,15 +10205,16 @@ SMODS.Joker {
 	key = 'nightDrifter',
 	name = "Night Drifter",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { minXMult = 0.8, maxXMult = 2, minXMult_mod = 0.1, maxXMult_mod = 0.5, currentConsumableCount = 0 } },
+	unlocked = true,	
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,	
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 2, y = 5 },
+	attributes = {'xmult', 'random', 'consumable'},
     pools =
 	{
 
@@ -10176,15 +10256,16 @@ SMODS.Joker {
 	key = 'leiHeng',
 	name = "Lei Heng",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { my_pos = 1 } },
+	unlocked = true,	
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 3, y = 5 },
+	attributes = {'position', 'retrigger', 'ammo', 'position'},
     pools =
 	{
 		["Thumb"] = true,
@@ -10242,15 +10323,16 @@ SMODS.Joker {
 	key = 'valencina',
 	name = "Valencina",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { extra = { currentPosition = 1, lucioDeathCounter = 0, lucioPresent = false, lucioPos = nil } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 4, y = 5 },
+	attributes = {'tremor', 'ammo', 'modify_card', 'position'},
     pools =
 	{
 		["Heretics"] = true,
@@ -10326,15 +10408,16 @@ SMODS.Joker {
 	key = 'rien',
 	name = "Rien",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { mult = 0, mult_mod = 15,  prescriptListShuffled = {}, prescriptActive = false, currentPrescript = 0, soraPresent = false, soraPos = nil, soraDeathCounter = 0, allowPrescriptCheck = false } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 5, y = 5 },
+	attributes = {'mult', 'economy', 'destroy_card', 'destroy_itself', 'scaling', 'position'},
     pools =
 	{
 		["Index"] = true,
@@ -10476,16 +10559,17 @@ SMODS.Joker {
 SMODS.Joker {
 	key = 'matthias',
 	name = "Matthias",
-	unlocked = true,
 	pronouns = "he_him",
 	config = { extra = { hands = 1, dollarsBase = 2, kiraDeathCounter = 0, kiraPresent = false, kiraPos = nil } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
-	pos = { x =6, y = 5 },
+	pos = { x = 6, y = 5 },
+	attributes = {'economy', 'burn', 'destroy_card', 'scaling', 'position'},
     pools =
 	{
 		["Middle"] = true,
@@ -10580,17 +10664,18 @@ SMODS.Joker {
 --Callisto
 SMODS.Joker {
 	key = 'callisto',
-	name = "Callisto",
-	unlocked = true,
+	name = "Callisto",	
 	pronouns = "he_him",
 	config = { extra = { currentPosition = 1, albinaPresent = false, albinaPos = nil, chips = 0, mult = 0, chips_gain = 25, mult_gain = 5, albinaDeathCounter = 0  } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
 	pos = { x =7, y = 5 },
+	attributes = {'chips', 'mult', 'enhancement', 'destroy_card', 'scaling', 'modify_card', 'position'},
     pools =
 	{
 		["Ring"] = true,
@@ -10717,15 +10802,16 @@ SMODS.Joker {
 	key = 'shiomiYoru',
 	name = "Shiomi Yoru",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { extra = {renDeathCounter = 0, renPos = nil } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 8, y = 5 },
+	attributes = {'passive', 'poise', 'chance', 'destroy_card', 'position'},
     pools =
 	{
 		["Pinky"] = true,
@@ -10802,25 +10888,16 @@ SMODS.Joker {
 	key = 'lucio',
 	name = "Lucio",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { currentPosition = 1, lucioDeathCounter = 0, dollars = 6, valencinaPresent = false, valencinaPos = nil } },
+	unlocked = true,	
 	eternal_compat = true,
-	blueprint_compat = true,get_weight = function(self, weight)
-		local poise_card_tally = 0
-		if G.GAME.blind then
-			if G.playing_cards then
-				for _, playing_card in ipairs(G.playing_cards) do
-					if SMODS.has_enhancement(playing_card, 'm_pmcmod_poise') then poise_card_tally = poise_card_tally + 1 end
-				end
-			end
-		end
-    	return weight*(2^(poise_card_tally + 1))
-	end,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
 	pos = { x =9, y = 5 },
+	attributes = {},
     pools =
 	{
 		["Thumb"] = true,
@@ -10864,7 +10941,6 @@ SMODS.Joker {
 
 		if context.after then
 			if card.ability.extra.lucioDeathCounter >= 3 then
-					G.GAME.banned_keys["j_pmcmod_lucio"] = true
                     card.getting_sliced = true
                     G.E_MANAGER:add_event(Event({func = function()
                         card:start_dissolve({G.C.RED}, nil, 1.6)
@@ -10895,15 +10971,16 @@ SMODS.Joker {
 	key = 'sora',
 	name = "Sora",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { extra = { chips = 0, chips_mod = 20, soraDeathCounter = 0, rienPresent = false, rienPos = nil, locked = false, counter = 0 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
 	pos = { x =0, y = 6 },
+	attributes = {'chips', 'editions', 'scaling', 'destroy_itself', 'position'},
     pools =
 	{
 		["Index"] = true,
@@ -11000,7 +11077,7 @@ SMODS.Joker {
 			end
 
 			if card.ability.extra.soraDeathCounter >= 5 then
-				G.GAME.banned_keys["j_pmcmod_sora"] = true
+				
 				card.getting_sliced = true
 				G.E_MANAGER:add_event(Event({func = function()
 					card:start_dissolve({G.C.RED}, nil, 1.6)
@@ -11036,15 +11113,16 @@ SMODS.Joker {
 	key = 'kira',
 	name = "Kira",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { extra = { currentPosition = 1, kiraDeathCounter = 0, dollars = 4, matthiasPresent = false, matthiasPos = nil } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
 	pos = { x =1, y = 6 },
+	attributes = {'economy', 'burn', 'position'},
     pools =
 	{
 		["Middle"] = true,
@@ -11087,11 +11165,10 @@ SMODS.Joker {
 
 		if context.after then
 			if card.ability.extra.kiraDeathCounter >= 3 then
-				G.GAME.banned_keys["j_pmcmod_kira"] = true
-				card.getting_sliced = true
-				G.E_MANAGER:add_event(Event({func = function()
-					card:start_dissolve({G.C.RED}, nil, 1.6)
-				return true end }))
+                    card.getting_sliced = true
+                    G.E_MANAGER:add_event(Event({func = function()
+                        card:start_dissolve({G.C.RED}, nil, 1.6)
+                    return true end }))
 			end
 		end
     end,
@@ -11118,15 +11195,16 @@ SMODS.Joker {
 	key = 'albina',
 	name = "Albina",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { extra = {callistoPresent = false, callistoPos = nil, albinaDeathCounter = 0, baseChance = 1, maxChance = 2, type = "Pair" } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 2, y = 6 },
+	attributes = {'generation', 'chance', 'destroy_itself', 'modify_card', 'position'},
     pools =
 	{
 		["Ring"] = true,
@@ -11180,7 +11258,7 @@ SMODS.Joker {
 			end
 
 			if card.ability.extra.albinaDeathCounter >= 6 then
-				G.GAME.banned_keys["j_pmcmod_albina"] = true
+				
 				card.getting_sliced = true
 				G.E_MANAGER:add_event(Event({func = function()
 					card:juice_up(0.8, 0.8)
@@ -11212,15 +11290,16 @@ SMODS.Joker {
 	key = 'ren',
 	name = "Ren",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { shiomiPresent = false, shiomiPos = nil, renDeathCounter = 0, baseChance = 1, maxChance = 2} },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 3, y = 6 },
+	attributes = {'passive', 'chance', 'poise', 'position', 'scaling'},
     pools =
 	{
 		["Pinky"] = true,
@@ -11261,7 +11340,7 @@ SMODS.Joker {
 			end
 
 			if card.ability.extra.renDeathCounter >= 5 then
-				G.GAME.banned_keys["j_pmcmod_ren"] = true
+				
 				card.getting_sliced = true
 				G.E_MANAGER:add_event(Event({func = function()
 					card:juice_up(0.8, 0.8)
@@ -11303,15 +11382,16 @@ SMODS.Joker {
 	key = 'ravi',
 	name = "Ravi",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = {chips = 0, chips_mod = 10, baseChance = 1, maxChance = 9 } },
+	unlocked = true,
 	eternal_compat = false,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 1,
 	cost = 3,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 4, y = 6 },
+	attributes = {'chips', 'destroy_itself', 'chance'},
     pools =
 	{
 		["Limbus"] = true,
@@ -11365,15 +11445,16 @@ SMODS.Joker {
 	key = 'jamila',
 	name = "Jamila",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { multBase = 15 },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 6, y = 6 },
+	attributes = {'mult', 'scaling', 'voucher'},
     pools =
 	{
 		["LCorp"] = true,
@@ -11413,15 +11494,16 @@ SMODS.Joker {
 	key = 'aCertainSinclair',
 	name = "A Certain Sinclair",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { counter = 0, currentPosition = 1 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 10,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 7, y = 6 },
+	attributes = {'position', 'retrigger'},
     pools =
 	{
 		["Sinner"] = true,
@@ -11435,7 +11517,7 @@ SMODS.Joker {
 			for i = 1, #G.jokers.cards do
 				if G.jokers.cards[i] == card then
 					card.ability.extra.currentPosition = i
-					print("my_pos is ".. card.ability.extra.currentPosition)
+					--print("my_pos is ".. card.ability.extra.currentPosition)
 					break
 				end
 			end
@@ -11447,12 +11529,12 @@ SMODS.Joker {
 
 				if card.ability.extra.currentPosition > 1 then
 						cardTriggeredIsToTheLeft = true
-						print("card to the left detected")
+						--print("card to the left detected")
 				end
 
 				if cardTriggeredIsToTheLeft == true then
 					card.ability.extra.counter = card.ability.extra.counter + 1
-					print(card.ability.extra.counter)
+					--print(card.ability.extra.counter)
 				end
 			end
 		end
@@ -11460,7 +11542,7 @@ SMODS.Joker {
 
 		if context.retrigger_joker_check and #G.jokers.cards > card.ability.extra.currentPosition then
 			if context.other_card == G.jokers.cards[card.ability.extra.currentPosition + 1] then
-			print("Testing trigger")
+			--print("Testing trigger")
 				return {
 						repetitions = card.ability.extra.counter
 				}
@@ -11469,7 +11551,7 @@ SMODS.Joker {
 
 		if context.after then
 			card.ability.extra.counter = 0
-			print("test reset")
+			--print("test reset")
 		end
     end,
 	check_for_unlock = function(self, args)
@@ -11502,15 +11584,16 @@ SMODS.Joker {
 	key = 'arayaKid',
 	name = "Araya (Child)",
 	pronouns = "she_her",
-	unlocked = false,
 	config = { chips = 20, counters = {playedCards = 0, discardedCards = 0, moneyUsed = 0} },
+	unlocked = false,
 	eternal_compat = false,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 8, y = 6 },
+	attributes = {'chips', 'transform', 'discard', 'economy'},
     pools =
 	{
 
@@ -11642,15 +11725,16 @@ SMODS.Joker {
 	key = 'arayaTeen',
 	name = "Araya (Teen)",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { permaChips_mod = 6, counters = {playedCards = 0, discardedCards = 0, moneyUsed = 0} },
+	unlocked = true,
 	eternal_compat = false,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 9, y = 6 },
+	attributes = {'chips', 'perma_bonus', 'scaling', 'discard'},
     pools =
 	{
 
@@ -11774,15 +11858,16 @@ SMODS.Joker {
 	key = 'arayaYA',
 	name = "Araya (Young Adult)",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { permaMult_mod = 3, counters = {playedCards = 0, discardedCards = 0, moneyUsed = 0} },
+	unlocked = true,
 	eternal_compat = false,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 0, y = 7 },
+	attributes = {'mult', 'perma_bonus', 'scaling', 'discard'},
     pools =
 	{
 
@@ -11906,15 +11991,16 @@ SMODS.Joker {
 	key = 'arayaAdult',
 	name = "Araya (Adult)",
 	pronouns = "she_her",
-	unlocked = true,
 	config = { permaDollars_mod = 1, counters = {playedCards = 0, discardedCards = 0, moneyUsed = 0} },
+	unlocked = true,
 	eternal_compat = false,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 1, y = 7 },
+	attributes = {'economy', 'perma_bonus', 'scaling', 'discard'},
     pools =
 	{
 
@@ -12038,15 +12124,16 @@ SMODS.Joker {
 	key = 'emile',
 	name = "Emile",
 	pronouns = "she_her",
-	unlocked = false,
 	config = { },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 3, y = 7 },
+	attributes = {'enhanced', 'painted'},
     pools =
 	{
 
@@ -12221,15 +12308,16 @@ SMODS.Joker {
 	key = 'rufo',
 	name = "Rufo",
 	pronouns = "she_her",
-	unlocked = false,
 	config = { },
+	unlocked = false,
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = true,
+	blueprint_compat = false,
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 4, y = 7 },
+	attributes = {'enhanced', 'modify_card'},
     pools =
 	{
 
@@ -12314,15 +12402,16 @@ SMODS.Joker {
 	key = 'alan',
 	name = "Alan",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { spotSelected = 0, jokerSelected = "None", jokerName = "None", jokerSelectedFlag = false, jokerFailed = false, counter = 0 },
+	unlocked = true,
 	eternal_compat = false,
-	blueprint_compat = false,
 	perishable_compat = true,
+	blueprint_compat = false,	
 	rarity = 2,
 	cost = 6,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 5, y = 7 },
+	attributes = {'edition', 'painted'},
     pools =
 	{
 
@@ -12515,16 +12604,17 @@ SMODS.Joker {
 	key = 'vermillionCross',
 	name = "Vermillion Cross",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { percentageToReduce = 0.5 } },
+	unlocked = true,
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 4,
 	cost = 10,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 5, y = 8 },
 	soul_pos = { x = 5, y = 9 },
+	attributes = {'score'},
     pools =
 	{
 
@@ -12559,13 +12649,14 @@ SMODS.Joker {
 						 dollars_mod = 1, chips_mod = 10, mult_mod = 3, xchips_mod = 0.2,
 						 lockedPosition = 0} },
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 4,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 3, y = 8 },
 	soul_pos = { x = 3, y = 9 },
+	attributes = {'chips', 'mult', 'xchips', 'scaling', 'position', 'economy'},
     pools =
 	{
 
@@ -12636,16 +12727,17 @@ SMODS.Joker {
 	key = 'yellowHarpoon',
 	name = "Yellow Harpoon",
 	pronouns = "he_him",
-	unlocked = true,
 	config = { extra = { base_xchips = 1.0 } },
+	unlocked = true,	
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = false,
+	blueprint_compat = false,	
 	rarity = 4,
 	cost = 10,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 4, y = 8 },
 	soul_pos = { x = 4, y = 9 },
+	attributes = {'xchips', 'rarity'},
     pools =
 	{
 
@@ -12686,12 +12778,14 @@ SMODS.Joker {
 	name = "Sephirah Hod",
 	pronouns = "she_her",
 	config = {extra = 1, xchips = 1},
-    blueprint_compat = true,
+	eternal_compat = true,
 	perishable_compat = false,
+    blueprint_compat = true,	
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
     pos = { x = 1, y = 11 },
+	attributes = {'xchips', 'blind'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -12752,13 +12846,14 @@ SMODS.Joker {
 	name = "Sephirah Malkuth",
 	pronouns = "she_her",
 	config = {extra = {mult = 0}},
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
     pos = { x = 2, y = 11 },
+	attributes = {'mult', 'hand_type', 'scaling'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -12778,7 +12873,7 @@ SMODS.Joker {
 		G.GAME.hands["Four of a Kind"].level +
 		G.GAME.hands["Five of a Kind"].level +
 		G.GAME.hands["Flush House"].level +
-		G.GAME.hands["Flush Five"].level)*3 - 36
+		G.GAME.hands["Flush Five"].level) * 3 - 36
 
 		if context.joker_main then
 			return {
@@ -12801,12 +12896,13 @@ SMODS.Joker {
 	name = "Sephirah Netzach",
 	pronouns = "he_him",
 	config = {extra = {mult = 0, chips = 0, current_consumable_count = 0}},
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	attributes = {'mult', 'chips', 'consumable', 'scaling'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -12853,12 +12949,13 @@ SMODS.Joker {
 	name = "Sephirah Yesod",
 	pronouns = "he_him",
 	config = {extra = {totalSpades = 0, totalClubs = 0, totalHearts = 0, totalDiamonds = 0, mult = 0, chips = 0}},
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	attributes = {'spades', 'clubs', 'hearts', 'diamonds', 'mult', 'chips'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -12910,17 +13007,18 @@ SMODS.Joker {
 	name = "Sephirah Chesed",
 	pronouns = "he_him",
 	config = {extra = {xchips = 2, xchips_mod = 0.1, baseChance = 1, maxChance = 2}},
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	pos = { x = 5, y = 11 },
+	attributes = {'xchips', 'chance', 'scaling'},
     pools = 
 	{
  		["Heretics"] = true,
  	},
-    pos = { x = 5, y = 11 },
     loc_vars = function(self, info_queue, card)
 		local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.baseChance, card.ability.extra.maxChance, 'chesed')
         return {vars = { card.ability.extra.xchips, card.ability.extra.xchips_mod, new_numerator, new_denominator } } 
@@ -12958,17 +13056,18 @@ SMODS.Joker {
 	name = "Sephirah Gebura",
 	pronouns = "she_her",
 	config = {extra = {mult = 0, roundCount = 0}},
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	pos = { x = 6, y = 11 },
+	attributes = {'mult', 'hands'},
     pools = 
 	{
  		["Heretics"] = true,
  	},
-    pos = { x = 6, y = 11 },
     loc_vars = function(self, info_queue, card)
         return {vars = { card.ability.extra.mult, card.ability.extra.roundCount } }
     end,
@@ -13001,17 +13100,18 @@ SMODS.Joker {
 	name = "Sephirah Hokma",
 	pronouns = "he_him",
 	config = {extra = {xmult = 1, xmult_mod = 0.3, consumablesUsed = 0}},
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	pos = { x = 7, y = 11 },
+	attributes = {'xmult', 'spectral', 'tarot', 'consumable'},
     pools = 
 	{
  		["Heretics"] = true,
  	},
-    pos = { x = 7, y = 11 },
     loc_vars = function (self, info_queue, card)
     	return {vars = { card.ability.extra.xmult + (card.ability.extra.xmult_mod * card.ability.extra.consumablesUsed ), card.ability.extra.xmult_mod }}
 	end,
@@ -13049,17 +13149,18 @@ SMODS.Joker {
 	name = "Sephirah Binah",
 	pronouns = "she_her",
 	config = {extra = {xmult = 1, xmult_mod = 0.3, bondedHand = "None", bonded = 0}},
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	pos = { x = 7, y = 0 },
+	attributes = {'xmult', 'hand_type', 'scaling', 'discard'},
     pools = 
 	{
  		["Heretics"] = true,
  	},
-    pos = { x = 7, y = 0 },
     loc_vars = function(self, info_queue, card)
         return {vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod, card.ability.extra.bondedHand, card.ability.extra.bonded } }
     end,
@@ -13106,9 +13207,9 @@ SMODS.Joker {
 	name = "Sephirah Tiphereth",
 	pronouns = "she_her",
 	config = {extra = {aceMult = 10, aceMult_mod = 10}},
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
@@ -13153,13 +13254,14 @@ SMODS.Joker {
 	name = "Hod (Robot)",
 	pronouns = "she_her",
 	config = {xchips = 2},
-    blueprint_compat = true,
-    eternal_compat = true,
+	eternal_compat = true,
 	perishable_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
     pos = { x = 1, y = 12 },
+	attributes = {'xchips', 'debuff'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -13209,13 +13311,14 @@ SMODS.Joker {
 	name = "Malkuth (Robot)",
 	pronouns = "she_her",
 	config = {extra = {mult = 0, odds = 4}},
-    blueprint_compat = true,
-    eternal_compat = true,
+	eternal_compat = true,
 	perishable_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
     pos = { x = 2, y = 12 },
+	attributes = {'mult', 'chance'},
     pools = 
 	{
  		["Heretics"] = true,
@@ -13270,18 +13373,19 @@ SMODS.Joker {
 	name = "Netzach (Robot)",
 	pronouns = "he_him",
 	config = {extra = {consumable_amount = 2, mult = 0, chips = 0, current_consumable_count = 0, priceIncrease = 0}},
-    blueprint_compat = true,
-    eternal_compat = true,
+	eternal_compat = true,
 	perishable_compat = false,
+    blueprint_compat = true,
 	--no_collection = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	pos = { x = 3, y = 12 },
+	attributes = {'mult', 'chips', 'scaling', 'prices', 'consumable'},
     pools = 
 	{
  		["Heretics"] = true,
  	},
-    pos = { x = 3, y = 12 },
     loc_vars = function(self, info_queue, card)
         return {vars = { card.ability.extra.consumable_amount, card.ability.extra.mult, card.ability.extra.chips, card.ability.extra.current_consumable_count, card.ability.extra.priceIncrease } }
     end,
@@ -13322,12 +13426,13 @@ SMODS.Joker {
 	pronouns = "he_him",
 	config = {extra = {totalSpades = 0, totalClubs = 0, totalHearts = 0, totalDiamonds = 0, mult = 0, chips = 0, odds = 10}},
 	eternal_compat = true,
-	blueprint_compat = true,
 	perishable_compat = true,
+	blueprint_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 4, y = 12 },
+	attributes = {'spades', 'clubs', 'hearts', 'diamonds', 'mult', 'chips'},
     pools =
 	{
 
@@ -13397,17 +13502,18 @@ SMODS.Joker {
 	name = "Chesed (Robot)",
 	pronouns = "he_him",
 	config = {extra = {odds_upgrade = 8, xchips = 1, xchips_mod = 0.1}},
-    blueprint_compat = true,
-    eternal_compat = true,
+	eternal_compat = true,
 	perishable_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	pos = { x = 5, y = 12 },
+	attributes = {'xchips', 'scaling', 'chance'},
     pools = 
 	{
  		["Heretics"] = true,
  	},
-    pos = { x = 5, y = 12 },
     loc_vars = function(self, info_queue, card)
         return {vars = { (G.GAME.probabilities.normal or 1), card.ability.extra.odds_upgrade, card.ability.extra.xchips, card.ability.extra.xchips_mod } } 
     end,
@@ -13461,17 +13567,18 @@ SMODS.Joker {
 	name = "Gebura (Robot)",
 	pronouns = "she_her",
 	config = {extra = {mult = 0}},
-    blueprint_compat = true,
-    eternal_compat = true,
+	eternal_compat = true,
 	perishable_compat = false,
+    blueprint_compat = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	pos = { x = 6, y = 12 },
+	attributes = {'mult', 'hands_left'},
     pools = 
 	{
  		["Heretics"] = true,
  	},
-    pos = { x = 6, y = 12 },
     loc_vars = function(self, info_queue, card)
         return {vars = { card.ability.extra.mult } }
     end,
@@ -13501,18 +13608,19 @@ SMODS.Joker {
 	name = "Hokma (Robot)",
 	pronouns = "he_him",
 	config = {extra = {xmult = 1,xmult_mod_spectrals = 0.3, xmult_mod_tarot = 0.1, spectralsUsed = 0, tarotUsed = 0}},
-    blueprint_compat = true,
-    eternal_compat = true,
+	eternal_compat = true,
 	perishable_compat = false,
+    blueprint_compat = true,
 	--no_collection = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	pos = { x = 0, y = 12 },
+	attributes = {'xmult', 'spectrals', 'tarot', 'scaling'},
     pools = 
 	{
  		["Heretics"] = true,
  	},
-    pos = { x = 0, y = 12 },
     loc_vars = function (self, info_queue, card)
     	return {vars = { card.ability.extra.xmult + (card.ability.extra.xmult_mod_spectrals * card.ability.extra.spectralsUsed ) - (card.ability.extra.xmult_mod_tarot * card.ability.extra.tarotUsed ), card.ability.extra.xmult_mod_spectrals, card.ability.extra.xmult_mod_tarot }}
 	end,
@@ -13551,18 +13659,19 @@ SMODS.Joker {
 	name = "Binah (Robot)",
 	pronouns = "she_her",
 	config = {extra = {xmult = 1, xmult_mod = 0.1}},
-    blueprint_compat = true,
-    eternal_compat = true,
+	eternal_compat = true,
 	perishable_compat = false,
+    blueprint_compat = true,
 	--no_collection = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	pos = { x = 7, y = 12 },
+	attributes = {'xmult', 'scaling', 'destroy_card'},
     pools = 
 	{
  		["Heretics"] = true,
  	},
-    pos = { x = 7, y = 12 },
     loc_vars = function(self, info_queue, card)
         return {vars = { card.ability.extra.xmult, card.ability.extra.xmult_mod } }
     end,
@@ -13618,18 +13727,19 @@ SMODS.Joker {
 	name = "Tiph A (Robot)",
 	pronouns = "she_her",
 	config = {extra = {enochDeathCounter = 0, aceMult = 5, aceMult_mod = 3, aceChip = -10}},
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+    blueprint_compat = true,
 	--no_collection = true,
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	pos = { x = 8, y = 12 },
+	attributes = {'mult', 'ace', 'chips', 'scaling'},
     pools = 
 	{
  		["Heretics"] = true,
  	},
-    pos = { x = 8, y = 12 },
     loc_vars = function(self, info_queue, card)
         return {vars = { card.ability.extra.enochDeathCounter, card.ability.extra.aceMult, card.ability.extra.aceMult_mod, card.ability.extra.aceChip } }
     end,
@@ -13682,18 +13792,19 @@ SMODS.Joker {
 	name = "Tiph B (Robot)",
 	pronouns = "he_him",
 	config = {extra = {chips = 0, chip_mod = 10}},
-    blueprint_compat = true,
-    eternal_compat = false,
-	perishable_compat = false,
 	no_collection = true,
+	eternal_compat = false,
+	perishable_compat = false,
+    blueprint_compat = true,    	
     rarity = 3,
     cost = 8,
 	atlas = 'ModdedProjectMoon',
+	pos = { x = 9, y = 12 },
+	attributes = {'chips', 'scaling', 'destroy_itself'},
     pools = 
 	{
  		["Heretics"] = true,
  	},
-    pos = { x = 9, y = 12 },
     loc_vars = function(self, info_queue, card)
         return {vars = { card.ability.extra.chips, card.ability.extra.chip_mod } }
     end,
@@ -13744,14 +13855,16 @@ SMODS.Joker {
 	key = 'silence',
 	name = "Time Flowing",
 	pronouns = "it_its",
-	-- This also searches G.GAME.pool_flags to see if Gros Michel went extinct. If so, enables the ability to show up in shop.
 	config = { extra = { current_timer = 0, total_timer = 30 } },
+	no_collection = true,
+	eternal_compat = true,
+	perishable_compat = false,
+	blueprint_compat = false,
 	rarity = 3,
+	cost = 8,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 5, y = 15 },
-	no_collection = true,
-	cost = 8,
-	eternal_compat = true,
+	attributes = {'timer', 'game_over'},
 	loc_vars = function (self, info_queue, card)
 	local main_end = nil
     local random_mult = tostring(math.floor(card.ability.extra.current_timer)) or 1
@@ -13820,12 +13933,15 @@ SMODS.Joker {
 	name = "Today's Shy Look",
 	pronouns = "it_its",
 	config = { extra = { randomValue = 4, timer = 0, selectedFace = 0, xmult = 1 } },
+	no_collection = true,
+	eternal_compat = true,
+	perishable_compat = false,
+	blueprint_compat = false,
 	rarity = 3,
+	cost = 8,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 2, y = 15 },
-	no_collection = true,
-	cost = 8,
-	eternal_compat = true,
+	attributes = {'random', 'xmult'},
 	loc_vars = function (self, info_queue, card)
     	return {vars = { card.ability.extra.randomValue, card.ability.extra.timer }}
 	end,
@@ -13879,12 +13995,15 @@ SMODS.Joker {
 	name = "Queen of Hatred",
 	pronouns = "she_her",
 	config = { extra = { discardedCount = 0, playedCount = 0, xmult = 0.5, retrigger = 1, chips = 100, debuffs = 1, transformationCount = 0, currentCount = 0, enableTransform = false } },
+	no_collection = true,
+	eternal_compat = true,
+	perishable_compat = false,
+	blueprint_compat = false,
 	rarity = 3,
+	cost = 8,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 2, y = 13 },
-	no_collection = true,
-	cost = 8,
-	eternal_compat = true,
+	attributes = {'discard', 'retrigger', 'xmult', 'chips', 'transform'},
 	loc_vars = function (self, info_queue, card)
     	return {vars = { card.ability.extra.discardedCount, card.ability.extra.playedCount, card.ability.extra.xmult, card.ability.extra.retrigger, card.ability.extra.chips, card.ability.extra.debuffs, 
 		card.ability.extra.transformationCount, card.ability.extra.currentCount, card.ability.extra.enableTransform }}
@@ -14012,15 +14131,16 @@ SMODS.Joker {
 	name = "Chicken A",
 	pronouns = "it_its",
 	config = { extra = { roundsCompleted = 0 } },
-	rarity = 3,
-	atlas = 'ModdedProjectMoon',
-	pos = { x = 0, y = 14 },
 	no_collection = true,
 	unlocked = true,
-	blueprint_compat = false,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+	blueprint_compat = false,
+	rarity = 3,
 	cost = 0,
+	atlas = 'ModdedProjectMoon',
+	pos = { x = 0, y = 14 },
+	attributes = {'summon', 'destroy_itself'},
 	pools =
 	{
         ["HellsKitchen"] = true,
@@ -14064,15 +14184,16 @@ SMODS.Joker {
 	name = "Chicken B",
 	pronouns = "it_its",
 	config = { extra = { handsUsed = 0 } },
-	rarity = 3,
-	atlas = 'ModdedProjectMoon',
-	pos = { x = 1, y = 14 },
 	no_collection = true,
 	unlocked = true,
-	blueprint_compat = false,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+	blueprint_compat = false,
+	rarity = 3,
 	cost = 0,
+	atlas = 'ModdedProjectMoon',
+	pos = { x = 1, y = 14 },
+	attributes = {'summon', 'destroy_itself'},
 	pools =
 	{
         ["HellsKitchen"] = true,
@@ -14115,15 +14236,16 @@ SMODS.Joker {
 	name = "Chicken C",
 	pronouns = "it_its",
 	config = { extra = { discardsUsed = 0 } },
-	rarity = 3,
-	atlas = 'ModdedProjectMoon',
-	pos = { x = 2, y = 14 },
 	no_collection = true,
 	unlocked = true,
-	blueprint_compat = false,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+	blueprint_compat = false,
+	rarity = 3,
 	cost = 0,
+	atlas = 'ModdedProjectMoon',
+	pos = { x = 2, y = 14 },
+	attributes = {'summon', 'destroy_itself'},
 	pools =
 	{
         ["HellsKitchen"] = true,
@@ -14167,15 +14289,16 @@ SMODS.Joker {
 	name = "Chicken D",
 	pronouns = "it_its",
 	config = { extra = { boostersOpened = 0 } },
-	rarity = 3,
-	atlas = 'ModdedProjectMoon',
-	pos = { x = 3, y = 14 },
 	no_collection = true,
 	unlocked = true,
-	blueprint_compat = false,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = false,
+	blueprint_compat = false,
+	rarity = 3,
 	cost = 0,
+	atlas = 'ModdedProjectMoon',
+	pos = { x = 3, y = 14 },
+	attributes = {'summon', 'destroy_itself'},
 	pools =
 	{
         ["HellsKitchen"] = true,
@@ -14219,14 +14342,15 @@ SMODS.Joker {
 	name = "Puppet",
 	pronouns = "it_its",
 	config = { extra = { mult = 10, counter = 0 } },
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = true,
+    blueprint_compat = true,
     --	no_collection = true,
 	rarity = 1,
     cost = 0,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 5, y = 13 },
+	attributes = {'mult', 'destroy_itself'},
 	pools =
 	{
         ["Puppet"] = true,
@@ -14282,14 +14406,15 @@ SMODS.Joker {
 	name = "Nimble Puppet",
 	pronouns = "it_its",
 	config = { extra = { mult = 20, counter = 0 } },
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = true,
+    blueprint_compat = true,
     --	no_collection = true,
 	rarity = 2,
     cost = 0,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 6, y = 13 },
+	attributes = {'mult', 'destroy_itself'},
 	pools =
 	{
         ["Puppet"] = true,
@@ -14345,15 +14470,16 @@ SMODS.Joker {
 	name = "Weighty Puppet",
 	pronouns = "it_its",
 	config = { extra = { mult = 30, counter = 0 } },
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = true,
+    blueprint_compat = true,
 --	no_collection = true,
 	rarity = 3,
+	cost = 0,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 7, y = 13 },
+	attributes = {'mult', 'destroy_itself'},
 --	no_collection = true,
-	cost = 0,
 	pools =
 	{
         ["Puppet"] = true,
@@ -14409,14 +14535,15 @@ SMODS.Joker {
 	name = "Puppet Angelica",
 	pronouns = "it_its",
 	config = { extra = { mult = 40, counter = 0 } },
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = true,
+    blueprint_compat = true,
 --	no_collection = true,
 	rarity = 3,
+	cost = 0,
 	atlas = 'ModdedProjectMoon',
 	pos = { x = 8, y = 13 },
-	cost = 0,
+	attributes = {'mult', 'destroy_itself'},
 	pools =
 	{
         ["Puppet"] = true,
@@ -14446,10 +14573,10 @@ SMODS.Joker {
 	name = "Dummy Ricardo",
 	pronouns = "it_its",
 	config = { extra = { ricardoDefeatCounter = 0, canSpawnRicardo = false, baseChance = 1, maxChance = 3} },
-	no_collection = true,    
+	no_collection = true,
+	perishable_compat = true,
 	eternal_compat = true,
 	blueprint_compat = true,
-	perishable_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
@@ -14490,14 +14617,15 @@ SMODS.Joker {
 	name = "Bloodfiend",
 	pronouns = "they_them",
 	config = { extra = { mult = 8} },
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = true,
+    blueprint_compat = true,
     --	no_collection = true,
 	rarity = 1,
     cost = 3,
 	atlas = 'ModdedProjectMoon2',
 	pos = { x = 3, y = 11 },
+	attributes = {'mult', 'generic'},
 	pools =
 	{
         ["Bloodfiends"] = true,
@@ -14513,7 +14641,7 @@ SMODS.Joker {
 		end
 	end,
 	get_weight = function(self, weight)
-    	return weight*(2^(#SMODS.find_card('j_pmcmod_romero')*G.GAME.round_resets.ante * 3))
+    	return weight*(2^(#SMODS.find_card('j_pmcmod_romero')*G.GAME.round_resets.ante))
 	end,
 	in_pool = function(self, args)
 		if SMODS.find_card('j_pmcmod_romero') then
@@ -14531,14 +14659,15 @@ SMODS.Joker {
 	name = "Heretic",
 	pronouns = "they_them",
 	config = { extra = { chips = 15} },
-    blueprint_compat = true,
-    eternal_compat = false,
+	eternal_compat = false,
 	perishable_compat = true,
+    blueprint_compat = true,
     --	no_collection = true,
 	rarity = 1,
     cost = 3,
 	atlas = 'ModdedProjectMoon2',
 	pos = { x = 2, y = 11 },
+	attributes = {'chips', 'generic'},
 	pools =
 	{
         ["Heretics"] = true,
@@ -14574,10 +14703,10 @@ SMODS.Joker {
 	name = "Voice of the City",
 	pronouns = "it_its",
 	config = { extra = { prescriptListShuffled = {}, prescriptActive = false, currentPrescript = 0} },
-	no_collection = true,    
+	no_collection = true, 
+	perishable_compat = true,   
 	eternal_compat = true,
 	blueprint_compat = true,
-	perishable_compat = true,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
@@ -14626,12 +14755,13 @@ SMODS.Joker {
 	config = { extra = {prescriptFullfilled = false, faces = 5} },
 	--no_collection = true,    
 	eternal_compat = true,
-	blueprint_compat = false,
 	perishable_compat = false,
+	blueprint_compat = false,
 	rarity = 3,
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 9 },
+	attributes = {'prescript', 'gimmick'},
     pools =
 	{
 
@@ -14735,6 +14865,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 9 },
+	attributes = {'prescript', 'gimmick'},
     pools =
 	{
 
@@ -14852,6 +14983,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 9 },
+	attributes = {'prescript', 'gimmick'},
     pools =
 	{
 
@@ -14939,6 +15071,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 9 },
+	attributes = {'prescript', 'gimmick'},
     pools =
 	{
 
@@ -15027,6 +15160,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 9 },
+	attributes = {'prescript', 'gimmick'},
     pools =
 	{
 
@@ -15122,6 +15256,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 9 },
+	attributes = {'prescript', 'gimmick'},
     pools =
 	{
 
@@ -15217,6 +15352,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 9 },
+	attributes = {'prescript', 'gimmick'},
     pools =
 	{
 
@@ -15309,6 +15445,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 9 },
+	attributes = {'prescript', 'gimmick'},
     pools =
 	{
 
@@ -15399,6 +15536,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 9 },
+	attributes = {'prescript', 'gimmick'},
     pools =
 	{
 
@@ -15490,6 +15628,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 9 },
+	attributes = {'prescript', 'gimmick'},
     pools =
 	{
 
@@ -15582,6 +15721,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 9, y = 9 },
+	attributes = {'prescript', 'gimmick'},
     pools =
 	{
 
@@ -15726,6 +15866,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 7, y = 14 },
+	attributes = {'chance', 'seals', 'economy'},
     pools =
 	{
 
@@ -15774,6 +15915,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon',
 	pos = { x = 6, y = 14 },
+	attributes = {'chance', 'seals', 'mult', 'tags'},
     pools =
 	{
 
@@ -15870,6 +16012,7 @@ SMODS.Joker {
 	cost = 8,
     atlas = 'ModdedProjectMoon2',
 	pos = { x = 8, y = 14 },
+	attributes = {'obfuscation', 'gimmick'},
     pools =
 	{
 
