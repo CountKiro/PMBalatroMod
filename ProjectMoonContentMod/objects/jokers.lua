@@ -1,108 +1,108 @@
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "summoning",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "random",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "charge",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "erasing",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "bleed",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "rupture",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "sinking",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "burn",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "poise",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "pallid",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "ammo",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "painted",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "erasing",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "negative",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "polychrome",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "ante_reset",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "consumable",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "destroy_itself",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "position",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "voucher",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "selling_card",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "stickers",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "on_destroy",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "debuff",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "game_over",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "gimmick",
 }
 
-SMODS.Attributes{
+SMODS.Attribute{
 	key = "obfuscation",
 }
 
