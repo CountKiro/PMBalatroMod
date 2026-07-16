@@ -157,7 +157,6 @@ return {
                     "플레이한 핸드에서 득점한",
                     "{C:red}출혈{} 카드 하나당",
                     "영구 배수 {C:red}+1{} 획득.",
-                    "남은 횟수: #1#"
                 },
             },
             m_pmcmod_burn = {
@@ -165,6 +164,7 @@ return {
                 text = {
                     "총 접대 점수의 {C:chips}0.001%{}를",
                     "추가 칩으로 제공",
+                    "남은 횟수: #2#"
                 },
             },
             m_pmcmod_poise = {
@@ -173,6 +173,7 @@ return {
                     "{C:green}#3# / #4#{} 확률로 {X:red,C:white}X#1#{} 배수 제공",
                     "카드가 득점할 때마다 확률이 증가함.",
                     "효과가 발동할 때마다 확률이 초기화됨."
+
                 },
             },
             m_pmcmod_rupture = {
@@ -182,6 +183,7 @@ return {
                     "그림 카드가 아니면 스택을 2배로 부여함.",
                     "스택 수치의 2배만큼 {C:chips}칩{}을 제공함.",
                     "{C:inactive}(현재 스택: {C:attention}#1#{})"
+
                 },
             },
             m_pmcmod_tremor = {
@@ -190,12 +192,37 @@ return {
                     "함께 득점할 경우 특정 강화 효과의",
                     "위력을 증폭시킴."
                 },
-            },            
+            },
             m_pmcmod_sinking = {
                 name = "침잠 카드",
                 text = {
                     "이 카드가 득점될 때",
                     "목표 점수를 {C:chips}5%{} 감소시킴",
+                    "이 카드가 득점될 때"
+                },
+            },
+            m_pmcmod_painted = {
+                name = "칠해진 카드",
+                text = {
+                    "{C:attention}같은 핸드에서 득점한{}",
+                    "일부 {C:blue}강화{} 카드의",
+                    "수치를 흡수합니다.",
+                    "효과는 강화 종류마다",
+                    "한 번만 발동할 수 있습니다",
+                    "({C:attention}확률{} 및 {C:attention}비율{} 기반",
+                    "강화는 {C:red}흡수할 수 없습니다{})"
+
+                },
+            },
+            m_pmcmod_ammo = {
+                name = "탄환 카드",
+                text = {
+                    "특정 책장에서 사용할",
+                    "탄환이 들어 있습니다",
+                    "랭크 없음",
+                    "항상 득점함",
+                    "현재 탄환: {C:attention}#1#{}"
+
                 },
             },
             m_pmcmod_pallid = {
@@ -209,7 +236,8 @@ return {
             j_pmcmod_oswald = {
                 name = '오스왈드',
                 text = {
-                    "핸드를 플레이할 때마다 {C:attention}무작위 효과{} 부여",
+                    "플레이한 핸드마다",
+                    "{C:attention}무작위 효과{} 발동",
                     "마지막 효과: #1#"
                 },
                 unlock = {
@@ -221,12 +249,11 @@ return {
                 name = '칼로',
                 text = {
                     {"득점한 {C:diamonds}#3#{} 무늬 카드가",
-			        "{C:mult}+10{} 배수를 제공."},
+			        "득점 시 {C:mult}+#1#{} 배수 제공"},
     			    {"현재 팀에 있는 {C:gold}엄지{} 조직원",
-                    "한 명당 제공 배수가 {C:mult}+#2#{} 증가."},
-                    {"득점한 모든 {C:diamonds}#3#{} 무늬 카드를 {C:green} #4# / #5# {} 확률로",
-                    "{C:attention}와일드 카드{}로 변경.",
-                    "{C:inactive}(현재 {C:mult}+#1#{} 배수)"},
+                    "한 명당 수치가 {C:mult}#2#{} 증가"},
+                    {"{C:green}#4# / #5#{} 확률로 득점한 모든",
+                    "{C:diamonds}#3#{} 카드를 {C:attention}와일드 카드{}로 변경"},
                 },
                 unlock = {
                     '{C:attention}칼로(찢어짐) 책장{}으로 최소',
@@ -237,10 +264,9 @@ return {
                 name = '카트리엘',
                 text = {
                     {"득점한 {C:hearts}#3#{} 무늬 카드가",
-			        "{C:mult}+#1#{} 배수를 제공."},
-    			    {"현재 덱에 있는 {C:attention}와일드 카드{}",
-                    "한 장당 제공 배수가 {C:mult}+1{} 증가.",
-                    "{C:inactive}(현재 {C:mult}+#2#{} 배수)"},
+			        "득점 시 {C:mult}+#2#{} 배수 제공"},
+    			    {"{C:attention}와일드 카드{} 한 장당",
+                    "수치가 {C:mult}#1#{} 증가"},
                 },
                 unlock = {
                     '{C:attention}카트리엘(찢어짐) 책장{}으로 최소',
@@ -251,10 +277,9 @@ return {
                 name = '데니스',
                 text = {
                     {"득점한 {C:spades}#3#{} 무늬 카드가",
-			        "{C:mult}+#1#{} 배수를 제공."},
-    			    {"현재 덱에 있는 {C:attention}와일드 카드{}",
-                    "한 장당 제공 배수가 {C:mult}+1{} 증가.",
-                    "{C:inactive}현재 {C:mult}+#2#{} 배수"},
+			        "득점 시 {C:mult}+#2#{} 배수 제공"},
+    			    {"{C:attention}와일드 카드{} 한 장당",
+                    "수치가 {C:mult}#1#{} 증가"},
                 },
                 unlock = {
                     '{C:attention}데니스(찢어짐) 책장{}으로 최소',
@@ -265,10 +290,9 @@ return {
                 name = '보리스',
                 text = {
                     {"득점한 {C:clubs}#3#{} 무늬 카드가",
-			        "{C:mult}+#1#{} 배수를 제공."},
-    			    {"현재 덱에 있는 {C:attention}와일드 카드{}",
-                    "한 장당 제공 배수가 {C:mult}+1{} 증가.",
-                    "{C:inactive}현재 {C:mult}+#2#{} 배수"},
+			        "득점 시 {C:mult}+#2#{} 배수 제공"},
+    			    {"{C:attention}와일드 카드{} 한 장당",
+                    "수치가 {C:mult}#1#{} 증가"},
                 },
                 unlock = {
                     '{C:attention}보리스(찢어짐) 책장{}으로 최소',
@@ -278,9 +302,12 @@ return {
             j_pmcmod_angelaLoR = {
                 name = '관장 앤젤라',
                 text = {
-                    {"접대 시작 시 최대 {C:attention}#1#장의 소멸성 책장{}을 생성"},
-                    {"상점 진입 시, {C:red}소멸된 책장을 전부 파괴{}하고",
-                    "파괴된 책장 한 장당 {C:chips}+#3#{} 칩 획득.",
+                    {"접대 시작 시 최대 {C:attention}#1#장의 소멸성 책장{} 생성",
+                    "접대 시작 시"},
+                    {"상점 시작 시,",
+                    "{C:red}소멸된 책장을 전부 파괴{}하고",
+                    "파괴된 책장 하나당 {C:chips}#3#{} 칩 획득",
+                    "파괴된 책장마다",
                     "{C:inactive}현재 {C:chips}+#2#{} 칩"}
                 },
                 unlock = {
@@ -292,7 +319,7 @@ return {
                 name = '에스더',
                 text = {
                     "득점한 카드가 {C:attention}유일{}이라면,",
-                    "해당 카드에 {X:red,C:white}X3{} 배수 부여",
+                    "해당 카드가 {X:chips,C:white}X#1#{} 칩 제공",
                 },
                 unlock = {
                     '{C:attention}에스더(찢어짐) 책장{}으로 최소',
@@ -303,7 +330,7 @@ return {
                 name = '글로리아',
                 text = {
                     "득점한 카드가 {C:attention}유일{}이라면,",
-                    "해당 카드에 {C:gold}$5{} 배수 부여",
+                    "해당 카드가 {C:gold}$#1#{} 제공",
                 },
                 unlock = {
                     '{C:attention}글로리아(찢어짐) 책장{}으로 최소',
@@ -324,10 +351,10 @@ return {
             j_pmcmod_kim = {
                 name = '김삿갓',
                 text = {
-                    "라운드의 {C:attention}마지막 핸드{}에서",
-                    "{X:red,C:white} X#1#{} 배율을 제공함.",
+                    "라운드의 {C:attention}마지막",
+                    "{C:attention}핸드{}에서 {X:red,C:white}X#1#{} 배수",
                     "{C:spade}호흡 카드{}가 발동할 때마다",
-                    "이 수치가 {X:red,C:white}X#2#{}만큼 증가함."
+                    "이 수치가 {X:red,C:white}X#2#{} 증가"
                 },
                 unlock = {
                     '{C:attention}김삿갓(찢어짐) 책장{}으로 최소',
@@ -337,9 +364,10 @@ return {
             j_pmcmod_nikolai = {
                 name = '니콜라이',
                 text = {
-                    "구매한 모든 책장을 기록함.",
+                    "{C:attention}직접 구매한 책장{}을 모두 기록함",
                     "기록된 책장 하나당 {C:mult}+#2#{} 배수 획득",
-                    "{C:inactive}현재 {C:mult}+#1#{} 배수"
+                    "{C:inactive}현재 {C:mult}+#1#{} 배수",
+                    "{C:inactive}선택된 책장: {C:attention}#3#{}"
                 },
                 unlock = {
                     '{C:attention}니콜라이(찢어짐) 책장{}으로 최소',
@@ -349,13 +377,15 @@ return {
             j_pmcmod_maxim = {
                 name = '막심',
                 text = {
-                    {"그림 카드가 득점할 때마다 {C:blue}5{} 충전 획득",
-                    "(최대 {C:blue}100{} 충전).",},
-                    {"충전이 90 이상일 경우, 무대 종료 시",
-                    "{C:gold}$#2#{} 획득"},
-                    {"숫자 카드를 플레이하면, 카드의 숫자만큼",
-                    "충전을 소모하여 카드를 한 번 더 발동.",
+                    {"그림 카드가 득점할 때마다",
+                    "{C:blue}#4#{} 충전까지 {C:blue}#3#{} 충전 획득",},
+                    {"충전이 90 이상이면",
+                    "막 종료 시 {C:gold}$#2#{} 획득"},
+                    {"숫자 카드를 플레이하면,",
+                    "카드 랭크만큼 충전을 소모하여",
+                    "한 번 더 발동함",
                     "{C:inactive}현재 {C:blue}#1#{} 충전"}
+
                 },
                 unlock = {
                     '{C:attention}막심(찢어짐) 책장{}으로 최소',
@@ -387,7 +417,8 @@ return {
                 name = '인형사',
                 text = {
                     {"접대 시작 시, 무작위 책장을",
-                    "희귀도에 기반한 {C:red}인형{}으로 변환시킴.",},
+                    "희귀도에 기반한 {C:red}인형{}으로 변환시킴.",
+                    "희귀도에 따른 {C:red}인형{}으로 변환",},
                     {"인형은 5번 발동한 후 스스로 파괴됨.",
                     "인형이 어떤 방식으로든 파괴될 경우,",
                     "{C:mult}해당 인형 배수의 절반{}을 획득함.",
@@ -402,10 +433,11 @@ return {
                 name = '1번 수감자 이상',
                 text = {
                     {"사용한 {C:attention}고유한{} {C:planet}수감자{} 카드마다",
-                    "{X:mult,C:white}X#2#{} 배수 획득."},
+                    "{X:chips,C:white}X#2#{} 칩 획득"},
                     {"사용한 {C:planet}수감자{} 카드마다 추가로",
-                    "{X:mult,C:white}X#3#{} 배수 획득.",
-                    "{C:inactive}(현재 {X:mult,C:white} X#1# {C:inactive} 배수)"},
+                    "{X:chips,C:white}X#3#{} 칩 획득",
+                    "{C:inactive}(현재 {X:chips,C:white} X#1# {C:inactive} 칩)"},
+
                 },
                 unlock = {
                     '{C:attention}이스마엘의 책장{}으로 최소',
@@ -428,21 +460,22 @@ return {
             j_pmcmod_ryoshu = {
                 name = '4번 수감자 료슈',
                 text = {
-                    {"책장을 판매할 때마다 {X:mult, C:white}X#1#{} 배수 획득."},
+                    {"책장을 판매할 때마다",
+                    "{X:mult,C:white}X#1#{} 배수 획득"},
                     {"책장을 판매하면 남은 게임 동안",
                     "해당 책장이 더 이상 등장하지 않음.",
-                    "{C:inactive}(현재 {X:mult, C:white}X#2#{C:inactive} 배수)"}
+                    "{C:inactive}(현재 {X:mult,C:white}X#2#{C:inactive} 배수)"}
                 },
                 unlock = {
                     '{C:attention}료슈 책장{}으로 최소',
                     '{C:attention}도시 판돈{} 이상에서 승리 시 해금',
                 },
-            },            
+            },
             j_pmcmod_hongLu = {
                 name = '6번 수감자 홍루',
                 text = {
-                    "팀에 있는 각 수감자 책장에",
-                    "따라 보너스를 획득함."
+                    "팀에 있는 각 {C:planet}수감자 책장{}에",
+                    "따라 {C:attention}보너스{} 획득"
                 },
                 unlock = {
                     '{C:attention}홍루 책장{}으로 최소',
@@ -454,9 +487,10 @@ return {
                 text = {
                     {"매 무대 시작 시, 무작위",
                     "{C:dark_edition}네거티브{} 책장을 파괴함."},
-                    {"파괴한 {C:dark_edition}네거티브{} 책장 2장마다",
+                    {"{C:dark_edition}+#3#{} 책장 슬롯 획득",
                     "{C:dark_edition}+1{} 책장 슬롯 획득."},
                     {"{C:inactive}(현재 {C:dark_edition}+#2#{C:inactive} 책장 슬롯)",}
+
                 },
                 unlock = {
                     '{C:attention}히스클리프의 책장{}으로 최소',
@@ -466,14 +500,15 @@ return {
             j_pmcmod_ishmael = {
                 name = '8번 수감자 이스마엘',
                 text = {
-                    {"득점한 모든 카드에서 백화를 제거할 확률이",
-                    "{C:green}#4# / #5#{} 존재함.",
-                    "제거한 백화 하나당 {C:mult}+10{} 배수 획득."},
+                    {"{C:green}#4# / #5#{} 확률로",
+                    "득점한 카드에서 백화를 제거",
+                    "제거한 백화마다 {C:mult}+#3#{} 배수 획득"},
                     {"더 이상 백화 카드가 없고 에이해브가 존재한다면,",
                     "접대 종료 시 {C:red}에이해브를 파괴{}하고",
                     "{X:mult,C:white}X3{} 배수 획득.",
                     "{C:inactive}현재 {C:mult}+#2#{} 배수",
                     "{C:inactive}(현재 {X:mult,C:white} X#1# {C:inactive} 배수)"},
+
                 },
                 unlock = {
                     '{C:attention}이스마엘 책장{}으로 최소',
@@ -496,16 +531,17 @@ return {
                 name = '미셸',
                 text = {
                     {"{C:attention}접대{} 중 다른 {C:attention}책장{}을 판매하면",
-                    "해당 접대가 무효화됨.",
+                    "해당 {C:attention}접대{}의 효과가 무효화됨",
 			        "이 방식으로 무효화된 접대마다",
-                    "{X:mult,C:white}X#1#{} 배수 획득."},
+                    "{X:chips,C:white}X#1#{} 칩 획득"},
                     {"접대 중에 무효화되지 않았다면,",
                     "득점한 카드당 {C:gold}$4{}를 잃음."},
-                    {"접대가 {C:attention}2번{} 이상 무효화되거나,",
-                    "보유한 돈이 0 이하가 되면 {C:red}폭주가 발생함{}."},
+                    {"무효화된 접대가",
+                    "{C:attention}2번{}을 넘거나 보유 돈이 {C:red}$0{} 이하라면,",
+                    "{C:red}폭주가 발생함{}"},
                     {"이 책장이 4번의 무대를 생존하면",
                     "{C:attention}다시 한 번 기회를 얻음.",
-                    "{C:inactive}(현재 {X:mult,C:white} X#2# {C:inactive} 배수)",
+                    "{C:inactive}(현재 {X:chips,C:white} X#2# {C:inactive} 칩)",
                     "{C:inactive}({C:red}#3#{C:inactive} 무대 생존)"},
                 },
                 unlock = {
@@ -533,8 +569,8 @@ return {
             j_pmcmod_giovanni = {
                 name = '지오반니',
                 text = {
-                    {"매 무대 종료 시 {C:mult}+7 배수{}와",
-                    "{C:chips}+10 칩{} 획득."},
+                    {"매 무대 종료 시 {C:mult}+#6#{} 배수와 {C:chips}+#7#{} 칩 획득",
+                    "매 무대 종료 시"},
                     {"매 무대마다 {C:attention}#1#개의 소모품{} 사용을 요구함.",
                     "요구하는 소모품 사용량은 라운드마다 증가함."},
                     {"접대 승리 후 소모품 요구량을",
@@ -554,18 +590,15 @@ return {
             j_pmcmod_gabriel = {
                 name = '가브리엘',
                 text = {
-                    {"득점한 {C:hearts}하트{}와 {C:diamonds}다이아몬드{} 카드마다 {C:mult}+1{} 배수 획득.",
-                    "득점한 {C:spades}스페이드{} 또는 {C:clubs}클로버{} 카드마다 {C:chips}+3{} 칩 획득."},
-                    {"{C:spades}스페이드{}/{C:clubs}클로버{}와 {C:hearts}하트{}/{C:diamonds}다이아몬드{} 카드의",
-                    "수량 차이가 6을 넘어가면, {C:red}폭주가 발생함{}."},
+                    {"득점한 {C:hearts}하트{} 또는 {C:diamonds}다이아몬드{}마다 {C:mult}+1{} 배수 획득",
+                    "득점한 {C:spades}스페이드{} 또는 {C:clubs}클로버{}마다 {C:chips}+3{} 칩 획득"},
+                    {"{C:spades}스페이드{}/{C:clubs}클로버{}와",
+                    "{C:hearts}하트{}/{C:diamonds}다이아몬드{} 수 차이가 6을 넘으면 {C:red}폭주가 발생함{}"},
                     {"이 책장이 4번의 무대를 생존하면",
                     "{C:attention}다시 한 번 기회를 얻음.",
-                    "{C:inactive}(총 {C:hearts}하트{}: #3#)",
-                    "{C:inactive}(총 {C:diamonds}다이아몬드{}: #4#)",
-                    "{C:inactive}(총 {C:spades}스페이드{}: #1#)",
-                    "{C:inactive}(총 {C:clubs}클로버{}: #2#)",
-                    "{C:inactive}(현재 {C:mult}+#5#{C:inactive} 배수)",
-                    "{C:inactive}(현재 {C:chips}+#6#{C:inactive} 칩)",
+                    "{C:inactive}(총 {C:hearts}하트{}: #3# / {C:diamonds}다이아몬드{}: #4#)",
+                    "{C:inactive}(총 {C:spades}스페이드{}: #1# / {C:clubs}클로버{}: #2#)",
+                    "{C:inactive}(현재 {C:mult}+#5#{} / {C:chips}+#6# 칩{}{C:inactive} 배수)",
                     "{C:inactive}({C:red}#7#{C:inactive} 무대 생존)"},
                 },
                 unlock = {
@@ -576,16 +609,16 @@ return {
             j_pmcmod_daniel = {
                 name = '다니엘',
                 text = {
-                    {"{X:mult,C:white}X2{} 배수로 시작.",
+                    {"{X:chips,C:white}X2{} 칩으로 시작",
                     "카드가 득점할 때마다",
-                    "배수가 {X:mult,C:white}X#2#{} 증가함.",
+                    "칩이 {X:chips,C:white}X#2#{} 증가",
                     "카드를 버릴 때마다",
-                    "배수가 {X:mult,C:white}X#2#{} 감소함."},
-                    {"배수가 {X:mult,C:white}X1{}에 도달하면,",
+                    "칩이 {X:chips,C:white}X#2#{} 감소"},
+                    {"칩이 {X:chips,C:white}X1{}에 도달하면,",
                     "{C:red}폭주가 발생함{}."},
                     {"이 책장이 4번의 무대를 생존하면",
                     "{C:attention}다시 한 번 기회를 얻음.",
-                    "{C:inactive}(현재 {X:mult,C:white}X#1#{C:inactive} 배수)",
+                    "{C:inactive}(현재 {X:chips,C:white}X#1#{C:inactive} 칩)",
                     "{C:inactive}({C:red}#3#{C:inactive} 무대 생존)"},
                 },
                 unlock = {
@@ -616,7 +649,7 @@ return {
                     {"사용한 고유 타로 또는 환영 카드 하나당",
                     "{X:mult,C:white}X#4#{} 배수 획득."},
                     {"경과 시간을 계산함.",
-                    "타이머가 {C:red}666{}초에 도달하면,",
+                    "타이머가 {C:red}#6#{}초에 도달하면,",
                     "{C:red}폭주가 발생함{}."},
                     {"이 책장이 4번의 무대를 생존하면",
                     "{C:attention}다시 한 번 기회를 얻음.",
@@ -637,7 +670,8 @@ return {
                     "파괴된 카드당 {X:mult,C:white}X#2#{} 배수 획득."},
                     {"현재 덱에 있는 카드 수가",
                     "원래 카드 수의 절반 미만이 되면,",
-                    "{C:red}폭주가 발생함{}."},
+                    "{C:red}폭주가 발생함{}.",
+                    "{C:red}폭주가 발생함{}"},
                     {"이 책장이 4번의 무대를 생존하면",
                     "{C:attention}다시 한 번 기회를 얻음.",
                     "{C:inactive}(현재 {X:mult,C:white}X#1#{C:inactive} 배수)",
@@ -661,6 +695,7 @@ return {
                     "{C:attention}다시 한 번 기회를 얻음.",
                     "{C:inactive}(에녹의 죽음을 목격한 횟수: {C:mult}#1#{C:inactive} 번)",
                     "{C:inactive}({C:red}#4#{C:inactive} 무대 생존)"},
+                    
                 },
                 unlock = {
                     '{C:attention}L사 덱{}으로 최소',
@@ -686,7 +721,8 @@ return {
                     {"{C:attention}첫 번째로 플레이한 핸드{}에서",
                     "득점한 카드들의 강화 효과를 무작위로 변경."},
                     {"또한 {C:green}#1# / #2#{} 확률로 무작위 {C:attention}인장{}을 부여하고,",
-                    "{C:green}#1# / #3#{} 확률로 무작위 {C:dark_edition}에디션{}을 부여함."},
+                    "{C:green}#1# / #3#{} 확률로 무작위 {C:dark_edition}에디션{}을 부여함.",
+                    "{C:dark_edition}에디션{}을 부여할 확률도 있음"},
                 },
                 unlock = {
                     '{C:attention}K사 덱{}으로 최소',
@@ -697,10 +733,12 @@ return {
                 name = '구보',
                 text = {
                     {"{C:attention}접대 시작 시{},",
-                    "{C:green}#4# / #5#{} 확률로 무작위 {C:attention}책장{}을 조준함."},
-                    {"구보는 접대가 끝날 때 조준된 책장에 사격을 가함."},
+                    "{C:green}#4# / #5#{} 확률로 무작위 {C:attention}책장{}을 조준함.",
+                    "무작위 {C:attention}책장{}을 조준함"},
+                    {"구보는 접대가 끝날 때 조준된 책장에 사격을 가함.",
+                    "접대 종료 시 해당 책장을"},
                     {"해당 책장이 {C:green}보급{} 등급이거나",
-                    "{C:blue}고급{} 등급인 경우, 희귀도에 따라",
+			        "{C:blue}고급{} 등급인 경우, 희귀도에 따라",
                     "{C:mult}+#2#{} 또는 {C:mult}+#3#{} 배수를 획득.",
                     "만약 책장이 {C:red}수감자{}의 책장이라면 수치가 두 배가 됨.",
                     "{C:inactive}(현재 {C:mult}+#1#{C:inactive} 배수)",
@@ -745,7 +783,7 @@ return {
                 text = {
                     "판매한 {C:planet}수감자{} 카드마다",
                     "{C:mult}+#2#{} 배수 획득",
-                    "{C:inactive}(현재 {C:mult}+#1#{C:inactive} 배수)",
+			        "{C:inactive}(현재 {C:mult}+#1#{C:inactive} 배수)",
                 },
                 unlock = {
                     '{C:attention}뱀 덱{}으로 최소',
@@ -832,7 +870,7 @@ return {
                 name = '산손',
                 text = {
                     "카드 한 장이 항상 선택되도록 강제함",
-                    "플레이한 {C:attention}족보 기본 가치{}를 3배로 증가",
+                    "플레이한 {C:attention}족보 기본 가치{}를 {C:red}#1#{}배로 증가",
                 }
             },
             j_pmcmod_effie = {
@@ -1021,18 +1059,19 @@ return {
                 name = '란',
                 text = {
                     {"이 책장은 {C:chips}+#2#{} 칩으로 시작함",
-                    "강화된 책장당 {C:chips}+24{} 칩,",
-                    "강화된 카드당 {C:chips}-5{} 칩을 잃음."},
-                    {"칩이 0 이하가 될 경우,",
-                    "다음에 핸드를 플레이할 때 이 책장이 파괴됨",
-                    "{C:inactive}(현재 {C:chips}+#1#{C:inactive} 칩)"},
+			        "강화된 책장당 {C:chips}+24{} 칩,",
+			        "강화된 카드당 {C:chips}-5{} 칩을 잃음."},
+			        {"칩이 0 이하가 될 경우,",
+			        "다음에 핸드를 플레이할 때 이 책장이 파괴됨",
+			        "{C:inactive}(현재 {C:chips}+#1#{C:inactive} 칩)"},
                 },
             },
             j_pmcmod_niko = {
                 name = '니코',
                 text = {
-                    "핸드를 플레이한 후, 패에 있는 카드 수의",
-                    "{C:attention}3배{}에 해당하는 {C:mult}배수{}를 추가함"
+                    "{C:attention}+#2# 핸드 크기{}",
+                    "핸드를 플레이한 후 패에 있는 카드 수의",
+			        "{C:attention}3배{}에 해당하는 {C:mult}배수{}를 추가함",
                 },
             },
             j_pmcmod_ahab = {
@@ -1058,7 +1097,7 @@ return {
             j_pmcmod_queequeg = {
                 name = '퀴케그',
                 text = {
-                    "이제 백화 카드가 {C:gold}$1{}를 제공함",
+                    "이제 백화 카드가 {C:gold}$#1#{}를 제공함",
                 },
                 unlock = {
                     '{C:attention}에이해브 책장{}으로 승리 시 해금',
@@ -1067,7 +1106,7 @@ return {
             j_pmcmod_queequeg_alt = {
                 name = '피쿼드호 작살잡이 퀴케그',
                 text = {
-                    "이제 백화 카드가 {C:gold}$1{}를 제공함",
+                    "이제 백화 카드가 {C:gold}$#1#{}를 제공함",
                 },
                 unlock = {
                     '{C:attention}에이해브 책장{}으로 승리 시 해금',
@@ -1112,7 +1151,7 @@ return {
             j_pmcmod_pip_alt = {
                 name = '피쿼드호 선원 핍',
                 text = {
-                    "이제 백화 카드가 {C:chips}+10{} 칩을 제공함",
+                    "이제 백화 카드가 {C:chips}+#1#{} 칩을 제공함",
                 },
                 unlock = {
                     '{C:attention}에이해브 책장{}으로 승리 시 해금',
@@ -1137,10 +1176,11 @@ return {
                 text = {
                     {"{C:mult}+#2#{} 배수로 시작"},
                     {"이 카드가 파괴된 후, {C:attention}상점{} 종료 시",
-                    "다시 돌아오며 {C:mult}+#3#{} 배수를 획득함"},
-                    {"{C:attention}헤어 쿠폰{}을 사용했다면 {X:mult,C:white}X2{} 배수 획득",
-                    "{C:inactive}(현재 {C:mult}+#1#{C:inactive} 배수)",
-                    "{C:inactive}(현재 {X:mult,C:white}X#4#{C:inactive} 배수)"},
+                    "다시 돌아오며 {C:mult}+#3#{} 배수를 획득함",
+                    "{C:attention}헤어 쿠폰{}을 사용했다면 {X:mult,C:white}X2{} 배수 획득"},
+                    {"{C:inactive}(현재 {C:mult}+#1#{C:inactive} 배수)",
+                    "{C:inactive}(현재 {X:mult,C:white}X#4#{C:inactive} 배수)",
+                    ""},
                 },
                 unlock = {
                     '{C:attention}스미 책장{}으로 승리 시 해금',
@@ -1149,19 +1189,12 @@ return {
             j_pmcmod_indigoElder = {
                 name = '쪽빛노인',
                 text = {
-                    {"이 책장이 놓인 위치에 따라 효과를 얻음",
-                    "(라운드 시작 시 선택됨):",
-                    "2   -> 막이 끝날 때 {C:gold}돈{} 획득",
-                    "3   -> {C:chips}칩{} 획득",
-                    "4   -> 득점한 카드당 {C:mult}+배수{} 획득",
-                    "5   -> {X:mult,C:white}X배수{} 획득"},
-                    {"막을 클리어할 때, 현재 위치가 아닌",
-                    "다른 모든 위치의 보너스가 증가함."},
-                    {"1번 위치에 두면 {C:attention}모든 효과가 적용되지만,{}",
-                    "{C:red}보너스가 증가하지 않음.{}",
+                    {"막 시작 시 이 책장의 위치에 따라 효과 획득:",
+                    "2 = {C:gold}${} / 3 = {C:chips}칩{} / 4 = {C:mult}배수{} / 5 = {X:chips,C:white}X칩{}",},
+                    {"막 클리어 시 다른 위치의 보너스가 증가"},
+                    {"1번 위치면 {C:attention}모든 효과가 적용되지만{} {C:red}보너스는 증가하지 않음{}",
                     "{C:inactive}(현재 위치: {C:red}#5#{})",
-                    "{C:inactive}(현재 {C:gold}$#1#{}) {C:inactive}(현재 {C:chips}+#2#{} 칩)",
-                    "{C:inactive}(현재 {C:mult}#3#{} 배수) {C:inactive}(현재 {X:mult,C:white}X#4#{} 배수)"},
+                    "{C:inactive}(현재 {C:gold}$#1#{} / {C:chips}+#2#{} 칩 / {C:mult}+#3#{} 배수 / {X:chips,C:white}X#4#{} 칩",},
                 },
             },
             j_pmcmod_catherine = {
@@ -1305,16 +1338,17 @@ return {
             j_pmcmod_crayon = {
                 name = '크레용',
                 text = {
-                    "매 전투 시작 시 {C:green}#1# / #2#{} 확률로",
-                    "무작위 {C:attention}소모품{} 생성",
-                    "{C:inactive}(슬롯에 여유 공간이 있어야 함)"
+                    {"{c:green}#1# / #2#{} 확률로",
+                    "매 접대 시작 시 무작위",
+                    "{C:attention}소모품{} 생성 {C:inactive}(공간 필요)"},
+                    {"효과가 발동하지 않았다면,",
+                    "다음 확률은 {C:attention}확정{}"}
                 }
             },
             j_pmcmod_domino = {
                 name = '도미노',
                 text = {
-                    "매 접대 종료 시 {C:green}#2# / #3#{} 확률로",
-                    "{C:attention}쿠폰 태그{} 생성"
+                    "매 접대 종료 시 {C:attention}쿠폰 태그{} 생성"
                 }
             },
             j_pmcmod_dadQuixote = {
@@ -1334,7 +1368,8 @@ return {
                 text = {
                     "{C:green}#2# / #3#{} 확률로 {C:hearts}하트{} 카드를",
                     "다시 한 번 발동함.",
-                    "카드에 {C:red}출혈{}이 있다면 항상 다시 발동함."
+                    "카드에 {C:red}출혈{}이 있다면 항상 다시 발동함.",
+                    "항상 다시 발동함"
                 },
                 unlock = {
                     '{C:attention}돈키호테 책장{}으로 최소',
@@ -1410,8 +1445,11 @@ return {
                     "지 1개 -> {C:chips}1{} 칩",
                     "용 5개 -> 막이 끝날 때 {C:gold}$1{}",
                     "인 1개 -> {C:mult}+1{} 배수"},
-                    {"최대 50 스택까지 보유 가능. 다이아몬드 문양은 모든 스택을 1 감소시킴.",
-                    "{C:inactive}(지: {C:chips}#1#{C:inactive}) {C:inactive}(용: {C:gold}#1#{C:inactive}) {C:inactive}(인: {C:mult}#1#{C:inactive})"},
+                    {"최대 50 스택까지 보유 가능",
+                    "득점한 {C:diamonds}다이아몬드{]}는 모든 스택을 1 감소시킴",
+                    "{C:inactive}(지: {C:chips}#1#{C:inactive})",
+                    "{C:inactive}(용: {C:gold}#1#{C:inactive})",
+                    "{C:inactive}(인: {C:mult}#1#{C:inactive})"},
                 }
             },
             j_pmcmod_hugo = {
@@ -1425,7 +1463,8 @@ return {
                 name = '카미유',
                 text = {
                     "매 전투 시작 시, 현재 보유한 돈의",
-                    "{C:attention}5%{}를 차감하고 그 수치를 {C:mult}배수{}에 추가함",
+                    "{C:attention}#2#%{}를 차감하고",
+                    "그 수치를 {C:mult}배수{}에 추가함",
                     "{C:inactive}(현재 {C:mult}+#1#{C:inactive} 배수)",
                 },
                 unlock = {
@@ -1496,7 +1535,8 @@ return {
                 text = {
                     "막 시작 시 무작위 책장을 비활성화시킴.",
                     "비활성화된 카드의 희귀도에 따라",
-                    "{X:red,C:white}X2{}에서 {X:red,C:white}X3{} 배수 제공."
+                    "{X:red,C:white}X2{}에서 {X:red,C:white}X3{} 배수 제공.",
+                    "무효화한 카드의 희귀도에 따라"
 
                 },
                 unlock = {
@@ -1506,8 +1546,12 @@ return {
             j_pmcmod_bumble = {
                 name = '범블',
                 text = {
-                    "이자 획득 상한이 {C:gold}$60{} 증가.",
-                    "플레이한 카드마다 {C:gold}$1{} 잃음."
+                    {"접대 종료 시 무작위 책장을",
+                    "{C:attention}대여{} 책장으로 변경"},
+                    {"대여 책장이 잃은 가치를 {C:attention}집계{}함"},
+                    {"이 책장을 판매하면 집계한 가치를",
+                    "{C:attention}50% 이자{}와 함께 돌려받음",
+                    "{C:inactive}(현재 저장: {C:gold}$#1#{C:inactive})",}
                 },
                 unlock = {
                     '한 게임에서 {C:gold}$200{} 이상 획득',
@@ -1545,7 +1589,6 @@ return {
                 unlock = {
                     '덱에 {C:red}출혈 카드{} 3장 이상 보유',
                 },
-                
             },
             j_pmcmod_hohenheim = {
                 name = '호엔하임',
@@ -1553,7 +1596,8 @@ return {
                     {"이 책장을 얻은 후 파괴된",
                     "모든 책장의 이름을 수집함",},
                     {"전투 종료 시, 무작위 책장을",
-                    "소멸성 및 네거티브 상태로 부활시킴"}
+                    "소멸성 및 네거티브 상태로 부활시킴",
+                    "{C:dark_edition}소멸성{} 및 {C:dark_edition}네거티브{}와 함께"}
                 }
             },
             j_pmcmod_alyssa = {
@@ -1621,7 +1665,8 @@ return {
                 name = '캣',
                 text = {
                     {"{C:attention}일반 전투{} 또는 {C:attention}정예 전투{}에서,",
-                    "패배할 위기에 처하면 무작위 {C:attention}#1# 책장{}을 파괴하고 승리함."},
+                    "패배할 위기에 처하면 무작위",
+                    "{C:attention}#1# 책장{}을 파괴하고 승리함"},
                     {"발동할 때마다 요구되는 희귀도가 올라감.",
                     "막마다 한 번만 발동할 수 있음."}
                 },
@@ -1647,7 +1692,7 @@ return {
                     {"{X:mult,C:white}X#1#{} 배수"},
                     {"{C:green}#3# / #4#{} 확률로 대신",
                     "{X:mult,C:white}X#2#{} 배수를 제공함.",
-                    "{C:inactive}이 책장은 숨겨진 상호작용이 있음."}
+                    "{C:inactive}이 책장은 숨겨진 상호작용이 있음.",}
                 },
                 unlock = {
                     '한 번의 핸드로',
@@ -1758,7 +1803,7 @@ return {
             j_pmcmod_jiaHuanChild = {
                 name = '어린 가환',
                 text = {
-                    "판매 시 {C:blue}고급{} 책장 획득"
+                    "판매 시 {C:blue}고급{} 책장 획득",
                 }
             },
             j_pmcmod_xuePan = {
@@ -1811,6 +1856,7 @@ return {
                     "덱에 있는 {C:diamonds}다이아몬드{} 카드",
                     "1장당 {C:chips}+#1#{} 칩 획득.",
                     "{C:inactive}(현재 {C:chips}+#2#{C:inactive} 칩)"
+
                 }
             },
             j_pmcmod_shiHuazhen = {
@@ -1920,7 +1966,7 @@ return {
                     {"{C:attention}추가 효과: {}오른쪽에 소라가 있다면, 이 수치를 2배로 얻음.",
                     "이 효과가 3번 발동하면 소라는 사망함.",
                     "{C:inactive}(총 발동 횟수: {C:red}#2#{C:inactive})",
-                    "{C:inactive}(현재 {C:mult}+#1#{C:inactive} 배수)"}
+                    "{C:inactive}(현재 {C:mult}+#1#{C:inactive} 배수)"},
                 },
                 unlock = {
                     '{C:attention}료슈 책장{}으로 최소',
@@ -1978,7 +2024,8 @@ return {
                 text = {
                     {"득점한 진동 카드가 {C:gold}$#2#{} 제공"},
                     {"{C:attention}추가 효과: {}오른쪽에 발렌치나가 있다면,",
-                    "진동 카드가 {C:gold}$#3#{} 제공. 진동 카드 3번 발동 시 사망.",
+                    "진동 카드가 {C:gold}$#3#{} 제공.",
+                    "루치오는 진동 카드 3번 발동 후 사망",
                     "{C:inactive}(총 발동 횟수: {C:red}#1#{C:inactive})"},
                 },
                 unlock = {
@@ -2048,8 +2095,9 @@ return {
                 name = '라비',
                 text = {
                     "이 카드가 파괴될 위기에 처하면, 죽은 척하며",
-                    "대신 자신에게 디버프를 걺. 이때 {C:chips}+#2#{} 칩 획득.",
-                    "{C:green}#3# / #4#{} 확률로 죽은 척하기에 실패함.",
+                    "대신 자신에게 디버프를 걺",
+                    "이때 {C:chips}+#2#{} 칩 획득",
+                    "{C:green}#3# / #4#{} 확률로 실패함",
                     "{C:inactive}(현재 {C:chips}+#1#{C:inactive} 칩)",
                 }
             },
@@ -2067,7 +2115,7 @@ return {
                     "{C:inactive}(현재 {C:mult}+#2#{C:inactive} 배수)",
                 },
                 unlock = {
-                    '한 게임에서{C:attention}에고 기프트{} 5개 이상 획득',
+                    '한 게임에서{C:attention}에고 기프트{} 5개 이상 획득'
                 },
             },
             j_pmcmod_aCertainSinclair = {
@@ -2077,8 +2125,9 @@ return {
                     "그 횟수만큼 {C:attention}오른쪽에 있는 책장{}을 재발동함."
                 },
                 unlock = {
-                    '{C:attention}칼리스토{} 및 {C:attention}알비나 책장{}으로',
-                    '승리 시 해금 (같은 게임일 필요 없음)'
+                    "{C:attention}칼리스토{} 및 {C:attention}알비나 책장{}으로",
+                    "승리 시 해금 (같은 게임일 필요 없음)",
+                    "(같은 게임일 필요 없음)"
                 },
             },
             j_pmcmod_arayaKid = {
@@ -2093,7 +2142,8 @@ return {
                     "{C:inactive}돈 사용: {C:gold}#4#{}"}
                 },
                 unlock = {
-                    '{C:attention}4번 수감자 료슈 책장{}으로 승리 시 해금'
+                    "{C:attention}4번 수감자 료슈 책장{}으로 승리 시 해금",
+                    "{C:attention}4번 수감자 료슈 책장{}"
                 },
             },
             j_pmcmod_arayaTeen = {
@@ -2134,7 +2184,39 @@ return {
                     "{C:inactive}카드 버림: {C:mult}#3#{}",
                     "{C:inactive}돈 사용: {C:gold}#4#{}"}
                 }
-            },            
+            },
+            j_pmcmod_emile = {
+                name = '에밀 브누아',
+                text = {
+                    "처음 득점한 핸드가",
+                    "{C:attention}와일드 카드 1장{}뿐이라면,",
+                    "{C:attention}칠해진 카드{}로 변경함",
+                }
+            },
+            j_pmcmod_rufo = {
+                name = '루포',
+                text = {
+                    "각 {C:attention}막 종료 시{}",
+                    "덱의 무작위 카드 1장에",
+                    "무작위 {C:blue}강화{}를 부여함."
+                }
+            },
+            j_pmcmod_alan = {
+                name = '알란',
+                text = {
+                    {"{C:attention}막 시작 시{}, 무작위 위치와",
+                    "무작위 책장을 선택함"},
+                    {"선택된 책장이 선택된 위치에",
+                    "5핸드 동안 있으면 무작위 {C:dark_edition}에디션{} 부여"},
+                    {"책장이 잘못된 위치에 있는 동안",
+                    "핸드를 플레이하면 그 책장을 {C:red}파괴{}"},
+                    {"한 번에 하나의 책장과 위치만 선택됨",
+                    "{C:attention}강화할 책장이 더 없으면 스스로 파괴됨{}",
+                    "{C:inactive}(위치: {C:attention}#1#{C:inactive})",
+                    "{C:inactive}(책장: {C:blue}#2#{C:inactive})",
+                    "{C:inactive}(카운터: {C:red}#3#{C:inactive})"}
+                }
+            },
             j_pmcmod_vermillionCross = {
                 name = '주홍십자',
                 text = {
@@ -2144,18 +2226,18 @@ return {
             j_pmcmod_yellowHarpoon = {
                 name = '노란작살',
                 text = {
-                    "각 책장마다 희귀도에 따라 {X:mult,C:white}X#1#{}에서",
-                    "{X:mult,C:white}X#2#{} 사이의 배수를 제공함."
+                    "각 책장마다 희귀도에 따라 {X:chips,C:white}X#1#{}에서",
+                    "{X:chips,C:white}X#2#{} 사이의 칩 제공"
                 }
-            },            
+            },
             j_pmcmod_sephirahHod = {
                 name = '세피라 호드',
                 text = {
                     {"{C:attention}접대{} 중 다른 {C:attention}책장{}을 판매하면",
-                    "해당 접대가 무효화됨."},
-                    {"이 방식으로 무효화된 접대마다",
-                    "{X:mult,C:white} X#1#{} 배수 획득",
-                    "{C:inactive}(현재 {X:mult,C:white}X#2# {C:inactive}배수)"},
+                    "해당 {C:attention}접대{}의 효과가 무효화됨"},
+			        {"이 방식으로 무효화된 접대마다",
+                    "{X:chips,C:white} X#1# {} 칩 획득",
+                    "{C:inactive}(현재 {X:chips,C:white} X#2# {C:inactive} 칩)"},
                 },
             },
             j_pmcmod_sephirahMalkuth = {
@@ -2169,11 +2251,12 @@ return {
             j_pmcmod_sephirahNetzach = {
                 name = '세피라 네짜흐',
                 text = {
-                    "해당 막에서 사용한 {C:attention}소모품{}마다",
-                    "매 막 종료 시 {C:mult}+3 배수{}와 {C:chips}+5 칩{} 획득.",
+                    "이번 무대에서 사용한 {C:attention}소모품{}마다",
+                    "매 무대 종료 시 {C:mult}+3{} 배수와 {C:chips}+5{} 칩 획득",
+                    "이번 무대 중 사용됨",
                     "{C:inactive}(현재 {C:mult}+#1#{C:inactive} 배수)",
                     "{C:inactive}(현재 {C:chips}+#2#{C:inactive} 칩)",
-                    "{C:inactive}(현재 사용된 소모품: {C:chips}#3#{C:inactive})",
+                    "{C:inactive}(현재 사용한 소모품: {C:attention}#3#{C:inactive})",
                 },
             },
             j_pmcmod_sephirahYesod = {
@@ -2188,10 +2271,11 @@ return {
             j_pmcmod_sephirahChesed = {
                 name = '세피라 헤세드',
                 text = {
-                    {"{X:mult,C:white}X2{} 배수로 시작"},
+                    {"{X:chips,C:white}X2{} 칩으로 시작"},
                     {"카드가 득점할 때마다 {C:green}#3# / #4#{} 확률로",
-                    "배수가 {X:mult,C:white}X#2#{} 증가함.",
-                    "{C:inactive}(현재 {X:mult,C:white}X#1#{C:inactive} 배수)"},
+                    "칩이 {X:chips,C:white}X#2#{} 증가",
+                    "{C:inactive}(현재 {X:chips,C:white}X#1#{C:inactive} 칩)",
+                    ""},
                 },
             },
             j_pmcmod_sephirahGebura = {
@@ -2274,11 +2358,11 @@ return {
             j_pmcmod_robotChesed = {
                 name = '헤세드 (기계)',
                 text = {
-                    {"{X:mult,C:white}X#4#{} 배수로 시작"},
+                    {"{X:chips,C:white}X#4#{} 칩으로 시작"},
                     {"카드가 득점할 때마다 {C:green}#1# / #2#{} 확률로",
-                    "배수가 0.1 증가함."},
+                    "칩이 {X:chips, C:white}X0.1{} 증가"},
                     {"플레이한 카드에서 강화 효과를 제거함"},
-                    {"{C:inactive}(현재 {X:mult,C:white}X#3#{C:inactive} 배수)"},
+                    {"{C:inactive}(현재 {X:chips,C:white}X#3#{C:inactive} 칩)"},
                 },
             },
             j_pmcmod_robotGebura = {
@@ -2357,8 +2441,12 @@ return {
             j_pmcmod_laetitia = {
                 name = "선물이야~",
                 text = {
-                    "{C:green}#2# / #3#{} 확률로 덱의",
-                    "카드에 {C:attention}선물{}을 부여함.",
+                    {"{C:green}#2# / #3#{} 확률로",
+                    "덱의 카드에 {C:attention}선물{} 부여"},
+                    {"접대 종료 시 선물이 없다면",
+                    "{C:attention}표준{}, {C:tarot}참{}, {C:planet}메테오{},",
+                    "{C:joker}광대{} 태그를 각각 1개씩 획득",
+                    "그 외에는 사용하지 않은 선물 인장마다 {C:gold}$10{} 손실"}
                 },
             },
             j_pmcmod_childrenOfTheGalaxy = {
@@ -2451,11 +2539,26 @@ return {
                     "기기기기기{C:red}+#1#{}배수기기기긱",
                 },
             },
+            j_pmcmod_bloodfiend = {
+                name = "혈귀",
+                text = {
+                    "목마름",
+                    "{C:mult}+#1#{} 배수",
+                },
+            },
+            j_pmcmod_heretic = {
+                name = "이단",
+                text = {
+                    "정화되어야 함",
+                    "{C:chips}+#1#{} 칩",
+                },
+            },
             j_pmcmod_voiceOfTheCity = {
                 name = '도시의 의지',
                 text = {
                     {"첫 막 이후,",
-                    "다음 상점에서 {C:blue}지령{}을 생성함"},
+                    "다음 상점에서 {C:blue}지령{}을 생성함",
+                    "다음 상점에서"},
                     {"{C:blue}지령{}을 완수하면 {C:gold}$15{}를 얻음",
                     "{C:blue}지령{} 완수에 실패하면 돈이 {C:red}$0{}가 됨"}
                 },
@@ -2463,92 +2566,188 @@ return {
             j_pmcmod_prescript1 = {
                 name = '지령',
                 text = {
-                    {"단일 핸드에서 5장의 그림 카드를 {C:red}버리기{}"},
-                    {"지령 완수: {c:green}#1#{}"}
+                    "단일 핸드에서 5장의 그림 카드를 {C:red}버리기{}",
+                    
                 },
             },
             j_pmcmod_prescript2 = {
                 name = '지령',
                 text = {
-                    {"{C:red}#2#{} 책장을 판매하기"},
-                    {"지령 완수: {c:green}#1#{}"}
+                    "{C:red}#2#{} 책장을 판매하기",
+                    
                 },
             },
             j_pmcmod_prescript3 = {
                 name = '지령',
                 text = {
-                    {"{C:attention}#2#{} 카드를 플레이하지 않기"},
-                    {"지령 실패: {c:red}#3#{}"}
+                    "{C:attention}#2#{} 카드를 플레이하지 않기",
+                    
                 },
             },
             j_pmcmod_prescript4 = {
                 name = '지령',
                 text = {
-                    {"{C:attention}게임 속도{}를 1로 설정하여 1막 완료하기"},
-                    {"지령 완수: {c:green}#1#{}"}
+                    "{C:attention}게임 속도{}를 1로 설정하여 1막 완료하기",
+                    
                 },
             },
             j_pmcmod_prescript5 = {
                 name = '지령',
                 text = {
                     "{C:red}버리기{}를 사용하지 않기",
+                    
                 },
             },
             j_pmcmod_prescript6 = {
                 name = '지령',
                 text = {
-                    {"{C:attention}부스터 팩{} 3개를 열고 건너뛰기"},
-                    {"건너뛴 팩: {c:attention}#2#{}"}
+                    "{C:attention}부스터 팩{} 3개를 열고 건너뛰기",
+                    "건너뛴 팩: {c:attention}#2#{}"
+
                 },
             },
             j_pmcmod_prescript7 = {
                 name = '지령',
                 text = {
-                    {"최소 {C:blue}고급{} 희귀도 이상의 책장 판매하기"},
-                    {"지령 완수: {c:green}#1#{}"}
+                    "최소 {C:blue}고급{} 희귀도 이상의 책장 판매하기",
+                    
                 },
             },
             j_pmcmod_prescript8 = {
                 name = '지령',
                 text = {
                     "{C:blue}마지막 핸드{}로 막 승리하기",
+
                 },
             },
             j_pmcmod_prescript9 = {
                 name = '지령',
                 text = {
                     "{C:red}접대{} 능력 발동시키기",
+
                 },
             },
             j_pmcmod_prescript10 = {
                 name = '지령',
                 text = {
                     "{C:attention}소모품 3개{} 사용하기",
+
                 },
             },
             j_pmcmod_prescript11 = {
                 name = '지령',
                 text = {
-                    {"e의 첫 5자리 숫자 플레이하기"},
-                    {"지령 완수: {c:green}#1#{}"}
+                    "e의 첫 5자리 숫자 플레이하기",
+                    
                 },
             },
         },
         Other={
+            hongLu_yiSangEffect={
+                name="이상",
+                text={
+                    "{C;green}1 / 2{} 확률로",
+                    "첫 번째 득점 카드를 다시 발동",
+                },
+            },
+            hongLu_faustEffect={
+                name="파우스트",
+                text={
+                    "{C;green}1 / 4{} 확률로",
+                    "마지막 득점 카드를 다시 발동",
+                },
+            },
+            hongLu_donQuixoteEffect={
+                name="돈키호테",
+                text={
+                    "득점 카드에 {C:mult}+1{} 영구 배수",
+                    "추가",
+                },
+            },
+            hongLu_ryoshuEffect={
+                name="료슈",
+                text={
+                    "득점 카드가",
+                    "{X:mult,C:white}X1.1{} 배수 제공",
+                },
+            },
+            hongLu_meursaultEffect={
+                name="뫼르소",
+                text={
+                    "득점 카드에 {C:chips}+2{} 영구 칩",
+                    "추가",
+                },
+            },
+            hongLu_heathcliffEffect={
+                name="히스클리프",
+                text={
+                    "{C:mult}+20{} 배수",
+                },
+            },
+            hongLu_ishmaelEffect={
+                name="이스마엘",
+                text={
+                    "{C:chips}+40{} 칩",
+                },
+            },
+            hongLu_rodionEffect={
+                name="로쟈",
+                text={
+                    "막 종료 시 {C:gold}$5{}",
+                },
+            },
+            hongLu_sinclairEffect={
+                name="싱클레어",
+                text={
+                    "{C:blue}+1{} 핸드",
+                },
+            },
+            hongLu_outisEffect={
+                name="오티스",
+                text={
+                    "{C:red}+1{} 버리기",
+                },
+            },
+            hongLu_gregorEffect={
+                name="그레고르",
+                text={
+                    "{C:attention}+1{} 핸드 크기",
+                },
+            },
             effect_singleton={
                 name="유일",
                 text={
                     "덱에서 유일한 카드",
                     "(해당 랭크가 단 한 장임)",
+                    "(해당 랭크가 단 한 장임)",
+                },
+            },
+            effect_meltdown={
+                name="폭주",
+                text={
+                    "발동 시, 책장을",
+                    "더 약한 자기 자신으로",
+                    "{C:attention}변형{}시킴",
+                },
+            },
+            effect_prescript={
+                name="지령",
+                text={
+                    "무대 종료 전까지 완료해야 하는",
+                    "{C:attention}무작위 과제{}를 부여함",
+                    "지령을 완료하면 {C:gold}$15{} 획득",
+                    "지령 완료에 실패하면",
+                    "보유 돈이 {C:red}$0{}이 됨"
                 },
             },
             effect_perma={
                 name="영구",
                 text={
                     "카드에 직접 부여되는 효과로,",
-                    "강화, 인장, 또는 에디션의 영향을 받지 않음"
+                    "강화, 인장, 또는 에디션의 영향을 받지 않음",
+                    "강화, 인장, 에디션에 의존하지 않음"
                 },
-            },         
+            },
             pmcmod_markofcain_seal = {
                 name = "카인의 표식",
                 text = {
@@ -2583,10 +2782,11 @@ return {
                 name = "단테",
                 text = {
                     "관리자",
+                    "{C:mult}+#2#{} 배수 획득",
                     "플레이한 핸드에",
-                    "{C:attention}그림 카드{}가 없다면",
-                    "해당 핸드에 {C:mult}+#2#{} 배수 제공.",
-                    "{C:inactive}(현재 {C:mult}+#1# {C:inactive}배수)",
+                    "그림 카드가 없다면",
+                    "해당 핸드에 적용",
+                    "{C:inactive}(현재{C:mult} #1# {C:inactive}배수)",
                 }
             },
             pnr_pmcmod_roland = {
@@ -2603,6 +2803,7 @@ return {
                     "",
                     "{C:attention}접대{}에서 승리한 후",
                     "{C:planet}수감자{} 카드를 생성함.",
+                    "접대",
                 }
             },
             pnr_pmcmod_angela = {
@@ -2612,6 +2813,7 @@ return {
                     "",
                     "{C:attention}접대{} 시작 시",
                     "{C:planet}책장{}을 생성함.",
+                    "접대",
                 }
             },
         },
@@ -2622,7 +2824,7 @@ return {
                 text = {
                     "최대 2개의 책장을 남은 게임 동안",
                     "등장하지 않도록 {C:red}제거{}합니다.",
-                    "{C:inactive}(팀에 있는 책장만 선택 가능)",
+                    "{C:inactive}(팀에 있는 책장만 선택 가능)"
                 }
             },
             c_pmcmod_witness = {
@@ -2689,7 +2891,7 @@ return {
                 text = {
                     "카드 2장에 {C:gold}진동{} 부여",
                 }
-            },            
+            },
             c_pmcmod_manifest= {
                 name = "개화",
                 text = {
@@ -2707,7 +2909,7 @@ return {
                 name = "엄지 슬리브",
                 text = {
                     "{C:gold}$100{}을 보유하고 시작",
-                    "남은 {C:red}버리기{}, {C:blue}핸드{} 또는 {C:money}이자{}로부터",
+			        "남은 {C:red}버리기{}, {C:blue}핸드{} 또는 {C:money}이자{}로부터",
                     "더 이상 돈을 획득하지 않음",
                     "{C:dark_edition}에디션{}이 부여된 책장을",
                     "발견할 확률 증가",   
@@ -2722,7 +2924,7 @@ return {
                 text = {
                     "접대 점수 요구치가",
                     "{C:attention}증가{}함",
-                    "남은 핸드로 받는 보상이",
+			        "남은 핸드로 받는 보상이",
                     "{C:red}3배{}로 증가",
                 },
                 unlock = {
@@ -2735,7 +2937,7 @@ return {
                 text = {
                     "{C:attention}5{}장의",
                     "무작위 책장을 가지고 시작",
-                    "매 접대가 끝날 때마다",
+			        "매 접대가 끝날 때마다",
                     "책장이 무작위로 변경됨",
                 },
                 unlock = {
@@ -2747,7 +2949,7 @@ return {
                 name = "검지 슬리브",
                 text = {
                     "영구적인",
-                    "{C:attention,T:j_pmcmod_voiceOfTheCity}도시의 의지{} 책장을 가지고 시작.",
+			        "{C:attention,T:j_pmcmod_voiceOfTheCity}도시의 의지{} 책장을 가지고 시작.",
                 },
                 unlock = {
                     '{C:attention}검지 덱{}으로 최소',
@@ -2772,7 +2974,7 @@ return {
                 name = "수줍은 슬리브",
                 text = {
                     "영구적인",
-                    "{C:attention,T:j_pmcmod_shylook}오늘의 표정{} 책장을 가지고 시작.",         
+			        "{C:attention,T:j_pmcmod_shylook}오늘의 표정{} 책장을 가지고 시작.",         
                 },
                 unlock = {
                     '{C:attention}수줍은 덱{}으로 최소',
@@ -2783,7 +2985,7 @@ return {
                 name = "사랑 슬리브",
                 text = {
                     "영구적인",
-                    "{C:attention,T:j_pmcmod_queenOfHatred}증오의 여왕{} 책장을 가지고 시작.",
+			        "{C:attention,T:j_pmcmod_queenOfHatred}증오의 여왕{} 책장을 가지고 시작.",
                 },
                 unlock = {
                     '{C:attention}사랑 덱{}으로 최소',
@@ -2794,7 +2996,7 @@ return {
                 name = "은하수 슬리브",
                 text = {
                     "영구적인",
-                    "{C:attention,T:j_pmcmod_childrenOfTheGalaxy}조약돌{} 책장을 가지고 시작.",
+			        "{C:attention,T:j_pmcmod_childrenOfTheGalaxy}조약돌{} 책장을 가지고 시작.",
                 },
                 unlock = {
                     '{C:attention}은하수 덱{}으로 최소',
@@ -2805,7 +3007,7 @@ return {
                 name = "선물 슬리브",
                 text = {
                     "영구적인",
-                    "{C:attention,T:j_pmcmod_laetitia}선물이야~{} 책장을 가지고 시작.",
+			        "{C:attention,T:j_pmcmod_laetitia}선물이야~{} 책장을 가지고 시작.",
                 },
                 unlock = {
                     '{C:attention}선물 덱{}으로 최소',
@@ -2816,7 +3018,7 @@ return {
                 name = "검열 슬리브",
                 text = {
                     "영구적인",
-                    "{C:attention,T:j_pmcmod_censored}[검열삭제]{} 책장을 가지고 시작.",
+			        "{C:attention,T:j_pmcmod_censored}[검열삭제]{} 책장을 가지고 시작.",
                 },
                 unlock = {
                     '{C:attention}[검열삭제]{}로 최소',
@@ -2827,8 +3029,8 @@ return {
                 name = "뱀 슬리브",
                 text = {
                     "{C:attention}막{}을 클리어할 때마다",
-                    "새로운 보너스 획득 (최대 10 막까지).",
-                    "점수 요구치 배수가 두 배로 증가.",
+			        "새로운 보너스 획득 (최대 10 막까지).",
+			        "점수 요구치 배수가 두 배로 증가.",
                 },
                 unlock = {
                     '{C:attention}뱀 덱{}으로 최소',
@@ -2841,7 +3043,17 @@ return {
         achievement_descriptions={},
         achievement_names={},
         blind_states={},
-        challenge_names={},
+        challenge_names={
+            c_pmcmod_bloodfiend_1 = "AB 포지티브",
+            c_pmcmod_pequod = "들어라",
+            c_pmcmod_poise = "호흡이 아니잖아",
+            c_pmcmod_index = "지령을 이렇게 많이 들 수가 없다고?!",
+            c_pmcmod_vengeance = "복수의 책",
+            c_pmcmod_money = "공산주의는 붉은 청어였어",
+            c_pmcmod_luck = "정신력 45 뒷면",
+            c_pmcmod_colors = "프라이드 퍼레이드",
+            c_pmcmod_wuthering = "바나나 하나잖아, 히스클리프. 그게 얼마나 하겠어?",
+        },
         collabs={},
         dictionary={
             pmcmod_ph_catt="캣에 의해 살아남",
@@ -2901,6 +3113,7 @@ return {
             pmcmod_badge_abraxas="아브락사스의 전차",
             pmcmod_badge_colorFixer="특색",
             pmcmod_badge_abnormality="환상체",
+            pmcmod_badge_distortion="뒤틀림",
             pmcmod_badge_foodMaybe="음식...?",
             pmcmod_elapsedTime="경과 시간",
             pmcmod_seconds=" 초",
@@ -2922,6 +3135,22 @@ return {
             pmcmod_oswaldEffect16="타로 카드 생성",
             pmcmod_oswaldEffect17="유령 카드 생성",
             pmcmod_oswaldEffect18="책장 파괴",
+            pmcmod_hongLu_yiSangEffect="이상: {C;green}1 / 2{} 확률로 첫 번째 득점 카드를 다시 발동",
+            pmcmod_hongLu_faustEffect="파우스트: {C:green}1 / 4{} 확률로 마지막 득점 카드를 다시 발동",
+            pmcmod_hongLu_donQuixoteEffect="돈키호테: 득점 카드에 {C:mult}+1{} 영구 배수 추가",
+            pmcmod_hongLu_ryoshuEffect="료슈: 득점 카드가 {X:mult, C:white}X1.1{} 배수 제공",
+            pmcmod_hongLu_meursaultEffect="뫼르소: 득점 카드에 {C:chips}+2{} 영구 칩 추가",
+            pmcmod_hongLu_heathcliffEffect="히스클리프: {C:mult}+40{} 배수",
+            pmcmod_hongLu_ishmaelEffect="이스마엘: {C:chips}+40{} 칩",
+            pmcmod_hongLu_rodionEffect="로쟈: 막 종료 시 {C:gold}$5{}",
+            pmcmod_hongLu_sinclairEffect="싱클레어: {C:blue}+1{} 핸드",
+            pmcmod_hongLu_outisEffect="오티스: {C:red}+1{} 버리기",
+            pmcmod_hongLu_gregorEffect="그레고르: {C:attention}+1{} 핸드 크기",
+            pmcmod_prescriptFailed="실패",
+            pmcmod_prescriptInProgress="진행 중",
+            pmcmod_prescriptFulfilled="완료",
+            pmcmod_nikolaiCataloguedTrue="기록됨",
+            pmcmod_nikolaiCataloguedFalse="기록되지 않음"
         },
         high_scores={},
         labels={
@@ -2944,22 +3173,25 @@ return {
             pmcmod_malkuth_win={
                 "우리가 이겼어!",
                 "이걸로 좀 보탬이 되었을까?",
+                "모두에게 도움이 된 거겠지?"
             },
             pmcmod_malkuth_loss={
                 "해낼 수 있다고",
-                "생각했는데...",
+                "생각했는데..."
             },
             pmcmod_hod_win={
                 "이겼다...!",
-                "다들 멋지게 해내 줘서 고마워.",
+                "다들 멋지게 해내 줘서 고마워."
             },
             pmcmod_hod_loss={
                 "그렇게 열심히 했는데...",
                 "마지막은 왜 늘 이런 식일까...",
+                "끝나야 하는 걸까..."
             },
             pmcmod_yesod_win={
                 "수고 많으셨습니다.",
                 "다들 흐트러진 복장을 정리하십쇼.",
+                "숙소로 복귀하십시오."
             },
             pmcmod_yesod_loss={
                 "더 정확한 판단을 하셨어야 합니다.",
@@ -2969,36 +3201,37 @@ return {
             },
             pmcmod_netzach_loss={
                 "...큰 도움을 줄 수 없는 건, 미안하네.",
+                "방심하지 말았어야지."
             },
             pmcmod_chesed_win={
                 "모두 수고 많았어~",
-                "다 같이 향긋한 커피라도 한 잔 마실래~?",
+                "다 같이 향긋한 커피라도 한 잔 마실래~?"
             },
             pmcmod_chesed_loss={
                 "나는 이제 한계인 모양이네...",
-                "역시 내겐... 무리였던 거야?",
             },
             pmcmod_gebura_win={
                 "이번에도 무난하게 넘겼군.",
-                "다들 고생 많았어.",
+                "다들 고생 많았어."
             },
             pmcmod_gebura_loss={
                 "분하지만... 받아들여야 하는 일이지.",
+                "받아들여야겠지."
             },
             pmcmod_tiph_win={
                 "당연한 결과잖아.", 
-                "우리가 이 정도도 못 해낼 것 같아?",
+                "우리가 이 정도도 못 해낼 것 같아?"
             },
             pmcmod_tiph_loss={
-                "...미안. 큰 도움을 주지는 못했네.",
+                "...미안. 큰 도움을 주지는 못했네."
             },
             pmcmod_hokma_win={
                 "자만은 금물입니다.",
-                "겸허히 자리를 지킬 뿐.",
+                "겸허히 자리를 지킬 뿐."
             },
             pmcmod_hokma_loss={
                 "결과를 받아들이기 위해",
-                "마음을 접어야 함도 중요하겠죠...",
+                "마음을 접어야 함도 중요하겠죠..."
             },
             pmcmod_binah_win={
                 "수고 많았단다.",
@@ -3026,6 +3259,7 @@ return {
             pnr_pmcmod_roland_2={
                 "흠... 이번엔 또 어떤",
                 "손님들이 오려나?",
+                "궁금하네",
             },
             pnr_pmcmod_roland_3={
                 "이런, 시작이군",
@@ -3073,6 +3307,7 @@ return {
             pnr_pmcmod_angela_1={
                 "저는 이 도서관의",
                 "관장이자 사서, 앤젤라입니다.",
+                "그 이름에 걸맞은 사서입니다.",
             },
             pnr_pmcmod_angela_2={
                 "부디, 이곳에서 당신의",
@@ -3080,6 +3315,9 @@ return {
             },
             pnr_pmcmod_angela_3={
                 "환영합니다, 손님.",
+            },
+            pnr_pmcmod_panther_test={
+                "테스트입니다",
             },
         },
         ranks={},
