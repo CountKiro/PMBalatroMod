@@ -2754,6 +2754,60 @@ return {
                     "{X:mult,C:white}X1.2{} Mult",
                 },
             },
+            pmcmod_sinWrath_seal = {
+                name = "Wrath",
+                text = {
+                    "Gains either Perma {C:mult}Mult{},",
+                    "{C:chips}Chips{} or {C:gold}Money{}",
+                    "after scoring"
+                },
+            },
+            pmcmod_sinPride_seal = {
+                name = "Pride",
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult",
+                },
+            },
+            pmcmod_sinGluttony_seal = {
+                name = "Gluttony",
+                text = {
+                    "Gains a random {C:chips}Perma Chips{}",
+                    "value if in hand when scoring"
+                },
+            },
+            pmcmod_sinGloom_seal = {
+                name = "Gloom",
+                text = {
+                    "When the Scene ends, gain",
+                    "{C:chips}1{} Chip for every",
+                    "{C:attention}10% above the Encounter Score{}"
+                },
+            },
+            pmcmod_sinSloth_seal = {
+                name = "Sloth",
+                text = {
+                    "Passively enhances the effects",
+                    "of other sins based on the amount",
+                    "of Sloth seals in the deck"
+                },
+            },
+            pmcmod_sinLust_seal = {
+                name = "Lust",
+                text = {
+                    "{C:gold}$1{} for each Lust seal in deck",
+                    "Spreads itself to other",
+                    "seals in the scored hand"
+                },
+            },
+            pmcmod_sinEnvy_seal = {
+                name = "Envy",
+                text = {
+                    "Every time a Keypage scores",
+                    "has a {C:green}#1# in #2#{} chance to",
+                    "gain a Perma Bonus, depending on",
+                    "the Keypage's effect"
+                },
+            },
             pmcmod_gift_seal = {
                 name = "Gift",
                 text = {
