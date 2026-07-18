@@ -21,13 +21,16 @@ return {
                 name="총류 덱",
                 text={
                     "{C:attention}+#1#{} 개의 책장 슬롯",
+                    "",
                     "{C:blue}-#2#{} 핸드",
+                    "매 막마다",
                 },
             },
             b_blue={
                 name="사회과학 덱",
                 text={
                     "{C:blue}+#1#{} 핸드",
+                    "매 막마다",
                 },
             },
             b_challenge={
@@ -72,19 +75,19 @@ return {
             b_magic={
                 name="역사 덱",
                 text={
+                    "다음을 가지고 게임 시작:",
                     "{C:tarot,T:v_crystal_ball}#1#{} E.G.O 기프트",
-                    "및 {C:tarot,T:c_fool}#2#",
-                    "복사본 {C:attention}2{} 장으로",
-                    "게임을 시작합니다",
+                    "및 {C:attention}2{}장의",
+                    "{C:tarot,T:c_fool}#2# 복사본",
                 },
             },
             b_nebula={
                 name="철학 덱",
                 text={
-                    "{C:planet,T:v_telescope}#1#{} E.G.O 기프트 및",
-                    "{C:red}#2#{} 개의 소모품 슬롯으로",
+                    "다음을 가지고 게임 시작:",
+                    "{C:planet,T:v_telescope}#1#{} E.G.O 기프트",
                     "",
-                    "게임을 시작합니다",
+                    "{C:red}#2#{} 소모품 슬롯",
                 },
             },
             b_painted={
@@ -107,21 +110,23 @@ return {
                 name="언어 덱",
                 text={
                     "{C:red}+#1#{} 버리기",
+                    "매 막마다",
                 },
             },
             b_yellow={
                 name="자연과학 덱",
                 text={
-                    "추가 {C:money}$#1#{} 로",
+                    "추가 {C:money}$#1#{}로",
                     "시작합니다",
                 },
             },
             b_zodiac={
                 name="문학 덱",
                 text={
-                    "덱에 {C:attention}26{} 장의 {C:spades} 스페이드{} 및",
-                    "{C:tarot,T:v_tarot_merchant}#1#{}, {C:planet,T:v_planet_merchant}#2#{}, 그리고 {C:attention,T:v_overstock_norm}#3#",
-                    "를 갖고 시작합니다.",
+                    "다음을 가지고 게임 시작:",
+                    "{C:tarot,T:v_tarot_merchant}#1#{},",
+                    "{C:planet,T:v_planet_merchant}#2#{},",
+                    "그리고 {C:attention,T:v_overstock_norm}#3#",
                 },
             },
         },
@@ -393,7 +398,7 @@ return {
                 text={
                     "{C:green}#1# / #3#{} 의 확률로",
                     "{C:mult}+#2#{} 배수",
-                    "{C:green}#1# / #3#{} 의 확률로",
+                    "{C:green}#1# / #5#{} 확률로",
                     "{C:money}$#4# 획득",
                 },
             },
@@ -493,15 +498,17 @@ return {
             j_banner={
                 name="보노",
                 text={
-                    "남은 {C:attention}버리기{}마다",
-                    "칩 {C:chips}+#1#{}개를 획득합니다",
+                    "{C:chips}+#1#{} 칩",
+                    "남은",
+                    "{C:attention}버리기{}마다",
                 },
             },
             j_baron={
                 name="뫼르소",
                 text={
-                    "손패에 남아 있는 각 {C:attention}킹{}이",
-                    "{X:mult,C:white} X#1# {} 배수를 부여합니다",
+                    "손패에 남아 있는",
+                    "각 {C:attention}킹{}이",
+                    "{X:mult,C:white} X#1# {} 배수 제공",
                 },
             },
             j_baseball={
@@ -629,8 +636,7 @@ return {
                 text={
                     "이 책장은 카드가 {C:attention}팔릴{} 때마다",
                     "배수 획득량이 {X:mult,C:white}X#1#{} 증가하며",
-                    "{C:attention}접대{}에서 승리하면",
-                    "초기화됩니다",
+                    "{C:attention}접대{}에서 승리하면 초기화",
                     "{C:inactive}(현재 {X:mult,C:white} X#2# {C:inactive} 배수)",
                 },
             },
@@ -657,11 +663,10 @@ return {
             j_castle={
                 name="헤세드",
                 text={
-                    "이 책장은 {V:1}#2#{} 카드를",
-                    "버릴 때마다 칩 획득량이",
-                    "{C:chips}+#1#{}개 증가합니다",
+                    "버린 {V:1}#2#{} 카드마다",
+                    "이 책장이 {C:chips}+#1#{} 칩 획득",
                     "문양은 매 막마다 변경됩니다",
-                    "{C:inactive}(현재 칩 {C:chips}+#3#{C:inactive}개)",
+                    "{C:inactive}(현재 {C:chips}+#3#{C:inactive} 칩)",
                 },
             },
             j_cavendish={
@@ -737,6 +742,7 @@ return {
                     "이 책장은 {C:planet}수감자{} 카드를 사용하면",
                     "배수 획득량이 {X:mult,C:white} X#1# {} 증가합니다",
                     "{C:inactive}(현재 {X:mult,C:white} X#2# {C:inactive} 배수)",
+                    "",
                 },
             },
             j_crafty={
@@ -765,10 +771,9 @@ return {
             j_delayed_grat={
                 name="지칸",
                 text={
-                    "막이 끝날 때까지",
                     "버리기를 사용하지 않으면",
-                    "남은 {C:attention}버리기{}마다",
-                    "{C:money}$#1#{}를 획득합니다",
+                    "막 종료 시 {C:attention}버리기{}마다",
+                    "{C:money}$#1#{} 획득",
                 },
             },
             j_devious={
@@ -821,6 +826,7 @@ return {
                 name="올가",
                 text={
                     "막별로 버리기 {C:red}+#1#{}번",
+                    "매 막마다",
                 },
             },
             j_duo={
@@ -855,10 +861,9 @@ return {
             j_erosion={
                 name="산",
                 text={
-                    "전체 덱 크기가",
-                    "{C:attention}#3#{}장 미만이라면",
-                    "적어진 카드 한 장마다",
-                    "{C:red}+#1#{} 배수를 획득합니다",
+                    "전체 덱에서 {C:attention}#3#{}장보다",
+                    "적은 카드 한 장마다",
+                    "{C:red}+#1#{} 배수",
                     "{C:inactive}(현재 {C:red}+#2#{C:inactive} 배수)",
                 },
             },
@@ -904,9 +909,8 @@ return {
             j_flash={
                 name="윤",
                 text={
-                    "이 책장은 상점에서",
-                    "{C:attention}새로고침{}할 때마다",
-                    "배수 획득량이 {C:mult}+#1#{} 증가합니다",
+                    "상점에서 {C:attention}새로고침{}할 때마다",
+                    "이 책장이 {C:mult}+#1#{} 배수 획득",
                     "{C:inactive}(현재 {C:mult}+#2#{C:inactive} 배수)",
                 },
             },
@@ -926,9 +930,8 @@ return {
             j_fortune_teller={
                 name="왕",
                 text={
-                    "이번 게임에서 사용한",
-                    "{C:purple}타로{} 카드마다",
-                    "{C:red}+#1#{} 배수를 획득합니다",
+                    "이번 게임에서 사용한 {C:purple}타로{} 카드마다",
+                    "{C:red}+#1#{} 배수",
                     "{C:inactive}(현재 {C:red}+#2#{C:inactive})",
                 },
             },
@@ -938,7 +941,6 @@ return {
                     "모든 {C:attention}플러시{}와",
                     "{C:attention}스트레이트{}를",
                     "카드 {C:attention}4{}장만으로",
-                    "만들 수 있게 됩니다",
                 },
             },
             j_gift={
@@ -947,10 +949,11 @@ return {
                     "막 종료 시",
                     "모든 {C:attention}책장{} 및 {C:attention}소모품{} 카드의",
                     "{C:attention}판매 가치{}를 {C:money}$#1#{} 증가시킵니다",
+                    "막 종료 시",
                 },
             },
             j_glass={
-                name="enlxmfflsdis",
+                name="유리 책장",
                 text={
                     "이 책장은 {C:attention}유리 카드{}가",
                     "파괴될 때마다 배수 획득량이",
@@ -960,6 +963,7 @@ return {
                 unlock={
                     "덱에 최소 {E:1,C:attention}#1#{}장의",
                     "{E:1,C:attention}#2#{} 보유",
+                    "덱에 보유",
                 },
             },
             j_gluttenous_joker={
@@ -990,9 +994,8 @@ return {
             j_green_joker={
                 name="로즈",
                 text={
-                    "핸드를 플레이하면",
-                    "배수 획득량이 {C:mult}+#1#{} 증가하고",
-                    "카드를 버리면 {C:mult}-#2#{} 감소합니다",
+                    "핸드마다 {C:mult}+#1#{} 배수",
+                    "버리기마다 {C:mult}-#2#{} 배수",
                     "{C:inactive}(현재 {C:mult}+#3#{C:inactive} 배수)",
                 },
             },
@@ -1180,7 +1183,6 @@ return {
                     "{C:attention}일반 전투{} 또는",
                     "{C:attention}정예 전투{}를 선택하면",
                     "배수 획득량이 {X:mult,C:white} X#1# {} 증가하고",
-                    "무작위 책장 한 장을 {C:attention}파괴합니다",
                     "{C:inactive}(현재 {X:mult,C:white} X#2# {C:inactive} 배수)",
                 },
             },
@@ -1216,8 +1218,9 @@ return {
             j_merry_andy={
                 name="레인",
                 text={
-                    "막별 버리기 {C:red}+#1#{}번",
-                    "손패 크기 {C:red}#2#{}장",
+                    "막마다 {C:red}+#1#{} 버리기",
+                    "",
+                    "{C:red}#2#{} 핸드 크기",
                 },
                 unlock={
                     "{E:1,C:attention}#1#{} 막 안에",
@@ -1238,7 +1241,6 @@ return {
                     "{C:attention}손패에 남아 있을 때{}",
                     "발동하는 카드 및",
                     "그와 관련된 모든 카드를",
-                    "다시 발동합니다",
                 },
             },
             j_misprint={
@@ -1254,6 +1256,7 @@ return {
                     "{C:attention}25%{} 이상인 경우",
                     "패배를 막고",
                     "{S:1.1,C:red,E:2}스스로 파괴됩니다{}",
+                    "{S:1.1,C:red,E:2}스스로 파괴됨{}",
                 },
                 unlock={
                     "게임 {C:attention,E:1}#1#{}번 패배",
@@ -1385,6 +1388,7 @@ return {
                     "이 책장은 {C:attention}부스터 팩{}을 건너뛰면",
                     "배수 획득량이 {C:red}+#1#{} 증가합니다",
                     "{C:inactive}(현재 {C:red}+#2#{C:inactive} 배수)",
+                    "",
                 },
             },
             j_reserved_parking={
@@ -1430,10 +1434,9 @@ return {
             j_rocket={
                 name="네모",
                 text={
-                    "막 종료 시",
-                    "{C:money}$#1#{}를 획득합니다",
-                    "{C:attention}정예 전투{}에 승리하면",
-                    "획득량이 {C:money}$#2#{} 증가합니다",
+                    "막 종료 시 {C:money}$#1#{} 획득",
+                    "{C:attention}접대{}에서 승리하면",
+                    "지급액이 {C:money}$#2#{} 증가",
                 },
             },
             j_rough_gem={
@@ -1484,7 +1487,8 @@ return {
                 text={
                     "플레이해 득점한",
                     "에이스가 {C:mult}+#1#{} 배수 및",
-                    "칩 {C:chips}+#2#{}개를 부여합니다"
+                    "칩 {C:chips}+#2#{}개를 부여합니다",
+                    "{C:attention}황금{} 카드로 바뀝니다",
                 },
             },
             j_seance={
@@ -1507,6 +1511,7 @@ return {
                 unlock={
                     "{E:1,C:attention}#1# 포함한",
                     "핸드 플레이",
+                    "",
                 },
             },
             j_selzer={
@@ -1520,8 +1525,9 @@ return {
             j_shoot_the_moon={
                 name="티페리트",
                 text={
-                    "손패에 남아 있는 각 {C:attention}퀸{}이",
-                    "{C:mult}+#1#{} 배수를 부여합니다",
+                    "손패에 남아 있는",
+                    "각 {C:attention}퀸{}이",
+                    "{C:mult}+#1#{} 배수 제공",
                 },
                 unlock={
                     "덱에 있는",
@@ -1535,7 +1541,6 @@ return {
                     "{C:attention}1 랭크{} 간격이 있어도",
                     "{C:attention}스트레이트{}를",
                     "만들 수 있습니다",
-                    "{C:inactive}(예: {C:attention}10 8 6 5 3{C:inactive})",
                 },
             },
             j_sixth_sense={
@@ -1566,6 +1571,7 @@ return {
                 unlock={
                     "덱에 최소 {C:attention}#1#{}장의",
                     "{E:1,C:attention}#2#{} 보유",
+                    "덱에 보유",
                 },
             },
             j_smiley={
@@ -1686,23 +1692,20 @@ return {
             j_throwback={
                 name="이리나",
                 text={
-                    "이번 게임에서 건너뛴",
-                    "{C:attention}전투{}마다",
-                    "{X:mult,C:white} X#1# {} 배수를 획득합니다",
+                    "이번 게임에서 건너뛴 {C:attention}전투{}마다",
+                    "{X:mult,C:white} X#1# {} 배수",
                     "{C:inactive}(현재 {X:mult,C:white} X#2# {C:inactive} 배수)",
                 },
                 unlock={
                     "메인 메뉴에서",
                     "저장된 게임을",
-                    "계속 플레이",
                 },
             },
             j_ticket={
                 name="망치",
                 text={
-                    "{C:attention}황금{} 카드를 플레이해",
-                    "득점할 때마다",
-                    "{C:money}$#1#{}를 획득합니다",
+                    "플레이한 {C:attention}황금{} 카드가",
+                    "득점 시 {C:money}$#1#{} 획득",
                 },
                 unlock={
                     "{C:attention,E:1}황금{} 카드",
@@ -1730,10 +1733,9 @@ return {
             j_trading={
                 name="텐마",
                 text={
-                    "막에서 {C:attention}처음으로 버린{}",
-                    "카드가 {C:attention}1{}장 뿐이라면",
-                    "그 카드를 파괴하고",
-                    "{C:money}$#1#{}를 획득합니다",
+                    "막의 {C:attention}첫 버리기{}가",
+                    "{C:attention}1{}장뿐이라면 파괴하고",
+                    "{C:money}$#1#{} 획득",
                 },
             },
             j_tribe={
@@ -1815,10 +1817,9 @@ return {
             j_vampire={
                 name="엘레나",
                 text={
-                    "이 책장은 플레이해 득점한",
-                    "{C:attention}강화된 카드{}마다 배수 획득량이",
-                    "{X:mult,C:white} X#1# {} 증가하고 해당 카드들의",
-                    "{C:attention}강화{}를 제거합니다",
+                    "득점한 {C:attention}강화 카드{}마다",
+                    "이 책장이 {X:mult,C:white} X#1# {} 배수 획득,",
+                    "카드 {C:attention}강화{} 제거",
                     "{C:inactive}(현재 {X:mult,C:white} X#2# {C:inactive} 배수)",
                 },
             },
@@ -1954,6 +1955,7 @@ return {
                 text={
                     "최소 {V:1}#1#{} 난이도에서",
                     "아무 덱으로 게임 승리",
+                    "난이도 이상",
                 },
             },
             deck_locked_win={
@@ -1978,7 +1980,6 @@ return {
                     "컬렉션 카드로",
                     "{E:1,C:red}Balatro",
                     "정식 버전에서",
-                    "사용할 수 있습니다",
                 },
             },
             eternal={
@@ -2281,6 +2282,12 @@ return {
                     "게임에서 이 E.G.O 기프트를",
                     "사용하여 기능을",
                     "알아보세요",
+                },
+            },
+            censored_joker={
+                name="{X:mult, C:white}[검열삭제]",
+                text={
+                    "{X:mult, C:white}[검열삭제]",
                 },
             },
             white_sticker={
@@ -3019,8 +3026,7 @@ return {
                 text={
                     "무대 별로 접대를",
                     "{C:attention}1{}번 새로고침할",
-                    "수 있습니다",
-                    "새로고침당 {C:money}$#1#{}",
+                    "새로고침마다 {C:money}$#1#{}",
                 },
             },
             v_glow_up={
@@ -3034,6 +3040,7 @@ return {
                     "최소 {C:attention}#1#{}장의 {C:attention}책장{} 카드를",
                     "{C:dark_edition}포일{}, {C:dark_edition}홀로그래픽{} 또는",
                     "{C:dark_edition}폴리크롬{} 에디션으로 보유",
+                    "에디션으로 보유",
                 },
             },
             v_grabber={
@@ -3041,6 +3048,7 @@ return {
                 text={
                     "막별 핸드가 영구적으로",
                     "{C:blue}+#1#{}번 증가합니다",
+                    "매 막마다",
                 },
             },
             v_hieroglyph={
@@ -3048,6 +3056,7 @@ return {
                 text={
                     "{C:attention}-#1#{} 무대",
                     "막별 핸드 {C:blue}-#1#{}번",
+                    "매 막마다",
                 },
             },
             v_hone={
@@ -3111,6 +3120,7 @@ return {
                 text={
                     "막별 핸드가 영구적으로",
                     "{C:blue}+#1#{}번 증가합니다",
+                    "매 막마다",
                 },
                 unlock={
                     "총 {C:attention}#1#{}장의",
@@ -3187,6 +3197,7 @@ return {
                 text={
                     "{C:attention}-#1#{} 무대",
                     "막별 버리기 {C:red}-#1#{}번",
+                    "매 막마다",
                 },
                 unlock={
                     "무대 단계 {E:1,C:attention}#1#{}",
@@ -3220,6 +3231,7 @@ return {
                 text={
                     "막별 버리기가 영구적으로",
                     "{C:red}+#1#{}번 증가합니다",
+                    "매 막마다",
                 },
                 unlock={
                     "총 {C:attention}#1#{}장의",
@@ -3302,6 +3314,7 @@ return {
                 text={
                     "막별 버리기가 영구적으로",
                     "{C:red}+#1#{}번 증가합니다",
+                    "매 막마다",
                 },
             },
         },
@@ -3410,8 +3423,6 @@ return {
                 ["3"]="Slay the Spire",
                 ["4"]="Potion Craft",
                 ["5"]="Warframe",
-                ["6"]="Vault-Tec",
-                ["7"]="Dead by Daylight",
             },
             Diamonds={
                 ["1"]="기본",
@@ -3419,8 +3430,6 @@ return {
                 ["3"]="Stardew Valley",
                 ["4"]="Enter the Gungeon",
                 ["5"]="1000xRESIST",
-                ["6"]="Civilization VII",
-                ["7"]="Rust",
             },
             Hearts={
                 ["1"]="기본",
@@ -3428,8 +3437,6 @@ return {
                 ["3"]="The Binding of Isaac",
                 ["4"]="Cult of the Lamb",
                 ["5"]="Divinity Original Sin 2",
-                ["6"]="Critical Role",
-                ["7"]="Bugsnax",
             },
             Spades={
                 ["1"]="기본",
@@ -3437,8 +3444,6 @@ return {
                 ["3"]="사이버펑크 2077",
                 ["4"]="Shovel Knight",
                 ["5"]="Don’t Starve",
-                ["6"]="Assassin's Creed",
-                ["7"]="Slay the Princess",
             },
         },
         dictionary={
@@ -3846,14 +3851,14 @@ return {
             badge_leaflet="이파리 공방",
             badge_fixer="해결사",
             badge_bayard="베이야드",
-            badge_LCorp = "로보토미 코퍼레이션",
             badge_blade="검계",
             badge_nightAwls="밤의 송곳",
             badge_mirae="미래생명",
             badge_claw="발톱",
-            badge_eye="눈",
             badge_head="머리",
             badge_colorFixer="특색",
+
+
         },
         high_scores={
             boss_streak="최다 연속 접대",
@@ -3889,148 +3894,145 @@ return {
             uncommon="고급",
             voucher="E.G.O 기프트",
         },
-        poker_hand_descriptions = {
-            ['Five of a Kind'] = {
+        poker_hand_descriptions={
+            ["Five of a Kind"]={
                 "랭크가 같은 카드 5장",
             },
-            ['Flush'] = {
+            Flush={
                 "문양이 같은 카드 5장",
             },
-            ['Flush Five'] = {
+            ["Flush Five"]={
                 "랭크 및 문양이 같은 카드 5장",
             },
-            ['Flush House'] = {
+            ["Flush House"]={
                 "문양이 모두 같은",
                 "트리플 및 페어",
             },
-            ['Four of a Kind'] = {
+            ["Four of a Kind"]={
                 "랭크가 같은 카드 4장. 득점되지 않는",
                 "다른 카드 1장과 플레이할 수 있습니다",
             },
-            ['Full House'] = {
+            ["Full House"]={
                 "트리플 및 페어",
             },
-            ['High Card'] = {
+            ["High Card"]={
                 "플레이한 핸드가 위의 어떠한 족보에도 해당되지",
                 "않으면 가장 높은 랭크의 카드만 득점합니다",
             },
-            ['Pair'] = {
+            Pair={
                 "랭크가 같은 카드 2장. 득점되지 않는",
                 "최대 3장의 다른 카드와 플레이할 수 있습니다",
             },
-            ['Royal Flush'] = {
+            ["Royal Flush"]={
                 "문양이 모두 같으면서",
                 "랭크가 연속되는 카드 5장",
             },
-            ['Straight'] = {
+            Straight={
                 "랭크가 연속되는 카드 5장",
             },
-            ['Straight Flush'] = {
+            ["Straight Flush"]={
                 "문양이 모두 같으면서",
                 "랭크가 연속되는 카드 5장",
             },
-            ['Three of a Kind'] = {
+            ["Three of a Kind"]={
                 "랭크가 같은 카드 3장. 득점되지 않는",
                 "최대 2장의 다른 카드와 플레이할 수 있습니다",
             },
-            ['Two Pair'] = {
+            ["Two Pair"]={
                 "랭크가 서로 다른 페어 2쌍. 득점되지 않는",
                 "다른 카드 1장과 플레이할 수 있습니다",
             },
         },
-        poker_hands = {
-            ['Five of a Kind'] = "파이브 카드",
-            ['Flush'] = "플러시",
-            ['Flush Five'] = "플러시 파이브",
-            ['Flush House'] = "플러시 하우스",
-            ['Four of a Kind'] = "포 카드",
-            ['Full House'] = "풀 하우스",
-            ['High Card'] = "하이 카드",
-            ['Pair'] = "페어",
-            ['Royal Flush'] = "로열 플러시",
-            ['Straight'] = "스트레이트",
-            ['Straight Flush'] = "스트레이트 플러시",
-            ['Three of a Kind'] = "트리플",
-            ['Two Pair'] = "투 페어",
+        poker_hands={
+            ["Five of a Kind"]="파이브 카드",
+            Flush="플러시",
+            ["Flush Five"]="플러시 파이브",
+            ["Flush House"]="플러시 하우스",
+            ["Four of a Kind"]="포 카드",
+            ["Full House"]="풀 하우스",
+            ["High Card"]="하이 카드",
+            Pair="페어",
+            ["Royal Flush"]="로열 플러시",
+            Straight="스트레이트",
+            ["Straight Flush"]="스트레이트 플러시",
+            ["Three of a Kind"]="트리플",
+            ["Two Pair"]="투 페어",
         },
-        quips = {
-            dq_1 = {
+        quips={
+            dq_1={
                 "이런! 이 마지막",
                 "도전을 대비해",
                 "비장의 술수를",
                 "준비해 왔길 바라요!",
             },
-            lq_1 = {
+            lq_1={
                 "우리 수준에는",
                 "원카드가 더 맞을지도",
-                "모르겠네요...",
             },
-            lq_10 = {
+            lq_10={
                 "완전히 실패했네요!",
             },
-            lq_2 = {
+            lq_2={
                 "싸구려 수트마냥",
-                "구겨졌네요!",
             },
-            lq_3 = {
+            lq_3={
                 "다 잊어버리고",
                 "다시 시도할",
                 "차례네요!",
             },
-            lq_4 = {
+            lq_4={
                 "그런 말이 있잖아요,",
                 "도박은 항상 불리하게",
-                "판이 짜여져 있다고!",
             },
-            lq_5 = {
+            lq_5={
                 "누가 진짜",
                 "책장인지",
                 "알아낸 것 같네요!",
             },
-            lq_6 = {
+            lq_6={
                 "이런, 블러핑하고",
                 "있었던 거예요?",
             },
-            lq_7 = {
+            lq_7={
                 "당신 꾀에 당신이",
                 "넘어간 셈이네요!",
             },
-            lq_8 = {
+            lq_8={
                 "손이 있었다면",
                 "눈을 가려버렸을",
-                "텐데요!",
             },
-            lq_9 = {
+            lq_9={
                 "전 진짜로",
                 "광대기라도 하지,",
                 "당신 핑계는 뭔가요?",
             },
-            wq_1 = {
+            wq_1={
                 "에이스처럼",
-                "멋지게 해냈네요!",
+				"멋지게 해냈네요!",
             },
-            wq_2 = {
+            wq_2={
                 "아주 훌륭하게",
                 "상대하셨네요!",
+				"너무 신난 것 같네요!"
             },
-            wq_3 = {
+            wq_3={
                 "블러핑하는 게",
                 "아니었나 보군요!",
             },
-            wq_4 = {
+            wq_4={
                 "이 칩이 모두",
                 "가상일 뿐이라니",
-                "안타깝네요...",
             },
-            wq_5 = {
+            wq_5={
                 "제가 잘 가르친",
                 "것 같군요!",
+				"그렇죠?!"
             },
-            wq_6 = {
+            wq_6={
                 "앞을 내다보는",
                 "플레이를 했군요!",
             },
-            wq_7 = {
+            wq_7={
                 "당신이 진다에",
                 "돈을 안 걸어서",
                 "다행이군요!",
@@ -4172,8 +4174,8 @@ return {
                 "구역으로 드래그하세요",
             },
             s_3={
-                "이것은 게임에 추가할 수 있는",
-                "{C:attention}#1#{} 장의 {C:attention}책장{} 중 하나입니다.",
+                "이것은 게임에 추가할 수 있는 {C:attention}#1#{}장의",
+                "{C:attention}책장{} 중 하나입니다.",
                 "모든 {C:attention}책장{} 은",
                 "각기 다른 기능을 합니다",
             },
@@ -4283,7 +4285,7 @@ return {
             },
             ml_negative_desc={
                 "네거티브",
-                "매 막",
+                "+#1# 책장 슬롯",
             },
             ml_polychrome_desc={
                 "폴리크롬",
