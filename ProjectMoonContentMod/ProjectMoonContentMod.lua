@@ -23,15 +23,7 @@ end
 -------------------
 
 if (SMODS.Mods['JokerDisplay'] or {}).can_load or false then SMODS.load_file("objects/joker_display_definitions.lua")() end
-if (SMODS.Mods['partner'] or {}).can_load or false then SMODS.load_file('objects/partners.lua')() end
-if (SMODS.Mods['CardSleeves'] or {}).can_load or false then SMODS.load_file('objects/sleeves.lua')() end
-SMODS.load_file("objects/backs.lua")()
-SMODS.load_file("objects/enhancements.lua")()
 SMODS.load_file("objects/jokers.lua")()
-SMODS.load_file("objects/seals.lua")()
-SMODS.load_file("objects/spectrals.lua")()
-SMODS.load_file("objects/editions.lua")()
-SMODS.load_file("objects/challenges.lua")()
 
 
 local organizedJokerList = {
@@ -228,12 +220,181 @@ local organizedJokerList = {
     'childrenOfTheGalaxy',
     'laetitia',
     'censored',
+}
 
-    
+local organizedChallengeList = {
+    'bloodfiend',
+    'colours',
+    'index',
+    'luck',
+    'money',
+    'pequod',
+    'poise',
+    'vengence',
+    'wuthering',
+}
+
+local organizedDeckList = {
+    'thumb',
+    'index',
+    'middle',
+    'ring',
+    'serpent',
+    'shy',
+    'silent',
+    'galaxy',
+    'gift',
+    'love',
+    'censored',
+}
+
+local organizedEnhancementList = {
+--    'ammo',
+    'bleed',
+    'burn',
+    'rupture',
+    'sinking',
+    'poise',
+    'tremor',
+    'pallid',
+    'painted',
+}
+
+local organizedEditionList = {
+    'charge'
+}
+
+local organizedSealList = {
+    'markOfCain',
+    'pebble',
+    'gift',
+    'sinEnvy',
+    'sinPride',
+    'sinEnvy',
+    'sinGloom',
+    'sinGluttony',
+    'sinSloth',
+    'sinLust',
+    'sinWrath'
+}
+
+local organizedSleevesList = {
+    'thumb',
+    'index',
+    'middle',
+    'ring',
+    'serpent',
+    'shy',
+    'silence',
+    'galaxy',
+    'gift',
+    'love',
+    'censored',
+}
+
+local organizedSpectralList = {
+    'banquet',
+    'waltz',
+    'barbed',
+    'binds',
+    'bygone',
+    'ticking',
+    'hunt',
+    'outcast',
+    'unloving',
+    'witness',
+    'manifest',
+    'conceptIncinerator',
+
+}
+
+local organizedPartnerList = {
+    'angela',
+    'roland',
+    'netzach',
+    'dante'
 }
 
 for i=1, #organizedJokerList do
     assert(SMODS.load_file("objects/jokers/" .. organizedJokerList[i] .. ".lua"))()
+end
+
+for i=1, #organizedChallengeList do
+    assert(SMODS.load_file("objects/challenges/" .. organizedChallengeList[i] .. ".lua"))()
+end
+
+for i=1, #organizedDeckList do
+    assert(SMODS.load_file("objects/backs/" .. organizedDeckList[i] .. ".lua"))()
+end
+
+for i=1, #organizedEnhancementList do
+    assert(SMODS.load_file("objects/enhancements/" .. organizedEnhancementList[i] .. ".lua"))()
+end
+
+for i=1, #organizedEditionList do
+    assert(SMODS.load_file("objects/editions/" .. organizedEditionList[i] .. ".lua"))()
+end
+
+for i=1, #organizedSealList do
+    assert(SMODS.load_file("objects/seals/" .. organizedSealList[i] .. ".lua"))()
+end
+
+for i=1, #organizedSpectralList do
+    assert(SMODS.load_file("objects/spectrals/" .. organizedSpectralList[i] .. ".lua"))()
+end
+
+if (SMODS.Mods['partner'] or {}).can_load or false then
+
+    for i=1, #organizedPartnerList do
+
+        SMODS.Atlas {
+            key = 'projectMoonPartnersDante',
+            path = "modCompat/projectMoonPartnersDante.png",
+            px = 46,
+            py = 58,
+        }
+
+        SMODS.Atlas {
+            key = 'projectMoonPartnersNetz',
+            path = "modCompat/projectMoonPartnersNetz.png",
+            px = 46,
+            py = 58,
+        }
+
+        SMODS.Atlas {
+            key = 'projectMoonPartnersRoland',
+            path = "modCompat/projectMoonPartnersRoland.png",
+            px = 46,
+            py = 58,
+        }
+
+        SMODS.Atlas {
+            key = 'projectMoonPartnersAngela',
+            path = "modCompat/projectMoonPartnersAngela.png",
+            px = 46,
+            py = 58,
+        }
+
+        assert(SMODS.load_file("objects/partners/" .. organizedPartnerList[i] .. ".lua"))()
+    end
+
+end
+
+if (SMODS.Mods['CardSleeves'] or {}).can_load or false then
+
+    SMODS.Atlas {
+        key = 'projectMoonSleeves',
+        path = "modCompat/projectMoonSleeves.png",
+        px = 73,
+        py = 95,
+    }
+
+    for i=1, #organizedSleevesList do
+
+        assert(SMODS.load_file("objects/sleeves/" .. organizedSleevesList[i] .. ".lua"))()
+
+    end
+
 end
 
 ---------------------
