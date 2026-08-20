@@ -206,7 +206,7 @@ return {
                 text = {
                     "{C:attention}같은 핸드에서 득점한{}",
                     "일부 {C:blue}강화{} 카드의",
-                    "수치를 흡수합니다.",
+                    "수치를 흡수.",
                     "효과는 강화 종류마다",
                     "한 번만 발동할 수 있습니다",
                     "({C:attention}확률{} 및 {C:attention}비율{} 기반",
@@ -518,7 +518,7 @@ return {
             j_pmcmod_angela = {
                 name = '보조비서 앤젤라',
                 text = {
-                    "환영합니다 관리자님.",
+                    "환영 관리자님.",
 			        "오늘은 {C:red}#1#일차{}입니다.",
     			    "오늘도 최선을 다해봅시다.",
                 },
@@ -2754,6 +2754,60 @@ return {
                     "{X:mult,C:white}X1.2{} 배수",
                 },
             },
+            pmcmod_sinWrath_seal = {
+                name = "분노",
+                text = {
+                    "득점 후 {C:mult}영구 배수{},",
+                    "{C:chips}영구 칩{} 또는 {C:gold}영구 달러{} 중",
+                    "하나를 획득"
+                },
+            },
+            pmcmod_sinPride_seal = {
+                name = "오만",
+                text = {
+                    "{X:mult,C:white}X#1#{} 배수",
+                },
+            },
+            pmcmod_sinGluttony_seal = {
+                name = "탐식",
+                text = {
+                    "득점 시 이 카드가 패에 있으면",
+                    "무작위 수치의 {C:chips}영구 칩{}을 획득"
+                },
+            },
+            pmcmod_sinGloom_seal = {
+                name = "우울",
+                text = {
+                    "막 종료 시 접대 점수를",
+                    "{C:attention}10%{} 초과할 때마다",
+                    "{C:chips}+1{} 칩을 획득"
+                },
+            },
+            pmcmod_sinSloth_seal = {
+                name = "나태",
+                text = {
+                    "덱에 있는 나태 인장의 수에 따라",
+                    "다른 죄악 인장의 효과가",
+                    "상시 강화됨"
+                },
+            },
+            pmcmod_sinLust_seal = {
+                name = "색욕",
+                text = {
+                    "덱에 있는 색욕 인장 하나당 {C:gold}$1{} 제공",
+                    "득점한 핸드의 다른 인장을",
+                    "색욕 인장으로 변경함"
+                },
+            },
+            pmcmod_sinEnvy_seal = {
+                name = "질투",
+                text = {
+                    "책장 효과가 발동할 때마다",
+                    "{C:green}#1# / #2#{} 확률로",
+                    "해당 책장의 효과에 따른",
+                    "영구 보너스를 획득"
+                },
+            },
             pmcmod_gift_seal = {
                 name = "선물",
                 text = {
@@ -2803,7 +2857,6 @@ return {
                     "",
                     "{C:attention}접대{}에서 승리한 후",
                     "{C:planet}수감자{} 카드를 생성함.",
-                    "접대",
                 }
             },
             pnr_pmcmod_angela = {
@@ -2813,7 +2866,6 @@ return {
                     "",
                     "{C:attention}접대{} 시작 시",
                     "{C:planet}책장{}을 생성함.",
-                    "접대",
                 }
             },
         },
@@ -2823,7 +2875,7 @@ return {
                 name = "삭제",
                 text = {
                     "최대 2개의 책장을 남은 게임 동안",
-                    "등장하지 않도록 {C:red}제거{}합니다.",
+                    "등장하지 않도록 {C:red}제거{}.",
                     "{C:inactive}(팀에 있는 책장만 선택 가능)"
                 }
             },
@@ -3044,13 +3096,13 @@ return {
         achievement_names={},
         blind_states={},
         challenge_names={
-            c_pmcmod_bloodfiend_1 = "AB 포지티브",
-            c_pmcmod_pequod = "들어라",
-            c_pmcmod_poise = "호흡이 아니잖아",
-            c_pmcmod_index = "지령을 이렇게 많이 들 수가 없다고?!",
+            c_pmcmod_bloodfiend_1 = "AB형, 긍정적으로",
+            c_pmcmod_pequod = "귀 기울여라!",
+            c_pmcmod_poise = "허세 아님, 호흡임",
+            c_pmcmod_index = "왜 이 지령들을 다 들 수가 없는 거야?!",
             c_pmcmod_vengeance = "복수의 책",
-            c_pmcmod_money = "공산주의는 붉은 청어였어",
-            c_pmcmod_luck = "정신력 45 뒷면",
+            c_pmcmod_money = "공산주의는 그저 붉은 미끼였어",
+            c_pmcmod_luck = "정신력 45인데 뒷면",
             c_pmcmod_colors = "프라이드 퍼레이드",
             c_pmcmod_wuthering = "바나나 하나잖아, 히스클리프. 그게 얼마나 하겠어?",
         },
@@ -3194,7 +3246,7 @@ return {
                 "숙소로 복귀하십시오."
             },
             pmcmod_yesod_loss={
-                "더 정확한 판단을 하셨어야 합니다.",
+                "더 정확한 판단을 하셨어야 .",
             },
             pmcmod_netzach_win={
                 "이 정도면 충분하겠지... 이만 들어가자.",
@@ -3314,7 +3366,7 @@ return {
                 "책을 찾으실 수 있기를.",
             },
             pnr_pmcmod_angela_3={
-                "환영합니다, 손님.",
+                "환영, 손님.",
             },
             pnr_pmcmod_panther_test={
                 "테스트입니다",
